@@ -30,7 +30,9 @@ The default runs evaluate both complete splits. Use `--splits sketchy_1` or
 cache location are available through `--help`. For an explicit local OpenAI CLIP
 checkpoint, pass `--clip-checkpoint <ViT-B-32.pt>`. Models otherwise resolve through
 OpenCLIP. `--encode-only` in the patch runner prepares spatial CLIP patch
-caches for subsequent scoring. Each method writes a standalone JSON result.
+caches for subsequent scoring. Each method writes a standalone JSON result. All encoders run under
+inference mode with frozen weights. Batched cosine scoring uses the same
+operation as the reference, and the patch sweeps reuse cached cosine rows.
 
 | Global method | Score |
 | --- | --- |
@@ -46,7 +48,9 @@ The patch runner uses `centered` to create a common shortlist. It evaluates unif
 query patches, ink-supported patches against RGB or contour, independent averaging
 of RGB and contour matches, agreement at the same gallery patch, and agreement
 after changing sketch line thickness. A contrast-weighted variant downweights
-sketch patches that match the candidate pool uniformly. All variants use spatial tokens from the same frozen CLIP
+sketch patches that match the candidate pool uniformly. The centered patch
+variants estimate one feature mean per gallery view and test whether removing
+those offsets improves RGB matching or cross-view agreement. All variants use spatial tokens from the same frozen CLIP
 visual encoder and the same gallery support positions. The reranker permutes the existing
 scores within the shortlist and evaluates the complete gallery.
 

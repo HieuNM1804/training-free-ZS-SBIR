@@ -4,6 +4,7 @@ from dataclasses import dataclass
 import os
 
 import torch
+from torch.nn import functional as F
 from tqdm.auto import tqdm
 
 from .metrics import cosine_batches
@@ -11,6 +12,7 @@ from .metrics import cosine_batches
 PATCH_METHODS = (
     "patch_uniform", "patch_ink", "patch_contour", "patch_independent",
     "patch_consensus", "patch_distinctive", "patch_stable",
+    "patch_centered_ink", "patch_centered_consensus",
 )
 
 
@@ -81,6 +83,34 @@ def score_shortlist(sketch, gallery, shortlist, methods):
     return scores
 
 
+def gallery_patch_mean(patches, valid):
+    totals = [
+        (chunk * mask.unsqueeze(-1)).sum(dim=(0, 1), dtype=torch.float32)
+        for chunk, mask in zip(patches.split(256), valid.split(256), strict=True)
+    ]
+    return torch.stack(totals).sum(dim=0) / valid.sum()
+
+
+def center_patch_blocks(patches, mean):
+    result = torch.empty_like(patches)
+    for start in range(0, len(patches), 256):
+        block = patches[start:start + 256]
+        result[start:start + len(block)] = F.normalize(block.float() - mean, dim=-1).to(patches.dtype)
+    return result
+
+
+def centered_patch_gallery(gallery):
+    valid = gallery["valid"]
+    rgb_mean = gallery_patch_mean(gallery["primary"], valid)
+    contour_mean = gallery_patch_mean(gallery["secondary"], valid)
+    centered = {
+        "primary": center_patch_blocks(gallery["primary"], rgb_mean),
+        "secondary": center_patch_blocks(gallery["secondary"], contour_mean),
+        "valid": valid,
+    }
+    return centered, contour_mean
+
+
 @torch.inference_mode()
 def cache_base_scores(queries, photos, path, metric_batch_size):
     shape = (len(queries), len(photos))
@@ -115,6 +145,10 @@ def cache_shortlist_scores(
         )
         for name, value in photo_patches.items()
     }
+    centered_names = {"patch_centered_ink", "patch_centered_consensus"} & set(methods)
+    original_names = set(methods) - centered_names
+    if centered_names:
+        centered_gallery, contour_mean = centered_patch_gallery(gallery)
     for start in tqdm(range(0, len(base_scores), batch_size), desc="Score CLIP shortlist"):
         end = start + batch_size
         selected = base_scores[start:end].topk(maximum_k, dim=-1).indices.to(device)
@@ -125,8 +159,17 @@ def cache_shortlist_scores(
             for name, value in sketch_patches.items()
         }
         ids.append(selected.cpu())
-        for name, score in score_shortlist(sketch, gallery, selected, set(methods)).items():
-            local[name].append(score.cpu())
+        if original_names:
+            for name, score in score_shortlist(sketch, gallery, selected, original_names).items():
+                local[name].append(score.cpu())
+        if centered_names:
+            centered_query = {
+                "primary": center_patch_blocks(sketch["primary"], contour_mean),
+                "valid": sketch["valid"],
+            }
+            names = {name.replace("patch_centered_", "patch_", 1) for name in centered_names}
+            for name, score in score_shortlist(centered_query, centered_gallery, selected, names).items():
+                local[name.replace("patch_", "patch_centered_", 1)].append(score.cpu())
     return torch.cat(ids), {name: torch.cat(scores) for name, scores in local.items()}
 
 

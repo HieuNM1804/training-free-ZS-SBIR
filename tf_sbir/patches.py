@@ -1,5 +1,6 @@
 """Extract spatial patch tokens from the frozen OpenAI CLIP visual encoder."""
 
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
@@ -8,7 +9,7 @@ import numpy as np
 import torch
 from PIL import Image
 from torch.nn import functional as F
-from torch.utils.data import DataLoader, Dataset
+from torch.utils.data import Dataset, default_collate
 from tqdm.auto import tqdm
 
 from .data import contour_views, normal_transform
@@ -47,7 +48,6 @@ class PatchInputs(Dataset):
         return len(self.paths)
 
     def __getitem__(self, index):
-        cv2.setNumThreads(1)
         with Image.open(self.paths[index]) as source:
             rgb = source.convert("RGB").resize((SIZE, SIZE), Image.Resampling.BILINEAR)
         if self.mode == "photo":
@@ -72,12 +72,25 @@ def cache_path(args, paths, mode):
     return args.cache / f"patch-v1-{base}"
 
 
+def patch_batches(dataset, batch_size, workers, pin):
+    ranges = iter(range(start, min(start + batch_size, len(dataset))) for start in range(0, len(dataset), batch_size))
+    if workers == 0:
+        for indices in ranges:
+            yield default_collate([dataset[index] for index in indices])
+        return
+    with ThreadPoolExecutor(max_workers=workers) as executor:
+        pending = [executor.submit(dataset.__getitem__, index) for index in next(ranges, ())]
+        while pending:
+            following = [executor.submit(dataset.__getitem__, index) for index in next(ranges, ())]
+            batch = default_collate([item.result() for item in pending])
+            yield tuple(tensor.pin_memory() for tensor in batch) if pin else batch
+            pending = following
+
+
 @torch.inference_mode()
 def encode_patches(model, paths, mode, batch_size, workers, device, staging):
-    batches = DataLoader(
-        PatchInputs(paths, mode), batch_size=batch_size, num_workers=workers,
-        pin_memory=device.type == "cuda",
-    )
+    cv2.setNumThreads(1)
+    batches = patch_batches(PatchInputs(paths, mode), batch_size, workers, device.type == "cuda")
     vision = model.visual
     shape = (len(paths), SUPPORT_COUNT, vision.conv1.out_channels)
     layouts = {
@@ -93,7 +106,9 @@ def encode_patches(model, paths, mode, batch_size, workers, device, staging):
     }
     uniform_ids = UNIFORM_IDS.to(device)
     start = 0
-    for views, ids, valid in tqdm(batches, desc=f"CLIP patches {mode}"):
+    for views, ids, valid in tqdm(
+        batches, total=(len(paths) + batch_size - 1) // batch_size, desc=f"CLIP patches {mode}", mininterval=1,
+    ):
         pixels = views.flatten(0, 1).to(device=device, dtype=vision.conv1.weight.dtype, non_blocking=True)
         hidden = vision.ln_post(vision.transformer(vision._embeds(pixels))[:, 1:])
         hidden = hidden.reshape(len(views), 2, GRID * GRID, hidden.size(-1))

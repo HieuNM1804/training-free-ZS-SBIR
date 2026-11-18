@@ -27,9 +27,12 @@ def parse_args():
     parser.add_argument("--workers", type=int, default=2)
     parser.add_argument("--resume", action="store_true")
     parser.add_argument("--metric-batch-size", type=int, default=8)
+    parser.add_argument("--metric-workers", type=int, default=4)
     parser.add_argument("--weights", type=float, nargs="+")
     parser.add_argument("--exploratory-unseen", action="store_true")
     args = parser.parse_args()
+    if args.metric_workers < 1:
+        parser.error("--metric-workers must be positive")
     if args.metric_batch_size < 1:
         parser.error("--metric-batch-size must be positive")
     tunable = {"query_expansion", "local_residual", "procrustes"}
@@ -61,7 +64,7 @@ def explicit_rows(method, queries):
 
 @torch.inference_mode()
 def run(args):
-    torch.set_num_threads(2)
+    torch.set_num_threads(1)
     device = torch.device(args.device)
     query_paths, query_views = merge_inputs(args.root, args.splits, "sketch")
     photo_paths, photo_views = merge_inputs(args.root, args.splits, "photo")
@@ -88,7 +91,9 @@ def run(args):
                 cosine_rows(*method, batch_size=args.metric_batch_size)
                 if isinstance(method, tuple) else explicit_rows(method, q)
             )
-            ap, precision, map_k, p_k = evaluate_rows(rows, q_labels, p_labels, split, f"{split} {name}")
+            ap, precision, map_k, p_k = evaluate_rows(
+                rows, q_labels, p_labels, split, f"{split} {name}", workers=args.metric_workers,
+            )
             result = {
                 "split": split, "method": name, "backbone": "OpenAI CLIP ViT-B/32",
                 "queries": len(q), "gallery": len(p), "classes": len(UNSEEN_CLASSES[split]),

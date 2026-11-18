@@ -11,10 +11,10 @@ from tf_sbir.reranking import RankingConfig, reranked_rows, score_shortlist
 class ProtocolTests(unittest.TestCase):
     def test_metrics_follow_torchmetrics_with_score_ties(self):
         rng = torch.Generator().manual_seed(42)
-        queries = torch.randn(4, 16, generator=rng)
+        queries = torch.randn(71, 16, generator=rng)
         photos = torch.randn(273, 16, generator=rng)
         photos[1] = photos[0]
-        query_labels = torch.arange(4)
+        query_labels = torch.arange(len(queries)) % 4
         photo_labels = torch.arange(len(photos)) % 4
         cosine = list(cosine_rows(queries, photos))
         for split, map_k, p_k in (("sketchy_1", 0, 100), ("sketchy_2", 200, 200)):
@@ -30,10 +30,11 @@ class ProtocolTests(unittest.TestCase):
                     for score, target in zip(scores, positives)
                 ]).mean()
                 self.assertTrue(torch.equal(torch.stack(cosine), torch.stack(list(cosine_rows(queries, photos, 3)))))
-                self.assertEqual(
-                    evaluate_rows(iter(cosine), query_labels, photo_labels, split),
-                    (expected_ap, expected_p, map_k, p_k),
-                )
+                for workers in (1, 4):
+                    self.assertEqual(
+                        evaluate_rows(iter(cosine), query_labels, photo_labels, split, workers=workers),
+                        (expected_ap, expected_p, map_k, p_k),
+                    )
 
     def test_split_sizes(self):
         self.assertEqual(len(set(UNSEEN_CLASSES["sketchy_1"])), 25)
