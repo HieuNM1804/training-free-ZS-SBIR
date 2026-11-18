@@ -13,8 +13,10 @@ from .data import UNSEEN_CLASSES
 from .encoding import global_cache_name, load_global_inputs, save_tensor
 from .global_methods import prepare_methods
 from .metrics import evaluate_rows
-from .patches import DINO_MODEL, DINO_REVISION, load_patch_inputs
-from .reranking import PATCH_METHODS, RankingConfig, cache_shortlist_scores, reranked_rows
+from .patches import load_patch_inputs
+from .reranking import (
+    PATCH_METHODS, RankingConfig, cache_base_scores, cache_shortlist_scores, reranked_rows,
+)
 
 
 def parse_args():
@@ -32,10 +34,13 @@ def parse_args():
     parser.add_argument("--clip-checkpoint")
     parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
     parser.add_argument("--batch-size", type=int, default=64)
-    parser.add_argument("--patch-batch-size", type=int, default=24)
-    parser.add_argument("--score-batch-size", type=int, default=12)
-    parser.add_argument("--workers", type=int, default=4)
+    parser.add_argument("--patch-batch-size", type=int, default=64)
+    parser.add_argument("--score-batch-size", type=int, default=64)
+    parser.add_argument("--metric-batch-size", type=int, default=8)
+    parser.add_argument("--workers", type=int, default=2)
     args = parser.parse_args()
+    if min(args.batch_size, args.patch_batch_size, args.score_batch_size, args.metric_batch_size) < 1:
+        parser.error("batch sizes must be positive")
     if min(args.top_k) < 1 or min(args.weights) < 0:
         parser.error("shortlist sizes must be positive and weights nonnegative")
     if args.max_candidates < max(args.top_k):
@@ -51,7 +56,7 @@ def shortlist_cache_path(args, split, query_paths, photo_paths, query_ids, photo
     precision = "fp16" if torch.device(args.device).type == "cuda" else "fp32"
     query_key = global_cache_name(args.root, queries, "sketch", "rgb", precision, args.clip_checkpoint)
     photo_key = global_cache_name(args.root, photos, "photo", "rgb", precision, args.clip_checkpoint)
-    return args.cache / f"shortlist-v2-{split}-{query_key}-{photo_key}-{DINO_REVISION[:8]}-{args.max_candidates}.pt"
+    return args.cache / f"clip-shortlist-v2-{split}-{query_key}-{photo_key}-{args.max_candidates}.pt"
 
 
 
@@ -75,13 +80,15 @@ def run(args):
         if args.max_candidates > len(p):
             raise ValueError(f"Shortlist cannot exceed gallery size for {split}")
         cache = shortlist_cache_path(args, split, query_paths, photo_paths, query_ids, photo_ids)
+        full_cache = cache.with_name(f"{cache.stem.rsplit('-', 1)[0]}.f32")
+        base_scores = cache_base_scores(q, p, full_cache, args.metric_batch_size)
         saved = torch.load(cache, weights_only=True) if cache.is_file() else {}
         local = saved.get("scores", {})
         missing = [method for method in args.methods if method not in local]
         if missing:
             ids, patch_scores = cache_shortlist_scores(
-                q, p, all_patch_q, all_patch_p, query_ids, photo_ids,
-                args.max_candidates, missing, args.score_batch_size,
+                base_scores, all_patch_q, all_patch_p, query_ids, photo_ids,
+                args.max_candidates, missing, args.score_batch_size, device,
             )
             local.update(patch_scores)
             saved = {"ids": ids, "scores": local}
@@ -89,13 +96,13 @@ def run(args):
         for method, top_k, weight in itertools.product(args.methods, args.top_k, args.weights):
             start = time.perf_counter()
             config = RankingConfig(method, top_k, weight)
-            rows = reranked_rows(q, p, saved["ids"], local[method], config)
+            rows = reranked_rows(base_scores, saved["ids"], local[method], config)
             ap, precision, map_k, p_k = evaluate_rows(
                 rows, query_labels, photo_labels, split, f"{split} {method} k={top_k} w={weight}",
             )
             result = {
                 "split": split, "method": method, "backbone": "OpenAI CLIP ViT-B/32",
-                "patch_backbone": f"{DINO_MODEL}@{DINO_REVISION}", "shortlist": "centered",
+                "patch_backbone": "OpenAI CLIP ViT-B/32 spatial tokens", "shortlist": "centered",
                 "top_k": top_k, "weight": weight, "exploratory_unseen": args.exploratory_unseen,
                 "queries": len(q), "gallery": len(p), "classes": len(UNSEEN_CLASSES[split]),
                 "mAP": float(ap), "precision": float(precision), "map_k": map_k, "p_k": p_k,

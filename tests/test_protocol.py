@@ -29,6 +29,7 @@ class ProtocolTests(unittest.TestCase):
                     retrieval_precision(score, target, top_k=p_k)
                     for score, target in zip(scores, positives)
                 ]).mean()
+                self.assertTrue(torch.equal(torch.stack(cosine), torch.stack(list(cosine_rows(queries, photos, 3)))))
                 self.assertEqual(
                     evaluate_rows(iter(cosine), query_labels, photo_labels, split),
                     (expected_ap, expected_p, map_k, p_k),
@@ -64,7 +65,7 @@ class RerankingTests(unittest.TestCase):
         query = torch.tensor([[1.0, 0.0]])
         gallery = torch.tensor([[0.9, 0.0], [0.8, 0.0], [0.7, 0.0]])
         row = next(reranked_rows(
-            query, gallery, torch.tensor([[0, 1]]), torch.tensor([[0.0, 1.0]]),
+            query @ gallery.T, torch.tensor([[0, 1]]), torch.tensor([[0.0, 1.0]]),
             RankingConfig("patch_ink", 2, 2.0),
         ))
         self.assertTrue(torch.equal(row, torch.tensor([0.8, 0.9, 0.7])))

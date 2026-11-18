@@ -1,13 +1,16 @@
 """Rerank a common shortlist with paired patch matches and stroke stability."""
 
 from dataclasses import dataclass
+import os
 
 import torch
 from tqdm.auto import tqdm
 
+from .metrics import cosine_batches
+
 PATCH_METHODS = (
     "patch_uniform", "patch_ink", "patch_contour", "patch_independent",
-    "patch_consensus", "patch_stable",
+    "patch_consensus", "patch_distinctive", "patch_stable",
 )
 
 
@@ -28,10 +31,15 @@ def similarities(query, gallery):
     return torch.matmul(query.unsqueeze(1), gallery.transpose(-1, -2)).float()
 
 
-def match_support(matrix, sketch_valid, photo_valid):
+def match_support(matrix, sketch_valid, photo_valid, distinctiveness=False):
     best = matrix.masked_fill(~photo_valid.unsqueeze(-2), -1.0).amax(dim=-1)
-    valid = sketch_valid.unsqueeze(1)
-    return (best * valid).sum(dim=-1) / valid.sum(dim=-1)
+    weights = sketch_valid.unsqueeze(1)
+    if distinctiveness:
+        # Strokes that match nearly every candidate carry little ranking evidence.
+        top = best.topk(max(1, best.size(1) // 10), dim=1).values.mean(dim=1, keepdim=True)
+        contrast = (top - best.mean(dim=1, keepdim=True)).clamp_min(0)
+        weights = weights * (contrast + 1e-6)
+    return (best * weights).sum(dim=-1) / weights.sum(dim=-1)
 
 
 def score_shortlist(sketch, gallery, shortlist, methods):
@@ -64,6 +72,8 @@ def score_shortlist(sketch, gallery, shortlist, methods):
     agreement = torch.minimum(rgb_match, contour_match)
     if "patch_consensus" in methods:
         scores["patch_consensus"] = match_support(agreement, valid, photo_valid)
+    if "patch_distinctive" in methods:
+        scores["patch_distinctive"] = match_support(agreement, valid, photo_valid, distinctiveness=True)
     if "patch_stable" in methods:
         thicker = sketch["secondary"]
         perturbed = torch.minimum(similarities(thicker, rgb), similarities(thicker, contour))
@@ -72,11 +82,32 @@ def score_shortlist(sketch, gallery, shortlist, methods):
 
 
 @torch.inference_mode()
+def cache_base_scores(queries, photos, path, metric_batch_size):
+    shape = (len(queries), len(photos))
+    size = shape[0] * shape[1]
+    if not path.is_file() or path.stat().st_size != size * 4:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        temporary = path.with_name(f"{path.name}.{os.getpid()}.tmp")
+        scores = torch.from_file(str(temporary), shared=True, size=size, dtype=torch.float32).view(shape)
+        start = 0
+        for batch in tqdm(
+            cosine_batches(queries, photos, metric_batch_size),
+            total=(len(queries) + metric_batch_size - 1) // metric_batch_size,
+            desc="Cache full-gallery cosine",
+        ):
+            end = start + len(batch)
+            scores[start:end] = batch.cpu()
+            start = end
+        del scores
+        temporary.replace(path)
+    return torch.from_file(str(path), shared=False, size=size, dtype=torch.float32).view(shape)
+
+
+@torch.inference_mode()
 def cache_shortlist_scores(
-    queries, photos, sketch_patches, photo_patches, query_ids, photo_ids, maximum_k, methods, batch_size,
+    base_scores, sketch_patches, photo_patches, query_ids, photo_ids, maximum_k, methods, batch_size, device,
 ):
     ids, local = [], {method: [] for method in methods}
-    device = queries.device
     # Keep paired gallery patches on the scoring device and stream query patches.
     gallery = {
         name: value[photo_ids].to(
@@ -84,9 +115,9 @@ def cache_shortlist_scores(
         )
         for name, value in photo_patches.items()
     }
-    for start in tqdm(range(0, len(queries), batch_size), desc="Score DINO shortlist"):
+    for start in tqdm(range(0, len(base_scores), batch_size), desc="Score CLIP shortlist"):
         end = start + batch_size
-        selected = (queries[start:end] @ photos.T).topk(maximum_k, dim=-1).indices
+        selected = base_scores[start:end].topk(maximum_k, dim=-1).indices.to(device)
         sketch = {
             name: value[query_ids[start:end]].to(
                 device=device, dtype=gallery["primary"].dtype if value.is_floating_point() else value.dtype,
@@ -99,10 +130,10 @@ def cache_shortlist_scores(
     return torch.cat(ids), {name: torch.cat(scores) for name, scores in local.items()}
 
 
-def reranked_rows(queries, photos, ids, local, config):
-    for start in range(0, len(queries), 128):
+def reranked_rows(base_scores, ids, local, config):
+    for start in range(0, len(base_scores), 128):
         end = start + 128
-        rows = (queries[start:end] @ photos.T).cpu()
+        rows = base_scores[start:end].clone()
         candidates = ids[start:end, :config.top_k]
         baseline = rows.gather(1, candidates)
         if config.weight:

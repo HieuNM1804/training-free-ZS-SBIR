@@ -21,7 +21,7 @@ def reciprocal_ranks(scores, constant=60):
 
 
 @torch.inference_mode()
-def prepare_methods(queries, gallery, contours, methods):
+def prepare_methods(queries, gallery, contours, methods, mix_weight=None):
     """Map a method to its query/gallery matrices, or an explicit scoring function."""
     result = {}
     if "rgb" in methods:
@@ -43,6 +43,7 @@ def prepare_methods(queries, gallery, contours, methods):
     if "centered" in methods:
         result["centered"] = (q, p)
     if {"query_expansion", "local_residual"} & set(methods):
+        step = 0.5 if mix_weight is None else mix_weight
         photo_neighbors, contour_neighbors = [], []
         for batch in q.split(256):
             values, indices = (batch @ z.T).topk(min(8, len(z)))
@@ -51,13 +52,14 @@ def prepare_methods(queries, gallery, contours, methods):
             contour_neighbors.append((z[indices] * weights).sum(dim=1))
         photo_average = torch.cat(photo_neighbors)
         if "query_expansion" in methods:
-            result["query_expansion"] = (F.normalize(q + 0.5 * photo_average, dim=-1), p)
+            result["query_expansion"] = (F.normalize(q + step * photo_average, dim=-1), p)
         if "local_residual" in methods:
             offset = photo_average - torch.cat(contour_neighbors)
-            result["local_residual"] = (F.normalize(q + 0.5 * offset, dim=-1), p)
+            result["local_residual"] = (F.normalize(q + step * offset, dim=-1), p)
     if "procrustes" in methods:
         # Solve the orthogonal alignment in closed form on paired gallery views.
         left, _, right = torch.linalg.svd((z.T @ p).cpu(), full_matrices=False)
         rotation = (left @ right).to(q.device)
-        result["procrustes"] = (F.normalize(q @ rotation, dim=-1), p)
+        weight = 1.0 if mix_weight is None else mix_weight
+        result["procrustes"] = (F.normalize(q.lerp(q @ rotation, weight), dim=-1), p)
     return result

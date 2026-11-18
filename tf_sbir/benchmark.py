@@ -1,6 +1,7 @@
 """Run training-free Sketchy retrieval on the two official unseen splits."""
 
 import argparse
+import itertools
 import json
 from pathlib import Path
 import time
@@ -23,8 +24,23 @@ def parse_args():
     parser.add_argument("--clip-checkpoint")
     parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
     parser.add_argument("--batch-size", type=int, default=64)
-    parser.add_argument("--workers", type=int, default=4)
-    return parser.parse_args()
+    parser.add_argument("--workers", type=int, default=2)
+    parser.add_argument("--resume", action="store_true")
+    parser.add_argument("--metric-batch-size", type=int, default=8)
+    parser.add_argument("--weights", type=float, nargs="+")
+    parser.add_argument("--exploratory-unseen", action="store_true")
+    args = parser.parse_args()
+    if args.metric_batch_size < 1:
+        parser.error("--metric-batch-size must be positive")
+    tunable = {"query_expansion", "local_residual", "procrustes"}
+    if args.weights is not None:
+        if not args.exploratory_unseen or not set(args.methods) <= tunable:
+            parser.error("a weight sweep requires --exploratory-unseen and tunable methods")
+        if any(not 0 <= weight <= 2 for weight in args.weights):
+            parser.error("weights must be between 0 and 2")
+        if "procrustes" in args.methods and max(args.weights) > 1:
+            parser.error("Procrustes interpolation weights must be between 0 and 1")
+    return args
 
 
 def merge_inputs(root, splits, mode):
@@ -58,11 +74,20 @@ def run(args):
         photo_ids, p_labels = photo_views[split]
         q, p = all_q[query_ids].to(device), all_p[photo_ids].to(device)
         z = all_z[photo_ids].to(device) if all_z is not None else None
-        methods = prepare_methods(q, p, z, args.methods)
-        for name in args.methods:
+        settings = args.weights or [None]
+        prepared = {weight: prepare_methods(q, p, z, args.methods, weight) for weight in settings}
+        for name, weight in itertools.product(args.methods, settings):
+            suffix = f"-w{weight:g}" if weight is not None else ""
+            filename = args.output / f"{split}-{name}{suffix}.json"
+            if args.resume and filename.is_file():
+                print(f"Already evaluated {filename}", flush=True)
+                continue
             start = time.perf_counter()
-            method = methods[name]
-            rows = cosine_rows(*method) if isinstance(method, tuple) else explicit_rows(method, q)
+            method = prepared[weight][name]
+            rows = (
+                cosine_rows(*method, batch_size=args.metric_batch_size)
+                if isinstance(method, tuple) else explicit_rows(method, q)
+            )
             ap, precision, map_k, p_k = evaluate_rows(rows, q_labels, p_labels, split, f"{split} {name}")
             result = {
                 "split": split, "method": name, "backbone": "OpenAI CLIP ViT-B/32",
@@ -70,9 +95,9 @@ def run(args):
                 "mAP": float(ap), "precision": float(precision),
                 "map_k": map_k, "p_k": p_k,
                 "evaluation_seconds": round(time.perf_counter() - start, 2),
+                "weight": weight, "exploratory_unseen": args.exploratory_unseen,
                 "torch": torch.__version__,
             }
-            filename = args.output / f"{split}-{name}.json"
             filename.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
             print(json.dumps(result), flush=True)
 

@@ -30,6 +30,14 @@ def evaluate_rows(score_rows, query_labels, gallery_labels, dataset, description
     return ap.mean(), precision.mean(), map_k, p_k
 
 
-def cosine_rows(queries, gallery):
-    for query in queries:
-        yield F.cosine_similarity(query.unsqueeze(0), gallery)
+def cosine_batches(queries, gallery, batch_size):
+    for batch in queries.split(batch_size):
+        if len(batch) == 1:
+            yield F.cosine_similarity(batch, gallery).unsqueeze(0)
+        else:
+            yield F.cosine_similarity(batch[:, None, :], gallery[None, :, :], dim=-1)
+
+
+def cosine_rows(queries, gallery, batch_size=1):
+    for scores in cosine_batches(queries, gallery, batch_size):
+        yield from scores.cpu()

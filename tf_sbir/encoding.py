@@ -48,6 +48,12 @@ def encode_clip(model, paths, view, batch_size, workers, device):
     return torch.cat(output)
 
 
+def load_frozen_clip(checkpoint, device):
+    precision = "fp16" if device.type == "cuda" else "fp32"
+    model = open_clip.load_openai_model(checkpoint or "ViT-B-32", precision=precision, device=device)
+    return model.eval().requires_grad_(False)
+
+
 def load_global_inputs(args, query_paths, photo_paths, need_contours):
     device = torch.device(args.device)
     precision = "fp16" if device.type == "cuda" else "fp32"
@@ -63,9 +69,7 @@ def load_global_inputs(args, query_paths, photo_paths, need_contours):
             encodings[(mode, view)] = torch.load(cache, map_location="cpu", weights_only=True)
             continue
         if model is None:
-            checkpoint = args.clip_checkpoint or "ViT-B-32"
-            model = open_clip.load_openai_model(checkpoint, precision=precision, device=device)
-            model.eval().requires_grad_(False)
+            model = load_frozen_clip(args.clip_checkpoint, device)
         features = encode_clip(model, paths, view, args.batch_size, args.workers, device)
         save_tensor(features, cache)
         encodings[(mode, view)] = features

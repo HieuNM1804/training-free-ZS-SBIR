@@ -1,6 +1,6 @@
 # Training-free zero-shot sketch-based image retrieval
 
-Frozen OpenAI CLIP and DINOv2 for category-level sketch-to-photo retrieval on the two Sketchy unseen splits. All scoring uses the query and the unlabeled gallery. The methods estimate gallery statistics or similarity scores without fitting a Sketchy model.
+Frozen OpenAI CLIP for category-level sketch-to-photo retrieval on the two Sketchy unseen splits. All scoring uses the query and the unlabeled gallery. The methods estimate gallery statistics or similarity scores without fitting a Sketchy model.
 
 ## Setup
 
@@ -29,7 +29,7 @@ The default runs evaluate both complete splits. Use `--splits sketchy_1` or
 `--splits sketchy_2` to run one split. Options for batch sizes, workers, device, and
 cache location are available through `--help`. For an explicit local OpenAI CLIP
 checkpoint, pass `--clip-checkpoint <ViT-B-32.pt>`. Models otherwise resolve through
-OpenCLIP or Hugging Face. `--encode-only` in the patch runner prepares DINOv2 feature
+OpenCLIP. `--encode-only` in the patch runner prepares spatial CLIP patch
 caches for subsequent scoring. Each method writes a standalone JSON result.
 
 | Global method | Score |
@@ -45,8 +45,9 @@ caches for subsequent scoring. Each method writes a standalone JSON result.
 The patch runner uses `centered` to create a common shortlist. It evaluates uniform
 query patches, ink-supported patches against RGB or contour, independent averaging
 of RGB and contour matches, agreement at the same gallery patch, and agreement
-after changing sketch line thickness. All variants use the same frozen DINOv2
-checkpoint and gallery support positions. The reranker permutes the existing
+after changing sketch line thickness. A contrast-weighted variant downweights
+sketch patches that match the candidate pool uniformly. All variants use spatial tokens from the same frozen CLIP
+visual encoder and the same gallery support positions. The reranker permutes the existing
 scores within the shortlist and evaluates the complete gallery.
 
 The fixed patch comparison uses a shortlist of 200 and a local score weight of
