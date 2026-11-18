@@ -4,7 +4,7 @@ import torch
 from torch.nn import functional as F
 
 from tf_sbir.manifold import build_graph, fused_features
-from tf_sbir.semantic import gallery_memory, top_codes
+from tf_sbir.semantic import gallery_memory, guided_term_scores, top_codes
 
 
 class GalleryManifoldTests(unittest.TestCase):
@@ -37,6 +37,16 @@ class PublicVocabularyTests(unittest.TestCase):
         torch.testing.assert_close(memory.support.sum(), torch.tensor(float(len(p))))
         _, weights = top_codes(p @ terms.T, words_per_sample=12)
         torch.testing.assert_close(weights.sum(dim=1), torch.ones(len(p)))
+
+    def test_other_queries_do_not_change_lexical_scores(self):
+        generator = torch.Generator().manual_seed(8)
+        p = F.normalize(torch.randn(45, 16, generator=generator))
+        terms = F.normalize(torch.randn(30, 16, generator=generator))
+        q = F.normalize(torch.randn(3, 16, generator=generator))
+        memory = gallery_memory(p, terms)
+        independent = guided_term_scores(q[1:2], p, terms, terms, memory, .3)
+        batched = guided_term_scores(q, p, terms, terms, memory, .3)
+        torch.testing.assert_close(independent, batched[1:2])
 
 
 if __name__ == "__main__":

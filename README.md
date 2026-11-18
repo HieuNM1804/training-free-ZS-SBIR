@@ -105,11 +105,10 @@ python -m tf_sbir.manifold_benchmark --root <Sketchy> --output runs/paper-manifo
 python -m tf_sbir.semantic_benchmark --root <Sketchy> --vocabulary open-images-v7-classes.csv --output runs/paper-semantic-b32 --exploratory-unseen
 python -m tf_sbir.semantic_benchmark --root <Sketchy> --vocabulary open-images-v7-classes.csv --output runs/paper-semantic-walk-b32 --study manifold --exploratory-unseen
 python -m tf_sbir.semantic_benchmark --root <Sketchy> --vocabulary open-images-v7-classes.csv --output runs/paper-agreement-b32 --study agreement --exploratory-unseen
-python -m tf_sbir.semantic_benchmark --root <Sketchy> --vocabulary open-images-v7-classes.csv --output runs/paper-semantic-dfn2b --backbone dfn2b --exploratory-unseen
 ```
 
-Use the same backbone when comparing methods. The core and semantic manifold
+All research experiments use the same frozen OpenAI CLIP ViT-B/32 checkpoint. The core and semantic manifold
 experiments use the original RGB gallery and sketches. The agreement experiment
 adds a visual path initialized from paired contour calibration. All encoders
 remain frozen, and all rows use the existing TorchMetrics evaluator.
-Use a separate output directory for each backbone and study.
+Use a separate output directory for each study.

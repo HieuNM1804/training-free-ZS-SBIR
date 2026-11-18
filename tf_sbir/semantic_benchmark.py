@@ -9,7 +9,8 @@ import torch
 
 from .benchmark import merge_inputs
 from .data import UNSEEN_CLASSES
-from .foundation import BACKBONES, load_vision, load_words
+from .encoding import load_global_inputs
+from .foundation import load_words
 from .manifold import fused_features
 from .manifold_benchmark import dot_rows
 from .metrics import evaluate_rows
@@ -25,7 +26,6 @@ def arguments():
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--vocabulary", type=Path, required=True)
     parser.add_argument("--study", choices=("core", "manifold", "agreement"), default="core")
-    parser.add_argument("--backbone", choices=BACKBONES, default="b32")
     parser.add_argument("--clip-checkpoint")
     parser.add_argument("--batch-size", type=int, default=64)
     parser.add_argument("--workers", type=int, default=2)
@@ -44,7 +44,7 @@ def run(args):
     splits = tuple(UNSEEN_CLASSES)
     query_paths, queries = merge_inputs(args.root, splits, "sketch")
     photo_paths, photos = merge_inputs(args.root, splits, "photo")
-    all_q, all_p, contours = load_vision(args, query_paths, photo_paths, args.study == "agreement")
+    all_q, all_p, contours = load_global_inputs(args, query_paths, photo_paths, args.study == "agreement")
     words = read_words(args.vocabulary)
     sketch_text, photo_text = [view.to(device) for view in load_words(args, words)]
     args.output.mkdir(parents=True, exist_ok=True)
@@ -76,7 +76,7 @@ def run(args):
                 rows, q_labels, p_labels, split, f"{split} {name}", workers=args.metric_workers,
             )
             result = {
-                "split": split, "method": name, "backbone": BACKBONES[args.backbone],
+                "split": split, "method": name, "backbone": "OpenAI CLIP ViT-B/32",
                 "mAP": float(ap), "precision": float(precision), "map_k": map_k, "p_k": p_k,
                 "queries": len(q), "gallery": len(p), "external_vocabulary": len(words), "study": args.study,
                 "exploratory_unseen": True, "evaluation_seconds": round(time.perf_counter() - start, 2),

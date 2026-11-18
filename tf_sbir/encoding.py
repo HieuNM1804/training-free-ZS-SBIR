@@ -52,6 +52,13 @@ def encode_clip(model, paths, view, batch_size, workers, device):
 def load_frozen_clip(checkpoint, device):
     precision = "fp16" if device.type == "cuda" else "fp32"
     model = open_clip.load_openai_model(checkpoint or "ViT-B-32", precision=precision, device=device)
+    visual = model.visual
+    if (
+        visual.conv1.kernel_size != (32, 32)
+        or visual.conv1.out_channels != 768
+        or len(visual.transformer.resblocks) != 12
+    ):
+        raise ValueError("All experiment checkpoints must use the OpenAI CLIP ViT-B/32 architecture.")
     return model.eval().requires_grad_(False)
 
 
