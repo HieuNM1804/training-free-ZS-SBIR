@@ -1,0 +1,74 @@
+# Training-free zero-shot sketch-based image retrieval
+
+Frozen OpenAI CLIP and DINOv2 for category-level sketch-to-photo retrieval on the two Sketchy unseen splits. All scoring uses the query and the unlabeled gallery. The methods estimate gallery statistics or similarity scores without fitting a Sketchy model.
+
+## Setup
+
+Install a matching PyTorch and torchvision build for your machine, then install the remaining dependencies.
+
+```powershell
+python -m pip install -r requirements.txt
+```
+
+Supply a dataset root with this layout.
+
+```text
+Sketchy/
+  photo/<class>/<image>
+  sketch/<class>/<image>
+```
+
+## Reproduce the experiments
+
+```powershell
+python -m tf_sbir.benchmark --root <Sketchy> --output runs/global
+python -m tf_sbir.patch_benchmark --root <Sketchy> --output runs/patch-fixed
+```
+
+The default runs evaluate both complete splits. Use `--splits sketchy_1` or
+`--splits sketchy_2` to run one split. Options for batch sizes, workers, device, and
+cache location are available through `--help`. For an explicit local OpenAI CLIP
+checkpoint, pass `--clip-checkpoint <ViT-B-32.pt>`. Models otherwise resolve through
+OpenCLIP or Hugging Face. `--encode-only` in the patch runner prepares DINOv2 feature
+caches for subsequent scoring. Each method writes a standalone JSON result.
+
+| Global method | Score |
+| --- | --- |
+| `rgb` | Frozen CLIP cosine on the original inputs |
+| `contour` | Sketch to the mean of two Canny views of each photo |
+| `rrf` | Reciprocal rank fusion of RGB and contour |
+| `centered` | Subtract the contour mean from the sketch side and the RGB mean from the photo side |
+| `query_expansion` | Expand the centered query with RGB features of its eight nearest contour anchors |
+| `local_residual` | Shift the centered query by paired RGB-minus-contour offsets from the same anchors |
+| `procrustes` | Align centered contour features to their corresponding RGB features with an orthogonal map |
+
+The patch runner uses `centered` to create a common shortlist. It evaluates uniform
+query patches, ink-supported patches against RGB or contour, independent averaging
+of RGB and contour matches, agreement at the same gallery patch, and agreement
+after changing sketch line thickness. All variants use the same frozen DINOv2
+checkpoint and gallery support positions. The reranker permutes the existing
+scores within the shortlist and evaluates the complete gallery.
+
+The fixed patch comparison uses a shortlist of 200 and a local score weight of
+0.5. A sweep using unseen labels for configuration selection is exploratory.
+
+```powershell
+python -m tf_sbir.patch_benchmark --root <Sketchy> --output runs/patch-exploratory --methods patch_ink patch_consensus patch_stable --top-k 100 200 400 --weights 0.25 0.5 1 --exploratory-unseen
+```
+
+## Evaluation
+
+The ordered class lists, RGB resize to 224 × 224, CLIP normalization, and metric
+conventions come from the [KD-SBIR reference repository](https://github.com/HieuNM1804/KD-SBIR).
+The evaluator uses its positive score transform and query-averaged TorchMetrics
+retrieval functions. Gallery positives are photos of the query class.
+
+| Split | Unseen classes | mAP | Precision |
+| --- | ---: | --- | --- |
+| Sketchy-Ext-1 | 25 | mAP@all | P@100 |
+| Sketchy-Ext-2 | 21 | mAP@200 | P@200 |
+
+The loader walks class folders in protocol order and sorts files within each
+folder. It skips non-file entries inside class folders.
+
+Run the local checks with `python -m unittest discover -s tests`.
