@@ -55,11 +55,22 @@ visual encoder and the same gallery support positions. The reranker permutes the
 scores within the shortlist and evaluates the complete gallery.
 
 The fixed patch comparison uses a shortlist of 200 and a local score weight of
-0.5. A sweep using unseen labels for configuration selection is exploratory.
+0.5. The following sweeps are exploratory because the configurations are
+compared and selected using the official unseen splits. Labels are only
+used in evaluation, and model weights stay frozen.
 
 ```powershell
-python -m tf_sbir.patch_benchmark --root <Sketchy> --output runs/patch-exploratory --methods patch_ink patch_consensus patch_stable --top-k 100 200 400 --weights 0.25 0.5 1 --exploratory-unseen
+python -m tf_sbir.benchmark --root <Sketchy> --output runs/global-exploratory --methods query_expansion local_residual --weights 0.25 0.75 1 --exploratory-unseen
+python -m tf_sbir.benchmark --root <Sketchy> --output runs/global-exploratory --methods procrustes --weights 0.25 0.5 --exploratory-unseen
+python -m tf_sbir.patch_benchmark --root <Sketchy> --output runs/patch-exploratory --methods patch_centered_ink patch_independent --top-k 100 400 --weights 0.25 0.75 --exploratory-unseen
+python -m tf_sbir.patch_benchmark --root <Sketchy> --output runs/combined-exploratory --methods patch_centered_ink --shortlist-method local_residual --top-k 200 400 --weights 0.25 0.5 --exploratory-unseen
 ```
+
+CUDA uses FP16 model inference and batched float32 cosine operations. The
+TorchMetrics calls run in CPU workers and preserve the original order of
+aggregation. Large score matrices and patch features are cached locally. Use
+a fresh output directory when changing experiment inputs, or pass
+`--resume` to skip configurations already completed with the same inputs.
 
 ## Evaluation
 
