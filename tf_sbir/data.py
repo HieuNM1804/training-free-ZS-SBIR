@@ -1,5 +1,6 @@
 """Sketchy unseen splits and preprocessing from the KD-SBIR evaluation protocol."""
 
+from concurrent.futures import ThreadPoolExecutor
 import glob
 import hashlib
 import os
@@ -9,7 +10,7 @@ import cv2
 import numpy as np
 import torch
 from PIL import Image
-from torch.utils.data import Dataset
+from torch.utils.data import Dataset, default_collate
 from torchvision import transforms
 
 UNSEEN_CLASSES = {
@@ -76,7 +77,6 @@ class Images(Dataset):
         return len(self.paths)
 
     def __getitem__(self, index):
-        cv2.setNumThreads(1)
         with Image.open(self.paths[index]) as source:
             image = source.convert("RGB")
         if self.view == "contours":
@@ -93,3 +93,25 @@ def dataset_fingerprint(root, paths):
             f"{path.relative_to(root).as_posix()}\0{stat.st_size}\0{stat.st_mtime_ns}\n".encode()
         )
     return digest.hexdigest()[:20]
+
+
+def configure_image_worker(_worker_id):
+    cv2.setNumThreads(1)
+
+
+def threaded_batches(dataset, batch_size, workers, pin):
+    configure_image_worker(None)
+    ranges = iter(range(start, min(start + batch_size, len(dataset))) for start in range(0, len(dataset), batch_size))
+    if workers == 0:
+        for indices in ranges:
+            yield default_collate([dataset[index] for index in indices])
+        return
+    with ThreadPoolExecutor(max_workers=workers) as executor:
+        pending = [executor.submit(dataset.__getitem__, index) for index in next(ranges, ())]
+        while pending:
+            following = [executor.submit(dataset.__getitem__, index) for index in next(ranges, ())]
+            batch = default_collate([item.result() for item in pending])
+            if pin:
+                batch = batch.pin_memory() if isinstance(batch, torch.Tensor) else tuple(t.pin_memory() for t in batch)
+            yield batch
+            pending = following

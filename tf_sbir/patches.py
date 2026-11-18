@@ -1,6 +1,5 @@
 """Extract spatial patch tokens from the frozen OpenAI CLIP visual encoder."""
 
-from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
@@ -9,10 +8,10 @@ import numpy as np
 import torch
 from PIL import Image
 from torch.nn import functional as F
-from torch.utils.data import Dataset, default_collate
+from torch.utils.data import Dataset
 from tqdm.auto import tqdm
 
-from .data import contour_views, normal_transform
+from .data import contour_views, normal_transform, threaded_batches
 from .encoding import global_cache_name, load_frozen_clip, save_tensor
 
 SIZE = 224
@@ -72,25 +71,9 @@ def cache_path(args, paths, mode):
     return args.cache / f"patch-v1-{base}"
 
 
-def patch_batches(dataset, batch_size, workers, pin):
-    ranges = iter(range(start, min(start + batch_size, len(dataset))) for start in range(0, len(dataset), batch_size))
-    if workers == 0:
-        for indices in ranges:
-            yield default_collate([dataset[index] for index in indices])
-        return
-    with ThreadPoolExecutor(max_workers=workers) as executor:
-        pending = [executor.submit(dataset.__getitem__, index) for index in next(ranges, ())]
-        while pending:
-            following = [executor.submit(dataset.__getitem__, index) for index in next(ranges, ())]
-            batch = default_collate([item.result() for item in pending])
-            yield tuple(tensor.pin_memory() for tensor in batch) if pin else batch
-            pending = following
-
-
 @torch.inference_mode()
 def encode_patches(model, paths, mode, batch_size, workers, device, staging):
-    cv2.setNumThreads(1)
-    batches = patch_batches(PatchInputs(paths, mode), batch_size, workers, device.type == "cuda")
+    batches = threaded_batches(PatchInputs(paths, mode), batch_size, workers, device.type == "cuda")
     vision = model.visual
     shape = (len(paths), SUPPORT_COUNT, vision.conv1.out_channels)
     layouts = {

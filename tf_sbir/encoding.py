@@ -10,7 +10,7 @@ from torch.nn import functional as F
 from torch.utils.data import DataLoader
 from tqdm.auto import tqdm
 
-from .data import Images, dataset_fingerprint, normal_transform
+from .data import Images, configure_image_worker, dataset_fingerprint, normal_transform
 
 
 def global_cache_name(root, paths, mode, view, precision, checkpoint):
@@ -32,9 +32,10 @@ def save_tensor(tensor, output):
 
 @torch.inference_mode()
 def encode_clip(model, paths, view, batch_size, workers, device):
+    configure_image_worker(None)
     batches = DataLoader(
         Images(paths, normal_transform(), view), batch_size=batch_size,
-        num_workers=workers, pin_memory=device.type == "cuda",
+        num_workers=workers, pin_memory=device.type == "cuda", worker_init_fn=configure_image_worker,
     )
     output = []
     dtype = model.visual.conv1.weight.dtype

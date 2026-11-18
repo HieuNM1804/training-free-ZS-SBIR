@@ -88,3 +88,28 @@ The loader walks class folders in protocol order and sorts files within each
 folder. It skips non-file entries inside class folders.
 
 Run the local checks with `python -m unittest discover -s tests`.
+
+
+## Training-free research experiments
+
+The [literature review in Vietnamese](docs/TRAINING_FREE_LITERATURE_VI.md)
+covers cross-domain retrieval, modality alignment, vocabulary inversion,
+test-time adaptation, and downstream segmentation. These experiments build
+the index from unlabeled gallery photos and process each sketch independently.
+The public vocabulary is the complete Open Images V7 class-name list. The
+benchmark class lists are used for loading and scoring.
+
+```powershell
+Invoke-WebRequest -Uri 'https://storage.googleapis.com/openimages/v7/oidv7-class-descriptions.csv' -OutFile open-images-v7-classes.csv
+python -m tf_sbir.manifold_benchmark --root <Sketchy> --output runs/paper-manifold-b32 --exploratory-unseen
+python -m tf_sbir.semantic_benchmark --root <Sketchy> --vocabulary open-images-v7-classes.csv --output runs/paper-semantic-b32 --exploratory-unseen
+python -m tf_sbir.semantic_benchmark --root <Sketchy> --vocabulary open-images-v7-classes.csv --output runs/paper-semantic-walk-b32 --study manifold --exploratory-unseen
+python -m tf_sbir.semantic_benchmark --root <Sketchy> --vocabulary open-images-v7-classes.csv --output runs/paper-agreement-b32 --study agreement --exploratory-unseen
+python -m tf_sbir.semantic_benchmark --root <Sketchy> --vocabulary open-images-v7-classes.csv --output runs/paper-semantic-dfn2b --backbone dfn2b --exploratory-unseen
+```
+
+Use the same backbone when comparing methods. The core and semantic manifold
+experiments use the original RGB gallery and sketches. The agreement experiment
+adds a visual path initialized from paired contour calibration. All encoders
+remain frozen, and all rows use the existing TorchMetrics evaluator.
+Use a separate output directory for each backbone and study.
