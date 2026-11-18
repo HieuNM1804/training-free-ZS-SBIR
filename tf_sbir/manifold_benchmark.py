@@ -12,7 +12,9 @@ from .benchmark import merge_inputs
 from .data import UNSEEN_CLASSES
 from .encoding import load_global_inputs
 from .global_methods import centered, prepare_methods
-from .manifold import add_gallery_feedback, build_graph, fused_features
+from .manifold import (
+    GalleryGraph, add_gallery_feedback, build_graph, fused_features, iterative_feedback, nonlinear_walk_rows,
+)
 from .metrics import cosine_rows, evaluate_rows
 
 
@@ -22,6 +24,7 @@ def arguments():
     parser.add_argument("--cache", type=Path, default=Path(".cache"))
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--clip-checkpoint")
+    parser.add_argument("--study", choices=("ablation", "diffusion", "scales"), default="ablation")
     parser.add_argument("--batch-size", type=int, default=64)
     parser.add_argument("--workers", type=int, default=2)
     parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
@@ -57,6 +60,52 @@ def settings(rgb_q, rgb_p, contour_views):
                 yield f"dual-seed-walk-{tag}", q_fused, p_fused
 
 
+def diffusion_settings(rgb_q, rgb_p, contour_views):
+    proxies = F.normalize(contour_views.mean(dim=1), dim=-1)
+    shape_q = centered(rgb_q, proxies.mean(dim=0))
+    shape_p = centered(proxies, proxies.mean(dim=0))
+    q, p = prepare_methods(rgb_q, rgb_p, contour_views, ["local_residual"])["local_residual"]
+    for k in (160, 320):
+        graph = build_graph(p, shape_p, k, shape_weight=0.0, reciprocal=False)
+        p_walk = F.normalize(graph.diffuse(p, restart=0.10, steps=4), dim=-1)
+        transition = graph.transition()
+        tag = f"k{k}"
+        q_first = add_gallery_feedback(q, p_walk, 64, 2.0)
+        yield f"first-feedback-{tag}", q_first, p_walk, None
+        for rounds in (2, 4):
+            feedback = iterative_feedback(q, p_walk, 64, rounds, 2.0)
+            yield f"anchored-feedback-{tag}-r{rounds}", feedback, p_walk, None
+        contour_walk = F.normalize(graph.diffuse(shape_p, restart=0.10, steps=4), dim=-1)
+        q_dual, p_dual = fused_features(q_first, p_walk, shape_q, contour_walk, 0.20)
+        yield f"two-view-seeds-{tag}", q_dual, p_dual, None
+        for seed_size, weight in ((48, 0.15), (128, 0.15), (128, 0.35)):
+            name = f"personalized-walk-{tag}-s{seed_size}-w{weight:g}"
+            yield name, q_dual, p_dual, (transition, seed_size, weight)
+
+
+def scale_settings(rgb_q, rgb_p, contour_views):
+    standard, photos = prepare_methods(rgb_q, rgb_p, contour_views, ["local_residual"])["local_residual"]
+    stronger, _ = prepare_methods(rgb_q, rgb_p, contour_views, ["local_residual"], 0.9)["local_residual"]
+    whole = build_graph(photos, photos, 640)
+    banks, standard_queries, stronger_queries = {}, {}, {}
+    for k in (160, 320, 640):
+        weights = whole.weights[:, :k].contiguous()
+        graph = GalleryGraph(whole.indices[:, :k].contiguous(), weights / weights.sum(dim=1, keepdim=True))
+        bank = F.normalize(graph.diffuse(photos, restart=0.10, steps=4), dim=-1)
+        banks[k] = bank
+        standard_queries[k] = iterative_feedback(standard, bank, 64, 2, 2.0)
+        stronger_queries[k] = iterative_feedback(stronger, bank, 64, 2, 2.0)
+        yield f"scale-k{k}", standard_queries[k], bank
+        yield f"scale-k{k}-strong", stronger_queries[k], bank
+    for k in (160, 320):
+        for weight in (0.35, 0.65):
+            pair = fused_features(standard_queries[k], banks[k], stronger_queries[640], banks[640], weight)
+            yield f"combine-k{k}-640-w{weight:g}", *pair
+    for feedback_size in (192, 384):
+        query = iterative_feedback(standard, banks[320], feedback_size, 2, 2.0)
+        yield f"scale-k320-feedback{feedback_size}", query, banks[320]
+
+
 def dot_rows(queries, gallery, batch_size):
     # Candidate scores use FP32 dot products between L2-normalized embeddings.
     # The TorchMetrics transformation, ranking and aggregation are unchanged.
@@ -78,10 +127,19 @@ def run(args):
         ids_q, labels_q = queries[split]
         ids_p, labels_p = photos[split]
         current = (all_q[ids_q].to(device), all_p[ids_p].to(device), proxies[ids_p].to(device))
-        for method, q, p in settings(*current):
+        if args.study == "diffusion":
+            variants = diffusion_settings(*current)
+        else:
+            feature_settings = settings if args.study == "ablation" else scale_settings
+            variants = ((name, q, p, None) for name, q, p in feature_settings(*current))
+        for method, q, p, walk in variants:
+            filename = args.output / f"{split}-{method}.json"
+            if filename.is_file():
+                continue
             start = time.perf_counter()
             scores = (
-                cosine_rows(q, p, batch_size=8)
+                nonlinear_walk_rows(q, p, *walk, batch_size=min(args.score_batch, 96))
+                if walk is not None else cosine_rows(q, p, batch_size=8)
                 if method in {"rgb-cosine", "local-residual", "query-expansion"}
                 else dot_rows(q, p, args.score_batch)
             )
@@ -89,12 +147,11 @@ def run(args):
                 scores, labels_q, labels_p, split, f"{split} {method}", workers=args.metric_workers,
             )
             result = {
-                "method": method, "split": split, "backbone": getattr(args, "backbone_name", "OpenAI CLIP ViT-B/32"),
+                "method": method, "split": split, "backbone": "OpenAI CLIP ViT-B/32",
                 "queries": len(q), "gallery": len(p), "map_k": map_k, "p_k": p_k,
                 "mAP": float(ap), "precision": float(precision), "exploratory_unseen": True,
                 "evaluation_seconds": round(time.perf_counter() - start, 2),
             }
-            filename = args.output / f"{split}-{method}.json"
             filename.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
             print(json.dumps(result), flush=True)
 

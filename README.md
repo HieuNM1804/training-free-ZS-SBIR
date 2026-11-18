@@ -102,9 +102,12 @@ benchmark class lists are used for loading and scoring.
 ```powershell
 Invoke-WebRequest -Uri 'https://storage.googleapis.com/openimages/v7/oidv7-class-descriptions.csv' -OutFile open-images-v7-classes.csv
 python -m tf_sbir.manifold_benchmark --root <Sketchy> --output runs/paper-manifold-b32 --exploratory-unseen
+python -m tf_sbir.manifold_benchmark --root <Sketchy> --output runs/paper-diffusion-b32 --study diffusion --exploratory-unseen
+python -m tf_sbir.manifold_benchmark --root <Sketchy> --output runs/paper-gallery-scales-b32 --study scales --score-batch 384 --metric-workers 6 --exploratory-unseen
 python -m tf_sbir.semantic_benchmark --root <Sketchy> --vocabulary open-images-v7-classes.csv --output runs/paper-semantic-b32 --exploratory-unseen
 python -m tf_sbir.semantic_benchmark --root <Sketchy> --vocabulary open-images-v7-classes.csv --output runs/paper-semantic-walk-b32 --study manifold --exploratory-unseen
 python -m tf_sbir.semantic_benchmark --root <Sketchy> --vocabulary open-images-v7-classes.csv --output runs/paper-agreement-b32 --study agreement --exploratory-unseen
+python -m tf_sbir.semantic_benchmark --root <Sketchy> --vocabulary open-images-v7-classes.csv --output runs/paper-consensus-b32 --study consensus --exploratory-unseen
 ```
 
 All research experiments use the same frozen OpenAI CLIP ViT-B/32 checkpoint. The core and semantic manifold
@@ -112,3 +115,8 @@ experiments use the original RGB gallery and sketches. The agreement experiment
 adds a visual path initialized from paired contour calibration. All encoders
 remain frozen, and all rows use the existing TorchMetrics evaluator.
 Use a separate output directory for each study.
+
+The fixed fusion rows `fuse-k160-rgb-w0.6` and `fuse-k320-rgb-w0.6` use the same
+settings on both splits. Both scored above 70% on all four metrics in the
+public-vocabulary study. These are exploratory results selected on the official
+unseen splits.

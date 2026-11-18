@@ -17,6 +17,8 @@ class VisualMemory:
     support: torch.Tensor
     gallery_words: torch.Tensor
     gallery_prototypes: torch.Tensor
+    term_ids: torch.Tensor
+    term_weights: torch.Tensor
 
 
 def read_words(csv_path):
@@ -54,7 +56,10 @@ def gallery_memory(photos, words):
     for ids, weights in assignments:
         photo_words.append(code_vectors(words, ids, weights))
         photo_proto.append(code_vectors(visual_words, ids, weights))
-    return VisualMemory(visual_words, weight_sum, torch.cat(photo_words), torch.cat(photo_proto))
+    return VisualMemory(
+        visual_words, weight_sum, torch.cat(photo_words), torch.cat(photo_proto),
+        torch.cat([ids for ids, _ in assignments]), torch.cat([weights for _, weights in assignments]),
+    )
 
 
 def guided_term_scores(sketch, photos, sketch_words, photo_words, memory, blend):
@@ -176,3 +181,46 @@ def agreement_rows(visual, lexical, batch_size):
         ).clamp_min(0.005)
         weight = (0.10 + 0.65 * agreement + 0.10 * relative_strength.clamp(0, 2)).clamp(0.1, 0.75)
         yield from torch.lerp(score_visual, score_lexical, weight).cpu()
+
+
+def neighborhood_term_posteriors(image_scores, memory, neighbors=48):
+    image_ids, image_weights = top_codes(image_scores, neighbors, temperature=0.05)
+    terms = memory.term_ids[image_ids].flatten(1)
+    votes = (memory.term_weights[image_ids] * image_weights.unsqueeze(-1)).flatten(1)
+    posterior = votes.new_zeros((len(votes), len(memory.support)))
+    return posterior.scatter_add_(1, terms, votes)
+
+
+def refine_public_words(query, graphic_query, graphic_bank, photos, sketch_words, photo_words, memory, boost):
+    primary = query @ sketch_words.T
+    preliminary_ids, preliminary_weights = top_codes(primary, 12)
+    lexical_query = code_vectors(photo_words, preliminary_ids, preliminary_weights)
+    vis_evidence = neighborhood_term_posteriors(graphic_query @ graphic_bank.T, memory)
+    lex_evidence = neighborhood_term_posteriors(lexical_query @ photos.T, memory)
+    prior = memory.support / len(photos)
+    cross_support = (vis_evidence * lex_evidence).sqrt()
+    combined = 0.5 * vis_evidence + 0.2 * lex_evidence + 0.3 * cross_support
+    calibrated = (12.0 * combined / (prior + 0.0001).sqrt()).log1p()
+    indices, weights = top_codes(primary + boost * calibrated, 12)
+    return code_vectors(photo_words, indices, weights)
+
+
+def lexical_consensus_settings(queries, photos, contours, sketch_words, photo_words):
+    memory = gallery_memory(photos, photo_words)
+    visual, p = prepare_methods(queries, photos, contours, ["local_residual"])["local_residual"]
+    for k in (160, 320):
+        graph = build_graph(p, p, k)
+        p_walk = F.normalize(graph.diffuse(p, 0.1, 4), dim=-1)
+        visual = F.normalize(visual, dim=-1)
+        feedback = add_gallery_feedback(visual, p_walk, 64, 2.0)
+        rgb_walk = F.normalize(graph.diffuse(photos, 0.1, 4), dim=-1)
+        words_walk = F.normalize(graph.diffuse(memory.gallery_words, 0.1, 4), dim=-1)
+        for boost in (0.02, 0.04, 0.07):
+            codes = torch.cat([
+                refine_public_words(q, v, p_walk, photos, sketch_words, photo_words, memory, boost)
+                for q, v in zip(queries.split(256), feedback.split(256), strict=True)
+            ])
+            text_q, text_p = fused_features(codes, rgb_walk, codes, words_walk, 0.35)
+            for weight in (0.4, 0.65):
+                name = f"verified-words-k{k}-b{boost:g}-w{weight:g}"
+                yield name, *fused_features(feedback, p_walk, text_q, text_p, weight)

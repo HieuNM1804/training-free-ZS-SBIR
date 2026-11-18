@@ -2,6 +2,13 @@
 
 Khảo sát tập trung vào việc chuyển cơ chế từ các bài toán khác sang truy hồi một sketch trong gallery ảnh không nhãn. Điều kiện của các thí nghiệm là encoder đóng băng, không backpropagation, không học prompt, không dùng DINO và chỉ dùng tên lớp của benchmark trong loader và evaluator. Thống kê, láng giềng và đồ thị được xây từ ảnh gallery. Nhánh ngôn ngữ lấy danh mục Open Images V7 đầy đủ từ nguồn công khai, cố định trước khi truy hồi.
 
+## Các paper ZS-SBIR được cung cấp
+
+- **CLIP for All Things ZS-SBIR** dùng prompt dành cho sketch để thu hẹp khoảng cách hai miền. Phần fine-grained bổ sung ràng buộc giữa các lớp và xáo patch để khai thác tương ứng cấu trúc. Hai hiện tượng cần tách khi đánh giá là lệch miền của embedding toàn ảnh và sai khớp ở cấp bộ phận. [CVPR 2023](https://openaccess.thecvf.com/content/CVPR2023/html/Sain_CLIP_for_All_Things_Zero-Shot_Sketch-Based_Image_Retrieval_Fine-Grained_or_CVPR_2023_paper.html)
+- **SpLIP** cho prompt học được trao đổi hai chiều giữa encoder thị giác và text ngay khi CLIP đóng băng. Phiên bản training-free có thể khai thác trao đổi thị giác–ngôn ngữ qua truy vấn và đặc trưng gallery ở tầng xếp hạng. [ECCV 2024](https://www.ecva.net/papers/eccv_2024/papers_ECCV/html/3426_ECCV_2024_paper.php)
+- **SeCo-SBIR** chuyển ngữ nghĩa từ text encoder vào visual encoder qua các hàm ghép prompt học được và dùng nhất quán qua nhiễu để giữ khả năng tổng quát hóa. Câu hỏi có thể chuyển sang inference là bằng chứng thị giác nào đủ nhất quán để giữ một giả thuyết ngôn ngữ trong quá trình xếp hạng. [SeCo-SBIR](https://arxiv.org/abs/2608.03120)
+- **KD-SBIR** chưng cất thứ hạng ảnh và liên hệ ảnh–ngôn ngữ từ teacher vào CLIP ViT-B/32. Bản thảo cung cấp mốc hiệu năng cho mô hình đã huấn luyện. Repo đi kèm cung cấp quy ước loader và evaluator cho các thí nghiệm ở đây.
+
 ## Truy hồi xuyên miền và căn chỉnh hình học
 
 | Công trình | Cơ chế và ý nghĩa cho SBIR |
@@ -68,3 +75,12 @@ hình học hiệu chỉnh sketch theo cặp ảnh–contour và dùng top 64 đ
 Nhánh ngôn ngữ giữ điểm độc lập. Các ablation dùng chính hai nhánh đó với
 trọng số cố định hoặc trọng số phụ thuộc độ trùng top 64. Từ vựng công khai
 gồm 20.931 mục sau chuẩn hóa và loại trùng theo chuỗi.
+
+
+Hai kiểm chứng bổ sung phân biệt vị trí áp dụng phản hồi. Với nhánh chỉ dùng ảnh, phản hồi có thể thay đổi vector truy vấn nhiều vòng nhưng mỗi vòng vẫn giữ vector gốc. Đối với Personalized PageRank, softmax trên các ứng viên đầu là phân bố hạt giống của một truy vấn. Khối lượng được truyền trên các cạnh gallery trong ba bước với restart 0,2. Việc này thay đổi trực tiếp điểm ứng viên sau khi nhìn thấy query. Đối chứng diffusion tuyến tính chỉ làm trơn vector gallery trước khi có query.
+
+Thử nghiệm nhiều thang lân cận phân biệt tín hiệu về nhóm ảnh gần và khả năng nối các cụm cùng lớp trên đồ thị rộng hơn. Ba thang có 160, 320 và 640 láng giềng, lấy từ cùng danh sách kNN RGB và chuẩn hóa lại trọng số riêng. Nhánh phối hợp lấy tổng có trọng số của điểm ở hai thang sau hai vòng phản hồi có mốc.
+
+Trong nhánh từ điển được báo cáo riêng, hai tập hạt giống ảnh đến từ đường hình học và đường từ vựng sơ bộ. Posterior từ được tính bằng cách cộng các mã từ của thành viên trong từng tập, với trọng số theo điểm truy hồi. Trộn posterior hai đường với trung bình nhân của chúng để giữ bằng chứng được hai đường hỗ trợ. Chia theo căn bậc hai tần suất từ trên gallery để giảm ảnh hưởng từ quá phổ biến, rồi cộng vào logits ban đầu trước khi lấy khái niệm cuối. Phần này kiểm tra liệu sự đồng thuận ở cấp **từ** có tốt hơn hợp nhất điểm ở cuối pipeline hay không.
+
+Các thử nghiệm tách hai protocol. Nhánh chỉ dùng ảnh chỉ nhận sketch và gallery ảnh. Nhánh từ điển thêm đúng danh sách từ công khai Open Images V7, dùng cùng backbone, split và evaluator. Mọi bước chấm một sketch độc lập với các sketch khác.

@@ -3,8 +3,8 @@ import unittest
 import torch
 from torch.nn import functional as F
 
-from tf_sbir.manifold import build_graph, fused_features
-from tf_sbir.semantic import gallery_memory, guided_term_scores, top_codes
+from tf_sbir.manifold import build_graph, fused_features, propagate_scores
+from tf_sbir.semantic import gallery_memory, guided_term_scores, neighborhood_term_posteriors, top_codes
 
 
 class GalleryManifoldTests(unittest.TestCase):
@@ -15,6 +15,15 @@ class GalleryManifoldTests(unittest.TestCase):
         torch.testing.assert_close(graph.weights.sum(dim=1), torch.ones(len(examples)))
         constants = torch.ones((len(examples), 3))
         torch.testing.assert_close(graph.diffuse(constants, restart=.1, steps=4), constants)
+
+    def test_personalized_walk_preserves_probability_and_query_independence(self):
+        gallery = F.normalize(torch.randn(9, 4, generator=torch.Generator().manual_seed(8)))
+        graph = build_graph(gallery, gallery, k=3)
+        scores = gallery[:2] @ gallery.T
+        mass = propagate_scores(scores, graph.transition(), seed_count=3)
+        torch.testing.assert_close(mass.sum(dim=1), torch.ones(2))
+        one = propagate_scores(scores[1:2], graph.transition(), seed_count=3)
+        torch.testing.assert_close(mass[1:2], one)
 
     def test_concatenated_features_equal_weighted_cosine(self):
         generator = torch.Generator().manual_seed(5)
@@ -35,6 +44,8 @@ class PublicVocabularyTests(unittest.TestCase):
         torch.testing.assert_close(memory.gallery_words.norm(dim=-1), torch.ones(len(p)))
         torch.testing.assert_close(memory.centroids.norm(dim=-1), torch.ones(len(terms)))
         torch.testing.assert_close(memory.support.sum(), torch.tensor(float(len(p))))
+        mass = neighborhood_term_posteriors(p[:3] @ p.T, memory, neighbors=12)
+        torch.testing.assert_close(mass.sum(dim=1), torch.ones(3))
         _, weights = top_codes(p @ terms.T, words_per_sample=12)
         torch.testing.assert_close(weights.sum(dim=1), torch.ones(len(p)))
 

@@ -15,7 +15,7 @@ from .manifold import fused_features
 from .manifold_benchmark import dot_rows
 from .metrics import evaluate_rows
 from .semantic import (
-    agreement_rows, agreement_settings, read_words, semantic_manifold_settings, semantic_settings,
+    agreement_rows, agreement_settings, lexical_consensus_settings, read_words, semantic_manifold_settings, semantic_settings,
 )
 
 
@@ -25,7 +25,7 @@ def arguments():
     parser.add_argument("--cache", type=Path, default=Path(".cache"))
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--vocabulary", type=Path, required=True)
-    parser.add_argument("--study", choices=("core", "manifold", "agreement"), default="core")
+    parser.add_argument("--study", choices=("core", "manifold", "agreement", "consensus"), default="core")
     parser.add_argument("--clip-checkpoint")
     parser.add_argument("--batch-size", type=int, default=64)
     parser.add_argument("--workers", type=int, default=2)
@@ -44,7 +44,7 @@ def run(args):
     splits = tuple(UNSEEN_CLASSES)
     query_paths, queries = merge_inputs(args.root, splits, "sketch")
     photo_paths, photos = merge_inputs(args.root, splits, "photo")
-    all_q, all_p, contours = load_global_inputs(args, query_paths, photo_paths, args.study == "agreement")
+    all_q, all_p, contours = load_global_inputs(args, query_paths, photo_paths, args.study in ("agreement", "consensus"))
     words = read_words(args.vocabulary)
     sketch_text, photo_text = [view.to(device) for view in load_words(args, words)]
     args.output.mkdir(parents=True, exist_ok=True)
@@ -61,8 +61,10 @@ def run(args):
             variants = ((name, *pair) for name, pair in settings.items())
         elif args.study == "manifold":
             variants = semantic_manifold_settings(q, p, sketch_text, photo_text)
-        else:
+        elif args.study == "agreement":
             variants = agreement_settings(q, p, contours[p_ids].to(device), sketch_text, photo_text)
+        else:
+            variants = lexical_consensus_settings(q, p, contours[p_ids].to(device), sketch_text, photo_text)
         for name, target_q, target_p in variants:
             filename = args.output / f"{split}-{name}.json"
             if filename.is_file():
