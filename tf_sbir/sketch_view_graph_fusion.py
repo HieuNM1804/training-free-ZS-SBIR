@@ -90,7 +90,7 @@ def sweep_view_prefixes(visual, lexical, visual_standard, lexical_standard, bank
         yield name, partial(density_rows, tail, prefix, score_batch, None)
 
 
-def sketch_view_graph_fusion_settings(queries, photos, contours, sketch_words, photo_words, maps, ink, score_batch, *, sweep=False):
+def sketch_view_graph_inputs(queries, photos, contours, sketch_words, photo_words, maps, ink):
     ink = F.normalize(ink.float(), dim=-1)
     transform = maps[(150, 50)]
     views = tuple(F.normalize(vectors @ transform, dim=-1) for vectors in (ink, queries))
@@ -110,10 +110,15 @@ def sketch_view_graph_fusion_settings(queries, photos, contours, sketch_words, p
     smooth = gallery_walk(move, isolated, gallery, 0.8, 4)
     iso_bank, *smooth_edges = jaccard_graph(smooth, 192)
     edges = (smooth_edges, text_edges, rgb_edges)
-    graph = pack_affinity(len(gallery), edges)
-    transition, dangling = column_stochastic(len(gallery), edges)
     banks = iso_bank, lexical_bank
     visual = tuple(iterative_feedback(query, smooth, 16, 2, 2.) @ smooth.T for query in (paired, full))
+    return visual, lexical, banks, edges
+
+
+def sketch_view_graph_fusion_settings(queries, photos, contours, sketch_words, photo_words, maps, ink, score_batch, *, sweep=False):
+    visual, lexical, banks, edges = sketch_view_graph_inputs(queries, photos, contours, sketch_words, photo_words, maps, ink)
+    graph = pack_affinity(len(photos), edges)
+    transition, dangling = column_stochastic(len(photos), edges)
 
     def rows(appearance, words, visual_weight=0., lexical_weight=0., separate=False, adaptive=False):
         prior = standardize(appearance) + standardize(words)

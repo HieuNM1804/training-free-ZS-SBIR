@@ -13,6 +13,7 @@ from tf_sbir.asif import sparse_relative_features
 from tf_sbir.bimodal_graph import bimodal_transition
 from tf_sbir.cluster_mine import majority_concepts
 from tf_sbir.cluster_prior import cache_votes, cluster_first_rows, cluster_mass, first_neighbor_groups
+from tf_sbir.conditional_view_affinity import consistency_fraction, shared_view_votes
 from tf_sbir.contextual_rank import column_stochastic, jaccard_seed, personalized_walk
 from tf_sbir.contour_graph_index import gallery_walk, row_transition
 from tf_sbir.contour_query_expansion import gallery_word_codes, verified_feedback
@@ -42,6 +43,21 @@ from tf_sbir.view_hypotheses import expected_utility
 
 
 class GalleryManifoldTests(unittest.TestCase):
+    def test_view_consistency_weights_are_query_local_and_use_prior_without_votes(self):
+        early = torch.tensor([[2.], [4.], [0.]])
+        late = torch.tensor([[2.], [2.], [0.]])
+        expected = torch.tensor([[.75], [3 / 7], [.75]])
+        torch.testing.assert_close(consistency_fraction(early, late, power=2, prior=.75), expected)
+        torch.testing.assert_close(consistency_fraction(early[1:], late[1:], power=2, prior=.75), expected[1:])
+
+    def test_shared_view_edges_support_candidates_retrieved_by_only_one_view(self):
+        bank = torch.tensor([[1, 2], [0, 2], [0, 3], [0, 1]])
+        crop = torch.tensor([[4., 3., 2., 1.]])
+        full = torch.tensor([[1., 2., 4., 3.]])
+        expected = torch.tensor([[1 / 3, 1 / 3, 1 / 3, 2 / 3]])
+        torch.testing.assert_close(shared_view_votes(crop, full, bank, .5), expected)
+        torch.testing.assert_close(shared_view_votes(crop, crop, bank, .5), jaccard_seed(crop, bank))
+
     def test_mixed_candidate_scope_with_early_votes_matches_combined_ranking(self):
         count = 1300
         indexes = torch.arange(count)
