@@ -55,14 +55,14 @@ def grow_density(affinity, ties, candidates, valid, graph, steps):
     return selected
 
 
-def density_prefixes(iso, context, streams, initial, iso_bank, lexical_bank, graph, depth, score_batch):
+def density_prefixes(iso, context, streams, initial, banks, graph, depth, score_batch, steps=256, anchor=1.):
     prefixes = []
     batch_size = min(score_batch, 128)
     batches = (scores.split(batch_size) for scores in (iso, context, initial, *streams))
     for visual, semantic, tied, *cues in zip(*batches, strict=True):
         candidates, valid = candidate_union(cues, depth)
-        votes = (jaccard_seed(visual, iso_bank) + jaccard_seed(semantic, lexical_bank)) * 0.5
-        prefixes.append(grow_density(votes, tied, candidates, valid, graph, min(256, depth)))
+        votes = (jaccard_seed(visual, banks[0]) + jaccard_seed(semantic, banks[1])) * (0.5 * anchor)
+        prefixes.append(grow_density(votes, tied, candidates, valid, graph, min(steps, depth)))
     return torch.cat(prefixes)
 
 
@@ -81,6 +81,14 @@ def density_rows(initial, selected, score_batch, weight):
             promoted = evidence.scatter_add(1, prefix, (weight * discount).expand_as(prefix))
             scores = (0.15 * promoted).tanh()
         yield from scores.cpu()
+
+
+def gallery_density_graph(photos, iso_gallery, words):
+    iso_bank, *iso_edges = jaccard_graph(iso_gallery, 192)
+    lexical_bank, *lexical_edges = jaccard_graph(words, 192)
+    _, *rgb_edges = jaccard_graph(photos, 192)
+    graph = pack_affinity(len(photos), (iso_edges, lexical_edges, rgb_edges))
+    return (iso_bank, lexical_bank), graph
 
 
 def density_settings(queries, photos, contours, sketch_words, photo_words, maps, rendered, isolated, score_batch):
@@ -102,12 +110,24 @@ def density_settings(queries, photos, contours, sketch_words, photo_words, maps,
     sq, sp = local_feedback(queries, photos, torch.cat((contours, rendered), dim=1))
     shape = sq @ sp.T
 
-    iso_bank, *iso_edges = jaccard_graph(iso_gallery, 192)
-    lexical_bank, *lexical_edges = jaccard_graph(words, 192)
-    _, *rgb_edges = jaccard_graph(photos, 192)
-    graph = pack_affinity(len(photos), (iso_edges, lexical_edges, rgb_edges))
+    banks, graph = gallery_density_graph(photos, iso_gallery, words)
     for group, streams in (("pair", (iso, context)), ("four", (iso, context, diffused, shape))):
-        selected = density_prefixes(iso, context, streams, initial, iso_bank, lexical_bank, graph, 1280, score_batch)
+        selected = density_prefixes(iso, context, streams, initial, banks, graph, 1280, score_batch)
         for weight in (0.8, 1.6, None):
             tag = "hard" if weight is None else f"w{weight:g}"
             yield f"union-density-{group}-{tag}", partial(density_rows, initial, selected, score_batch, weight)
+
+
+def density_prefix_settings(queries, photos, contours, sketch_words, photo_words, maps, score_batch):
+    query, iso_gallery = projected_feedback(queries, photos, contours, maps[(150, 50)])
+    iso = query @ iso_gallery.T
+    base, region, _, _, views = full_gallery_inputs(queries, photos, contours, sketch_words, photo_words, score_batch)
+    words = views[:, 2].float()
+    context = contextual_scores(photos, words, base, region, score_batch)
+    initial = standardize(iso) + standardize(context)
+    del base, region, views
+    banks, graph = gallery_density_graph(photos, iso_gallery, words)
+    for anchor, lengths in ((1., (64, 100, 128, 192, 256, 320, 384)), (4., (128, 256)), (16., (128, 256))):
+        prefix = density_prefixes(iso, context, (iso, context), initial, banks, graph, 1280, score_batch, max(lengths), anchor)
+        for length in lengths:
+            yield f"union-prefix-a{anchor:g}-k{length}", partial(density_rows, initial, prefix[:, :length], score_batch, None)
