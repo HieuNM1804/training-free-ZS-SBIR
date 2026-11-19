@@ -10,6 +10,7 @@ from tf_sbir.asif import sparse_relative_features
 from tf_sbir.cluster_mine import majority_concepts
 from tf_sbir.data import normal_transform
 from tf_sbir.dense_views import tokencut_mask
+from tf_sbir.gallery_diffusion import mutual_transition, regional_cosines, solve_diffusion
 from tf_sbir.manifold import build_graph, fused_features, propagate_scores
 from tf_sbir.manifold_benchmark import covariance_roots
 from tf_sbir.mta import normalized_crops, pixel_lookup, robust_modes
@@ -19,6 +20,18 @@ from tf_sbir.semantic_transport import conditional_similarity, dustbin_plan, par
 
 
 class GalleryManifoldTests(unittest.TestCase):
+    def test_mutual_diffusion_matches_dense_solution_and_query_independence(self):
+        features = F.normalize(torch.tensor([[1., 0.], [1., .2], [1., .4], [0., 1.]]))
+        transition = mutual_transition(features, 2)
+        dense = transition.to_dense()
+        torch.testing.assert_close(dense, dense.T)
+        self.assertEqual(float(dense.diag().abs().sum()), 0.)
+        seeds = torch.eye(4)[:2]
+        targets = torch.linalg.solve(torch.eye(4) - .7 * dense, .3 * seeds.T).T
+        result = solve_diffusion(transition, seeds, .7, iterations=60)
+        torch.testing.assert_close(result, targets)
+        torch.testing.assert_close(result[:1], solve_diffusion(transition, seeds[:1], .7, iterations=60))
+
     def test_transition_has_no_self_edges_and_preserves_constants(self):
         examples = F.normalize(torch.tensor([[1., 0.], [1., .5], [.1, 1.], [-1., .1]]), dim=-1)
         graph = build_graph(examples, examples, k=2, shape_weight=.2, reciprocal=True)
@@ -123,6 +136,13 @@ class InferenceCalibrationTests(unittest.TestCase):
         result = conditional_similarity(similarities)
         torch.testing.assert_close(result, conditional_similarity(similarities.mT))
         torch.testing.assert_close(conditional_similarity(similarities[:, :1, :1]), torch.tensor([.1]))
+
+    def test_full_gallery_transport_matches_explicit_pairs(self):
+        rng = torch.Generator().manual_seed(4)
+        concepts = F.normalize(torch.randn(7, 5, 25, generator=rng), dim=-1)
+        gallery = F.normalize(torch.randn(9, 3, 25, generator=rng), dim=-1)
+        affinities = torch.matmul(concepts[:, None], gallery.mT)
+        torch.testing.assert_close(regional_cosines(concepts, gallery, 2), conditional_similarity(affinities))
 
     def test_partial_assignment_balances_marginals_and_rejects_noisy_views(self):
         similar = torch.tensor([[.65, .12, .04], [.1, .68, .03]])

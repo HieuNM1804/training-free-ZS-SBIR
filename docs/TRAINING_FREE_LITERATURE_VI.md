@@ -115,3 +115,7 @@ CORAL căn chỉnh miền bằng cách làm trắng đặc trưng nguồn và đ
 ### Chọn vùng ảnh bằng TokenCut
 
 TokenCut dùng normalized cut để tách foreground từ đồ thị tương đồng của các token. Bản thử SBIR dùng token 7 × 7 của ClearCLIP với cùng OpenAI CLIP ViT-B/32. Descriptor trung bình của thành phần foreground đi vào Conditional Transport cùng ba descriptor toàn ảnh đã có. Đối chứng giữ nguyên shortlist và bỏ descriptor vùng để đo riêng tác động của bước chọn foreground. [TokenCut, CVPR 2022](https://openaccess.thecvf.com/content/CVPR2022/html/Wang_Self-Supervised_Transformers_for_Unsupervised_Object_Discovery_Using_Normalized_Cut_CVPR_2022_paper.html) · [ClearCLIP, ECCV 2024](https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/06346.pdf)
+
+### Truy hồi toàn gallery và diffusion trên cạnh thuận nghịch
+
+Thí nghiệm `gallery-diffusion` tính Conditional Transport cho toàn gallery với ba descriptor mỗi ảnh. Hai danh sách xếp hạng được kết hợp bằng Reciprocal Rank Fusion hoặc tổng điểm chuẩn hóa. Một ablation riêng chuyển phương trình lặp diffusion của Iscen và cộng sự sang đồ thị ảnh gallery. Các cạnh nối láng giềng thuận nghịch với trọng số cosine dương lũy thừa ba. Seed của mỗi sketch đến từ thứ hạng ban đầu hoặc thứ hạng có thêm điểm transport. [Reciprocal Rank Fusion, SIGIR 2009](https://cormack.uwaterloo.ca/cormack/cormacksigir09-rrf.pdf) · [Efficient Diffusion, CVPR 2017](https://openaccess.thecvf.com/content_cvpr_2017/papers/Iscen_Efficient_Diffusion_on_CVPR_2017_paper.pdf)
