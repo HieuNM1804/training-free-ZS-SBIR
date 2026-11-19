@@ -11,6 +11,7 @@ from .adaptive_fusion import adaptive_fusion_settings
 from .benchmark import merge_inputs
 from .bimodal_graph import bimodal_settings
 from .cluster_mine import cluster_mine_settings
+from .contextual_rank import contextual_rank_settings
 from .coregistration import coregistration_settings
 from .data import SKETCHY_SPLITS, UNSEEN_CLASSES
 from .dense_views import dense_transport_settings, load_clearclip_gallery, tokencut_transport_settings
@@ -55,6 +56,7 @@ SCORE_STUDIES = {
     "bimodal-graph": bimodal_settings,
     "adaptive-fusion": adaptive_fusion_settings,
     "coreg-spectral": coregistration_settings,
+    "contextual-rank": contextual_rank_settings,
 }
 
 

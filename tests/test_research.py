@@ -10,6 +10,7 @@ from tf_sbir.adaptive_fusion import curve_reliability
 from tf_sbir.asif import sparse_relative_features
 from tf_sbir.bimodal_graph import bimodal_transition
 from tf_sbir.cluster_mine import majority_concepts
+from tf_sbir.contextual_rank import column_stochastic, jaccard_seed, personalized_walk
 from tf_sbir.coregistration import leading_basis
 from tf_sbir.data import normal_transform
 from tf_sbir.dense_views import tokencut_mask
@@ -23,6 +24,16 @@ from tf_sbir.semantic_transport import conditional_similarity, dustbin_plan, max
 
 
 class GalleryManifoldTests(unittest.TestCase):
+    def test_contextual_rank_uses_jaccard_and_preserves_probability(self):
+        scores = torch.tensor([[.6, .4, .2]])
+        neighbors = torch.tensor([[1, 2], [0, 2], [0, 1]])
+        torch.testing.assert_close(jaccard_seed(scores, neighbors), torch.tensor([[1/3, 1/3, 0.]]))
+        a, b, edge = torch.tensor([0, 1]), torch.tensor([1, 0]), torch.tensor([.4, .4])
+        transition, dangling = column_stochastic(3, ((a, b, edge),))
+        seeds = torch.eye(3)[[0, 2]]
+        stationary = personalized_walk(transition, dangling, seeds, .8, iterations=80)
+        torch.testing.assert_close(stationary, torch.tensor([[1/1.8, .8/1.8, 0.], [0., 0., 1.]]))
+
     def test_coregularized_subspace_matches_dense_eigensolver(self):
         transition = torch.tensor([[0., .3, .2], [.3, 0., .1], [.2, .1, 0.]])
         partner = F.normalize(torch.tensor([[.3], [.2], [.9]]), dim=0)
