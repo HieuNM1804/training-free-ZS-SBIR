@@ -60,7 +60,7 @@ def arguments():
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--cache", type=Path, default=Path(".cache"))
     parser.add_argument("--splits", nargs="+", choices=SKETCHY_SPLITS, default=SKETCHY_SPLITS)
-    parser.add_argument("--stage", choices=("references", "views", "channels", "reflection", "prepare", "projector"), default="references")
+    parser.add_argument("--stage", choices=("references", "views", "channels", "reflection", "prepare-reflection", "prepare", "projector"), default="references")
     parser.add_argument("--batch-size", type=int, default=48)
     parser.add_argument("--workers", type=int, default=4)
     parser.add_argument("--crop-batch-size", type=int, default=128)
@@ -175,6 +175,9 @@ def run(args):
         print(f"Verified spectral map {projection_path.name}", flush=True)
         return
     query_paths, queries = merge_inputs(args.root, args.splits, "sketch")
+    if args.stage == "prepare-reflection":
+        load_reflected_views(args, query_paths)
+        return
     photo_paths, photos = merge_inputs(args.root, args.splits, "photo")
     all_q, all_p, contours = load_global_inputs(args, query_paths, photo_paths, True)
     extras = load_view_features(args, AnchorSketchViews(query_paths), 4, "sketch", "ink-scales-mirror-v1")["features"]
