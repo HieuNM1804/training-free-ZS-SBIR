@@ -24,6 +24,7 @@ from .global_methods import centered
 from .isoclip import isoclip_maps
 from .mta import load_view_features
 from .multiview_anchor_transfer import predict_views, transfer_prefixes
+from .predictable_gallery import gallery_variants
 from .reranking import standardize
 from .semantic import read_words
 from .sketch_canvas_fusion import canvas_images
@@ -57,7 +58,7 @@ def arguments():
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--cache", type=Path, default=Path(".cache"))
     parser.add_argument("--splits", nargs="+", choices=SKETCHY_SPLITS, default=SKETCHY_SPLITS)
-    parser.add_argument("--stage", choices=("references", "views", "prepare", "projector"), default="references")
+    parser.add_argument("--stage", choices=("references", "views", "prepare", "projector", "gallery"), default="references")
     parser.add_argument("--batch-size", type=int, default=48)
     parser.add_argument("--workers", type=int, default=4)
     parser.add_argument("--crop-batch-size", type=int, default=128)
@@ -128,10 +129,23 @@ def score_split(args, split, raw, photos, contours, q_labels, p_labels, sketch_w
     support = nearest_anchors(views.flatten(0, 1), source, 64)
     errors = anchor_errors(source, target)
     print(f"Building the complete CUDA gallery index for {split}", flush=True)
-    index = gallery_index(photos, target, photo_words)
+    index, smoothing = gallery_index(photos, target, photo_words, return_smoothing=True)
     torch.cuda.synchronize(device)
     torch.cuda.empty_cache()
     print(f"Gallery indexed using {torch.cuda.memory_allocated(device)/2**20:.0f} MiB of CUDA tensors", flush=True)
+    if args.stage == "gallery":
+        mapped, risk = predict_views(views, source, target, errors, support, count=64, penalty=1., carry=1.)
+        base = {"neighbors": 64, "penalty": 1., "carry": 1., "views": 2, "fusion": "two"}
+        def measure(name, gallery, options):
+            adjusted = (gallery, *index[1:])
+            scores = ranked_rows(mapped, risk, concepts, adjusted, "two", args.score_batch)
+            write_result(args, split, name, scores, q_labels, p_labels, metadata, base | options)
+        measure("predictable-reference", index[0], {"strength": 0.})
+        diagnostics = {}
+        for name, gallery, options in gallery_variants(source, target, smoothing, diagnostics):
+            measure(name, gallery, options)
+        (args.output / f"{split}-reliability-summary.json").write_text(json.dumps(diagnostics, indent=2), encoding="utf-8")
+        return
     for count, penalty, carry, modes in settings(args.stage):
         mapped, risk = predict_views(views, source, target, errors, support, count=count, penalty=penalty, carry=carry)
         for mode in modes:
@@ -175,7 +189,7 @@ def run(args):
     git_id = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=root, text=True).strip()
     metadata = {"backbone": "OpenAI CLIP ViT-B/32", "checkpoint_sha256": digest, "gpu": torch.cuda.get_device_name(),
                 "torch": str(torch.__version__), "revision": git_id, "exploratory_unseen": True,
-                "external_vocabulary": len(terms), "study": "multiview-anchor-transfer"}
+                "external_vocabulary": len(terms), "study": "predictable-gallery" if args.stage == "gallery" else "multiview-anchor-transfer"}
     for split in args.splits:
         q_ids, q_labels = queries[split]
         p_ids, p_labels = photos[split]
