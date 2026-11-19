@@ -22,6 +22,7 @@ from .manifold import fused_features
 from .manifold_benchmark import dot_rows
 from .metrics import evaluate_rows
 from .mta import load_augmentations, mta_settings
+from .multiscale import load_multiscale_patches, multiscale_settings
 from .score_calibration import calibrated_settings, normalized_score_rows, querybank_settings
 from .semantic import (
     agreement_rows, agreement_settings, lexical_consensus_settings, paired_concept_settings, read_words,
@@ -57,6 +58,7 @@ SCORE_STUDIES = {
     "adaptive-fusion": adaptive_fusion_settings,
     "coreg-spectral": coregistration_settings,
     "contextual-rank": contextual_rank_settings,
+    "multiscale": multiscale_settings,
 }
 
 
@@ -102,7 +104,8 @@ def run(args):
     augmentations = load_augmentations(args, query_paths) if args.study == "mta" else None
     needs_crops = args.study in CROP_STUDIES or args.study in ("two-stage-transport", "adaptive-fusion")
     photo_views = load_augmentations(args, photo_paths, views=9, mode="photo") if needs_crops else None
-    dense_views = load_clearclip_gallery(args, photo_paths) if args.study in DENSE_STUDIES else None
+    dense_views = load_clearclip_gallery(args, photo_paths) if args.study in (*DENSE_STUDIES, "multiscale") else None
+    multiscale = load_multiscale_patches(args, query_paths, photo_paths) if args.study == "multiscale" else None
     args.output.mkdir(parents=True, exist_ok=True)
     for split in splits:
         q_ids, q_labels = queries[split]
@@ -129,9 +132,11 @@ def run(args):
         elif args.study in DENSE_STUDIES:
             variants = DENSE_STUDIES[args.study](q, p, contours[p_ids].to(device), sketch_text, photo_text, dense_views[p_ids])
         elif args.study in SCORE_STUDIES:
-            crops = (photo_views["features"][p_ids].to(device),) if needs_crops else ()
+            extra_inputs = (photo_views["features"][p_ids].to(device),) if needs_crops else ()
+            if multiscale is not None:
+                extra_inputs = (dense_views[p_ids], (multiscale[0][q_ids], multiscale[1][p_ids]))
             settings = SCORE_STUDIES[args.study](
-                q, p, contours[p_ids].to(device), sketch_text, photo_text, *crops, args.score_batch,
+                q, p, contours[p_ids].to(device), sketch_text, photo_text, *extra_inputs, args.score_batch,
             )
             variants = ((name, None, None, rows) for name, rows in settings)
         else:

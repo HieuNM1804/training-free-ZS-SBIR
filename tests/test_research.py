@@ -18,6 +18,7 @@ from tf_sbir.gallery_diffusion import mutual_transition, regional_cosines, solve
 from tf_sbir.manifold import build_graph, fused_features, propagate_scores
 from tf_sbir.manifold_benchmark import covariance_roots
 from tf_sbir.mta import normalized_crops, pixel_lookup, robust_modes
+from tf_sbir.multiscale import merge_tile_patches, split_tiles
 from tf_sbir.score_calibration import dynamic_activation, normalized_score_rows, sinkhorn_target_hubness
 from tf_sbir.semantic import gallery_memory, guided_term_scores, neighborhood_term_posteriors, top_codes
 from tf_sbir.semantic_transport import conditional_similarity, dustbin_plan, maximal_marginal_relevance, partial_similarity
@@ -127,6 +128,12 @@ class PublicVocabularyTests(unittest.TestCase):
 
 
 class InferenceCalibrationTests(unittest.TestCase):
+    def test_multiscale_tile_order_recovers_the_correct_spatial_grid(self):
+        pixels = torch.arange(72, dtype=torch.float32).view(2, 1, 6, 6)
+        tiles = split_tiles(pixels, 3).flatten(2).transpose(1, 2)
+        expected = F.avg_pool2d(pixels, 2).flatten(2).transpose(1, 2)
+        torch.testing.assert_close(merge_tile_patches(tiles), expected)
+
     def test_curve_weight_prefers_a_sharp_head_after_reference_subtraction(self):
         fractions = torch.linspace(0, 1, 5)
         tail = 1 - fractions
