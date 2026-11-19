@@ -22,7 +22,9 @@ from .semantic import (
     agreement_rows, agreement_settings, lexical_consensus_settings, paired_concept_settings, read_words,
     semantic_manifold_settings, semantic_settings,
 )
-from .semantic_transport import transport_rows, transport_settings, transport_view_settings
+from .semantic_transport import (
+    conditional_similarity, partial_transport_settings, transport_rows, transport_settings, transport_view_settings,
+)
 
 GALLERY_STUDIES = {
     "agreement": agreement_settings,
@@ -33,6 +35,10 @@ GALLERY_STUDIES = {
     "cluster-mine": cluster_mine_settings,
     "transport": transport_settings,
 }
+CROP_STUDIES = {
+    "transport-views": transport_view_settings,
+    "partial-transport": partial_transport_settings,
+}
 
 
 def arguments():
@@ -42,7 +48,7 @@ def arguments():
     parser.add_argument("--cache", type=Path, default=Path(".cache"))
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--vocabulary", type=Path, required=True)
-    parser.add_argument("--study", choices=("core", "manifold", "mta", "transport-views", "dense-transport", *GALLERY_STUDIES), default="core")
+    parser.add_argument("--study", choices=("core", "manifold", "mta", "dense-transport", *CROP_STUDIES, *GALLERY_STUDIES), default="core")
     parser.add_argument("--clip-checkpoint")
     parser.add_argument("--batch-size", type=int, default=64)
     parser.add_argument("--workers", type=int, default=2)
@@ -69,7 +75,7 @@ def run(args):
     words = read_words(args.vocabulary)
     sketch_text, photo_text = [view.to(device) for view in load_words(args, words)]
     augmentations = load_augmentations(args, query_paths) if args.study == "mta" else None
-    photo_views = load_augmentations(args, photo_paths, views=9, mode="photo") if args.study == "transport-views" else None
+    photo_views = load_augmentations(args, photo_paths, views=9, mode="photo") if args.study in CROP_STUDIES else None
     dense_views = load_clearclip_gallery(args, photo_paths) if args.study == "dense-transport" else None
     args.output.mkdir(parents=True, exist_ok=True)
     for split in splits:
@@ -90,28 +96,30 @@ def run(args):
                 q, augmentations["features"][q_ids].to(device), augmentations["logit_scale"],
                 p, contours[p_ids].to(device), sketch_text, photo_text,
             )
-        elif args.study == "transport-views":
-            variants = transport_view_settings(q, p, contours[p_ids].to(device), sketch_text, photo_text,
-                                               photo_views["features"][p_ids].to(device))
+        elif args.study in CROP_STUDIES:
+            variants = CROP_STUDIES[args.study](
+                q, p, contours[p_ids].to(device), sketch_text, photo_text, photo_views["features"][p_ids].to(device),
+            )
         elif args.study == "dense-transport":
             variants = dense_transport_settings(q, p, contours[p_ids].to(device), sketch_text, photo_text, dense_views[p_ids])
         else:
             variants = GALLERY_STUDIES[args.study](q, p, contours[p_ids].to(device), sketch_text, photo_text)
-        has_correction = args.study in ("hubness", "querybank", "transport", "transport-views", "dense-transport")
+        has_correction = args.study in ("hubness", "querybank", "transport", "dense-transport", *CROP_STUDIES)
         scored = variants if has_correction else ((name, q, p, None) for name, q, p in variants)
         for name, target_q, target_p, correction in scored:
             filename = args.output / f"{split}-{name}.json"
             if filename.is_file():
                 continue
             start = time.perf_counter()
-            if name.startswith("conditional-transport-"):
-                _, _, views, shortlist, _ = correction
+            if name.startswith(("conditional-transport-", "partial-transport-")):
+                _, _, views, shortlist, _, *scorers = correction
                 if args.transport_buffer_mib is None:
                     transport_batch = min(64, 384 // views.size(1), args.score_batch)
                 else:
                     bytes_per_query = shortlist * views.size(1) * views.size(2) * views.element_size()
                     transport_batch = min(max(1, (args.transport_buffer_mib * 2**20) // bytes_per_query), args.score_batch)
-                rows = transport_rows(target_q, target_p, *correction, batch_size=transport_batch)
+                score = scorers[0] if scorers else conditional_similarity
+                rows = transport_rows(target_q, target_p, *correction[:5], batch_size=transport_batch, score=score)
             elif correction is not None:
                 offset, activation = correction
                 rows = normalized_score_rows(target_q, target_p, offset, args.score_batch, activation)

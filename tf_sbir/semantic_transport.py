@@ -1,4 +1,6 @@
-"""Transfer STiTch's bidirectional conditional transport to sketch retrieval."""
+"""Transfer STiTch and SuperGlue matching objectives to sketch retrieval."""
+
+from functools import partial
 
 import torch
 from torch.nn import functional as F
@@ -18,14 +20,36 @@ def conditional_similarity(similarity, temperature=0.07):
     return (forward + backward) * 0.5
 
 
-def transport_rows(queries, gallery, offset, concepts, target_views, count, weight, batch_size):
+def dustbin_plan(similarity, dustbin, temperature=0.07, iterations=16):
+    """Scale the entropy-regularized assignment with SuperGlue's Eq. 8–9 marginals."""
+    m, n = similarity.shape[-2:]
+    # Subtract the common dustbin logit so all padded entries have unit affinity.
+    kernel = F.pad((similarity - dustbin) / temperature, (0, 1, 0, 1)).exp()
+    rows = similarity.new_ones(m + 1)
+    columns = similarity.new_ones(n + 1)
+    rows[-1] = n
+    columns[-1] = m
+    plan = kernel
+    for _ in range(iterations):
+        plan = plan * (rows[:, None] / plan.sum(dim=-1, keepdim=True))
+        plan = plan * (columns / plan.sum(dim=-2, keepdim=True))
+    return plan
+
+
+def partial_similarity(similarity, dustbin):
+    plan = dustbin_plan(similarity, dustbin)
+    matched = plan[..., :-1, :-1]
+    return (matched * (similarity - dustbin)).sum(dim=(-2, -1)) / min(similarity.shape[-2:])
+
+
+def transport_rows(queries, gallery, offset, concepts, target_views, count, weight, batch_size, score=conditional_similarity):
     scale = 1 + offset.abs().max()
     for batch, words in zip(queries.split(batch_size), concepts.split(batch_size), strict=True):
         rows = (batch @ gallery.T - offset) / scale
         baseline, candidates = rows.topk(count, dim=1)
         available = target_views[candidates]
         pairwise = torch.matmul(words[:, None], available.transpose(-1, -2)).float()
-        similarity = conditional_similarity(pairwise)
+        similarity = score(pairwise)
         combined = standardize(baseline) + weight * standardize(similarity)
         order = combined.argsort(dim=1, descending=True, stable=True)
         rows.scatter_(1, candidates.gather(1, order), baseline)
@@ -74,3 +98,16 @@ def transport_view_settings(queries, photos, contours, sketch_words, photo_words
         target_views = torch.cat((base, photos_views), dim=1)
         for weight in (0.35, 0.70):
             yield f"conditional-transport-{name}-k640-w{weight:g}", query, gallery, (offset, concepts, target_views, 640, weight)
+
+
+def partial_transport_settings(queries, photos, contours, sketch_words, photo_words, photo_augmentations):
+    settings = transport_view_settings(queries, photos, contours, sketch_words, photo_words, photo_augmentations)
+    for name, query, gallery, correction in settings:
+        if name == "transport-control":
+            yield name, query, gallery, correction
+        if name == "conditional-transport-crop-gallery-k640-w0.7":
+            yield name, query, gallery, correction
+            for dustbin, weight in ((0.20, 0.7), (0.35, 0.7), (0.35, 1.2)):
+                scorer = partial(partial_similarity, dustbin=dustbin)
+                label = f"partial-transport-crop-gallery-k640-z{dustbin:g}-w{weight:g}"
+                yield label, query, gallery, (*correction[:-1], weight, scorer)

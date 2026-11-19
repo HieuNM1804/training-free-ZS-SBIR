@@ -107,6 +107,10 @@ transport, `--score-batch` limits the number of simultaneous queries and
 by scoring and CLIP is additional to this buffer. The reference precision and
 mAP functions continue to run through `--metric-workers` CPU threads.
 
+Run `tf_sbir.semantic_benchmark --study partial-transport` to compare the
+STiTch conditional score with SuperGlue-style partial matching on the same
+shortlist and crop descriptors.
+
 
 ## Training-free research experiments
 

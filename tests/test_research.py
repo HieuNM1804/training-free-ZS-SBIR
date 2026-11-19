@@ -9,7 +9,7 @@ from tf_sbir.manifold import build_graph, fused_features, propagate_scores
 from tf_sbir.mta import robust_modes
 from tf_sbir.score_calibration import dynamic_activation, normalized_score_rows, sinkhorn_target_hubness
 from tf_sbir.semantic import gallery_memory, guided_term_scores, neighborhood_term_posteriors, top_codes
-from tf_sbir.semantic_transport import conditional_similarity
+from tf_sbir.semantic_transport import conditional_similarity, dustbin_plan, partial_similarity
 
 
 class GalleryManifoldTests(unittest.TestCase):
@@ -99,6 +99,14 @@ class InferenceCalibrationTests(unittest.TestCase):
         result = conditional_similarity(similarities)
         torch.testing.assert_close(result, conditional_similarity(similarities.mT))
         torch.testing.assert_close(conditional_similarity(similarities[:, :1, :1]), torch.tensor([.1]))
+
+    def test_partial_assignment_balances_marginals_and_rejects_noisy_views(self):
+        similar = torch.tensor([[.65, .12, .04], [.1, .68, .03]])
+        plan = dustbin_plan(similar, .35, iterations=80)
+        torch.testing.assert_close(plan.sum(dim=-1), torch.tensor([1., 1., 3.]))
+        torch.testing.assert_close(plan.sum(dim=-2), torch.tensor([1., 1., 1., 2.]))
+        self.assertGreater(plan[-1, 2], .9)
+        self.assertGreater(partial_similarity(similar, .35), partial_similarity(similar - .3, .35))
 
     def test_asif_retains_only_top_anchor_coordinates(self):
         anchors = torch.eye(3)
