@@ -7,14 +7,15 @@ from torch.nn import functional as F
 from tqdm.auto import tqdm
 
 from .dominant_sets import dominant_gallery, dominant_support
-from .foreground_fusion import foreground_fusion_settings
+from .foreground_fusion import foreground_evidence, foreground_fusion_settings, joint_foreground_rank
 from .gallery_diffusion import full_gallery_inputs, regional_cosines
+from .gaussian_verification import gaussian_verification_settings
 from .isoclip import contextual_scores, local_feedback, projected_feedback
 from .mta import sketch_view_modes
 from .reranking import standardize
 from .semantic import top_codes
 from .union_density import density_blocks, density_prefixes, density_rows, gallery_density_graph, select_density_rows
-from .view_hypotheses import view_hypotheses
+from .view_hypotheses import crop_prefixes, view_hypotheses
 
 
 def rank_biased_overlap(heads, references, gallery_size, persistence):
@@ -99,13 +100,14 @@ def language_likelihood(heads, query_codes, gallery_codes, vocabulary_size, scor
 
 def head_selection_settings(
     queries, photos, contours, sketch_words, photo_words, maps, sketch_views, logit_scale,
-    sketch_regions, photo_regions, score_batch, *, regional_views=None, foreground_view=None,
+    sketch_regions, photo_regions, score_batch, *, regional_views=None, foreground_view=None, verify_crops=False,
 ):
     dtype = torch.float16 if photos.is_cuda else torch.float32
     transform = maps[(150, 50)]
     _, mode = sketch_view_modes(queries, sketch_views, sketch_words, logit_scale)
     embedded, gallery = projected_feedback(torch.cat((queries, mode)), photos, contours, transform)
-    original, visual = (vectors @ gallery.T for vectors in embedded.split(len(queries)))
+    original_embedding, mode_embedding = embedded.split(len(queries))
+    original, visual = (vectors @ gallery.T for vectors in (original_embedding, mode_embedding))
     base, local, _, concepts, views = full_gallery_inputs(queries, photos, contours, sketch_words, photo_words, score_batch)
     words = views[:, 2].float()
     context = contextual_scores(photos, words, base, local, score_batch)
@@ -114,7 +116,8 @@ def head_selection_settings(
     lexical = standardize(context)
     mta_prior = standardize(visual) + lexical
     mta_prefix = density_prefixes(visual, context, (visual, context), mta_prior, banks, graph, 1280, score_batch, 256, 16.)
-    yield "head-mta", partial(density_rows, mta_prior, mta_prefix, score_batch, None)
+    if not verify_crops:
+        yield "head-mta", partial(density_rows, mta_prior, mta_prefix, score_batch, None)
 
     q_regions = sketch_regions[:, 0].to(device=queries.device, dtype=dtype).contiguous()
     p_regions = photo_regions[:, 0].to(device=queries.device, dtype=dtype).contiguous()
@@ -126,7 +129,8 @@ def head_selection_settings(
     support, representative = dominant_support(joint, sources, affinity, penalty, 2., score_batch, kernel)
     cds_prior = joint + 0.25 * standardize((representative.to(dtype) @ kernel.T).float())
     del affinity, support, kernel, joint, sources, original
-    yield "head-cds", partial(density_rows, cds_prior, cds_prefix, score_batch, 0.8)
+    if not verify_crops:
+        yield "head-cds", partial(density_rows, cds_prior, cds_prefix, score_batch, 0.8)
 
     if foreground_view is not None:
         del regional, cds_prior, cds_prefix, lexical
@@ -142,15 +146,39 @@ def head_selection_settings(
     visual_bank, text_bank = banks
     shape_prefix = density_prefixes(shape, shape, (shape, regional), shape_prior,
                                     (visual_bank, visual_bank), graph, 1280, score_batch, 256, 16.)
-    yield "head-contour", partial(density_rows, shape_prior, shape_prefix, score_batch, None)
+    if not verify_crops:
+        yield "head-contour", partial(density_rows, shape_prior, shape_prefix, score_batch, None)
     word_prior = lexical + 0.25 * standardize(regional)
     word_prefix = density_prefixes(context, context, (context, regional), word_prior,
                                    (text_bank, text_bank), graph, 1280, score_batch, 256, 16.)
-    yield "head-concept", partial(density_rows, word_prior, word_prefix, score_batch, None)
+    if not verify_crops:
+        yield "head-concept", partial(density_rows, word_prior, word_prefix, score_batch, None)
     del shape
 
     rankings = ((mta_prior, mta_prefix, None), (cds_prior, cds_prefix, 0.8),
                 (shape_prior, shape_prefix, None), (word_prior, word_prefix, None))
+    if verify_crops:
+        del regional, lexical
+        ink = regional_views[:, 0]
+        ink_visual, ink_words, pooled = foreground_evidence(
+            mode, ink, photos, contours, sketch_words, photo_words, transform, gallery, words,
+        )
+        joint = joint_foreground_rank(visual, context, ink_visual, ink_words, pooled @ gallery.T, banks, graph, score_batch)
+        del visual, context, ink_visual, ink_words
+        prior, prefix, weight = joint
+        yield "foreground-pooled-joint-hard", partial(density_rows, prior, prefix, score_batch, weight)
+
+        views = F.normalize(torch.cat((sketch_views, regional_views), dim=1).float(), dim=-1)
+        proposals = dict(crop_prefixes(views, sketch_views.size(1), photos, contours, sketch_words, photo_words,
+                                       transform, gallery, words, banks, graph, score_batch))
+        whole = proposals.pop("view-regional-ink-box")
+        focused = (joint, *rankings, (mta_prior, whole, None))
+        candidates = (*focused, *((mta_prior, ids, None) for ids in proposals.values()))
+        yield from gaussian_verification_settings(
+            candidates, len(focused), queries, ink, original_embedding, pooled, contours, gallery, words,
+            sketch_words, photo_words, banks, score_batch,
+        )
+        return
     if regional_views is not None:
         yield from view_hypotheses(rankings, queries, sketch_views, regional_views, photos, contours,
                                    sketch_words, photo_words, transform, gallery, words, banks, graph, score_batch)

@@ -20,6 +20,7 @@ from tf_sbir.data import normal_transform
 from tf_sbir.dense_views import tokencut_mask
 from tf_sbir.dominant_sets import constrained_membership
 from tf_sbir.gallery_diffusion import mutual_transition, regional_cosines, solve_diffusion
+from tf_sbir.gaussian_verification import diagonal_log_likelihood, evidence_rank_fusion, proposal_evidence
 from tf_sbir.head_selection import rank_biased_overlap
 from tf_sbir.isoclip import output_space_maps
 from tf_sbir.isolated_regions import isolated_views, token_boxes
@@ -38,6 +39,27 @@ from tf_sbir.view_hypotheses import expected_utility
 
 
 class GalleryManifoldTests(unittest.TestCase):
+    def test_verification_likelihood_is_gaussian_and_query_independent(self):
+        observations = torch.tensor([[[.1, .2], [1.2, -.3]], [[.3, 1.0], [-.5, .1]]])
+        means = torch.tensor([[[.2, .4], [.8, -.1]], [[-.1, .4], [.6, 1.2]]])
+        variance = torch.tensor([[[.3, .7], [.7, .4]], [[.5, .2], [.8, .6]]])
+        normal = torch.distributions.Normal(means[:, :, None], variance[:, :, None].sqrt())
+        expected = normal.log_prob(observations[:, None]).mean(dim=-1)
+        score = diagonal_log_likelihood(observations, means, variance)
+        torch.testing.assert_close(score - score[:, :1], expected - expected[:, :1])
+
+        gallery = torch.tensor([[.2, .4], [.6, -.5], [.8, .2], [.1, .9]])
+        bank = torch.tensor([[1, 2], [0, 2], [1, 3], [0, 2]])
+        heads = torch.tensor([[[0, 1], [2, 3]], [[1, 3], [0, 2]]])
+        evidence = proposal_evidence(observations, gallery, bank, heads, 2)
+        singleton = proposal_evidence(observations[1:], gallery, bank, heads[1:], 2)
+        torch.testing.assert_close(evidence[:, 1:], singleton)
+
+    def test_verification_rank_fusion_recovers_one_hot_rankings(self):
+        heads = torch.tensor([[[0, 2, 1], [3, 4, 2]], [[6, 0, 3], [4, 2, 6]]])
+        posterior = torch.tensor([[0., 1.], [1., 0.]])
+        torch.testing.assert_close(evidence_rank_fusion(heads, posterior, 7, 1), heads[[0, 1], [1, 0]])
+
     def test_view_mbr_matches_pairwise_reference_expectation(self):
         samples = F.normalize(torch.tensor([[[1., 0.], [.8, .2], [0., 1.]], [[1., 1.], [1., 0.], [0., 1.]]]), dim=-1)
         weights = torch.tensor([[.2, .7, .1], [.25, .25, .5]])

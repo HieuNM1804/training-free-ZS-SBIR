@@ -64,7 +64,7 @@ DENSE_STUDIES = {
     "dense-transport": dense_transport_settings,
     "tokencut-transport": tokencut_transport_settings,
 }
-HEAD_STUDIES = ("head-selection", "view-hypotheses", "foreground-fusion")
+HEAD_STUDIES = ("head-selection", "view-hypotheses", "foreground-fusion", "gaussian-verification")
 SCORE_STUDIES = {
     "gallery-diffusion": gallery_diffusion_settings,
     "two-stage-transport": two_stage_settings,
@@ -93,6 +93,7 @@ SCORE_STUDIES = {
     "head-selection": head_selection_settings,
     "view-hypotheses": head_selection_settings,
     "foreground-fusion": head_selection_settings,
+    "gaussian-verification": head_selection_settings,
     "lame-relevance": relevance_settings,
 }
 
@@ -148,7 +149,10 @@ def run(args):
         load_augmentations(args, query_paths)
         if args.study in ("mta", "iso-mta", "dominant-sets", "structured-transport", *HEAD_STUDIES) else None
     )
-    regional_sketches = load_regional_sketches(args, query_paths) if args.study in ("view-hypotheses", "foreground-fusion") else None
+    regional_sketches = (
+        load_regional_sketches(args, query_paths)
+        if args.study in ("view-hypotheses", "foreground-fusion", "gaussian-verification") else None
+    )
     needs_crops = args.study in CROP_STUDIES or args.study in ("two-stage-transport", "adaptive-fusion")
     photo_views = load_augmentations(args, photo_paths, views=9, mode="photo") if needs_crops else None
     needs_dense = args.study in (*DENSE_STUDIES, "multiscale", "isolated-regions", "union-density")
@@ -197,8 +201,9 @@ def run(args):
             elif args.study in ("dominant-sets", *HEAD_STUDIES):
                 extra_inputs = (iso_maps, augmentations["features"][q_ids].to(device), augmentations["logit_scale"],
                                 gem_regions[0][q_ids], gem_regions[1][p_ids])
-                if args.study == "view-hypotheses":
+                if args.study in ("view-hypotheses", "gaussian-verification"):
                     extra_options["regional_views"] = regional_sketches["features"][q_ids].to(device)
+                    extra_options["verify_crops"] = args.study == "gaussian-verification"
                 elif args.study == "foreground-fusion":
                     extra_options["foreground_view"] = regional_sketches["features"][q_ids, 0].to(device)
             elif args.study == "structured-transport":

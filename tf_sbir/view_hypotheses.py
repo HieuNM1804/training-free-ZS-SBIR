@@ -77,26 +77,34 @@ def expected_utility(prototypes, posterior):
     return (prototypes @ consensus).squeeze(-1)
 
 
-def view_hypotheses(
-    rankings, queries, random_views, regional_views, photos, contours, sketch_words,
-    photo_words, transform, gallery, words, banks, graph, score_batch,
+def crop_prefixes(
+    views, random_count, photos, contours, sketch_words, photo_words, transform,
+    gallery, words, banks, graph, score_batch,
 ):
-    views = F.normalize(torch.cat((random_views, regional_views), dim=1).float(), dim=-1)
     embedded, _ = projected_feedback(views.flatten(0, 1), photos, contours, transform)
     embedded = embedded.unflatten(0, views.shape[:2])
     concepts = view_concepts(views, sketch_words, photo_words)
-    names = [f"view-random-{i+1}" for i in range(random_views.size(1))]
+    names = [f"view-random-{i+1}" for i in range(random_count)]
     names += [f"view-regional-{name}" for name in REGIONS]
-    rankings = list(rankings)
-    tail = rankings[0][0]
     for name, inside, phrase in zip(names, embedded.unbind(dim=1), concepts.unbind(dim=1), strict=True):
         visual = inside @ gallery.T
         lexical = phrase @ words.T
         score = standardize(visual) + standardize(lexical)
         prefix = density_prefixes(visual, lexical, (visual, lexical), score, banks, graph, 1280, score_batch, 256, 16.)
+        yield name, prefix
+
+
+def view_hypotheses(
+    rankings, queries, random_views, regional_views, photos, contours, sketch_words,
+    photo_words, transform, gallery, words, banks, graph, score_batch,
+):
+    views = F.normalize(torch.cat((random_views, regional_views), dim=1).float(), dim=-1)
+    rankings = list(rankings)
+    tail = rankings[0][0]
+    for name, prefix in crop_prefixes(views, random_views.size(1), photos, contours, sketch_words, photo_words,
+                                      transform, gallery, words, banks, graph, score_batch):
         rankings.append((tail, prefix, None))
         yield name, partial(density_rows, tail, prefix, score_batch, None)
-    del visual, lexical, score
 
     dtype = torch.float16 if photos.is_cuda else torch.float32
     features = torch.cat([
