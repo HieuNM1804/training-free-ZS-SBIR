@@ -28,12 +28,14 @@ from .reranking import standardize
 from .semantic import read_words
 from .sketch_canvas_fusion import canvas_images
 from .transfer_reconstruction import anchor_errors, gallery_index, nearest_anchors, transferred_ranking
+from .transfer_channels import channel_prefix, channel_settings
 from .union_density import density_rows
 from .view_hypotheses import ink_box_image, view_concepts
 
 
 VIEW_WEIGHTS = {"fixed": (0., 0.), "cohesion": (4., 0.), "risk1": (4., 1.),
                 "risk4": (4., 4.), "shuffled": (4., 4.), "risk-only": (0., 2.)}
+CHANNELS = channel_settings()
 
 
 class AnchorSketchViews(Dataset):
@@ -57,7 +59,7 @@ def arguments():
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--cache", type=Path, default=Path(".cache"))
     parser.add_argument("--splits", nargs="+", choices=SKETCHY_SPLITS, default=SKETCHY_SPLITS)
-    parser.add_argument("--stage", choices=("references", "views", "prepare", "projector"), default="references")
+    parser.add_argument("--stage", choices=("references", "views", "channels", "prepare", "projector"), default="references")
     parser.add_argument("--batch-size", type=int, default=48)
     parser.add_argument("--workers", type=int, default=4)
     parser.add_argument("--crop-batch-size", type=int, default=128)
@@ -83,13 +85,18 @@ def ranked_rows(mapped, risks, concepts, index, mode, score_batch):
         language = standardize(lexical[0]).lerp(standardize(lexical[1]), .65)
         initial = standardize(appearance) + standardize(language)
         tail = pagerank_tail(appearance, language, initial, banks, *walk, score_batch)
-        power, risk_power = VIEW_WEIGHTS[mode]
-        prefix = transfer_prefixes(vec, text, risk, gallery, vocabulary, banks, graph, initial,
-                                   [(mode, power, risk_power)], score_batch)[mode]
+        if mode in CHANNELS:
+            prefix = channel_prefix(vec, text, risk, gallery, vocabulary, banks, graph, initial, CHANNELS[mode])
+        else:
+            power, risk_power = VIEW_WEIGHTS[mode]
+            prefix = transfer_prefixes(vec, text, risk, gallery, vocabulary, banks, graph, initial,
+                                       [(mode, power, risk_power)], score_batch)[mode]
         yield from density_rows(tail, prefix, score_batch, None)
 
 
 def settings(stage):
+    if stage == "channels":
+        return [(64, 1., 1., tuple(CHANNELS))]
     if stage == "references":
         return [(64, 1., 1., ("two",)), (64, 1., 1.5, ("two",)), (64, 0., 1., ("two",)),
                 (16, 1., 1., ("two",))]
@@ -124,7 +131,10 @@ def score_split(args, split, raw, photos, contours, q_labels, p_labels, sketch_w
     target = F.normalize(photos @ transform, dim=-1)
     target = centered(target, target.mean(dim=0))
     views = centered(F.normalize(raw @ transform, dim=-1), source_mean)
-    concepts = torch.cat([view_concepts(chunk, sketch_words, photo_words) for chunk in raw.split(max(1, args.score_batch // raw.size(1)))])
+    concepts = raw.new_empty((*raw.shape[:2], photo_words.size(-1)))
+    step = max(1, args.score_batch // raw.size(1))
+    for start in range(0, len(raw), step):
+        concepts[start:start + step] = view_concepts(raw[start:start + step], sketch_words, photo_words)
     support = nearest_anchors(views.flatten(0, 1), source, 64)
     errors = anchor_errors(source, target)
     print(f"Building the complete CUDA gallery index for {split}", flush=True)
@@ -137,6 +147,8 @@ def score_split(args, split, raw, photos, contours, q_labels, p_labels, sketch_w
         for mode in modes:
             name = f"transfer-{mode}-k{count}-g{penalty:g}-r{carry:g}"
             params = {"neighbors": count, "penalty": penalty, "carry": carry, "views": raw.size(1), "fusion": mode}
+            if mode in CHANNELS:
+                params.update(CHANNELS[mode]._asdict())
             write_result(args, split, name, ranked_rows(mapped, risk, concepts, index, mode, args.score_batch),
                          q_labels, p_labels, metadata, params)
 
@@ -181,7 +193,8 @@ def run(args):
         p_ids, p_labels = photos[split]
         ink = F.normalize(extras[q_ids, :1].to(device).float(), dim=-1)
         raw = torch.cat((ink, all_q[q_ids].to(device)[:, None]), dim=1)
-        if args.stage == "views":
+        del ink
+        if args.stage in ("views", "channels"):
             raw = torch.cat((raw, F.normalize(extras[q_ids, 1:].to(device).float(), dim=-1)), dim=1)
         score_split(args, split, raw, all_p[p_ids].to(device), contours[p_ids].to(device), q_labels, p_labels,
                     sketch_words, photo_words, transform, metadata)

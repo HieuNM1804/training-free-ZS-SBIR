@@ -9,12 +9,26 @@ from torch.nn import functional as F
 from tf_sbir.contextual_rank import column_stochastic
 from tf_sbir.sketch_canvas_fusion import CanvasSketches
 from tf_sbir.transfer_benchmark import AnchorSketchViews, ranked_rows
+from tf_sbir.transfer_channels import ChannelSetting, channel_seed
 from tf_sbir.transfer_reconstruction import transferred_ranking
 from tf_sbir.union_density import pack_affinity
 from tf_sbir.view_hypotheses import RegionalSketches
 
 
 class TransferStreamingTests(unittest.TestCase):
+    def test_visual_uncertainty_only_changes_visual_evidence_in_separate_channels(self):
+        first = torch.tensor([[[.8, 0.], [0., .8]]])
+        second = first.flip(1)
+        prior = torch.tensor([.4, .6])
+        risk = torch.tensor([[.1, 2.]])
+        config = ChannelSetting(2., 2., 3., 1., True)
+        torch.testing.assert_close(channel_seed(first, second, risk, prior, config),
+                                   channel_seed(first, second, risk.flip(1), prior, config))
+        fixed = ChannelSetting(0., 0., 0., .35, True)
+        expected = (prior[None, None] @ first.lerp(second, .35)).squeeze(1)
+        torch.testing.assert_close(channel_seed(first, second, risk, prior, fixed), expected)
+        torch.testing.assert_close(channel_seed(first, second, risk, prior, fixed._replace(separate=False)), expected)
+
     def test_compact_loader_matches_reference_crop_and_canvases_pixel_for_pixel(self):
         with TemporaryDirectory() as dest:
             path = Path(dest) / "sketch.png"

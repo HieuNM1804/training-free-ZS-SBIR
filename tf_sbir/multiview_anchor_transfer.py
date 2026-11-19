@@ -16,8 +16,14 @@ from .view_hypotheses import view_concepts
 
 
 def predict_views(views, source, target, errors, support, *, count, penalty, carry):
-    mapped, risks = [], []
-    for query, indices in zip(views.flatten(0, 1).split(192), support[:, :count].split(192), strict=True):
+    flat = views.flatten(0, 1)
+    if carry and source.size(1) != target.size(1):
+        raise ValueError("A source residual requires shared coordinate axes")
+    mapped = target.new_empty((len(flat), target.size(1)))
+    risks = source.new_empty(len(flat))
+    for start in range(0, len(flat), 192):
+        query = flat[start:start + 192]
+        indices = support[start:start + len(query), :count]
         keys = source[indices]
         local_error = errors[indices]
         weights = reconstruction_weights(query, keys, .1, local_error, penalty).unsqueeze(1)
@@ -25,9 +31,12 @@ def predict_views(views, source, target, errors, support, *, count, penalty, car
         dispersion = (keys - query[:, None]).square().sum(dim=-1).mean(dim=1)
         risk = residual.square().sum(dim=-1) / dispersion.clamp_min(1e-8)
         risk += (weights @ local_error).squeeze(1).square().sum(dim=1)
-        mapped.append(F.normalize((weights @ target[indices]).squeeze(1) + carry * residual, dim=-1))
-        risks.append(risk)
-    return (torch.cat(mapped).unflatten(0, views.shape[:2]), torch.cat(risks).view(views.shape[:2]))
+        prediction = (weights @ target[indices]).squeeze(1)
+        if carry:
+            prediction = prediction + carry * residual
+        mapped[start:start + len(query)] = F.normalize(prediction, dim=-1)
+        risks[start:start + len(query)] = risk
+    return mapped.unflatten(0, views.shape[:2]), risks.view(views.shape[:2])
 
 
 def evidence_weights(cohesion, risk, prior, power, risk_power):
