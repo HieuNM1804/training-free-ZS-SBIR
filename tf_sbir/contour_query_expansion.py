@@ -5,12 +5,12 @@ from functools import partial
 import torch
 from torch.nn import functional as F
 
-from .contextual_rank import column_stochastic, contextual_blocks, jaccard_graph
+from .contextual_rank import column_stochastic, contextual_blocks, jaccard_graph, jaccard_seed
 from .global_methods import prepare_methods
 from .manifold import iterative_feedback
 from .reranking import standardize
 from .semantic import code_vectors, top_codes
-from .union_density import density_prefixes, density_rows, pack_affinity
+from .union_density import candidate_union, density_prefixes, density_rows, grow_density, pack_affinity
 from .view_hypotheses import view_concepts
 
 
@@ -38,7 +38,47 @@ def pagerank_tail(visual, lexical, prior, banks, transition, dangling, score_bat
     return prior + 1.2 * torch.cat(list(walks))
 
 
-def contour_expansion_settings(_queries, photos, contours, sketch_words, photo_words, maps, ink, score_batch):
+def weighted_query_prefix(visual, lexical, prior, banks, graph, score_batch):
+    """Weight visual and lexical query edges by their gallery neighborhood agreement."""
+    prefixes = []
+    batches = (scores.split(min(score_batch, 512)) for scores in (visual, lexical, prior))
+    for appearance, semantic, ties in zip(*batches, strict=True):
+        candidates, valid = candidate_union((appearance, semantic), 1280)
+        evidence = torch.stack((jaccard_seed(appearance, banks[0]), jaccard_seed(semantic, banks[1])), dim=1)
+        coherence = evidence.sum(dim=-1, keepdim=True)
+        mass = coherence / coherence.sum(dim=1, keepdim=True).clamp_min(1e-8)
+        votes = (evidence * mass).sum(dim=1) * 64.
+        prefixes.append(grow_density(votes, ties, candidates, valid, graph, 256))
+    return torch.cat(prefixes)
+
+
+def expansion_sweep(paired, sketch, target, outlines, gallery, lexical, language, banks, graphs, graph, score_batch):
+    transition, dangling = column_stochastic(len(gallery), graphs)
+    for count, rounds, strength, anchor in (
+        (64, 2, 2., 64.), (16, 2, 2., 64.), (32, 2, 2., 64.), (128, 2, 2., 64.),
+        (64, 1, 2., 64.), (64, 2, 1., 64.), (64, 2, 4., 64.), (64, 2, 2., 16.),
+    ):
+        expanded = iterative_feedback(paired, gallery, count, rounds, strength)
+        visual = expanded @ gallery.T
+        prior = standardize(visual) + language
+        prefix = density_prefixes(visual, lexical, (visual, lexical), prior, banks, graph, 1280, score_batch, 256, anchor)
+        tail = pagerank_tail(visual, lexical, prior, banks, transition, dangling, score_batch)
+        name = f"contour-sweep-k{count}-r{rounds}-w{strength:g}-a{anchor:g}"
+        yield name, partial(density_rows, tail, prefix, score_batch, None)
+        if (count, rounds, strength, anchor) == (64, 2, 2., 64.):
+            adaptive = weighted_query_prefix(visual, lexical, prior, banks, graph, score_batch)
+            yield "contour-sweep-neighborhood-weights", partial(density_rows, tail, adaptive, score_batch, None)
+
+    for strength in (0.25, 1.):
+        adjusted, _ = prepare_methods(sketch, target, outlines, ("local_residual",), mix_weight=strength)["local_residual"]
+        visual = iterative_feedback(adjusted, gallery, 64, 2, 2.) @ gallery.T
+        prior = standardize(visual) + language
+        prefix = density_prefixes(visual, lexical, (visual, lexical), prior, banks, graph, 1280, score_batch, 256, 64.)
+        tail = pagerank_tail(visual, lexical, prior, banks, transition, dangling, score_batch)
+        yield f"contour-sweep-residual-w{strength:g}", partial(density_rows, tail, prefix, score_batch, None)
+
+
+def contour_expansion_settings(_queries, photos, contours, sketch_words, photo_words, maps, ink, score_batch, *, sweep=False):
     ink = F.normalize(ink.float(), dim=-1)
     transform = maps[(150, 50)]
     sketch, target, outlines = (F.normalize(vectors @ transform, dim=-1) for vectors in (ink, photos, contours))
@@ -57,6 +97,11 @@ def contour_expansion_settings(_queries, photos, contours, sketch_words, photo_w
     banks = (iso_bank, text_bank)
     graphs = (iso_edges, text_edges, rgb_edges)
     graph = pack_affinity(len(photos), graphs)
+
+    if sweep:
+        yield from expansion_sweep(paired, sketch, target, outlines, gallery, lexical, language,
+                                   banks, graphs, graph, score_batch)
+        return
 
     visual = centered @ gallery.T
     prior = standardize(visual) + language

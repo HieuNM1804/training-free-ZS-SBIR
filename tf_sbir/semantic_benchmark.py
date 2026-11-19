@@ -1,6 +1,7 @@
 """Evaluate public-vocabulary transfer, without using benchmark class names."""
 
 import argparse
+from functools import partial
 import json
 from pathlib import Path
 import time
@@ -67,7 +68,7 @@ DENSE_STUDIES = {
     "tokencut-transport": tokencut_transport_settings,
 }
 HEAD_STUDIES = ("head-selection", "view-hypotheses", "foreground-fusion", "gaussian-verification")
-INK_STUDIES = ("compact-retrieval", "contour-query-expansion")
+INK_STUDIES = ("compact-retrieval", "contour-query-expansion", "contour-query-expansion-sweep")
 SCORE_STUDIES = {
     "gallery-diffusion": gallery_diffusion_settings,
     "two-stage-transport": two_stage_settings,
@@ -99,6 +100,7 @@ SCORE_STUDIES = {
     "gaussian-verification": head_selection_settings,
     "compact-retrieval": compact_retrieval_settings,
     "contour-query-expansion": contour_expansion_settings,
+    "contour-query-expansion-sweep": partial(contour_expansion_settings, sweep=True),
     "lame-relevance": relevance_settings,
 }
 
