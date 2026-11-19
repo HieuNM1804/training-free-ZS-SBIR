@@ -21,6 +21,7 @@ from .dense_views import dense_transport_settings, load_clearclip_gallery, token
 from .encoding import load_global_inputs
 from .foundation import load_words
 from .gallery_diffusion import gallery_diffusion_settings, two_stage_settings
+from .gem_regions import gem_region_settings, load_gem_regions
 from .isoclip import iso_context_settings, iso_paired_settings, iso_transport_settings, isoclip_maps
 from .isolated_regions import isolated_region_settings, load_isolated_regions
 from .manifold import fused_features
@@ -81,6 +82,7 @@ SCORE_STUDIES = {
     "finch-prototype": cluster_prototype_settings,
     "finch-cache": cluster_cache_settings,
     "iso-mta": iso_mta_settings,
+    "gem-regions": gem_region_settings,
     "lame-relevance": relevance_settings,
 }
 
@@ -124,6 +126,10 @@ def run(args):
     all_q, all_p, contours = load_global_inputs(args, query_paths, photo_paths, args.study not in ("core", "manifold"))
     words = read_words(args.vocabulary)
     sketch_text, photo_text = [view.to(device) for view in load_words(args, words)]
+    gem_regions = (
+        load_gem_regions(args, query_paths, photo_paths, all_q, all_p, sketch_text, photo_text)
+        if args.study == "gem-regions" else None
+    )
     augmentations = load_augmentations(args, query_paths) if args.study in ("mta", "iso-mta") else None
     needs_crops = args.study in CROP_STUDIES or args.study in ("two-stage-transport", "adaptive-fusion")
     photo_views = load_augmentations(args, photo_paths, views=9, mode="photo") if needs_crops else None
@@ -134,7 +140,7 @@ def run(args):
     rendered = load_xdog(args, photo_paths) if args.study in ("xdog-transport", "union-density") else None
     iso_studies = (
         "isoclip-transport", "iso-paired", "iso-context", "union-density", "union-prefix", "union-fusion",
-        "lame-relevance", "signed-feedback", "finch-prior", "finch-prototype", "finch-cache", "iso-mta",
+        "lame-relevance", "signed-feedback", "finch-prior", "finch-prototype", "finch-cache", "iso-mta", "gem-regions",
     )
     iso_maps = isoclip_maps(args, device, paired=args.study == "iso-paired") if args.study in iso_studies else None
     args.output.mkdir(parents=True, exist_ok=True)
@@ -168,6 +174,8 @@ def run(args):
                 extra_inputs = (iso_maps, rendered[p_ids].to(device), isolated[p_ids])
             elif args.study == "iso-mta":
                 extra_inputs = (iso_maps, augmentations["features"][q_ids].to(device), augmentations["logit_scale"])
+            elif gem_regions is not None:
+                extra_inputs = (iso_maps, gem_regions[0][q_ids], gem_regions[1][p_ids])
             elif multiscale is not None:
                 extra_inputs = (dense_views[p_ids], (multiscale[0][q_ids], multiscale[1][p_ids]))
             elif isolated is not None:
