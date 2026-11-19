@@ -8,6 +8,7 @@ import time
 import torch
 
 from .adaptive_fusion import adaptive_fusion_settings
+from .anchor_context import anchor_context_settings
 from .benchmark import merge_inputs
 from .bimodal_graph import bimodal_settings
 from .cluster_mine import cluster_mine_settings
@@ -61,6 +62,7 @@ SCORE_STUDIES = {
     "contextual-rank": contextual_rank_settings,
     "multiscale": multiscale_settings,
     "xdog-transport": xdog_transport_settings,
+    "anchor-context": anchor_context_settings,
 }
 
 

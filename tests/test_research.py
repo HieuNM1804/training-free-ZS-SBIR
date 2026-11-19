@@ -7,6 +7,7 @@ from torch.nn import functional as F
 from torchvision.transforms.functional import pil_to_tensor
 
 from tf_sbir.adaptive_fusion import curve_reliability
+from tf_sbir.anchor_context import gallery_kl_parameters, negative_gallery_kl
 from tf_sbir.asif import sparse_relative_features
 from tf_sbir.bimodal_graph import bimodal_transition
 from tf_sbir.cluster_mine import majority_concepts
@@ -129,6 +130,13 @@ class PublicVocabularyTests(unittest.TestCase):
 
 
 class InferenceCalibrationTests(unittest.TestCase):
+    def test_anchor_scores_equal_the_negative_direct_kl_divergence(self):
+        p = torch.tensor([[.4, .6], [.75, .25]])
+        q = torch.tensor([[.3, .7], [.9, .1]])
+        expected = -(p[None, :] * (p[None, :].log() - q[:, None].log())).sum(dim=2)
+        score = negative_gallery_kl(q.log(), *gallery_kl_parameters(p.log()))
+        torch.testing.assert_close(score, expected)
+
     def test_xdog_turns_a_flat_surface_white_and_retains_a_step_edge(self):
         levels = np.full((31, 31), 0.2, dtype=np.float32)
         self.assertTrue(np.all(xdog(levels, 0.8) == 255))
