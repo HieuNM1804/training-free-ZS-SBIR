@@ -1,9 +1,7 @@
 """Run the method in the current checkout and retain the official metric values for each query."""
 
-import json
 from pathlib import Path
 import sys
-from tempfile import TemporaryDirectory
 from unittest.mock import patch
 
 import torch
@@ -29,32 +27,29 @@ def main():
     # Running this file by path allows the same collector to be used on other method branches.
     sys.path.insert(0, str(Path.cwd()))
     from tf_sbir import semantic_benchmark
+    from tf_sbir.encoding import save_tensor
 
     args = semantic_benchmark.arguments()
     output = args.output
     output.mkdir(parents=True, exist_ok=True)
-    collected = {}
+    args.per_query_dir = output / "per-query"
+
     def evaluate(rows, query_labels, gallery_labels, split, description, workers):
         summary, details = evaluate_with_details(rows, query_labels, gallery_labels, split, description, workers)
         name = description.split(" ", 1)[1]
-        collected.setdefault(split, {})[name] = details
+        save_tensor(details, args.per_query_dir / f"{split}-{name}.pt")
         return summary
 
-    with TemporaryDirectory(dir=output) as work, patch.object(semantic_benchmark, "evaluate_rows", evaluate):
-        args.output = Path(work)
+    with patch.object(semantic_benchmark, "evaluate_rows", evaluate):
         semantic_benchmark.run(args)
-        for file in args.output.glob("sketchy*.json"):
-            existing = output / file.name
-            if existing.is_file():
-                before = json.loads(existing.read_text())
-                after = json.loads(file.read_text())
-                if any(abs(before[key] - after[key]) > 1e-5 for key in ("mAP", "precision")):
-                    raise ValueError(f"Saved evaluation differs for {file.name}")
-            else:
-                file.replace(existing)
-        saved = args.output / "per-query-metrics.pt"
-        torch.save(collected, saved)
-        saved.replace(output / saved.name)
+    collected = {}
+    for split in args.splits:
+        collected[split] = {}
+        for result in sorted(output.glob(f"{split}-*.json")):
+            name = result.stem.removeprefix(split + "-")
+            values = torch.load(args.per_query_dir / f"{result.stem}.pt", map_location="cpu", weights_only=True)
+            collected[split][name] = values
+    save_tensor(collected, output / "per-query-metrics.pt")
 
 
 if __name__ == "__main__":

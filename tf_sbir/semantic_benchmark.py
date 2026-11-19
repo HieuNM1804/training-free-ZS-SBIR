@@ -4,6 +4,7 @@ import argparse
 from functools import partial
 import hashlib
 import json
+import os
 from pathlib import Path
 import subprocess
 import time
@@ -272,8 +273,11 @@ def run(args):
         scored = variants if has_correction else ((name, q, p, None) for name, q, p in variants)
         for name, target_q, target_p, correction in scored:
             filename = args.output / f"{split}-{name}.json"
-            if filename.is_file():
-                continue
+            detail_dir = getattr(args, "per_query_dir", None)
+            if filename.is_file() and (detail_dir is None or (detail_dir / f"{filename.stem}.pt").is_file()):
+                saved = json.loads(filename.read_text())
+                if saved["queries"] == len(q) and saved["gallery"] == len(p) and all(saved.get(k) == v for k, v in provenance.items()):
+                    continue
             start = time.perf_counter()
             if args.study in SCORE_STUDIES or args.study == "grounded-semantic-anchors":
                 rows = correction()
@@ -303,7 +307,9 @@ def run(args):
                 "external_vocabulary": 0 if name.startswith(("compact-image-", "transfer-image-")) or name == "ground-cosine-native" else len(words),
                 "exploratory_unseen": True, "evaluation_seconds": round(time.perf_counter() - start, 2),
             }
-            filename.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
+            temporary = filename.with_suffix(f".{os.getpid()}.tmp")
+            temporary.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
+            temporary.replace(filename)
             print(json.dumps(result), flush=True)
 
 
