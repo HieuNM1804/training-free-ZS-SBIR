@@ -29,6 +29,7 @@ from .mta import load_augmentations, mta_settings
 from .multiscale import load_multiscale_patches, multiscale_settings
 from .relevance import relevance_settings
 from .score_calibration import calibrated_settings, normalized_score_rows, querybank_settings
+from .signed_feedback import signed_feedback_settings
 from .semantic import (
     agreement_rows, agreement_settings, lexical_consensus_settings, paired_concept_settings, read_words,
     semantic_manifold_settings, semantic_settings,
@@ -74,6 +75,7 @@ SCORE_STUDIES = {
     "union-density": density_settings,
     "union-prefix": density_prefix_settings,
     "union-fusion": density_fusion_settings,
+    "signed-feedback": signed_feedback_settings,
     "lame-relevance": relevance_settings,
 }
 
@@ -125,7 +127,7 @@ def run(args):
     multiscale = load_multiscale_patches(args, query_paths, photo_paths) if args.study == "multiscale" else None
     isolated = load_isolated_regions(args, photo_paths, dense_views) if args.study in ("isolated-regions", "union-density") else None
     rendered = load_xdog(args, photo_paths) if args.study in ("xdog-transport", "union-density") else None
-    iso_studies = ("isoclip-transport", "iso-paired", "iso-context", "union-density", "union-prefix", "union-fusion", "lame-relevance")
+    iso_studies = ("isoclip-transport", "iso-paired", "iso-context", "union-density", "union-prefix", "union-fusion", "lame-relevance", "signed-feedback")
     iso_maps = isoclip_maps(args, device, paired=args.study == "iso-paired") if args.study in iso_studies else None
     args.output.mkdir(parents=True, exist_ok=True)
     for split in splits:

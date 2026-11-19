@@ -27,10 +27,22 @@ from tf_sbir.relevance import refine_relevance
 from tf_sbir.score_calibration import dynamic_activation, normalized_score_rows, sinkhorn_target_hubness
 from tf_sbir.semantic import gallery_memory, guided_term_scores, neighborhood_term_posteriors, top_codes
 from tf_sbir.semantic_transport import conditional_similarity, dustbin_plan, maximal_marginal_relevance, partial_similarity
+from tf_sbir.signed_feedback import feedback_vectors
 from tf_sbir.union_density import candidate_union, density_rrf_rows, grow_density, pack_affinity
 
 
 class GalleryManifoldTests(unittest.TestCase):
+    def test_rocchio_feedback_uses_complementary_weights_within_each_shortlist(self):
+        evidence = torch.tensor([[2., 0., 1.], [0., 3., 1.]])
+        shortlist = torch.tensor([[0, 1], [1, 2]])
+        gallery = torch.eye(3)
+        positive, negative = feedback_vectors(evidence, shortlist, gallery, .5)
+        weights = torch.tensor([4., 0.]).softmax(0)
+        torch.testing.assert_close(positive, torch.stack((torch.cat((weights, torch.zeros(1))), torch.cat((torch.zeros(1), weights)))))
+        torch.testing.assert_close(positive + negative, gallery[shortlist].sum(1))
+        solo = feedback_vectors(evidence[1:], shortlist[1:], gallery, .5)
+        torch.testing.assert_close(solo[0], positive[1:])
+
     def test_density_rrf_keeps_unselected_photos_in_initial_order(self):
         initial = 1 / (60 + torch.arange(1, 17101, dtype=torch.float32))[None, :]
         selected = torch.tensor([[1, 3, 0]])
