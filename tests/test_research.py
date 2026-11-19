@@ -1,4 +1,5 @@
 import unittest
+from itertools import permutations
 
 import numpy as np
 import torch
@@ -30,10 +31,27 @@ from tf_sbir.score_calibration import dynamic_activation, normalized_score_rows,
 from tf_sbir.semantic import gallery_memory, guided_term_scores, neighborhood_term_posteriors, top_codes
 from tf_sbir.semantic_transport import conditional_similarity, dustbin_plan, maximal_marginal_relevance, partial_similarity
 from tf_sbir.signed_feedback import feedback_vectors
+from tf_sbir.structured_transport import matching_terms, part_distances
 from tf_sbir.union_density import candidate_union, density_rrf_rows, grow_density, pack_affinity
 
 
 class GalleryManifoldTests(unittest.TestCase):
+    def test_structured_transport_matches_direct_bijection_costs(self):
+        source = torch.tensor([[[.1, .2], [.8, .3], [.4, .7]], [[.4, .6], [.4, .6], [.4, .6]]])
+        target = torch.tensor([[[.9, .3], [.4, .8], [.2, .1]], [[.5, .4], [.2, .1], [.7, .6]]])
+        source, target = part_distances(source), part_distances(target)
+        target = target.unsqueeze(0).expand(2, -1, -1, -1)
+        cosine = torch.arange(36, dtype=torch.float32).reshape(2, 2, 3, 3) / 36
+        assignments = torch.tensor(list(permutations(range(3))))
+        inter, intra = matching_terms(cosine, source, target, assignments)
+        expected_inter, expected_intra = [], []
+        for order in assignments:
+            expected_inter.append(cosine[:, :, torch.arange(3), order].mean(dim=-1))
+            alternative = target[:, :, order[:, None], order[None, :]]
+            expected_intra.append((source[:, None] - alternative).square().mean(dim=(-2, -1)))
+        torch.testing.assert_close(inter, torch.stack(expected_inter, dim=-1))
+        torch.testing.assert_close(intra, torch.stack(expected_intra, dim=-1))
+
     def test_constrained_dominant_set_preserves_the_simplex_and_increases_payoff(self):
         gallery = torch.tensor([[0., .8, 0.], [.8, 0., .05], [0., .05, 0.]])
         candidates = torch.tensor([[0, 0, 1, 2], [0, 1, 1, 2]])

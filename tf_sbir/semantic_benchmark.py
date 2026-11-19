@@ -33,6 +33,7 @@ from .multiscale import load_multiscale_patches, multiscale_settings
 from .relevance import relevance_settings
 from .score_calibration import calibrated_settings, normalized_score_rows, querybank_settings
 from .signed_feedback import signed_feedback_settings
+from .structured_transport import structured_transport_settings
 from .semantic import (
     agreement_rows, agreement_settings, lexical_consensus_settings, paired_concept_settings, read_words,
     semantic_manifold_settings, semantic_settings,
@@ -85,6 +86,7 @@ SCORE_STUDIES = {
     "iso-mta": iso_mta_settings,
     "gem-regions": gem_region_settings,
     "dominant-sets": dominant_set_settings,
+    "structured-transport": structured_transport_settings,
     "lame-relevance": relevance_settings,
 }
 
@@ -130,9 +132,16 @@ def run(args):
     sketch_text, photo_text = [view.to(device) for view in load_words(args, words)]
     gem_regions = (
         load_gem_regions(args, query_paths, photo_paths, all_q, all_p, sketch_text, photo_text)
-        if args.study in ("gem-regions", "dominant-sets") else None
+        if args.study in ("gem-regions", "dominant-sets", "structured-transport") else None
     )
-    augmentations = load_augmentations(args, query_paths) if args.study in ("mta", "iso-mta", "dominant-sets") else None
+    centers = (
+        load_gem_regions(args, query_paths, photo_paths, all_q, all_p, sketch_text, photo_text, centers=True)
+        if args.study == "structured-transport" else None
+    )
+    augmentations = (
+        load_augmentations(args, query_paths)
+        if args.study in ("mta", "iso-mta", "dominant-sets", "structured-transport") else None
+    )
     needs_crops = args.study in CROP_STUDIES or args.study in ("two-stage-transport", "adaptive-fusion")
     photo_views = load_augmentations(args, photo_paths, views=9, mode="photo") if needs_crops else None
     needs_dense = args.study in (*DENSE_STUDIES, "multiscale", "isolated-regions", "union-density")
@@ -143,7 +152,7 @@ def run(args):
     iso_studies = (
         "isoclip-transport", "iso-paired", "iso-context", "union-density", "union-prefix", "union-fusion",
         "lame-relevance", "signed-feedback", "finch-prior", "finch-prototype", "finch-cache", "iso-mta", "gem-regions",
-        "dominant-sets",
+        "dominant-sets", "structured-transport",
     )
     iso_maps = isoclip_maps(args, device, paired=args.study == "iso-paired") if args.study in iso_studies else None
     args.output.mkdir(parents=True, exist_ok=True)
@@ -180,6 +189,9 @@ def run(args):
             elif args.study == "dominant-sets":
                 extra_inputs = (iso_maps, augmentations["features"][q_ids].to(device), augmentations["logit_scale"],
                                 gem_regions[0][q_ids], gem_regions[1][p_ids])
+            elif args.study == "structured-transport":
+                extra_inputs = (iso_maps, augmentations["features"][q_ids].to(device), augmentations["logit_scale"],
+                                gem_regions[0][q_ids], gem_regions[1][p_ids], centers[0][q_ids], centers[1][p_ids])
             elif gem_regions is not None:
                 extra_inputs = (iso_maps, gem_regions[0][q_ids], gem_regions[1][p_ids])
             elif multiscale is not None:

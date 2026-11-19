@@ -40,7 +40,7 @@ def self_grounded_attention(path, values, scale):
     return F.scaled_dot_product_attention(centers * scale, centers, values, scale=1.)
 
 
-def dense_branches(vision, pixels):
+def dense_branches(vision, pixels, include_grounding=True):
     """Share the original CLIP trunk and compare spatial features at the same scale."""
     blocks = vision.transformer.resblocks
     hidden = spatial_embeddings(vision, pixels)
@@ -55,10 +55,11 @@ def dense_branches(vision, pixels):
         query, key, values = (
             heads.unflatten(-1, (attention.num_heads, -1)).transpose(1, 2) for heads in qkv
         )
-        inverse_temp = normalized.float().norm(dim=-1).mean(dim=1) * query.size(-1) ** -0.5
-        scale = inverse_temp.to(query.dtype).view(-1, 1, 1, 1)
-        update = sum(self_grounded_attention(path, values, scale) for path in (query, key, values)) / 3
-        ground = ground + block.ls_1(attention.out_proj(update.transpose(1, 2).flatten(2)))
+        if include_grounding:
+            inverse_temp = normalized.float().norm(dim=-1).mean(dim=1) * query.size(-1) ** -0.5
+            scale = inverse_temp.to(query.dtype).view(-1, 1, 1, 1)
+            update = sum(self_grounded_attention(path, values, scale) for path in (query, key, values)) / 3
+            ground = ground + block.ls_1(attention.out_proj(update.transpose(1, 2).flatten(2)))
 
         if index == 2:
             clear = F.scaled_dot_product_attention(query, query, values)
@@ -68,39 +69,45 @@ def dense_branches(vision, pixels):
             hidden = hidden + block.ls_1(attention.out_proj(vanilla.transpose(1, 2).flatten(2)))
             hidden = hidden + block.ls_2(block.mlp(block.ln_2(hidden)))
 
-    return tuple(F.normalize((vision.ln_post(tokens[:, 1:]) @ vision.proj).float(), dim=-1) for tokens in (clear, ground))
+    branches = (clear, ground) if include_grounding else (clear,)
+    return tuple(F.normalize((vision.ln_post(tokens[:, 1:]) @ vision.proj).float(), dim=-1) for tokens in branches)
 
 
-def pool_regions(patches, guides, ink_log_prior, logit_scale):
+def region_weights(patches, guides, ink_log_prior, logit_scale):
     logits = (guides @ patches.transpose(1, 2)) * logit_scale
     if ink_log_prior is not None:
         logits = logits + ink_log_prior
-    return F.normalize(logits.softmax(dim=-1) @ patches, dim=-1)
+    return logits.softmax(dim=-1)
 
 
 @torch.inference_mode()
-def load_gem_regions(args, query_paths, photo_paths, queries, photos, sketch_words, photo_words):
+def load_gem_regions(args, query_paths, photo_paths, queries, photos, sketch_words, photo_words, *, centers=False):
     device = torch.device(args.device)
     precision = "fp16" if device.type == "cuda" else "fp32"
     word_key = hashlib.sha256(args.vocabulary.read_bytes()).hexdigest()[:12]
     batch_size = args.batch_size if args.crop_batch_size is None else args.crop_batch_size
     workers = args.workers if args.crop_workers is None else args.crop_workers
+    view = "clearclip-centers-v1" if centers else "gem-regions-v1"
     model = None
     result = []
     for mode, paths, embeddings, words in (
         ("sketch", query_paths, queries, sketch_words), ("photo", photo_paths, photos, photo_words),
     ):
-        file = args.cache / global_cache_name(args.root, paths, mode, f"gem-regions-v1-{word_key}", precision, args.clip_checkpoint)
+        file = args.cache / global_cache_name(args.root, paths, mode, f"{view}-{word_key}", precision, args.clip_checkpoint)
         if not file.is_file():
             if model is None:
                 model = load_frozen_clip(args.clip_checkpoint, device)
                 lookup = pixel_lookup(device, model.visual.conv1.weight.dtype)
                 logit_scale = model.logit_scale.exp().float()
+                if centers:
+                    axis = (torch.arange(14, device=device, dtype=torch.float32) + .5) / 14
+                    grid = torch.cartesian_prod(axis, axis)
             inputs = TileInputs(paths)
             batches = threaded_batches(inputs, batch_size, workers, device.type == "cuda")
-            stored = torch.empty((len(paths), 2, 5, words.size(-1)), dtype=torch.float16)
+            shape = (len(paths), 5, 2) if centers else (len(paths), 2, 5, words.size(-1))
+            stored = torch.empty(shape, dtype=torch.float32 if centers else torch.float16)
             start = 0
-            for batch in tqdm(batches, total=(len(paths) + batch_size - 1) // batch_size, desc=f"GEM {mode}", mininterval=5):
+            for batch in tqdm(batches, total=(len(paths) + batch_size - 1) // batch_size, desc=f"{view} {mode}", mininterval=5):
                 batch = batch.to(device=device, non_blocking=True)
                 end = start + len(batch)
                 features = embeddings[start:end].to(device)
@@ -110,9 +117,15 @@ def load_gem_regions(args, query_paths, photo_paths, queries, photos, sketch_wor
                     ink = (batch.float().mean(dim=1, keepdim=True) < 204).float()
                     density = F.avg_pool2d(ink, 32).flatten(1).sqrt()
                     ink_log_prior = (0.05 + density).log().unsqueeze(1)
-                branches = dense_branches(model.visual, normalized_crops(batch, lookup))
-                regions = torch.stack([pool_regions(patches, guides, ink_log_prior, logit_scale) for patches in branches], dim=1)
-                stored[start:end].copy_(regions.to(device="cpu", dtype=torch.float16))
+                branches = dense_branches(model.visual, normalized_crops(batch, lookup), include_grounding=not centers)
+                if centers:
+                    regions = region_weights(branches[0], guides, ink_log_prior, logit_scale) @ grid
+                else:
+                    regions = torch.stack([
+                        F.normalize(region_weights(patches, guides, ink_log_prior, logit_scale) @ patches, dim=-1)
+                        for patches in branches
+                    ], dim=1)
+                stored[start:end].copy_(regions.to(device="cpu", dtype=stored.dtype))
                 start = end
             save_tensor(stored, file)
         print(f"Cache {file.name}", flush=True)
