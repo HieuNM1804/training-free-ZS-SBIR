@@ -28,7 +28,7 @@ def arguments():
     parser.add_argument("--cache", type=Path, default=Path(".cache"))
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--clip-checkpoint")
-    parser.add_argument("--study", choices=("ablation", "diffusion", "scales", "context", "layers", "asif"), default="ablation")
+    parser.add_argument("--study", choices=("ablation", "diffusion", "scales", "context", "layers", "asif", "coral"), default="ablation")
     parser.add_argument("--batch-size", type=int, default=64)
     parser.add_argument("--workers", type=int, default=2)
     parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
@@ -110,6 +110,41 @@ def scale_settings(rgb_q, rgb_p, contour_views):
         yield f"scale-k320-feedback{feedback_size}", query, banks[320]
 
 
+def covariance_roots(source, target, regularization):
+    """Estimate CORAL's whiten-and-recolor map from mean-centered features."""
+    source_covariance = source.T @ source / (len(source) - 1)
+    target_covariance = target.T @ target / (len(target) - 1)
+    ridge = regularization * (source_covariance.diag().mean() + target_covariance.diag().mean()) / 2
+    source_values, source_axes = torch.linalg.eigh(source_covariance)
+    target_values, target_axes = torch.linalg.eigh(target_covariance)
+    white = (source_axes * (source_values.clamp_min(0) + ridge).rsqrt()) @ source_axes.T
+    color = (target_axes * (target_values.clamp_min(0) + ridge).sqrt()) @ target_axes.T
+    return white @ color
+
+
+def coral_settings(rgb_q, rgb_p, contour_views):
+    """Use only synthetic contours and RGB photos to estimate domain statistics."""
+    proxies = F.normalize(contour_views.mean(dim=1), dim=-1)
+    proxy_mean, photo_mean = proxies.mean(dim=0), rgb_p.mean(dim=0)
+    q = centered(rgb_q, proxy_mean)
+    p = centered(rgb_p, photo_mean)
+    graph = build_graph(p, p, 640)
+    bank = F.normalize(graph.diffuse(p, restart=0.1, steps=4), dim=-1)
+    unaligned = iterative_feedback(q, bank, 64, 2, 2.0)
+    yield "centered-walk-k640", unaligned, bank
+    local, _ = prepare_methods(rgb_q, rgb_p, contour_views, ["local_residual"])["local_residual"]
+    reference = iterative_feedback(local, bank, 64, 2, 2.0)
+    yield "local-residual-walk-k640", reference, bank
+    for ridge in (0.1, 0.5, 2.0):
+        transform = covariance_roots(proxies - proxy_mean, rgb_p - photo_mean, ridge)
+        aligned = F.normalize(q @ transform, dim=-1)
+        yield f"coral-r{ridge:g}", aligned, p
+        expanded = iterative_feedback(aligned, bank, 64, 2, 2.0)
+        yield f"coral-walk-r{ridge:g}", expanded, bank
+        mixed = F.normalize(reference.lerp(expanded, 0.5), dim=-1)
+        yield f"coral-walk-mixed-r{ridge:g}", mixed, bank
+
+
 def context_settings(rgb_q, rgb_p, contour_views):
     query, photos = prepare_methods(rgb_q, rgb_p, contour_views, ["local_residual"])["local_residual"]
     initial = build_graph(photos, photos, 320)
@@ -180,8 +215,10 @@ def run(args):
             variants = diffusion_settings(*current)
         else:
             if layer_inputs is None:
-                feature_settings = {"ablation": settings, "scales": scale_settings, "context": context_settings,
-                                    "asif": paired_anchor_settings}[args.study]
+                feature_settings = {
+                    "ablation": settings, "scales": scale_settings, "context": context_settings,
+                    "asif": paired_anchor_settings, "coral": coral_settings,
+                }[args.study]
                 pairs = feature_settings(*current)
             else:
                 q_layers, p_layers, c_layers = layer_inputs

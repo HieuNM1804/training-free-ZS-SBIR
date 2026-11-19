@@ -6,6 +6,7 @@ from torch.nn import functional as F
 from tf_sbir.asif import sparse_relative_features
 from tf_sbir.cluster_mine import majority_concepts
 from tf_sbir.manifold import build_graph, fused_features, propagate_scores
+from tf_sbir.manifold_benchmark import covariance_roots
 from tf_sbir.mta import robust_modes
 from tf_sbir.score_calibration import dynamic_activation, normalized_score_rows, sinkhorn_target_hubness
 from tf_sbir.semantic import gallery_memory, guided_term_scores, neighborhood_term_posteriors, top_codes
@@ -38,6 +39,12 @@ class GalleryManifoldTests(unittest.TestCase):
         d = F.normalize(torch.randn(6, 8, generator=generator))
         q, p = fused_features(a, b, c, d, 0.25)
         torch.testing.assert_close(q @ p.T, 0.75 * (a @ b.T) + 0.25 * (c @ d.T))
+
+    def test_coral_aligns_covariances_without_regularization(self):
+        source = torch.tensor([[3., 0.], [-3., 0.], [0., 1.], [0., -1.]])
+        target = source @ torch.tensor([[0.5, 0.3], [0.1, 2.]])
+        transform = covariance_roots(source, target, regularization=0)
+        torch.testing.assert_close((source @ transform).T.cov(), target.T.cov())
 
 
 class PublicVocabularyTests(unittest.TestCase):

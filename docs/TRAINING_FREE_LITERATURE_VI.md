@@ -107,3 +107,7 @@ C-DisAmb báo cáo 81,2 mAP@200 và 78,9 P@200 cho Sketchy. UNION báo cáo 82,7
 ### Ghép một phần bằng Sinkhorn
 
 [SuperGlue, CVPR 2020](https://openaccess.thecvf.com/content_CVPR_2020/html/Sarlin_SuperGlue_Learning_Feature_Matching_With_Graph_Neural_Networks_CVPR_2020_paper.html) thêm một hàng và một cột dustbin vào ma trận tương đồng để điểm ảnh thiếu đối tác có thể bỏ ghép. Phương trình 8–9 của bài xác định điểm dustbin và khối lượng đích. Trong ablation SBIR, cosine giữa concept của một sketch và các view của từng ảnh cung cấp ma trận đầu vào. Sinkhorn chạy trên ma trận đó với điểm dustbin cố định. Điểm rerank là tổng cosine vượt điểm dustbin, có trọng số bằng khối lượng ghép thật. Đối chứng Conditional Transport dùng cùng concept, view, shortlist và trọng số hợp nhất. Các cấu hình được so sánh trên unseen và thuộc nhánh từ điển Open Images.
+
+### Căn chỉnh hiệp phương sai từ gallery
+
+CORAL căn chỉnh miền bằng cách làm trắng đặc trưng nguồn và đổi hiệp phương sai sang miền đích. Trong SBIR, hai hiệp phương sai được ước lượng từ contour của gallery và từ RGB của chính gallery. Phép biến đổi sau đó được áp dụng độc lập cho từng sketch. Ablation kiểm tra cosine sau CORAL, CORAL với truyền trên đồ thị gallery và kết hợp với căn chỉnh theo láng giềng. Nhánh này chỉ dùng ảnh. [CORAL, AAAI 2016](https://ojs.aaai.org/index.php/AAAI/article/view/10306)
