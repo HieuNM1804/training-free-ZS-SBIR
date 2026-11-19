@@ -19,6 +19,7 @@ from tf_sbir.contour_query_expansion import gallery_word_codes, verified_feedbac
 from tf_sbir.contour_render import xdog
 from tf_sbir.coregistration import leading_basis
 from tf_sbir.data import normal_transform
+from tf_sbir.dense_concept_graph_fusion import patch_concept_evidence
 from tf_sbir.dense_views import tokencut_mask
 from tf_sbir.dominant_sets import constrained_membership
 from tf_sbir.gallery_diffusion import mutual_transition, regional_cosines, solve_diffusion
@@ -42,6 +43,15 @@ from tf_sbir.view_hypotheses import expected_utility
 
 
 class GalleryManifoldTests(unittest.TestCase):
+    def test_dense_concepts_aggregate_patch_probabilities_by_concept(self):
+        patches = torch.tensor([[[.2, .1, .0], [.1, .15, .3]], [[.1, .2, .3], [.4, .3, .2]]])
+        peak, posterior = patch_concept_evidence(patches, temperature=.1)
+        expected = (patches / .1).softmax(dim=-1).sum(dim=1).log() * .1
+        torch.testing.assert_close(peak, patches.amax(dim=1))
+        torch.testing.assert_close(posterior, expected)
+        torch.testing.assert_close(patch_concept_evidence(patches.flip(1), temperature=.1)[1], posterior)
+        torch.testing.assert_close(patch_concept_evidence(patches[1:], temperature=.1)[1], posterior[1:])
+
     def test_mixed_candidate_scope_with_early_votes_matches_combined_ranking(self):
         count = 1300
         indexes = torch.arange(count)

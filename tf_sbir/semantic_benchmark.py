@@ -23,6 +23,7 @@ from .contour_render import load_xdog, xdog_transport_settings
 from .coregistration import coregistration_settings
 from .data import SKETCHY_SPLITS, UNSEEN_CLASSES
 from .dense_views import dense_transport_settings, load_clearclip_gallery, tokencut_transport_settings
+from .dense_concept_graph_fusion import dense_concept_graph_settings
 from .dominant_sets import dominant_set_settings
 from .encoding import load_global_inputs
 from .foundation import load_words
@@ -109,6 +110,7 @@ SCORE_STUDIES = {
     "contour-graph-index": contour_graph_index_settings,
     "sketch-view-graph-fusion": sketch_view_graph_fusion_settings,
     "sketch-view-graph-fusion-sweep": partial(sketch_view_graph_fusion_settings, sweep=True),
+    "dense-concept-graph-fusion": dense_concept_graph_settings,
     "lame-relevance": relevance_settings,
 }
 
@@ -164,13 +166,14 @@ def run(args):
         load_augmentations(args, query_paths)
         if args.study in ("mta", "iso-mta", "dominant-sets", "structured-transport", *HEAD_STUDIES) else None
     )
+    uses_dense_concepts = args.study == "dense-concept-graph-fusion"
     regional_sketches = (
         load_regional_sketches(args, query_paths)
-        if args.study in ("view-hypotheses", "foreground-fusion", "gaussian-verification", *INK_STUDIES) else None
+        if uses_dense_concepts or args.study in ("view-hypotheses", "foreground-fusion", "gaussian-verification", *INK_STUDIES) else None
     )
     needs_crops = args.study in CROP_STUDIES or args.study in ("two-stage-transport", "adaptive-fusion")
     photo_views = load_augmentations(args, photo_paths, views=9, mode="photo") if needs_crops else None
-    needs_dense = args.study in (*DENSE_STUDIES, "multiscale", "isolated-regions", "union-density")
+    needs_dense = uses_dense_concepts or args.study in (*DENSE_STUDIES, "multiscale", "isolated-regions", "union-density")
     dense_views = load_clearclip_gallery(args, photo_paths) if needs_dense else None
     multiscale = load_multiscale_patches(args, query_paths, photo_paths) if args.study == "multiscale" else None
     isolated = load_isolated_regions(args, photo_paths, dense_views) if args.study in ("isolated-regions", "union-density") else None
@@ -211,6 +214,8 @@ def run(args):
             extra_options = {}
             if args.study == "union-density":
                 extra_inputs = (iso_maps, rendered[p_ids].to(device), isolated[p_ids])
+            elif uses_dense_concepts:
+                extra_inputs = (regional_sketches["features"][q_ids, 0].to(device), dense_views[p_ids])
             elif args.study in INK_STUDIES:
                 extra_inputs = (iso_maps, regional_sketches["features"][q_ids, 0].to(device))
             elif args.study == "iso-mta":
