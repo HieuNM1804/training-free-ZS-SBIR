@@ -3,6 +3,7 @@
 import hashlib
 import math
 import random
+from functools import partial
 
 import torch
 from PIL import Image, ImageOps
@@ -13,7 +14,11 @@ from tqdm.auto import tqdm
 
 from .data import CLIP_MEAN, CLIP_STD, threaded_batches
 from .encoding import global_cache_name, load_frozen_clip, save_tensor
+from .gallery_diffusion import full_gallery_inputs
+from .isoclip import contextual_scores, projected_feedback
+from .reranking import standardize
 from .semantic import agreement_settings
+from .union_density import density_prefixes, density_rows, gallery_density_graph
 
 
 class AugmentedImages(Dataset):
@@ -113,10 +118,15 @@ def robust_modes(views, support, logit_scale):
     return torch.cat(modes)
 
 
-def mta_settings(queries, views, logit_scale, photos, contours, sketch_words, photo_words):
+def sketch_view_modes(queries, views, sketch_words, logit_scale):
     features = torch.cat((queries.unsqueeze(1), F.normalize(views.float(), dim=-1)), dim=1)
     uniform = F.normalize(features.mean(dim=1), dim=-1)
     modes = robust_modes(features, sketch_words, logit_scale)
+    return uniform, modes
+
+
+def mta_settings(queries, views, logit_scale, photos, contours, sketch_words, photo_words):
+    uniform, modes = sketch_view_modes(queries, views, sketch_words, logit_scale)
     scoring = agreement_settings(torch.cat((queries, uniform, modes)), photos, contours, sketch_words, photo_words, topology=(320, "rgb"))
     combined, gallery = next((q, p) for name, q, p in scoring if name == "fuse-k320-rgb-w0.6")
     baseline, uniform, robust = combined.split(len(queries))
@@ -124,3 +134,24 @@ def mta_settings(queries, views, logit_scale, photos, contours, sketch_words, ph
     yield "uniform-sketch-views", uniform, gallery
     yield "robust-mta-mode", robust, gallery
     yield "original-plus-mta", F.normalize(baseline + robust, dim=-1), gallery
+
+
+def iso_mta_settings(queries, photos, contours, sketch_words, photo_words, maps, sketch_views, logit_scale, score_batch):
+    uniform, robust = sketch_view_modes(queries, sketch_views, sketch_words, logit_scale)
+    projected, gallery = projected_feedback(torch.cat((queries, uniform, robust)), photos, contours, maps[(150, 50)])
+    full, mean, mode = projected.split(len(queries))
+    ensemble = F.normalize(full + mode, dim=1)
+    base, regional, _, _, views = full_gallery_inputs(queries, photos, contours, sketch_words, photo_words, score_batch)
+    words = views[:, 2].float()
+    context = contextual_scores(photos, words, base, regional, score_batch)
+    del base, regional, views
+    lexical = standardize(context)
+    banks, graph = gallery_density_graph(photos, gallery, words)
+    for name, query in (("original", full), ("uniform", mean), ("mode", mode), ("ensemble", ensemble)):
+        visual = query @ gallery.T
+        initial = standardize(visual) + lexical
+        yield f"iso-mta-{name}", partial(density_rows, initial, None, score_batch, None)
+        if name != "uniform":
+            prefix = density_prefixes(visual, context, (visual, context), initial, banks, graph, 1280, score_batch, 256, 16.)
+            yield f"iso-mta-{name}-graph", partial(density_rows, initial, prefix, score_batch, None)
+            yield f"iso-mta-{name}-soft-graph", partial(density_rows, initial, prefix, score_batch, 0.8)

@@ -26,7 +26,7 @@ from .isolated_regions import isolated_region_settings, load_isolated_regions
 from .manifold import fused_features
 from .manifold_benchmark import dot_rows
 from .metrics import evaluate_rows
-from .mta import load_augmentations, mta_settings
+from .mta import iso_mta_settings, load_augmentations, mta_settings
 from .multiscale import load_multiscale_patches, multiscale_settings
 from .relevance import relevance_settings
 from .score_calibration import calibrated_settings, normalized_score_rows, querybank_settings
@@ -78,6 +78,7 @@ SCORE_STUDIES = {
     "union-fusion": density_fusion_settings,
     "signed-feedback": signed_feedback_settings,
     "finch-prior": cluster_prior_settings,
+    "iso-mta": iso_mta_settings,
     "lame-relevance": relevance_settings,
 }
 
@@ -121,7 +122,7 @@ def run(args):
     all_q, all_p, contours = load_global_inputs(args, query_paths, photo_paths, args.study not in ("core", "manifold"))
     words = read_words(args.vocabulary)
     sketch_text, photo_text = [view.to(device) for view in load_words(args, words)]
-    augmentations = load_augmentations(args, query_paths) if args.study == "mta" else None
+    augmentations = load_augmentations(args, query_paths) if args.study in ("mta", "iso-mta") else None
     needs_crops = args.study in CROP_STUDIES or args.study in ("two-stage-transport", "adaptive-fusion")
     photo_views = load_augmentations(args, photo_paths, views=9, mode="photo") if needs_crops else None
     needs_dense = args.study in (*DENSE_STUDIES, "multiscale", "isolated-regions", "union-density")
@@ -131,7 +132,7 @@ def run(args):
     rendered = load_xdog(args, photo_paths) if args.study in ("xdog-transport", "union-density") else None
     iso_studies = (
         "isoclip-transport", "iso-paired", "iso-context", "union-density", "union-prefix", "union-fusion",
-        "lame-relevance", "signed-feedback", "finch-prior",
+        "lame-relevance", "signed-feedback", "finch-prior", "iso-mta",
     )
     iso_maps = isoclip_maps(args, device, paired=args.study == "iso-paired") if args.study in iso_studies else None
     args.output.mkdir(parents=True, exist_ok=True)
@@ -163,6 +164,8 @@ def run(args):
             extra_inputs = (photo_views["features"][p_ids].to(device),) if needs_crops else ()
             if args.study == "union-density":
                 extra_inputs = (iso_maps, rendered[p_ids].to(device), isolated[p_ids])
+            elif args.study == "iso-mta":
+                extra_inputs = (iso_maps, augmentations["features"][q_ids].to(device), augmentations["logit_scale"])
             elif multiscale is not None:
                 extra_inputs = (dense_views[p_ids], (multiscale[0][q_ids], multiscale[1][p_ids]))
             elif isolated is not None:
