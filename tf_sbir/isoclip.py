@@ -53,8 +53,10 @@ def iso_image_settings(queries, photos, contours, maps):
     reference = local_feedback(queries, photos, contours)
     yield "isoclip-image-control", *reference
     for (top, bottom), transform in maps.items():
-        projected = projected_feedback(queries, photos, contours, transform)
+        q, p, c = (F.normalize(vectors @ transform, dim=-1) for vectors in (queries, photos, contours))
         band = f"top{top}-bottom{bottom}"
+        yield f"isoclip-cosine-{band}", q, p
+        projected = local_feedback(q, p, c)
         yield f"isoclip-walk-{band}", *projected
         yield f"isoclip-fusion-{band}", *fused_features(*reference, *projected, 0.35)
 
