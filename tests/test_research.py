@@ -31,6 +31,7 @@ from tf_sbir.manifold import build_graph, fused_features, propagate_scores
 from tf_sbir.manifold_benchmark import covariance_roots
 from tf_sbir.mta import normalized_crops, pixel_lookup, robust_modes
 from tf_sbir.multiscale import merge_tile_patches, split_tiles
+from tf_sbir.multiview_anchor_transfer import evidence_weights, predict_views
 from tf_sbir.relevance import refine_relevance
 from tf_sbir.score_calibration import dynamic_activation, normalized_score_rows, sinkhorn_target_hubness
 from tf_sbir.semantic import gallery_memory, guided_term_scores, neighborhood_term_posteriors, top_codes
@@ -44,6 +45,29 @@ from tf_sbir.view_hypotheses import expected_utility
 
 
 class GalleryManifoldTests(unittest.TestCase):
+    def test_view_weights_are_query_local_and_reduce_to_the_prior_at_zero_powers(self):
+        cohesion = torch.tensor([[2., 4.], [1., 8.]])
+        risk = torch.tensor([[1., 4.], [2., 4.]])
+        prior = torch.tensor([.25, .75])
+        weights = evidence_weights(cohesion, risk, prior, 1., 1.)
+        expected = prior * cohesion / risk
+        torch.testing.assert_close(weights, expected / expected.sum(dim=1, keepdim=True))
+        torch.testing.assert_close(weights[:1], evidence_weights(cohesion[:1], risk[:1], prior, 1., 1.))
+        torch.testing.assert_close(evidence_weights(cohesion, risk, prior, 0., 0.), prior.expand_as(risk))
+
+    def test_multiview_transfer_matches_single_query_map(self):
+        source = torch.eye(3)
+        target = source.roll(1, dims=1)
+        views = torch.tensor([[[.5, .4, .1], [.1, .2, .7]]])
+        ids = torch.tensor([[0, 1], [2, 1]])
+        error = torch.eye(3)
+        mapped, risk = predict_views(views, source, target, error, ids, count=2, penalty=1., carry=1.)
+        direct = transfer_coordinates(views[0], source, target, ids, .1, errors=error, strength=1., residual=1.)
+        torch.testing.assert_close(mapped[0], F.normalize(direct, dim=-1))
+        self.assertTrue((risk >= 0.).all())
+        torch.testing.assert_close(risk[:, 0:1], predict_views(views[:, 0:1], source, target, error, ids[0:1],
+                                                               count=2, penalty=1., carry=1.)[1])
+
     def test_local_gain_minimizes_held_out_target_error_and_handles_zero_direction(self):
         base = torch.tensor([[.5, 1.], [2., -.5], [1., 1.], [1., 2.]])
         direction = torch.tensor([[1., 2.], [.5, 1.], [0., 0.], [1., 0.]])
