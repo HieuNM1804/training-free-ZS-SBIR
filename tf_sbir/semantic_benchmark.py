@@ -13,6 +13,7 @@ from .benchmark import merge_inputs
 from .bimodal_graph import bimodal_settings
 from .cluster_mine import cluster_mine_settings
 from .cluster_prior import cluster_cache_settings, cluster_prior_settings, cluster_prototype_settings
+from .compact_retrieval import compact_retrieval_settings
 from .contextual_rank import contextual_rank_settings
 from .contour_render import load_xdog, xdog_transport_settings
 from .coregistration import coregistration_settings
@@ -94,6 +95,7 @@ SCORE_STUDIES = {
     "view-hypotheses": head_selection_settings,
     "foreground-fusion": head_selection_settings,
     "gaussian-verification": head_selection_settings,
+    "compact-retrieval": compact_retrieval_settings,
     "lame-relevance": relevance_settings,
 }
 
@@ -151,7 +153,7 @@ def run(args):
     )
     regional_sketches = (
         load_regional_sketches(args, query_paths)
-        if args.study in ("view-hypotheses", "foreground-fusion", "gaussian-verification") else None
+        if args.study in ("view-hypotheses", "foreground-fusion", "gaussian-verification", "compact-retrieval") else None
     )
     needs_crops = args.study in CROP_STUDIES or args.study in ("two-stage-transport", "adaptive-fusion")
     photo_views = load_augmentations(args, photo_paths, views=9, mode="photo") if needs_crops else None
@@ -163,7 +165,7 @@ def run(args):
     iso_studies = (
         "isoclip-transport", "iso-paired", "iso-context", "union-density", "union-prefix", "union-fusion",
         "lame-relevance", "signed-feedback", "finch-prior", "finch-prototype", "finch-cache", "iso-mta", "gem-regions",
-        "dominant-sets", "structured-transport", *HEAD_STUDIES,
+        "dominant-sets", "structured-transport", "compact-retrieval", *HEAD_STUDIES,
     )
     iso_maps = isoclip_maps(args, device, paired=args.study == "iso-paired") if args.study in iso_studies else None
     args.output.mkdir(parents=True, exist_ok=True)
@@ -196,6 +198,8 @@ def run(args):
             extra_options = {}
             if args.study == "union-density":
                 extra_inputs = (iso_maps, rendered[p_ids].to(device), isolated[p_ids])
+            elif args.study == "compact-retrieval":
+                extra_inputs = (iso_maps, regional_sketches["features"][q_ids, 0].to(device))
             elif args.study == "iso-mta":
                 extra_inputs = (iso_maps, augmentations["features"][q_ids].to(device), augmentations["logit_scale"])
             elif args.study in ("dominant-sets", *HEAD_STUDIES):
@@ -256,7 +260,8 @@ def run(args):
             result = {
                 "split": split, "method": name, "backbone": "OpenAI CLIP ViT-B/32",
                 "mAP": float(ap), "precision": float(precision), "map_k": map_k, "p_k": p_k,
-                "queries": len(q), "gallery": len(p), "external_vocabulary": len(words), "study": args.study,
+                "queries": len(q), "gallery": len(p), "study": args.study,
+                "external_vocabulary": 0 if args.study == "compact-retrieval" and name.startswith("compact-image-") else len(words),
                 "exploratory_unseen": True, "evaluation_seconds": round(time.perf_counter() - start, 2),
             }
             filename.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
