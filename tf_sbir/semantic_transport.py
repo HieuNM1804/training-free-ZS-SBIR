@@ -42,18 +42,20 @@ def partial_similarity(similarity, dustbin):
     return (matched * (similarity - dustbin)).sum(dim=(-2, -1)) / min(similarity.shape[-2:])
 
 
+def rerank_transport_batch(rows, words, target_views, count, weight, score):
+    baseline, candidates = rows.topk(count, dim=1)
+    available = target_views[candidates]
+    pairwise = torch.matmul(words[:, None], available.transpose(-1, -2)).float()
+    combined = standardize(baseline) + weight * standardize(score(pairwise))
+    order = combined.argsort(dim=1, descending=True, stable=True)
+    return rows.scatter_(1, candidates.gather(1, order), baseline)
+
+
 def transport_rows(queries, gallery, offset, concepts, target_views, count, weight, batch_size, score=conditional_similarity):
     scale = 1 + offset.abs().max()
     for batch, words in zip(queries.split(batch_size), concepts.split(batch_size), strict=True):
         rows = (batch @ gallery.T - offset) / scale
-        baseline, candidates = rows.topk(count, dim=1)
-        available = target_views[candidates]
-        pairwise = torch.matmul(words[:, None], available.transpose(-1, -2)).float()
-        similarity = score(pairwise)
-        combined = standardize(baseline) + weight * standardize(similarity)
-        order = combined.argsort(dim=1, descending=True, stable=True)
-        rows.scatter_(1, candidates.gather(1, order), baseline)
-        yield from rows.cpu()
+        yield from rerank_transport_batch(rows, words, target_views, count, weight, score).cpu()
 
 
 def transport_components(queries, photos, contours, sketch_words, photo_words):

@@ -13,7 +13,7 @@ from .data import SKETCHY_SPLITS, UNSEEN_CLASSES
 from .dense_views import dense_transport_settings, load_clearclip_gallery, tokencut_transport_settings
 from .encoding import load_global_inputs
 from .foundation import load_words
-from .gallery_diffusion import gallery_diffusion_settings
+from .gallery_diffusion import gallery_diffusion_settings, two_stage_settings
 from .manifold import fused_features
 from .manifold_benchmark import dot_rows
 from .metrics import evaluate_rows
@@ -48,6 +48,7 @@ DENSE_STUDIES = {
 }
 SCORE_STUDIES = {
     "gallery-diffusion": gallery_diffusion_settings,
+    "two-stage-transport": two_stage_settings,
 }
 
 
@@ -91,7 +92,8 @@ def run(args):
     words = read_words(args.vocabulary)
     sketch_text, photo_text = [view.to(device) for view in load_words(args, words)]
     augmentations = load_augmentations(args, query_paths) if args.study == "mta" else None
-    photo_views = load_augmentations(args, photo_paths, views=9, mode="photo") if args.study in CROP_STUDIES else None
+    needs_crops = args.study in CROP_STUDIES or args.study == "two-stage-transport"
+    photo_views = load_augmentations(args, photo_paths, views=9, mode="photo") if needs_crops else None
     dense_views = load_clearclip_gallery(args, photo_paths) if args.study in DENSE_STUDIES else None
     args.output.mkdir(parents=True, exist_ok=True)
     for split in splits:
@@ -119,8 +121,9 @@ def run(args):
         elif args.study in DENSE_STUDIES:
             variants = DENSE_STUDIES[args.study](q, p, contours[p_ids].to(device), sketch_text, photo_text, dense_views[p_ids])
         elif args.study in SCORE_STUDIES:
+            crops = (photo_views["features"][p_ids].to(device),) if needs_crops else ()
             settings = SCORE_STUDIES[args.study](
-                q, p, contours[p_ids].to(device), sketch_text, photo_text, args.score_batch,
+                q, p, contours[p_ids].to(device), sketch_text, photo_text, *crops, args.score_batch,
             )
             variants = ((name, None, None, rows) for name, rows in settings)
         else:
