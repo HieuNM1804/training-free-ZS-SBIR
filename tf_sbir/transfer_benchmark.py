@@ -26,6 +26,7 @@ from .manifold_benchmark import dot_rows
 from .mta import load_view_features
 from .multiview_anchor_transfer import predict_views, transfer_prefixes
 from .reranking import standardize
+from .reciprocal_transfer import score_reverse_settings
 from .semantic import read_words
 from .sketch_canvas_fusion import canvas_images
 from .transfer_reconstruction import anchor_errors, gallery_index, image_transfer_variants, nearest_anchors, transfer_coordinates, transferred_ranking
@@ -60,7 +61,7 @@ def arguments():
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--cache", type=Path, default=Path(".cache"))
     parser.add_argument("--splits", nargs="+", choices=SKETCHY_SPLITS, default=SKETCHY_SPLITS)
-    parser.add_argument("--stage", choices=("references", "views", "channels", "image", "prepare", "projector"), default="references")
+    parser.add_argument("--stage", choices=("references", "views", "channels", "image", "reciprocal", "prepare", "projector"), default="references")
     parser.add_argument("--batch-size", type=int, default=48)
     parser.add_argument("--workers", type=int, default=4)
     parser.add_argument("--crop-batch-size", type=int, default=128)
@@ -154,6 +155,12 @@ def score_split(args, split, raw, photos, contours, q_labels, p_labels, sketch_w
     support = nearest_anchors(views.flatten(0, 1), source, 64)
     errors = anchor_errors(source, target)
     print(f"Building the complete CUDA gallery index for {split}", flush=True)
+    if args.stage == "reciprocal":
+        index, smoothing = gallery_index(photos, target, photo_words, return_smoothing=True)
+        torch.cuda.empty_cache()
+        score_reverse_settings(args, split, views, concepts, source, target, errors, support, index, smoothing,
+                               q_labels, p_labels, metadata, write_result)
+        return
     index = gallery_index(photos, target, photo_words)
     torch.cuda.synchronize(device)
     torch.cuda.empty_cache()
@@ -206,7 +213,7 @@ def run(args):
     git_id = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=root, text=True).strip()
     metadata = {"backbone": "OpenAI CLIP ViT-B/32", "checkpoint_sha256": digest, "gpu": torch.cuda.get_device_name(),
                 "torch": str(torch.__version__), "revision": git_id, "exploratory_unseen": True,
-                "external_vocabulary": len(terms), "study": "multiview-anchor-transfer"}
+                "external_vocabulary": len(terms), "study": "reciprocal-anchor-transfer" if args.stage == "reciprocal" else "multiview-anchor-transfer"}
     for split in args.splits:
         q_ids, q_labels = queries[split]
         p_ids, p_labels = photos[split]
@@ -215,7 +222,7 @@ def run(args):
             ink = F.normalize(extras[q_ids, :1].to(device).float(), dim=-1)
             raw = torch.cat((ink, raw), dim=1)
             del ink
-        if args.stage in ("views", "channels"):
+        if args.stage in ("views", "channels", "reciprocal"):
             raw = torch.cat((raw, F.normalize(extras[q_ids, 1:].to(device).float(), dim=-1)), dim=1)
         score_split(args, split, raw, all_p[p_ids].to(device), contours[p_ids].to(device), q_labels, p_labels,
                     sketch_words, photo_words, transform, metadata)

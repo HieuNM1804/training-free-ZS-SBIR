@@ -65,7 +65,7 @@ def anchor_errors(source, target, count=16, ridge=0.1):
     return errors / errors.square().sum(dim=1).mean().sqrt().clamp_min(1e-8)
 
 
-def gallery_index(photos, target, photo_words):
+def gallery_index(photos, target, photo_words, *, return_smoothing=False):
     vocabulary = gallery_word_codes(photos, photo_words)
     if photos.is_cuda:
         vocabulary = vocabulary.half().float()
@@ -76,7 +76,8 @@ def gallery_index(photos, target, photo_words):
     smooth = gallery_walk(transition, isolated, target, 0.8, 4)
     visual_bank, *smooth_edges = jaccard_graph(smooth, 192)
     edges = (smooth_edges, word_edges, rgb_edges)
-    return smooth, vocabulary, (visual_bank, word_bank), pack_affinity(len(photos), edges), column_stochastic(len(photos), edges)
+    index = smooth, vocabulary, (visual_bank, word_bank), pack_affinity(len(photos), edges), column_stochastic(len(photos), edges)
+    return (index, (transition, isolated)) if return_smoothing else index
 
 
 def transferred_ranking(mapped, gallery, lexical, banks, graph, walk, score_batch):
