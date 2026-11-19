@@ -7,6 +7,7 @@ from torch.nn import functional as F
 from tqdm.auto import tqdm
 
 from .dominant_sets import dominant_gallery, dominant_support
+from .foreground_fusion import foreground_fusion_settings
 from .gallery_diffusion import full_gallery_inputs, regional_cosines
 from .isoclip import contextual_scores, local_feedback, projected_feedback
 from .mta import sketch_view_modes
@@ -98,7 +99,7 @@ def language_likelihood(heads, query_codes, gallery_codes, vocabulary_size, scor
 
 def head_selection_settings(
     queries, photos, contours, sketch_words, photo_words, maps, sketch_views, logit_scale,
-    sketch_regions, photo_regions, score_batch, *, regional_views=None,
+    sketch_regions, photo_regions, score_batch, *, regional_views=None, foreground_view=None,
 ):
     dtype = torch.float16 if photos.is_cuda else torch.float32
     transform = maps[(150, 50)]
@@ -126,6 +127,14 @@ def head_selection_settings(
     cds_prior = joint + 0.25 * standardize((representative.to(dtype) @ kernel.T).float())
     del affinity, support, kernel, joint, sources, original
     yield "head-cds", partial(density_rows, cds_prior, cds_prefix, score_batch, 0.8)
+
+    if foreground_view is not None:
+        del regional, cds_prior, cds_prefix, lexical
+        yield from foreground_fusion_settings(
+            mode, foreground_view, photos, contours, sketch_words, photo_words, transform, gallery, words,
+            visual, context, mta_prior, banks, graph, score_batch,
+        )
+        return
 
     shape_query, shape_gallery = local_feedback(queries, photos, contours)
     shape = shape_query @ shape_gallery.T

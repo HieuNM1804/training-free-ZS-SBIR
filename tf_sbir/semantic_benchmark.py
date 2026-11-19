@@ -64,6 +64,7 @@ DENSE_STUDIES = {
     "dense-transport": dense_transport_settings,
     "tokencut-transport": tokencut_transport_settings,
 }
+HEAD_STUDIES = ("head-selection", "view-hypotheses", "foreground-fusion")
 SCORE_STUDIES = {
     "gallery-diffusion": gallery_diffusion_settings,
     "two-stage-transport": two_stage_settings,
@@ -91,6 +92,7 @@ SCORE_STUDIES = {
     "structured-transport": structured_transport_settings,
     "head-selection": head_selection_settings,
     "view-hypotheses": head_selection_settings,
+    "foreground-fusion": head_selection_settings,
     "lame-relevance": relevance_settings,
 }
 
@@ -136,7 +138,7 @@ def run(args):
     sketch_text, photo_text = [view.to(device) for view in load_words(args, words)]
     gem_regions = (
         load_gem_regions(args, query_paths, photo_paths, all_q, all_p, sketch_text, photo_text)
-        if args.study in ("gem-regions", "dominant-sets", "structured-transport", "head-selection", "view-hypotheses") else None
+        if args.study in ("gem-regions", "dominant-sets", "structured-transport", *HEAD_STUDIES) else None
     )
     centers = (
         load_gem_regions(args, query_paths, photo_paths, all_q, all_p, sketch_text, photo_text, centers=True)
@@ -144,9 +146,9 @@ def run(args):
     )
     augmentations = (
         load_augmentations(args, query_paths)
-        if args.study in ("mta", "iso-mta", "dominant-sets", "structured-transport", "head-selection", "view-hypotheses") else None
+        if args.study in ("mta", "iso-mta", "dominant-sets", "structured-transport", *HEAD_STUDIES) else None
     )
-    regional_sketches = load_regional_sketches(args, query_paths) if args.study == "view-hypotheses" else None
+    regional_sketches = load_regional_sketches(args, query_paths) if args.study in ("view-hypotheses", "foreground-fusion") else None
     needs_crops = args.study in CROP_STUDIES or args.study in ("two-stage-transport", "adaptive-fusion")
     photo_views = load_augmentations(args, photo_paths, views=9, mode="photo") if needs_crops else None
     needs_dense = args.study in (*DENSE_STUDIES, "multiscale", "isolated-regions", "union-density")
@@ -157,7 +159,7 @@ def run(args):
     iso_studies = (
         "isoclip-transport", "iso-paired", "iso-context", "union-density", "union-prefix", "union-fusion",
         "lame-relevance", "signed-feedback", "finch-prior", "finch-prototype", "finch-cache", "iso-mta", "gem-regions",
-        "dominant-sets", "structured-transport", "head-selection", "view-hypotheses",
+        "dominant-sets", "structured-transport", *HEAD_STUDIES,
     )
     iso_maps = isoclip_maps(args, device, paired=args.study == "iso-paired") if args.study in iso_studies else None
     args.output.mkdir(parents=True, exist_ok=True)
@@ -192,11 +194,13 @@ def run(args):
                 extra_inputs = (iso_maps, rendered[p_ids].to(device), isolated[p_ids])
             elif args.study == "iso-mta":
                 extra_inputs = (iso_maps, augmentations["features"][q_ids].to(device), augmentations["logit_scale"])
-            elif args.study in ("dominant-sets", "head-selection", "view-hypotheses"):
+            elif args.study in ("dominant-sets", *HEAD_STUDIES):
                 extra_inputs = (iso_maps, augmentations["features"][q_ids].to(device), augmentations["logit_scale"],
                                 gem_regions[0][q_ids], gem_regions[1][p_ids])
-                if regional_sketches is not None:
+                if args.study == "view-hypotheses":
                     extra_options["regional_views"] = regional_sketches["features"][q_ids].to(device)
+                elif args.study == "foreground-fusion":
+                    extra_options["foreground_view"] = regional_sketches["features"][q_ids, 0].to(device)
             elif args.study == "structured-transport":
                 extra_inputs = (iso_maps, augmentations["features"][q_ids].to(device), augmentations["logit_scale"],
                                 gem_regions[0][q_ids], gem_regions[1][p_ids], centers[0][q_ids], centers[1][p_ids])
