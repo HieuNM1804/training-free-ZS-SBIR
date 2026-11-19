@@ -16,6 +16,7 @@ from .cluster_mine import cluster_mine_settings
 from .cluster_prior import cluster_cache_settings, cluster_prior_settings, cluster_prototype_settings
 from .compact_retrieval import compact_retrieval_settings
 from .contour_graph_index import contour_graph_index_settings
+from .paired_contour_diffusion import paired_contour_diffusion_settings
 from .contour_query_expansion import contour_expansion_settings
 from .contextual_rank import contextual_rank_settings
 from .contour_render import load_xdog, xdog_transport_settings
@@ -69,7 +70,10 @@ DENSE_STUDIES = {
     "tokencut-transport": tokencut_transport_settings,
 }
 HEAD_STUDIES = ("head-selection", "view-hypotheses", "foreground-fusion", "gaussian-verification")
-INK_STUDIES = ("compact-retrieval", "contour-query-expansion", "contour-query-expansion-sweep", "contour-graph-index")
+INK_STUDIES = (
+    "compact-retrieval", "contour-query-expansion", "contour-query-expansion-sweep", "contour-graph-index",
+    "paired-contour-diffusion",
+)
 SCORE_STUDIES = {
     "gallery-diffusion": gallery_diffusion_settings,
     "two-stage-transport": two_stage_settings,
@@ -103,6 +107,7 @@ SCORE_STUDIES = {
     "contour-query-expansion": contour_expansion_settings,
     "contour-query-expansion-sweep": partial(contour_expansion_settings, sweep=True),
     "contour-graph-index": contour_graph_index_settings,
+    "paired-contour-diffusion": paired_contour_diffusion_settings,
     "lame-relevance": relevance_settings,
 }
 

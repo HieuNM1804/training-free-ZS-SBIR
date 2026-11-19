@@ -23,6 +23,7 @@ from tf_sbir.dense_views import tokencut_mask
 from tf_sbir.dominant_sets import constrained_membership
 from tf_sbir.gallery_diffusion import mutual_transition, regional_cosines, solve_diffusion
 from tf_sbir.gaussian_verification import diagonal_log_likelihood, evidence_rank_fusion, proposal_evidence
+from tf_sbir.global_methods import centered, prepare_methods
 from tf_sbir.head_selection import rank_biased_overlap
 from tf_sbir.isoclip import output_space_maps
 from tf_sbir.isolated_regions import isolated_views, token_boxes
@@ -30,6 +31,7 @@ from tf_sbir.manifold import build_graph, fused_features, propagate_scores
 from tf_sbir.manifold_benchmark import covariance_roots
 from tf_sbir.mta import normalized_crops, pixel_lookup, robust_modes
 from tf_sbir.multiscale import merge_tile_patches, split_tiles
+from tf_sbir.paired_contour_diffusion import apply_offset, contour_support
 from tf_sbir.relevance import refine_relevance
 from tf_sbir.score_calibration import dynamic_activation, normalized_score_rows, sinkhorn_target_hubness
 from tf_sbir.semantic import gallery_memory, guided_term_scores, neighborhood_term_posteriors, top_codes
@@ -41,6 +43,21 @@ from tf_sbir.view_hypotheses import expected_utility
 
 
 class GalleryManifoldTests(unittest.TestCase):
+    def test_paired_contour_fields_match_raw_calibration_and_keep_query_support_independent(self):
+        gallery = F.normalize(torch.tensor([[1., .5], [-1., 1.], [-1., -2.], [2., -1.]]), dim=-1)
+        outlines = F.normalize(torch.tensor([[[1., 0.]], [[0., 1.]], [[-1., 0.]], [[0., -1.]]]), dim=-1)
+        sketches = F.normalize(torch.tensor([[1., .2], [-1., -.1]]), dim=-1)
+        expected, photos = prepare_methods(sketches, gallery, outlines, ("local_residual",))["local_residual"]
+        contours = outlines.squeeze(1)
+        mean = contours.mean(dim=0)
+        queries, aligned = centered(sketches, mean), centered(contours, mean)
+        support = contour_support(queries, aligned)
+        actual = apply_offset(queries, photos - aligned, support)
+        torch.testing.assert_close(actual, expected)
+        single = contour_support(queries[1:], aligned)
+        torch.testing.assert_close(actual[1:], apply_offset(queries[1:], photos - aligned, single))
+        torch.testing.assert_close(queries, apply_offset(queries, torch.zeros_like(photos), support))
+
     def test_gallery_graph_index_averages_outgoing_neighbors_and_preserves_isolates(self):
         features = torch.tensor([[1., 0.], [0., 1.], [-1., 0.], [.6, .8]])
         edges = ((torch.tensor([0, 0, 1, 2]), torch.tensor([1, 2, 0, 0]), torch.tensor([1., 3., 1., 3.])),)
