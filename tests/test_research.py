@@ -14,6 +14,7 @@ from tf_sbir.bimodal_graph import bimodal_transition
 from tf_sbir.cluster_mine import majority_concepts
 from tf_sbir.cluster_prior import cache_votes, cluster_first_rows, cluster_mass, first_neighbor_groups
 from tf_sbir.contextual_rank import column_stochastic, jaccard_seed, personalized_walk
+from tf_sbir.contour_query_expansion import gallery_word_codes, verified_feedback
 from tf_sbir.contour_render import xdog
 from tf_sbir.coregistration import leading_basis
 from tf_sbir.data import normal_transform
@@ -39,6 +40,17 @@ from tf_sbir.view_hypotheses import expected_utility
 
 
 class GalleryManifoldTests(unittest.TestCase):
+    def test_contour_expansion_keeps_gallery_codes_and_independent_support(self):
+        gallery = F.normalize(torch.tensor([[.6, .4], [-.4, .6], [.9, -.2], [-.2, -.4]]), dim=-1)
+        words = F.normalize(torch.tensor([[-.2, .7], [.9, .2], [.1, -.5]]), dim=-1)
+        torch.testing.assert_close(gallery_word_codes(gallery, words), gallery_memory(gallery, words).gallery_words)
+
+        queries = gallery[[0, 1]]
+        selected = torch.tensor([[2, 3], [0, 3]])
+        expanded = verified_feedback(queries, gallery, selected, 2)
+        torch.testing.assert_close(expanded[1:], verified_feedback(queries[1:], gallery, selected[1:], 1))
+        torch.testing.assert_close(expanded[0:1], verified_feedback(queries[0:1], gallery, selected[0:1], 1))
+
     def test_verification_likelihood_is_gaussian_and_query_independent(self):
         observations = torch.tensor([[[.1, .2], [1.2, -.3]], [[.3, 1.0], [-.5, .1]]])
         means = torch.tensor([[[.2, .4], [.8, -.1]], [[-.1, .4], [.6, 1.2]]])

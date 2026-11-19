@@ -14,6 +14,7 @@ from .bimodal_graph import bimodal_settings
 from .cluster_mine import cluster_mine_settings
 from .cluster_prior import cluster_cache_settings, cluster_prior_settings, cluster_prototype_settings
 from .compact_retrieval import compact_retrieval_settings
+from .contour_query_expansion import contour_expansion_settings
 from .contextual_rank import contextual_rank_settings
 from .contour_render import load_xdog, xdog_transport_settings
 from .coregistration import coregistration_settings
@@ -66,6 +67,7 @@ DENSE_STUDIES = {
     "tokencut-transport": tokencut_transport_settings,
 }
 HEAD_STUDIES = ("head-selection", "view-hypotheses", "foreground-fusion", "gaussian-verification")
+INK_STUDIES = ("compact-retrieval", "contour-query-expansion")
 SCORE_STUDIES = {
     "gallery-diffusion": gallery_diffusion_settings,
     "two-stage-transport": two_stage_settings,
@@ -96,6 +98,7 @@ SCORE_STUDIES = {
     "foreground-fusion": head_selection_settings,
     "gaussian-verification": head_selection_settings,
     "compact-retrieval": compact_retrieval_settings,
+    "contour-query-expansion": contour_expansion_settings,
     "lame-relevance": relevance_settings,
 }
 
@@ -153,7 +156,7 @@ def run(args):
     )
     regional_sketches = (
         load_regional_sketches(args, query_paths)
-        if args.study in ("view-hypotheses", "foreground-fusion", "gaussian-verification", "compact-retrieval") else None
+        if args.study in ("view-hypotheses", "foreground-fusion", "gaussian-verification", *INK_STUDIES) else None
     )
     needs_crops = args.study in CROP_STUDIES or args.study in ("two-stage-transport", "adaptive-fusion")
     photo_views = load_augmentations(args, photo_paths, views=9, mode="photo") if needs_crops else None
@@ -165,7 +168,7 @@ def run(args):
     iso_studies = (
         "isoclip-transport", "iso-paired", "iso-context", "union-density", "union-prefix", "union-fusion",
         "lame-relevance", "signed-feedback", "finch-prior", "finch-prototype", "finch-cache", "iso-mta", "gem-regions",
-        "dominant-sets", "structured-transport", "compact-retrieval", *HEAD_STUDIES,
+        "dominant-sets", "structured-transport", *INK_STUDIES, *HEAD_STUDIES,
     )
     iso_maps = isoclip_maps(args, device, paired=args.study == "iso-paired") if args.study in iso_studies else None
     args.output.mkdir(parents=True, exist_ok=True)
@@ -198,7 +201,7 @@ def run(args):
             extra_options = {}
             if args.study == "union-density":
                 extra_inputs = (iso_maps, rendered[p_ids].to(device), isolated[p_ids])
-            elif args.study == "compact-retrieval":
+            elif args.study in INK_STUDIES:
                 extra_inputs = (iso_maps, regional_sketches["features"][q_ids, 0].to(device))
             elif args.study == "iso-mta":
                 extra_inputs = (iso_maps, augmentations["features"][q_ids].to(device), augmentations["logit_scale"])
