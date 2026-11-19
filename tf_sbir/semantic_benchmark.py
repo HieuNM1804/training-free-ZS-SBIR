@@ -72,7 +72,7 @@ DENSE_STUDIES = {
 HEAD_STUDIES = ("head-selection", "view-hypotheses", "foreground-fusion", "gaussian-verification")
 INK_STUDIES = (
     "compact-retrieval", "contour-query-expansion", "contour-query-expansion-sweep", "contour-graph-index",
-    "sketch-view-graph-fusion",
+    "sketch-view-graph-fusion", "sketch-view-graph-fusion-sweep",
 )
 SCORE_STUDIES = {
     "gallery-diffusion": gallery_diffusion_settings,
@@ -108,6 +108,7 @@ SCORE_STUDIES = {
     "contour-query-expansion-sweep": partial(contour_expansion_settings, sweep=True),
     "contour-graph-index": contour_graph_index_settings,
     "sketch-view-graph-fusion": sketch_view_graph_fusion_settings,
+    "sketch-view-graph-fusion-sweep": partial(sketch_view_graph_fusion_settings, sweep=True),
     "lame-relevance": relevance_settings,
 }
 

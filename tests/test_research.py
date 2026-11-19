@@ -35,13 +35,29 @@ from tf_sbir.score_calibration import dynamic_activation, normalized_score_rows,
 from tf_sbir.semantic import gallery_memory, guided_term_scores, neighborhood_term_posteriors, top_codes
 from tf_sbir.semantic_transport import conditional_similarity, dustbin_plan, maximal_marginal_relevance, partial_similarity
 from tf_sbir.signed_feedback import feedback_vectors
-from tf_sbir.sketch_view_graph_fusion import source_votes
+from tf_sbir.sketch_view_graph_fusion import separate_view_prefixes, source_votes
 from tf_sbir.structured_transport import matching_terms, part_distances
-from tf_sbir.union_density import candidate_union, density_rrf_rows, grow_density, pack_affinity
+from tf_sbir.union_density import candidate_union, density_prefixes, density_rrf_rows, grow_density, pack_affinity
 from tf_sbir.view_hypotheses import expected_utility
 
 
 class GalleryManifoldTests(unittest.TestCase):
+    def test_mixed_candidate_scope_with_early_votes_matches_combined_ranking(self):
+        count = 1300
+        indexes = torch.arange(count)
+        neighbors = torch.stack(((indexes + 1) % count, (indexes - 1) % count), dim=1)
+        banks = (neighbors, neighbors)
+        graph = (neighbors, torch.ones_like(neighbors, dtype=torch.float32))
+        crop = indexes.float().unsqueeze(0)
+        full = crop.roll(50, dims=1)
+        lexical = (crop.flip(1), full.flip(1))
+        combined = ((crop + full) * .5, (lexical[0] + 2 * lexical[1]) / 3)
+        initial = combined[0] + combined[1]
+        expected = density_prefixes(*combined, combined, initial, banks, graph, 1280, 512, 256, 64.)
+        actual = separate_view_prefixes((crop, full), lexical, initial, banks, graph, .5, .5, True, 512,
+                                        combined=combined, candidate_scope="combined", late_fraction=0.)
+        torch.testing.assert_close(actual, expected)
+
     def test_sketch_view_graph_uses_jaccard_per_view_before_fusion(self):
         neighbors = torch.tensor([[1, 2], [0, 2], [0, 1], [0, 2]])
         crop = torch.tensor([[4., 3., 2., 1.], [1., 2., 3., 4.]])

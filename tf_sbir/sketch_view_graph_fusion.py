@@ -27,23 +27,70 @@ def source_votes(crop, full, bank, full_weight, adaptive):
     return crop_votes.lerp(full_votes, full_weight)
 
 
-def separate_view_prefixes(visual, lexical, prior, banks, graph, visual_weight, lexical_weight, adaptive, score_batch):
+def separate_view_prefixes(
+    visual, lexical, prior, banks, graph, visual_weight, lexical_weight, adaptive, score_batch,
+    *, combined=None, candidate_scope="separate", late_fraction=1., anchor=64.,
+):
     prefixes = []
-    batches = (scores.split(min(score_batch, 512)) for scores in (*visual, *lexical, prior))
-    for crop, full, cropped_lex, full_lex, ties in zip(*batches, strict=True):
+    extra = () if combined is None else combined
+    batches = (scores.split(min(score_batch, 512)) for scores in (*visual, *lexical, prior, *extra))
+    for crop, full, cropped_lex, full_lex, ties, *mixed in zip(*batches, strict=True):
         streams = [crop, cropped_lex]
         if visual_weight:
             streams.append(full)
         if lexical_weight:
             streams.append(full_lex)
+        if candidate_scope == "combined":
+            streams = mixed
+        elif candidate_scope == "union":
+            streams.extend(mixed)
         candidates, valid = candidate_union(streams, 1280)
-        appearance = source_votes(crop, full, banks[0], visual_weight, adaptive)
-        language = source_votes(cropped_lex, full_lex, banks[1], lexical_weight, adaptive)
-        prefixes.append(grow_density((appearance + language) * 32, ties, candidates, valid, graph, 256))
+        if late_fraction > 0:
+            appearance = source_votes(crop, full, banks[0], visual_weight, adaptive)
+            language = source_votes(cropped_lex, full_lex, banks[1], lexical_weight, adaptive)
+            votes = appearance + language
+        if late_fraction < 1:
+            early = jaccard_seed(mixed[0], banks[0]) + jaccard_seed(mixed[1], banks[1])
+            votes = early if late_fraction == 0 else early.lerp(votes, late_fraction)
+        prefixes.append(grow_density(votes * (0.5 * anchor), ties, candidates, valid, graph, 256))
     return torch.cat(prefixes)
 
 
-def sketch_view_graph_fusion_settings(queries, photos, contours, sketch_words, photo_words, maps, ink, score_batch):
+def sweep_view_prefixes(visual, lexical, visual_standard, lexical_standard, banks, graph, transition, dangling, score_batch):
+    settings = (
+        ("late-on-early", "combined", 1., 64.),
+        ("early-on-late", "separate", 0., 64.),
+        ("early-on-union", "union", 0., 64.),
+        ("blend-w0.25", "separate", 0.25, 64.),
+        ("blend-w0.5", "separate", 0.5, 64.),
+        ("blend-w0.75", "separate", 0.75, 64.),
+        ("late-a32", "separate", 1., 32.),
+        ("late-a128", "separate", 1., 128.),
+        ("late-a256", "separate", 1., 256.),
+    )
+    appearance = 0.5 * (visual_standard[0] + visual_standard[1])
+    words = 0.5 * (lexical_standard[0] + lexical_standard[1])
+    prior = standardize(appearance) + standardize(words)
+    tail = pagerank_tail(appearance, words, prior, banks, transition, dangling, score_batch)
+    for name, candidates, weight, anchor in settings:
+        prefix = separate_view_prefixes(
+            visual, lexical, prior, banks, graph, 0.5, 0.5, True, score_batch,
+            combined=(appearance, words), candidate_scope=candidates, late_fraction=weight, anchor=anchor,
+        )
+        yield f"sketch-views-sweep-{name}", partial(density_rows, tail, prefix, score_batch, None)
+    del appearance, words, prior, tail
+
+    for visual_weight, lexical_weight in ((0.25, 0.25), (0.75, 0.75), (0.65, 0.35), (0.35, 0.65)):
+        appearance = visual_standard[0].lerp(visual_standard[1], visual_weight)
+        words = lexical_standard[0].lerp(lexical_standard[1], lexical_weight)
+        prior = standardize(appearance) + standardize(words)
+        prefix = separate_view_prefixes(visual, lexical, prior, banks, graph, visual_weight, lexical_weight, True, score_batch)
+        tail = pagerank_tail(appearance, words, prior, banks, transition, dangling, score_batch)
+        name = f"sketch-views-sweep-visual{visual_weight:g}-lexical{lexical_weight:g}"
+        yield name, partial(density_rows, tail, prefix, score_batch, None)
+
+
+def sketch_view_graph_fusion_settings(queries, photos, contours, sketch_words, photo_words, maps, ink, score_batch, *, sweep=False):
     ink = F.normalize(ink.float(), dim=-1)
     transform = maps[(150, 50)]
     views = tuple(F.normalize(vectors @ transform, dim=-1) for vectors in (ink, queries))
@@ -79,10 +126,23 @@ def sketch_view_graph_fusion_settings(queries, photos, contours, sketch_words, p
         tail = pagerank_tail(appearance, words, prior, banks, transition, dangling, score_batch)
         return partial(density_rows, tail, prefix, score_batch, None)
 
-    yield "sketch-views-crop-reference", rows(visual[0], lexical[0])
-    yield "sketch-views-full-control", rows(visual[1], lexical[1])
+    if not sweep:
+        yield "sketch-views-crop-reference", rows(visual[0], lexical[0])
+        yield "sketch-views-full-control", rows(visual[1], lexical[1])
     visual_standard = tuple(standardize(scores) for scores in visual)
     lexical_standard = tuple(standardize(scores) for scores in lexical)
+    if sweep:
+        appearance = visual_standard[0].lerp(visual_standard[1], 0.5)
+        words = lexical_standard[0].lerp(lexical_standard[1], 0.5)
+        yield "sketch-views-sweep-early-reference", rows(appearance, words)
+        appearance = 0.5 * (visual_standard[0] + visual_standard[1])
+        words = 0.5 * (lexical_standard[0] + lexical_standard[1])
+        yield "sketch-views-sweep-late-reference", rows(appearance, words, 0.5, 0.5, separate=True, adaptive=True)
+        del appearance, words
+        yield from sweep_view_prefixes(visual, lexical, visual_standard, lexical_standard, banks, graph,
+                                       transition, dangling, score_batch)
+        return
+
     for weight in (0.25, 0.5):
         appearance = visual_standard[0].lerp(visual_standard[1], weight)
         words = lexical_standard[0].lerp(lexical_standard[1], weight)
