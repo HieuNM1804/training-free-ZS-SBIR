@@ -20,6 +20,7 @@ from .dense_views import dense_transport_settings, load_clearclip_gallery, token
 from .encoding import load_global_inputs
 from .foundation import load_words
 from .gallery_diffusion import gallery_diffusion_settings, two_stage_settings
+from .isoclip import iso_transport_settings, isoclip_maps
 from .manifold import fused_features
 from .manifold_benchmark import dot_rows
 from .metrics import evaluate_rows
@@ -63,6 +64,7 @@ SCORE_STUDIES = {
     "multiscale": multiscale_settings,
     "xdog-transport": xdog_transport_settings,
     "anchor-context": anchor_context_settings,
+    "isoclip-transport": iso_transport_settings,
 }
 
 
@@ -111,6 +113,7 @@ def run(args):
     dense_views = load_clearclip_gallery(args, photo_paths) if args.study in (*DENSE_STUDIES, "multiscale") else None
     multiscale = load_multiscale_patches(args, query_paths, photo_paths) if args.study == "multiscale" else None
     rendered = load_xdog(args, photo_paths) if args.study == "xdog-transport" else None
+    iso_maps = isoclip_maps(args, device) if args.study == "isoclip-transport" else None
     args.output.mkdir(parents=True, exist_ok=True)
     for split in splits:
         q_ids, q_labels = queries[split]
@@ -142,6 +145,8 @@ def run(args):
                 extra_inputs = (dense_views[p_ids], (multiscale[0][q_ids], multiscale[1][p_ids]))
             elif rendered is not None:
                 extra_inputs = (rendered[p_ids].to(device),)
+            elif iso_maps is not None:
+                extra_inputs = (iso_maps,)
             settings = SCORE_STUDIES[args.study](
                 q, p, contours[p_ids].to(device), sketch_text, photo_text, *extra_inputs, args.score_batch,
             )

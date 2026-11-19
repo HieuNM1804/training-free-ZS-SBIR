@@ -15,6 +15,7 @@ from .data import SKETCHY_SPLITS, UNSEEN_CLASSES
 from .encoding import load_global_inputs
 from .gallery_context import contextual_graph, spectral_coordinates, spectral_query
 from .global_methods import centered, prepare_methods
+from .isoclip import iso_image_settings, isoclip_maps
 from .layer_views import LAYERS, load_layer_inputs
 from .manifold import (
     GalleryGraph, add_gallery_feedback, build_graph, fused_features, iterative_feedback, nonlinear_walk_rows,
@@ -29,7 +30,7 @@ def arguments():
     parser.add_argument("--cache", type=Path, default=Path(".cache"))
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--clip-checkpoint")
-    parser.add_argument("--study", choices=("ablation", "diffusion", "scales", "context", "layers", "asif", "coral", "xdog"), default="ablation")
+    parser.add_argument("--study", choices=("ablation", "diffusion", "scales", "context", "layers", "asif", "coral", "xdog", "isoclip"), default="ablation")
     parser.add_argument("--batch-size", type=int, default=64)
     parser.add_argument("--workers", type=int, default=2)
     parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
@@ -208,6 +209,7 @@ def run(args):
     all_q, all_p, proxies = load_global_inputs(args, query_paths, photo_paths, True)
     layer_inputs = load_layer_inputs(args, query_paths, photo_paths) if args.study == "layers" else None
     rendered = load_xdog(args, photo_paths) if args.study == "xdog" else None
+    iso_maps = isoclip_maps(args, device) if args.study == "isoclip" else None
     args.output.mkdir(parents=True, exist_ok=True)
     for split in splits:
         ids_q, labels_q = queries[split]
@@ -218,6 +220,8 @@ def run(args):
         else:
             if rendered is not None:
                 pairs = xdog_image_settings(*current, rendered[ids_p].to(device))
+            elif iso_maps is not None:
+                pairs = iso_image_settings(*current, iso_maps)
             elif layer_inputs is None:
                 feature_settings = {
                     "ablation": settings, "scales": scale_settings, "context": context_settings,

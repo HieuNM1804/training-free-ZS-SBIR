@@ -17,6 +17,7 @@ from tf_sbir.coregistration import leading_basis
 from tf_sbir.data import normal_transform
 from tf_sbir.dense_views import tokencut_mask
 from tf_sbir.gallery_diffusion import mutual_transition, regional_cosines, solve_diffusion
+from tf_sbir.isoclip import output_space_maps
 from tf_sbir.manifold import build_graph, fused_features, propagate_scores
 from tf_sbir.manifold_benchmark import covariance_roots
 from tf_sbir.mta import normalized_crops, pixel_lookup, robust_modes
@@ -130,6 +131,17 @@ class PublicVocabularyTests(unittest.TestCase):
 
 
 class InferenceCalibrationTests(unittest.TestCase):
+    def test_isoclip_output_map_matches_projection_before_clip_head(self):
+        rng = torch.Generator().manual_seed(31)
+        raw = torch.randn(5, 4, generator=rng)
+        visual = torch.randn(4, 3, generator=rng)
+        text = torch.randn(3, 3, generator=rng)
+        vectors, _, _ = torch.linalg.svd(visual @ text.T, full_matrices=False)
+        middle = vectors[:, 1:2]
+        expected = raw @ (middle @ middle.T) @ visual
+        actual = raw @ visual @ output_space_maps(visual, text, ((1, 1),))[(1, 1)]
+        torch.testing.assert_close(actual, expected, rtol=1e-5, atol=1e-5)
+
     def test_anchor_scores_equal_the_negative_direct_kl_divergence(self):
         p = torch.tensor([[.4, .6], [.75, .25]])
         q = torch.tensor([[.3, .7], [.9, .1]])
