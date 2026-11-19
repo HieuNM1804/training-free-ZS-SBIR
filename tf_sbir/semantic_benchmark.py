@@ -37,7 +37,7 @@ from .semantic_transport import (
     conditional_similarity, diversified_transport_settings, partial_transport_settings,
     transport_rows, transport_settings, transport_view_settings,
 )
-from .union_density import density_prefix_settings, density_settings
+from .union_density import density_fusion_settings, density_prefix_settings, density_settings
 
 GALLERY_STUDIES = {
     "agreement": agreement_settings,
@@ -73,6 +73,7 @@ SCORE_STUDIES = {
     "iso-context": iso_context_settings,
     "union-density": density_settings,
     "union-prefix": density_prefix_settings,
+    "union-fusion": density_fusion_settings,
     "lame-relevance": relevance_settings,
 }
 
@@ -124,7 +125,7 @@ def run(args):
     multiscale = load_multiscale_patches(args, query_paths, photo_paths) if args.study == "multiscale" else None
     isolated = load_isolated_regions(args, photo_paths, dense_views) if args.study in ("isolated-regions", "union-density") else None
     rendered = load_xdog(args, photo_paths) if args.study in ("xdog-transport", "union-density") else None
-    iso_studies = ("isoclip-transport", "iso-paired", "iso-context", "union-density", "union-prefix", "lame-relevance")
+    iso_studies = ("isoclip-transport", "iso-paired", "iso-context", "union-density", "union-prefix", "union-fusion", "lame-relevance")
     iso_maps = isoclip_maps(args, device, paired=args.study == "iso-paired") if args.study in iso_studies else None
     args.output.mkdir(parents=True, exist_ok=True)
     for split in splits:

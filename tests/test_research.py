@@ -27,10 +27,19 @@ from tf_sbir.relevance import refine_relevance
 from tf_sbir.score_calibration import dynamic_activation, normalized_score_rows, sinkhorn_target_hubness
 from tf_sbir.semantic import gallery_memory, guided_term_scores, neighborhood_term_posteriors, top_codes
 from tf_sbir.semantic_transport import conditional_similarity, dustbin_plan, maximal_marginal_relevance, partial_similarity
-from tf_sbir.union_density import candidate_union, grow_density, pack_affinity
+from tf_sbir.union_density import candidate_union, density_rrf_rows, grow_density, pack_affinity
 
 
 class GalleryManifoldTests(unittest.TestCase):
+    def test_density_rrf_keeps_unselected_photos_in_initial_order(self):
+        initial = 1 / (60 + torch.arange(1, 17101, dtype=torch.float32))[None, :]
+        selected = torch.tensor([[1, 3, 0]])
+        result = next(density_rrf_rows(initial, selected, 1, 1.))
+        evaluated = ((result + 1) * .5).clamp(min=torch.finfo(result.dtype).eps, max=1.)
+        order = evaluated.argsort(descending=True)
+        self.assertEqual(order[:4].tolist(), [1, 0, 3, 2])
+        self.assertTrue(torch.equal(order[4:], torch.arange(4, 17100)))
+
     def test_binary_relevance_matches_lame_softmax_and_keeps_queries_independent(self):
         graph = torch.tensor([[0., .55, 0.], [.55, 0., .3], [0., .3, 0.]])
         prior = torch.tensor([[-.5, .6, -.2], [.8, -.2, .9]])

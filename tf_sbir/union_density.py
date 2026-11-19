@@ -7,6 +7,7 @@ from torch.nn import functional as F
 
 from .contextual_rank import jaccard_graph, jaccard_seed
 from .gallery_diffusion import diffusion_blocks, full_gallery_inputs, mutual_transition, regional_cosines
+from .global_methods import reciprocal_ranks
 from .isoclip import contextual_scores, local_feedback, projected_feedback
 from .reranking import standardize
 
@@ -120,7 +121,7 @@ def density_settings(queries, photos, contours, sketch_words, photo_words, maps,
             yield f"union-density-{group}-{tag}", partial(density_rows, initial, selected, score_batch, weight)
 
 
-def density_prefix_settings(queries, photos, contours, sketch_words, photo_words, maps, score_batch):
+def paired_density_inputs(queries, photos, contours, sketch_words, photo_words, maps, score_batch):
     query, iso_gallery = projected_feedback(queries, photos, contours, maps[(150, 50)])
     iso = query @ iso_gallery.T
     base, region, _, _, views = full_gallery_inputs(queries, photos, contours, sketch_words, photo_words, score_batch)
@@ -129,7 +130,34 @@ def density_prefix_settings(queries, photos, contours, sketch_words, photo_words
     initial = standardize(iso) + standardize(context)
     del base, region, views
     banks, graph = gallery_density_graph(photos, iso_gallery, words)
+    return iso, context, initial, banks, graph
+
+
+def density_prefix_settings(queries, photos, contours, sketch_words, photo_words, maps, score_batch):
+    iso, context, initial, banks, graph = paired_density_inputs(queries, photos, contours, sketch_words, photo_words, maps, score_batch)
     for anchor, lengths in ((1., (64, 100, 128, 192, 256, 320, 384)), (4., (128, 256)), (16., (128, 256))):
         prefix = density_prefixes(iso, context, (iso, context), initial, banks, graph, 1280, score_batch, max(lengths), anchor)
         for length in lengths:
             yield f"union-prefix-a{anchor:g}-k{length}", partial(density_rows, initial, prefix[:, :length], score_batch, None)
+
+
+def density_rrf_rows(initial_ranks, selected, score_batch, weight):
+    positions = torch.arange(1, selected.size(1) + 1, device=selected.device, dtype=initial_ranks.dtype)
+    bonus = weight / (60 + positions)
+    for evidence, prefix in zip(initial_ranks.split(score_batch), selected.split(score_batch), strict=True):
+        fused = evidence.scatter_add(1, prefix, bonus.expand_as(prefix))
+        # Encode the fused order as bounded scores so KD-SBIR's score conversion
+        # can distinguish adjacent ranks even at the end of a large gallery.
+        order = fused.argsort(dim=1, descending=True, stable=True)
+        values = torch.linspace(0.9, -0.9, evidence.size(1), device=evidence.device, dtype=evidence.dtype)
+        yield from torch.empty_like(evidence).scatter_(1, order, values.expand_as(evidence)).cpu()
+
+
+def density_fusion_settings(queries, photos, contours, sketch_words, photo_words, maps, score_batch):
+    iso, context, initial, banks, graph = paired_density_inputs(queries, photos, contours, sketch_words, photo_words, maps, score_batch)
+    initial_ranks = torch.cat([reciprocal_ranks(batch) for batch in initial.split(score_batch)])
+    for anchor in (1., 16., 64.):
+        prefix = density_prefixes(iso, context, (iso, context), initial, banks, graph, 1280, score_batch, 256, anchor)
+        for weight in (0.5, 1., 2.):
+            yield f"union-fusion-a{anchor:g}-rrf{weight:g}", partial(density_rrf_rows, initial_ranks, prefix, score_batch, weight)
+        yield f"union-fusion-a{anchor:g}-linear0.8", partial(density_rows, initial, prefix, score_batch, 0.8)
