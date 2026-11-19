@@ -12,6 +12,7 @@ from .anchor_context import anchor_context_settings
 from .benchmark import merge_inputs
 from .bimodal_graph import bimodal_settings
 from .cluster_mine import cluster_mine_settings
+from .cluster_prior import cluster_prior_settings
 from .contextual_rank import contextual_rank_settings
 from .contour_render import load_xdog, xdog_transport_settings
 from .coregistration import coregistration_settings
@@ -76,6 +77,7 @@ SCORE_STUDIES = {
     "union-prefix": density_prefix_settings,
     "union-fusion": density_fusion_settings,
     "signed-feedback": signed_feedback_settings,
+    "finch-prior": cluster_prior_settings,
     "lame-relevance": relevance_settings,
 }
 
@@ -127,7 +129,10 @@ def run(args):
     multiscale = load_multiscale_patches(args, query_paths, photo_paths) if args.study == "multiscale" else None
     isolated = load_isolated_regions(args, photo_paths, dense_views) if args.study in ("isolated-regions", "union-density") else None
     rendered = load_xdog(args, photo_paths) if args.study in ("xdog-transport", "union-density") else None
-    iso_studies = ("isoclip-transport", "iso-paired", "iso-context", "union-density", "union-prefix", "union-fusion", "lame-relevance", "signed-feedback")
+    iso_studies = (
+        "isoclip-transport", "iso-paired", "iso-context", "union-density", "union-prefix", "union-fusion",
+        "lame-relevance", "signed-feedback", "finch-prior",
+    )
     iso_maps = isoclip_maps(args, device, paired=args.study == "iso-paired") if args.study in iso_studies else None
     args.output.mkdir(parents=True, exist_ok=True)
     for split in splits:
