@@ -11,13 +11,14 @@ from torch.nn import functional as F
 from torchmetrics.functional.retrieval import retrieval_average_precision, retrieval_precision
 
 from .benchmark import merge_inputs
+from .capture_query_metrics import evaluate_with_details
 from .data import SKETCHY_SPLITS, UNSEEN_CLASSES, collect_paths
 from .encoding import global_cache_name
-from .metrics import cosine_rows, evaluate_rows
+from .metrics import cosine_rows
 from .transfer_validation import include_candidate, load_query_results, run as validate_classes
 
 
-def verify_reference(root, cache, checkpoint, kd_dir):
+def verify_reference(root, cache, checkpoint, kd_dir, *, full=False):
     config_text = (kd_dir / "src/data_config.py").read_text(encoding="utf-8-sig")
     node = next(n for n in ast.parse(config_text).body if isinstance(n, ast.Assign) and n.targets[0].id == "UNSEEN_CLASSES")
     classes = ast.literal_eval(node.value)
@@ -48,17 +49,34 @@ def verify_reference(root, cache, checkpoint, kd_dir):
         photos, p_index = banks[1]
         ids, labels = q_index[split]
         p_ids, p_labels = p_index[split]
-        selected = []
-        for c in sorted(labels.unique().tolist()):
-            group = (labels == c).nonzero().flatten()
-            selected.extend((int(group[0]), int(group[len(group) // 2]), int(group[-1])))
+        if full:
+            selected = torch.arange(len(ids))
+        else:
+            selected = []
+            for c in sorted(labels.unique().tolist()):
+                group = (labels == c).nonzero().flatten()
+                selected.extend((int(group[0]), int(group[len(group) // 2]), int(group[-1])))
         q, p, labels = sketches[ids[selected]].cuda(), photos[p_ids].cuda(), labels[selected]
+        recorded = {}
+        def recording_metric(fn):
+            arr = []
+            recorded[fn.__name__] = arr
+            def wrapped(*args, **kwargs):
+                value = fn(*args, **kwargs)
+                arr.append(value.detach())
+                return value
+            return wrapped
+        for fn in (retrieval_average_precision, retrieval_precision):
+            ns[fn.__name__] = recording_metric(fn)
         original = ns["_retrieval_metrics"](q, p, labels, p_labels, split)
-        current = evaluate_rows(cosine_rows(q, p, 1), labels, p_labels, split, workers=4)
-        if not all(torch.equal(a, b) for a, b in zip(current[:2], original[:2])) or current[2:] != original[2:]:
+        expected_rows = torch.stack([torch.stack(recorded[fn.__name__]) for fn in (retrieval_average_precision, retrieval_precision)], dim=1)
+        current, actual_rows = evaluate_with_details(cosine_rows(q, p, 1), labels, p_labels, split, f"{split} KD parity", 4)
+        if (not torch.equal(actual_rows, expected_rows) or
+                not all(torch.equal(a, b) for a, b in zip(current[:2], original[:2])) or current[2:] != original[2:]):
             raise ValueError(f"Reference metric parity failed for {split}")
-        data[split] = {"classes": len(classes[split]), "sample_queries": len(q), "full_gallery": len(p),
-                       "bitwise_equal": True, "ordered_paths_sha256": path_hashes}
+        data[split] = {"classes": len(classes[split]), "queries_checked": len(q), "all_queries": len(q) == len(ids),
+                       "full_gallery": len(p), "bitwise_equal": True, "per_query_values_checked": actual_rows.numel(),
+                       "mAP": float(original[0]), "precision": float(original[1]), "ordered_paths_sha256": path_hashes}
     return {"reference_file_sha256": hashlib.sha256(model_file.read_bytes()).hexdigest(), "splits": data}
 
 
@@ -131,7 +149,7 @@ def run(args):
     validation = json.loads(validation_file.read_text())
     common = validation["all_candidates"]["common"]
     evidence["common"] = common
-    evidence["reference_audit"] = verify_reference(args.root, args.cache, args.checkpoint, args.kd)
+    evidence["reference_audit"] = verify_reference(args.root, args.cache, args.checkpoint, args.kd, full=args.full_reference)
     generator = torch.Generator(device="cuda").manual_seed(907)
     for split, scores in results.items():
         best = rankings(scores)
@@ -178,4 +196,5 @@ if __name__ == "__main__":
     for flag in ("root", "cache", "checkpoint", "kd", "output"):
         parser.add_argument("--" + flag, type=Path, required=True)
     parser.add_argument("--studies", type=Path, nargs="+", required=True)
+    parser.add_argument("--full-reference", action="store_true", help="Compare every real sketch's AP and precision to unmodified KD-SBIR.")
     run(parser.parse_args())
