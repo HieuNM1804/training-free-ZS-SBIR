@@ -90,7 +90,7 @@ def sweep_view_prefixes(visual, lexical, visual_standard, lexical_standard, bank
         yield name, partial(density_rows, tail, prefix, score_batch, None)
 
 
-def sketch_view_graph_inputs(queries, photos, contours, sketch_words, photo_words, maps, ink):
+def sketch_view_graph_inputs(queries, photos, contours, sketch_words, photo_words, maps, ink, *, include_index=False):
     ink = F.normalize(ink.float(), dim=-1)
     transform = maps[(150, 50)]
     views = tuple(F.normalize(vectors @ transform, dim=-1) for vectors in (ink, queries))
@@ -112,6 +112,8 @@ def sketch_view_graph_inputs(queries, photos, contours, sketch_words, photo_word
     edges = (smooth_edges, text_edges, rgb_edges)
     banks = iso_bank, lexical_bank
     visual = tuple(iterative_feedback(query, smooth, 16, 2, 2.) @ smooth.T for query in (paired, full))
+    if include_index:
+        return visual, lexical, banks, edges, (smooth, gallery_words)
     return visual, lexical, banks, edges
 
 

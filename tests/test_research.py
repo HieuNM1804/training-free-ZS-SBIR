@@ -36,6 +36,7 @@ from tf_sbir.score_calibration import dynamic_activation, normalized_score_rows,
 from tf_sbir.semantic import gallery_memory, guided_term_scores, neighborhood_term_posteriors, top_codes
 from tf_sbir.semantic_transport import conditional_similarity, dustbin_plan, maximal_marginal_relevance, partial_similarity
 from tf_sbir.signed_feedback import feedback_vectors
+from tf_sbir.sketch_canvas_fusion import canvas_consensus, canvas_images
 from tf_sbir.sketch_view_graph_fusion import separate_view_prefixes, source_votes
 from tf_sbir.structured_transport import matching_terms, part_distances
 from tf_sbir.union_density import candidate_union, density_prefixes, density_rrf_rows, grow_density, pack_affinity
@@ -43,6 +44,21 @@ from tf_sbir.view_hypotheses import expected_utility
 
 
 class GalleryManifoldTests(unittest.TestCase):
+    def test_canvas_transforms_preserve_image_dimensions_and_render_the_mirror(self):
+        ink = Image.new("RGB", (224, 224), "white")
+        ink.paste((0, 0, 0), (20, 30, 80, 120))
+        mid, small, mirror = canvas_images(ink)
+        self.assertEqual([im.size for im in (mid, small, mirror)], [(224, 224)] * 3)
+        self.assertEqual(mid.getpixel((50, 70)), (0, 0, 0))
+        self.assertEqual(small.getpixel((85, 100)), (0, 0, 0))
+        self.assertEqual(mirror.getpixel((224 - 1 - 50, 60)), (0, 0, 0))
+
+    def test_canvas_consensus_reweights_within_each_sketch(self):
+        votes = torch.tensor([[[1., 0.], [0., 3.]], [[0., 0.], [0., 0.]]])
+        expected = torch.tensor([[.25, 2.25], [0., 0.]])
+        torch.testing.assert_close(canvas_consensus(votes), expected)
+        torch.testing.assert_close(canvas_consensus(votes.flip(1)), expected)
+
     def test_view_consistency_weights_are_query_local_and_use_prior_without_votes(self):
         early = torch.tensor([[2.], [4.], [0.]])
         late = torch.tensor([[2.], [2.], [0.]])

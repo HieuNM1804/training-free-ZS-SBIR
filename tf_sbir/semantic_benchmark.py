@@ -17,6 +17,7 @@ from .cluster_prior import cluster_cache_settings, cluster_prior_settings, clust
 from .compact_retrieval import compact_retrieval_settings
 from .contour_graph_index import contour_graph_index_settings
 from .conditional_view_affinity import conditional_view_affinity_settings
+from .sketch_canvas_fusion import load_canvas_sketches, sketch_canvas_fusion_settings
 from .sketch_view_graph_fusion import sketch_view_graph_fusion_settings
 from .contour_query_expansion import contour_expansion_settings
 from .contextual_rank import contextual_rank_settings
@@ -74,6 +75,7 @@ HEAD_STUDIES = ("head-selection", "view-hypotheses", "foreground-fusion", "gauss
 INK_STUDIES = (
     "compact-retrieval", "contour-query-expansion", "contour-query-expansion-sweep", "contour-graph-index",
     "sketch-view-graph-fusion", "sketch-view-graph-fusion-sweep", "conditional-view-affinity",
+    "sketch-canvas-fusion",
 )
 SCORE_STUDIES = {
     "gallery-diffusion": gallery_diffusion_settings,
@@ -111,6 +113,7 @@ SCORE_STUDIES = {
     "sketch-view-graph-fusion": sketch_view_graph_fusion_settings,
     "sketch-view-graph-fusion-sweep": partial(sketch_view_graph_fusion_settings, sweep=True),
     "conditional-view-affinity": conditional_view_affinity_settings,
+    "sketch-canvas-fusion": sketch_canvas_fusion_settings,
     "lame-relevance": relevance_settings,
 }
 
@@ -170,6 +173,7 @@ def run(args):
         load_regional_sketches(args, query_paths)
         if args.study in ("view-hypotheses", "foreground-fusion", "gaussian-verification", *INK_STUDIES) else None
     )
+    canvases = load_canvas_sketches(args, query_paths) if args.study == "sketch-canvas-fusion" else None
     needs_crops = args.study in CROP_STUDIES or args.study in ("two-stage-transport", "adaptive-fusion")
     photo_views = load_augmentations(args, photo_paths, views=9, mode="photo") if needs_crops else None
     needs_dense = args.study in (*DENSE_STUDIES, "multiscale", "isolated-regions", "union-density")
@@ -215,6 +219,8 @@ def run(args):
                 extra_inputs = (iso_maps, rendered[p_ids].to(device), isolated[p_ids])
             elif args.study in INK_STUDIES:
                 extra_inputs = (iso_maps, regional_sketches["features"][q_ids, 0].to(device))
+                if canvases is not None:
+                    extra_inputs += (canvases["features"][q_ids].to(device),)
             elif args.study == "iso-mta":
                 extra_inputs = (iso_maps, augmentations["features"][q_ids].to(device), augmentations["logit_scale"])
             elif args.study in ("dominant-sets", *HEAD_STUDIES):
