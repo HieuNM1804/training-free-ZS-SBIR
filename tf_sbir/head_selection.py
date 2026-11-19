@@ -11,6 +11,7 @@ from .gallery_diffusion import full_gallery_inputs, regional_cosines
 from .isoclip import contextual_scores, local_feedback, projected_feedback
 from .mta import sketch_view_modes
 from .reranking import standardize
+from .semantic import top_codes
 from .union_density import density_blocks, density_prefixes, density_rows, gallery_density_graph
 
 
@@ -49,11 +50,13 @@ def predict_heads(rankings, view_queries, gallery, edge_gallery, lexical, region
     batch = min(score_batch, 160)
     depth = min(256, len(gallery))
     selectors = []
+    ranked_heads = []
     blocks = [density_blocks(initial, prefix, batch, weight) for initial, prefix, weight in rankings]
     refs = (scores.split(batch) for scores in (view_queries, lexical, regional))
     work = zip(*refs, *blocks, strict=True)
     for views, semantic, region, *scores in tqdm(work, total=(len(view_queries) + batch - 1) // batch, desc="Ranking agreement"):
         heads = torch.stack([row.topk(depth, dim=-1).indices for row in scores], dim=1)
+        ranked_heads.append(heads)
         dtype = torch.float16 if views.is_cuda else torch.float32
         views = views.to(dtype)
         visual = views @ gallery.T
@@ -63,7 +66,33 @@ def predict_heads(rankings, view_queries, gallery, edge_gallery, lexical, region
             head_agreement(heads, semantic), head_agreement(heads, region),
         )
         selectors.append(torch.stack(evidence).mean(dim=0))
-    return torch.cat(selectors, dim=1)
+    return torch.cat(selectors, dim=1), torch.cat(ranked_heads)
+
+
+def concept_posteriors(images, words):
+    dtype = torch.float16 if images.is_cuda else torch.float32
+    words = words.to(dtype)
+    codes = [top_codes((batch.to(dtype) @ words.T).float(), 64) for batch in images.split(512)]
+    return tuple(torch.cat(field) for field in zip(*codes, strict=True))
+
+
+def language_likelihood(heads, query_codes, gallery_codes, vocabulary_size, score_batch):
+    """Score the same sketch's terms under smoothed language models of its candidate heads."""
+    background = gallery_codes[0][1].new_full((vocabulary_size,), 1. / vocabulary_size)
+    for ids, weights in gallery_codes:
+        background.scatter_add_(0, ids.flatten(), weights.flatten())
+    background /= background.sum()
+    batch = min(score_batch, 160)
+    results = []
+    for group, query_ids, query_mass in zip(heads.split(batch), *(field.split(batch) for field in query_codes), strict=True):
+        group = group[:, :, :128]
+        counts = background.new_zeros((*group.shape[:2], vocabulary_size))
+        for ids, weights in gallery_codes:
+            counts.scatter_add_(2, ids[group].flatten(2), weights[group].flatten(2))
+        distribution = counts * (0.8 / (len(gallery_codes) * group.size(-1))) + 0.2 * background
+        evidence = distribution.gather(2, query_ids[:, None].expand(-1, group.size(1), -1))
+        results.append((query_mass[:, None] * evidence.log()).sum(dim=-1))
+    return torch.cat(results)
 
 
 def selected_rows(rankings, choice, score_batch):
@@ -126,7 +155,8 @@ def head_selection_settings(
     aug = torch.cat((queries[:, None], F.normalize(sketch_views.float(), dim=-1)), dim=1)
     view_queries = F.normalize(F.normalize(aug @ transform, dim=-1) - center, dim=-1)
     semantic = F.normalize(concepts.float().mean(dim=1), dim=-1) @ words.T
-    gain, overlap, broad = predict_heads(rankings, view_queries, gallery.to(dtype), edge_gallery, semantic, regional, score_batch)
+    predictions, heads = predict_heads(rankings, view_queries, gallery.to(dtype), edge_gallery, semantic, regional, score_batch)
+    gain, overlap, broad = predictions
     joint = 0.5 * (standardize(gain) + standardize(broad))
     for name, quality in (("wig", gain), ("rbo64", overlap), ("rbo160", broad), ("joint", joint)):
         yield f"head-qpp-{name}", partial(selected_rows, rankings, quality.argmax(dim=1), score_batch)
@@ -135,3 +165,17 @@ def head_selection_settings(
         guarded = joint.clone()
         guarded[:, index] += 0.75
         yield f"head-qpp-guard-{name}", partial(selected_rows, rankings, guarded.argmax(dim=1), score_batch)
+
+    query_codes = concept_posteriors(F.normalize(queries + mode, dim=-1), sketch_words)
+    gallery_codes = (
+        concept_posteriors(photos, photo_words),
+        concept_posteriors(F.normalize(contours.mean(dim=1), dim=-1), sketch_words),
+    )
+    language = language_likelihood(heads, query_codes, gallery_codes, len(photo_words), score_batch)
+    fused = 0.5 * (joint + standardize(language))
+    for name, quality in (("lexical", language), ("lexical-joint", fused)):
+        yield f"head-qpp-{name}", partial(selected_rows, rankings, quality.argmax(dim=1), score_batch)
+    for index, name in enumerate(("mta", "cds")):
+        guarded = fused.clone()
+        guarded[:, index] += 0.75
+        yield f"head-qpp-lexical-guard-{name}", partial(selected_rows, rankings, guarded.argmax(dim=1), score_batch)
