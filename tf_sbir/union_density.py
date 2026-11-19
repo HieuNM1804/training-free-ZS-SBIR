@@ -5,9 +5,9 @@ from functools import partial
 import torch
 from torch.nn import functional as F
 
-from .contextual_rank import contextual_propagation, jaccard_graph, jaccard_seed
+from .contextual_rank import jaccard_graph, jaccard_seed
 from .gallery_diffusion import diffusion_blocks, full_gallery_inputs, mutual_transition, regional_cosines
-from .isoclip import local_feedback, projected_feedback
+from .isoclip import contextual_scores, local_feedback, projected_feedback
 from .reranking import standardize
 
 
@@ -87,11 +87,10 @@ def density_settings(queries, photos, contours, sketch_words, photo_words, maps,
     query, iso_gallery = projected_feedback(queries, photos, contours, maps[(150, 50)])
     iso = query @ iso_gallery.T
     base, region, native, concepts, views = full_gallery_inputs(queries, photos, contours, sketch_words, photo_words, score_batch)
-    evidence = standardize(base) + 0.25 * standardize(region)
     words = views[:, 2].float()
-    context = (0.15 * (evidence + 1.2 * contextual_propagation(photos, words, base, region, evidence, 192, score_batch))).tanh()
+    context = contextual_scores(photos, words, base, region, score_batch)
     initial = standardize(iso) + standardize(context)
-    del evidence, region
+    del region
     yield "union-density-control", partial(density_rows, initial, None, score_batch, None)
 
     geometry = F.normalize(isolated.to(device=photos.device, dtype=torch.float32), dim=-1).mean(dim=1)

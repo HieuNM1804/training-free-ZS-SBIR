@@ -108,14 +108,18 @@ def iso_context_fusion_rows(visual, context, score_batch, weight, mode):
         yield from scores.cpu()
 
 
+def contextual_scores(photos, words, base, regional, score_batch):
+    evidence = standardize(base) + 0.25 * standardize(regional)
+    walk = contextual_propagation(photos, words, base, regional, evidence, 192, score_batch)
+    return (0.15 * (evidence + 1.2 * walk)).tanh()
+
+
 def iso_context_settings(queries, photos, contours, sketch_words, photo_words, maps, score_batch):
     query, gallery = projected_feedback(queries, photos, contours, maps[(150, 50)])
     visual = query @ gallery.T
     base, regional, _, _, views = full_gallery_inputs(queries, photos, contours, sketch_words, photo_words, score_batch)
-    evidence = standardize(base) + 0.25 * standardize(regional)
-    walk = contextual_propagation(photos, views[:, 2].float(), base, regional, evidence, 192, score_batch)
-    context = (0.15 * (evidence + 1.2 * walk)).tanh()
-    del base, regional, evidence, walk
+    context = contextual_scores(photos, views[:, 2].float(), base, regional, score_batch)
+    del base, regional
     for mode in ("rrf", "linear"):
         for weight in (0.25, 0.5, 1.0):
             yield f"iso-context-{mode}-w{weight:g}", partial(

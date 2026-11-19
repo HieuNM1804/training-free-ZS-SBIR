@@ -23,6 +23,7 @@ from tf_sbir.manifold import build_graph, fused_features, propagate_scores
 from tf_sbir.manifold_benchmark import covariance_roots
 from tf_sbir.mta import normalized_crops, pixel_lookup, robust_modes
 from tf_sbir.multiscale import merge_tile_patches, split_tiles
+from tf_sbir.relevance import refine_relevance
 from tf_sbir.score_calibration import dynamic_activation, normalized_score_rows, sinkhorn_target_hubness
 from tf_sbir.semantic import gallery_memory, guided_term_scores, neighborhood_term_posteriors, top_codes
 from tf_sbir.semantic_transport import conditional_similarity, dustbin_plan, maximal_marginal_relevance, partial_similarity
@@ -30,6 +31,20 @@ from tf_sbir.union_density import candidate_union, grow_density, pack_affinity
 
 
 class GalleryManifoldTests(unittest.TestCase):
+    def test_binary_relevance_matches_lame_softmax_and_keeps_queries_independent(self):
+        graph = torch.tensor([[0., .55, 0.], [.55, 0., .3], [0., .3, 0.]])
+        prior = torch.tensor([[-.5, .6, -.2], [.8, -.2, .9]])
+        unary = torch.stack((torch.zeros_like(prior), prior), dim=-1).log_softmax(dim=-1)
+        for squared in (False, True):
+            transition = graph @ graph if squared else graph
+            posterior = unary.exp()
+            for _ in range(8):
+                posterior = (unary + 1.3 * (transition @ posterior)).softmax(dim=-1)
+            logits = refine_relevance(prior, graph.to_sparse_csr(), 1.3, squared=squared)
+            torch.testing.assert_close(logits.sigmoid(), posterior[:, :, 1])
+            solo = refine_relevance(prior[:1], graph.to_sparse_csr(), 1.3, squared=squared)
+            torch.testing.assert_close(logits[:1], solo)
+
     def test_union_density_grows_by_marginal_edge_weight_without_duplicates(self):
         first = torch.tensor([[.8, .6, .2, .1]])
         second = torch.tensor([[.6, .1, .8, .2]])
