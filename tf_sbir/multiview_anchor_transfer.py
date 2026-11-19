@@ -75,7 +75,7 @@ def multiview_anchor_settings(queries, photos, contours, sketch_words, photo_wor
     lexical = tuple(words[:, i] @ vocabulary.T for i in (0, 1))
     support = nearest_anchors(views.flatten(0, 1), source, 128)
     errors = anchor_errors(source, target)
-    for tag, count, penalty, carry in (("small", 16, 1., 1.), ("wide", 64, 1., 1.),
+    for tag, count, penalty, carry in (("small", 16, 1., 1.), ("carry", 16, 1., 1.5), ("wide", 64, 1., 1.),
                                         ("plain", 64, 0., 1.5), ("broad", 128, 1., 1.5)):
         mapped, risk = predict_views(views, source, target, errors, support, count=count, penalty=penalty, carry=carry)
         if tag == "small":
