@@ -36,6 +36,7 @@ from .semantic_transport import (
     conditional_similarity, diversified_transport_settings, partial_transport_settings,
     transport_rows, transport_settings, transport_view_settings,
 )
+from .union_density import density_settings
 
 GALLERY_STUDIES = {
     "agreement": agreement_settings,
@@ -69,6 +70,7 @@ SCORE_STUDIES = {
     "isolated-regions": isolated_region_settings,
     "iso-paired": iso_paired_settings,
     "iso-context": iso_context_settings,
+    "union-density": density_settings,
 }
 
 
@@ -114,12 +116,12 @@ def run(args):
     augmentations = load_augmentations(args, query_paths) if args.study == "mta" else None
     needs_crops = args.study in CROP_STUDIES or args.study in ("two-stage-transport", "adaptive-fusion")
     photo_views = load_augmentations(args, photo_paths, views=9, mode="photo") if needs_crops else None
-    needs_dense = args.study in (*DENSE_STUDIES, "multiscale", "isolated-regions")
+    needs_dense = args.study in (*DENSE_STUDIES, "multiscale", "isolated-regions", "union-density")
     dense_views = load_clearclip_gallery(args, photo_paths) if needs_dense else None
     multiscale = load_multiscale_patches(args, query_paths, photo_paths) if args.study == "multiscale" else None
-    isolated = load_isolated_regions(args, photo_paths, dense_views) if args.study == "isolated-regions" else None
-    rendered = load_xdog(args, photo_paths) if args.study == "xdog-transport" else None
-    iso_maps = isoclip_maps(args, device, paired=args.study == "iso-paired") if args.study in ("isoclip-transport", "iso-paired", "iso-context") else None
+    isolated = load_isolated_regions(args, photo_paths, dense_views) if args.study in ("isolated-regions", "union-density") else None
+    rendered = load_xdog(args, photo_paths) if args.study in ("xdog-transport", "union-density") else None
+    iso_maps = isoclip_maps(args, device, paired=args.study == "iso-paired") if args.study in ("isoclip-transport", "iso-paired", "iso-context", "union-density") else None
     args.output.mkdir(parents=True, exist_ok=True)
     for split in splits:
         q_ids, q_labels = queries[split]
@@ -147,7 +149,9 @@ def run(args):
             variants = DENSE_STUDIES[args.study](q, p, contours[p_ids].to(device), sketch_text, photo_text, dense_views[p_ids])
         elif args.study in SCORE_STUDIES:
             extra_inputs = (photo_views["features"][p_ids].to(device),) if needs_crops else ()
-            if multiscale is not None:
+            if args.study == "union-density":
+                extra_inputs = (iso_maps, rendered[p_ids].to(device), isolated[p_ids])
+            elif multiscale is not None:
                 extra_inputs = (dense_views[p_ids], (multiscale[0][q_ids], multiscale[1][p_ids]))
             elif isolated is not None:
                 extra_inputs = (isolated[p_ids],)

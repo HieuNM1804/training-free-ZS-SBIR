@@ -26,9 +26,21 @@ from tf_sbir.multiscale import merge_tile_patches, split_tiles
 from tf_sbir.score_calibration import dynamic_activation, normalized_score_rows, sinkhorn_target_hubness
 from tf_sbir.semantic import gallery_memory, guided_term_scores, neighborhood_term_posteriors, top_codes
 from tf_sbir.semantic_transport import conditional_similarity, dustbin_plan, maximal_marginal_relevance, partial_similarity
+from tf_sbir.union_density import candidate_union, grow_density, pack_affinity
 
 
 class GalleryManifoldTests(unittest.TestCase):
+    def test_union_density_grows_by_marginal_edge_weight_without_duplicates(self):
+        first = torch.tensor([[.8, .6, .2, .1]])
+        second = torch.tensor([[.6, .1, .8, .2]])
+        candidates, valid = candidate_union((first, second), 2)
+        self.assertEqual(candidates[valid].tolist(), [0, 1, 2])
+        source = torch.tensor([0, 2, 0, 3])
+        target = torch.tensor([2, 0, 3, 0])
+        weights = torch.tensor([.8, .8, 5., 5.])
+        graph = pack_affinity(4, ((source, target, weights),))
+        self.assertEqual(grow_density(first, first, candidates, valid, graph, 3).tolist(), [[0, 2, 1]])
+
     def test_contextual_rank_uses_jaccard_and_preserves_probability(self):
         scores = torch.tensor([[.6, .4, .2]])
         neighbors = torch.tensor([[1, 2], [0, 2], [0, 1]])
