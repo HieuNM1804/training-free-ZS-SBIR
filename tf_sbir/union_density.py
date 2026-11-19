@@ -67,6 +67,8 @@ def density_prefixes(iso, context, streams, initial, banks, graph, depth, score_
 
 
 def density_rows(initial, selected, score_batch, weight):
+    # Preserve the score conversion used by the benchmark while batching graph growth separately.
+    score_batch = min(score_batch, 384)
     if selected is None:
         yield from (row for batch in initial.split(score_batch) for row in (0.15 * batch).tanh().cpu())
         return
