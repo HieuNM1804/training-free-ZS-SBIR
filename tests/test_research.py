@@ -11,7 +11,7 @@ from tf_sbir.anchor_context import gallery_kl_parameters, negative_gallery_kl
 from tf_sbir.asif import sparse_relative_features
 from tf_sbir.bimodal_graph import bimodal_transition
 from tf_sbir.cluster_mine import majority_concepts
-from tf_sbir.cluster_prior import cluster_mass, first_neighbor_groups
+from tf_sbir.cluster_prior import cluster_first_rows, cluster_mass, first_neighbor_groups
 from tf_sbir.contextual_rank import column_stochastic, jaccard_seed, personalized_walk
 from tf_sbir.contour_render import xdog
 from tf_sbir.coregistration import leading_basis
@@ -41,6 +41,12 @@ class GalleryManifoldTests(unittest.TestCase):
         actual = cluster_mass(probability, assignments, torch.tensor([3, 3]))
         torch.testing.assert_close(actual, expected)
         torch.testing.assert_close(actual.sum(1), probability.sum(1))
+
+    def test_cluster_first_preserves_evidence_order_within_each_group(self):
+        evidence = torch.tensor([[1., 2., 4., 3.]])
+        assignment = torch.tensor([0, 1, 0, 1])
+        row, = cluster_first_rows(evidence, assignment, torch.tensor([2, 2]), 1)
+        self.assertEqual(row.argsort(descending=True).tolist(), [2, 0, 3, 1])
 
     def test_rocchio_feedback_uses_complementary_weights_within_each_shortlist(self):
         evidence = torch.tensor([[2., 0., 1.], [0., 3., 1.]])

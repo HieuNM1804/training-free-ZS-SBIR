@@ -53,6 +53,19 @@ def cluster_prior_rows(initial, levels, batch, mix, temperature):
         yield from bounded.cpu()
 
 
+def cluster_first_rows(initial, assignment, counts, score_batch):
+    """Rank clusters by query likelihood and rank members by the original evidence."""
+    for scores in initial.split(score_batch):
+        prior = scores.softmax(dim=1)
+        pooled = cluster_mass(prior, assignment, counts)
+        # Stable sorting by group likelihood retains the evidence order within each group.
+        ordered = scores.argsort(dim=1, descending=True, stable=True)
+        clusters = pooled.gather(1, ordered).argsort(dim=1, descending=True, stable=True)
+        ranked = ordered.gather(1, clusters)
+        values = torch.linspace(0.9, -0.9, scores.size(1), device=scores.device, dtype=scores.dtype)
+        yield from torch.empty_like(scores).scatter_(1, ranked, values.expand_as(scores)).cpu()
+
+
 def cluster_prior_settings(queries, photos, contours, sketch_words, photo_words, maps, score_batch):
     query, visual = projected_feedback(queries, photos, contours, maps[(150, 50)])
     base, regional, _, _, views = full_gallery_inputs(queries, photos, contours, sketch_words, photo_words, score_batch)
@@ -79,3 +92,5 @@ def cluster_prior_settings(queries, photos, contours, sketch_words, photo_words,
     ):
         yield f"finch-prior-{name}-w0.75", partial(cluster_prior_rows, initial, levels, score_batch, .75, 1.)
     yield "finch-prior-joint-l2l3-w0.75-t0.5", partial(cluster_prior_rows, initial, joint_levels[1:], score_batch, .75, .5)
+    for name, (assignments, counts) in (("joint-l2", joint_levels[1]), ("joint-l3", joint_levels[2]), ("iso-l2", visual_levels[1])):
+        yield f"finch-prior-first-{name}", partial(cluster_first_rows, initial, assignments, counts, score_batch)
