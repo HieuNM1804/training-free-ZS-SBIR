@@ -23,6 +23,7 @@ from tf_sbir.data import normal_transform
 from tf_sbir.dense_views import tokencut_mask
 from tf_sbir.dominant_sets import constrained_membership
 from tf_sbir.gallery_diffusion import mutual_transition, regional_cosines, solve_diffusion
+from tf_sbir.grounded_semantic_anchors import concept_support, ground_concepts
 from tf_sbir.gaussian_verification import diagonal_log_likelihood, evidence_rank_fusion, proposal_evidence
 from tf_sbir.head_selection import rank_biased_overlap
 from tf_sbir.isoclip import output_space_maps
@@ -44,6 +45,18 @@ from tf_sbir.view_hypotheses import expected_utility
 
 
 class GalleryManifoldTests(unittest.TestCase):
+    def test_grounding_halves_are_disjoint_and_exchanging_them_reverses_the_error(self):
+        photos = torch.eye(8)
+        queries = F.normalize(torch.tensor([[3., 2., 1., 0., 3., 2., 1., 0.],
+                                            [0., 1., 3., 2., 0., 1., 3., 2.]]), dim=-1)
+        halves = concept_support(queries, photos, seed=1, count=4)
+        self.assertFalse(set(halves[0].flatten().tolist()) & set(halves[1].flatten().tolist()))
+        anchor, disagreement = ground_concepts(queries, photos, photos, halves, 2)
+        swapped, opposite = ground_concepts(queries, photos, photos, halves[::-1], 2)
+        torch.testing.assert_close(anchor, swapped)
+        torch.testing.assert_close(disagreement, -opposite)
+        torch.testing.assert_close(disagreement.square().sum(dim=1).mean(), torch.tensor(1.))
+
     def test_local_gain_minimizes_held_out_target_error_and_handles_zero_direction(self):
         base = torch.tensor([[.5, 1.], [2., -.5], [1., 1.], [1., 2.]])
         direction = torch.tensor([[1., 2.], [.5, 1.], [0., 0.], [1., 0.]])

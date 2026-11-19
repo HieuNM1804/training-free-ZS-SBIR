@@ -18,6 +18,7 @@ from .compact_retrieval import compact_retrieval_settings
 from .contour_graph_index import contour_graph_index_settings
 from .conditional_view_affinity import conditional_view_affinity_settings
 from .transfer_reconstruction import transfer_reconstruction_settings
+from .grounded_semantic_anchors import grounded_semantic_settings
 from .sketch_view_graph_fusion import sketch_view_graph_fusion_settings
 from .contour_query_expansion import contour_expansion_settings
 from .contextual_rank import contextual_rank_settings
@@ -126,7 +127,7 @@ def arguments():
     parser.add_argument("--cache", type=Path, default=Path(".cache"))
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--vocabulary", type=Path, required=True)
-    parser.add_argument("--study", choices=("core", "manifold", "mta", *DENSE_STUDIES, *CROP_STUDIES, *GALLERY_STUDIES, *SCORE_STUDIES), default="core")
+    parser.add_argument("--study", choices=("core", "manifold", "mta", "grounded-semantic-anchors", *DENSE_STUDIES, *CROP_STUDIES, *GALLERY_STUDIES, *SCORE_STUDIES), default="core")
     parser.add_argument("--clip-checkpoint")
     parser.add_argument("--batch-size", type=int, default=64)
     parser.add_argument("--workers", type=int, default=2)
@@ -155,7 +156,7 @@ def run(args):
     splits = args.splits
     query_paths, queries = merge_inputs(args.root, splits, "sketch")
     photo_paths, photos = merge_inputs(args.root, splits, "photo")
-    all_q, all_p, contours = load_global_inputs(args, query_paths, photo_paths, args.study not in ("core", "manifold"))
+    all_q, all_p, contours = load_global_inputs(args, query_paths, photo_paths, args.study not in ("core", "manifold", "grounded-semantic-anchors"))
     words = read_words(args.vocabulary)
     sketch_text, photo_text = [view.to(device) for view in load_words(args, words)]
     gem_regions = (
@@ -184,7 +185,7 @@ def run(args):
     iso_studies = (
         "isoclip-transport", "iso-paired", "iso-context", "union-density", "union-prefix", "union-fusion",
         "lame-relevance", "signed-feedback", "finch-prior", "finch-prototype", "finch-cache", "iso-mta", "gem-regions",
-        "dominant-sets", "structured-transport", *INK_STUDIES, *HEAD_STUDIES,
+        "dominant-sets", "structured-transport", "grounded-semantic-anchors", *INK_STUDIES, *HEAD_STUDIES,
     )
     iso_maps = isoclip_maps(args, device, paired=args.study == "iso-paired") if args.study in iso_studies else None
     args.output.mkdir(parents=True, exist_ok=True)
@@ -212,6 +213,9 @@ def run(args):
             )
         elif args.study in DENSE_STUDIES:
             variants = DENSE_STUDIES[args.study](q, p, contours[p_ids].to(device), sketch_text, photo_text, dense_views[p_ids])
+        elif args.study == "grounded-semantic-anchors":
+            settings = grounded_semantic_settings(q, p, sketch_text, photo_text, iso_maps, args.score_batch)
+            variants = ((name, None, None, rows) for name, rows in settings)
         elif args.study in SCORE_STUDIES:
             extra_inputs = (photo_views["features"][p_ids].to(device),) if needs_crops else ()
             extra_options = {}
@@ -248,14 +252,14 @@ def run(args):
             variants = ((name, None, None, rows) for name, rows in settings)
         else:
             variants = GALLERY_STUDIES[args.study](q, p, contours[p_ids].to(device), sketch_text, photo_text)
-        has_correction = args.study in ("hubness", "querybank", "transport", *DENSE_STUDIES, *CROP_STUDIES, *SCORE_STUDIES)
+        has_correction = args.study in ("hubness", "querybank", "transport", "grounded-semantic-anchors", *DENSE_STUDIES, *CROP_STUDIES, *SCORE_STUDIES)
         scored = variants if has_correction else ((name, q, p, None) for name, q, p in variants)
         for name, target_q, target_p, correction in scored:
             filename = args.output / f"{split}-{name}.json"
             if filename.is_file():
                 continue
             start = time.perf_counter()
-            if args.study in SCORE_STUDIES:
+            if args.study in SCORE_STUDIES or args.study == "grounded-semantic-anchors":
                 rows = correction()
             elif name.startswith(("conditional-transport-", "partial-transport-")):
                 _, _, views, shortlist, _, *scorers = correction
@@ -280,7 +284,7 @@ def run(args):
                 "split": split, "method": name, "backbone": "OpenAI CLIP ViT-B/32",
                 "mAP": float(ap), "precision": float(precision), "map_k": map_k, "p_k": p_k,
                 "queries": len(q), "gallery": len(p), "study": args.study,
-                "external_vocabulary": 0 if name.startswith(("compact-image-", "transfer-image-")) else len(words),
+                "external_vocabulary": 0 if name.startswith(("compact-image-", "transfer-image-")) or name == "ground-cosine-native" else len(words),
                 "exploratory_unseen": True, "evaluation_seconds": round(time.perf_counter() - start, 2),
             }
             filename.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
