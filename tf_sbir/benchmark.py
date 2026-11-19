@@ -1,4 +1,4 @@
-"""Run training-free Sketchy retrieval on the two official unseen splits."""
+"""Run training-free retrieval on the KD-SBIR unseen splits."""
 
 import argparse
 import itertools
@@ -8,7 +8,7 @@ import time
 
 import torch
 
-from .data import UNSEEN_CLASSES, collect_paths
+from .data import SKETCHY_SPLITS, UNSEEN_CLASSES, collect_paths
 from .encoding import load_global_inputs
 from .global_methods import GLOBAL_METHODS, prepare_methods
 from .metrics import cosine_rows, evaluate_rows
@@ -17,7 +17,7 @@ from .metrics import cosine_rows, evaluate_rows
 def parse_args():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, required=True)
-    parser.add_argument("--splits", choices=UNSEEN_CLASSES, nargs="+", default=list(UNSEEN_CLASSES))
+    parser.add_argument("--splits", choices=UNSEEN_CLASSES, nargs="+", default=SKETCHY_SPLITS)
     parser.add_argument("--methods", choices=GLOBAL_METHODS, nargs="+", default=list(GLOBAL_METHODS))
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--cache", type=Path, default=Path(".cache"))

@@ -8,10 +8,13 @@ import time
 import torch
 from torch.nn import functional as F
 
+from .asif import paired_anchor_settings
 from .benchmark import merge_inputs
-from .data import UNSEEN_CLASSES
+from .data import SKETCHY_SPLITS, UNSEEN_CLASSES
 from .encoding import load_global_inputs
+from .gallery_context import contextual_graph, spectral_coordinates, spectral_query
 from .global_methods import centered, prepare_methods
+from .layer_views import LAYERS, load_layer_inputs
 from .manifold import (
     GalleryGraph, add_gallery_feedback, build_graph, fused_features, iterative_feedback, nonlinear_walk_rows,
 )
@@ -21,10 +24,11 @@ from .metrics import cosine_rows, evaluate_rows
 def arguments():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, required=True)
+    parser.add_argument("--splits", choices=UNSEEN_CLASSES, nargs="+", default=SKETCHY_SPLITS)
     parser.add_argument("--cache", type=Path, default=Path(".cache"))
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--clip-checkpoint")
-    parser.add_argument("--study", choices=("ablation", "diffusion", "scales"), default="ablation")
+    parser.add_argument("--study", choices=("ablation", "diffusion", "scales", "context", "layers", "asif"), default="ablation")
     parser.add_argument("--batch-size", type=int, default=64)
     parser.add_argument("--workers", type=int, default=2)
     parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
@@ -106,6 +110,50 @@ def scale_settings(rgb_q, rgb_p, contour_views):
         yield f"scale-k320-feedback{feedback_size}", query, banks[320]
 
 
+def context_settings(rgb_q, rgb_p, contour_views):
+    query, photos = prepare_methods(rgb_q, rgb_p, contour_views, ["local_residual"])["local_residual"]
+    initial = build_graph(photos, photos, 320)
+    reference_bank = F.normalize(initial.diffuse(photos, restart=0.1, steps=4), dim=-1)
+    reference_query = add_gallery_feedback(query, reference_bank, 64, 2.0)
+    yield "rgb-walk", reference_query, reference_bank
+    for neighborhood, k in ((64, 160), (128, 320)):
+        for overlap_weight in (0.35, 0.65):
+            name = f"n{neighborhood}-k{k}-w{overlap_weight:g}"
+            graph = contextual_graph(photos, initial, neighborhood, k, overlap_weight)
+            gallery = F.normalize(graph.diffuse(photos, restart=0.1, steps=4), dim=-1)
+            expanded = add_gallery_feedback(query, gallery, 64, 2.0)
+            yield f"context-{name}", expanded, gallery
+            if overlap_weight == 0.65:
+                coordinates = spectral_coordinates(graph, rank=56)
+                projected = spectral_query(reference_query, reference_bank, coordinates)
+                for weight in (0.25, 0.5):
+                    pair = fused_features(expanded, gallery, projected, coordinates, weight)
+                    yield f"spectral-{name}-w{weight:g}", *pair
+
+
+def layer_settings(rgb_q, rgb_p, contour_views, layers):
+    query, photo = prepare_methods(rgb_q, rgb_p, contour_views, ["local_residual"])["local_residual"]
+    graph = build_graph(photo, photo, 320)
+    gallery = F.normalize(graph.diffuse(photo, restart=0.1, steps=4), dim=-1)
+    expanded = add_gallery_feedback(query, gallery, 64, 2.0)
+    yield "rgb-walk", expanded, gallery
+    query_layers, photo_layers, contour_layers = layers
+    features = []
+    for index, layer in enumerate(LAYERS):
+        q, p = prepare_methods(
+            query_layers[:, index], photo_layers[:, index], contour_layers[:, index, None], ["local_residual"],
+        )["local_residual"]
+        p = F.normalize(graph.diffuse(p, restart=0.1, steps=4), dim=-1)
+        q = add_gallery_feedback(q, p, 64, 2.0)
+        features.append((q, p))
+        yield f"layer-{layer + 1}", q, p
+        yield f"rgb-layer-{layer + 1}-w0.25", *fused_features(expanded, gallery, q, p, 0.25)
+    q = torch.cat([q for q, _ in features], dim=-1) / len(features) ** 0.5
+    p = torch.cat([p for _, p in features], dim=-1) / len(features) ** 0.5
+    for weight in (0.15, 0.30, 0.50):
+        yield f"rgb-multilayer-w{weight:g}", *fused_features(expanded, gallery, q, p, weight)
+
+
 def dot_rows(queries, gallery, batch_size):
     # Candidate scores use FP32 dot products between L2-normalized embeddings.
     # The TorchMetrics transformation, ranking and aggregation are unchanged.
@@ -118,10 +166,11 @@ def run(args):
     torch.set_num_threads(1)
     device = torch.device(args.device)
     torch.set_float32_matmul_precision("highest")
-    splits = tuple(UNSEEN_CLASSES)
+    splits = args.splits
     query_paths, queries = merge_inputs(args.root, splits, "sketch")
     photo_paths, photos = merge_inputs(args.root, splits, "photo")
     all_q, all_p, proxies = load_global_inputs(args, query_paths, photo_paths, True)
+    layer_inputs = load_layer_inputs(args, query_paths, photo_paths) if args.study == "layers" else None
     args.output.mkdir(parents=True, exist_ok=True)
     for split in splits:
         ids_q, labels_q = queries[split]
@@ -130,8 +179,15 @@ def run(args):
         if args.study == "diffusion":
             variants = diffusion_settings(*current)
         else:
-            feature_settings = settings if args.study == "ablation" else scale_settings
-            variants = ((name, q, p, None) for name, q, p in feature_settings(*current))
+            if layer_inputs is None:
+                feature_settings = {"ablation": settings, "scales": scale_settings, "context": context_settings,
+                                    "asif": paired_anchor_settings}[args.study]
+                pairs = feature_settings(*current)
+            else:
+                q_layers, p_layers, c_layers = layer_inputs
+                layers = (q_layers[ids_q].to(device), p_layers[ids_p].to(device), c_layers[ids_p].to(device))
+                pairs = layer_settings(*current, layers)
+            variants = ((name, q, p, None) for name, q, p in pairs)
         for method, q, p, walk in variants:
             filename = args.output / f"{split}-{method}.json"
             if filename.is_file():

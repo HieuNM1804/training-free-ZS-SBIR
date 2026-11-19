@@ -17,7 +17,8 @@ class ProtocolTests(unittest.TestCase):
         query_labels = torch.arange(len(queries)) % 4
         photo_labels = torch.arange(len(photos)) % 4
         cosine = list(cosine_rows(queries, photos))
-        for split, map_k, p_k in (("sketchy_1", 0, 100), ("sketchy_2", 200, 200)):
+        expected_cutoffs = (("sketchy_1", 0, 100), ("sketchy_2", 200, 200), ("tuberlin", 0, 100), ("quickdraw", 0, 200))
+        for split, map_k, p_k in expected_cutoffs:
             with self.subTest(split=split):
                 scores = [((x + 1) * 0.5).clamp(min=torch.finfo(x.dtype).eps, max=1.0) for x in cosine]
                 positives = [photo_labels.eq(y) for y in query_labels]
@@ -39,6 +40,8 @@ class ProtocolTests(unittest.TestCase):
     def test_split_sizes(self):
         self.assertEqual(len(set(UNSEEN_CLASSES["sketchy_1"])), 25)
         self.assertEqual(len(set(UNSEEN_CLASSES["sketchy_2"])), 21)
+        self.assertEqual(len(set(UNSEEN_CLASSES["tuberlin"])), 30)
+        self.assertEqual(len(set(UNSEEN_CLASSES["quickdraw"])), 30)
 
 
 class RerankingTests(unittest.TestCase):

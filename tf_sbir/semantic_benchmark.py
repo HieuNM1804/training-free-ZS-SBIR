@@ -8,32 +8,53 @@ import time
 import torch
 
 from .benchmark import merge_inputs
-from .data import UNSEEN_CLASSES
+from .cluster_mine import cluster_mine_settings
+from .data import SKETCHY_SPLITS, UNSEEN_CLASSES
+from .dense_views import dense_transport_settings, load_clearclip_gallery
 from .encoding import load_global_inputs
 from .foundation import load_words
 from .manifold import fused_features
 from .manifold_benchmark import dot_rows
 from .metrics import evaluate_rows
+from .mta import load_augmentations, mta_settings
+from .score_calibration import calibrated_settings, normalized_score_rows, querybank_settings
 from .semantic import (
-    agreement_rows, agreement_settings, lexical_consensus_settings, read_words, semantic_manifold_settings, semantic_settings,
+    agreement_rows, agreement_settings, lexical_consensus_settings, paired_concept_settings, read_words,
+    semantic_manifold_settings, semantic_settings,
 )
+from .semantic_transport import transport_rows, transport_settings, transport_view_settings
+
+GALLERY_STUDIES = {
+    "agreement": agreement_settings,
+    "consensus": lexical_consensus_settings,
+    "paired-concepts": paired_concept_settings,
+    "hubness": calibrated_settings,
+    "querybank": querybank_settings,
+    "cluster-mine": cluster_mine_settings,
+    "transport": transport_settings,
+}
 
 
 def arguments():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, required=True)
+    parser.add_argument("--splits", choices=UNSEEN_CLASSES, nargs="+", default=SKETCHY_SPLITS)
     parser.add_argument("--cache", type=Path, default=Path(".cache"))
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--vocabulary", type=Path, required=True)
-    parser.add_argument("--study", choices=("core", "manifold", "agreement", "consensus"), default="core")
+    parser.add_argument("--study", choices=("core", "manifold", "mta", "transport-views", "dense-transport", *GALLERY_STUDIES), default="core")
     parser.add_argument("--clip-checkpoint")
     parser.add_argument("--batch-size", type=int, default=64)
     parser.add_argument("--workers", type=int, default=2)
     parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
     parser.add_argument("--metric-workers", type=int, default=4)
     parser.add_argument("--score-batch", type=int, default=256)
+    parser.add_argument("--transport-buffer-mib", type=int, help="Memory budget for gathered gallery views in each transport batch.")
     parser.add_argument("--exploratory-unseen", action="store_true", required=True)
-    return parser.parse_args()
+    args = parser.parse_args()
+    if args.transport_buffer_mib is not None and args.transport_buffer_mib < 1:
+        parser.error("--transport-buffer-mib must be positive")
+    return args
 
 
 @torch.inference_mode()
@@ -41,12 +62,15 @@ def run(args):
     torch.set_num_threads(1)
     torch.set_float32_matmul_precision("highest")
     device = torch.device(args.device)
-    splits = tuple(UNSEEN_CLASSES)
+    splits = args.splits
     query_paths, queries = merge_inputs(args.root, splits, "sketch")
     photo_paths, photos = merge_inputs(args.root, splits, "photo")
-    all_q, all_p, contours = load_global_inputs(args, query_paths, photo_paths, args.study in ("agreement", "consensus"))
+    all_q, all_p, contours = load_global_inputs(args, query_paths, photo_paths, args.study not in ("core", "manifold"))
     words = read_words(args.vocabulary)
     sketch_text, photo_text = [view.to(device) for view in load_words(args, words)]
+    augmentations = load_augmentations(args, query_paths) if args.study == "mta" else None
+    photo_views = load_augmentations(args, photo_paths, views=9, mode="photo") if args.study == "transport-views" else None
+    dense_views = load_clearclip_gallery(args, photo_paths) if args.study == "dense-transport" else None
     args.output.mkdir(parents=True, exist_ok=True)
     for split in splits:
         q_ids, q_labels = queries[split]
@@ -61,19 +85,40 @@ def run(args):
             variants = ((name, *pair) for name, pair in settings.items())
         elif args.study == "manifold":
             variants = semantic_manifold_settings(q, p, sketch_text, photo_text)
-        elif args.study == "agreement":
-            variants = agreement_settings(q, p, contours[p_ids].to(device), sketch_text, photo_text)
+        elif args.study == "mta":
+            variants = mta_settings(
+                q, augmentations["features"][q_ids].to(device), augmentations["logit_scale"],
+                p, contours[p_ids].to(device), sketch_text, photo_text,
+            )
+        elif args.study == "transport-views":
+            variants = transport_view_settings(q, p, contours[p_ids].to(device), sketch_text, photo_text,
+                                               photo_views["features"][p_ids].to(device))
+        elif args.study == "dense-transport":
+            variants = dense_transport_settings(q, p, contours[p_ids].to(device), sketch_text, photo_text, dense_views[p_ids])
         else:
-            variants = lexical_consensus_settings(q, p, contours[p_ids].to(device), sketch_text, photo_text)
-        for name, target_q, target_p in variants:
+            variants = GALLERY_STUDIES[args.study](q, p, contours[p_ids].to(device), sketch_text, photo_text)
+        has_correction = args.study in ("hubness", "querybank", "transport", "transport-views", "dense-transport")
+        scored = variants if has_correction else ((name, q, p, None) for name, q, p in variants)
+        for name, target_q, target_p, correction in scored:
             filename = args.output / f"{split}-{name}.json"
             if filename.is_file():
                 continue
             start = time.perf_counter()
-            rows = (
-                agreement_rows(target_q, target_p, args.score_batch)
-                if name.startswith("agreement-") else dot_rows(target_q, target_p, args.score_batch)
-            )
+            if name.startswith("conditional-transport-"):
+                _, _, views, shortlist, _ = correction
+                if args.transport_buffer_mib is None:
+                    transport_batch = min(64, 384 // views.size(1), args.score_batch)
+                else:
+                    bytes_per_query = shortlist * views.size(1) * views.size(2) * views.element_size()
+                    transport_batch = min(max(1, (args.transport_buffer_mib * 2**20) // bytes_per_query), args.score_batch)
+                rows = transport_rows(target_q, target_p, *correction, batch_size=transport_batch)
+            elif correction is not None:
+                offset, activation = correction
+                rows = normalized_score_rows(target_q, target_p, offset, args.score_batch, activation)
+            elif name.startswith("agreement-"):
+                rows = agreement_rows(target_q, target_p, args.score_batch)
+            else:
+                rows = dot_rows(target_q, target_p, args.score_batch)
             ap, precision, map_k, p_k = evaluate_rows(
                 rows, q_labels, p_labels, split, f"{split} {name}", workers=args.metric_workers,
             )

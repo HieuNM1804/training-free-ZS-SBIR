@@ -13,3 +13,4 @@ Khi một lựa chọn triển khai có thể vượt phạm vi đã thống nh�
 - Dùng các split unseen từ data config và cách tính mAP/P@K trong KD-SBIR. Repo KD-SBIR là tham chiếu cho loader, split và evaluator.
 - Từ điển công khai Open Images đã được chấp thuận như một nhánh báo cáo riêng. Không dùng danh sách lớp test Sketchy để chọn từ.
 - Ghi rõ các cấu hình được chọn theo điểm trên unseen là kết quả thăm dò.
+- Mỗi hướng thí nghiệm mới phải có cơ chế đã được áp dụng trong một bài nghiên cứu tại hội nghị khoa học. Có thể tìm ngoài bảng literature review. Ghi rõ nguồn, cơ chế đã công bố và phần điều chỉnh cần thiết cho SBIR. Các luật tự đặt chỉ có thể xuất hiện như chi tiết phụ của một cơ chế có nguồn, ví dụ để tái lập hoặc bảo đảm ổn định số học.

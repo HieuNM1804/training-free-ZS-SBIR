@@ -1,4 +1,4 @@
-"""Sketchy unseen splits and preprocessing from the KD-SBIR evaluation protocol."""
+"""Unseen splits and preprocessing from the KD-SBIR evaluation protocol."""
 
 from concurrent.futures import ThreadPoolExecutor
 import glob
@@ -13,6 +13,7 @@ from PIL import Image
 from torch.utils.data import Dataset, default_collate
 from torchvision import transforms
 
+SKETCHY_SPLITS = ("sketchy_1", "sketchy_2")
 UNSEEN_CLASSES = {
     "sketchy_1": (
         "cup", "swan", "harp", "squirrel", "snail", "ray", "pineapple",
@@ -25,6 +26,20 @@ UNSEEN_CLASSES = {
         "mouse", "pear", "raccoon", "rhinoceros", "saw", "scissors",
         "seagull", "skyscraper", "songbird", "sword", "tree", "wheelchair",
         "windmill", "window",
+    ),
+    "quickdraw": (
+        "alarm_clock", "axe", "airplane", "bat", "car", "bread", "bus",
+        "cake", "campfire", "cruise ship", "dolphin", "eiffel tower", "eyeglasses",
+        "horse", "flower", "giraffe", "hamburger", "helicopter", "hot-air_balloon",
+        "kangaroo", "tree", "megaphone", "moon", "motorcycle", "palm tree",
+        "parrot", "raccoon", "sailboat", "skyscraper", "windmill",
+    ),
+    "tuberlin": (
+        "helicopter", "wrist-watch", "mermaid", "mosquito", "pear", "couch",
+        "hammer", "airplane", "house", "baseball bat", "toilet", "panda",
+        "butterfly", "mug", "wineglass", "motorbike", "eyeglasses",
+        "hot air balloon", "cup", "skull", "truck", "palm tree", "cell phone",
+        "horse", "sailboat", "suv", "church", "floor lamp", "bus", "tv",
     ),
 }
 CLIP_MEAN = (0.48145466, 0.4578275, 0.40821073)
@@ -101,17 +116,28 @@ def configure_image_worker(_worker_id):
 
 def threaded_batches(dataset, batch_size, workers, pin):
     configure_image_worker(None)
-    ranges = iter(range(start, min(start + batch_size, len(dataset))) for start in range(0, len(dataset), batch_size))
+    ranges = iter(
+        range(start, min(start + batch_size, len(dataset)))
+        for start in range(0, len(dataset), batch_size)
+    )
     if workers == 0:
         for indices in ranges:
             yield default_collate([dataset[index] for index in indices])
         return
-    with ThreadPoolExecutor(max_workers=workers) as executor:
-        pending = [executor.submit(dataset.__getitem__, index) for index in next(ranges, ())]
-        while pending:
-            following = [executor.submit(dataset.__getitem__, index) for index in next(ranges, ())]
-            batch = default_collate([item.result() for item in pending])
+
+    with ThreadPoolExecutor(max_workers=workers) as readers, ThreadPoolExecutor(max_workers=1) as prefetch:
+        def read(indices):
+            batch = default_collate(list(readers.map(dataset.__getitem__, indices)))
             if pin:
                 batch = batch.pin_memory() if isinstance(batch, torch.Tensor) else tuple(t.pin_memory() for t in batch)
+            return batch
+
+        first = next(ranges, None)
+        if first is None:
+            return
+        pending = prefetch.submit(read, first)
+        for indices in ranges:
+            batch = pending.result()
+            pending = prefetch.submit(read, indices)
             yield batch
-            pending = following
+        yield pending.result()

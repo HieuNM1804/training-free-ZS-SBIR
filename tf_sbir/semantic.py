@@ -31,7 +31,7 @@ def read_words(csv_path):
 
 
 def top_codes(scores, words_per_sample, temperature=0.03):
-    values, indices = scores.topk(words_per_sample, dim=1)
+    values, indices = scores.topk(min(words_per_sample, scores.size(1)), dim=1)
     return indices, (values / temperature).softmax(dim=1)
 
 
@@ -133,7 +133,7 @@ def semantic_manifold_settings(queries, photos, sketch_words, photo_words):
         yield f"word-feedback-walk-{name}", *fused_features(feedback, photo_walk, text_query, word_walk, 0.35)
 
 
-def agreement_settings(queries, photos, contours, sketch_words, photo_words):
+def agreement_settings(queries, photos, contours, sketch_words, photo_words, topology=None):
     memory = gallery_memory(photos, photo_words)
     language_batches = []
     for batch in queries.split(256):
@@ -148,7 +148,8 @@ def agreement_settings(queries, photos, contours, sketch_words, photo_words):
     proxies = F.normalize(contours.mean(dim=1), dim=-1)
     contour_geometry = F.normalize(proxies - proxies.mean(dim=0), dim=-1)
     word_geometry = F.normalize(memory.gallery_words - memory.gallery_words.mean(dim=0), dim=-1)
-    for k, support in ((160, "rgb"), (160, "lexicon"), (320, "lexicon"), (320, "rgb")):
+    topologies = ((160, "rgb"), (160, "lexicon"), (320, "lexicon"), (320, "rgb")) if topology is None else (topology,)
+    for k, support in topologies:
         tag = f"k{k}-{support}"
         lexical_graph = support == "lexicon"
         graph = build_graph(
@@ -224,3 +225,43 @@ def lexical_consensus_settings(queries, photos, contours, sketch_words, photo_wo
             for weight in (0.4, 0.65):
                 name = f"verified-words-k{k}-b{boost:g}-w{weight:g}"
                 yield name, *fused_features(feedback, p_walk, text_q, text_p, weight)
+
+
+def contour_term_prototypes(contours, memory):
+    """Ground open-vocabulary terms in synthetic contours paired to the assigned gallery RGB."""
+    mean = contours.mean(dim=0)
+    features = F.normalize(contours - mean, dim=-1)
+    prototypes = features.new_zeros((len(memory.support), features.size(1)))
+    batches = zip(features.split(256), memory.term_ids.split(256), memory.term_weights.split(256), strict=True)
+    for batch, ids, weights in batches:
+        votes = batch[:, None, :] * weights.unsqueeze(-1)
+        prototypes.index_add_(0, ids.flatten(), votes.flatten(0, 1))
+    trust = (memory.support / (memory.support + 2.0)).sqrt()
+    return mean, F.normalize(prototypes, dim=-1) * trust[:, None]
+
+
+def paired_concept_settings(queries, photos, contours, sketch_words, photo_words):
+    memory = gallery_memory(photos, photo_words)
+    contour_vectors = F.normalize(contours.mean(dim=1), dim=-1)
+    mean, contour_prototypes = contour_term_prototypes(contour_vectors, memory)
+    query_contours = F.normalize(queries - mean, dim=-1)
+    visual, p = prepare_methods(queries, photos, contours, ["local_residual"])["local_residual"]
+    graph = build_graph(p, p, 320)
+    visual_bank = F.normalize(graph.diffuse(p, 0.1, 4), dim=-1)
+    visual_query = add_gallery_feedback(visual, visual_bank, 64, 2.0)
+    rgb_walk = F.normalize(graph.diffuse(photos, 0.1, 4), dim=-1)
+    words_walk = F.normalize(graph.diffuse(memory.gallery_words, 0.1, 4), dim=-1)
+    boosts = (0.0, 0.05, 0.12, 0.24, 0.36)
+    all_codes = [[] for _ in boosts]
+    for q, q_contour in zip(queries.split(256), query_contours.split(256), strict=True):
+        primary = guided_term_scores(q, photos, sketch_words, photo_words, memory, 0.3)
+        contour_evidence = q_contour @ contour_prototypes.T
+        for codes, boost in zip(all_codes, boosts, strict=True):
+            ids, weights = top_codes(primary + boost * contour_evidence, 12)
+            codes.append(code_vectors(photo_words, ids, weights))
+    for boost, codes in zip(boosts, all_codes, strict=True):
+        query = torch.cat(codes)
+        word_query, word_bank = fused_features(query, rgb_walk, query, words_walk, 0.35)
+        for weight in (0.4, 0.6):
+            name = f"paired-contour-concepts-b{boost:g}-w{weight:g}"
+            yield name, *fused_features(visual_query, visual_bank, word_query, word_bank, weight)

@@ -9,7 +9,7 @@ import time
 import torch
 
 from .benchmark import merge_inputs
-from .data import UNSEEN_CLASSES
+from .data import SKETCHY_SPLITS, UNSEEN_CLASSES
 from .encoding import global_cache_name, load_global_inputs, save_tensor
 from .global_methods import prepare_methods
 from .metrics import evaluate_rows
@@ -22,7 +22,7 @@ from .reranking import (
 def parse_args():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, required=True)
-    parser.add_argument("--splits", choices=UNSEEN_CLASSES, nargs="+", default=list(UNSEEN_CLASSES))
+    parser.add_argument("--splits", choices=UNSEEN_CLASSES, nargs="+", default=SKETCHY_SPLITS)
     parser.add_argument("--methods", choices=PATCH_METHODS, nargs="+", default=list(PATCH_METHODS))
     parser.add_argument("--encode-only", action="store_true")
     parser.add_argument("--resume", action="store_true")

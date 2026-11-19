@@ -1,6 +1,6 @@
 # Training-free zero-shot sketch-based image retrieval
 
-Frozen OpenAI CLIP for category-level sketch-to-photo retrieval on the two Sketchy unseen splits. All scoring uses the query and the unlabeled gallery. The methods estimate gallery statistics or similarity scores without fitting a Sketchy model.
+Frozen OpenAI CLIP ViT-B/32 for category-level sketch-to-photo retrieval. The methods estimate gallery statistics or similarity scores without fitting a model. The two Sketchy unseen splits are the defaults. TU-Berlin and QuickDraw can be selected explicitly.
 
 ## Setup
 
@@ -25,8 +25,9 @@ python -m tf_sbir.benchmark --root <Sketchy> --output runs/global
 python -m tf_sbir.patch_benchmark --root <Sketchy> --output runs/patch-fixed
 ```
 
-The default runs evaluate both complete splits. Use `--splits sketchy_1` or
-`--splits sketchy_2` to run one split. Options for batch sizes, workers, device, and
+The default runs evaluate both complete Sketchy splits. Use `--splits sketchy_1`,
+`--splits sketchy_2`, `--splits tuberlin`, or `--splits quickdraw` with the
+matching dataset root to run one split. Options for batch sizes, workers, device, and
 cache location are available through `--help`. For an explicit local OpenAI CLIP
 checkpoint, pass `--clip-checkpoint <ViT-B-32.pt>`. Models otherwise resolve through
 OpenCLIP. `--encode-only` in the patch runner prepares spatial CLIP patch
@@ -83,11 +84,28 @@ retrieval functions. Gallery positives are photos of the query class.
 | --- | ---: | --- | --- |
 | Sketchy-Ext-1 | 25 | mAP@all | P@100 |
 | Sketchy-Ext-2 | 21 | mAP@200 | P@200 |
+| TU-Berlin | 30 | mAP@all | P@100 |
+| QuickDraw | 30 | mAP@all | P@200 |
 
 The loader walks class folders in protocol order and sorts files within each
 folder. It skips non-file entries inside class folders.
 
 Run the local checks with `python -m unittest discover -s tests`.
+
+## Colab
+
+Clone the repository into the GPU runtime and install `requirements.txt`.
+Point `--root` to the directory containing the dataset's `photo` and `sketch`
+folders. Keep datasets, cache and run output under the runtime's local disk.
+Reuse the same `--cache` across benchmarks to avoid repeated CLIP inference.
+
+Tune `--batch-size` and `--workers` together on the runtime. Each source
+photo in the contour encoder produces two model inputs. The crop encoder
+interprets the batch size as a limit on the number of views. For semantic
+transport, `--score-batch` limits the number of simultaneous queries and
+`--transport-buffer-mib` caps their gathered photo-view tensor. The memory used
+by scoring and CLIP is additional to this buffer. The reference precision and
+mAP functions continue to run through `--metric-workers` CPU threads.
 
 
 ## Training-free research experiments
@@ -120,3 +138,27 @@ The fixed fusion rows `fuse-k160-rgb-w0.6` and `fuse-k320-rgb-w0.6` use the same
 settings on both splits. Both scored above 70% on all four metrics in the
 public-vocabulary study. These are exploratory results selected on the official
 unseen splits.
+
+## Conference-method transfers
+
+The gallery-only benchmark includes shared-neighbor and spectral ranking (`context`),
+intermediate visual blocks (`layers`), and paired contour–RGB anchors (`asif`). The
+public-vocabulary benchmark includes gallery prototype voting (`paired-concepts` and
+`cluster-mine`), score normalization (`hubness` and `querybank`), test-time view
+aggregation (`mta`), and conditional transport (`transport` and `transport-views`).
+The `dense-transport` study uses ClearCLIP's patch features on the same ViT-B/32 checkpoint.
+The [literature review](docs/TRAINING_FREE_LITERATURE_VI.md#các-cơ-chế-từ-hội-nghị-được-kiểm-tra)
+links the source papers and describes the adaptations.
+
+```powershell
+foreach ($study in @('context', 'layers', 'asif')) {
+    python -m tf_sbir.manifold_benchmark --root <Sketchy> --output "runs/sota-$study-b32" --study $study --exploratory-unseen
+}
+foreach ($study in @('paired-concepts', 'hubness', 'querybank', 'cluster-mine', 'mta', 'transport', 'transport-views', 'dense-transport')) {
+    python -m tf_sbir.semantic_benchmark --root <Sketchy> --vocabulary open-images-v7-classes.csv --output "runs/sota-$study-b32" --study $study --exploratory-unseen
+}
+```
+
+Both augmentation studies cache the added views. On CUDA, use `--batch-size 224
+--workers 8` for `mta` or `--batch-size 252 --workers 8` for `transport-views` if
+memory permits. Batch size counts the added images sent to CLIP for these studies.
