@@ -21,6 +21,7 @@ from .encoding import load_global_inputs
 from .foundation import load_words
 from .gallery_diffusion import gallery_diffusion_settings, two_stage_settings
 from .isoclip import iso_transport_settings, isoclip_maps
+from .isolated_regions import isolated_region_settings, load_isolated_regions
 from .manifold import fused_features
 from .manifold_benchmark import dot_rows
 from .metrics import evaluate_rows
@@ -65,6 +66,7 @@ SCORE_STUDIES = {
     "xdog-transport": xdog_transport_settings,
     "anchor-context": anchor_context_settings,
     "isoclip-transport": iso_transport_settings,
+    "isolated-regions": isolated_region_settings,
 }
 
 
@@ -110,8 +112,10 @@ def run(args):
     augmentations = load_augmentations(args, query_paths) if args.study == "mta" else None
     needs_crops = args.study in CROP_STUDIES or args.study in ("two-stage-transport", "adaptive-fusion")
     photo_views = load_augmentations(args, photo_paths, views=9, mode="photo") if needs_crops else None
-    dense_views = load_clearclip_gallery(args, photo_paths) if args.study in (*DENSE_STUDIES, "multiscale") else None
+    needs_dense = args.study in (*DENSE_STUDIES, "multiscale", "isolated-regions")
+    dense_views = load_clearclip_gallery(args, photo_paths) if needs_dense else None
     multiscale = load_multiscale_patches(args, query_paths, photo_paths) if args.study == "multiscale" else None
+    isolated = load_isolated_regions(args, photo_paths, dense_views) if args.study == "isolated-regions" else None
     rendered = load_xdog(args, photo_paths) if args.study == "xdog-transport" else None
     iso_maps = isoclip_maps(args, device) if args.study == "isoclip-transport" else None
     args.output.mkdir(parents=True, exist_ok=True)
@@ -143,6 +147,8 @@ def run(args):
             extra_inputs = (photo_views["features"][p_ids].to(device),) if needs_crops else ()
             if multiscale is not None:
                 extra_inputs = (dense_views[p_ids], (multiscale[0][q_ids], multiscale[1][p_ids]))
+            elif isolated is not None:
+                extra_inputs = (isolated[p_ids],)
             elif rendered is not None:
                 extra_inputs = (rendered[p_ids].to(device),)
             elif iso_maps is not None:

@@ -18,6 +18,7 @@ from tf_sbir.data import normal_transform
 from tf_sbir.dense_views import tokencut_mask
 from tf_sbir.gallery_diffusion import mutual_transition, regional_cosines, solve_diffusion
 from tf_sbir.isoclip import output_space_maps
+from tf_sbir.isolated_regions import isolated_views, token_boxes
 from tf_sbir.manifold import build_graph, fused_features, propagate_scores
 from tf_sbir.manifold_benchmark import covariance_roots
 from tf_sbir.mta import normalized_crops, pixel_lookup, robust_modes
@@ -131,6 +132,16 @@ class PublicVocabularyTests(unittest.TestCase):
 
 
 class InferenceCalibrationTests(unittest.TestCase):
+    def test_isolated_views_preserve_pixels_inside_the_proposal(self):
+        mask = torch.tensor([[False, True, True, False, True, False, False, False, False]])
+        self.assertEqual(token_boxes(mask).tolist(), [[1, 0, 3, 2]])
+        pixels = np.full((224, 224, 3), 255, dtype=np.uint8)
+        pixels[64:160, 64:160] = 0
+        cropped, blurred = isolated_views(Image.fromarray(pixels), (64, 64, 160, 160))
+        self.assertTrue(torch.all(cropped == 0))
+        self.assertTrue(torch.all(blurred[:, 64:160, 64:160] == 0))
+        self.assertLess(blurred[0, 63, 112].item(), 255)
+
     def test_isoclip_output_map_matches_projection_before_clip_head(self):
         rng = torch.Generator().manual_seed(31)
         raw = torch.randn(5, 4, generator=rng)
