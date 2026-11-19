@@ -24,7 +24,8 @@ from .semantic import (
     semantic_manifold_settings, semantic_settings,
 )
 from .semantic_transport import (
-    conditional_similarity, partial_transport_settings, transport_rows, transport_settings, transport_view_settings,
+    conditional_similarity, diversified_transport_settings, partial_transport_settings,
+    transport_rows, transport_settings, transport_view_settings,
 )
 
 GALLERY_STUDIES = {
@@ -39,6 +40,7 @@ GALLERY_STUDIES = {
 CROP_STUDIES = {
     "transport-views": transport_view_settings,
     "partial-transport": partial_transport_settings,
+    "diversified-transport": diversified_transport_settings,
 }
 DENSE_STUDIES = {
     "dense-transport": dense_transport_settings,

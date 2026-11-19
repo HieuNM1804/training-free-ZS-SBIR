@@ -16,7 +16,7 @@ from tf_sbir.manifold_benchmark import covariance_roots
 from tf_sbir.mta import normalized_crops, pixel_lookup, robust_modes
 from tf_sbir.score_calibration import dynamic_activation, normalized_score_rows, sinkhorn_target_hubness
 from tf_sbir.semantic import gallery_memory, guided_term_scores, neighborhood_term_posteriors, top_codes
-from tf_sbir.semantic_transport import conditional_similarity, dustbin_plan, partial_similarity
+from tf_sbir.semantic_transport import conditional_similarity, dustbin_plan, maximal_marginal_relevance, partial_similarity
 
 
 class GalleryManifoldTests(unittest.TestCase):
@@ -143,6 +143,14 @@ class InferenceCalibrationTests(unittest.TestCase):
         gallery = F.normalize(torch.randn(9, 3, 25, generator=rng), dim=-1)
         affinities = torch.matmul(concepts[:, None], gallery.mT)
         torch.testing.assert_close(regional_cosines(concepts, gallery, 2), conditional_similarity(affinities))
+
+    def test_mmr_picks_a_distinct_second_concept(self):
+        relevance = torch.tensor([[.7, .69, .68]])
+        descriptors = torch.tensor([[[1., 0.], [1., 0.], [0., 1.]]])
+        plain = maximal_marginal_relevance(relevance, descriptors, 2, 1.0)
+        diverse = maximal_marginal_relevance(relevance, descriptors, 2, 0.95)
+        self.assertEqual(plain.tolist(), [[0, 1]])
+        self.assertEqual(diverse.tolist(), [[0, 2]])
 
     def test_partial_assignment_balances_marginals_and_rejects_noisy_views(self):
         similar = torch.tensor([[.65, .12, .04], [.1, .68, .03]])

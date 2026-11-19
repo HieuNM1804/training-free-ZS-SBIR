@@ -119,3 +119,7 @@ TokenCut dùng normalized cut để tách foreground từ đồ thị tương đ
 ### Truy hồi toàn gallery và diffusion trên cạnh thuận nghịch
 
 Thí nghiệm `gallery-diffusion` tính Conditional Transport cho toàn gallery với ba descriptor mỗi ảnh. Hai danh sách xếp hạng được kết hợp bằng Reciprocal Rank Fusion hoặc tổng điểm chuẩn hóa. Một ablation riêng chuyển phương trình lặp diffusion của Iscen và cộng sự sang đồ thị ảnh gallery. Các cạnh nối láng giềng thuận nghịch với trọng số cosine dương lũy thừa ba. Seed của mỗi sketch đến từ thứ hạng ban đầu hoặc thứ hạng có thêm điểm transport. [Reciprocal Rank Fusion, SIGIR 2009](https://cormack.uwaterloo.ca/cormack/cormacksigir09-rrf.pdf) · [Efficient Diffusion, CVPR 2017](https://openaccess.thecvf.com/content_cvpr_2017/papers/Iscen_Efficient_Diffusion_on_CVPR_2017_paper.pdf)
+
+### Đa dạng hóa giả thuyết concept
+
+`diversified-transport` dùng Maximal Marginal Relevance để chọn năm concept từ 64 ứng viên của từng sketch. Điểm relevance là điểm concept đã hiệu chỉnh bằng gallery. Điểm dư thừa là cosine lớn nhất với một concept đã chọn. Ablation giữ nguyên shortlist, crop và khớp một phần, so trực tiếp với chọn năm concept chỉ theo relevance. [Maximal Marginal Relevance, SIGIR 1998](https://www.cs.cmu.edu/afs/cs/Web/People/jgc/publication/MMR_DiversityBased_Reranking_SIGIR_1998.pdf)

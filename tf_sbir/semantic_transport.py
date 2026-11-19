@@ -9,7 +9,7 @@ from .global_methods import centered
 from .manifold import build_graph
 from .reranking import standardize
 from .score_calibration import calibration_features, synthetic_domain_priors
-from .semantic import gallery_memory, guided_term_scores, top_codes
+from .semantic import gallery_memory, guided_term_scores
 
 
 def conditional_similarity(similarity, temperature=0.07):
@@ -56,22 +56,32 @@ def transport_rows(queries, gallery, offset, concepts, target_views, count, weig
         yield from rows.cpu()
 
 
-def prepare_transport(queries, photos, contours, sketch_words, photo_words):
+def transport_components(queries, photos, contours, sketch_words, photo_words):
     query, proxies, gallery = calibration_features(queries, photos, contours, sketch_words, photo_words)
     geometry = centered(photos, photos.mean(dim=0))
     prior = synthetic_domain_priors(proxies, gallery, geometry)["other-neighborhoods"]
     offset = 0.9 * (prior - prior.mean())
     memory = gallery_memory(photos, photo_words)
-    hypotheses = []
-    for batch in queries.split(256):
-        scores = guided_term_scores(batch, photos, sketch_words, photo_words, memory, 0.3)
-        ids, _ = top_codes(scores, 5)
-        hypotheses.append(photo_words[ids])
     graph = build_graph(geometry, geometry, 320)
     smoothed = F.normalize(graph.diffuse(photos, 0.1, 4), dim=-1)
     targets = torch.stack((photos, smoothed, memory.gallery_words), dim=1)
-    concepts = torch.cat(hypotheses)
-    return query, gallery, offset, concepts, targets
+    return query, gallery, offset, memory, targets
+
+
+def concept_candidates(queries, photos, sketch_words, photo_words, memory, count):
+    scores, indices = [], []
+    for batch in queries.split(256):
+        guided = guided_term_scores(batch, photos, sketch_words, photo_words, memory, 0.3)
+        nearest = guided.topk(count)
+        scores.append(nearest.values)
+        indices.append(nearest.indices)
+    return torch.cat(scores), torch.cat(indices)
+
+
+def prepare_transport(queries, photos, contours, sketch_words, photo_words):
+    query, gallery, offset, memory, targets = transport_components(queries, photos, contours, sketch_words, photo_words)
+    _, indices = concept_candidates(queries, photos, sketch_words, photo_words, memory, 5)
+    return query, gallery, offset, photo_words[indices], targets
 
 
 def transport_settings(queries, photos, contours, sketch_words, photo_words):
@@ -111,3 +121,37 @@ def partial_transport_settings(queries, photos, contours, sketch_words, photo_wo
                 scorer = partial(partial_similarity, dustbin=dustbin)
                 label = f"partial-transport-crop-gallery-k640-z{dustbin:g}-w{weight:g}"
                 yield label, query, gallery, (*correction[:-1], weight, scorer)
+
+
+def maximal_marginal_relevance(relevance, descriptors, count, relevance_weight):
+    """Select concepts with the SIGIR 1998 relevance-minus-redundancy objective."""
+    pairwise = descriptors @ descriptors.mT
+    rows = torch.arange(len(relevance), device=relevance.device)
+    selected = torch.zeros_like(relevance, dtype=torch.bool)
+    current = relevance.argmax(dim=1)
+    redundancy = torch.full_like(relevance, -torch.inf)
+    positions = []
+    for _ in range(count):
+        positions.append(current)
+        selected[rows, current] = True
+        redundancy = torch.maximum(redundancy, pairwise[rows, current])
+        objective = relevance_weight * relevance - (1 - relevance_weight) * redundancy
+        current = objective.masked_fill(selected, -torch.inf).argmax(dim=1)
+    return torch.stack(positions, dim=1)
+
+
+def diversified_transport_settings(queries, photos, contours, sketch_words, photo_words, photo_augmentations):
+    query, gallery, offset, memory, reference = transport_components(queries, photos, contours, sketch_words, photo_words)
+    relevance, ids = concept_candidates(queries, photos, sketch_words, photo_words, memory, 64)
+    dtype = torch.float16 if queries.is_cuda else torch.float32
+    targets = torch.cat((reference, F.normalize(photo_augmentations.float(), dim=-1)), dim=1).to(dtype)
+    score = partial(partial_similarity, dustbin=0.35)
+    yield "partial-transport-top5-control", query, gallery, (offset, photo_words[ids[:, :5]].to(dtype), targets, 640, 1.2, score)
+    for weight in (0.9, 0.96, 0.98):
+        selections = []
+        for rel, candidates in zip(relevance.split(256), ids.split(256), strict=True):
+            best = maximal_marginal_relevance(rel, photo_words[candidates], 5, weight)
+            selections.append(candidates.gather(1, best))
+        concepts = photo_words[torch.cat(selections)].to(dtype)
+        name = f"partial-transport-mmr5-l{weight:g}"
+        yield name, query, gallery, (offset, concepts, targets, 640, 1.2, score)
