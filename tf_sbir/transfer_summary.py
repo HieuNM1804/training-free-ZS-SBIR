@@ -2,6 +2,7 @@
 
 import argparse
 import ast
+import csv
 import hashlib
 import json
 from pathlib import Path
@@ -111,6 +112,7 @@ def run(args):
     results = {s: {} for s in SKETCHY_SPLITS}
     per_query = {s: {} for s in SKETCHY_SPLITS}
     evidence = {"families": {}, "draws": 5000, "seed": 907}
+    table = []
     for study in args.studies:
         values = load_query_results(study)
         if set(values[SKETCHY_SPLITS[0]]) != set(values[SKETCHY_SPLITS[1]]):
@@ -144,6 +146,14 @@ def run(args):
         evidence["families"][study.name] = {"variants_per_split": len(by_method), "common": common,
                                             "best_by_split": {s: rankings(groups[s]) for s in SKETCHY_SPLITS},
                                             "common_rows": {s: groups[s][common] for s in SKETCHY_SPLITS}}
+        for name, mean in by_method.items():
+            first, second = (groups[s][name] for s in SKETCHY_SPLITS)
+            table.append({"study": study.name, "method": name, "revision": first["revision"],
+                          "public_concepts": first["external_vocabulary"], "eligible_for_selection": include_candidate(name),
+                          "family_common": name == common, "mean_precision_pct": 100 * mean["precision"],
+                          "ext1_P100_pct": 100 * first["precision"], "ext1_mAP_all_pct": 100 * first["mAP"],
+                          "ext2_P200_pct": 100 * second["precision"], "ext2_mAP200_pct": 100 * second["mAP"],
+                          "parameters": json.dumps(first.get("parameters", {}), sort_keys=True)})
     validation_file = args.output.with_name("class-validation.json")
     validate_classes(args.root, args.studies, validation_file)
     validation = json.loads(validation_file.read_text())
@@ -196,7 +206,18 @@ def run(args):
                         for i, c in enumerate(UNSEEN_CLASSES[split])}
         evidence[split] = {"common": scores[common], "best": scores[best], "class_scores_ap_precision": class_scores,
                            "paired": intervals(per_query[split], labels, pairs, generator)}
+        if base in scores:
+            evidence[split]["class_change_vs_two_views"] = {}
+            for i, category in enumerate(UNSEEN_CLASSES[split]):
+                is_category = labels.eq(i)
+                change = (per_query[split][common][is_category] - per_query[split][base][is_category]).mean(dim=0)
+                evidence[split]["class_change_vs_two_views"][category] = {
+                    "queries": int(is_category.sum()), "delta_precision": float(change[1]), "delta_map": float(change[0])}
     args.output.write_text(json.dumps(evidence, indent=2) + "\n", encoding="utf-8")
+    with args.output.with_suffix(".csv").open("w", encoding="utf-8-sig", newline="") as file:
+        writer = csv.DictWriter(file, fieldnames=list(table[0]))
+        writer.writeheader()
+        writer.writerows(sorted(table, key=lambda item: -item["mean_precision_pct"]))
 
 
 if __name__ == "__main__":
