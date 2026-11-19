@@ -35,12 +35,26 @@ from tf_sbir.score_calibration import dynamic_activation, normalized_score_rows,
 from tf_sbir.semantic import gallery_memory, guided_term_scores, neighborhood_term_posteriors, top_codes
 from tf_sbir.semantic_transport import conditional_similarity, dustbin_plan, maximal_marginal_relevance, partial_similarity
 from tf_sbir.signed_feedback import feedback_vectors
+from tf_sbir.sketch_view_graph_fusion import source_votes
 from tf_sbir.structured_transport import matching_terms, part_distances
 from tf_sbir.union_density import candidate_union, density_rrf_rows, grow_density, pack_affinity
 from tf_sbir.view_hypotheses import expected_utility
 
 
 class GalleryManifoldTests(unittest.TestCase):
+    def test_sketch_view_graph_uses_jaccard_per_view_before_fusion(self):
+        neighbors = torch.tensor([[1, 2], [0, 2], [0, 1], [0, 2]])
+        crop = torch.tensor([[4., 3., 2., 1.], [1., 2., 3., 4.]])
+        full = crop.flip(0)
+        left, right = (jaccard_seed(scores, neighbors) for scores in (crop, full))
+        torch.testing.assert_close(source_votes(crop, full, neighbors, 0., True), left)
+        torch.testing.assert_close(source_votes(crop, full, neighbors, .25, False), .75 * left + .25 * right)
+        a = .75 * left.sum(dim=-1, keepdim=True)
+        b = .25 * right.sum(dim=-1, keepdim=True)
+        torch.testing.assert_close(source_votes(crop, full, neighbors, .25, True), (a * left + b * right) / (a + b))
+        torch.testing.assert_close(source_votes(crop, full, neighbors, .25, True)[1:],
+                                   source_votes(crop[1:], full[1:], neighbors, .25, True))
+
     def test_gallery_graph_index_averages_outgoing_neighbors_and_preserves_isolates(self):
         features = torch.tensor([[1., 0.], [0., 1.], [-1., 0.], [.6, .8]])
         edges = ((torch.tensor([0, 0, 1, 2]), torch.tensor([1, 2, 0, 0]), torch.tensor([1., 3., 1., 3.])),)
