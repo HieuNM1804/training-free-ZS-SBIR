@@ -57,7 +57,7 @@ def grow_density(affinity, ties, candidates, valid, graph, steps):
 
 def density_prefixes(iso, context, streams, initial, banks, graph, depth, score_batch, steps=256, anchor=1.):
     prefixes = []
-    batch_size = min(score_batch, 128)
+    batch_size = min(score_batch, 512)
     batches = (scores.split(batch_size) for scores in (iso, context, initial, *streams))
     for visual, semantic, tied, *cues in zip(*batches, strict=True):
         candidates, valid = candidate_union(cues, depth)
