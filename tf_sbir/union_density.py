@@ -92,6 +92,14 @@ def density_rows(initial, selected, score_batch, weight):
         yield from scores.cpu()
 
 
+def select_density_rows(rankings, choice, score_batch):
+    batch = min(score_batch, 256)
+    blocks = [density_blocks(initial, prefix, batch, weight) for initial, prefix, weight in rankings]
+    for indices, *scores in zip(choice.split(batch), *blocks, strict=True):
+        selection = torch.stack(scores, dim=1)
+        yield from selection[torch.arange(len(indices), device=indices.device), indices].cpu()
+
+
 def gallery_density_graph(photos, iso_gallery, words):
     iso_bank, *iso_edges = jaccard_graph(iso_gallery, 192)
     lexical_bank, *lexical_edges = jaccard_graph(words, 192)

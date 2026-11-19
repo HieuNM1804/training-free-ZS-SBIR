@@ -68,10 +68,10 @@ def normalized_crops(batch, lookup):
 
 
 @torch.inference_mode()
-def load_augmentations(args, paths, views=7, mode="sketch"):
+def load_view_features(args, dataset, views, mode, view_name):
     device = torch.device(args.device)
     precision = "fp16" if device.type == "cuda" else "fp32"
-    name = global_cache_name(args.root, paths, mode, f"mta-v1-{views}", precision, args.clip_checkpoint)
+    name = global_cache_name(args.root, dataset.paths, mode, view_name, precision, args.clip_checkpoint)
     file = args.cache / name
     if file.is_file():
         return torch.load(file, map_location="cpu", weights_only=True)
@@ -79,17 +79,20 @@ def load_augmentations(args, paths, views=7, mode="sketch"):
     image_batch = getattr(args, "crop_batch_size", None)
     workers = getattr(args, "crop_workers", None)
     batch_size = max(1, (args.batch_size if image_batch is None else image_batch) // views)
-    ds = AugmentedImages(paths, views)
-    stream = threaded_batches(ds, batch_size, args.workers if workers is None else workers, device.type == "cuda")
+    stream = threaded_batches(dataset, batch_size, args.workers if workers is None else workers, device.type == "cuda")
     lookup = pixel_lookup(device, model.visual.conv1.weight.dtype)
     output = []
-    for batch in tqdm(stream, total=(len(ds) + batch_size - 1) // batch_size, desc=f"CLIP {mode} views", mininterval=1):
+    for batch in tqdm(stream, total=(len(dataset) + batch_size - 1) // batch_size, desc=f"CLIP {mode} {view_name}", mininterval=1):
         pixels = normalized_crops(batch.flatten(0, 1), lookup)
         features = F.normalize(model.encode_image(pixels).float(), dim=-1)
         output.append(features.unflatten(0, batch.shape[:2]).half().cpu())
     cache = {"features": torch.cat(output), "logit_scale": model.logit_scale.exp().item()}
     save_tensor(cache, file)
     return cache
+
+
+def load_augmentations(args, paths, views=7, mode="sketch"):
+    return load_view_features(args, AugmentedImages(paths, views), views, mode, f"mta-v1-{views}")
 
 
 def robust_modes(views, support, logit_scale):

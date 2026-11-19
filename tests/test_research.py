@@ -34,9 +34,17 @@ from tf_sbir.semantic_transport import conditional_similarity, dustbin_plan, max
 from tf_sbir.signed_feedback import feedback_vectors
 from tf_sbir.structured_transport import matching_terms, part_distances
 from tf_sbir.union_density import candidate_union, density_rrf_rows, grow_density, pack_affinity
+from tf_sbir.view_hypotheses import expected_utility
 
 
 class GalleryManifoldTests(unittest.TestCase):
+    def test_view_mbr_matches_pairwise_reference_expectation(self):
+        samples = F.normalize(torch.tensor([[[1., 0.], [.8, .2], [0., 1.]], [[1., 1.], [1., 0.], [0., 1.]]]), dim=-1)
+        weights = torch.tensor([[.2, .7, .1], [.25, .25, .5]])
+        expected = ((samples @ samples.transpose(1, 2)) * weights[:, None]).sum(-1)
+        torch.testing.assert_close(expected_utility(samples, weights), expected)
+        torch.testing.assert_close(expected_utility(samples[1:], weights[1:]), expected[1:])
+
     def test_rank_biased_overlap_matches_explicit_prefix_intersections(self):
         heads = torch.tensor([[[0, 2, 3], [3, 2, 1]], [[0, 1, 2], [3, 4, 5]]])
         references = torch.tensor([[[0, 2, 3], [2, 3, 5]], [[0, 1, 2], [0, 1, 2]]])

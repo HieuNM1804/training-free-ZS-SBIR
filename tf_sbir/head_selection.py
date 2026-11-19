@@ -12,7 +12,8 @@ from .isoclip import contextual_scores, local_feedback, projected_feedback
 from .mta import sketch_view_modes
 from .reranking import standardize
 from .semantic import top_codes
-from .union_density import density_blocks, density_prefixes, density_rows, gallery_density_graph
+from .union_density import density_blocks, density_prefixes, density_rows, gallery_density_graph, select_density_rows
+from .view_hypotheses import view_hypotheses
 
 
 def rank_biased_overlap(heads, references, gallery_size, persistence):
@@ -95,17 +96,9 @@ def language_likelihood(heads, query_codes, gallery_codes, vocabulary_size, scor
     return torch.cat(results)
 
 
-def selected_rows(rankings, choice, score_batch):
-    batch = min(score_batch, 256)
-    blocks = [density_blocks(initial, prefix, batch, weight) for initial, prefix, weight in rankings]
-    for indices, *scores in zip(choice.split(batch), *blocks, strict=True):
-        selection = torch.stack(scores, dim=1)
-        yield from selection[torch.arange(len(indices), device=indices.device), indices].cpu()
-
-
 def head_selection_settings(
     queries, photos, contours, sketch_words, photo_words, maps, sketch_views, logit_scale,
-    sketch_regions, photo_regions, score_batch,
+    sketch_regions, photo_regions, score_batch, *, regional_views=None,
 ):
     dtype = torch.float16 if photos.is_cuda else torch.float32
     transform = maps[(150, 50)]
@@ -149,6 +142,10 @@ def head_selection_settings(
 
     rankings = ((mta_prior, mta_prefix, None), (cds_prior, cds_prefix, 0.8),
                 (shape_prior, shape_prefix, None), (word_prior, word_prefix, None))
+    if regional_views is not None:
+        yield from view_hypotheses(rankings, queries, sketch_views, regional_views, photos, contours,
+                                   sketch_words, photo_words, transform, gallery, words, banks, graph, score_batch)
+        return
     edge_gallery = F.normalize(F.normalize(contours @ transform, dim=-1).mean(dim=1), dim=-1)
     center = edge_gallery.mean(dim=0)
     edge_gallery = F.normalize(edge_gallery - center, dim=-1).to(dtype)
@@ -159,12 +156,12 @@ def head_selection_settings(
     gain, overlap, broad = predictions
     joint = 0.5 * (standardize(gain) + standardize(broad))
     for name, quality in (("wig", gain), ("rbo64", overlap), ("rbo160", broad), ("joint", joint)):
-        yield f"head-qpp-{name}", partial(selected_rows, rankings, quality.argmax(dim=1), score_batch)
-    yield "head-qpp-pair", partial(selected_rows, rankings, joint[:, :2].argmax(dim=1), score_batch)
+        yield f"head-qpp-{name}", partial(select_density_rows, rankings, quality.argmax(dim=1), score_batch)
+    yield "head-qpp-pair", partial(select_density_rows, rankings, joint[:, :2].argmax(dim=1), score_batch)
     for index, name in enumerate(("mta", "cds")):
         guarded = joint.clone()
         guarded[:, index] += 0.75
-        yield f"head-qpp-guard-{name}", partial(selected_rows, rankings, guarded.argmax(dim=1), score_batch)
+        yield f"head-qpp-guard-{name}", partial(select_density_rows, rankings, guarded.argmax(dim=1), score_batch)
 
     query_codes = concept_posteriors(F.normalize(queries + mode, dim=-1), sketch_words)
     gallery_codes = (
@@ -174,8 +171,8 @@ def head_selection_settings(
     language = language_likelihood(heads, query_codes, gallery_codes, len(photo_words), score_batch)
     fused = 0.5 * (joint + standardize(language))
     for name, quality in (("lexical", language), ("lexical-joint", fused)):
-        yield f"head-qpp-{name}", partial(selected_rows, rankings, quality.argmax(dim=1), score_batch)
+        yield f"head-qpp-{name}", partial(select_density_rows, rankings, quality.argmax(dim=1), score_batch)
     for index, name in enumerate(("mta", "cds")):
         guarded = fused.clone()
         guarded[:, index] += 0.75
-        yield f"head-qpp-lexical-guard-{name}", partial(selected_rows, rankings, guarded.argmax(dim=1), score_batch)
+        yield f"head-qpp-lexical-guard-{name}", partial(select_density_rows, rankings, guarded.argmax(dim=1), score_batch)
