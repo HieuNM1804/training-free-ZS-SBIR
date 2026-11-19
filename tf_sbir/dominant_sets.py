@@ -49,8 +49,9 @@ def constrained_membership(affinity, candidates, valid, query_edges, penalty, st
     return weights, support.clamp_min_(0.).masked_fill_(~valid, 0.)
 
 
-def dominant_support(initial, streams, affinity, penalty, strength, score_batch):
+def dominant_support(initial, streams, affinity, penalty, strength, score_batch, kernel_bank=None):
     rows = []
+    representatives = []
     blocks = (matrix.split(min(score_batch, 512)) for matrix in (initial, *streams))
     for evidence, *cues in zip(*blocks, strict=True):
         indices, valid = candidate_union(cues, min(1280, evidence.size(1)))
@@ -58,16 +59,37 @@ def dominant_support(initial, streams, affinity, penalty, strength, score_batch)
         peak = scores.masked_fill(~valid, -torch.inf).amax(dim=1, keepdim=True)
         scale = strength * penalty / valid.sum(dim=1, keepdim=True)
         query_edges = (0.5 * (scores - peak)).exp() * scale
-        _, support = constrained_membership(affinity, indices, valid, query_edges, penalty, steps=128)
+        membership, support = constrained_membership(affinity, indices, valid, query_edges, penalty, steps=128)
         support = support / support.amax(dim=1, keepdim=True).clamp_min(1e-8)
-        rows.append((indices.to(torch.int32), support))
-    return rows
+        rows.append((indices.to(torch.int32), support.masked_fill_(~valid, -1.)))
+        if kernel_bank is not None:
+            # A pure-strategy trajectory can activate at most one new photo per step.
+            mass, order = membership[:, 1:].topk(min(128, indices.size(1)), dim=1)
+            photo = indices.gather(1, order)
+            summary = mass.to(kernel_bank.dtype).unsqueeze(1) @ kernel_bank[photo]
+            representatives.append(F.normalize(summary.squeeze(1).float(), dim=1))
+    return rows, torch.cat(representatives) if representatives else None
 
 
 def supportive_rows(initial, local_rows, score_batch, weight):
     for scores, (indices, support) in zip(initial.split(min(score_batch, 512)), local_rows, strict=True):
-        fused = scores.scatter_add(1, indices.long(), weight * support)
+        fused = scores.scatter_add(1, indices.long(), weight * support.clamp_min(0.))
         yield from (0.15 * fused).tanh().cpu()
+
+
+def supported_prefix(initial, local_rows, score_batch, kernel_score=None):
+    prefix = []
+    batch = min(score_batch, 512)
+    for index, (scores, (ids, support)) in enumerate(zip(initial.split(batch), local_rows, strict=True)):
+        ids = ids.long()
+        if kernel_score is None:
+            bonus = 2. * support
+        else:
+            block = kernel_score[index * batch:index * batch + len(scores)]
+            bonus = 0.8 * block.gather(1, ids)
+        priority = (scores.gather(1, ids) + bonus).masked_fill_(support < 0., -torch.inf)
+        prefix.append(ids.gather(1, priority.topk(min(256, scores.size(1)), dim=1).indices))
+    return torch.cat(prefix)
 
 
 def dominant_set_settings(
@@ -109,9 +131,21 @@ def dominant_set_settings(
     affinity.scatter_add_(1, neighbor_ids, strengths.to(dtype))
     # The maximum weighted degree bounds the largest eigenvalue of every induced subgraph.
     penalty = 1.01 * strengths.sum(dim=1).amax().clamp_min(1e-6)
+    kernel_bank = torch.cat([
+        F.normalize(view - view.mean(dim=0), dim=1) for view in (gallery, words, photos)
+    ], dim=1).to(dtype)
     for pool, streams in (("pair", pair), ("region", expanded)):
         for strength in (2., 8.):
-            support = dominant_support(initial, streams, affinity, penalty, strength, score_batch)
+            extend = kernel_bank if pool == "region" and strength == 2. else None
+            support, representative = dominant_support(initial, streams, affinity, penalty, strength, score_batch, extend)
             for weight in (0.8, 2.):
                 name = f"cds-{pool}-a{strength:g}-w{weight:g}"
                 yield name, partial(supportive_rows, initial, support, score_batch, weight)
+            if strength == 2.:
+                hard = supported_prefix(initial, support, score_batch)
+                yield f"cds-{pool}-a2-hard", partial(density_rows, initial, hard, score_batch, None)
+            if representative is not None:
+                cosine = standardize((representative.to(dtype) @ kernel_bank.T).float())
+                hard = supported_prefix(initial, support, score_batch, cosine)
+                yield "cds-region-a2-cosine-hard", partial(density_rows, initial, hard, score_batch, None)
+                yield "cds-region-a2-cosine-soft", partial(density_rows, initial + 0.8 * cosine, None, score_batch, None)
