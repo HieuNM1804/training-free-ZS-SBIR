@@ -45,6 +45,8 @@ class PairSetting(NamedTuple):
     shuffle: bool = False
     lexical_fraction: float = .5
     separate_risk: bool = False
+    risk_component: str = "both"
+    shuffle_risk: bool = False
 
 
 SETTINGS = {
@@ -64,6 +66,35 @@ SETTINGS = {
     "pairs-sharp-visual-l05": PairSetting(True, 4., 2., 1., .25, separate_risk=True),
     "pairs-visual-shuffled-l035": PairSetting(True, 0., 2., 1., .25, True, .35, True),
 }
+
+
+def matched_controls():
+    base = SETTINGS["flat-visual-risk-l035"]
+    sharp = SETTINGS["flat-sharp-risk4"]
+    return {
+        "reference": base, "none": base._replace(risk_power=0.),
+        "source": base._replace(risk_component="source"), "target": base._replace(risk_component="target"),
+        "shuffled": base._replace(shuffle_risk=True),
+        "risk1": base._replace(risk_power=1.), "risk4": base._replace(risk_power=4.),
+        "l02": base._replace(lexical_fraction=.2), "l0275": base._replace(lexical_fraction=.275),
+        "l0425": base._replace(lexical_fraction=.425),
+        "p1-l0275": base._replace(power=1., lexical_fraction=.275), "p1-l035": base._replace(power=1.),
+        "sharp": sharp, "sharp-source": sharp._replace(risk_component="source"),
+        "sharp-target": sharp._replace(risk_component="target"), "sharp-shuffled": sharp._replace(shuffle_risk=True),
+    }
+
+
+def select_view_risk(components, config):
+    if config.risk_component == "source":
+        risk = components[..., 0]
+    elif config.risk_component == "target":
+        risk = components[..., 1]
+    else:
+        risk = components[..., 0] + components[..., 1]
+    if config.shuffle_risk:
+        left, right = risk.chunk(2, dim=1)
+        risk = torch.cat((left.roll(1, dims=1), right.roll(1, dims=1)), dim=1)
+    return risk
 
 
 def reflection_seed(votes, risk, config):
@@ -125,7 +156,7 @@ def evaluate_views(args, folder, split, query_ids, q_labels, p_labels, data, ind
     original, extras, reflected = data
     n, d = len(query_ids), target.size(1)
     vectors = file_tensor(folder, "vectors", (n, 8, d))
-    risks = file_tensor(folder, "risks", (n, 8))
+    risks = file_tensor(folder, "risks", (n, 8, 2))
     concepts = file_tensor(folder, "concepts", (n, 8, photo_words.size(1)))
     errors = anchor_errors(source, target)
     device = source.device
@@ -136,36 +167,44 @@ def evaluate_views(args, folder, split, query_ids, q_labels, p_labels, data, ind
         raw = torch.cat((cropped[:, :1], original[ids, None].to(device), cropped[:, 1:3], cropped[:, 3:4], mirror), dim=1)
         q = centered(F.normalize(raw @ transform, dim=-1), source_center)
         neighbors = nearest_anchors(q.flatten(0, 1), source, 64)
-        mapped, uncertainty = predict_views(q, source, target, errors, neighbors, count=64, penalty=1., carry=1.)
+        mapped, uncertainty = predict_views(q, source, target, errors, neighbors, count=64, penalty=1., carry=1., risk_components=True)
         loc = slice(start, start + len(ids))
         vectors[loc], risks[loc] = mapped.cpu(), uncertainty.cpu()
         concepts[loc] = view_concepts(raw, sketch_words, photo_words).cpu()
     del raw, mapped, q, neighbors, cropped, mirror, uncertainty, errors
     torch.cuda.empty_cache()
 
+    controls = args.stage == "reflection-controls"
+    configs = matched_controls() if controls else SETTINGS
+
     def rows(mode):
         for start in range(0, n, args.score_batch):
             loc = slice(start, start + args.score_batch)
-            vec, risk, words = (data[loc].to(device) for data in (vectors, risks, concepts))
-            if mode in ("risk4", "risk-only"):
+            vec, components, words = (data[loc].to(device) for data in (vectors, risks, concepts))
+            if mode not in configs:
+                risk = components[..., 0] + components[..., 1]
                 yield from five_rows(vec[:, :5], risk[:, :5], words[:, :5], index, mode, args.score_batch)
             else:
-                tail, prefix = reflection_block(vec, risk, words, index, SETTINGS[mode])
+                config = configs[mode]
+                tail, prefix = reflection_block(vec, select_view_risk(components, config), words, index, config)
                 yield from density_rows(tail, prefix, args.score_batch, None)
 
-    for mode in ("risk4", "risk-only", *SETTINGS):
-        name = "reflect-" + (mode if mode in SETTINGS else "five-" + mode)
-        params = {"neighbors": 64, "penalty": 1., "carry": 1., "fusion": mode, "views": 8 if mode in SETTINGS else 5}
-        if mode in SETTINGS:
-            params.update(SETTINGS[mode]._asdict())
+    modes = tuple(configs) if controls else ("risk4", "risk-only", *configs)
+    for mode in modes:
+        name = ("reflect-control-" if controls else "reflect-") + (mode if mode in configs else "five-" + mode)
+        params = {"neighbors": 64, "penalty": 1., "carry": 1., "fusion": mode, "views": 8 if mode in configs else 5}
+        if mode in configs:
+            params.update(configs[mode]._asdict())
         record(args, split, name, rows(mode), q_labels, p_labels, metadata, params)
 
     ids = torch.linspace(0, n-1, 32).long()
-    vec, risk, words = (data[ids].to(device) for data in (vectors, risks, concepts))
+    vec, components, words = (data[ids].to(device) for data in (vectors, risks, concepts))
     audit = {}
-    for mode in ("flat-risk2", "pairs-balanced", "pairs-intersect025", "pairs-visual-risk-l035"):
-        first, head = reflection_block(vec, risk, words, index, SETTINGS[mode])
-        other, swapped = reflection_block(vec.roll(4, 1), risk.roll(4, 1), words.roll(4, 1), index, SETTINGS[mode])
+    audited = ("reference", "source", "target", "shuffled") if controls else ("flat-risk2", "pairs-balanced", "pairs-intersect025", "pairs-visual-risk-l035")
+    for mode in audited:
+        risk = select_view_risk(components, configs[mode])
+        first, head = reflection_block(vec, risk, words, index, configs[mode])
+        other, swapped = reflection_block(vec.roll(4, 1), risk.roll(4, 1), words.roll(4, 1), index, configs[mode])
         audit[mode] = {"queries": len(ids), "prefix_positions_equal": int(head.eq(swapped).sum()),
                        "prefix_positions": head.numel(), "tail_max_abs_difference": (first-other).abs().max().item()}
     (args.output / f"{split}-flip-check.json").write_text(json.dumps(audit, indent=2), encoding="utf-8")
