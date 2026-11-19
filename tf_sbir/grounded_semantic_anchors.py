@@ -37,6 +37,17 @@ def grounded_ranking(visual, lexical, banks, graph, walk, score_batch):
     return partial(density_rows, tail, prefix, score_batch, None)
 
 
+def grounded_rows(native, transferred, words, index, fraction, score_batch):
+    gallery, vocabulary, banks, graph, walk = index
+    for start in range(0, len(native), score_batch):
+        selection = slice(start, start + score_batch)
+        visual = standardize(native[selection] @ gallery.T)
+        if transferred is not None:
+            visual = visual.lerp(standardize(transferred[selection] @ gallery.T), fraction)
+        lexical = words[selection] @ vocabulary.T
+        yield from grounded_ranking(visual, lexical, banks, graph, walk, score_batch)()
+
+
 def grounded_semantic_settings(queries, photos, sketch_words, photo_words, maps, score_batch):
     yield "ground-cosine-native", partial(dot_rows, queries, photos, score_batch)
 
@@ -45,16 +56,16 @@ def grounded_semantic_settings(queries, photos, sketch_words, photo_words, maps,
     mean = projected.mean(dim=0)
     projected = centered(projected, mean)
     native = centered(F.normalize(queries @ transform, dim=-1), mean)
-    gallery, word_codes, banks, graph, walk = gallery_index(photos, projected, photo_words)
-    direct = standardize(native @ gallery.T)
+    index = gallery_index(photos, projected, photo_words)
+    gallery = index[0]
     query_ids = nearest_anchors(queries, sketch_words, 64)
     words = transfer_coordinates(queries, sketch_words, photo_words, query_ids[:, :24], .1)
-    lexical = F.normalize(words, dim=-1) @ word_codes.T
+    words = F.normalize(words, dim=-1)
 
-    def rank(visual):
-        return grounded_ranking(visual, lexical, banks, graph, walk, score_batch)
+    def rank(transferred=None, fraction=.6):
+        return partial(grounded_rows, native, transferred, words, index, fraction, score_batch)
 
-    yield "ground-graph-reference", rank(direct)
+    yield "ground-graph-reference", rank()
     supports = concept_support(photo_words, photos, seed=831, count=32)
     generator = torch.Generator(device=photos.device).manual_seed(832)
     permutation = torch.randperm(len(sketch_words), device=photos.device, generator=generator)
@@ -68,19 +79,17 @@ def grounded_semantic_settings(queries, photos, sketch_words, photo_words, maps,
 
         for k in (8, 24, 64):
             for penalty in (0., 1.):
-                transferred = standardize(predict(k, penalty) @ gallery.T)
-                yield f"ground-r{count}-k{k}-g{penalty:g}", rank(direct.lerp(transferred, .6))
-                del transferred
+                yield f"ground-r{count}-k{k}-g{penalty:g}", rank(predict(k, penalty))
         if count == 32:
-            calibrated = standardize(predict(24, 1.) @ gallery.T)
+            calibrated = predict(24, 1.)
             for fraction in (.25, .85, 1.):
-                yield f"ground-fraction{fraction:g}", rank(direct.lerp(calibrated, fraction))
+                yield f"ground-fraction{fraction:g}", rank(calibrated, fraction)
             del calibrated
             shuffled = predict(24, 1., error=disagreement[permutation])
-            yield "ground-shuffled-errors", rank(direct.lerp(standardize(shuffled @ gallery.T), .6))
+            yield "ground-shuffled-errors", rank(shuffled)
             diagonal = predict(24, 1., diagonal=True)
-            yield "ground-diagonal", rank(direct.lerp(standardize(diagonal @ gallery.T), .6))
+            yield "ground-diagonal", rank(diagonal)
             unpaired = predict(24, 0., target=anchors[permutation])
-            yield "ground-unpaired", rank(direct.lerp(standardize(unpaired @ gallery.T), .6))
+            yield "ground-unpaired", rank(unpaired)
             yield "ground-cosine-unpaired", partial(dot_rows, unpaired, gallery, score_batch)
             yield "ground-cosine-paired", partial(dot_rows, predict(24, 0.), gallery, score_batch)

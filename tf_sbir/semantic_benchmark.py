@@ -2,8 +2,10 @@
 
 import argparse
 from functools import partial
+import hashlib
 import json
 from pathlib import Path
+import subprocess
 import time
 
 import torch
@@ -153,6 +155,7 @@ def run(args):
     torch.set_num_threads(1)
     torch.set_float32_matmul_precision("highest")
     device = torch.device(args.device)
+    args.memory_map = args.study == "grounded-semantic-anchors"
     splits = args.splits
     query_paths, queries = merge_inputs(args.root, splits, "sketch")
     photo_paths, photos = merge_inputs(args.root, splits, "photo")
@@ -187,7 +190,20 @@ def run(args):
         "lame-relevance", "signed-feedback", "finch-prior", "finch-prototype", "finch-cache", "iso-mta", "gem-regions",
         "dominant-sets", "structured-transport", "grounded-semantic-anchors", *INK_STUDIES, *HEAD_STUDIES,
     )
-    iso_maps = isoclip_maps(args, device, paired=args.study == "iso-paired") if args.study in iso_studies else None
+    provenance = {}
+    if args.study == "grounded-semantic-anchors" and args.clip_checkpoint and device.type == "cuda":
+        with open(args.clip_checkpoint, "rb") as checkpoint:
+            digest = hashlib.file_digest(checkpoint, "sha256").hexdigest()
+        if digest != "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af":
+            raise ValueError("The grounded comparison requires the original OpenAI ViT-B/32")
+        gpu = torch.cuda.get_device_name(device)
+        path = args.cache / f"iso-b32-150-50-{digest[:12]}-{torch.__version__}-{gpu.replace(' ', '-')}.pt"
+        iso_maps = ({(150, 50): torch.load(path, map_location=device, weights_only=True)} if path.is_file()
+                    else isoclip_maps(args, device, bands=((150, 50),)))
+        provenance = {"gpu": gpu, "torch": str(torch.__version__), "checkpoint_sha256": digest,
+                      "revision": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=Path(__file__).resolve().parents[1], text=True).strip()}
+    else:
+        iso_maps = isoclip_maps(args, device, paired=args.study == "iso-paired") if args.study in iso_studies else None
     args.output.mkdir(parents=True, exist_ok=True)
     for split in splits:
         q_ids, q_labels = queries[split]
@@ -281,7 +297,7 @@ def run(args):
                 rows, q_labels, p_labels, split, f"{split} {name}", workers=args.metric_workers,
             )
             result = {
-                "split": split, "method": name, "backbone": "OpenAI CLIP ViT-B/32",
+                **provenance, "split": split, "method": name, "backbone": "OpenAI CLIP ViT-B/32",
                 "mAP": float(ap), "precision": float(precision), "map_k": map_k, "p_k": p_k,
                 "queries": len(q), "gallery": len(p), "study": args.study,
                 "external_vocabulary": 0 if name.startswith(("compact-image-", "transfer-image-")) or name == "ground-cosine-native" else len(words),

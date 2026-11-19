@@ -26,7 +26,7 @@ def load_words(args, words):
     signatures = hashlib.sha256("\0".join(words).encode()).hexdigest()[:20]
     file = cache_file(args, f"text/{signatures}")
     if file.is_file():
-        return torch.load(file, map_location="cpu", weights_only=True)
+        return torch.load(file, map_location="cpu", weights_only=True, mmap=getattr(args, "memory_map", False))
     device = torch.device(args.device)
     model = load_frozen_clip(args.clip_checkpoint, device)
     tokenizer = open_clip.get_tokenizer("ViT-B-32")

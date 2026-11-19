@@ -23,7 +23,8 @@ from tf_sbir.data import normal_transform
 from tf_sbir.dense_views import tokencut_mask
 from tf_sbir.dominant_sets import constrained_membership
 from tf_sbir.gallery_diffusion import mutual_transition, regional_cosines, solve_diffusion
-from tf_sbir.grounded_semantic_anchors import concept_support, ground_concepts
+from tf_sbir.grounded_semantic_anchors import concept_support, ground_concepts, grounded_ranking, grounded_rows
+from tf_sbir.reranking import standardize
 from tf_sbir.gaussian_verification import diagonal_log_likelihood, evidence_rank_fusion, proposal_evidence
 from tf_sbir.head_selection import rank_biased_overlap
 from tf_sbir.isoclip import output_space_maps
@@ -45,6 +46,21 @@ from tf_sbir.view_hypotheses import expected_utility
 
 
 class GalleryManifoldTests(unittest.TestCase):
+    def test_grounded_query_stream_preserves_whole_gallery_scores(self):
+        rng = torch.Generator().manual_seed(33)
+        gallery, vocab = [F.normalize(torch.randn(1300, 17, generator=rng), dim=-1) for _ in range(2)]
+        native, mapped, phrases = [F.normalize(torch.randn(3, 17, generator=rng), dim=-1) for _ in range(3)]
+        ids = torch.arange(len(gallery))
+        bank = torch.stack([(ids + 1) % len(ids), (ids + 3) % len(ids)], dim=1)
+        edges = [(ids, bank[:, 0], torch.ones(len(ids)))]
+        graph = pack_affinity(len(ids), edges)
+        walk = column_stochastic(len(ids), edges)
+        visual = standardize(native @ gallery.T).lerp(standardize(mapped @ gallery.T), .6)
+        original = grounded_ranking(visual, phrases @ vocab.T, (bank, bank), graph, walk, 3)()
+        index = (gallery, vocab, (bank, bank), graph, walk)
+        streamed = grounded_rows(native, mapped, phrases, index, .6, 2)
+        torch.testing.assert_close(torch.stack(list(streamed)), torch.stack(list(original)), atol=2e-6, rtol=1e-5)
+
     def test_grounding_halves_are_disjoint_and_exchanging_them_reverses_the_error(self):
         photos = torch.eye(8)
         queries = F.normalize(torch.tensor([[3., 2., 1., 0., 3., 2., 1., 0.],
