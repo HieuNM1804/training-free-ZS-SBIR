@@ -50,6 +50,18 @@ def include_candidate(name):
     return "canvas" not in name and name != "multitransfer-two-views"
 
 
+def load_query_results(study):
+    joined = study / "per-query-metrics.pt"
+    if joined.is_file():
+        return torch.load(joined, map_location="cpu", weights_only=True)
+    separate = study / "per-query"
+    results = {split: {p.stem.removeprefix(split + "-"): torch.load(p, map_location="cpu", weights_only=True)
+                       for p in separate.glob(f"{split}-*.pt")} for split in SKETCHY_SPLITS}
+    if not all(results.values()):
+        raise ValueError(f"Missing per-query results in {study}")
+    return results
+
+
 @torch.inference_mode()
 def run(root, studies, output):
     classes = sorted(set().union(*(UNSEEN_CLASSES[s] for s in SKETCHY_SPLITS)))
@@ -61,7 +73,7 @@ def run(root, studies, output):
     counts = torch.stack([torch.bincount(labels, minlength=len(classes)) for labels in class_ids])
     results, all_names, all_sums = {}, [], []
     for study in studies:
-        rows = torch.load(study / "per-query-metrics.pt", map_location="cpu", weights_only=True)
+        rows = load_query_results(study)
         names = sorted(n for n in rows[SKETCHY_SPLITS[0]] if include_candidate(n))
         parts = []
         for split, labels in zip(SKETCHY_SPLITS, class_ids, strict=True):
