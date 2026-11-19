@@ -11,6 +11,7 @@ from tf_sbir.asif import sparse_relative_features
 from tf_sbir.bimodal_graph import bimodal_transition
 from tf_sbir.cluster_mine import majority_concepts
 from tf_sbir.contextual_rank import column_stochastic, jaccard_seed, personalized_walk
+from tf_sbir.contour_render import xdog
 from tf_sbir.coregistration import leading_basis
 from tf_sbir.data import normal_transform
 from tf_sbir.dense_views import tokencut_mask
@@ -128,6 +129,14 @@ class PublicVocabularyTests(unittest.TestCase):
 
 
 class InferenceCalibrationTests(unittest.TestCase):
+    def test_xdog_turns_a_flat_surface_white_and_retains_a_step_edge(self):
+        levels = np.full((31, 31), 0.2, dtype=np.float32)
+        self.assertTrue(np.all(xdog(levels, 0.8) == 255))
+        levels[:, 15:] = 0.8
+        rendered = xdog(levels, 0.8)
+        self.assertLess(rendered[:, 13:17].min(), 128)
+        self.assertTrue(np.all(rendered[:, :8] == 255))
+
     def test_multiscale_tile_order_recovers_the_correct_spatial_grid(self):
         pixels = torch.arange(72, dtype=torch.float32).view(2, 1, 6, 6)
         tiles = split_tiles(pixels, 3).flatten(2).transpose(1, 2)

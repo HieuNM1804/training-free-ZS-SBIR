@@ -12,6 +12,7 @@ from .benchmark import merge_inputs
 from .bimodal_graph import bimodal_settings
 from .cluster_mine import cluster_mine_settings
 from .contextual_rank import contextual_rank_settings
+from .contour_render import load_xdog, xdog_transport_settings
 from .coregistration import coregistration_settings
 from .data import SKETCHY_SPLITS, UNSEEN_CLASSES
 from .dense_views import dense_transport_settings, load_clearclip_gallery, tokencut_transport_settings
@@ -59,6 +60,7 @@ SCORE_STUDIES = {
     "coreg-spectral": coregistration_settings,
     "contextual-rank": contextual_rank_settings,
     "multiscale": multiscale_settings,
+    "xdog-transport": xdog_transport_settings,
 }
 
 
@@ -106,6 +108,7 @@ def run(args):
     photo_views = load_augmentations(args, photo_paths, views=9, mode="photo") if needs_crops else None
     dense_views = load_clearclip_gallery(args, photo_paths) if args.study in (*DENSE_STUDIES, "multiscale") else None
     multiscale = load_multiscale_patches(args, query_paths, photo_paths) if args.study == "multiscale" else None
+    rendered = load_xdog(args, photo_paths) if args.study == "xdog-transport" else None
     args.output.mkdir(parents=True, exist_ok=True)
     for split in splits:
         q_ids, q_labels = queries[split]
@@ -135,6 +138,8 @@ def run(args):
             extra_inputs = (photo_views["features"][p_ids].to(device),) if needs_crops else ()
             if multiscale is not None:
                 extra_inputs = (dense_views[p_ids], (multiscale[0][q_ids], multiscale[1][p_ids]))
+            elif rendered is not None:
+                extra_inputs = (rendered[p_ids].to(device),)
             settings = SCORE_STUDIES[args.study](
                 q, p, contours[p_ids].to(device), sketch_text, photo_text, *extra_inputs, args.score_batch,
             )
