@@ -10,7 +10,7 @@ from torch.nn import functional as F
 from torch.utils.data import DataLoader
 from tqdm.auto import tqdm
 
-from .data import Images, configure_image_worker, dataset_fingerprint, normal_transform
+from .data import Images, configure_image_worker, dataset_fingerprint, normal_transform, threaded_batches
 
 
 def global_cache_name(root, paths, mode, view, precision, checkpoint):
@@ -33,13 +33,15 @@ def save_tensor(tensor, output):
 @torch.inference_mode()
 def encode_clip(model, paths, view, batch_size, workers, device):
     configure_image_worker(None)
-    batches = DataLoader(
-        Images(paths, normal_transform(), view), batch_size=batch_size,
-        num_workers=workers, pin_memory=device.type == "cuda", worker_init_fn=configure_image_worker,
-    )
+    dataset = Images(paths, normal_transform(), view)
+    if os.name == "nt" and workers:
+        batches = threaded_batches(dataset, batch_size, workers, device.type == "cuda")
+    else:
+        batches = DataLoader(dataset, batch_size=batch_size, num_workers=workers,
+                             pin_memory=device.type == "cuda", worker_init_fn=configure_image_worker)
     output = []
     dtype = model.visual.conv1.weight.dtype
-    for batch in tqdm(batches, desc=f"CLIP {view}"):
+    for batch in tqdm(batches, desc=f"CLIP {view}", total=(len(paths) + batch_size - 1) // batch_size):
         if view == "contours":
             batch = batch.flatten(0, 1)
         embeddings = F.normalize(model.encode_image(batch.to(device=device, dtype=dtype, non_blocking=True)).float(), dim=-1)
