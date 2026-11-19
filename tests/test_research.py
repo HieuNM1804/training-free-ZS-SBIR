@@ -1,14 +1,18 @@
 import unittest
 
+import numpy as np
 import torch
+from PIL import Image
 from torch.nn import functional as F
+from torchvision.transforms.functional import pil_to_tensor
 
 from tf_sbir.asif import sparse_relative_features
 from tf_sbir.cluster_mine import majority_concepts
+from tf_sbir.data import normal_transform
 from tf_sbir.dense_views import tokencut_mask
 from tf_sbir.manifold import build_graph, fused_features, propagate_scores
 from tf_sbir.manifold_benchmark import covariance_roots
-from tf_sbir.mta import robust_modes
+from tf_sbir.mta import normalized_crops, pixel_lookup, robust_modes
 from tf_sbir.score_calibration import dynamic_activation, normalized_score_rows, sinkhorn_target_hubness
 from tf_sbir.semantic import gallery_memory, guided_term_scores, neighborhood_term_posteriors, top_codes
 from tf_sbir.semantic_transport import conditional_similarity, dustbin_plan, partial_similarity
@@ -79,6 +83,18 @@ class PublicVocabularyTests(unittest.TestCase):
 
 
 class InferenceCalibrationTests(unittest.TestCase):
+    def test_crop_uint8_lookup_matches_reference_normalization(self):
+        pixels = np.arange(224 * 224 * 3, dtype=np.int32).astype(np.uint8).reshape(224, 224, 3)
+        image = Image.fromarray(pixels)
+        expected = normal_transform()(image).unsqueeze(0)
+        encoded = pil_to_tensor(image).unsqueeze(0)
+        cases = [(torch.device("cpu"), torch.float32)]
+        if torch.cuda.is_available():
+            cases.append((torch.device("cuda"), torch.float16))
+        for device, dtype in cases:
+            output = normalized_crops(encoded, pixel_lookup(device, dtype)).cpu()
+            self.assertTrue(torch.equal(output, expected.to(dtype=dtype)))
+
     def test_dynamic_qb_norm_corrects_only_activated_queries(self):
         activation = dynamic_activation(torch.tensor([[.7, .1], [.6, .4]]), 1)
         query = gallery = torch.eye(2)

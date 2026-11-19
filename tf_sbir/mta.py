@@ -8,9 +8,10 @@ import torch
 from PIL import Image, ImageOps
 from torch.nn import functional as F
 from torch.utils.data import Dataset
+from torchvision import transforms
 from tqdm.auto import tqdm
 
-from .data import normal_transform, threaded_batches
+from .data import CLIP_MEAN, CLIP_STD, threaded_batches
 from .encoding import global_cache_name, load_frozen_clip, save_tensor
 from .semantic import agreement_settings
 
@@ -18,7 +19,7 @@ from .semantic import agreement_settings
 class AugmentedImages(Dataset):
     def __init__(self, paths, views):
         self.paths, self.views = paths, views
-        self.transform = normal_transform()
+        self.transform = transforms.Compose([transforms.Resize((224, 224)), transforms.PILToTensor()])
 
     def __len__(self):
         return len(self.paths)
@@ -47,6 +48,20 @@ def random_resized_view(image, rng):
     return ImageOps.mirror(view) if rng.random() < 0.5 else view
 
 
+def pixel_lookup(device, dtype):
+    values = torch.arange(256, dtype=torch.float32) / 255
+    mean = torch.tensor(CLIP_MEAN, dtype=torch.float32)
+    std = torch.tensor(CLIP_STD, dtype=torch.float32)
+    return ((values - mean[:, None]) / std[:, None]).flatten().to(device=device, dtype=dtype)
+
+
+def normalized_crops(batch, lookup):
+    channels = torch.arange(0, 3 * 256, 256, dtype=torch.int32, device=lookup.device)
+    indices = batch.to(device=lookup.device, non_blocking=True).to(dtype=torch.int32)
+    indices.add_(channels.view(1, 3, 1, 1))
+    return lookup.index_select(0, indices.flatten()).view_as(batch)
+
+
 @torch.inference_mode()
 def load_augmentations(args, paths, views=7, mode="sketch"):
     device = torch.device(args.device)
@@ -56,12 +71,15 @@ def load_augmentations(args, paths, views=7, mode="sketch"):
     if file.is_file():
         return torch.load(file, map_location="cpu", weights_only=True)
     model = load_frozen_clip(args.clip_checkpoint, device)
-    batch_size = max(1, args.batch_size // views)
+    image_batch = getattr(args, "crop_batch_size", None)
+    workers = getattr(args, "crop_workers", None)
+    batch_size = max(1, (args.batch_size if image_batch is None else image_batch) // views)
     ds = AugmentedImages(paths, views)
-    stream = threaded_batches(ds, batch_size, args.workers, device.type == "cuda")
+    stream = threaded_batches(ds, batch_size, args.workers if workers is None else workers, device.type == "cuda")
+    lookup = pixel_lookup(device, model.visual.conv1.weight.dtype)
     output = []
     for batch in tqdm(stream, total=(len(ds) + batch_size - 1) // batch_size, desc=f"CLIP {mode} views", mininterval=1):
-        pixels = batch.flatten(0, 1).to(device, dtype=model.visual.conv1.weight.dtype, non_blocking=True)
+        pixels = normalized_crops(batch.flatten(0, 1), lookup)
         features = F.normalize(model.encode_image(pixels).float(), dim=-1)
         output.append(features.unflatten(0, batch.shape[:2]).half().cpu())
     cache = {"features": torch.cat(output), "logit_scale": model.logit_scale.exp().item()}

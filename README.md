@@ -101,7 +101,10 @@ Reuse the same `--cache` across benchmarks to avoid repeated CLIP inference.
 
 Tune `--batch-size` and `--workers` together on the runtime. Each source
 photo in the contour encoder produces two model inputs. The crop encoder
-interprets the batch size as a limit on the number of views. For semantic
+interprets the batch size as a limit on the number of views. Use
+`--crop-batch-size` and `--crop-workers` to tune crop inference separately
+from the contour loader. Crop images move to the device as bytes and use a
+table with the reference normalization values. For semantic
 transport, `--score-batch` limits the number of simultaneous queries and
 `--transport-buffer-mib` caps their gathered photo-view tensor. The memory used
 by scoring and CLIP is additional to this buffer. The reference precision and

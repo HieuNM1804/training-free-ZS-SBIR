@@ -56,6 +56,8 @@ def arguments():
     parser.add_argument("--clip-checkpoint")
     parser.add_argument("--batch-size", type=int, default=64)
     parser.add_argument("--workers", type=int, default=2)
+    parser.add_argument("--crop-batch-size", type=int, help="Override the number of CLIP inputs in an augmentation batch.")
+    parser.add_argument("--crop-workers", type=int, help="Override the augmentation data workers.")
     parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
     parser.add_argument("--metric-workers", type=int, default=4)
     parser.add_argument("--score-batch", type=int, default=256)
@@ -64,6 +66,10 @@ def arguments():
     args = parser.parse_args()
     if args.transport_buffer_mib is not None and args.transport_buffer_mib < 1:
         parser.error("--transport-buffer-mib must be positive")
+    if args.crop_batch_size is not None and args.crop_batch_size < 1:
+        parser.error("--crop-batch-size must be positive")
+    if args.crop_workers is not None and args.crop_workers < 0:
+        parser.error("--crop-workers must be nonnegative")
     return args
 
 
