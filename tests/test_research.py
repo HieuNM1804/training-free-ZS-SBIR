@@ -38,11 +38,45 @@ from tf_sbir.semantic_transport import conditional_similarity, dustbin_plan, max
 from tf_sbir.signed_feedback import feedback_vectors
 from tf_sbir.sketch_view_graph_fusion import separate_view_prefixes, source_votes
 from tf_sbir.structured_transport import matching_terms, part_distances
+from tf_sbir.transfer_reconstruction import anchor_errors, reconstruction_weights, transfer_coordinates
 from tf_sbir.union_density import candidate_union, density_prefixes, density_rrf_rows, grow_density, pack_affinity
 from tf_sbir.view_hypotheses import expected_utility
 
 
 class GalleryManifoldTests(unittest.TestCase):
+    def test_transfer_weights_satisfy_constrained_error_objective(self):
+        q = torch.tensor([[.4, .1]], dtype=torch.float64)
+        a = torch.tensor([[[1., 0.], [0., 1.], [-.3, .6]]], dtype=q.dtype)
+        e = torch.tensor([[[1., 0.], [.8, .2], [-1., .5]]], dtype=q.dtype)
+        weights = reconstruction_weights(q, a, .15, e, 2.5)
+        offsets = a[0] - q[0]
+        scale = offsets.square().sum(dim=-1).mean()
+        covariance = offsets @ offsets.T + scale * (.15 * torch.eye(3, dtype=q.dtype) + 2.5 * (e[0] @ e[0].T))
+        gradient = covariance @ weights[0]
+        torch.testing.assert_close(weights.sum(dim=-1), q.new_ones(1))
+        torch.testing.assert_close(gradient, gradient.mean().expand_as(gradient))
+
+    def test_anchor_calibration_predicts_each_pair_from_other_identities(self):
+        source = torch.tensor([[1., 0.], [.8, .6], [-1., 0.]])
+        targets = torch.eye(3)
+        expected = targets - targets[[1, 0, 1]]
+        expected /= expected.square().sum(dim=1).mean().sqrt()
+        torch.testing.assert_close(anchor_errors(source, targets, count=1), expected)
+
+    def test_target_readout_allows_different_dimensions_and_independent_queries(self):
+        source = torch.eye(2)
+        targets = torch.tensor([[1., .2, .7], [.4, 1., -.5]])
+        q = torch.tensor([[1., .3], [.3, 1.]])
+        ids = torch.tensor([[0, 1], [1, 0]])
+        expected = transfer_coordinates(q, source, targets, ids, .1)
+        torch.testing.assert_close(expected[:1], transfer_coordinates(q[:1], source, targets, ids[:1], .1))
+        torch.testing.assert_close(expected, transfer_coordinates(q, source, targets, ids.flip(1), .1))
+        rotation = torch.tensor([[0., 1., 0.], [0., 0., 1.], [1., 0., 0.]])
+        errors = anchor_errors(source, targets, count=1)
+        mapped = transfer_coordinates(q, source, targets, ids, .1, errors=errors, strength=2.)
+        changed = transfer_coordinates(q, source, targets @ rotation, ids, .1, errors=errors @ rotation, strength=2.)
+        torch.testing.assert_close(changed, mapped @ rotation)
+
     def test_view_consistency_weights_are_query_local_and_use_prior_without_votes(self):
         early = torch.tensor([[2.], [4.], [0.]])
         late = torch.tensor([[2.], [2.], [0.]])

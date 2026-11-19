@@ -17,6 +17,7 @@ from .cluster_prior import cluster_cache_settings, cluster_prior_settings, clust
 from .compact_retrieval import compact_retrieval_settings
 from .contour_graph_index import contour_graph_index_settings
 from .conditional_view_affinity import conditional_view_affinity_settings
+from .transfer_reconstruction import transfer_reconstruction_settings
 from .sketch_view_graph_fusion import sketch_view_graph_fusion_settings
 from .contour_query_expansion import contour_expansion_settings
 from .contextual_rank import contextual_rank_settings
@@ -74,6 +75,7 @@ HEAD_STUDIES = ("head-selection", "view-hypotheses", "foreground-fusion", "gauss
 INK_STUDIES = (
     "compact-retrieval", "contour-query-expansion", "contour-query-expansion-sweep", "contour-graph-index",
     "sketch-view-graph-fusion", "sketch-view-graph-fusion-sweep", "conditional-view-affinity",
+    "transfer-reconstruction",
 )
 SCORE_STUDIES = {
     "gallery-diffusion": gallery_diffusion_settings,
@@ -111,6 +113,7 @@ SCORE_STUDIES = {
     "sketch-view-graph-fusion": sketch_view_graph_fusion_settings,
     "sketch-view-graph-fusion-sweep": partial(sketch_view_graph_fusion_settings, sweep=True),
     "conditional-view-affinity": conditional_view_affinity_settings,
+    "transfer-reconstruction": transfer_reconstruction_settings,
     "lame-relevance": relevance_settings,
 }
 
@@ -276,7 +279,7 @@ def run(args):
                 "split": split, "method": name, "backbone": "OpenAI CLIP ViT-B/32",
                 "mAP": float(ap), "precision": float(precision), "map_k": map_k, "p_k": p_k,
                 "queries": len(q), "gallery": len(p), "study": args.study,
-                "external_vocabulary": 0 if args.study == "compact-retrieval" and name.startswith("compact-image-") else len(words),
+                "external_vocabulary": 0 if name.startswith(("compact-image-", "transfer-image-")) else len(words),
                 "exploratory_unseen": True, "evaluation_seconds": round(time.perf_counter() - start, 2),
             }
             filename.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
