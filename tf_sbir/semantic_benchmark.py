@@ -18,6 +18,7 @@ from .contour_render import load_xdog, xdog_transport_settings
 from .coregistration import coregistration_settings
 from .data import SKETCHY_SPLITS, UNSEEN_CLASSES
 from .dense_views import dense_transport_settings, load_clearclip_gallery, tokencut_transport_settings
+from .dominant_sets import dominant_set_settings
 from .encoding import load_global_inputs
 from .foundation import load_words
 from .gallery_diffusion import gallery_diffusion_settings, two_stage_settings
@@ -83,6 +84,7 @@ SCORE_STUDIES = {
     "finch-cache": cluster_cache_settings,
     "iso-mta": iso_mta_settings,
     "gem-regions": gem_region_settings,
+    "dominant-sets": dominant_set_settings,
     "lame-relevance": relevance_settings,
 }
 
@@ -128,9 +130,9 @@ def run(args):
     sketch_text, photo_text = [view.to(device) for view in load_words(args, words)]
     gem_regions = (
         load_gem_regions(args, query_paths, photo_paths, all_q, all_p, sketch_text, photo_text)
-        if args.study == "gem-regions" else None
+        if args.study in ("gem-regions", "dominant-sets") else None
     )
-    augmentations = load_augmentations(args, query_paths) if args.study in ("mta", "iso-mta") else None
+    augmentations = load_augmentations(args, query_paths) if args.study in ("mta", "iso-mta", "dominant-sets") else None
     needs_crops = args.study in CROP_STUDIES or args.study in ("two-stage-transport", "adaptive-fusion")
     photo_views = load_augmentations(args, photo_paths, views=9, mode="photo") if needs_crops else None
     needs_dense = args.study in (*DENSE_STUDIES, "multiscale", "isolated-regions", "union-density")
@@ -141,6 +143,7 @@ def run(args):
     iso_studies = (
         "isoclip-transport", "iso-paired", "iso-context", "union-density", "union-prefix", "union-fusion",
         "lame-relevance", "signed-feedback", "finch-prior", "finch-prototype", "finch-cache", "iso-mta", "gem-regions",
+        "dominant-sets",
     )
     iso_maps = isoclip_maps(args, device, paired=args.study == "iso-paired") if args.study in iso_studies else None
     args.output.mkdir(parents=True, exist_ok=True)
@@ -174,6 +177,9 @@ def run(args):
                 extra_inputs = (iso_maps, rendered[p_ids].to(device), isolated[p_ids])
             elif args.study == "iso-mta":
                 extra_inputs = (iso_maps, augmentations["features"][q_ids].to(device), augmentations["logit_scale"])
+            elif args.study == "dominant-sets":
+                extra_inputs = (iso_maps, augmentations["features"][q_ids].to(device), augmentations["logit_scale"],
+                                gem_regions[0][q_ids], gem_regions[1][p_ids])
             elif gem_regions is not None:
                 extra_inputs = (iso_maps, gem_regions[0][q_ids], gem_regions[1][p_ids])
             elif multiscale is not None:

@@ -17,6 +17,7 @@ from tf_sbir.contour_render import xdog
 from tf_sbir.coregistration import leading_basis
 from tf_sbir.data import normal_transform
 from tf_sbir.dense_views import tokencut_mask
+from tf_sbir.dominant_sets import constrained_membership
 from tf_sbir.gallery_diffusion import mutual_transition, regional_cosines, solve_diffusion
 from tf_sbir.isoclip import output_space_maps
 from tf_sbir.isolated_regions import isolated_views, token_boxes
@@ -33,6 +34,30 @@ from tf_sbir.union_density import candidate_union, density_rrf_rows, grow_densit
 
 
 class GalleryManifoldTests(unittest.TestCase):
+    def test_constrained_dominant_set_preserves_the_simplex_and_increases_payoff(self):
+        gallery = torch.tensor([[0., .8, 0.], [.8, 0., .05], [0., .05, 0.]])
+        candidates = torch.tensor([[0, 0, 1, 2], [0, 1, 1, 2]])
+        valid = torch.tensor([[True, False, True, True], [True, True, False, True]])
+        query = torch.tensor([[.4, 99., .35, .04], [.04, .1, 99., .7]])
+        penalty = torch.tensor(.9)
+        affinity = gallery[candidates[:, :, None], candidates[:, None, :]]
+        affinity *= valid[:, :, None] & valid[:, None, :]
+        objective = F.pad(affinity - penalty * torch.eye(4), (1, 0, 1, 0))
+        objective[:, 0, 1:] = objective[:, 1:, 0] = query.masked_fill(~valid, 0.)
+        last = torch.zeros(2)
+        for steps in (1, 8, 64):
+            mass, support = constrained_membership(gallery, candidates, valid, query, penalty, steps)
+            torch.testing.assert_close(mass.sum(1), torch.ones(2))
+            self.assertTrue((mass >= 0).all())
+            self.assertTrue((mass[:, 0] > 0).all())
+            self.assertTrue((mass[:, 1:][~valid] == 0).all())
+            torch.testing.assert_close(support, (affinity @ mass[:, 1:, None]).squeeze(-1), atol=1e-6, rtol=1e-5)
+            current = torch.einsum("bi,bij,bj->b", mass, objective, mass)
+            self.assertTrue((current >= last).all())
+            last = current
+        solo, _ = constrained_membership(gallery, candidates[:1], valid[:1], query[:1], penalty, steps)
+        torch.testing.assert_close(mass[:1], solo)
+
     def test_cluster_cache_votes_average_tip_adapter_affinities(self):
         cosine = torch.tensor([[1., .5, 0.], [.2, .8, .4]])
         assignment = torch.tensor([0, 0, 1])
