@@ -18,6 +18,15 @@ from .union_density import density_blocks, density_prefixes, density_rows, selec
 REGIONS = ("ink-box", "upper-left", "upper-right", "lower-left", "lower-right")
 
 
+def ink_box_image(im):
+    box = ImageOps.grayscale(im).point([255 if i < 204 else 0 for i in range(256)]).getbbox()
+    if box is not None:
+        left, top, right, bottom = box
+        margin = round(0.05 * max(right - left, bottom - top))
+        im = im.crop((max(0, left-margin), max(0, top-margin), min(im.width, right+margin), min(im.height, bottom+margin)))
+    return ImageOps.pad(im, (224, 224), method=Image.Resampling.BICUBIC, color=(255, 255, 255))
+
+
 class RegionalSketches(Dataset):
     def __init__(self, paths):
         self.paths = paths
@@ -28,12 +37,7 @@ class RegionalSketches(Dataset):
     def __getitem__(self, index):
         with Image.open(self.paths[index]) as source:
             im = source.convert("RGB")
-        box = ImageOps.grayscale(im).point([255 if i < 204 else 0 for i in range(256)]).getbbox()
-        if box is not None:
-            left, top, right, bottom = box
-            margin = round(0.05 * max(right - left, bottom - top))
-            im = im.crop((max(0, left-margin), max(0, top-margin), min(im.width, right+margin), min(im.height, bottom+margin)))
-        full = ImageOps.pad(im, (224, 224), method=Image.Resampling.BICUBIC, color=(255, 255, 255))
+        full = ink_box_image(im)
         # The second R-MAC scale gives four overlapping windows on a square input.
         side = 2 * full.width // 3
         offset = full.width - side
