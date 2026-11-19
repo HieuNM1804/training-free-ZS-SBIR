@@ -40,11 +40,23 @@ from tf_sbir.signed_feedback import feedback_vectors
 from tf_sbir.sketch_view_graph_fusion import separate_view_prefixes, source_votes
 from tf_sbir.structured_transport import matching_terms, part_distances
 from tf_sbir.transfer_reconstruction import anchor_errors, local_gain, reconstruction_weights, residual_moments, transfer_coordinates
+from tf_sbir.transfer_validation import check_selection
 from tf_sbir.union_density import candidate_union, density_prefixes, density_rrf_rows, grow_density, pack_affinity
 from tf_sbir.view_hypotheses import expected_utility
 
 
 class GalleryManifoldTests(unittest.TestCase):
+    def test_overlapping_class_is_excluded_from_both_tuning_splits(self):
+        precision = torch.tensor([[[.9, 0., 0.], [.2, 1., 0.]], [[0., 0., .9], [0., 1., .2]]])
+        sums = precision[..., None].expand(-1, -1, -1, 2)
+        counts = torch.tensor([[1, 1, 0], [0, 1, 1]])
+        result = check_selection(["U", "V"], sums, counts, ["A", "B", "C"])
+        self.assertEqual(result["common"], "V")
+        self.assertEqual(result["selection_by_held_out_class"], {"A": "V", "B": "U", "C": "V"})
+        for split in ("sketchy_1", "sketchy_2"):
+            self.assertAlmostEqual(result[split]["held_out_class"]["precision"], .1)
+            self.assertAlmostEqual(result[split]["donor_choice_on_target"]["precision"], .45)
+
     def test_view_weights_are_query_local_and_reduce_to_the_prior_at_zero_powers(self):
         cohesion = torch.tensor([[2., 4.], [1., 8.]])
         risk = torch.tensor([[1., 4.], [2., 4.]])

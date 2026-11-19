@@ -218,6 +218,15 @@ Lượt `transfer-reconstruction-sweep` kiểm tra chung số láng giềng từ
 
 Các đối chứng chạy lại cấu hình canvas trước và cấu hình chuyển tọa độ hai view. Phương pháp được chấm dùng ba cơ chế từ neighbor embedding, IsoCLIP và Query Specific Fusion. Phần thử nghiệm mới là dùng sai số của chính phép chuyển để xác định view nào được tin hơn trong truy hồi đa miền. [Neighbor embedding, CVPR 2004](https://cse.hkust.edu.hk/~dyyeung/paper/pdf/yeung.cvpr2004.pdf) · [IsoCLIP, CVPR 2026](https://openaccess.thecvf.com/content/CVPR2026/html/Magistri_IsoCLIP_Decomposing_CLIP_Projectors_for_Efficient_Intra-modal_Alignment_CVPR_2026_paper.html) · [Query Specific Fusion, ECCV 2012](https://link.springer.com/chapter/10.1007/978-3-642-33709-3_47)
 
+Có thể tái lập phép kiểm tra chọn tham số theo lớp trên Colab. Trong thư mục checkout của từng phương pháp, chạy file `tf_sbir/capture_query_metrics.py` ở branch này bằng đường dẫn tuyệt đối và truyền đúng các đối số benchmark của notebook. File lưu `per-query-metrics.pt` cạnh các JSON. Từ checkout chứa bộ kiểm tra, lệnh dưới đây giữ ra từng lớp trên cả hai split đồng thời. Nó cũng chọn cấu hình trên những lớp chỉ có ở split kia rồi chấm một cấu hình duy nhất trên toàn split đích. Các phép tính chỉ dùng bảng điểm sau truy hồi.
+
+```bash
+python -m tf_sbir.transfer_validation --root "$SKETCHY_ROOT" \
+  --studies "$RESULTS/sketchy-l4-transfer-reconstruction-sweep" \
+  "$RESULTS/sketchy-l4-grounded-semantic-anchors" "$RESULTS/sketchy-l4-multiview-anchor-transfer" \
+  --output "$RESULTS/transfer-class-validation.json"
+```
+
 `iso-mta` thử lại MeanShift Test-Time Augmentation của cùng một sketch trên bộ xếp hạng IsoCLIP + Jaccard. Trung bình đều, mode có trọng số MTA và trung bình mode với sketch gốc dùng cùng contour và phản hồi gallery của nhánh IsoCLIP. Nhánh Jaccard lấy sketch gốc để đo riêng tác động của view lên nguồn thị giác. Đồ thị lấy ứng viên từ hai nguồn như trong `union-prefix`. [MeanShift Test-Time Augmentation, CVPR 2024](https://openaccess.thecvf.com/content/CVPR2024/html/Zanella_On_the_Test-Time_Zero-Shot_Generalization_of_Vision-Language_Models_Do_We_CVPR_2024_paper.html)
 
 `lame-relevance` áp dụng phương trình 5 của LAME cho phân phối nhị phân liên quan hoặc không liên quan của từng ảnh đối với một sketch. Log-odds ban đầu lấy điểm hợp nhất IsoCLIP + Jaccard trừ điểm ở hạng tham chiếu trong gallery. Tám lần cập nhật dùng bằng chứng từ đồ thị láng giềng thuận nghịch đã chuẩn hóa. Ablation dùng riêng đồ thị IsoCLIP, trung bình ba đồ thị IsoCLIP, RGB, Open Images và bình phương toán tử trung bình để có ma trận ái lực nửa xác định dương. [Parameter-Free Online Test-Time Adaptation, CVPR 2022](https://openaccess.thecvf.com/content/CVPR2022/papers/Boudiaf_Parameter-Free_Online_Test-Time_Adaptation_CVPR_2022_paper.pdf)
