@@ -124,7 +124,7 @@ def dominant_set_settings(
     prefix = density_prefixes(original_visual, context, (original_visual, context, region), original_initial,
                               banks, graph, 1280, score_batch)
     yield "cds-clearclip-control", partial(density_rows, original_initial, prefix, score_batch, 0.8)
-    del original_visual, original_initial, prefix, region_prefix
+    del region_prefix
 
     neighbor_ids, strengths = graph
     affinity = strengths.new_zeros((len(photos), len(photos)), dtype=dtype)
@@ -134,6 +134,18 @@ def dominant_set_settings(
     kernel_bank = torch.cat([
         F.normalize(view - view.mean(dim=0), dim=1) for view in (gallery, words, photos)
     ], dim=1).to(dtype)
+
+    local_rows, representative = dominant_support(
+        original_initial, (original_visual, context, region), affinity, penalty, 2., score_batch, kernel_bank,
+    )
+    del local_rows
+    cosine = standardize((representative.to(dtype) @ kernel_bank.T).float())
+    for weight in (0.25, 0.8):
+        yield f"cds-clearclip-residual-w{weight:g}", partial(
+            density_rows, original_initial + weight * cosine, prefix, score_batch, 0.8,
+        )
+    del original_initial, original_visual, prefix, cosine
+
     for pool, streams in (("pair", pair), ("region", expanded)):
         for strength in (2., 8.):
             extend = kernel_bank if pool == "region" and strength == 2. else None
