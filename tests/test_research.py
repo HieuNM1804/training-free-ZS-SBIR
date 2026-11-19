@@ -38,12 +38,22 @@ from tf_sbir.semantic_transport import conditional_similarity, dustbin_plan, max
 from tf_sbir.signed_feedback import feedback_vectors
 from tf_sbir.sketch_view_graph_fusion import separate_view_prefixes, source_votes
 from tf_sbir.structured_transport import matching_terms, part_distances
-from tf_sbir.transfer_reconstruction import anchor_errors, reconstruction_weights, transfer_coordinates
+from tf_sbir.transfer_reconstruction import anchor_errors, local_gain, reconstruction_weights, residual_moments, transfer_coordinates
 from tf_sbir.union_density import candidate_union, density_prefixes, density_rrf_rows, grow_density, pack_affinity
 from tf_sbir.view_hypotheses import expected_utility
 
 
 class GalleryManifoldTests(unittest.TestCase):
+    def test_local_gain_minimizes_held_out_target_error_and_handles_zero_direction(self):
+        base = torch.tensor([[.5, 1.], [2., -.5], [1., 1.], [1., 2.]])
+        direction = torch.tensor([[1., 2.], [.5, 1.], [0., 0.], [1., 0.]])
+        target = base + direction * torch.tensor([[.5], [1.], [4.], [-1.]])
+        moments = residual_moments(target, base, direction)
+        neighbors = torch.tensor([[0, 1], [2, 2], [3, 3]])
+        gain = local_gain(moments, neighbors)
+        torch.testing.assert_close(gain, base.new_tensor([[.6], [0.], [0.]]))
+        torch.testing.assert_close(gain[0:1], local_gain(moments, neighbors[0:1]))
+
     def test_transfer_weights_satisfy_constrained_error_objective(self):
         q = torch.tensor([[.4, .1]], dtype=torch.float64)
         a = torch.tensor([[[1., 0.], [0., 1.], [-.3, .6]]], dtype=q.dtype)

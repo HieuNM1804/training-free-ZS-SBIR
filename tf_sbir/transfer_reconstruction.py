@@ -89,7 +89,50 @@ def transferred_ranking(mapped, gallery, lexical, banks, graph, walk, score_batc
     return partial(density_rows, tail, prefix, score_batch, None)
 
 
-def transfer_reconstruction_settings(queries, photos, contours, sketch_words, photo_words, maps, ink, score_batch):
+def residual_moments(target, prediction, direction):
+    residual = target - prediction
+    return torch.stack(((residual * direction).sum(dim=-1), direction.square().sum(dim=-1)), dim=-1)
+
+
+def local_gain(moments, neighbors, *, maximum=2.):
+    """Minimize pooled target squared error on the supporting leave-one-out pairs."""
+    cross, energy = moments[neighbors].mean(dim=1).unbind(dim=-1)
+    return (cross / energy.clamp_min(1e-12)).clamp(0., maximum)[:, None]
+
+
+def calibrated_transfer_settings(query, source, target, errors, support, rank):
+    anchor_support, _ = nearest_gallery(source, min(128, len(source) - 1))
+    perm = torch.randperm(len(source), device=source.device, generator=torch.Generator(device=source.device).manual_seed(811))
+    joint = torch.cat((target, source), dim=1)
+    for count in (16, 64, 128):
+        neighbors = support[:, :count]
+        for strength in (0., 1.):
+            predicted, fit = transfer_coordinates(query, source, joint, neighbors, .1, errors=errors,
+                                                  strength=strength).split((target.size(1), source.size(1)), dim=1)
+            direction = query - fit
+
+            def ranking(gain):
+                return rank(F.normalize(predicted + gain * direction, dim=-1))
+
+            gains = (1., 1.5, 2.) if count != 16 else (1., 1.5)
+            for gain in gains:
+                yield f"transfer-sweep-k{count}-g{strength:g}-r{gain:g}", ranking(gain)
+            if count == 64 and strength == 0.:
+                # LOO predictions use other anchors' target values and source coordinates only.
+                anchor_prediction, anchor_fit = transfer_coordinates(
+                    source, source, joint, anchor_support[:, :count], .1,
+                ).split((target.size(1), source.size(1)), dim=1)
+                moments = residual_moments(target, anchor_prediction, source - anchor_fit)
+                for width in (16, 64):
+                    gain = local_gain(moments, support[:, :width])
+                    yield f"transfer-sweep-local{width}", ranking(gain)
+                global_stats = moments.mean(dim=0)
+                global_gain = (global_stats[0] / global_stats[1].clamp_min(1e-12)).clamp(0., 2.)
+                yield "transfer-sweep-global", ranking(global_gain)
+                yield "transfer-sweep-shuffled", ranking(local_gain(moments[perm], neighbors))
+
+
+def transfer_reconstruction_settings(queries, photos, contours, sketch_words, photo_words, maps, ink, score_batch, *, sweep=False):
     ink = F.normalize(ink.float(), dim=-1)
     views = torch.cat((ink, queries))
     transform = maps[(150, 50)]
@@ -99,19 +142,20 @@ def transfer_reconstruction_settings(queries, photos, contours, sketch_words, ph
     target = F.normalize(photos @ transform, dim=-1)
     target = centered(target, target.mean(dim=0))
     query = centered(F.normalize(views @ transform, dim=-1), source_center)
-    support = nearest_anchors(query, source, 64)
+    support = nearest_anchors(query, source, 128 if sweep else 64)
     errors = anchor_errors(source, target)
     generator = torch.Generator(device=source.device).manual_seed(731)
     perm = torch.randperm(len(source), device=source.device, generator=generator)
 
     # The single-view cosine controls use only the index of unlabeled image pairs.
-    original = query[len(queries):]
-    yield "transfer-image-identity", partial(dot_rows, original, target, score_batch)
-    image_support = support[len(queries):, :16]
-    for suffix, penalty, target_bank in (("plain", 0., target), ("calibrated", 1., target), ("unpaired", 0., target[perm])):
-        predicted = transfer_coordinates(original, source, target_bank, image_support, 0.1,
-                                         errors=errors, strength=penalty)
-        yield f"transfer-image-{suffix}", partial(dot_rows, F.normalize(predicted, dim=-1), target, score_batch)
+    if not sweep:
+        original = query[len(queries):]
+        yield "transfer-image-identity", partial(dot_rows, original, target, score_batch)
+        image_support = support[len(queries):, :16]
+        for suffix, penalty, target_bank in (("plain", 0., target), ("calibrated", 1., target), ("unpaired", 0., target[perm])):
+            predicted = transfer_coordinates(original, source, target_bank, image_support, 0.1,
+                                             errors=errors, strength=penalty)
+            yield f"transfer-image-{suffix}", partial(dot_rows, F.normalize(predicted, dim=-1), target, score_batch)
 
     smooth, vocabulary, banks, graph, walk = gallery_index(photos, target, photo_words)
     text_vectors = view_concepts(views[:, None], sketch_words, photo_words).squeeze(1)
@@ -119,6 +163,10 @@ def transfer_reconstruction_settings(queries, photos, contours, sketch_words, ph
 
     def rank(mapped, lexical=reference_lexical):
         return transferred_ranking(mapped, smooth, lexical, banks, graph, walk, score_batch)
+
+    if sweep:
+        yield from calibrated_transfer_settings(query, source, target, errors, support, rank)
+        return
 
     def translate(count, ridge, strength, residual, *, error_bank=errors, diagonal=False):
         mapped = transfer_coordinates(query, source, target, support[:, :count], ridge,

@@ -75,7 +75,7 @@ HEAD_STUDIES = ("head-selection", "view-hypotheses", "foreground-fusion", "gauss
 INK_STUDIES = (
     "compact-retrieval", "contour-query-expansion", "contour-query-expansion-sweep", "contour-graph-index",
     "sketch-view-graph-fusion", "sketch-view-graph-fusion-sweep", "conditional-view-affinity",
-    "transfer-reconstruction",
+    "transfer-reconstruction", "transfer-reconstruction-sweep",
 )
 SCORE_STUDIES = {
     "gallery-diffusion": gallery_diffusion_settings,
@@ -114,6 +114,7 @@ SCORE_STUDIES = {
     "sketch-view-graph-fusion-sweep": partial(sketch_view_graph_fusion_settings, sweep=True),
     "conditional-view-affinity": conditional_view_affinity_settings,
     "transfer-reconstruction": transfer_reconstruction_settings,
+    "transfer-reconstruction-sweep": partial(transfer_reconstruction_settings, sweep=True),
     "lame-relevance": relevance_settings,
 }
 
