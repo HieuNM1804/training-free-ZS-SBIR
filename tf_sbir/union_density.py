@@ -12,17 +12,24 @@ from .isoclip import contextual_scores, local_feedback, projected_feedback
 from .reranking import standardize
 
 
-def pack_affinity(size, graphs):
+def pack_affinity(size, graphs, *, separate=False):
     """Merge overlapping gallery edges and pack incoming updates by source."""
     source, target, weights = (torch.cat(parts) for parts in zip(*graphs, strict=True))
-    affinity = torch.sparse_coo_tensor(torch.stack((source, target)), weights / len(graphs), (size, size)).coalesce()
+    shape = (size, size)
+    if separate:
+        basis = torch.eye(len(graphs), device=weights.device, dtype=weights.dtype)
+        channels = torch.cat([values[:, None] * direction for (_, _, values), direction in zip(graphs, basis, strict=True)])
+        shape += (len(graphs),)
+    else:
+        channels = weights / len(graphs)
+    affinity = torch.sparse_coo_tensor(torch.stack((source, target)), channels, shape).coalesce()
     source, target = affinity.indices()
     lengths = torch.bincount(source, minlength=size)
     starts = lengths.cumsum(0) - lengths
     offsets = torch.arange(len(source), device=source.device) - starts[source]
     width = int(lengths.max())
     neighbors = torch.zeros((size, width), dtype=torch.long, device=source.device)
-    strengths = weights.new_zeros((size, width))
+    strengths = weights.new_zeros((size, width, *affinity.values().shape[1:]))
     neighbors[source, offsets] = target
     strengths[source, offsets] = affinity.values()
     return neighbors, strengths
@@ -34,7 +41,7 @@ def candidate_union(score_lists, depth):
     return ids, unique
 
 
-def grow_density(affinity, ties, candidates, valid, graph, steps):
+def grow_density(affinity, ties, candidates, valid, graph, steps, *, graph_weights=None):
     """Rank Eq. 5 of Zhang et al. by greedy marginal edge weight."""
     neighbor_ids, strengths = graph
     batch, width = candidates.shape
@@ -46,13 +53,18 @@ def grow_density(affinity, ties, candidates, valid, graph, steps):
     gains = affinity.gather(1, candidates) + 1e-5 * ties.gather(1, candidates)
     gains = F.pad(gains.masked_fill(~valid, -torch.inf), (0, 1), value=-torch.inf)
     selected = torch.empty((batch, steps), dtype=torch.long, device=candidates.device)
+    if graph_weights is not None:
+        graph_weights = graph_weights[:, None]
     for step in range(steps):
         best = gains.argmax(dim=1, keepdim=True)
         photo = candidates.gather(1, best)
         selected[:, step:step + 1] = photo
         gains.scatter_(1, best, -torch.inf)
         neighbors = inverse.gather(1, neighbor_ids[photo.squeeze(1)])
-        gains.scatter_add_(1, neighbors, strengths[photo.squeeze(1)])
+        update = strengths[photo.squeeze(1)]
+        if graph_weights is not None:
+            update = (update * graph_weights).sum(dim=-1)
+        gains.scatter_add_(1, neighbors, update)
     return selected
 
 

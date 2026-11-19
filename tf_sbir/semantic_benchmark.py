@@ -17,6 +17,7 @@ from .cluster_prior import cluster_cache_settings, cluster_prior_settings, clust
 from .compact_retrieval import compact_retrieval_settings
 from .contour_graph_index import contour_graph_index_settings
 from .conditional_view_affinity import conditional_view_affinity_settings
+from .query_weighted_gallery_graph import query_weighted_gallery_settings
 from .sketch_view_graph_fusion import sketch_view_graph_fusion_settings
 from .contour_query_expansion import contour_expansion_settings
 from .contextual_rank import contextual_rank_settings
@@ -74,6 +75,7 @@ HEAD_STUDIES = ("head-selection", "view-hypotheses", "foreground-fusion", "gauss
 INK_STUDIES = (
     "compact-retrieval", "contour-query-expansion", "contour-query-expansion-sweep", "contour-graph-index",
     "sketch-view-graph-fusion", "sketch-view-graph-fusion-sweep", "conditional-view-affinity",
+    "query-weighted-gallery-graph",
 )
 SCORE_STUDIES = {
     "gallery-diffusion": gallery_diffusion_settings,
@@ -111,6 +113,7 @@ SCORE_STUDIES = {
     "sketch-view-graph-fusion": sketch_view_graph_fusion_settings,
     "sketch-view-graph-fusion-sweep": partial(sketch_view_graph_fusion_settings, sweep=True),
     "conditional-view-affinity": conditional_view_affinity_settings,
+    "query-weighted-gallery-graph": query_weighted_gallery_settings,
     "lame-relevance": relevance_settings,
 }
 

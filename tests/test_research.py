@@ -43,6 +43,26 @@ from tf_sbir.view_hypotheses import expected_utility
 
 
 class GalleryManifoldTests(unittest.TestCase):
+    def test_gallery_edge_channels_change_only_the_current_sketch_ranking(self):
+        edges = (
+            (torch.tensor([0, 0]), torch.tensor([1, 2]), torch.tensor([.9, .3])),
+            (torch.tensor([0, 0]), torch.tensor([1, 2]), torch.tensor([.3, .7])),
+        )
+        combined = pack_affinity(3, edges)
+        separate = pack_affinity(3, edges, separate=True)
+        torch.testing.assert_close(separate[0], combined[0])
+        torch.testing.assert_close(separate[1].mean(-1), combined[1])
+        candidates = torch.arange(3).expand(2, -1)
+        valid = torch.ones_like(candidates, dtype=torch.bool)
+        votes = torch.tensor([[1., 0., 0.]]).expand(2, -1)
+        ties = torch.zeros_like(votes)
+        weights = torch.tensor([[1., 0.], [0., 1.]])
+        selected = grow_density(votes, ties, candidates, valid, separate, 2, graph_weights=weights)
+        torch.testing.assert_close(selected, torch.tensor([[0, 1], [0, 2]]))
+        expected = grow_density(votes, ties, candidates, valid, combined, 2)
+        selected = grow_density(votes, ties, candidates, valid, separate, 2, graph_weights=torch.full_like(weights, .5))
+        torch.testing.assert_close(selected, expected)
+
     def test_view_consistency_weights_are_query_local_and_use_prior_without_votes(self):
         early = torch.tensor([[2.], [4.], [0.]])
         late = torch.tensor([[2.], [2.], [0.]])
