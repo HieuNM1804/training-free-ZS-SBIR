@@ -74,7 +74,7 @@ def load_view_features(args, dataset, views, mode, view_name):
     name = global_cache_name(args.root, dataset.paths, mode, view_name, precision, args.clip_checkpoint)
     file = args.cache / name
     if file.is_file():
-        return torch.load(file, map_location="cpu", weights_only=True)
+        return torch.load(file, map_location="cpu", weights_only=True, mmap=getattr(args, "memory_map", False))
     model = load_frozen_clip(args.clip_checkpoint, device)
     image_batch = getattr(args, "crop_batch_size", None)
     workers = getattr(args, "crop_workers", None)

@@ -76,7 +76,8 @@ def load_global_inputs(args, query_paths, photo_paths, need_contours):
         cache = args.cache / global_cache_name(args.root, paths, mode, view, precision, args.clip_checkpoint)
         if cache.is_file():
             print(f"Cache {cache.name}", flush=True)
-            encodings[(mode, view)] = torch.load(cache, map_location="cpu", weights_only=True)
+            encodings[(mode, view)] = torch.load(cache, map_location="cpu", weights_only=True,
+                                                 mmap=getattr(args, "memory_map", False))
             continue
         if model is None:
             model = load_frozen_clip(args.clip_checkpoint, device)

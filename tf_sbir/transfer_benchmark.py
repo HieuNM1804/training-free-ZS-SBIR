@@ -57,7 +57,7 @@ def arguments():
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--cache", type=Path, default=Path(".cache"))
     parser.add_argument("--splits", nargs="+", choices=SKETCHY_SPLITS, default=SKETCHY_SPLITS)
-    parser.add_argument("--stage", choices=("references", "views", "prepare"), default="references")
+    parser.add_argument("--stage", choices=("references", "views", "prepare", "projector"), default="references")
     parser.add_argument("--batch-size", type=int, default=48)
     parser.add_argument("--workers", type=int, default=4)
     parser.add_argument("--crop-batch-size", type=int, default=128)
@@ -124,7 +124,7 @@ def score_split(args, split, raw, photos, contours, q_labels, p_labels, sketch_w
     target = F.normalize(photos @ transform, dim=-1)
     target = centered(target, target.mean(dim=0))
     views = centered(F.normalize(raw @ transform, dim=-1), source_mean)
-    concepts = view_concepts(raw, sketch_words, photo_words)
+    concepts = torch.cat([view_concepts(chunk, sketch_words, photo_words) for chunk in raw.split(max(1, args.score_batch // raw.size(1)))])
     support = nearest_anchors(views.flatten(0, 1), source, 64)
     errors = anchor_errors(source, target)
     print(f"Building the complete CUDA gallery index for {split}", flush=True)
@@ -151,6 +151,16 @@ def run(args):
         digest = hashlib.file_digest(file, "sha256").hexdigest()
     if digest != "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af":
         raise ValueError("This comparison requires the original OpenAI ViT-B/32 checkpoint")
+    args.memory_map = True
+    gpu_name = torch.cuda.get_device_name().replace(" ", "-")
+    projection_path = args.cache / f"iso-b32-150-50-{digest[:12]}-{torch.__version__}-{gpu_name}.pt"
+    if not projection_path.is_file():
+        projection = isoclip_maps(args, device, bands=((150, 50),))[(150, 50)]
+        save_tensor(projection.cpu(), projection_path)
+        del projection
+    if args.stage == "projector":
+        print(f"Verified spectral map {projection_path.name}", flush=True)
+        return
     query_paths, queries = merge_inputs(args.root, args.splits, "sketch")
     photo_paths, photos = merge_inputs(args.root, args.splits, "photo")
     all_q, all_p, contours = load_global_inputs(args, query_paths, photo_paths, True)
@@ -159,7 +169,7 @@ def run(args):
     sketch_words, photo_words = [v.to(device) for v in load_words(args, terms)]
     if args.stage == "prepare":
         return
-    transform = isoclip_maps(args, device, bands=((150, 50),))[(150, 50)]
+    transform = torch.load(projection_path, map_location=device, weights_only=True)
     torch.cuda.empty_cache()
     root = Path(__file__).resolve().parents[1]
     git_id = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=root, text=True).strip()
