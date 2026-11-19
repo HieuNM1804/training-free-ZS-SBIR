@@ -17,6 +17,7 @@ from .cluster_prior import cluster_cache_settings, cluster_prior_settings, clust
 from .compact_retrieval import compact_retrieval_settings
 from .contour_graph_index import contour_graph_index_settings
 from .sketch_view_graph_fusion import sketch_view_graph_fusion_settings
+from .shape_evidence_graph_fusion import shape_evidence_graph_fusion_settings
 from .contour_query_expansion import contour_expansion_settings
 from .contextual_rank import contextual_rank_settings
 from .contour_render import load_xdog, xdog_transport_settings
@@ -72,7 +73,7 @@ DENSE_STUDIES = {
 HEAD_STUDIES = ("head-selection", "view-hypotheses", "foreground-fusion", "gaussian-verification")
 INK_STUDIES = (
     "compact-retrieval", "contour-query-expansion", "contour-query-expansion-sweep", "contour-graph-index",
-    "sketch-view-graph-fusion",
+    "sketch-view-graph-fusion", "shape-evidence-graph-fusion",
 )
 SCORE_STUDIES = {
     "gallery-diffusion": gallery_diffusion_settings,
@@ -108,6 +109,7 @@ SCORE_STUDIES = {
     "contour-query-expansion-sweep": partial(contour_expansion_settings, sweep=True),
     "contour-graph-index": contour_graph_index_settings,
     "sketch-view-graph-fusion": sketch_view_graph_fusion_settings,
+    "shape-evidence-graph-fusion": shape_evidence_graph_fusion_settings,
     "lame-relevance": relevance_settings,
 }
 

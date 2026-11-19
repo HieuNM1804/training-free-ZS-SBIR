@@ -34,6 +34,7 @@ from tf_sbir.relevance import refine_relevance
 from tf_sbir.score_calibration import dynamic_activation, normalized_score_rows, sinkhorn_target_hubness
 from tf_sbir.semantic import gallery_memory, guided_term_scores, neighborhood_term_posteriors, top_codes
 from tf_sbir.semantic_transport import conditional_similarity, dustbin_plan, maximal_marginal_relevance, partial_similarity
+from tf_sbir.shape_evidence_graph_fusion import mix_shape_votes
 from tf_sbir.signed_feedback import feedback_vectors
 from tf_sbir.sketch_view_graph_fusion import source_votes
 from tf_sbir.structured_transport import matching_terms, part_distances
@@ -42,6 +43,13 @@ from tf_sbir.view_hypotheses import expected_utility
 
 
 class GalleryManifoldTests(unittest.TestCase):
+    def test_contour_vote_adapts_per_sketch_without_adding_votes_for_empty_evidence(self):
+        image = torch.tensor([[1., 0., 0.], [0., 1., 0.], [0., 0., 0.]])
+        shape = torch.tensor([[0., 0., 3.], [0., 0., 0.], [0., 0., 0.]])
+        expected = torch.tensor([[.5, 0., 1.5], [0., 1., 0.], [0., 0., 0.]])
+        torch.testing.assert_close(mix_shape_votes(image, shape, .25, True), expected)
+        torch.testing.assert_close(mix_shape_votes(image[1:], shape[1:], .25, True), expected[1:])
+
     def test_sketch_view_graph_uses_jaccard_per_view_before_fusion(self):
         neighbors = torch.tensor([[1, 2], [0, 2], [0, 1], [0, 2]])
         crop = torch.tensor([[4., 3., 2., 1.], [1., 2., 3., 4.]])
