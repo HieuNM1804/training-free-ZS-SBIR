@@ -148,7 +148,12 @@ def run(args):
                  ("predictable-adaptive-k16-s0.75", "predictable-shuffled-reliability-k16-s0.75"),
                  ("ground-r8-k24-g1", "ground-r8-k24-g0"), ("ground-cosine-paired", "ground-cosine-unpaired"),
                  ("reflect-pairs-intersect025", "reflect-pairs-shuffled"),
-                 ("reflect-pairs-agree1", "reflect-pairs-sharp"), ("reflect-pairs-balanced", "reflect-flat-risk2")]
+                 ("reflect-pairs-agree1", "reflect-pairs-sharp"), ("reflect-pairs-balanced", "reflect-flat-risk2"),
+                 ("reflect-pairs-visual-risk-l035", "reflect-pairs-visual-shuffled-l035"),
+                 ("reflect-pairs-visual-risk-l035", "reflect-flat-visual-risk-l035"),
+                 ("reciprocal-predicted-b0.5-p0", "reciprocal-shuffled"),
+                 ("reciprocal-predicted-b0.5-p0", "reciprocal-observed-p0"),
+                 ("reciprocal-predicted-b0.5-p4", "reciprocal-forward-p4")]
         if "channels" in evidence["families"]:
             channel = evidence["families"]["channels"]["common"]
             pairs.extend([(channel, "transfer-risk-only-k64-g1-r1"), (channel, base)])
@@ -157,6 +162,9 @@ def run(args):
         if "reflection" in evidence["families"]:
             winner = evidence["families"]["reflection"]["common"]
             pairs.extend([(winner, "reflect-five-risk-only"), (winner, "reflect-five-risk4")])
+        if "reciprocal" in evidence["families"]:
+            winner = evidence["families"]["reciprocal"]["common"]
+            pairs.extend([(winner, "reciprocal-forward-p0"), (winner, "reciprocal-forward-p4")])
         pairs = list(dict.fromkeys((a, b) for a, b in pairs if a in scores and b in scores and a != b))
         class_scores = {c: per_query[split][common][labels.eq(i)].mean(dim=0).tolist()
                         for i, c in enumerate(UNSEEN_CLASSES[split])}
