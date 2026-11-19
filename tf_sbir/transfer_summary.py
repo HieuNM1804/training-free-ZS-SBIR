@@ -107,7 +107,8 @@ def run(args):
                 actual = (row["queries"], row["gallery"], row["p_k"], row["map_k"])
                 if actual != expected or details.shape != (expected[0], 2) or row["backbone"] != "OpenAI CLIP ViT-B/32":
                     raise ValueError(f"Invalid protocol for {split} {name}")
-                if not row["exploratory_unseen"] or row["external_vocabulary"] != (0 if name=="ground-cosine-native" else 20931):
+                visual_only = name.startswith("transfer-image-") or name == "ground-cosine-native"
+                if not row["exploratory_unseen"] or row["external_vocabulary"] != (0 if visual_only else 20931):
                     raise ValueError(f"Invalid vocabulary or tuning origin for {name}")
                 if row["checkpoint_sha256"] != "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af":
                     raise ValueError(f"Different checkpoint for {name}")
@@ -136,7 +137,9 @@ def run(args):
         best = rankings(scores)
         _, labels = collect_paths(args.root, UNSEEN_CLASSES[split], "sketch")
         base = "transfer-two-k64-g1-r1"
-        pairs = [(common, base), (best, base), ("transfer-risk-only-k64-g1-r1", "transfer-fixed-k64-g1-r1"),
+        pairs = [(common, base), (best, base), ("transfer-image-plain", "transfer-image-identity"),
+                 ("transfer-image-plain", "transfer-image-unpaired"), ("transfer-image-k64-g1-r1", "transfer-image-k64-g0-r1"),
+                 ("transfer-risk-only-k64-g1-r1", "transfer-fixed-k64-g1-r1"),
                  ("transfer-risk4-k64-g1-r1", "transfer-cohesion-k64-g1-r1"),
                  ("transfer-risk4-k64-g1-r1", "transfer-shuffled-k64-g1-r1"),
                  ("transfer-channel-p4-l0.5-k64-g1-r1", "transfer-channel-no-risk-k64-g1-r1"),

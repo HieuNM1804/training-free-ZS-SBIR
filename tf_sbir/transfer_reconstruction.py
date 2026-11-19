@@ -132,6 +132,13 @@ def calibrated_transfer_settings(query, source, target, errors, support, rank):
                 yield "transfer-sweep-shuffled", ranking(local_gain(moments[perm], neighbors))
 
 
+def image_transfer_variants(original, source, target, support, errors, perm, score_batch):
+    yield "transfer-image-identity", partial(dot_rows, original, target, score_batch)
+    for suffix, penalty, target_bank in (("plain", 0., target), ("calibrated", 1., target), ("unpaired", 0., target[perm])):
+        predicted = transfer_coordinates(original, source, target_bank, support[:, :16], .1, errors=errors, strength=penalty)
+        yield f"transfer-image-{suffix}", partial(dot_rows, F.normalize(predicted, dim=-1), target, score_batch)
+
+
 def transfer_reconstruction_settings(queries, photos, contours, sketch_words, photo_words, maps, ink, score_batch, *, sweep=False):
     ink = F.normalize(ink.float(), dim=-1)
     views = torch.cat((ink, queries))
@@ -149,13 +156,8 @@ def transfer_reconstruction_settings(queries, photos, contours, sketch_words, ph
 
     # The single-view cosine controls use only the index of unlabeled image pairs.
     if not sweep:
-        original = query[len(queries):]
-        yield "transfer-image-identity", partial(dot_rows, original, target, score_batch)
-        image_support = support[len(queries):, :16]
-        for suffix, penalty, target_bank in (("plain", 0., target), ("calibrated", 1., target), ("unpaired", 0., target[perm])):
-            predicted = transfer_coordinates(original, source, target_bank, image_support, 0.1,
-                                             errors=errors, strength=penalty)
-            yield f"transfer-image-{suffix}", partial(dot_rows, F.normalize(predicted, dim=-1), target, score_batch)
+        yield from image_transfer_variants(query[len(queries):], source, target, support[len(queries):],
+                                           errors, perm, score_batch)
 
     smooth, vocabulary, banks, graph, walk = gallery_index(photos, target, photo_words)
     text_vectors = view_concepts(views[:, None], sketch_words, photo_words).squeeze(1)

@@ -22,12 +22,13 @@ from .encoding import load_global_inputs, save_tensor
 from .foundation import load_words
 from .global_methods import centered
 from .isoclip import isoclip_maps
+from .manifold_benchmark import dot_rows
 from .mta import load_view_features
 from .multiview_anchor_transfer import predict_views, transfer_prefixes
 from .reranking import standardize
 from .semantic import read_words
 from .sketch_canvas_fusion import canvas_images
-from .transfer_reconstruction import anchor_errors, gallery_index, nearest_anchors, transferred_ranking
+from .transfer_reconstruction import anchor_errors, gallery_index, image_transfer_variants, nearest_anchors, transfer_coordinates, transferred_ranking
 from .transfer_channels import channel_prefix, channel_settings
 from .union_density import density_rows
 from .view_hypotheses import ink_box_image, view_concepts
@@ -54,12 +55,12 @@ class AnchorSketchViews(Dataset):
 def arguments():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", required=True, type=Path)
-    parser.add_argument("--vocabulary", required=True, type=Path)
+    parser.add_argument("--vocabulary", type=Path)
     parser.add_argument("--clip-checkpoint", required=True)
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--cache", type=Path, default=Path(".cache"))
     parser.add_argument("--splits", nargs="+", choices=SKETCHY_SPLITS, default=SKETCHY_SPLITS)
-    parser.add_argument("--stage", choices=("references", "views", "channels", "prepare", "projector"), default="references")
+    parser.add_argument("--stage", choices=("references", "views", "channels", "image", "prepare", "projector"), default="references")
     parser.add_argument("--batch-size", type=int, default=48)
     parser.add_argument("--workers", type=int, default=4)
     parser.add_argument("--crop-batch-size", type=int, default=128)
@@ -68,6 +69,8 @@ def arguments():
     parser.add_argument("--device", choices=("cuda",), default="cuda")
     parser.add_argument("--exploratory-unseen", action="store_true", required=True)
     args = parser.parse_args()
+    if args.stage not in ("image", "projector") and args.vocabulary is None:
+        parser.error("--vocabulary is required for a study that uses text")
     if min(args.batch_size, args.crop_batch_size, args.score_batch, args.metric_workers) <= 0 or args.workers < 0:
         parser.error("Batch sizes and metric workers must be positive, and image workers must be nonnegative")
     return args
@@ -131,6 +134,19 @@ def score_split(args, split, raw, photos, contours, q_labels, p_labels, sketch_w
     target = F.normalize(photos @ transform, dim=-1)
     target = centered(target, target.mean(dim=0))
     views = centered(F.normalize(raw @ transform, dim=-1), source_mean)
+    if args.stage == "image":
+        q = views[:, 0]
+        ids = nearest_anchors(q, source, 64)
+        errors = anchor_errors(source, target)
+        perm = torch.randperm(len(source), device=device, generator=torch.Generator(device=device).manual_seed(731))
+        for name, rows in image_transfer_variants(q, source, target, ids, errors, perm, args.score_batch):
+            write_result(args, split, name, rows(), q_labels, p_labels, metadata, {"views": 1, "fusion": "cosine"})
+        for penalty in (0., 1.):
+            mapped = transfer_coordinates(q, source, target, ids, .1, errors=errors, strength=penalty, residual=1.)
+            scores = dot_rows(F.normalize(mapped, dim=-1), target, args.score_batch)
+            write_result(args, split, f"transfer-image-k64-g{penalty:g}-r1", scores, q_labels, p_labels, metadata,
+                         {"views": 1, "neighbors": 64, "penalty": penalty, "carry": 1., "fusion": "cosine"})
+        return
     concepts = raw.new_empty((*raw.shape[:2], photo_words.size(-1)))
     step = max(1, args.score_batch // raw.size(1))
     for start in range(0, len(raw), step):
@@ -176,9 +192,12 @@ def run(args):
     query_paths, queries = merge_inputs(args.root, args.splits, "sketch")
     photo_paths, photos = merge_inputs(args.root, args.splits, "photo")
     all_q, all_p, contours = load_global_inputs(args, query_paths, photo_paths, True)
-    extras = load_view_features(args, AnchorSketchViews(query_paths), 4, "sketch", "ink-scales-mirror-v1")["features"]
-    terms = read_words(args.vocabulary)
-    sketch_words, photo_words = [v.to(device) for v in load_words(args, terms)]
+    extras = sketch_words = photo_words = None
+    terms = []
+    if args.stage != "image":
+        extras = load_view_features(args, AnchorSketchViews(query_paths), 4, "sketch", "ink-scales-mirror-v1")["features"]
+        terms = read_words(args.vocabulary)
+        sketch_words, photo_words = [v.to(device) for v in load_words(args, terms)]
     if args.stage == "prepare":
         return
     transform = torch.load(projection_path, map_location=device, weights_only=True)
@@ -191,9 +210,11 @@ def run(args):
     for split in args.splits:
         q_ids, q_labels = queries[split]
         p_ids, p_labels = photos[split]
-        ink = F.normalize(extras[q_ids, :1].to(device).float(), dim=-1)
-        raw = torch.cat((ink, all_q[q_ids].to(device)[:, None]), dim=1)
-        del ink
+        raw = all_q[q_ids].to(device)[:, None]
+        if extras is not None:
+            ink = F.normalize(extras[q_ids, :1].to(device).float(), dim=-1)
+            raw = torch.cat((ink, raw), dim=1)
+            del ink
         if args.stage in ("views", "channels"):
             raw = torch.cat((raw, F.normalize(extras[q_ids, 1:].to(device).float(), dim=-1)), dim=1)
         score_split(args, split, raw, all_p[p_ids].to(device), contours[p_ids].to(device), q_labels, p_labels,
