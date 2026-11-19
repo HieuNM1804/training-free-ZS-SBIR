@@ -58,12 +58,16 @@ def cluster_first_rows(initial, assignment, counts, score_batch):
     for scores in initial.split(score_batch):
         prior = scores.softmax(dim=1)
         pooled = cluster_mass(prior, assignment, counts)
-        # Stable sorting by group likelihood retains the evidence order within each group.
-        ordered = scores.argsort(dim=1, descending=True, stable=True)
-        clusters = pooled.gather(1, ordered).argsort(dim=1, descending=True, stable=True)
-        ranked = ordered.gather(1, clusters)
-        values = torch.linspace(0.9, -0.9, scores.size(1), device=scores.device, dtype=scores.dtype)
-        yield from torch.empty_like(scores).scatter_(1, ranked, values.expand_as(scores)).cpu()
+        yield from order_cluster_members(scores, pooled).cpu()
+
+
+def order_cluster_members(scores, pooled):
+    # Stable sorting by group likelihood retains the evidence order within each group.
+    ordered = scores.argsort(dim=1, descending=True, stable=True)
+    clusters = pooled.gather(1, ordered).argsort(dim=1, descending=True, stable=True)
+    ranked = ordered.gather(1, clusters)
+    values = torch.linspace(0.9, -0.9, scores.size(1), device=scores.device, dtype=scores.dtype)
+    return torch.empty_like(scores).scatter_(1, ranked, values.expand_as(scores))
 
 
 def cluster_prior_settings(queries, photos, contours, sketch_words, photo_words, maps, score_batch):
@@ -94,3 +98,52 @@ def cluster_prior_settings(queries, photos, contours, sketch_words, photo_words,
     yield "finch-prior-joint-l2l3-w0.75-t0.5", partial(cluster_prior_rows, initial, joint_levels[1:], score_batch, .75, .5)
     for name, (assignments, counts) in (("joint-l2", joint_levels[1]), ("joint-l3", joint_levels[2]), ("iso-l2", visual_levels[1])):
         yield f"finch-prior-first-{name}", partial(cluster_first_rows, initial, assignments, counts, score_batch)
+
+
+def prototype_evidence(query, photos, assignments, count):
+    totals = photos.new_zeros((count, photos.size(1))).index_add_(0, assignments, photos)
+    return standardize(query @ F.normalize(totals, dim=1).T)
+
+
+def prototype_rows(initial, group_scores, assignments, score_batch, weight):
+    batches = zip(initial.split(score_batch), group_scores.split(score_batch), strict=True)
+    for evidence, groups in batches:
+        group_evidence = groups[:, assignments]
+        if weight is None:
+            fused = order_cluster_members(evidence, group_evidence)
+        else:
+            fused = (0.15 * (evidence + weight * group_evidence)).tanh()
+        yield from fused.cpu()
+
+
+def cluster_prototype_settings(queries, photos, contours, sketch_words, photo_words, maps, score_batch):
+    transform = maps[(150, 50)]
+    query, gallery = projected_feedback(queries, photos, contours, transform)
+    base, regional, _, concepts, views = full_gallery_inputs(queries, photos, contours, sketch_words, photo_words, score_batch)
+    words = views[:, 2].float()
+    context = contextual_scores(photos, words, base, regional, score_batch)
+    visual = query @ gallery.T
+    initial = standardize(visual) + standardize(context)
+    del base, regional, views, context, visual
+    yield "finch-prototype-control", partial(density_rows, initial, None, score_batch, None)
+
+    shapes = F.normalize(F.normalize(contours @ transform, dim=-1).mean(dim=1), dim=-1)
+    center = shapes.mean(dim=0)
+    shape_query = F.normalize(F.normalize(queries @ transform, dim=-1) - center, dim=-1)
+    shape_gallery = F.normalize(shapes - center, dim=-1)
+    text_query = F.normalize(concepts.float().mean(dim=1), dim=-1)
+    levels = tuple(finch_levels(torch.cat((gallery, words), dim=1)))
+    for depth, (assignments, counts) in enumerate(levels[1:], start=2):
+        shape = prototype_evidence(shape_query, shape_gallery, assignments, len(counts))
+        rgb = prototype_evidence(query, gallery, assignments, len(counts))
+        lexical = prototype_evidence(text_query, words, assignments, len(counts))
+        combined = (rgb + shape + lexical) / 3
+        for name, evidence, weight in (
+            ("combined-w0.75", combined, .75),
+            ("combined-w2", combined, 2.),
+            ("combined-first", combined, None),
+        ):
+            yield f"finch-prototype-l{depth}-{name}", partial(prototype_rows, initial, evidence, assignments, score_batch, weight)
+        if depth == 3:
+            for name, evidence in (("contour", shape), ("iso", rgb), ("concept", lexical)):
+                yield f"finch-prototype-l3-{name}-w0.75", partial(prototype_rows, initial, evidence, assignments, score_batch, .75)
