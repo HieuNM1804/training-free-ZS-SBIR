@@ -107,13 +107,23 @@ def settings(stage):
 
 def write_result(args, split, name, rows, q_labels, p_labels, common, parameters):
     path = args.output / f"{split}-{name}.json"
+    detail_dir = args.output / "per-query"
+    detail_file = detail_dir / f"{split}-{name}.pt"
+    if path.is_file() and detail_file.is_file():
+        previous = json.loads(path.read_text(encoding="utf-8"))
+        same = (previous.get("parameters") == parameters and previous.get("queries") == len(q_labels)
+                and previous.get("gallery") == len(p_labels) and all(previous.get(k) == v for k, v in common.items()))
+        if same:
+            saved = torch.load(detail_file, map_location="cpu", weights_only=True)
+            if saved.shape == (len(q_labels), 2) and torch.allclose(saved.mean(dim=0), torch.tensor([previous["mAP"], previous["precision"]]), atol=5e-7, rtol=0):
+                print(f"Resuming after {split} {name}", flush=True)
+                return
     start = time.perf_counter()
     torch.cuda.reset_peak_memory_stats()
     (ap, precision, map_k, p_k), details = evaluate_with_details(
         rows, q_labels, p_labels, split, f"{split} {name}", args.metric_workers,
     )
-    detail_dir = args.output / "per-query"
-    save_tensor(details, detail_dir / f"{split}-{name}.pt")
+    save_tensor(details, detail_file)
     result = {**common, "split": split, "method": name, "parameters": parameters, "queries": len(q_labels),
               "gallery": len(p_labels), "mAP": float(ap), "precision": float(precision), "map_k": map_k, "p_k": p_k,
               "evaluation_seconds": round(time.perf_counter() - start, 2),

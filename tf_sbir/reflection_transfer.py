@@ -43,6 +43,8 @@ class PairSetting(NamedTuple):
     agreement_power: float = 0.
     intersection: float = 0.
     shuffle: bool = False
+    lexical_fraction: float = .5
+    separate_risk: bool = False
 
 
 SETTINGS = {
@@ -54,6 +56,13 @@ SETTINGS = {
     "pairs-intersect05": PairSetting(True, 4., 2., 1., .5),
     "pairs-balanced": PairSetting(True, 2., 2., .5, .25),
     "pairs-shuffled": PairSetting(True, 4., 2., 1., .25, True),
+    "flat-visual-risk-l035": PairSetting(False, 0., 2., lexical_fraction=.35, separate_risk=True),
+    "pairs-visual-risk-l025": PairSetting(True, 0., 2., 1., .25, lexical_fraction=.25, separate_risk=True),
+    "pairs-visual-risk-l035": PairSetting(True, 0., 2., 1., .25, lexical_fraction=.35, separate_risk=True),
+    "pairs-visual-risk-l05": PairSetting(True, 0., 2., 1., .25, separate_risk=True),
+    "pairs-sharp-visual-l035": PairSetting(True, 4., 2., 1., .25, lexical_fraction=.35, separate_risk=True),
+    "pairs-sharp-visual-l05": PairSetting(True, 4., 2., 1., .25, separate_risk=True),
+    "pairs-visual-shuffled-l035": PairSetting(True, 0., 2., 1., .25, True, .35, True),
 }
 
 
@@ -91,9 +100,17 @@ def reflection_block(vectors, risk, concepts, index, config):
     appearance, language = symmetric_scores(visual), symmetric_scores(lexical)
     tied = standardize(appearance) + standardize(language)
     candidates = candidate_union((*visual.unbind(1), *lexical.unbind(1)), 1280)
-    votes = torch.stack([jaccard_seed(a, banks[0]) + jaccard_seed(b, banks[1])
-                         for a, b in zip(visual.unbind(1), lexical.unbind(1), strict=True)], dim=1)
-    prefix = grow_density(32 * reflection_seed(votes, risk, config), tied, *candidates, graph, 256)
+    if config.separate_risk:
+        shapes = torch.stack([jaccard_seed(v, banks[0]) for v in visual.unbind(1)], dim=1)
+        words = torch.stack([jaccard_seed(v, banks[1]) for v in lexical.unbind(1)], dim=1)
+        appearance_seed = reflection_seed(shapes, risk, config)
+        text_seed = reflection_seed(words, risk, config._replace(risk_power=0.))
+        seed = 2. * appearance_seed.lerp(text_seed, config.lexical_fraction)
+    else:
+        votes = torch.stack([jaccard_seed(a, banks[0]) + jaccard_seed(b, banks[1])
+                             for a, b in zip(visual.unbind(1), lexical.unbind(1), strict=True)], dim=1)
+        seed = reflection_seed(votes, risk, config)
+    prefix = grow_density(32 * seed, tied, *candidates, graph, 256)
     tail = pagerank_tail(appearance, language, tied, banks, *walk, len(vectors))
     return tail, prefix
 
@@ -146,7 +163,7 @@ def evaluate_views(args, folder, split, query_ids, q_labels, p_labels, data, ind
     ids = torch.linspace(0, n-1, 32).long()
     vec, risk, words = (data[ids].to(device) for data in (vectors, risks, concepts))
     audit = {}
-    for mode in ("flat-risk2", "pairs-balanced", "pairs-intersect025"):
+    for mode in ("flat-risk2", "pairs-balanced", "pairs-intersect025", "pairs-visual-risk-l035"):
         first, head = reflection_block(vec, risk, words, index, SETTINGS[mode])
         other, swapped = reflection_block(vec.roll(4, 1), risk.roll(4, 1), words.roll(4, 1), index, SETTINGS[mode])
         audit[mode] = {"queries": len(ids), "prefix_positions_equal": int(head.eq(swapped).sum()),
