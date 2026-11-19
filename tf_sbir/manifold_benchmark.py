@@ -15,7 +15,7 @@ from .data import SKETCHY_SPLITS, UNSEEN_CLASSES
 from .encoding import load_global_inputs
 from .gallery_context import contextual_graph, spectral_coordinates, spectral_query
 from .global_methods import centered, prepare_methods
-from .isoclip import iso_image_settings, isoclip_maps
+from .isoclip import iso_band_settings, iso_image_settings, isoclip_maps
 from .layer_views import LAYERS, load_layer_inputs
 from .manifold import (
     GalleryGraph, add_gallery_feedback, build_graph, fused_features, iterative_feedback, nonlinear_walk_rows,
@@ -30,7 +30,7 @@ def arguments():
     parser.add_argument("--cache", type=Path, default=Path(".cache"))
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--clip-checkpoint")
-    parser.add_argument("--study", choices=("ablation", "diffusion", "scales", "context", "layers", "asif", "coral", "xdog", "isoclip"), default="ablation")
+    parser.add_argument("--study", choices=("ablation", "diffusion", "scales", "context", "layers", "asif", "coral", "xdog", "isoclip", "iso-bands"), default="ablation")
     parser.add_argument("--batch-size", type=int, default=64)
     parser.add_argument("--workers", type=int, default=2)
     parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
@@ -208,8 +208,10 @@ def run(args):
     photo_paths, photos = merge_inputs(args.root, splits, "photo")
     all_q, all_p, proxies = load_global_inputs(args, query_paths, photo_paths, True)
     layer_inputs = load_layer_inputs(args, query_paths, photo_paths) if args.study == "layers" else None
-    rendered = load_xdog(args, photo_paths) if args.study == "xdog" else None
+    rendered = load_xdog(args, photo_paths) if args.study in ("xdog", "iso-bands") else None
     iso_maps = isoclip_maps(args, device) if args.study == "isoclip" else None
+    if args.study == "iso-bands":
+        iso_maps = isoclip_maps(args, device, ((64, 32), (96, 32), (125, 50), (150, 50), (175, 50), (200, 60)))
     args.output.mkdir(parents=True, exist_ok=True)
     for split in splits:
         ids_q, labels_q = queries[split]
@@ -218,7 +220,9 @@ def run(args):
         if args.study == "diffusion":
             variants = diffusion_settings(*current)
         else:
-            if rendered is not None:
+            if args.study == "iso-bands":
+                pairs = iso_band_settings(*current, rendered[ids_p].to(device), iso_maps)
+            elif rendered is not None:
                 pairs = xdog_image_settings(*current, rendered[ids_p].to(device))
             elif iso_maps is not None:
                 pairs = iso_image_settings(*current, iso_maps)

@@ -147,11 +147,17 @@ class InferenceCalibrationTests(unittest.TestCase):
         raw = torch.randn(5, 4, generator=rng)
         visual = torch.randn(4, 3, generator=rng)
         text = torch.randn(3, 3, generator=rng)
-        vectors, _, _ = torch.linalg.svd(visual @ text.T, full_matrices=False)
+        vectors, _, right = torch.linalg.svd(visual @ text.T, full_matrices=False)
         middle = vectors[:, 1:2]
         expected = raw @ (middle @ middle.T) @ visual
         actual = raw @ visual @ output_space_maps(visual, text, ((1, 1),))[(1, 1)]
         torch.testing.assert_close(actual, expected, rtol=1e-5, atol=1e-5)
+        lexical = raw[:, :3]
+        projection = right[1:2].T @ right[1:2]
+        expected_text = lexical @ projection @ text
+        image_map, text_map = output_space_maps(visual, text, ((1, 1),), paired=True)[(1, 1)]
+        torch.testing.assert_close(raw @ visual @ image_map, expected, rtol=1e-5, atol=1e-5)
+        torch.testing.assert_close(lexical @ text @ text_map, expected_text, rtol=1e-5, atol=1e-5)
 
     def test_anchor_scores_equal_the_negative_direct_kl_divergence(self):
         p = torch.tensor([[.4, .6], [.75, .25]])

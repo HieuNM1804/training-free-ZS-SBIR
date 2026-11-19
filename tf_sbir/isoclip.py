@@ -12,21 +12,29 @@ from .manifold import build_graph, fused_features, iterative_feedback
 from .reranking import standardize
 
 
-def output_space_maps(vision_proj, text_proj, bands):
+def output_space_maps(vision_proj, text_proj, bands, paired=False):
     """Map already-projected vectors without replacing the frozen CLIP projector."""
     vision, text = vision_proj.float(), text_proj.float()
-    left, _, _ = torch.linalg.svd(vision @ text.T, full_matrices=False)
-    preimage = torch.linalg.pinv(vision)
+    left, _, right = torch.linalg.svd(vision @ text.T, full_matrices=False)
+    image_preimage = torch.linalg.pinv(vision)
+    text_preimage = torch.linalg.pinv(text) if paired else None
     maps = {}
     for top, bottom in bands:
-        middle = left[:, top:left.size(1) - bottom]
-        maps[(top, bottom)] = (preimage @ middle) @ (middle.T @ vision)
+        band = slice(top, left.size(1) - bottom)
+        middle = left[:, band]
+        image_map = (image_preimage @ middle) @ (middle.T @ vision)
+        if paired:
+            text_middle = right[band].T
+            text_map = (text_preimage @ text_middle) @ (text_middle.T @ text)
+            maps[(top, bottom)] = (image_map, text_map)
+        else:
+            maps[(top, bottom)] = image_map
     return maps
 
 
-def isoclip_maps(args, device):
+def isoclip_maps(args, device, bands=((64, 32), (150, 50)), paired=False):
     model = load_frozen_clip(args.clip_checkpoint, device)
-    return output_space_maps(model.visual.proj, model.text_projection, ((64, 32), (150, 50)))
+    return output_space_maps(model.visual.proj, model.text_projection, bands, paired)
 
 
 def local_feedback(queries, photos, contours):
@@ -51,6 +59,15 @@ def iso_image_settings(queries, photos, contours, maps):
         yield f"isoclip-fusion-{band}", *fused_features(*reference, *projected, 0.35)
 
 
+def iso_band_settings(queries, photos, contours, rendered, maps):
+    combined = torch.cat((contours, rendered), dim=1)
+    for (top, bottom), transform in maps.items():
+        band = f"top{top}-bottom{bottom}"
+        yield f"iso-band-canny-{band}", *projected_feedback(queries, photos, contours, transform)
+        if top in (64, 150):
+            yield f"iso-band-xdog-mix-{band}", *projected_feedback(queries, photos, combined, transform)
+
+
 def iso_transport_settings(queries, photos, contours, sketch_words, photo_words, maps, score_batch):
     base, region, gallery, _, _ = full_gallery_inputs(queries, photos, contours, sketch_words, photo_words, score_batch)
     transition = mutual_transition(gallery, 160)
@@ -65,3 +82,15 @@ def iso_transport_settings(queries, photos, contours, sketch_words, photo_words,
         geometry = torch.cat((gallery * (0.65 ** 0.5), photos_iso * (0.35 ** 0.5)), dim=1)
         iso_graph = mutual_transition(geometry, 160)
         yield f"isoclip-diffusion-{band}", partial(diffusion_rows, evidence, region, iso_graph, score_batch, 0.9, 320, "regional")
+
+
+def iso_paired_settings(queries, photos, contours, sketch_words, photo_words, maps, score_batch):
+    for (top, bottom), (visual, lexical) in maps.items():
+        q, p, shape = (F.normalize(vectors @ visual, dim=-1) for vectors in (queries, photos, contours))
+        sketch, camera = (F.normalize(vectors @ lexical, dim=-1) for vectors in (sketch_words, photo_words))
+        arguments = (q, p, shape, sketch, camera, score_batch)
+        base, region, gallery, _, _ = full_gallery_inputs(*arguments)
+        band = f"top{top}-bottom{bottom}"
+        yield f"iso-paired-full-{band}", partial(linear_fusion_rows, base, region, score_batch, 0.25)
+        transition = mutual_transition(gallery, 160)
+        yield f"iso-paired-diffusion-{band}", partial(diffusion_rows, base, region, transition, score_batch, 0.9, 320, "regional")
