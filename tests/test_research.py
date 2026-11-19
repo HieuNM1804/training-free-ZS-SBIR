@@ -11,7 +11,7 @@ from tf_sbir.anchor_context import gallery_kl_parameters, negative_gallery_kl
 from tf_sbir.asif import sparse_relative_features
 from tf_sbir.bimodal_graph import bimodal_transition
 from tf_sbir.cluster_mine import majority_concepts
-from tf_sbir.cluster_prior import cluster_first_rows, cluster_mass, first_neighbor_groups
+from tf_sbir.cluster_prior import cache_votes, cluster_first_rows, cluster_mass, first_neighbor_groups
 from tf_sbir.contextual_rank import column_stochastic, jaccard_seed, personalized_walk
 from tf_sbir.contour_render import xdog
 from tf_sbir.coregistration import leading_basis
@@ -33,6 +33,14 @@ from tf_sbir.union_density import candidate_union, density_rrf_rows, grow_densit
 
 
 class GalleryManifoldTests(unittest.TestCase):
+    def test_cluster_cache_votes_average_tip_adapter_affinities(self):
+        cosine = torch.tensor([[1., .5, 0.], [.2, .8, .4]])
+        assignment = torch.tensor([0, 0, 1])
+        actual = cache_votes(cosine, assignment, torch.tensor([2, 1]), 3.)
+        affinities = torch.exp(3. * (cosine - 1))
+        expected = torch.stack((affinities[:, :2].mean(1), affinities[:, 2]), dim=1)
+        torch.testing.assert_close(actual, expected)
+
     def test_finch_shared_neighbors_and_cluster_prior_conserve_mass(self):
         assignments = first_neighbor_groups(torch.tensor([1, 2, 1, 4, 3, 4]))
         self.assertEqual(assignments.tolist(), [0, 0, 0, 1, 1, 1])

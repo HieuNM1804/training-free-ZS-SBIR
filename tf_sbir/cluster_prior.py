@@ -116,7 +116,7 @@ def prototype_rows(initial, group_scores, assignments, score_batch, weight):
         yield from fused.cpu()
 
 
-def cluster_prototype_settings(queries, photos, contours, sketch_words, photo_words, maps, score_batch):
+def cluster_query_views(queries, photos, contours, sketch_words, photo_words, maps, score_batch):
     transform = maps[(150, 50)]
     query, gallery = projected_feedback(queries, photos, contours, transform)
     base, regional, _, concepts, views = full_gallery_inputs(queries, photos, contours, sketch_words, photo_words, score_batch)
@@ -125,18 +125,25 @@ def cluster_prototype_settings(queries, photos, contours, sketch_words, photo_wo
     visual = query @ gallery.T
     initial = standardize(visual) + standardize(context)
     del base, regional, views, context, visual
-    yield "finch-prototype-control", partial(density_rows, initial, None, score_batch, None)
-
     shapes = F.normalize(F.normalize(contours @ transform, dim=-1).mean(dim=1), dim=-1)
     center = shapes.mean(dim=0)
     shape_query = F.normalize(F.normalize(queries @ transform, dim=-1) - center, dim=-1)
     shape_gallery = F.normalize(shapes - center, dim=-1)
     text_query = F.normalize(concepts.float().mean(dim=1), dim=-1)
+    return initial, (query, shape_query, text_query), (gallery, shape_gallery, words)
+
+
+def cluster_prototype_settings(queries, photos, contours, sketch_words, photo_words, maps, score_batch):
+    initial, query_views, gallery_views = cluster_query_views(queries, photos, contours, sketch_words, photo_words, maps, score_batch)
+    yield "finch-prototype-control", partial(density_rows, initial, None, score_batch, None)
+
+    gallery, _, words = gallery_views
     levels = tuple(finch_levels(torch.cat((gallery, words), dim=1)))
     for depth, (assignments, counts) in enumerate(levels[1:], start=2):
-        shape = prototype_evidence(shape_query, shape_gallery, assignments, len(counts))
-        rgb = prototype_evidence(query, gallery, assignments, len(counts))
-        lexical = prototype_evidence(text_query, words, assignments, len(counts))
+        rgb, shape, lexical = (
+            prototype_evidence(query, keys, assignments, len(counts))
+            for query, keys in zip(query_views, gallery_views, strict=True)
+        )
         combined = (rgb + shape + lexical) / 3
         for name, evidence, weight in (
             ("combined-w0.75", combined, .75),
@@ -147,3 +154,46 @@ def cluster_prototype_settings(queries, photos, contours, sketch_words, photo_wo
         if depth == 3:
             for name, evidence in (("contour", shape), ("iso", rgb), ("concept", lexical)):
                 yield f"finch-prototype-l3-{name}-w0.75", partial(prototype_rows, initial, evidence, assignments, score_batch, .75)
+
+
+def cache_votes(cosine, assignments, counts, beta):
+    """Compute Tip-Adapter affinity votes, normalized for unequal cluster sizes."""
+    affinity = ((cosine.clamp(max=1) - 1) * beta).exp()
+    totals = affinity.new_zeros((len(affinity), len(counts)))
+    totals.index_add_(1, assignments, affinity)
+    return totals / counts
+
+
+def cluster_cache_scores(query, keys, levels, bandwidths, score_batch):
+    depth_count = len(levels)
+    scores = {(depth, beta): [] for depth in range(depth_count) for beta in bandwidths}
+    for batch in query.split(score_batch):
+        cosine = batch @ keys.T
+        for depth, (assignments, counts) in enumerate(levels):
+            for beta in bandwidths:
+                evidence = cache_votes(cosine, assignments, counts, beta)
+                scores[depth, beta].append(standardize(evidence))
+    return {config: torch.cat(parts) for config, parts in scores.items()}
+
+
+def cluster_cache_settings(queries, photos, contours, sketch_words, photo_words, maps, score_batch):
+    initial, query_views, gallery_views = cluster_query_views(queries, photos, contours, sketch_words, photo_words, maps, score_batch)
+    yield "finch-cache-control", partial(density_rows, initial, None, score_batch, None)
+    gallery, _, words = gallery_views
+    levels = tuple(finch_levels(torch.cat((gallery, words), dim=1)))[1:]
+    bandwidths = (5., 15., 30.)
+    visual, contour, concept = [
+        cluster_cache_scores(query, keys, levels, bandwidths, score_batch)
+        for query, keys in zip(query_views, gallery_views, strict=True)
+    ]
+    for depth, (assignments, _) in enumerate(levels):
+        for beta in bandwidths:
+            config = (depth, beta)
+            combined = (visual[config] + contour[config] + concept[config]) / 3
+            name = f"finch-cache-l{depth + 2}-b{beta:g}"
+            yield f"{name}-w0.75", partial(prototype_rows, initial, combined, assignments, score_batch, .75)
+            if depth == 1 and beta == 15:
+                joint = partial(prototype_rows, initial, combined, assignments, score_batch)
+                yield f"{name}-w2", partial(joint, 2.)
+                yield f"{name}-first", partial(joint, None)
+                yield f"{name}-contour-w0.75", partial(prototype_rows, initial, contour[config], assignments, score_batch, .75)

@@ -12,7 +12,7 @@ from .anchor_context import anchor_context_settings
 from .benchmark import merge_inputs
 from .bimodal_graph import bimodal_settings
 from .cluster_mine import cluster_mine_settings
-from .cluster_prior import cluster_prior_settings, cluster_prototype_settings
+from .cluster_prior import cluster_cache_settings, cluster_prior_settings, cluster_prototype_settings
 from .contextual_rank import contextual_rank_settings
 from .contour_render import load_xdog, xdog_transport_settings
 from .coregistration import coregistration_settings
@@ -79,6 +79,7 @@ SCORE_STUDIES = {
     "signed-feedback": signed_feedback_settings,
     "finch-prior": cluster_prior_settings,
     "finch-prototype": cluster_prototype_settings,
+    "finch-cache": cluster_cache_settings,
     "iso-mta": iso_mta_settings,
     "lame-relevance": relevance_settings,
 }
@@ -133,7 +134,7 @@ def run(args):
     rendered = load_xdog(args, photo_paths) if args.study in ("xdog-transport", "union-density") else None
     iso_studies = (
         "isoclip-transport", "iso-paired", "iso-context", "union-density", "union-prefix", "union-fusion",
-        "lame-relevance", "signed-feedback", "finch-prior", "finch-prototype", "iso-mta",
+        "lame-relevance", "signed-feedback", "finch-prior", "finch-prototype", "finch-cache", "iso-mta",
     )
     iso_maps = isoclip_maps(args, device, paired=args.study == "iso-paired") if args.study in iso_studies else None
     args.output.mkdir(parents=True, exist_ok=True)
