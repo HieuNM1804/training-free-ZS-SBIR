@@ -10,7 +10,7 @@ import torch
 from .benchmark import merge_inputs
 from .cluster_mine import cluster_mine_settings
 from .data import SKETCHY_SPLITS, UNSEEN_CLASSES
-from .dense_views import dense_transport_settings, load_clearclip_gallery
+from .dense_views import dense_transport_settings, load_clearclip_gallery, tokencut_transport_settings
 from .encoding import load_global_inputs
 from .foundation import load_words
 from .manifold import fused_features
@@ -39,6 +39,10 @@ CROP_STUDIES = {
     "transport-views": transport_view_settings,
     "partial-transport": partial_transport_settings,
 }
+DENSE_STUDIES = {
+    "dense-transport": dense_transport_settings,
+    "tokencut-transport": tokencut_transport_settings,
+}
 
 
 def arguments():
@@ -48,7 +52,7 @@ def arguments():
     parser.add_argument("--cache", type=Path, default=Path(".cache"))
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--vocabulary", type=Path, required=True)
-    parser.add_argument("--study", choices=("core", "manifold", "mta", "dense-transport", *CROP_STUDIES, *GALLERY_STUDIES), default="core")
+    parser.add_argument("--study", choices=("core", "manifold", "mta", *DENSE_STUDIES, *CROP_STUDIES, *GALLERY_STUDIES), default="core")
     parser.add_argument("--clip-checkpoint")
     parser.add_argument("--batch-size", type=int, default=64)
     parser.add_argument("--workers", type=int, default=2)
@@ -76,7 +80,7 @@ def run(args):
     sketch_text, photo_text = [view.to(device) for view in load_words(args, words)]
     augmentations = load_augmentations(args, query_paths) if args.study == "mta" else None
     photo_views = load_augmentations(args, photo_paths, views=9, mode="photo") if args.study in CROP_STUDIES else None
-    dense_views = load_clearclip_gallery(args, photo_paths) if args.study == "dense-transport" else None
+    dense_views = load_clearclip_gallery(args, photo_paths) if args.study in DENSE_STUDIES else None
     args.output.mkdir(parents=True, exist_ok=True)
     for split in splits:
         q_ids, q_labels = queries[split]
@@ -100,11 +104,11 @@ def run(args):
             variants = CROP_STUDIES[args.study](
                 q, p, contours[p_ids].to(device), sketch_text, photo_text, photo_views["features"][p_ids].to(device),
             )
-        elif args.study == "dense-transport":
-            variants = dense_transport_settings(q, p, contours[p_ids].to(device), sketch_text, photo_text, dense_views[p_ids])
+        elif args.study in DENSE_STUDIES:
+            variants = DENSE_STUDIES[args.study](q, p, contours[p_ids].to(device), sketch_text, photo_text, dense_views[p_ids])
         else:
             variants = GALLERY_STUDIES[args.study](q, p, contours[p_ids].to(device), sketch_text, photo_text)
-        has_correction = args.study in ("hubness", "querybank", "transport", "dense-transport", *CROP_STUDIES)
+        has_correction = args.study in ("hubness", "querybank", "transport", *DENSE_STUDIES, *CROP_STUDIES)
         scored = variants if has_correction else ((name, q, p, None) for name, q, p in variants)
         for name, target_q, target_p, correction in scored:
             filename = args.output / f"{split}-{name}.json"

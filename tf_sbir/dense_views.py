@@ -1,5 +1,7 @@
-"""Extract ClearCLIP patch embeddings from the same frozen ViT-B/32 weights."""
+"""Extract and pool ClearCLIP patch embeddings from frozen ViT-B/32."""
 
+import cv2
+import numpy as np
 import torch
 from torch.nn import functional as F
 from tqdm.auto import tqdm
@@ -58,3 +60,47 @@ def dense_transport_settings(queries, photos, contours, sketch_words, photo_word
     for weight in (0.25, 0.50):
         name = f"conditional-transport-clearclip-k640-w{weight:g}"
         yield name, query, gallery, (offset, concepts, patches, 640, weight)
+
+
+def tokencut_mask(patches, threshold):
+    """Apply TokenCut's normalized cut and seed-connected component."""
+    cosine = patches @ patches.mT
+    affinity = torch.where(cosine >= threshold, 1.0, 1e-5)
+    inverse_degree = affinity.sum(dim=-1).rsqrt()
+    normalized = inverse_degree.unsqueeze(-1) * affinity * inverse_degree.unsqueeze(-2)
+    # The second largest eigenvector of normalized adjacency is the
+    # second smallest eigenvector of the normalized Laplacian.
+    _, vectors = torch.linalg.eigh(normalized)
+    cut = vectors[..., -2] * inverse_degree
+    seed = cut.abs().argmax(dim=1)
+    partition = cut > cut.mean(dim=1, keepdim=True)
+    foreground = partition.eq(partition.gather(1, seed[:, None]))
+    side = int(patches.size(1) ** 0.5)
+    selected = []
+    for mask, index in zip(foreground.cpu().numpy(), seed.cpu().tolist(), strict=True):
+        _, components = cv2.connectedComponents(mask.reshape(side, side).astype(np.uint8), connectivity=4)
+        components = components.flatten()
+        selected.append(components == components[index])
+    return torch.from_numpy(np.stack(selected)).to(patches.device)
+
+
+def tokencut_pool(photos, gallery_patches, threshold):
+    regions = []
+    for block in gallery_patches.split(256):
+        patches = F.normalize(block.to(photos.device, dtype=torch.float32), dim=-1)
+        foreground = tokencut_mask(patches, threshold)
+        regions.append(F.normalize((patches * foreground.unsqueeze(-1)).sum(dim=1), dim=-1))
+    return torch.cat(regions)
+
+
+def tokencut_transport_settings(queries, photos, contours, sketch_words, photo_words, patch_features):
+    query, gallery, offset, concepts, targets = prepare_transport(queries, photos, contours, sketch_words, photo_words)
+    dtype = torch.float16 if queries.is_cuda else torch.float32
+    concepts, targets = concepts.to(dtype), targets.to(dtype)
+    yield "transport-control", query, gallery, (offset, None)
+    yield "conditional-transport-reference-k640-w0.7", query, gallery, (offset, concepts, targets, 640, 0.7)
+    for threshold in (0.40, 0.65):
+        region = tokencut_pool(photos, patch_features, threshold).to(dtype)
+        foreground = torch.cat((targets, region[:, None]), dim=1)
+        name = f"conditional-transport-tokencut-t{threshold:g}-k640-w0.7"
+        yield name, query, gallery, (offset, concepts, foreground, 640, 0.7)

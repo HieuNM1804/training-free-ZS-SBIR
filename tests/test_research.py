@@ -5,6 +5,7 @@ from torch.nn import functional as F
 
 from tf_sbir.asif import sparse_relative_features
 from tf_sbir.cluster_mine import majority_concepts
+from tf_sbir.dense_views import tokencut_mask
 from tf_sbir.manifold import build_graph, fused_features, propagate_scores
 from tf_sbir.manifold_benchmark import covariance_roots
 from tf_sbir.mta import robust_modes
@@ -114,6 +115,11 @@ class InferenceCalibrationTests(unittest.TestCase):
         torch.testing.assert_close(plan.sum(dim=-2), torch.tensor([1., 1., 1., 2.]))
         self.assertGreater(plan[-1, 2], .9)
         self.assertGreater(partial_similarity(similar, .35), partial_similarity(similar - .3, .35))
+
+    def test_tokencut_selects_the_connected_salient_partition(self):
+        patches = torch.tensor([[[1., 0.]] * 2 + [[0., 1.]] * 7])
+        expected = torch.tensor([[True, True, False, False, False, False, False, False, False]])
+        self.assertTrue(torch.equal(tokencut_mask(patches, .4), expected))
 
     def test_asif_retains_only_top_anchor_coordinates(self):
         anchors = torch.eye(3)

@@ -111,3 +111,7 @@ C-DisAmb báo cáo 81,2 mAP@200 và 78,9 P@200 cho Sketchy. UNION báo cáo 82,7
 ### Căn chỉnh hiệp phương sai từ gallery
 
 CORAL căn chỉnh miền bằng cách làm trắng đặc trưng nguồn và đổi hiệp phương sai sang miền đích. Trong SBIR, hai hiệp phương sai được ước lượng từ contour của gallery và từ RGB của chính gallery. Phép biến đổi sau đó được áp dụng độc lập cho từng sketch. Ablation kiểm tra cosine sau CORAL, CORAL với truyền trên đồ thị gallery và kết hợp với căn chỉnh theo láng giềng. Nhánh này chỉ dùng ảnh. [CORAL, AAAI 2016](https://ojs.aaai.org/index.php/AAAI/article/view/10306)
+
+### Chọn vùng ảnh bằng TokenCut
+
+TokenCut dùng normalized cut để tách foreground từ đồ thị tương đồng của các token. Bản thử SBIR dùng token 7 × 7 của ClearCLIP với cùng OpenAI CLIP ViT-B/32. Descriptor trung bình của thành phần foreground đi vào Conditional Transport cùng ba descriptor toàn ảnh đã có. Đối chứng giữ nguyên shortlist và bỏ descriptor vùng để đo riêng tác động của bước chọn foreground. [TokenCut, CVPR 2022](https://openaccess.thecvf.com/content/CVPR2022/html/Wang_Self-Supervised_Transformers_for_Unsupervised_Object_Discovery_Using_Normalized_Cut_CVPR_2022_paper.html) · [ClearCLIP, ECCV 2024](https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/06346.pdf)
