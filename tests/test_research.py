@@ -20,6 +20,7 @@ from tf_sbir.data import normal_transform
 from tf_sbir.dense_views import tokencut_mask
 from tf_sbir.dominant_sets import constrained_membership
 from tf_sbir.gallery_diffusion import mutual_transition, regional_cosines, solve_diffusion
+from tf_sbir.head_selection import rank_biased_overlap
 from tf_sbir.isoclip import output_space_maps
 from tf_sbir.isolated_regions import isolated_views, token_boxes
 from tf_sbir.manifold import build_graph, fused_features, propagate_scores
@@ -36,6 +37,23 @@ from tf_sbir.union_density import candidate_union, density_rrf_rows, grow_densit
 
 
 class GalleryManifoldTests(unittest.TestCase):
+    def test_rank_biased_overlap_matches_explicit_prefix_intersections(self):
+        heads = torch.tensor([[[0, 2, 3], [3, 2, 1]], [[0, 1, 2], [3, 4, 5]]])
+        references = torch.tensor([[[0, 2, 3], [2, 3, 5]], [[0, 1, 2], [0, 1, 2]]])
+        persistence = .75
+        expected = []
+        for query_heads, query_references in zip(heads.tolist(), references.tolist(), strict=True):
+            per_head = []
+            for head in query_heads:
+                agreements = []
+                for match in query_references:
+                    overlap = [len(set(head[:i]) & set(match[:i])) / i for i in (1, 2, 3)]
+                    agreements.append(sum((1 - persistence) * persistence ** i * score for i, score in enumerate(overlap))
+                                      + persistence ** 3 * overlap[-1])
+                per_head.append(sum(agreements) / len(agreements))
+            expected.append(per_head)
+        torch.testing.assert_close(rank_biased_overlap(heads, references, 6, persistence), torch.tensor(expected))
+
     def test_structured_transport_matches_direct_bijection_costs(self):
         source = torch.tensor([[[.1, .2], [.8, .3], [.4, .7]], [[.4, .6], [.4, .6], [.4, .6]]])
         target = torch.tensor([[[.9, .3], [.4, .8], [.2, .1]], [[.5, .4], [.2, .1], [.7, .6]]])

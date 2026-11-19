@@ -92,6 +92,19 @@ def supported_prefix(initial, local_rows, score_batch, kernel_score=None):
     return torch.cat(prefix)
 
 
+def dominant_gallery(graph, feature_views):
+    neighbor_ids, strengths = graph
+    dtype = torch.float16 if strengths.is_cuda else torch.float32
+    affinity = strengths.new_zeros((len(strengths), len(strengths)), dtype=dtype)
+    affinity.scatter_add_(1, neighbor_ids, strengths.to(dtype))
+    # The maximum weighted degree bounds the largest eigenvalue of every induced subgraph.
+    penalty = 1.01 * strengths.sum(dim=1).amax().clamp_min(1e-6)
+    kernel = torch.cat([
+        F.normalize(view - view.mean(dim=0), dim=1) for view in feature_views
+    ], dim=1).to(dtype)
+    return affinity, penalty, kernel
+
+
 def dominant_set_settings(
     queries, photos, contours, sketch_words, photo_words, maps, sketch_views,
     logit_scale, sketch_regions, photo_regions, score_batch,
@@ -126,14 +139,7 @@ def dominant_set_settings(
     yield "cds-clearclip-control", partial(density_rows, original_initial, prefix, score_batch, 0.8)
     del region_prefix
 
-    neighbor_ids, strengths = graph
-    affinity = strengths.new_zeros((len(photos), len(photos)), dtype=dtype)
-    affinity.scatter_add_(1, neighbor_ids, strengths.to(dtype))
-    # The maximum weighted degree bounds the largest eigenvalue of every induced subgraph.
-    penalty = 1.01 * strengths.sum(dim=1).amax().clamp_min(1e-6)
-    kernel_bank = torch.cat([
-        F.normalize(view - view.mean(dim=0), dim=1) for view in (gallery, words, photos)
-    ], dim=1).to(dtype)
+    affinity, penalty, kernel_bank = dominant_gallery(graph, (gallery, words, photos))
 
     local_rows, representative = dominant_support(
         original_initial, (original_visual, context, region), affinity, penalty, 2., score_batch, kernel_bank,

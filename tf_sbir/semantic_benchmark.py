@@ -23,6 +23,7 @@ from .encoding import load_global_inputs
 from .foundation import load_words
 from .gallery_diffusion import gallery_diffusion_settings, two_stage_settings
 from .gem_regions import gem_region_settings, load_gem_regions
+from .head_selection import head_selection_settings
 from .isoclip import iso_context_settings, iso_paired_settings, iso_transport_settings, isoclip_maps
 from .isolated_regions import isolated_region_settings, load_isolated_regions
 from .manifold import fused_features
@@ -87,6 +88,7 @@ SCORE_STUDIES = {
     "gem-regions": gem_region_settings,
     "dominant-sets": dominant_set_settings,
     "structured-transport": structured_transport_settings,
+    "head-selection": head_selection_settings,
     "lame-relevance": relevance_settings,
 }
 
@@ -132,7 +134,7 @@ def run(args):
     sketch_text, photo_text = [view.to(device) for view in load_words(args, words)]
     gem_regions = (
         load_gem_regions(args, query_paths, photo_paths, all_q, all_p, sketch_text, photo_text)
-        if args.study in ("gem-regions", "dominant-sets", "structured-transport") else None
+        if args.study in ("gem-regions", "dominant-sets", "structured-transport", "head-selection") else None
     )
     centers = (
         load_gem_regions(args, query_paths, photo_paths, all_q, all_p, sketch_text, photo_text, centers=True)
@@ -140,7 +142,7 @@ def run(args):
     )
     augmentations = (
         load_augmentations(args, query_paths)
-        if args.study in ("mta", "iso-mta", "dominant-sets", "structured-transport") else None
+        if args.study in ("mta", "iso-mta", "dominant-sets", "structured-transport", "head-selection") else None
     )
     needs_crops = args.study in CROP_STUDIES or args.study in ("two-stage-transport", "adaptive-fusion")
     photo_views = load_augmentations(args, photo_paths, views=9, mode="photo") if needs_crops else None
@@ -152,7 +154,7 @@ def run(args):
     iso_studies = (
         "isoclip-transport", "iso-paired", "iso-context", "union-density", "union-prefix", "union-fusion",
         "lame-relevance", "signed-feedback", "finch-prior", "finch-prototype", "finch-cache", "iso-mta", "gem-regions",
-        "dominant-sets", "structured-transport",
+        "dominant-sets", "structured-transport", "head-selection",
     )
     iso_maps = isoclip_maps(args, device, paired=args.study == "iso-paired") if args.study in iso_studies else None
     args.output.mkdir(parents=True, exist_ok=True)
@@ -186,7 +188,7 @@ def run(args):
                 extra_inputs = (iso_maps, rendered[p_ids].to(device), isolated[p_ids])
             elif args.study == "iso-mta":
                 extra_inputs = (iso_maps, augmentations["features"][q_ids].to(device), augmentations["logit_scale"])
-            elif args.study == "dominant-sets":
+            elif args.study in ("dominant-sets", "head-selection"):
                 extra_inputs = (iso_maps, augmentations["features"][q_ids].to(device), augmentations["logit_scale"],
                                 gem_regions[0][q_ids], gem_regions[1][p_ids])
             elif args.study == "structured-transport":

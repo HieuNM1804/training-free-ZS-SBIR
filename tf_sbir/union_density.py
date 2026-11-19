@@ -67,11 +67,12 @@ def density_prefixes(iso, context, streams, initial, banks, graph, depth, score_
     return torch.cat(prefixes)
 
 
-def density_rows(initial, selected, score_batch, weight):
+def density_blocks(initial, selected, score_batch, weight):
     # Preserve the score conversion used by the benchmark while batching graph growth separately.
     score_batch = min(score_batch, 384)
     if selected is None:
-        yield from (row for batch in initial.split(score_batch) for row in (0.15 * batch).tanh().cpu())
+        for batch in initial.split(score_batch):
+            yield (0.15 * batch).tanh()
         return
     discount = torch.linspace(1, 1 / selected.size(1), selected.size(1), device=initial.device)
     for evidence, prefix in zip(initial.split(score_batch), selected.split(score_batch), strict=True):
@@ -83,6 +84,11 @@ def density_rows(initial, selected, score_batch, weight):
         else:
             promoted = evidence.scatter_add(1, prefix, (weight * discount).expand_as(prefix))
             scores = (0.15 * promoted).tanh()
+        yield scores
+
+
+def density_rows(initial, selected, score_batch, weight):
+    for scores in density_blocks(initial, selected, score_batch, weight):
         yield from scores.cpu()
 
 
