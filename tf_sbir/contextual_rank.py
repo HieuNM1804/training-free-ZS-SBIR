@@ -79,16 +79,20 @@ def contextual_rows(evidence, walk, batch_size, weight):
         yield from (0.15 * (initial + weight * graph)).tanh().cpu()
 
 
+def contextual_propagation(photos, words, base, regional, evidence, k, score_batch):
+    rgb, *rgb_edges = jaccard_graph(photos, k)
+    lexical, *word_edges = jaccard_graph(words, k)
+    transition, dangling = column_stochastic(len(photos), (rgb_edges, word_edges))
+    return torch.cat(list(contextual_blocks(
+        base, regional, evidence, rgb, lexical, transition, dangling, min(256, score_batch),
+    )))
+
+
 def contextual_rank_settings(queries, photos, contours, sketch_words, photo_words, score_batch):
     base, regional, _, _, views = full_gallery_inputs(queries, photos, contours, sketch_words, photo_words, score_batch)
     evidence = standardize(base) + 0.25 * standardize(regional)
     yield "context-rank-control", lambda: (row for block in evidence.split(score_batch) for row in (0.15 * block).tanh().cpu())
     for k in (96, 192):
-        rgb, *rgb_edges = jaccard_graph(photos, k)
-        words, *word_edges = jaccard_graph(views[:, 2].float(), k)
-        transition, dangling = column_stochastic(len(photos), (rgb_edges, word_edges))
-        walk = torch.cat(list(contextual_blocks(
-            base, regional, evidence, rgb, words, transition, dangling, min(256, score_batch),
-        )))
+        walk = contextual_propagation(photos, views[:, 2].float(), base, regional, evidence, k, score_batch)
         for weight in (0.35, 0.7, 1.2):
             yield f"context-rank-k{k}-w{weight:g}", partial(contextual_rows, evidence, walk, score_batch, weight)

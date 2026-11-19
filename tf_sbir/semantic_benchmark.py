@@ -20,7 +20,7 @@ from .dense_views import dense_transport_settings, load_clearclip_gallery, token
 from .encoding import load_global_inputs
 from .foundation import load_words
 from .gallery_diffusion import gallery_diffusion_settings, two_stage_settings
-from .isoclip import iso_paired_settings, iso_transport_settings, isoclip_maps
+from .isoclip import iso_context_settings, iso_paired_settings, iso_transport_settings, isoclip_maps
 from .isolated_regions import isolated_region_settings, load_isolated_regions
 from .manifold import fused_features
 from .manifold_benchmark import dot_rows
@@ -68,6 +68,7 @@ SCORE_STUDIES = {
     "isoclip-transport": iso_transport_settings,
     "isolated-regions": isolated_region_settings,
     "iso-paired": iso_paired_settings,
+    "iso-context": iso_context_settings,
 }
 
 
@@ -118,7 +119,7 @@ def run(args):
     multiscale = load_multiscale_patches(args, query_paths, photo_paths) if args.study == "multiscale" else None
     isolated = load_isolated_regions(args, photo_paths, dense_views) if args.study == "isolated-regions" else None
     rendered = load_xdog(args, photo_paths) if args.study == "xdog-transport" else None
-    iso_maps = isoclip_maps(args, device, paired=args.study == "iso-paired") if args.study in ("isoclip-transport", "iso-paired") else None
+    iso_maps = isoclip_maps(args, device, paired=args.study == "iso-paired") if args.study in ("isoclip-transport", "iso-paired", "iso-context") else None
     args.output.mkdir(parents=True, exist_ok=True)
     for split in splits:
         q_ids, q_labels = queries[split]

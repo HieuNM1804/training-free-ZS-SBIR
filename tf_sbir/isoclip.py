@@ -5,9 +5,10 @@ from functools import partial
 import torch
 from torch.nn import functional as F
 
+from .contextual_rank import contextual_propagation
 from .encoding import load_frozen_clip
 from .gallery_diffusion import diffusion_rows, full_gallery_inputs, linear_fusion_rows, mutual_transition
-from .global_methods import prepare_methods
+from .global_methods import prepare_methods, reciprocal_ranks
 from .manifold import build_graph, fused_features, iterative_feedback
 from .reranking import standardize
 
@@ -96,3 +97,27 @@ def iso_paired_settings(queries, photos, contours, sketch_words, photo_words, ma
         yield f"iso-paired-full-{band}", partial(linear_fusion_rows, base, region, score_batch, 0.25)
         transition = mutual_transition(gallery, 160)
         yield f"iso-paired-diffusion-{band}", partial(diffusion_rows, base, region, transition, score_batch, 0.9, 320, "regional")
+
+
+def iso_context_fusion_rows(visual, context, score_batch, weight, mode):
+    for iso, lexical in zip(visual.split(score_batch), context.split(score_batch), strict=True):
+        if mode == "rrf":
+            scores = reciprocal_ranks(iso) + weight * reciprocal_ranks(lexical)
+        else:
+            scores = (0.15 * (standardize(iso) + weight * standardize(lexical))).tanh()
+        yield from scores.cpu()
+
+
+def iso_context_settings(queries, photos, contours, sketch_words, photo_words, maps, score_batch):
+    query, gallery = projected_feedback(queries, photos, contours, maps[(150, 50)])
+    visual = query @ gallery.T
+    base, regional, _, _, views = full_gallery_inputs(queries, photos, contours, sketch_words, photo_words, score_batch)
+    evidence = standardize(base) + 0.25 * standardize(regional)
+    walk = contextual_propagation(photos, views[:, 2].float(), base, regional, evidence, 192, score_batch)
+    context = (0.15 * (evidence + 1.2 * walk)).tanh()
+    del base, regional, evidence, walk
+    for mode in ("rrf", "linear"):
+        for weight in (0.25, 0.5, 1.0):
+            yield f"iso-context-{mode}-w{weight:g}", partial(
+                iso_context_fusion_rows, visual, context, score_batch, weight, mode,
+            )
