@@ -14,6 +14,7 @@ from tf_sbir.bimodal_graph import bimodal_transition
 from tf_sbir.cluster_mine import majority_concepts
 from tf_sbir.cluster_prior import cache_votes, cluster_first_rows, cluster_mass, first_neighbor_groups
 from tf_sbir.contextual_rank import column_stochastic, jaccard_seed, personalized_walk
+from tf_sbir.contour_graph_index import gallery_walk, row_transition
 from tf_sbir.contour_query_expansion import gallery_word_codes, verified_feedback
 from tf_sbir.contour_render import xdog
 from tf_sbir.coregistration import leading_basis
@@ -40,6 +41,14 @@ from tf_sbir.view_hypotheses import expected_utility
 
 
 class GalleryManifoldTests(unittest.TestCase):
+    def test_gallery_graph_index_averages_outgoing_neighbors_and_preserves_isolates(self):
+        features = torch.tensor([[1., 0.], [0., 1.], [-1., 0.], [.6, .8]])
+        edges = ((torch.tensor([0, 0, 1, 2]), torch.tensor([1, 2, 0, 0]), torch.tensor([1., 3., 1., 3.])),)
+        transition, dangling = row_transition(len(features), edges)
+        averaged = gallery_walk(transition, dangling, features, .75, 1)
+        expected = F.normalize(torch.tensor([[-.3125, .1875], [.75, .25], [.5, 0.], [.6, .8]]), dim=-1)
+        torch.testing.assert_close(averaged, expected)
+
     def test_contour_expansion_keeps_gallery_codes_and_independent_support(self):
         gallery = F.normalize(torch.tensor([[.6, .4], [-.4, .6], [.9, -.2], [-.2, -.4]]), dim=-1)
         words = F.normalize(torch.tensor([[-.2, .7], [.9, .2], [.1, -.5]]), dim=-1)
