@@ -7,6 +7,7 @@ from torch.nn import functional as F
 from torchvision.transforms.functional import pil_to_tensor
 
 from tf_sbir.asif import sparse_relative_features
+from tf_sbir.bimodal_graph import bimodal_transition
 from tf_sbir.cluster_mine import majority_concepts
 from tf_sbir.data import normal_transform
 from tf_sbir.dense_views import tokencut_mask
@@ -20,6 +21,15 @@ from tf_sbir.semantic_transport import conditional_similarity, dustbin_plan, max
 
 
 class GalleryManifoldTests(unittest.TestCase):
+    def test_photo_text_graph_only_connects_text_to_photos(self):
+        photos = F.normalize(torch.tensor([[1., .2], [.2, 1.], [1., 1.]]))
+        transition, active = bimodal_transition(photos, torch.eye(2), 1, 1, 3)
+        dense = transition.to_dense()
+        self.assertEqual(active.tolist(), [0, 1])
+        self.assertEqual(float(dense[3:, 3:].abs().sum()), 0.)
+        self.assertTrue(torch.all(dense[:3, 3:].sum(1) > 0))
+        torch.testing.assert_close(dense, dense.T)
+
     def test_mutual_diffusion_matches_dense_solution_and_query_independence(self):
         features = F.normalize(torch.tensor([[1., 0.], [1., .2], [1., .4], [0., 1.]]))
         transition = mutual_transition(features, 2)

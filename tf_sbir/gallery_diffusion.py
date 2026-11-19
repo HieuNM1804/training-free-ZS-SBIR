@@ -10,8 +10,7 @@ from .reranking import standardize
 from .semantic_transport import conditional_similarity, partial_similarity, prepare_transport, rerank_transport_batch
 
 
-def mutual_transition(features, neighbors):
-    """Return the symmetric, degree-normalized affinity of mutual neighbors."""
+def nearest_gallery(features, neighbors):
     size = len(features)
     node_blocks, similarity_blocks = [], []
     for start in range(0, size, 512):
@@ -20,19 +19,29 @@ def mutual_transition(features, neighbors):
         scores[torch.arange(len(rows), device=features.device), rows] = -torch.inf
         top = scores.topk(neighbors, dim=1)
         node_blocks.append(top.indices)
-        similarity_blocks.append(top.values.clamp_min(0).pow(3))
-    targets = torch.cat(node_blocks).flatten()
-    weights = torch.cat(similarity_blocks).flatten()
+        similarity_blocks.append(top.values.clamp_min(0))
+    return torch.cat(node_blocks), torch.cat(similarity_blocks)
+
+
+def normalized_transition(size, sources, targets, weights):
+    degree = weights.new_zeros(size).scatter_add_(0, sources, weights).clamp_min(1e-12)
+    inverse = degree.rsqrt()
+    normalized = weights * inverse[sources] * inverse[targets]
+    return torch.sparse_coo_tensor(torch.stack((sources, targets)), normalized, (size, size)).coalesce().to_sparse_csr()
+
+
+def mutual_transition(features, neighbors):
+    """Return the symmetric, degree-normalized affinity of mutual neighbors."""
+    size = len(features)
+    neighbor_ids, similarities = nearest_gallery(features, neighbors)
+    targets = neighbor_ids.flatten()
+    weights = similarities.flatten().pow(3)
     sources = torch.arange(size, device=features.device).repeat_interleave(neighbors)
     edge_keys = (sources * size + targets).sort().values
     reversed_keys = targets * size + sources
     found = torch.searchsorted(edge_keys, reversed_keys).clamp_max(len(edge_keys) - 1)
     keep = edge_keys[found] == reversed_keys
-    sources, targets, weights = sources[keep], targets[keep], weights[keep]
-    degree = weights.new_zeros(size).scatter_add_(0, sources, weights).clamp_min(1e-12)
-    inverse = degree.rsqrt()
-    normalized = weights * inverse[sources] * inverse[targets]
-    return torch.sparse_coo_tensor(torch.stack((sources, targets)), normalized, (size, size)).coalesce().to_sparse_csr()
+    return normalized_transition(size, sources[keep], targets[keep], weights[keep])
 
 
 def solve_diffusion(transition, seed, alpha, iterations=16):

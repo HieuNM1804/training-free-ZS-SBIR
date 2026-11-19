@@ -8,6 +8,7 @@ import time
 import torch
 
 from .benchmark import merge_inputs
+from .bimodal_graph import bimodal_settings
 from .cluster_mine import cluster_mine_settings
 from .data import SKETCHY_SPLITS, UNSEEN_CLASSES
 from .dense_views import dense_transport_settings, load_clearclip_gallery, tokencut_transport_settings
@@ -49,6 +50,7 @@ DENSE_STUDIES = {
 SCORE_STUDIES = {
     "gallery-diffusion": gallery_diffusion_settings,
     "two-stage-transport": two_stage_settings,
+    "bimodal-graph": bimodal_settings,
 }
 
 
