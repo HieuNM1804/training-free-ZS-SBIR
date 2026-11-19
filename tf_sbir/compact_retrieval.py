@@ -5,8 +5,9 @@ from functools import partial
 import torch
 from torch.nn import functional as F
 
-from .contextual_rank import jaccard_graph
+from .contextual_rank import column_stochastic, contextual_blocks, jaccard_graph
 from .gallery_diffusion import regional_cosines
+from .global_methods import centered
 from .reranking import standardize
 from .semantic import top_codes
 from .union_density import density_prefixes, density_rows, pack_affinity
@@ -24,6 +25,12 @@ def conditional_words(query, sketch_words, photo_words, targets, score_batch):
     prompts = sketch_words.to(dtype)
     indices = [top_codes((batch.to(dtype) @ prompts.T).float(), 5)[0] for batch in query.split(score_batch)]
     return regional_cosines(photo_words[torch.cat(indices)].to(dtype), targets, min(score_batch, 192))
+
+
+def gallery_concept_views(photos, edges, photo_words):
+    words = view_concepts(photos[:, None], photo_words, photo_words).squeeze(1)
+    targets = torch.stack((photos, edges, words), dim=1)
+    return words, targets.half() if photos.is_cuda else targets
 
 
 def compact_retrieval_settings(queries, photos, contours, sketch_words, photo_words, maps, ink, score_batch):
@@ -53,10 +60,7 @@ def compact_retrieval_settings(queries, photos, contours, sketch_words, photo_wo
     del iso_space, iso_scores, iso_banks, iso_graph, iso_prior, prefix
 
     # Project Open Images terms into the photo prompt space, then match both gallery views.
-    gallery_text = view_concepts(photos[:, None], photo_words, photo_words).squeeze(1)
-    targets = torch.stack((photos, edges, gallery_text), dim=1)
-    if photos.is_cuda:
-        targets = targets.half()
+    gallery_text, targets = gallery_concept_views(photos, edges, photo_words)
     banks, graph = paired_graph(image_space, gallery_text, 192)
     for name, view in (("original", queries), ("ink", ink), ("pooled", pooled)):
         visual = image if name == "pooled" else standardize(view @ photos.T) + standardize(view @ edges.T)
@@ -69,3 +73,39 @@ def compact_retrieval_settings(queries, photos, contours, sketch_words, photo_wo
             yield f"compact-{name}-a{anchor:g}-k256", partial(density_rows, prior, prefix[:, :256], score_batch, None)
             if name == "pooled":
                 yield f"compact-{name}-a{anchor:g}-k384", partial(density_rows, prior, prefix, score_batch, None)
+
+
+def compact_calibrated_settings(queries, photos, contours, sketch_words, photo_words, maps, ink, score_batch):
+    del queries
+    ink = F.normalize(ink.float(), dim=-1)
+    edges = F.normalize(contours.float().mean(dim=1), dim=-1)
+    transform = maps[(150, 50)]
+    sketch, gallery, shape = (F.normalize(features @ transform, dim=-1) for features in (ink, photos, edges))
+    sketch = centered(sketch, shape.mean(dim=0))
+    gallery = centered(gallery, gallery.mean(dim=0))
+    shape = centered(shape, shape.mean(dim=0))
+    visual = standardize(sketch @ gallery.T) + standardize(sketch @ shape.T)
+
+    gallery_text, targets = gallery_concept_views(photos, edges, photo_words)
+    semantic = conditional_words(ink, sketch_words, photo_words, targets, score_batch)
+    prior = standardize(visual) + standardize(semantic)
+    yield "compact-calibrated-control", partial(density_rows, prior, None, score_batch, None)
+
+    appearance = F.normalize(torch.cat((gallery, shape), dim=1), dim=-1)
+    visual_bank, *visual_edges = jaccard_graph(appearance, 192)
+    text_bank, *text_edges = jaccard_graph(gallery_text, 192)
+    banks = (visual_bank, text_bank)
+    graphs = (visual_edges, text_edges)
+    graph = pack_affinity(len(photos), graphs)
+    transition, dangling = column_stochastic(len(photos), graphs)
+    diffusion = torch.cat(list(contextual_blocks(visual, semantic, prior, *banks, transition, dangling, min(256, score_batch))))
+    walk_prior = prior + 1.2 * diffusion
+    yield "compact-calibrated-pagerank", partial(density_rows, walk_prior, None, score_batch, None)
+
+    for anchor in (4., 16., 64.):
+        prefix = density_prefixes(visual, semantic, (visual, semantic), prior, banks, graph,
+                                  1280, score_batch, 256, anchor)
+        yield f"compact-calibrated-a{anchor:g}", partial(density_rows, prior, prefix, score_batch, None)
+    prefix = density_prefixes(visual, semantic, (visual, semantic, diffusion), walk_prior, banks, graph,
+                              1280, score_batch, 256, 16.)
+    yield "compact-calibrated-pagerank-a16", partial(density_rows, walk_prior, prefix, score_batch, None)
