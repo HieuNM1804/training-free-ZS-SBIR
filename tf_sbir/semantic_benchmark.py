@@ -7,6 +7,7 @@ import time
 
 import torch
 
+from .adaptive_fusion import adaptive_fusion_settings
 from .benchmark import merge_inputs
 from .bimodal_graph import bimodal_settings
 from .cluster_mine import cluster_mine_settings
@@ -51,6 +52,7 @@ SCORE_STUDIES = {
     "gallery-diffusion": gallery_diffusion_settings,
     "two-stage-transport": two_stage_settings,
     "bimodal-graph": bimodal_settings,
+    "adaptive-fusion": adaptive_fusion_settings,
 }
 
 
@@ -94,7 +96,7 @@ def run(args):
     words = read_words(args.vocabulary)
     sketch_text, photo_text = [view.to(device) for view in load_words(args, words)]
     augmentations = load_augmentations(args, query_paths) if args.study == "mta" else None
-    needs_crops = args.study in CROP_STUDIES or args.study == "two-stage-transport"
+    needs_crops = args.study in CROP_STUDIES or args.study in ("two-stage-transport", "adaptive-fusion")
     photo_views = load_augmentations(args, photo_paths, views=9, mode="photo") if needs_crops else None
     dense_views = load_clearclip_gallery(args, photo_paths) if args.study in DENSE_STUDIES else None
     args.output.mkdir(parents=True, exist_ok=True)

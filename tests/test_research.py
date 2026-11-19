@@ -6,6 +6,7 @@ from PIL import Image
 from torch.nn import functional as F
 from torchvision.transforms.functional import pil_to_tensor
 
+from tf_sbir.adaptive_fusion import curve_reliability
 from tf_sbir.asif import sparse_relative_features
 from tf_sbir.bimodal_graph import bimodal_transition
 from tf_sbir.cluster_mine import majority_concepts
@@ -106,6 +107,16 @@ class PublicVocabularyTests(unittest.TestCase):
 
 
 class InferenceCalibrationTests(unittest.TestCase):
+    def test_curve_weight_prefers_a_sharp_head_after_reference_subtraction(self):
+        fractions = torch.linspace(0, 1, 5)
+        tail = 1 - fractions
+        base = tail.repeat(10, 1)
+        scores = torch.stack((tail + torch.tensor([1., 0., 0., 0., 0.]),
+                              tail + torch.tensor([1., .8, .6, .4, .2])))
+        strengths = curve_reliability(scores, base, fractions, 2)
+        self.assertGreater(strengths[0], strengths[1])
+        torch.testing.assert_close(strengths[0], curve_reliability(scores[:1], base, fractions, 2)[0])
+
     def test_crop_uint8_lookup_matches_reference_normalization(self):
         pixels = np.arange(224 * 224 * 3, dtype=np.int32).astype(np.uint8).reshape(224, 224, 3)
         image = Image.fromarray(pixels)
