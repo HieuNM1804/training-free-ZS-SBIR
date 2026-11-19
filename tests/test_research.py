@@ -10,6 +10,7 @@ from tf_sbir.adaptive_fusion import curve_reliability
 from tf_sbir.asif import sparse_relative_features
 from tf_sbir.bimodal_graph import bimodal_transition
 from tf_sbir.cluster_mine import majority_concepts
+from tf_sbir.coregistration import leading_basis
 from tf_sbir.data import normal_transform
 from tf_sbir.dense_views import tokencut_mask
 from tf_sbir.gallery_diffusion import mutual_transition, regional_cosines, solve_diffusion
@@ -22,6 +23,14 @@ from tf_sbir.semantic_transport import conditional_similarity, dustbin_plan, max
 
 
 class GalleryManifoldTests(unittest.TestCase):
+    def test_coregularized_subspace_matches_dense_eigensolver(self):
+        transition = torch.tensor([[0., .3, .2], [.3, 0., .1], [.2, .1, 0.]])
+        partner = F.normalize(torch.tensor([[.3], [.2], [.9]]), dim=0)
+        modified = transition + .25 * (partner @ partner.T)
+        _, expected = torch.linalg.eigh(modified)
+        actual = leading_basis(transition.to_sparse_csr(), torch.eye(3), (partner,), .25)
+        torch.testing.assert_close(actual[:, 0].abs(), expected[:, -1].abs())
+
     def test_photo_text_graph_only_connects_text_to_photos(self):
         photos = F.normalize(torch.tensor([[1., .2], [.2, 1.], [1., 1.]]))
         transition, active = bimodal_transition(photos, torch.eye(2), 1, 1, 3)
