@@ -26,6 +26,7 @@ from .encoding import load_global_inputs
 from .foundation import load_words
 from .gallery_diffusion import gallery_diffusion_settings, two_stage_settings
 from .gem_regions import gem_region_settings, load_gem_regions
+from .grouped_contour_expansion import grouped_contour_settings
 from .head_selection import head_selection_settings
 from .isoclip import iso_context_settings, iso_paired_settings, iso_transport_settings, isoclip_maps
 from .isolated_regions import isolated_region_settings, load_isolated_regions
@@ -68,7 +69,7 @@ DENSE_STUDIES = {
     "tokencut-transport": tokencut_transport_settings,
 }
 HEAD_STUDIES = ("head-selection", "view-hypotheses", "foreground-fusion", "gaussian-verification")
-INK_STUDIES = ("compact-retrieval", "contour-query-expansion", "contour-query-expansion-sweep")
+INK_STUDIES = ("compact-retrieval", "contour-query-expansion", "contour-query-expansion-sweep", "grouped-contour-expansion")
 SCORE_STUDIES = {
     "gallery-diffusion": gallery_diffusion_settings,
     "two-stage-transport": two_stage_settings,
@@ -101,6 +102,7 @@ SCORE_STUDIES = {
     "compact-retrieval": compact_retrieval_settings,
     "contour-query-expansion": contour_expansion_settings,
     "contour-query-expansion-sweep": partial(contour_expansion_settings, sweep=True),
+    "grouped-contour-expansion": grouped_contour_settings,
     "lame-relevance": relevance_settings,
 }
 

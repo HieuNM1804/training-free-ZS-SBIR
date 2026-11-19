@@ -22,6 +22,7 @@ from tf_sbir.dense_views import tokencut_mask
 from tf_sbir.dominant_sets import constrained_membership
 from tf_sbir.gallery_diffusion import mutual_transition, regional_cosines, solve_diffusion
 from tf_sbir.gaussian_verification import diagonal_log_likelihood, evidence_rank_fusion, proposal_evidence
+from tf_sbir.grouped_contour_expansion import disjoint_support
 from tf_sbir.head_selection import rank_biased_overlap
 from tf_sbir.isoclip import output_space_maps
 from tf_sbir.isolated_regions import isolated_views, token_boxes
@@ -40,6 +41,16 @@ from tf_sbir.view_hypotheses import expected_utility
 
 
 class GalleryManifoldTests(unittest.TestCase):
+    def test_contour_support_groups_are_disjoint_and_query_specific(self):
+        candidates = torch.tensor([[0, 1, 2, 3], [2, 0, 3, 1]])
+        neighbors = torch.tensor([[1], [0], [3], [2]])
+        edges = torch.ones(4, 1)
+        scores = torch.zeros(2, 4)
+        query = torch.tensor([[1., .0, .5, .0], [.0, .2, .0, 1.]])
+        groups = disjoint_support(candidates, query, scores, (neighbors, edges), 2, 2)
+        torch.testing.assert_close(groups, torch.tensor([[[0, 1], [2, 3]], [[3, 2], [1, 0]]]))
+        torch.testing.assert_close(groups[1:], disjoint_support(candidates[1:], query[1:], scores[1:], (neighbors, edges), 2, 2))
+
     def test_contour_expansion_keeps_gallery_codes_and_independent_support(self):
         gallery = F.normalize(torch.tensor([[.6, .4], [-.4, .6], [.9, -.2], [-.2, -.4]]), dim=-1)
         words = F.normalize(torch.tensor([[-.2, .7], [.9, .2], [.1, -.5]]), dim=-1)
