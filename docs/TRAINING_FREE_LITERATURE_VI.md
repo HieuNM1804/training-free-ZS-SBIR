@@ -1,5 +1,11 @@
 # Training-free CLIP và VLM cho categorical ZS-SBIR
 
+## Chọn bán kính đồ thị theo độ bảo toàn láng giềng giữa hai miền
+
+Với mỗi ảnh gallery, đo Jaccard giữa tập láng giềng của phiên bản contour và tập láng giềng của phiên bản RGB cho năm giá trị k. Loại chính ảnh đó trước khi tìm láng giềng và đổi mỗi độ chồng sang phân vị trong gallery cùng k, dùng trung hạng cho các điểm bằng nhau. Mỗi sketch đọc các phân vị ở 32 anchor nguồn gần nhất của khung gốc và crop bao nét vẽ. Điểm theo bán kính dùng để chọn một danh sách hoặc tính trọng số khi gộp năm danh sách. Các đối chứng giữ cố định một bán kính, gộp đều và hoán đổi hồ sơ độ tin cậy giữa các ảnh. Tỉ lệ gộp là tham số thăm dò trên unseen. Các hệ số được suy ra từ các cặp tham chiếu của gallery nên không cần sketch khác lúc suy luận.
+
+Neighbor embedding cung cấp cách truyền tọa độ qua các cặp, IsoCLIP cung cấp phép chiếu phổ và Query Specific Fusion cung cấp đồ thị Jaccard cho truy hồi. Phần thử nghiệm mới dùng độ bảo toàn láng giềng giữa hai miền để xác định bán kính phù hợp cho từng query. Hướng dùng cấu trúc láng giềng khi hai bộ mã hóa khác nhau cũng có tiền lệ học có giám sát trong Contextual Similarity Distillation. [Query Specific Fusion, ECCV 2012](https://link.springer.com/chapter/10.1007/978-3-642-33709-3_47) · [Contextual Similarity Distillation, CVPR 2022](https://openaccess.thecvf.com/content/CVPR2022/papers/Wu_Contextual_Similarity_Distillation_for_Asymmetric_Image_Retrieval_CVPR_2022_paper.pdf)
+
 ## Trọng số ngữ nghĩa ở hai bước xây đồ thị gallery
 
 Nhánh `research/gallery-semantic-balance` giữ phép chuyển tọa độ giữa các cặp contour–RGB. Nó thay đổi tỷ trọng của cạnh từ vựng khi làm trơn embedding của ảnh gallery và khi xếp hạng bằng lân cận Jaccard. Tỷ trọng còn lại chia đều cho hai biểu diễn ảnh. Tại mức một phần ba, ba nguồn có trọng số bằng nhau. Mỗi đồ thị được thử với ba trọng số từ vựng của query và một cách gộp theo độ chồng lân cận. Tất cả đều dùng chung tám view, câu chữ công khai và một CLIP ViT-B/32 cố định. Đây là phép dò tham số và tách đóng góp của hai công đoạn trong phương pháp ba paper. [Query Specific Fusion for Image Retrieval, ECCV 2012](https://link.springer.com/chapter/10.1007/978-3-642-33709-3_47)

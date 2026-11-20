@@ -35,13 +35,23 @@ def symmetric_mean(scores):
     return ((left + right) * (.5 * prior[None, :, None])).sum(dim=1)
 
 
-def query_evidence(mapped, uncertainty, concepts, index):
+def compact_union(ids, unique):
+    counts = unique.sum(dim=1)
+    width = int(counts.max())
+    positions = unique.cumsum(dim=1) - 1
+    compact = ids.new_zeros((len(ids), width)).scatter_(1, positions, ids)
+    return compact, torch.arange(width, device=ids.device)[None, :] < counts[:, None]
+
+
+def query_evidence(mapped, uncertainty, concepts, index, *, modes=None, compact=False):
     smooth, vocabulary, banks, graph, walk = index
     visual = mapped @ smooth.T
     lexical = concepts @ vocabulary.T
     appearance, words = symmetric_mean(visual), symmetric_mean(lexical)
     tied = standardize(appearance) + standardize(words)
     candidates = candidate_union((*visual.unbind(1), *lexical.unbind(1)), 1280)
+    if compact:
+        candidates = compact_union(*candidates)
     shapes = torch.stack([jaccard_seed(v, banks[0]) for v in visual.unbind(1)], dim=1)
     terms = torch.stack([jaccard_seed(v, banks[1]) for v in lexical.unbind(1)], dim=1)
     risk = uncertainty.sum(dim=-1)
@@ -49,7 +59,8 @@ def query_evidence(mapped, uncertainty, concepts, index):
     word_seed = reflection_seed(terms, risk, PairSetting(False, 0., 0.))
     seeds = {name: 2. * shape_seed.lerp(word_seed, fraction) for name, fraction in LEXICAL_FRACTIONS.items()}
     seeds["sharp"] = reflection_seed(shapes + terms, uncertainty[..., 0], PairSetting(False, 4., 4.))
-    head = {name: grow_density(32. * seed, tied, *candidates, graph, 256) for name, seed in seeds.items()}
+    head = {name: grow_density(32. * seed, tied, *candidates, graph, 256) for name, seed in seeds.items()
+            if modes is None or name in modes}
     return pagerank_tail(appearance, words, tied, banks, *walk, len(mapped)), head
 
 
