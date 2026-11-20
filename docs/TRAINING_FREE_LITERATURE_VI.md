@@ -1,5 +1,9 @@
 # Training-free CLIP và VLM cho categorical ZS-SBIR
 
+## Tự tương đồng không gian theo cùng một công thức ở hai miền
+
+Nhánh chỉ dùng ảnh này sử dụng ba cơ chế. Shechtman và Irani đo quan hệ giữa các patch bên trong một ảnh để so khớp qua thay đổi ngoại hình. Ở đây hai lớp giữa của CLIP ViT-B/32 tạo các patch token. Sau khi trừ trung bình token của từng ảnh, dùng ma trận cosine giữa các vị trí và cực đại theo các ô log-polar để mã hóa cấu trúc. Phép chiếu phổ IsoCLIP tạo kênh ngữ nghĩa toàn cục và Query Specific Fusion kết hợp hai loại bằng chứng trên gallery. Miền nguồn và đích dùng chính xác cùng hàm mô tả, không cần tên miền hoặc từ điển. Bộ dữ liệu chỉ cung cấp ảnh và protocol chấm. Chọn trọng số, kích thước láng giềng và lớp CLIP trên hai split Sketchy, sau đó giữ nguyên khi kiểm tra TU-Berlin. [Local Self-Similarities, CVPR 2007](https://www.wisdom.weizmann.ac.il/~vision/SelfSimilarities.html) · [IsoCLIP, CVPR 2026](https://openaccess.thecvf.com/content/CVPR2026/html/Magistri_IsoCLIP_Decomposing_CLIP_Projectors_for_Efficient_Intra-modal_Alignment_CVPR_2026_paper.html) · [Query Specific Fusion, ECCV 2012](https://link.springer.com/chapter/10.1007/978-3-642-33709-3_47)
+
 ## Chuyển gallery qua cặp prompt miền, chốt tham số trên Sketchy
 
 Với mỗi ảnh gallery, bộ mã hóa CLIP trả về một vector RGB. Tìm các prompt đích gần nó trong danh mục công khai và tính tọa độ affine bằng neighbor embedding. Đọc cùng hệ số trên các prompt nguồn để tạo bản biểu diễn miền nguồn của ảnh. Hệ số giữ phần dư điều chỉnh lượng thông tin thị giác còn lại. Các cặp miền nguồn ước lượng và RGB thật tạo thành ngân hàng để chuyển từng truy vấn mới. Khi ghép thông tin văn bản vào không gian láng giềng, giữ phần dư thị giác ở các trục chung của CLIP. Đồ thị Jaccard dùng gallery không nhãn. Một lượt dùng cùng prompt ở hai miền kiểm tra vai trò của tên miền.
