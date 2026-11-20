@@ -1,0 +1,244 @@
+{
+  "revision": "d3439103c5b26bf75ff5a4cf60c7bf78de667b05",
+  "backbone": "OpenAI CLIP ViT-B/32",
+  "checkpoint_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+  "gpu": "NVIDIA L4",
+  "split_sha256": "8fafaf3aedf4751e28e2b33f073832e02fdf3ca1b36a9d7fda5ff328f26b0642",
+  "classes": 25,
+  "study": "reverse-prompt-diffusion",
+  "external_vocabulary": 20931,
+  "freeze_sha256": null,
+  "exploratory_unseen": true,
+  "results": {
+    "reverse-paired-c4-t0.03-k96-d0.75-n96-e0.6-u0.6": {
+      "precision": 0.800275,
+      "top1": 0.80125
+    },
+    "reverse-paired-c8-t0.03-k96-d0.75-n96-e0.6-u0.6": {
+      "precision": 0.7996,
+      "top1": 0.8025
+    },
+    "reverse-paired-c16-t0.012-k96-d0.75-n96-e0.6-u0.6": {
+      "precision": 0.7988625,
+      "top1": 0.805
+    },
+    "reverse-paired-c16-t0.02-k96-d0.75-n96-e0.6-u0.6": {
+      "precision": 0.802275,
+      "top1": 0.80375
+    },
+    "reverse-paired-c16-t0.03-k32-d0.75-n96-e0.6-u0.6": {
+      "precision": 0.798825,
+      "top1": 0.7975
+    },
+    "average-paired-c16-t0.03-k96-d0-n96-e0-u0.6": {
+      "precision": 0.751575,
+      "top1": 0.765
+    },
+    "forward-paired-c16-t0.03-k96-d0-n96-e0-u0.6": {
+      "precision": 0.7043375,
+      "top1": 0.71625
+    },
+    "reverse-paired-c16-t0.03-k96-d0-n96-e0-u0.6": {
+      "precision": 0.7733125,
+      "top1": 0.76375
+    },
+    "average-paired-c16-t0.03-k96-d0-n96-e0.35-u0.6": {
+      "precision": 0.7761875,
+      "top1": 0.77875
+    },
+    "forward-paired-c16-t0.03-k96-d0-n96-e0.35-u0.6": {
+      "precision": 0.7391,
+      "top1": 0.74875
+    },
+    "reverse-paired-c16-t0.03-k96-d0-n96-e0.35-u0.6": {
+      "precision": 0.7992625,
+      "top1": 0.79125
+    },
+    "average-paired-c16-t0.03-k96-d0-n96-e0.7-u0.6": {
+      "precision": 0.7807375,
+      "top1": 0.77625
+    },
+    "forward-paired-c16-t0.03-k96-d0-n96-e0.7-u0.6": {
+      "precision": 0.749475,
+      "top1": 0.75125
+    },
+    "reverse-paired-c16-t0.03-k96-d0-n96-e0.7-u0.6": {
+      "precision": 0.8011625,
+      "top1": 0.80625
+    },
+    "average-paired-c16-t0.03-k96-d0-n96-e1-u0.6": {
+      "precision": 0.780375,
+      "top1": 0.78
+    },
+    "forward-paired-c16-t0.03-k96-d0-n96-e1-u0.6": {
+      "precision": 0.75145,
+      "top1": 0.75375
+    },
+    "reverse-paired-c16-t0.03-k96-d0-n96-e1-u0.6": {
+      "precision": 0.800525,
+      "top1": 0.8025
+    },
+    "average-paired-c16-t0.03-k96-d0.5-n96-e0-u0.6": {
+      "precision": 0.7555,
+      "top1": 0.7675
+    },
+    "forward-paired-c16-t0.03-k96-d0.5-n96-e0-u0.6": {
+      "precision": 0.7159625,
+      "top1": 0.73125
+    },
+    "reverse-paired-c16-t0.03-k96-d0.5-n96-e0-u0.6": {
+      "precision": 0.780825,
+      "top1": 0.77125
+    },
+    "average-paired-c16-t0.03-k96-d0.5-n96-e0.35-u0.6": {
+      "precision": 0.76945,
+      "top1": 0.77125
+    },
+    "forward-paired-c16-t0.03-k96-d0.5-n96-e0.35-u0.6": {
+      "precision": 0.7396,
+      "top1": 0.7525
+    },
+    "reverse-paired-c16-t0.03-k96-d0.5-n96-e0.35-u0.6": {
+      "precision": 0.7995125,
+      "top1": 0.795
+    },
+    "average-paired-c16-t0.03-k96-d0.5-n96-e0.7-u0.6": {
+      "precision": 0.7696125,
+      "top1": 0.77125
+    },
+    "forward-paired-c16-t0.03-k96-d0.5-n96-e0.7-u0.6": {
+      "precision": 0.7457,
+      "top1": 0.75125
+    },
+    "reverse-paired-c16-t0.03-k96-d0.5-n96-e0.7-u0.6": {
+      "precision": 0.8008125,
+      "top1": 0.8
+    },
+    "average-paired-c16-t0.03-k96-d0.5-n96-e1-u0.6": {
+      "precision": 0.76835,
+      "top1": 0.77
+    },
+    "forward-paired-c16-t0.03-k96-d0.5-n96-e1-u0.6": {
+      "precision": 0.7466125,
+      "top1": 0.75
+    },
+    "reverse-paired-c16-t0.03-k96-d0.5-n96-e1-u0.6": {
+      "precision": 0.8007625,
+      "top1": 0.80125
+    },
+    "reverse-paired-c16-t0.03-k96-d0.75-n16-e0.6-u0.6": {
+      "precision": 0.7887625,
+      "top1": 0.79125
+    },
+    "reverse-paired-c16-t0.03-k96-d0.75-n48-e0.6-u0.6": {
+      "precision": 0.7918125,
+      "top1": 0.79375
+    },
+    "reverse-paired-c16-t0.03-k96-d0.75-n96-e0.6-u0.25": {
+      "precision": 0.796525,
+      "top1": 0.79125
+    },
+    "reverse-paired-c16-t0.03-k96-d0.75-n96-e0.6-u0.6": {
+      "precision": 0.800775,
+      "top1": 0.8
+    },
+    "reverse-paired-c16-t0.03-k96-d0.75-n96-e0.6-u1": {
+      "precision": 0.801925,
+      "top1": 0.8
+    },
+    "reverse-paired-c16-t0.03-k96-d0.75-n96-e0.6-u2": {
+      "precision": 0.8024125,
+      "top1": 0.8025
+    },
+    "reverse-paired-c16-t0.03-k96-d0.75-n96-e0.85-u0.6": {
+      "precision": 0.80085,
+      "top1": 0.8
+    },
+    "reverse-paired-c16-t0.03-k96-d0.75-n192-e0.6-u0.6": {
+      "precision": 0.8058625,
+      "top1": 0.8075
+    },
+    "reverse-paired-c16-t0.03-k96-d0.75-n384-e0.6-u0.6": {
+      "precision": 0.8047,
+      "top1": 0.81
+    },
+    "average-paired-c16-t0.03-k96-d0.85-n96-e0-u0.6": {
+      "precision": 0.7609375,
+      "top1": 0.7675
+    },
+    "forward-paired-c16-t0.03-k96-d0.85-n96-e0-u0.6": {
+      "precision": 0.7163375,
+      "top1": 0.735
+    },
+    "reverse-paired-c16-t0.03-k96-d0.85-n96-e0-u0.6": {
+      "precision": 0.7931125,
+      "top1": 0.78375
+    },
+    "average-paired-c16-t0.03-k96-d0.85-n96-e0.35-u0.6": {
+      "precision": 0.7666875,
+      "top1": 0.775
+    },
+    "forward-paired-c16-t0.03-k96-d0.85-n96-e0.35-u0.6": {
+      "precision": 0.7287875,
+      "top1": 0.74
+    },
+    "reverse-paired-c16-t0.03-k96-d0.85-n96-e0.35-u0.6": {
+      "precision": 0.80055,
+      "top1": 0.79875
+    },
+    "average-paired-c16-t0.03-k96-d0.85-n96-e0.7-u0.6": {
+      "precision": 0.7662,
+      "top1": 0.76875
+    },
+    "forward-paired-c16-t0.03-k96-d0.85-n96-e0.7-u0.6": {
+      "precision": 0.73025,
+      "top1": 0.73625
+    },
+    "reverse-paired-c16-t0.03-k96-d0.85-n96-e0.7-u0.6": {
+      "precision": 0.801025,
+      "top1": 0.80375
+    },
+    "average-paired-c16-t0.03-k96-d0.85-n96-e1-u0.6": {
+      "precision": 0.766225,
+      "top1": 0.77
+    },
+    "forward-paired-c16-t0.03-k96-d0.85-n96-e1-u0.6": {
+      "precision": 0.7296875,
+      "top1": 0.73
+    },
+    "reverse-paired-c16-t0.03-k96-d0.85-n96-e1-u0.6": {
+      "precision": 0.8002375,
+      "top1": 0.805
+    },
+    "reverse-paired-c16-t0.03-k96-d0.92-n96-e0.6-u0.6": {
+      "precision": 0.8037,
+      "top1": 0.80875
+    },
+    "reverse-paired-c16-t0.03-k192-d0.75-n96-e0.6-u0.6": {
+      "precision": 0.8001,
+      "top1": 0.8
+    },
+    "reverse-paired-c16-t0.03-k320-d0.75-n96-e0.6-u0.6": {
+      "precision": 0.80025,
+      "top1": 0.80125
+    },
+    "reverse-paired-c16-t0.05-k96-d0.75-n96-e0.6-u0.6": {
+      "precision": 0.79655,
+      "top1": 0.795
+    },
+    "reverse-paired-c32-t0.03-k96-d0.75-n96-e0.6-u0.6": {
+      "precision": 0.7959375,
+      "top1": 0.79375
+    },
+    "reverse-paired-c64-t0.03-k96-d0.75-n96-e0.6-u0.6": {
+      "precision": 0.7930625,
+      "top1": 0.79125
+    },
+    "reverse-paired-c128-t0.03-k96-d0.75-n96-e0.6-u0.6": {
+      "precision": 0.7786375,
+      "top1": 0.77875
+    }
+  },
+  "seed": 4451,
+  "queries": 800
+}

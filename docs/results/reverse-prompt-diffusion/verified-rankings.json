@@ -1,0 +1,416 @@
+{
+  "kd_source_sha256": "adaa5781082173d333b5605f18045f2c2fecb6dbe23685902104dfc0828855ee",
+  "primary": "reverse-paired-c8-t0.03-k96-d0.92-n96-e0.6-u0.6",
+  "splits": {
+    "sketchy_1": {
+      "kd_full_replay": {
+        "queries": 14179,
+        "mAP": 0.8085208535194397,
+        "precision": 0.8014324307441711,
+        "kd_minus_pipeline_max_abs_same_order_AP_P": [
+          0.0,
+          0.0
+        ],
+        "max_per_query_abs_AP_P": [
+          4.565715789794922e-05,
+          0.0
+        ],
+        "mean_per_query_abs_AP_P": [
+          6.012748343664498e-08,
+          0.0
+        ],
+        "queries_within_1e-6_both": 13984
+      },
+      "stable_gallery_order": {
+        "native": {
+          "top1_correct": 5200,
+          "errors_at_1": 8979,
+          "wrong_at_10": 88662,
+          "unique_wrong_top1_photos": 83,
+          "wrong_top10_share_top1pct": 0.9967629909515381,
+          "wrong_top1_categories": [
+            [
+              "scissors",
+              8110
+            ],
+            [
+              "horse",
+              513
+            ],
+            [
+              "squirrel",
+              153
+            ],
+            [
+              "teddy_bear",
+              94
+            ]
+          ],
+          "mean_within_class_style_percentile_wrong_top1": 0.9724412560462952
+        },
+        "method": {
+          "top1_correct": 11421,
+          "errors_at_1": 2758,
+          "wrong_at_10": 27891,
+          "unique_wrong_top1_photos": 824,
+          "wrong_top10_share_top1pct": 0.4166577160358429,
+          "wrong_top1_categories": [
+            [
+              "scissors",
+              436
+            ],
+            [
+              "ray",
+              367
+            ],
+            [
+              "parrot",
+              286
+            ],
+            [
+              "bell",
+              284
+            ]
+          ],
+          "mean_within_class_style_percentile_wrong_top1": 0.5353497862815857
+        },
+        "top1_rescued": 6349,
+        "top1_regressed": 128
+      },
+      "literal_class_name_in_first_eight_terms": {
+        "photo": {
+          "classes_with_exact_public_name": [
+            "cup",
+            "swan",
+            "harp",
+            "squirrel",
+            "snail",
+            "pineapple",
+            "volcano",
+            "rifle",
+            "scissors",
+            "parrot",
+            "windmill",
+            "teddy_bear",
+            "tree",
+            "wine_bottle",
+            "deer",
+            "chicken",
+            "airplane",
+            "wheelchair",
+            "tank",
+            "umbrella",
+            "butterfly",
+            "camel",
+            "horse",
+            "bell"
+          ],
+          "covered_items": 16400,
+          "items": 17100,
+          "literal_hit_covered": 0.6128048896789551,
+          "literal_hit_all": 0.5877193212509155
+        },
+        "sketch": {
+          "classes_with_exact_public_name": [
+            "cup",
+            "swan",
+            "harp",
+            "squirrel",
+            "snail",
+            "pineapple",
+            "volcano",
+            "rifle",
+            "scissors",
+            "parrot",
+            "windmill",
+            "teddy_bear",
+            "tree",
+            "wine_bottle",
+            "deer",
+            "chicken",
+            "airplane",
+            "wheelchair",
+            "tank",
+            "umbrella",
+            "butterfly",
+            "camel",
+            "horse",
+            "bell"
+          ],
+          "covered_items": 13711,
+          "items": 14179,
+          "literal_hit_covered": 0.5001093745231628,
+          "literal_hit_all": 0.48360252380371094
+        }
+      }
+    },
+    "sketchy_2": {
+      "kd_full_replay": {
+        "queries": 12694,
+        "mAP": 0.7316203117370605,
+        "precision": 0.7159134149551392,
+        "kd_minus_pipeline_max_abs_same_order_AP_P": [
+          0.0,
+          0.0
+        ],
+        "max_per_query_abs_AP_P": [
+          0.003385484218597412,
+          0.004999998956918716
+        ],
+        "mean_per_query_abs_AP_P": [
+          7.198364642135857e-07,
+          7.877732741690124e-07
+        ],
+        "queries_within_1e-6_both": 12645
+      },
+      "stable_gallery_order": {
+        "native": {
+          "top1_correct": 4686,
+          "errors_at_1": 8008,
+          "wrong_at_10": 84768,
+          "unique_wrong_top1_photos": 110,
+          "wrong_top10_share_top1pct": 0.9794380068778992,
+          "wrong_top1_categories": [
+            [
+              "scissors",
+              5677
+            ],
+            [
+              "giraffe",
+              937
+            ],
+            [
+              "mouse",
+              624
+            ],
+            [
+              "seagull",
+              421
+            ]
+          ],
+          "mean_within_class_style_percentile_wrong_top1": 0.9773446321487427
+        },
+        "method": {
+          "top1_correct": 9241,
+          "errors_at_1": 3453,
+          "wrong_at_10": 34620,
+          "unique_wrong_top1_photos": 834,
+          "wrong_top10_share_top1pct": 0.3136337399482727,
+          "wrong_top1_categories": [
+            [
+              "seagull",
+              622
+            ],
+            [
+              "sword",
+              546
+            ],
+            [
+              "scissors",
+              435
+            ],
+            [
+              "cow",
+              345
+            ]
+          ],
+          "mean_within_class_style_percentile_wrong_top1": 0.550595760345459
+        },
+        "top1_rescued": 4944,
+        "top1_regressed": 389
+      },
+      "literal_class_name_in_first_eight_terms": {
+        "photo": {
+          "classes_with_exact_public_name": [
+            "cabin",
+            "dolphin",
+            "door",
+            "giraffe",
+            "helicopter",
+            "mouse",
+            "pear",
+            "raccoon",
+            "rhinoceros",
+            "saw",
+            "scissors",
+            "skyscraper",
+            "songbird",
+            "sword",
+            "tree",
+            "wheelchair",
+            "windmill",
+            "window"
+          ],
+          "covered_items": 10610,
+          "items": 12552,
+          "literal_hit_covered": 0.6221489310264587,
+          "literal_hit_all": 0.5258923172950745
+        },
+        "sketch": {
+          "classes_with_exact_public_name": [
+            "cabin",
+            "dolphin",
+            "door",
+            "giraffe",
+            "helicopter",
+            "mouse",
+            "pear",
+            "raccoon",
+            "rhinoceros",
+            "saw",
+            "scissors",
+            "skyscraper",
+            "songbird",
+            "sword",
+            "tree",
+            "wheelchair",
+            "windmill",
+            "window"
+          ],
+          "covered_items": 10665,
+          "items": 12694,
+          "literal_hit_covered": 0.3734646141529083,
+          "literal_hit_all": 0.3137702941894531
+        }
+      }
+    },
+    "tuberlin": {
+      "kd_full_replay": {
+        "queries": 2130,
+        "mAP": 0.7696360945701599,
+        "precision": 0.8061549067497253,
+        "kd_minus_pipeline_max_abs_same_order_AP_P": [
+          0.0,
+          0.0
+        ],
+        "max_per_query_abs_AP_P": [
+          0.0021650493144989014,
+          0.010000020265579224
+        ],
+        "mean_per_query_abs_AP_P": [
+          3.721009488799609e-05,
+          9.389665501657873e-05
+        ],
+        "queries_within_1e-6_both": 1969
+      },
+      "stable_gallery_order": {
+        "native": {
+          "top1_correct": 1249,
+          "errors_at_1": 881,
+          "wrong_at_10": 9814,
+          "unique_wrong_top1_photos": 77,
+          "wrong_top10_share_top1pct": 0.9794171452522278,
+          "wrong_top1_categories": [
+            [
+              "floor lamp",
+              249
+            ],
+            [
+              "skull",
+              141
+            ],
+            [
+              "truck",
+              114
+            ],
+            [
+              "eyeglasses",
+              85
+            ]
+          ],
+          "mean_within_class_style_percentile_wrong_top1": 0.7571947574615479
+        },
+        "method": {
+          "top1_correct": 1741,
+          "errors_at_1": 389,
+          "wrong_at_10": 4048,
+          "unique_wrong_top1_photos": 277,
+          "wrong_top10_share_top1pct": 0.45676878094673157,
+          "wrong_top1_categories": [
+            [
+              "hammer",
+              52
+            ],
+            [
+              "mug",
+              47
+            ],
+            [
+              "pear",
+              39
+            ],
+            [
+              "mosquito",
+              35
+            ]
+          ],
+          "mean_within_class_style_percentile_wrong_top1": 0.555590033531189
+        },
+        "top1_rescued": 553,
+        "top1_regressed": 61
+      },
+      "literal_class_name_in_first_eight_terms": {
+        "photo": {
+          "classes_with_exact_public_name": [
+            "helicopter",
+            "mermaid",
+            "mosquito",
+            "pear",
+            "couch",
+            "hammer",
+            "airplane",
+            "house",
+            "baseball bat",
+            "toilet",
+            "panda",
+            "butterfly",
+            "mug",
+            "hot air balloon",
+            "cup",
+            "skull",
+            "truck",
+            "palm tree",
+            "horse",
+            "sailboat",
+            "church",
+            "bus"
+          ],
+          "covered_items": 17959,
+          "items": 27262,
+          "literal_hit_covered": 0.4801492393016815,
+          "literal_hit_all": 0.3163010776042938
+        },
+        "sketch": {
+          "classes_with_exact_public_name": [
+            "helicopter",
+            "mermaid",
+            "mosquito",
+            "pear",
+            "couch",
+            "hammer",
+            "airplane",
+            "house",
+            "baseball bat",
+            "toilet",
+            "panda",
+            "butterfly",
+            "mug",
+            "hot air balloon",
+            "cup",
+            "skull",
+            "truck",
+            "palm tree",
+            "horse",
+            "sailboat",
+            "church",
+            "bus"
+          ],
+          "covered_items": 1570,
+          "items": 2130,
+          "literal_hit_covered": 0.628025472164154,
+          "literal_hit_all": 0.46291080117225647
+        }
+      }
+    }
+  }
+}
