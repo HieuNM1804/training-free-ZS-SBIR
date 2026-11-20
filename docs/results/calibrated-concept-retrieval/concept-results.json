@@ -1,0 +1,221 @@
+{
+  "sketchy_1": {
+    "winner": {
+      "gpu": "NVIDIA L4",
+      "revision": "1b8d80aa44a629b48a40ac916436ef1915b7fde8",
+      "checkpoint_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+      "backbone": "OpenAI CLIP ViT-B/32",
+      "classes": 25,
+      "split_sha256": "8fafaf3aedf4751e28e2b33f073832e02fdf3ca1b36a9d7fda5ff328f26b0642",
+      "exploratory_unseen": true,
+      "freeze_sha256": null,
+      "study": "calibrated-concept-retrieval",
+      "external_vocabulary": 20931,
+      "split": "sketchy_1",
+      "method": "mixture-tp0.02-tq0.02-c16-b0-v0.35-w0.6-k192-s128-paired",
+      "parameters": {
+        "target_temp": 0.02,
+        "query_temp": 0.02,
+        "terms": 16,
+        "prior_power": 0.0,
+        "direct": 0.35,
+        "walk": 0.6,
+        "neighbors": 192,
+        "seeds": 128,
+        "pairing": "paired",
+        "channel": "mixture"
+      },
+      "queries": 14179,
+      "gallery": 17100,
+      "mAP": 0.7636589407920837,
+      "precision": 0.7596332430839539,
+      "map_k": 0,
+      "p_k": 100,
+      "evaluation_seconds": 11.07,
+      "peak_cuda_allocated_mib": 1073
+    },
+    "controls": {
+      "primary": {
+        "method": "mixture-tp0.02-tq0.02-c16-b0-v0.35-w0.6-k192-s128-paired",
+        "mAP": 0.7636589407920837,
+        "precision": 0.7596332430839539
+      },
+      "no_walk": {
+        "method": "mixture-tp0.02-tq0.02-c16-b0-v0.35-w0-k192-s128-paired",
+        "mAP": 0.7204256057739258,
+        "precision": 0.7488765120506287
+      },
+      "no_prior": {
+        "method": "mixture-tp0.02-tq0.02-c16-b0-v0.35-w0.6-k192-s128-paired",
+        "mAP": 0.7636589407920837,
+        "precision": 0.7596332430839539
+      },
+      "only_likelihood": {
+        "method": "mixture-tp0.02-tq0.02-c16-b0-v0-w0.6-k192-s128-paired",
+        "mAP": 0.7607294321060181,
+        "precision": 0.7565307021141052
+      },
+      "direct_only": {
+        "method": "mixture-tp0.02-tq0.02-c16-b0-v1-w0.6-k192-s128-paired",
+        "mAP": 0.7542060017585754,
+        "precision": 0.754363477230072
+      },
+      "neutral_prompts": {
+        "method": "mixture-tp0.02-tq0.02-c16-b0-v0.35-w0.6-k192-s128-neutral",
+        "mAP": 0.7522217035293579,
+        "precision": 0.7439417839050293
+      },
+      "shuffled_pairs": {
+        "method": "mixture-tp0.02-tq0.02-c16-b0-v0.35-w0.6-k192-s128-shuffled",
+        "mAP": 0.06368423253297806,
+        "precision": 0.02654700167477131
+      }
+    }
+  },
+  "sketchy_2": {
+    "winner": {
+      "gpu": "NVIDIA L4",
+      "revision": "1b8d80aa44a629b48a40ac916436ef1915b7fde8",
+      "checkpoint_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+      "backbone": "OpenAI CLIP ViT-B/32",
+      "classes": 21,
+      "split_sha256": "30baecaac02eeff22cc54e533eb6bc1b757ba3a891a84f61a77ee837f073d8c6",
+      "exploratory_unseen": true,
+      "freeze_sha256": null,
+      "study": "calibrated-concept-retrieval",
+      "external_vocabulary": 20931,
+      "split": "sketchy_2",
+      "method": "mixture-tp0.02-tq0.02-c16-b0-v0.35-w0.6-k192-s128-paired",
+      "parameters": {
+        "target_temp": 0.02,
+        "query_temp": 0.02,
+        "terms": 16,
+        "prior_power": 0.0,
+        "direct": 0.35,
+        "walk": 0.6,
+        "neighbors": 192,
+        "seeds": 128,
+        "pairing": "paired",
+        "channel": "mixture"
+      },
+      "queries": 12694,
+      "gallery": 12552,
+      "mAP": 0.6915971040725708,
+      "precision": 0.6788609027862549,
+      "map_k": 200,
+      "p_k": 200,
+      "evaluation_seconds": 6.87,
+      "peak_cuda_allocated_mib": 819
+    },
+    "controls": {
+      "primary": {
+        "method": "mixture-tp0.02-tq0.02-c16-b0-v0.35-w0.6-k192-s128-paired",
+        "mAP": 0.6915971040725708,
+        "precision": 0.6788609027862549
+      },
+      "no_walk": {
+        "method": "mixture-tp0.02-tq0.02-c16-b0-v0.35-w0-k192-s128-paired",
+        "mAP": 0.6781855821609497,
+        "precision": 0.6640692949295044
+      },
+      "no_prior": {
+        "method": "mixture-tp0.02-tq0.02-c16-b0-v0.35-w0.6-k192-s128-paired",
+        "mAP": 0.6915971040725708,
+        "precision": 0.6788609027862549
+      },
+      "only_likelihood": {
+        "method": "mixture-tp0.02-tq0.02-c16-b0-v0-w0.6-k192-s128-paired",
+        "mAP": 0.6897611618041992,
+        "precision": 0.6783456802368164
+      },
+      "direct_only": {
+        "method": "mixture-tp0.02-tq0.02-c16-b0-v1-w0.6-k192-s128-paired",
+        "mAP": 0.6813318133354187,
+        "precision": 0.6618697643280029
+      },
+      "neutral_prompts": {
+        "method": "mixture-tp0.02-tq0.02-c16-b0-v0.35-w0.6-k192-s128-neutral",
+        "mAP": 0.676171600818634,
+        "precision": 0.6646092534065247
+      },
+      "shuffled_pairs": {
+        "method": "mixture-tp0.02-tq0.02-c16-b0-v0.35-w0.6-k192-s128-shuffled",
+        "mAP": 0.05143573507666588,
+        "precision": 0.0312742218375206
+      }
+    }
+  },
+  "tuberlin": {
+    "winner": {
+      "gpu": "NVIDIA L4",
+      "revision": "1b8d80aa44a629b48a40ac916436ef1915b7fde8",
+      "checkpoint_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+      "backbone": "OpenAI CLIP ViT-B/32",
+      "classes": 30,
+      "split_sha256": "64fa2e05b5ce359af89caf817c2a90d8d48b268280e2f4896283aaa2d58f8bcd",
+      "exploratory_unseen": false,
+      "freeze_sha256": "2aefb6cec3b329443d58e89e14390d843ed1ab0bb1340665463994147a919ee4",
+      "study": "calibrated-concept-retrieval",
+      "external_vocabulary": 20931,
+      "split": "tuberlin",
+      "method": "mixture-tp0.02-tq0.02-c16-b0-v0.35-w0.6-k192-s128-paired",
+      "parameters": {
+        "target_temp": 0.02,
+        "query_temp": 0.02,
+        "terms": 16,
+        "prior_power": 0.0,
+        "direct": 0.35,
+        "walk": 0.6,
+        "neighbors": 192,
+        "seeds": 128,
+        "pairing": "paired",
+        "channel": "mixture"
+      },
+      "queries": 2130,
+      "gallery": 27262,
+      "mAP": 0.7562295794487,
+      "precision": 0.7676807045936584,
+      "map_k": 0,
+      "p_k": 100,
+      "evaluation_seconds": 2.68,
+      "peak_cuda_allocated_mib": 1582
+    },
+    "controls": {
+      "primary": {
+        "method": "mixture-tp0.02-tq0.02-c16-b0-v0.35-w0.6-k192-s128-paired",
+        "mAP": 0.7562295794487,
+        "precision": 0.7676807045936584
+      },
+      "no_walk": {
+        "method": "mixture-tp0.02-tq0.02-c16-b0-v0.35-w0-k192-s128-paired",
+        "mAP": 0.7227817177772522,
+        "precision": 0.7540891766548157
+      },
+      "no_prior": {
+        "method": "mixture-tp0.02-tq0.02-c16-b0-v0.35-w0.6-k192-s128-paired",
+        "mAP": 0.7562295794487,
+        "precision": 0.7676807045936584
+      },
+      "only_likelihood": {
+        "method": "mixture-tp0.02-tq0.02-c16-b0-v0-w0.6-k192-s128-paired",
+        "mAP": 0.7592310309410095,
+        "precision": 0.7702347636222839
+      },
+      "direct_only": {
+        "method": "mixture-tp0.02-tq0.02-c16-b0-v1-w0.6-k192-s128-paired",
+        "mAP": 0.7353922724723816,
+        "precision": 0.7512394785881042
+      },
+      "neutral_prompts": {
+        "method": "mixture-tp0.02-tq0.02-c16-b0-v0.35-w0.6-k192-s128-neutral",
+        "mAP": 0.7526291012763977,
+        "precision": 0.7620469331741333
+      },
+      "shuffled_pairs": {
+        "method": "mixture-tp0.02-tq0.02-c16-b0-v0.35-w0.6-k192-s128-shuffled",
+        "mAP": 0.06052036210894585,
+        "precision": 0.028591550886631012
+      }
+    }
+  }
+}

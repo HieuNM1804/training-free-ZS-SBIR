@@ -1,0 +1,172 @@
+{
+  "gpu": "NVIDIA L4",
+  "revision": "1b8d80aa44a629b48a40ac916436ef1915b7fde8",
+  "checkpoint_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+  "backbone": "OpenAI CLIP ViT-B/32",
+  "classes": 21,
+  "split_sha256": "30baecaac02eeff22cc54e533eb6bc1b757ba3a891a84f61a77ee837f073d8c6",
+  "exploratory_unseen": true,
+  "freeze_sha256": null,
+  "study": "calibrated-concept-retrieval",
+  "results": {
+    "mixture-tp0.01-tq0.02-c16-b0-v0.35-w0-k96-s128-paired": {
+      "precision": 0.6527008928571428,
+      "top1": 0.6636904761904762
+    },
+    "mixture-tp0.01-tq0.02-c16-b0-v0.35-w0.6-k96-s128-paired": {
+      "precision": 0.667046130952381,
+      "top1": 0.6860119047619048
+    },
+    "mixture-tp0.01-tq0.02-c16-b0.5-v0.35-w0-k96-s128-paired": {
+      "precision": 0.6343005952380952,
+      "top1": 0.6220238095238095
+    },
+    "mixture-tp0.01-tq0.02-c16-b0.5-v0.35-w0.6-k96-s128-paired": {
+      "precision": 0.6534449404761905,
+      "top1": 0.6726190476190477
+    },
+    "mixture-tp0.01-tq0.02-c16-b1-v0.35-w0-k96-s128-paired": {
+      "precision": 0.5948809523809524,
+      "top1": 0.5803571428571429
+    },
+    "mixture-tp0.01-tq0.02-c16-b1-v0.35-w0.6-k96-s128-paired": {
+      "precision": 0.6187425595238095,
+      "top1": 0.6324404761904762
+    },
+    "direct-tp0.02-tq0.02-c16-b0.5-v0.35-w0-k96-s128-paired": {
+      "precision": 0.6293080357142857,
+      "top1": 0.6651785714285714
+    },
+    "forward-tp0.02-tq0.02-c16-b0.5-v0.35-w0-k96-s128-paired": {
+      "precision": 0.5570238095238095,
+      "top1": 0.6294642857142857
+    },
+    "mixture-tp0.02-tq0.01-c16-b0.5-v0.35-w0.6-k96-s128-paired": {
+      "precision": 0.659858630952381,
+      "top1": 0.6636904761904762
+    },
+    "mixture-tp0.02-tq0.02-c16-b0-v0.35-w0-k96-s128-paired": {
+      "precision": 0.6551636904761905,
+      "top1": 0.6666666666666666
+    },
+    "mixture-tp0.02-tq0.02-c16-b0-v0.35-w0.6-k96-s128-paired": {
+      "precision": 0.6713318452380952,
+      "top1": 0.6815476190476191
+    },
+    "mixture-tp0.02-tq0.02-c16-b0.5-v0-w0-k96-s128-shuffled": {
+      "precision": 0.03540178571428571,
+      "top1": 0.03720238095238095
+    },
+    "mixture-tp0.02-tq0.02-c16-b0.5-v0-w0.6-k96-s128-paired": {
+      "precision": 0.6645089285714286,
+      "top1": 0.6681547619047619
+    },
+    "mixture-tp0.02-tq0.02-c16-b0.5-v0.35-w0-k96-s128-paired": {
+      "precision": 0.6443452380952381,
+      "top1": 0.6473214285714286
+    },
+    "mixture-tp0.02-tq0.02-c16-b0.5-v0.35-w0.3-k96-s128-paired": {
+      "precision": 0.6607663690476191,
+      "top1": 0.6636904761904762
+    },
+    "mixture-tp0.02-tq0.02-c16-b0.5-v0.35-w0.6-k192-s128-paired": {
+      "precision": 0.6644717261904762,
+      "top1": 0.6666666666666666
+    },
+    "mixture-tp0.02-tq0.02-c16-b0.5-v0.35-w0.6-k32-s128-paired": {
+      "precision": 0.6605580357142857,
+      "top1": 0.6681547619047619
+    },
+    "mixture-tp0.02-tq0.02-c16-b0.5-v0.35-w0.6-k96-s128-paired": {
+      "precision": 0.6643377976190477,
+      "top1": 0.6726190476190477
+    },
+    "mixture-tp0.02-tq0.02-c16-b0.5-v0.35-w0.6-k96-s320-paired": {
+      "precision": 0.6705133928571428,
+      "top1": 0.6651785714285714
+    },
+    "mixture-tp0.02-tq0.02-c16-b0.5-v0.35-w0.6-k96-s48-paired": {
+      "precision": 0.6645833333333333,
+      "top1": 0.6711309523809523
+    },
+    "mixture-tp0.02-tq0.02-c16-b0.5-v0.35-w0.85-k96-s128-paired": {
+      "precision": 0.6655357142857142,
+      "top1": 0.6726190476190477
+    },
+    "mixture-tp0.02-tq0.02-c16-b0.5-v0.35-w0.95-k96-s128-paired": {
+      "precision": 0.6658110119047619,
+      "top1": 0.6770833333333334
+    },
+    "mixture-tp0.02-tq0.02-c16-b0.5-v0.7-w0.6-k96-s128-paired": {
+      "precision": 0.6607142857142857,
+      "top1": 0.6755952380952381
+    },
+    "mixture-tp0.02-tq0.02-c16-b0.5-v1-w0.6-k96-s128-paired": {
+      "precision": 0.6489360119047619,
+      "top1": 0.6741071428571429
+    },
+    "mixture-tp0.02-tq0.02-c16-b1-v0.35-w0-k96-s128-paired": {
+      "precision": 0.6276264880952381,
+      "top1": 0.6354166666666666
+    },
+    "mixture-tp0.02-tq0.02-c16-b1-v0.35-w0.6-k96-s128-paired": {
+      "precision": 0.6502827380952381,
+      "top1": 0.6532738095238095
+    },
+    "mixture-tp0.02-tq0.02-c32-b0.5-v0.35-w0.6-k96-s128-paired": {
+      "precision": 0.6644940476190476,
+      "top1": 0.6741071428571429
+    },
+    "mixture-tp0.02-tq0.02-c4-b0.5-v0.35-w0.6-k96-s128-paired": {
+      "precision": 0.6258556547619047,
+      "top1": 0.625
+    },
+    "mixture-tp0.02-tq0.02-c64-b0.5-v0.35-w0.6-k96-s128-paired": {
+      "precision": 0.6636235119047619,
+      "top1": 0.6770833333333334
+    },
+    "mixture-tp0.02-tq0.02-c8-b0.5-v0.35-w0.6-k96-s128-paired": {
+      "precision": 0.6490997023809524,
+      "top1": 0.6443452380952381
+    },
+    "mixture-tp0.02-tq0.04-c16-b0.5-v0.35-w0.6-k96-s128-paired": {
+      "precision": 0.6643898809523809,
+      "top1": 0.6696428571428571
+    },
+    "reverse-tp0.02-tq0.02-c16-b0.5-v0.35-w0-k96-s128-paired": {
+      "precision": 0.6796502976190476,
+      "top1": 0.6547619047619048
+    },
+    "wordcos-tp0.02-tq0.02-c16-b0.5-v0.35-w0-k96-s128-paired": {
+      "precision": 0.6013541666666666,
+      "top1": 0.6056547619047619
+    },
+    "mixture-tp0.04-tq0.02-c16-b0-v0.35-w0-k96-s128-paired": {
+      "precision": 0.6460342261904762,
+      "top1": 0.6696428571428571
+    },
+    "mixture-tp0.04-tq0.02-c16-b0-v0.35-w0.6-k96-s128-paired": {
+      "precision": 0.664375,
+      "top1": 0.6815476190476191
+    },
+    "mixture-tp0.04-tq0.02-c16-b0.5-v0.35-w0-k96-s128-paired": {
+      "precision": 0.6437797619047619,
+      "top1": 0.6681547619047619
+    },
+    "mixture-tp0.04-tq0.02-c16-b0.5-v0.35-w0.6-k96-s128-paired": {
+      "precision": 0.6630654761904762,
+      "top1": 0.6755952380952381
+    },
+    "mixture-tp0.04-tq0.02-c16-b1-v0.35-w0-k96-s128-paired": {
+      "precision": 0.6404761904761904,
+      "top1": 0.6577380952380952
+    },
+    "mixture-tp0.04-tq0.02-c16-b1-v0.35-w0.6-k96-s128-paired": {
+      "precision": 0.6618675595238095,
+      "top1": 0.6755952380952381
+    }
+  },
+  "queries": 672,
+  "gallery": 12552,
+  "seed": 4451
+}
