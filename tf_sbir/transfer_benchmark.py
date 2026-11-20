@@ -62,7 +62,7 @@ def arguments():
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--cache", type=Path, default=Path(".cache"))
     parser.add_argument("--splits", nargs="+", choices=SKETCHY_SPLITS, default=SKETCHY_SPLITS)
-    parser.add_argument("--stage", choices=("references", "views", "channels", "reflection", "reflection-controls", "gallery-balance", "paired-scale", "prepare-reflection", "prepare", "projector"), default="references")
+    parser.add_argument("--stage", choices=("references", "views", "channels", "reflection", "reflection-controls", "gallery-balance", "paired-scale", "scale-refine", "prepare-reflection", "prepare", "projector"), default="references")
     parser.add_argument("--batch-size", type=int, default=48)
     parser.add_argument("--workers", type=int, default=4)
     parser.add_argument("--crop-batch-size", type=int, default=128)
@@ -193,7 +193,7 @@ def run(args):
     photo_paths, photos = merge_inputs(args.root, args.splits, "photo")
     all_q, all_p, contours = load_global_inputs(args, query_paths, photo_paths, True)
     extras = load_view_features(args, AnchorSketchViews(query_paths), 4, "sketch", "ink-scales-mirror-v1")["features"]
-    mirrors = load_reflected_views(args, query_paths) if args.stage in ("reflection", "reflection-controls", "gallery-balance", "paired-scale") else None
+    mirrors = load_reflected_views(args, query_paths) if args.stage in ("reflection", "reflection-controls", "gallery-balance", "paired-scale", "scale-refine") else None
     terms = read_words(args.vocabulary)
     sketch_words, photo_words = [v.to(device) for v in load_words(args, terms)]
     if args.stage == "prepare":
@@ -208,9 +208,10 @@ def run(args):
     for split in args.splits:
         q_ids, q_labels = queries[split]
         p_ids, p_labels = photos[split]
-        if args.stage in ("gallery-balance", "paired-scale"):
+        if args.stage in ("gallery-balance", "paired-scale", "scale-refine"):
             methods = {"gallery-balance": (score_balanced_gallery, "gallery-semantic-balance"),
-                       "paired-scale": (score_neighborhood_scale, "paired-neighborhood-scale")}
+                       "paired-scale": (score_neighborhood_scale, "paired-neighborhood-scale"),
+                       "scale-refine": (score_neighborhood_scale, "paired-neighborhood-refinement")}
             score, study = methods[args.stage]
             score(args, split, q_ids, q_labels, p_labels, (all_q, extras, mirrors), all_p[p_ids].to(device),
                   contours[p_ids].to(device), sketch_words, photo_words, transform, metadata | {"study": study}, write_result)

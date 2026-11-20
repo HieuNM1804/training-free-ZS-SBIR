@@ -15,7 +15,7 @@ from .gallery_semantic_balance import query_evidence
 from .global_methods import centered
 from .reflection_transfer import cache_reflection_features, file_tensor
 from .transfer_reconstruction import nearest_anchors
-from .union_density import density_blocks, pack_affinity
+from .union_density import density_blocks, density_rows, pack_affinity
 
 
 RADII = (64, 112, 192, 320, 448)
@@ -77,6 +77,39 @@ def mixed_rows(banks, weights):
         yield from combined.cpu()
 
 
+def refine_query_fusion(args, split, stored_queries, labels, inputs, metadata, record):
+    q_labels, p_labels = labels
+    photos, target, vocabulary = inputs
+    n, g = len(q_labels), len(p_labels)
+    for k in (192, 256, 320, 384):
+        blends = {f"mix{i}-s32": (i / 4., 32.) for i in range(5)}
+        if k in (256, 320):
+            blends.update({f"mix2-s{int(s)}": (.5, s) for s in (16., 64.)})
+        print(f"{split} neighborhood refinement k={k}", flush=True)
+        graph = scale_index(photos, target, vocabulary, k)
+        with TemporaryDirectory(dir=args.output) as folder:
+            path = Path(folder)
+            tail = file_tensor(path, "tail", (n, g))
+            ranks = {name: torch.from_file(str(path / (name + ".i32")), shared=True, size=n * 256,
+                                           dtype=torch.int32).view(n, 256) for name in blends}
+            for start in range(0, n, args.score_batch):
+                loc = slice(start, start + args.score_batch)
+                background, heads = query_evidence(*(q[loc].to(target.device) for q in stored_queries), graph,
+                                                    blends=blends, compact=True)
+                tail[loc] = background.cpu()
+                for name, head in heads.items():
+                    ranks[name][loc] = head.to(device="cpu", dtype=torch.int32)
+            def rows(head):
+                for background, selected in zip(tail.split(256), head.split(256), strict=True):
+                    yield from density_rows(background.to(target.device), selected.to(device=target.device, dtype=torch.long),
+                                            len(background), None)
+            for name, (mix, strength) in blends.items():
+                params = {"neighbors": 64, "penalty": 1., "carry": 1., "views": 8, "gallery_k": k,
+                          "joint_vote_fraction": mix, "query_edge_strength": strength}
+                record(args, split, f"refine-k{k}-{name}", rows(ranks[name]), q_labels, p_labels, metadata, params)
+            del tail, ranks
+
+
 def score_neighborhood_scale(args, split, ids, q_labels, p_labels, views, photos, contours, sketch_words,
                              photo_words, transform, metadata, record):
     proxy = F.normalize(F.normalize(contours @ transform, dim=-1).mean(dim=1), dim=-1)
@@ -85,14 +118,17 @@ def score_neighborhood_scale(args, split, ids, q_labels, p_labels, views, photos
     target = F.normalize(photos @ transform, dim=-1)
     target = centered(target, target.mean(dim=0))
     vocabulary = gallery_word_codes(photos, photo_words).half().float()
-    preservation = paired_preservation(source, target, RADII)
-    confidence, shuffled = query_reliability(ids, views[0], views[1], source, center, transform, preservation)
     base = {"neighbors": 64, "penalty": 1., "carry": 1., "views": 8}
     device = target.device
     n, g = len(ids), len(photos)
     with TemporaryDirectory(dir=args.output) as folder:
         path = Path(folder)
         query = cache_reflection_features(path, ids, views, source, target, center, transform, sketch_words, photo_words)
+        if args.stage == "scale-refine":
+            refine_query_fusion(args, split, query, (q_labels, p_labels), (photos, target, vocabulary), metadata, record)
+            return
+        preservation = paired_preservation(source, target, RADII)
+        confidence, shuffled = query_reliability(ids, views[0], views[1], source, center, transform, preservation)
         stored = {f: [] for f in FUSIONS}
         pending = []
         # Keep the GPU building the next graph while the single evaluator consumes completed, immutable score banks.

@@ -33,6 +33,12 @@ class GallerySemanticBalanceTests(unittest.TestCase):
         index = (features(n, dim), features(n, dim), banks, pack_affinity(n, edges), column_stochastic(n, edges))
         mapped, words, risk = features(2, 8, dim), features(2, 8, dim), torch.rand(2, 8, 2, generator=rng) + .1
         tail, heads = query_evidence(mapped, risk, words, index)
+        mix_tail, mix_heads = query_evidence(mapped, risk, words, index, compact=True,
+                                             blends={"separate": (0., 32.), "joint": (1., 32.), "half": (.5, 32.)})
+        torch.testing.assert_close(mix_tail, tail)
+        torch.testing.assert_close(mix_heads["separate"], heads["text35"])
+        torch.testing.assert_close(mix_heads["joint"], heads["sharp"])
+        self.assertEqual(mix_heads["half"].shape, (len(mapped), 256))
         for option, reference in (("text35", "risk4"), ("sharp", "sharp-source")):
             config = matched_controls()[reference]
             compare, ranks = reflection_block(mapped, select_view_risk(risk, config), words, index, config)

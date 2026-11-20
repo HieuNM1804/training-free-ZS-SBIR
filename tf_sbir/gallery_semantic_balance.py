@@ -43,7 +43,7 @@ def compact_union(ids, unique):
     return compact, torch.arange(width, device=ids.device)[None, :] < counts[:, None]
 
 
-def query_evidence(mapped, uncertainty, concepts, index, *, modes=None, compact=False):
+def query_evidence(mapped, uncertainty, concepts, index, *, modes=None, compact=False, blends=None):
     smooth, vocabulary, banks, graph, walk = index
     visual = mapped @ smooth.T
     lexical = concepts @ vocabulary.T
@@ -59,8 +59,19 @@ def query_evidence(mapped, uncertainty, concepts, index, *, modes=None, compact=
     word_seed = reflection_seed(terms, risk, PairSetting(False, 0., 0.))
     seeds = {name: 2. * shape_seed.lerp(word_seed, fraction) for name, fraction in LEXICAL_FRACTIONS.items()}
     seeds["sharp"] = reflection_seed(shapes + terms, uncertainty[..., 0], PairSetting(False, 4., 4.))
-    head = {name: grow_density(32. * seed, tied, *candidates, graph, 256) for name, seed in seeds.items()
-            if modes is None or name in modes}
+    if blends is None:
+        head = {name: grow_density(32. * seed, tied, *candidates, graph, 256) for name, seed in seeds.items()
+                if modes is None or name in modes}
+    else:
+        head = {}
+        for name, (fraction, strength) in blends.items():
+            if fraction == 0:
+                seed = seeds["text35"]
+            elif fraction == 1:
+                seed = seeds["sharp"]
+            else:
+                seed = seeds["text35"].lerp(seeds["sharp"], fraction)
+            head[name] = grow_density(strength * seed, tied, *candidates, graph, 256)
     return pagerank_tail(appearance, words, tied, banks, *walk, len(mapped)), head
 
 
