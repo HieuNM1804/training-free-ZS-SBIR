@@ -1,0 +1,420 @@
+{
+  "checkpoint": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+  "terms": 20931,
+  "commit": "28f5d2488cfc25349e5849b9c7be07d49d5b77b4",
+  "gpu": "NVIDIA L4",
+  "splits": {
+    "sketchy_1": {
+      "queries_sampled": 600,
+      "gallery": 17100,
+      "cutoff": 100,
+      "class_balanced_queries": true,
+      "seed": 1703,
+      "classes": 25,
+      "native": {
+        "top1": 0.3449999988079071,
+        "precision": 0.4104999899864197,
+        "mean_first_positive_rank": 55.728336334228516,
+        "median_first_positive_rank": 7.0,
+        "wrong_top10_count": 3840,
+        "wrong_top10_share_top1pct_gallery": 1.0
+      },
+      "photo_to_photo_excluding_self": {
+        "top1": 0.9816666841506958,
+        "precision": 0.9333833456039429,
+        "mean_first_positive_rank": 1.0916666984558105,
+        "median_first_positive_rank": 1.0,
+        "wrong_top10_count": 226,
+        "wrong_top10_share_top1pct_gallery": 0.7920354008674622
+      },
+      "interventions": {
+        "gallery_centered": {
+          "top1": 0.375,
+          "precision": 0.41385000944137573,
+          "mean_first_positive_rank": 59.130001068115234,
+          "median_first_positive_rank": 8.0,
+          "wrong_top10_count": 3801,
+          "wrong_top10_share_top1pct_gallery": 1.0,
+          "top1_rescued": 26,
+          "top1_lost": 8
+        },
+        "isoclip_only": {
+          "top1": 0.5633333325386047,
+          "precision": 0.6100000143051147,
+          "mean_first_positive_rank": 36.30666732788086,
+          "median_first_positive_rank": 1.0,
+          "wrong_top10_count": 2474,
+          "wrong_top10_share_top1pct_gallery": 0.9535165429115295,
+          "top1_rescued": 131,
+          "top1_lost": 0
+        },
+        "nnn_gallery_reference": {
+          "top1": 0.4099999964237213,
+          "precision": 0.35705000162124634,
+          "mean_first_positive_rank": 34.85499954223633,
+          "median_first_positive_rank": 3.0,
+          "wrong_top10_count": 3787,
+          "wrong_top10_share_top1pct_gallery": 0.9891734719276428,
+          "top1_rescued": 80,
+          "top1_lost": 41
+        },
+        "nnn_public_prompt_reference": {
+          "top1": 0.44833335280418396,
+          "precision": 0.4779166579246521,
+          "mean_first_positive_rank": 50.505001068115234,
+          "median_first_positive_rank": 3.0,
+          "wrong_top10_count": 3256,
+          "wrong_top10_share_top1pct_gallery": 0.9932432174682617,
+          "top1_rescued": 63,
+          "top1_lost": 1
+        },
+        "paired_terms_to_photo": {
+          "top1": 0.7283333539962769,
+          "precision": 0.7146666646003723,
+          "mean_first_positive_rank": 26.253334045410156,
+          "median_first_positive_rank": 1.0,
+          "wrong_top10_count": 1587,
+          "wrong_top10_share_top1pct_gallery": 0.6918714642524719,
+          "top1_rescued": 241,
+          "top1_lost": 11
+        },
+        "same_domain_terms_to_photo": {
+          "top1": 0.6200000047683716,
+          "precision": 0.6048333644866943,
+          "mean_first_positive_rank": 31.15999984741211,
+          "median_first_positive_rank": 1.0,
+          "wrong_top10_count": 2416,
+          "wrong_top10_share_top1pct_gallery": 0.9677152037620544,
+          "top1_rescued": 172,
+          "top1_lost": 7
+        },
+        "permuted_term_identity": {
+          "top1": 0.03333333507180214,
+          "precision": 0.03629999980330467,
+          "mean_first_positive_rank": 111.51333618164062,
+          "median_first_positive_rank": 48.0,
+          "wrong_top10_count": 5754,
+          "wrong_top10_share_top1pct_gallery": 0.9927007555961609,
+          "top1_rescued": 15,
+          "top1_lost": 202
+        },
+        "paired_terms_to_gallery_words": {
+          "top1": 0.71833336353302,
+          "precision": 0.7243500351905823,
+          "mean_first_positive_rank": 85.125,
+          "median_first_positive_rank": 1.0,
+          "wrong_top10_count": 1663,
+          "wrong_top10_share_top1pct_gallery": 0.40469032526016235,
+          "top1_rescued": 233,
+          "top1_lost": 9
+        }
+      },
+      "top1_confusions": [
+        [
+          "airplane",
+          "scissors",
+          24
+        ],
+        [
+          "butterfly",
+          "scissors",
+          24
+        ],
+        [
+          "bell",
+          "scissors",
+          24
+        ],
+        [
+          "snail",
+          "scissors",
+          23
+        ],
+        [
+          "volcano",
+          "scissors",
+          23
+        ],
+        [
+          "rifle",
+          "scissors",
+          22
+        ],
+        [
+          "harp",
+          "scissors",
+          21
+        ],
+        [
+          "ray",
+          "scissors",
+          20
+        ]
+      ],
+      "examples": [
+        {
+          "query": "sketch/tank/n04389033_2469-5.png",
+          "wrong_top1": "photo/scissors/ext_515.jpg",
+          "first_correct": "photo/tank/ext_119.jpg",
+          "first_correct_rank": 2090,
+          "paired_term_top1": "photo/bell/ext_424.jpg"
+        },
+        {
+          "query": "sketch/airplane/n02691156_32417-4.png",
+          "wrong_top1": "photo/scissors/ext_515.jpg",
+          "first_correct": "photo/airplane/ext_487.jpg",
+          "first_correct_rank": 1766,
+          "paired_term_top1": "photo/umbrella/ext_143.jpg"
+        },
+        {
+          "query": "sketch/butterfly/n02274259_23859-3.png",
+          "wrong_top1": "photo/scissors/ext_283.jpg",
+          "first_correct": "photo/butterfly/ext_169.jpg",
+          "first_correct_rank": 660,
+          "paired_term_top1": "photo/ray/n01498041_9542.jpg"
+        },
+        {
+          "query": "sketch/volcano/n09472597_20854-2.png",
+          "wrong_top1": "photo/scissors/ext_525.jpg",
+          "first_correct": "photo/volcano/ext_467.jpg",
+          "first_correct_rank": 440,
+          "paired_term_top1": "photo/scissors/n04148054_123041.jpg"
+        },
+        {
+          "query": "sketch/rifle/n04090263_3944-4.png",
+          "wrong_top1": "photo/scissors/ext_283.jpg",
+          "first_correct": "photo/rifle/ext_310.jpg",
+          "first_correct_rank": 401,
+          "paired_term_top1": "photo/scissors/n04148054_1255.jpg"
+        },
+        {
+          "query": "sketch/windmill/n04587559_10126-4.png",
+          "wrong_top1": "photo/scissors/ext_154.jpg",
+          "first_correct": "photo/windmill/ext_109.jpg",
+          "first_correct_rank": 391,
+          "paired_term_top1": "photo/bell/ext_368.jpg"
+        },
+        {
+          "query": "sketch/parrot/n01816887_15264-4.png",
+          "wrong_top1": "photo/scissors/ext_515.jpg",
+          "first_correct": "photo/parrot/n01816887_7049.jpg",
+          "first_correct_rank": 207,
+          "paired_term_top1": "photo/snail/n01944390_3147.jpg"
+        },
+        {
+          "query": "sketch/wine_bottle/n04591713_3348-5.png",
+          "wrong_top1": "photo/scissors/ext_525.jpg",
+          "first_correct": "photo/wine_bottle/ext_28.jpg",
+          "first_correct_rank": 167,
+          "paired_term_top1": "photo/scissors/n04148054_157161.jpg"
+        }
+      ]
+    },
+    "sketchy_2": {
+      "queries_sampled": 504,
+      "gallery": 12552,
+      "cutoff": 200,
+      "class_balanced_queries": true,
+      "seed": 1703,
+      "classes": 21,
+      "native": {
+        "top1": 0.3769841492176056,
+        "precision": 0.3429563343524933,
+        "mean_first_positive_rank": 29.803573608398438,
+        "median_first_positive_rank": 5.0,
+        "wrong_top10_count": 3322,
+        "wrong_top10_share_top1pct_gallery": 0.9870560169219971
+      },
+      "photo_to_photo_excluding_self": {
+        "top1": 0.9861111640930176,
+        "precision": 0.862787663936615,
+        "mean_first_positive_rank": 1.0555555820465088,
+        "median_first_positive_rank": 1.0,
+        "wrong_top10_count": 243,
+        "wrong_top10_share_top1pct_gallery": 0.6090534925460815
+      },
+      "interventions": {
+        "gallery_centered": {
+          "top1": 0.4007936716079712,
+          "precision": 0.35482141375541687,
+          "mean_first_positive_rank": 26.452383041381836,
+          "median_first_positive_rank": 4.0,
+          "wrong_top10_count": 3201,
+          "wrong_top10_share_top1pct_gallery": 0.977194607257843,
+          "top1_rescued": 19,
+          "top1_lost": 7
+        },
+        "isoclip_only": {
+          "top1": 0.5158730745315552,
+          "precision": 0.5003174543380737,
+          "mean_first_positive_rank": 21.188493728637695,
+          "median_first_positive_rank": 1.0,
+          "wrong_top10_count": 2372,
+          "wrong_top10_share_top1pct_gallery": 0.8768971562385559,
+          "top1_rescued": 72,
+          "top1_lost": 2
+        },
+        "nnn_gallery_reference": {
+          "top1": 0.4305555820465088,
+          "precision": 0.2658432424068451,
+          "mean_first_positive_rank": 12.855159759521484,
+          "median_first_positive_rank": 2.0,
+          "wrong_top10_count": 3287,
+          "wrong_top10_share_top1pct_gallery": 0.9409795999526978,
+          "top1_rescued": 55,
+          "top1_lost": 28
+        },
+        "nnn_public_prompt_reference": {
+          "top1": 0.432539701461792,
+          "precision": 0.37407737970352173,
+          "mean_first_positive_rank": 22.446430206298828,
+          "median_first_positive_rank": 3.0,
+          "wrong_top10_count": 2934,
+          "wrong_top10_share_top1pct_gallery": 0.9297887086868286,
+          "top1_rescued": 30,
+          "top1_lost": 2
+        },
+        "paired_terms_to_photo": {
+          "top1": 0.6329365372657776,
+          "precision": 0.572936475276947,
+          "mean_first_positive_rank": 26.293651580810547,
+          "median_first_positive_rank": 1.0,
+          "wrong_top10_count": 1887,
+          "wrong_top10_share_top1pct_gallery": 0.6740858554840088,
+          "top1_rescued": 153,
+          "top1_lost": 24
+        },
+        "same_domain_terms_to_photo": {
+          "top1": 0.511904776096344,
+          "precision": 0.5033233761787415,
+          "mean_first_positive_rank": 23.448413848876953,
+          "median_first_positive_rank": 1.0,
+          "wrong_top10_count": 2396,
+          "wrong_top10_share_top1pct_gallery": 0.9394824504852295,
+          "top1_rescued": 96,
+          "top1_lost": 28
+        },
+        "permuted_term_identity": {
+          "top1": 0.0317460335791111,
+          "precision": 0.042351190000772476,
+          "mean_first_positive_rank": 125.09326171875,
+          "median_first_positive_rank": 57.0,
+          "wrong_top10_count": 4786,
+          "wrong_top10_share_top1pct_gallery": 0.9987463355064392,
+          "top1_rescued": 9,
+          "top1_lost": 183
+        },
+        "paired_terms_to_gallery_words": {
+          "top1": 0.6250000596046448,
+          "precision": 0.6298511624336243,
+          "mean_first_positive_rank": 38.833335876464844,
+          "median_first_positive_rank": 1.0,
+          "wrong_top10_count": 1841,
+          "wrong_top10_share_top1pct_gallery": 0.4171645939350128,
+          "top1_rescued": 144,
+          "top1_lost": 19
+        }
+      },
+      "top1_confusions": [
+        [
+          "saw",
+          "scissors",
+          24
+        ],
+        [
+          "cabin",
+          "scissors",
+          20
+        ],
+        [
+          "songbird",
+          "seagull",
+          20
+        ],
+        [
+          "skyscraper",
+          "scissors",
+          19
+        ],
+        [
+          "sword",
+          "scissors",
+          19
+        ],
+        [
+          "helicopter",
+          "scissors",
+          18
+        ],
+        [
+          "door",
+          "scissors",
+          17
+        ],
+        [
+          "raccoon",
+          "mouse",
+          17
+        ]
+      ],
+      "examples": [
+        {
+          "query": "sketch/skyscraper/n04233124_3640-1.png",
+          "wrong_top1": "photo/scissors/ext_154.jpg",
+          "first_correct": "photo/skyscraper/n04233124_7818.jpg",
+          "first_correct_rank": 1142,
+          "paired_term_top1": "photo/sword/n04373894_333231.jpg"
+        },
+        {
+          "query": "sketch/windmill/n04587404_12192-3.png",
+          "wrong_top1": "photo/scissors/ext_413.jpg",
+          "first_correct": "photo/windmill/ext_64.jpg",
+          "first_correct_rank": 613,
+          "paired_term_top1": "photo/scissors/n04148054_1255.jpg"
+        },
+        {
+          "query": "sketch/cabin/n02932400_4645-2.png",
+          "wrong_top1": "photo/scissors/ext_87.jpg",
+          "first_correct": "photo/cabin/ext_53.jpg",
+          "first_correct_rank": 250,
+          "paired_term_top1": "photo/saw/n03474779_43141.jpg"
+        },
+        {
+          "query": "sketch/seagull/n02041246_16038-4.png",
+          "wrong_top1": "photo/scissors/ext_515.jpg",
+          "first_correct": "photo/seagull/n02041246_6021.jpg",
+          "first_correct_rank": 170,
+          "paired_term_top1": "photo/mouse/n02330245_85171.jpg"
+        },
+        {
+          "query": "sketch/songbird/n01594787_11525-1.png",
+          "wrong_top1": "photo/scissors/ext_525.jpg",
+          "first_correct": "photo/songbird/ext_389.jpg",
+          "first_correct_rank": 144,
+          "paired_term_top1": "photo/seagull/n02041246_8718.jpg"
+        },
+        {
+          "query": "sketch/door/n03222318_14737-5.png",
+          "wrong_top1": "photo/scissors/ext_515.jpg",
+          "first_correct": "photo/door/ext_210.jpg",
+          "first_correct_rank": 139,
+          "paired_term_top1": "photo/sword/n04373894_317461.jpg"
+        },
+        {
+          "query": "sketch/window/n04587648_16618-1.png",
+          "wrong_top1": "photo/scissors/ext_154.jpg",
+          "first_correct": "photo/window/n04589593_13410.jpg",
+          "first_correct_rank": 105,
+          "paired_term_top1": "photo/saw/n03474779_43141.jpg"
+        },
+        {
+          "query": "sketch/raccoon/n02508021_9839-3.png",
+          "wrong_top1": "photo/mouse/ext_179.jpg",
+          "first_correct": "photo/raccoon/ext_127.jpg",
+          "first_correct_rank": 97,
+          "paired_term_top1": "photo/mouse/n02330245_85171.jpg"
+        }
+      ]
+    }
+  }
+}
