@@ -1,0 +1,528 @@
+{
+  "visual-graph": {
+    "candidates": 15,
+    "common": "visual-graph-k64-g1-r1.5",
+    "selection_by_held_out_class": {
+      "airplane": "visual-graph-k64-g1-r1.5",
+      "bat": "visual-graph-k64-g1-r1.5",
+      "bell": "visual-graph-k64-g1-r1.5",
+      "butterfly": "visual-graph-k64-g1-r1.5",
+      "cabin": "visual-graph-k64-g1-r1.5",
+      "camel": "visual-graph-k64-g1-r1.5",
+      "chicken": "visual-graph-k64-g1-r1.5",
+      "cow": "visual-graph-k64-g1-r1.5",
+      "cup": "visual-graph-k64-g1-r1.5",
+      "deer": "visual-graph-k64-g1-r1.5",
+      "dolphin": "visual-graph-k64-g1-r1.5",
+      "door": "visual-graph-k64-g1-r1.5",
+      "giraffe": "visual-graph-k64-g1-r1.5",
+      "harp": "visual-graph-k64-g1-r1.5",
+      "helicopter": "visual-graph-k64-g1-r1.5",
+      "horse": "visual-graph-k64-g1-r1.5",
+      "mouse": "visual-graph-k64-g1-r1.5",
+      "parrot": "visual-graph-k64-g1-r1.5",
+      "pear": "visual-graph-k64-g1-r1.5",
+      "pineapple": "visual-graph-k64-g1-r1.5",
+      "raccoon": "visual-graph-k64-g1-r1.5",
+      "ray": "visual-graph-k64-g1-r1.5",
+      "rhinoceros": "visual-graph-k64-g1-r1.5",
+      "rifle": "visual-graph-k64-g1-r1.5",
+      "saw": "visual-graph-k64-g1-r1.5",
+      "scissors": "visual-graph-k64-g1-r1.5",
+      "seagull": "visual-graph-k64-g1-r1.5",
+      "skyscraper": "visual-graph-k64-g1-r1.5",
+      "snail": "visual-graph-k64-g1-r1.5",
+      "songbird": "visual-graph-k64-g1-r1.5",
+      "squirrel": "visual-graph-k64-g1-r1.5",
+      "swan": "visual-graph-k64-g1-r1.5",
+      "sword": "visual-graph-k64-g1-r1.5",
+      "tank": "visual-graph-k64-g1-r1.5",
+      "teddy_bear": "visual-graph-k64-g1-r1.5",
+      "tree": "visual-graph-k64-g1-r1.5",
+      "umbrella": "visual-graph-k64-g1-r1.5",
+      "volcano": "visual-graph-k64-g1-r1.5",
+      "wheelchair": "visual-graph-k64-g1-r1.5",
+      "windmill": "visual-graph-k64-g1-r1.5",
+      "window": "visual-graph-k64-g1-r1.5",
+      "wine_bottle": "visual-graph-k64-g1-r1.5"
+    },
+    "selection_counts": {
+      "visual-graph-k64-g1-r1.5": 42
+    },
+    "sketchy_1": {
+      "common": {
+        "mAP": 0.8258180154523092,
+        "precision": 0.8298808099456739
+      },
+      "held_out_class": {
+        "mAP": 0.8258180154523092,
+        "precision": 0.8298808099456739
+      },
+      "donor_split": "sketchy_2",
+      "donor_classes": 17,
+      "donor_method": "visual-graph-k64-g1-r1.5",
+      "donor_choice_on_target": {
+        "mAP": 0.8258180154523092,
+        "precision": 0.8298808099456739
+      }
+    },
+    "sketchy_2": {
+      "common": {
+        "mAP": 0.7940454487444527,
+        "precision": 0.7802583907421414
+      },
+      "held_out_class": {
+        "mAP": 0.7940454487444527,
+        "precision": 0.7802583907421414
+      },
+      "donor_split": "sketchy_1",
+      "donor_classes": 21,
+      "donor_method": "visual-graph-k64-g1-r1.5",
+      "donor_choice_on_target": {
+        "mAP": 0.7940454487444527,
+        "precision": 0.7802583907421414
+      }
+    }
+  },
+  "gallery-balance": {
+    "candidates": 28,
+    "common": "balance-index3-graph3-text35",
+    "selection_by_held_out_class": {
+      "airplane": "balance-index3-graph3-text35",
+      "bat": "balance-index3-graph3-text35",
+      "bell": "balance-index3-graph3-text35",
+      "butterfly": "balance-index3-graph3-text35",
+      "cabin": "balance-index3-graph3-text35",
+      "camel": "balance-index3-graph3-text35",
+      "chicken": "balance-index3-graph3-text35",
+      "cow": "balance-index3-graph3-text35",
+      "cup": "balance-index3-graph3-text35",
+      "deer": "balance-index3-graph3-text35",
+      "dolphin": "balance-index3-graph3-text35",
+      "door": "balance-index0-graph2-text35",
+      "giraffe": "balance-index3-graph3-text35",
+      "harp": "balance-index3-graph3-text35",
+      "helicopter": "balance-index3-graph3-text35",
+      "horse": "balance-index3-graph3-text35",
+      "mouse": "balance-index3-graph3-text35",
+      "parrot": "balance-index3-graph3-text35",
+      "pear": "balance-index3-graph3-text35",
+      "pineapple": "balance-index3-graph3-text35",
+      "raccoon": "balance-index3-graph3-text35",
+      "ray": "balance-index3-graph3-text35",
+      "rhinoceros": "balance-index3-graph3-text35",
+      "rifle": "balance-index3-graph3-text35",
+      "saw": "balance-index3-graph3-text35",
+      "scissors": "balance-index3-graph3-text35",
+      "seagull": "balance-index3-graph3-text35",
+      "skyscraper": "balance-index3-graph3-text35",
+      "snail": "balance-index3-graph3-text35",
+      "songbird": "balance-index3-graph3-text35",
+      "squirrel": "balance-index3-graph3-text35",
+      "swan": "balance-index3-graph3-text35",
+      "sword": "balance-index3-graph3-text35",
+      "tank": "balance-index3-graph3-text35",
+      "teddy_bear": "balance-index3-graph3-text35",
+      "tree": "balance-index3-graph3-text35",
+      "umbrella": "balance-index3-graph3-text35",
+      "volcano": "balance-index3-graph3-text35",
+      "wheelchair": "balance-index3-graph3-text35",
+      "windmill": "balance-index3-graph3-text35",
+      "window": "balance-index3-graph3-text35",
+      "wine_bottle": "balance-index3-graph3-text35"
+    },
+    "selection_counts": {
+      "balance-index3-graph3-text35": 41,
+      "balance-index0-graph2-text35": 1
+    },
+    "sketchy_1": {
+      "common": {
+        "mAP": 0.8169618789787085,
+        "precision": 0.8352443760153088
+      },
+      "held_out_class": {
+        "mAP": 0.8169618789787085,
+        "precision": 0.8352443760153088
+      },
+      "donor_split": "sketchy_2",
+      "donor_classes": 17,
+      "donor_method": "balance-index3-graph3-text35",
+      "donor_choice_on_target": {
+        "mAP": 0.8169618789787085,
+        "precision": 0.8352443760153088
+      }
+    },
+    "sketchy_2": {
+      "common": {
+        "mAP": 0.8081306971651999,
+        "precision": 0.7895738164030311
+      },
+      "held_out_class": {
+        "mAP": 0.8052757076555325,
+        "precision": 0.7839345380512589
+      },
+      "donor_split": "sketchy_1",
+      "donor_classes": 21,
+      "donor_method": "balance-index0-graph2-sharp",
+      "donor_choice_on_target": {
+        "mAP": 0.7992623985509651,
+        "precision": 0.7769095665510091
+      }
+    }
+  },
+  "paired-scale": {
+    "candidates": 20,
+    "common": "scale-text35-k192",
+    "selection_by_held_out_class": {
+      "airplane": "scale-text35-k192",
+      "bat": "scale-text35-k192",
+      "bell": "scale-text35-k192",
+      "butterfly": "scale-text35-k192",
+      "cabin": "scale-text35-k192",
+      "camel": "scale-text35-k192",
+      "chicken": "scale-text35-k192",
+      "cow": "scale-text35-k192",
+      "cup": "scale-text35-k192",
+      "deer": "scale-text35-k192",
+      "dolphin": "scale-text35-k192",
+      "door": "scale-text35-k192",
+      "giraffe": "scale-text35-k192",
+      "harp": "scale-text35-k192",
+      "helicopter": "scale-text35-k192",
+      "horse": "scale-text35-k192",
+      "mouse": "scale-text35-k192",
+      "parrot": "scale-text35-k192",
+      "pear": "scale-text35-k192",
+      "pineapple": "scale-text35-k192",
+      "raccoon": "scale-text35-k192",
+      "ray": "scale-text35-k192",
+      "rhinoceros": "scale-text35-k192",
+      "rifle": "scale-text35-k192",
+      "saw": "scale-text35-k320",
+      "scissors": "scale-text35-k192",
+      "seagull": "scale-text35-k192",
+      "skyscraper": "scale-text35-k192",
+      "snail": "scale-text35-k192",
+      "songbird": "scale-text35-k192",
+      "squirrel": "scale-text35-k192",
+      "swan": "scale-text35-k192",
+      "sword": "scale-text35-k192",
+      "tank": "scale-text35-k192",
+      "teddy_bear": "scale-text35-k192",
+      "tree": "scale-text35-k192",
+      "umbrella": "scale-text35-k192",
+      "volcano": "scale-text35-k192",
+      "wheelchair": "scale-text35-k192",
+      "windmill": "scale-text35-k192",
+      "window": "scale-text35-k192",
+      "wine_bottle": "scale-text35-k192"
+    },
+    "selection_counts": {
+      "scale-text35-k192": 41,
+      "scale-text35-k320": 1
+    },
+    "sketchy_1": {
+      "common": {
+        "mAP": 0.8183998812269307,
+        "precision": 0.8348148673611494
+      },
+      "held_out_class": {
+        "mAP": 0.8183998812269307,
+        "precision": 0.8348148673611494
+      },
+      "donor_split": "sketchy_2",
+      "donor_classes": 17,
+      "donor_method": "scale-text35-k112",
+      "donor_choice_on_target": {
+        "mAP": 0.8092707995941698,
+        "precision": 0.8308244591948112
+      }
+    },
+    "sketchy_2": {
+      "common": {
+        "mAP": 0.8095543567526368,
+        "precision": 0.7895206415671248
+      },
+      "held_out_class": {
+        "mAP": 0.8051740335214285,
+        "precision": 0.7802063987104095
+      },
+      "donor_split": "sketchy_1",
+      "donor_classes": 21,
+      "donor_method": "scale-sharp-k320",
+      "donor_choice_on_target": {
+        "mAP": 0.7869910461066122,
+        "precision": 0.7637060831773546
+      }
+    }
+  },
+  "scale-refine": {
+    "candidates": 24,
+    "common": "refine-k192-mix1-s32",
+    "selection_by_held_out_class": {
+      "airplane": "refine-k192-mix1-s32",
+      "bat": "refine-k192-mix1-s32",
+      "bell": "refine-k192-mix1-s32",
+      "butterfly": "refine-k192-mix1-s32",
+      "cabin": "refine-k192-mix1-s32",
+      "camel": "refine-k192-mix0-s32",
+      "chicken": "refine-k192-mix1-s32",
+      "cow": "refine-k192-mix0-s32",
+      "cup": "refine-k192-mix1-s32",
+      "deer": "refine-k192-mix1-s32",
+      "dolphin": "refine-k192-mix1-s32",
+      "door": "refine-k192-mix0-s32",
+      "giraffe": "refine-k192-mix1-s32",
+      "harp": "refine-k192-mix1-s32",
+      "helicopter": "refine-k192-mix1-s32",
+      "horse": "refine-k192-mix1-s32",
+      "mouse": "refine-k192-mix0-s32",
+      "parrot": "refine-k192-mix1-s32",
+      "pear": "refine-k192-mix1-s32",
+      "pineapple": "refine-k192-mix1-s32",
+      "raccoon": "refine-k192-mix1-s32",
+      "ray": "refine-k192-mix1-s32",
+      "rhinoceros": "refine-k192-mix1-s32",
+      "rifle": "refine-k192-mix1-s32",
+      "saw": "refine-k384-mix2-s32",
+      "scissors": "refine-k192-mix1-s32",
+      "seagull": "refine-k192-mix1-s32",
+      "skyscraper": "refine-k192-mix1-s32",
+      "snail": "refine-k192-mix0-s32",
+      "songbird": "refine-k192-mix1-s32",
+      "squirrel": "refine-k192-mix1-s32",
+      "swan": "refine-k192-mix1-s32",
+      "sword": "refine-k192-mix1-s32",
+      "tank": "refine-k192-mix1-s32",
+      "teddy_bear": "refine-k192-mix1-s32",
+      "tree": "refine-k192-mix1-s32",
+      "umbrella": "refine-k192-mix1-s32",
+      "volcano": "refine-k192-mix1-s32",
+      "wheelchair": "refine-k192-mix0-s32",
+      "windmill": "refine-k192-mix1-s32",
+      "window": "refine-k192-mix1-s32",
+      "wine_bottle": "refine-k192-mix1-s32"
+    },
+    "selection_counts": {
+      "refine-k192-mix1-s32": 35,
+      "refine-k192-mix0-s32": 6,
+      "refine-k384-mix2-s32": 1
+    },
+    "sketchy_1": {
+      "common": {
+        "mAP": 0.819473021855192,
+        "precision": 0.8384646310783848
+      },
+      "held_out_class": {
+        "mAP": 0.8186590848408491,
+        "precision": 0.836109034778037
+      },
+      "donor_split": "sketchy_2",
+      "donor_classes": 17,
+      "donor_method": "refine-k192-mix0-s32",
+      "donor_choice_on_target": {
+        "mAP": 0.8183998726028535,
+        "precision": 0.8348148673611494
+      }
+    },
+    "sketchy_2": {
+      "common": {
+        "mAP": 0.8080023154536753,
+        "precision": 0.7866117870198877
+      },
+      "held_out_class": {
+        "mAP": 0.7958050955590098,
+        "precision": 0.7720107945102341
+      },
+      "donor_split": "sketchy_1",
+      "donor_classes": 21,
+      "donor_method": "refine-k320-mix2-s64",
+      "donor_choice_on_target": {
+        "mAP": 0.7995227722461216,
+        "precision": 0.7762226263469527
+      }
+    }
+  },
+  "gallery-routing": {
+    "candidates": 56,
+    "common": "route-neighbors100-k128-q75",
+    "selection_by_held_out_class": {
+      "airplane": "route-neighbors100-k128-q75",
+      "bat": "route-neighbors100-k128-q75",
+      "bell": "route-neighbors100-k128-q75",
+      "butterfly": "route-neighbors100-k128-q75",
+      "cabin": "route-neighbors100-k128-q75",
+      "camel": "route-neighbors100-k128-q75",
+      "chicken": "route-neighbors100-k128-q75",
+      "cow": "route-neighbors100-k128-q75",
+      "cup": "route-neighbors100-k128-q75",
+      "deer": "route-neighbors100-k128-q75",
+      "dolphin": "route-neighbors100-k128-q50",
+      "door": "route-neighbors100-k128-q75",
+      "giraffe": "route-neighbors100-k128-q75",
+      "harp": "route-neighbors100-k128-q75",
+      "helicopter": "route-neighbors100-k128-q75",
+      "horse": "route-neighbors100-k128-q75",
+      "mouse": "route-neighbors100-k128-q75",
+      "parrot": "route-neighbors100-k128-q75",
+      "pear": "route-neighbors100-k128-q75",
+      "pineapple": "route-neighbors100-k128-q75",
+      "raccoon": "route-neighbors100-k128-q50",
+      "ray": "route-neighbors100-k128-q75",
+      "rhinoceros": "route-neighbors100-k128-q75",
+      "rifle": "route-neighbors100-k128-q75",
+      "saw": "route-neighbors200-k128-zero",
+      "scissors": "route-neighbors100-k128-q75",
+      "seagull": "route-neighbors100-k128-q75",
+      "skyscraper": "route-neighbors100-k128-q75",
+      "snail": "route-neighbors100-k128-q75",
+      "songbird": "route-neighbors100-k128-q50",
+      "squirrel": "route-neighbors100-k128-q75",
+      "swan": "route-neighbors100-k128-q75",
+      "sword": "route-neighbors100-k128-q75",
+      "tank": "route-neighbors100-k128-q75",
+      "teddy_bear": "route-neighbors100-k128-q75",
+      "tree": "route-neighbors100-k128-q75",
+      "umbrella": "route-neighbors100-k128-q75",
+      "volcano": "route-neighbors100-k128-q75",
+      "wheelchair": "route-neighbors100-k128-q75",
+      "windmill": "route-neighbors100-k128-q75",
+      "window": "route-neighbors100-k128-q75",
+      "wine_bottle": "route-neighbors100-k128-q75"
+    },
+    "selection_counts": {
+      "route-neighbors100-k128-q75": 38,
+      "route-neighbors100-k128-q50": 3,
+      "route-neighbors200-k128-zero": 1
+    },
+    "sketchy_1": {
+      "common": {
+        "mAP": 0.8192685175234123,
+        "precision": 0.8363516471522829
+      },
+      "held_out_class": {
+        "mAP": 0.8192685175234123,
+        "precision": 0.8363516471522829
+      },
+      "donor_split": "sketchy_2",
+      "donor_classes": 17,
+      "donor_method": "route-fixed-text35",
+      "donor_choice_on_target": {
+        "mAP": 0.8183998705884801,
+        "precision": 0.8348148673611494
+      }
+    },
+    "sketchy_2": {
+      "common": {
+        "mAP": 0.8092479409681296,
+        "precision": 0.7892906116545453
+      },
+      "held_out_class": {
+        "mAP": 0.8027426966443486,
+        "precision": 0.7828296852297787
+      },
+      "donor_split": "sketchy_1",
+      "donor_classes": 21,
+      "donor_method": "route-instance-k32-q10",
+      "donor_choice_on_target": {
+        "mAP": 0.7864791631265889,
+        "precision": 0.7635883110211771
+      }
+    }
+  },
+  "all_candidates": {
+    "candidates": 143,
+    "common": "route-neighbors100-k128-q75",
+    "selection_by_held_out_class": {
+      "airplane": "route-neighbors100-k128-q75",
+      "bat": "route-neighbors100-k128-q75",
+      "bell": "route-neighbors100-k128-q75",
+      "butterfly": "route-neighbors100-k128-q75",
+      "cabin": "route-neighbors100-k128-q75",
+      "camel": "route-neighbors100-k128-q75",
+      "chicken": "route-neighbors100-k128-q75",
+      "cow": "route-neighbors100-k128-q75",
+      "cup": "route-neighbors100-k128-q75",
+      "deer": "route-neighbors100-k128-q75",
+      "dolphin": "refine-k192-mix1-s32",
+      "door": "route-neighbors100-k128-q75",
+      "giraffe": "route-neighbors100-k128-q75",
+      "harp": "route-neighbors100-k128-q75",
+      "helicopter": "route-neighbors100-k128-q75",
+      "horse": "route-neighbors100-k128-q75",
+      "mouse": "route-neighbors100-k128-q75",
+      "parrot": "route-neighbors100-k128-q75",
+      "pear": "route-neighbors100-k128-q75",
+      "pineapple": "route-neighbors100-k128-q75",
+      "raccoon": "refine-k192-mix1-s32",
+      "ray": "route-neighbors100-k128-q75",
+      "rhinoceros": "refine-k192-mix1-s32",
+      "rifle": "route-neighbors100-k128-q75",
+      "saw": "refine-k384-mix2-s32",
+      "scissors": "refine-k192-mix1-s32",
+      "seagull": "route-neighbors100-k128-q75",
+      "skyscraper": "route-neighbors100-k128-q75",
+      "snail": "balance-index3-graph3-text35",
+      "songbird": "route-neighbors100-k128-q50",
+      "squirrel": "refine-k192-mix1-s32",
+      "swan": "route-neighbors100-k128-q75",
+      "sword": "route-neighbors100-k128-q75",
+      "tank": "route-neighbors100-k128-q75",
+      "teddy_bear": "route-neighbors100-k128-q75",
+      "tree": "route-neighbors100-k128-q75",
+      "umbrella": "route-neighbors100-k128-q75",
+      "volcano": "route-neighbors100-k128-q75",
+      "wheelchair": "route-neighbors100-k128-q75",
+      "windmill": "route-neighbors100-k128-q75",
+      "window": "route-neighbors100-k128-q75",
+      "wine_bottle": "route-neighbors100-k128-q75"
+    },
+    "selection_counts": {
+      "route-neighbors100-k128-q75": 34,
+      "refine-k192-mix1-s32": 5,
+      "refine-k384-mix2-s32": 1,
+      "balance-index3-graph3-text35": 1,
+      "route-neighbors100-k128-q50": 1
+    },
+    "sketchy_1": {
+      "common": {
+        "mAP": 0.8192685175234123,
+        "precision": 0.8363516471522829
+      },
+      "held_out_class": {
+        "mAP": 0.818518009666813,
+        "precision": 0.8346674663256227
+      },
+      "donor_split": "sketchy_2",
+      "donor_classes": 17,
+      "donor_method": "scale-text35-k112",
+      "donor_choice_on_target": {
+        "mAP": 0.8092707995941698,
+        "precision": 0.8308244591948112
+      }
+    },
+    "sketchy_2": {
+      "common": {
+        "mAP": 0.8092479409681296,
+        "precision": 0.7892906116545453
+      },
+      "held_out_class": {
+        "mAP": 0.7953914392466829,
+        "precision": 0.7721699247781902
+      },
+      "donor_split": "sketchy_1",
+      "donor_classes": 21,
+      "donor_method": "refine-k320-mix2-s64",
+      "donor_choice_on_target": {
+        "mAP": 0.7995227722461216,
+        "precision": 0.7762226263469527
+      }
+    }
+  },
+  "overlap": [
+    "scissors",
+    "tree",
+    "wheelchair",
+    "windmill"
+  ]
+}
