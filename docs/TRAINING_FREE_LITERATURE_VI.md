@@ -1,5 +1,11 @@
 # Training-free CLIP và VLM cho categorical ZS-SBIR
 
+## Chuyển gallery qua cặp prompt miền, chốt tham số trên Sketchy
+
+Với mỗi ảnh gallery, bộ mã hóa CLIP trả về một vector RGB. Tìm các prompt đích gần nó trong danh mục công khai và tính tọa độ affine bằng neighbor embedding. Đọc cùng hệ số trên các prompt nguồn để tạo bản biểu diễn miền nguồn của ảnh. Hệ số giữ phần dư điều chỉnh lượng thông tin thị giác còn lại. Các cặp miền nguồn ước lượng và RGB thật tạo thành ngân hàng để chuyển từng truy vấn mới. Khi ghép thông tin văn bản vào không gian láng giềng, giữ phần dư thị giác ở các trục chung của CLIP. Đồ thị Jaccard dùng gallery không nhãn. Một lượt dùng cùng prompt ở hai miền kiểm tra vai trò của tên miền.
+
+Đầu vào gồm một ảnh truy vấn, gallery ảnh đích và hai bộ template mô tả miền nguồn và miền đích. Mô hình dùng các khung ảnh cố định với hai hướng ngang và ba tỉ lệ. Bộ phận xếp hạng nhận cùng kiểu tensor cho mọi dataset. Các đối chứng chỉ dùng ảnh và CLIP cosine tách riêng ảnh hưởng của nguồn từ vựng. Ba cơ chế trực tiếp đến từ phép chiếu phổ, chuyển tọa độ qua các cặp và hợp nhất đồ thị truy hồi. [IsoCLIP, CVPR 2026](https://openaccess.thecvf.com/content/CVPR2026/html/Magistri_IsoCLIP_Decomposing_CLIP_Projectors_for_Efficient_Intra-modal_Alignment_CVPR_2026_paper.html) · [Neighbor Embedding, CVPR 2004](https://cse.hkust.edu.hk/~dyyeung/paper/pdf/yeung.cvpr2004.pdf) · [Query Specific Fusion, ECCV 2012](https://link.springer.com/chapter/10.1007/978-3-642-33709-3_47)
+
 ## Dùng chính gallery không nhãn để ước lượng cách xếp hạng phù hợp cho một sketch
 
 Hai cấu hình có sẵn gồm bỏ phiếu thị giác và từ riêng với 192 láng giềng, và gộp theo Jaccard với 320 láng giềng. Chia ngẫu nhiên các cặp contour–RGB của gallery thành bốn phần. Lần lượt dùng hai contour thật của mỗi ảnh ở phần được giữ làm truy vấn thay thế, xây hệ số chuyển miền chỉ bằng ba phần còn lại và tìm kiếm trên toàn gallery RGB. Một cấu hình được đánh giá qua tỉ lệ khôi phục 100 hoặc 200 láng giềng RGB của ảnh tương ứng, hoặc qua hạng của chính ảnh đó. Ba mục tiêu đều tính được từ các cặp không nhãn.
