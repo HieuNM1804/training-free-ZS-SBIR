@@ -20,12 +20,16 @@ class SalientCropTests(unittest.TestCase):
             self.assertEqual(result.shape, (10, 3, 224, 224))
             self.assertTrue(torch.equal(result[0].flip(-1), result[1]))
             self.assertTrue(torch.equal(255 - result[6], result[8]))
+            middle = views(image, at_center=True)
+            self.assertEqual(middle.shape, result.shape)
+            self.assertFalse(torch.equal(middle[0], result[0]))
 
     def test_flat_rectangular_input_has_a_finite_symmetric_fallback(self):
         image = np.full((24, 120, 3), [120, 100, 200], np.uint8)
         self.assertEqual(salient_box(field(image)), (60.0, 12.0, 120))
         result = views(image)
         self.assertTrue(torch.equal(result[0], result[2]))
+        torch.testing.assert_close(result, views(image, at_center=True))
 
     def test_view_components_are_independent_across_examples(self):
         g = torch.Generator().manual_seed(13)

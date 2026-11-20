@@ -58,9 +58,11 @@ def patch(image, box, scale, color):
     )
 
 
-def views(rgb):
+def views(rgb, *, at_center=False):
     saliency = field(rgb)
     box = salient_box(saliency)
+    if at_center:
+        box = (rgb.shape[1] / 2, rgb.shape[0] / 2, box[2])
     perimeter = np.concatenate((rgb[0], rgb[-1], rgb[:, 0], rgb[:, -1]))
     color = tuple(int(x) for x in np.median(perimeter, axis=0))
     result = []
@@ -76,8 +78,9 @@ def views(rgb):
 
 
 class SalientViews(Dataset):
-    def __init__(self, paths):
+    def __init__(self, paths, *, at_center=False):
         self.paths = paths
+        self.at_center = at_center
 
     def __len__(self):
         return len(self.paths)
@@ -87,21 +90,24 @@ class SalientViews(Dataset):
             rgb = im.convert("RGB")
             scale = 320 / max(rgb.size)
             rgb = rgb.resize(tuple(max(1, round(v * scale)) for v in rgb.size), Image.Resampling.BILINEAR)
-            return views(np.asarray(rgb))
+            return views(np.asarray(rgb), at_center=self.at_center)
 
 
-def bank(args, paths, mode):
-    return load_view_features(args, SalientViews(paths), VIEW_COUNT, mode, CACHE_TAG)["features"]
+def bank(args, paths, mode, *, at_center=False):
+    name = CACHE_TAG + "-matched-frame-center" if at_center else CACHE_TAG
+    return load_view_features(args, SalientViews(paths, at_center=at_center), VIEW_COUNT, mode, name)[
+        "features"
+    ]
 
 
 @torch.inference_mode()
-def prepare(workspace, dataset):
+def prepare(workspace, dataset, *, at_center=False):
     args = runtime(workspace, dataset, batch=64, workers=2, crop_batch=192)
     args.crop_workers = 6
     splits = SKETCHY_SPLITS if dataset == "sketchy" else ("tuberlin",)
     for mode in ("sketch", "photo"):
         paths, _ = merge_inputs(args.root, splits, mode)
-        features = bank(args, paths, mode)
+        features = bank(args, paths, mode, at_center=at_center)
         if features.shape != (len(paths), VIEW_COUNT, 512):
             raise ValueError("Unexpected CLIP region features")
         print(dataset, mode, list(features.shape), flush=True)
@@ -111,5 +117,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--workspace", type=Path, default=Path("/content/sbir"))
     parser.add_argument("--dataset", required=True, choices=("sketchy", "tuberlin"))
+    parser.add_argument("--at-center", action="store_true")
     options = parser.parse_args()
-    prepare(options.workspace, options.dataset)
+    prepare(options.workspace, options.dataset, at_center=options.at_center)
