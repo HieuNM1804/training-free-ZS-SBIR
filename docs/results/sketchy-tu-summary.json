@@ -1,0 +1,1266 @@
+{
+  "selection_splits": [
+    "sketchy_1",
+    "sketchy_2"
+  ],
+  "selected_general_method": "domain-retain0-joint",
+  "vocabulary_method": "domain-retain0-joint",
+  "general_visual": "frame-images-one",
+  "matched_four_view_control": "struct-none-agreement",
+  "structure_method": "struct-both-k320-w010",
+  "general_candidates_sketchy": {
+    "frame-images-one": {
+      "precision": 0.5669098198413849,
+      "mAP": 0.5880446135997772
+    },
+    "domain-retain0-joint": {
+      "precision": 0.7259194552898407,
+      "mAP": 0.727152019739151
+    },
+    "struct-both-k320-w010": {
+      "precision": 0.6423613131046295,
+      "mAP": 0.6265304982662201
+    }
+  },
+  "locks": {
+    "domain": {
+      "filename": "sketchy-to-tuberlin-lock.json",
+      "freeze_sha256": "a4e1d21edc9de4915c00419a3f7bb271a60c97d74a14103733b47f7747d6ad3a",
+      "revision": "f06e76dc5412261706911fa4572dd5130188b5e0"
+    },
+    "structure": {
+      "filename": "structure-sketchy-to-tuberlin-lock.json",
+      "freeze_sha256": "2db2561f260fda2737543736b995fbc1b723c953aac6451489220739b00dd4ef",
+      "revision": "81116309a3d589772cca5458c52ed0c4625c5eb0"
+    }
+  },
+  "joint_freeze": {
+    "utc_before_tu": "2026-11-20T04:03:34.020574+00:00",
+    "no_tu_rows_at_release": [
+      0,
+      0
+    ],
+    "locks": {
+      "sketchy-to-tuberlin-lock.json": "a4e1d21edc9de4915c00419a3f7bb271a60c97d74a14103733b47f7747d6ad3a",
+      "structure-sketchy-to-tuberlin-lock.json": "2db2561f260fda2737543736b995fbc1b723c953aac6451489220739b00dd4ef"
+    },
+    "revisions": {
+      "domain": "f06e76dc5412261706911fa4572dd5130188b5e0",
+      "structure": "81116309a3d589772cca5458c52ed0c4625c5eb0"
+    }
+  },
+  "analysis_plan": {
+    "utc": "2026-11-20T03:57:38.666156+00:00",
+    "tu_rows_when_declared": [
+      0,
+      0
+    ],
+    "plan": {
+      "primary_rule": "Across frame-images, domain-prompt and universal-structure families select the eligible configuration with the highest equal-weight mean precision on Sketchy Ext-1 and Ext-2, then equal-weight mean mAP. Ignore TU scores.",
+      "selection_datasets": [
+        "sketchy_1",
+        "sketchy_2"
+      ],
+      "test_dataset": "tuberlin",
+      "subgroup": "Partition TU queries by whether the normalized class name occurs in the two Sketchy splits. Keep the full 27262-photo TU gallery for both groups.",
+      "contrasts": [
+        "general methods vs native-clip",
+        "structure vs matched four-view visual control",
+        "primary general method vs historical contour visual and router",
+        "paired vs shuffled and domain vs neutral prompts on Sketchy"
+      ]
+    }
+  },
+  "table": {
+    "native-clip": {
+      "sketchy_1": {
+        "precision": 0.41636720299720764,
+        "mAP": 0.302895188331604,
+        "p_k": 100,
+        "map_k": 0,
+        "external_vocabulary": 0
+      },
+      "sketchy_2": {
+        "precision": 0.33846187591552734,
+        "mAP": 0.3634491264820099,
+        "p_k": 200,
+        "map_k": 200,
+        "external_vocabulary": 0
+      },
+      "tuberlin": {
+        "precision": 0.46265727281570435,
+        "mAP": 0.2906445562839508,
+        "p_k": 100,
+        "map_k": 0,
+        "external_vocabulary": 0
+      }
+    },
+    "frame-images-one": {
+      "sketchy_1": {
+        "precision": 0.6077825427055359,
+        "mAP": 0.646676778793335,
+        "p_k": 100,
+        "map_k": 0,
+        "external_vocabulary": 0
+      },
+      "sketchy_2": {
+        "precision": 0.5260370969772339,
+        "mAP": 0.5294124484062195,
+        "p_k": 200,
+        "map_k": 200,
+        "external_vocabulary": 0
+      },
+      "tuberlin": {
+        "precision": 0.6901878118515015,
+        "mAP": 0.684226930141449,
+        "p_k": 100,
+        "map_k": 0,
+        "external_vocabulary": 0
+      }
+    },
+    "domain-retain0-joint": {
+      "sketchy_1": {
+        "precision": 0.7814923524856567,
+        "mAP": 0.7617608904838562,
+        "p_k": 100,
+        "map_k": 0,
+        "external_vocabulary": 20931
+      },
+      "sketchy_2": {
+        "precision": 0.6703465580940247,
+        "mAP": 0.6925431489944458,
+        "p_k": 200,
+        "map_k": 200,
+        "external_vocabulary": 20931
+      },
+      "tuberlin": {
+        "precision": 0.7881032228469849,
+        "mAP": 0.7796522974967957,
+        "p_k": 100,
+        "map_k": 0,
+        "external_vocabulary": 20931
+      }
+    },
+    "struct-none-agreement": {
+      "sketchy_1": {
+        "precision": 0.6141336560249329,
+        "mAP": 0.6446090936660767,
+        "p_k": 100,
+        "map_k": 0,
+        "external_vocabulary": 0
+      },
+      "sketchy_2": {
+        "precision": 0.5292177200317383,
+        "mAP": 0.5326524376869202,
+        "p_k": 200,
+        "map_k": 200,
+        "external_vocabulary": 0
+      },
+      "tuberlin": {
+        "precision": 0.7090751528739929,
+        "mAP": 0.7003295421600342,
+        "p_k": 100,
+        "map_k": 0,
+        "external_vocabulary": 0
+      }
+    },
+    "struct-both-k320-w010": {
+      "sketchy_1": {
+        "precision": 0.6862190365791321,
+        "mAP": 0.63724684715271,
+        "p_k": 100,
+        "map_k": 0,
+        "external_vocabulary": 0
+      },
+      "sketchy_2": {
+        "precision": 0.598503589630127,
+        "mAP": 0.6158141493797302,
+        "p_k": 200,
+        "map_k": 200,
+        "external_vocabulary": 0
+      },
+      "tuberlin": {
+        "precision": 0.731178343296051,
+        "mAP": 0.5842959880828857,
+        "p_k": 100,
+        "map_k": 0,
+        "external_vocabulary": 0
+      }
+    },
+    "visual-graph-k64-g1-r1.5": {
+      "sketchy_1": {
+        "precision": 0.8298807740211487,
+        "mAP": 0.8258180022239685,
+        "p_k": 100,
+        "map_k": 0,
+        "external_vocabulary": 0
+      },
+      "sketchy_2": {
+        "precision": 0.7802584171295166,
+        "mAP": 0.7940453886985779,
+        "p_k": 200,
+        "map_k": 200,
+        "external_vocabulary": 0
+      },
+      "tuberlin": {
+        "precision": 0.8158027529716492,
+        "mAP": 0.7780148386955261,
+        "p_k": 100,
+        "map_k": 0,
+        "external_vocabulary": 0
+      }
+    },
+    "route-neighbors100-k128-q75": {
+      "sketchy_1": {
+        "precision": 0.8363516330718994,
+        "mAP": 0.819268524646759,
+        "p_k": 100,
+        "map_k": 0,
+        "external_vocabulary": 20931
+      },
+      "sketchy_2": {
+        "precision": 0.7892906069755554,
+        "mAP": 0.8092479705810547,
+        "p_k": 200,
+        "map_k": 200,
+        "external_vocabulary": 20931
+      },
+      "tuberlin": {
+        "precision": 0.8250752091407776,
+        "mAP": 0.8000690937042236,
+        "p_k": 100,
+        "map_k": 0,
+        "external_vocabulary": 20931
+      }
+    }
+  },
+  "paired_intervals": {
+    "sketchy_1": [
+      {
+        "method": "frame-images-one",
+        "reference": "native-clip",
+        "delta_precision": 0.191415473818779,
+        "delta_map": 0.34378159046173096,
+        "query_ci_precision": [
+          0.18643055856227875,
+          0.19663594663143158
+        ],
+        "class_ci_precision": [
+          0.13856780529022217,
+          0.24706324934959412
+        ],
+        "query_ci_map": [
+          0.33947253227233887,
+          0.34815311431884766
+        ],
+        "class_ci_map": [
+          0.28990980982780457,
+          0.39897629618644714
+        ]
+      },
+      {
+        "method": "domain-retain0-joint",
+        "reference": "native-clip",
+        "delta_precision": 0.3651251494884491,
+        "delta_map": 0.4588657319545746,
+        "query_ci_precision": [
+          0.3587135374546051,
+          0.3717101514339447
+        ],
+        "class_ci_precision": [
+          0.29305294156074524,
+          0.4409099817276001
+        ],
+        "query_ci_map": [
+          0.4540361762046814,
+          0.4637536108493805
+        ],
+        "class_ci_map": [
+          0.40882590413093567,
+          0.5119651556015015
+        ]
+      },
+      {
+        "method": "struct-none-agreement",
+        "reference": "native-clip",
+        "delta_precision": 0.19776639342308044,
+        "delta_map": 0.34171387553215027,
+        "query_ci_precision": [
+          0.19238023459911346,
+          0.20335084199905396
+        ],
+        "class_ci_precision": [
+          0.1430341899394989,
+          0.2570200264453888
+        ],
+        "query_ci_map": [
+          0.337337851524353,
+          0.34624454379081726
+        ],
+        "class_ci_map": [
+          0.28526437282562256,
+          0.399751216173172
+        ]
+      },
+      {
+        "method": "struct-both-k320-w010",
+        "reference": "native-clip",
+        "delta_precision": 0.2698518931865692,
+        "delta_map": 0.33435162901878357,
+        "query_ci_precision": [
+          0.2640395164489746,
+          0.2757698595523834
+        ],
+        "class_ci_precision": [
+          0.20635570585727692,
+          0.3386285603046417
+        ],
+        "query_ci_map": [
+          0.3299158811569214,
+          0.3390001952648163
+        ],
+        "class_ci_map": [
+          0.2753114402294159,
+          0.3936830163002014
+        ]
+      },
+      {
+        "method": "visual-graph-k64-g1-r1.5",
+        "reference": "native-clip",
+        "delta_precision": 0.4135136306285858,
+        "delta_map": 0.5229227542877197,
+        "query_ci_precision": [
+          0.40704458951950073,
+          0.4199572801589966
+        ],
+        "class_ci_precision": [
+          0.3346683084964752,
+          0.4933226406574249
+        ],
+        "query_ci_map": [
+          0.5180523991584778,
+          0.5278962850570679
+        ],
+        "class_ci_map": [
+          0.46653473377227783,
+          0.5805220603942871
+        ]
+      },
+      {
+        "method": "route-neighbors100-k128-q75",
+        "reference": "native-clip",
+        "delta_precision": 0.41998445987701416,
+        "delta_map": 0.5163732767105103,
+        "query_ci_precision": [
+          0.41358277201652527,
+          0.4266493022441864
+        ],
+        "class_ci_precision": [
+          0.33916744589805603,
+          0.501978874206543
+        ],
+        "query_ci_map": [
+          0.5116400718688965,
+          0.5212820768356323
+        ],
+        "class_ci_map": [
+          0.4614074230194092,
+          0.5732073783874512
+        ]
+      },
+      {
+        "method": "struct-both-k320-w010",
+        "reference": "struct-none-agreement",
+        "delta_precision": 0.07208547741174698,
+        "delta_map": -0.0073622544296085835,
+        "query_ci_precision": [
+          0.06759215891361237,
+          0.07646695524454117
+        ],
+        "class_ci_precision": [
+          0.04620051383972168,
+          0.10215932130813599
+        ],
+        "query_ci_map": [
+          -0.009122037328779697,
+          -0.0056637185625731945
+        ],
+        "class_ci_map": [
+          -0.019960634410381317,
+          0.005670768208801746
+        ]
+      },
+      {
+        "method": "domain-retain0-joint",
+        "reference": "visual-graph-k64-g1-r1.5",
+        "delta_precision": -0.04838845878839493,
+        "delta_map": -0.06405708193778992,
+        "query_ci_precision": [
+          -0.05395746976137161,
+          -0.04288008436560631
+        ],
+        "class_ci_precision": [
+          -0.07762154936790466,
+          -0.02217281423509121
+        ],
+        "query_ci_map": [
+          -0.06809843331575394,
+          -0.06003141030669212
+        ],
+        "class_ci_map": [
+          -0.0964338630437851,
+          -0.034377217292785645
+        ]
+      },
+      {
+        "method": "domain-retain0-joint",
+        "reference": "route-neighbors100-k128-q75",
+        "delta_precision": -0.05485929921269417,
+        "delta_map": -0.057507582008838654,
+        "query_ci_precision": [
+          -0.06030631065368652,
+          -0.04941152408719063
+        ],
+        "class_ci_precision": [
+          -0.08353748172521591,
+          -0.029666898772120476
+        ],
+        "query_ci_map": [
+          -0.06118949130177498,
+          -0.05395497754216194
+        ],
+        "class_ci_map": [
+          -0.08500391989946365,
+          -0.03212246298789978
+        ]
+      },
+      {
+        "method": "domain-retain0-joint",
+        "reference": "frame-images-one",
+        "delta_precision": 0.1737097054719925,
+        "delta_map": 0.11508410423994064,
+        "query_ci_precision": [
+          0.16718649864196777,
+          0.18021507561206818
+        ],
+        "class_ci_precision": [
+          0.1284724920988083,
+          0.22263410687446594
+        ],
+        "query_ci_map": [
+          0.11084160953760147,
+          0.11922845244407654
+        ],
+        "class_ci_map": [
+          0.08022282272577286,
+          0.15229876339435577
+        ]
+      },
+      {
+        "method": "domain-default-joint",
+        "reference": "domain-neutral-joint",
+        "delta_precision": 0.04481345787644386,
+        "delta_map": 0.049288734793663025,
+        "query_ci_precision": [
+          0.04088137298822403,
+          0.04894096776843071
+        ],
+        "class_ci_precision": [
+          0.024955784901976585,
+          0.0654534325003624
+        ],
+        "query_ci_map": [
+          0.047199223190546036,
+          0.051470186561346054
+        ],
+        "class_ci_map": [
+          0.03154383972287178,
+          0.06712375581264496
+        ]
+      },
+      {
+        "method": "domain-default-joint",
+        "reference": "domain-unpaired-joint",
+        "delta_precision": 0.1384512335062027,
+        "delta_map": 0.2751668095588684,
+        "query_ci_precision": [
+          0.13215923309326172,
+          0.14454339444637299
+        ],
+        "class_ci_precision": [
+          0.1057223230600357,
+          0.17365679144859314
+        ],
+        "query_ci_map": [
+          0.27190130949020386,
+          0.2786702513694763
+        ],
+        "class_ci_map": [
+          0.24545474350452423,
+          0.3045237958431244
+        ]
+      },
+      {
+        "method": "domain-default-separate",
+        "reference": "domain-neutral-separate",
+        "delta_precision": 0.06644332408905029,
+        "delta_map": 0.05449986457824707,
+        "query_ci_precision": [
+          0.06259286403656006,
+          0.07033572345972061
+        ],
+        "class_ci_precision": [
+          0.043449342250823975,
+          0.09127692878246307
+        ],
+        "query_ci_map": [
+          0.05236419662833214,
+          0.05664250627160072
+        ],
+        "class_ci_map": [
+          0.035655248910188675,
+          0.07333307713270187
+        ]
+      },
+      {
+        "method": "domain-default-separate",
+        "reference": "domain-unpaired-separate",
+        "delta_precision": 0.25116226077079773,
+        "delta_map": 0.3087678551673889,
+        "query_ci_precision": [
+          0.2437157928943634,
+          0.2586643099784851
+        ],
+        "class_ci_precision": [
+          0.20901580154895782,
+          0.2898828685283661
+        ],
+        "query_ci_map": [
+          0.3049268424510956,
+          0.31268829107284546
+        ],
+        "class_ci_map": [
+          0.27651527523994446,
+          0.3407081663608551
+        ]
+      },
+      {
+        "method": "struct-both-k192-w030",
+        "reference": "struct-shuffled-k192-w030",
+        "delta_precision": 0.013085548765957355,
+        "delta_map": -0.019973434507846832,
+        "query_ci_precision": [
+          0.011244074441492558,
+          0.014953874982893467
+        ],
+        "class_ci_precision": [
+          0.008189670741558075,
+          0.018080303445458412
+        ],
+        "query_ci_map": [
+          -0.02088022790849209,
+          -0.019065914675593376
+        ],
+        "class_ci_map": [
+          -0.028777167201042175,
+          -0.011266355402767658
+        ]
+      }
+    ],
+    "sketchy_2": [
+      {
+        "method": "frame-images-one",
+        "reference": "native-clip",
+        "delta_precision": 0.18757523596286774,
+        "delta_map": 0.16596338152885437,
+        "query_ci_precision": [
+          0.18197780847549438,
+          0.19329015910625458
+        ],
+        "class_ci_precision": [
+          0.10045071691274643,
+          0.2712857127189636
+        ],
+        "query_ci_map": [
+          0.16040784120559692,
+          0.17160087823867798
+        ],
+        "class_ci_map": [
+          0.08025991171598434,
+          0.2454485446214676
+        ]
+      },
+      {
+        "method": "domain-retain0-joint",
+        "reference": "native-clip",
+        "delta_precision": 0.3318847715854645,
+        "delta_map": 0.3290940225124359,
+        "query_ci_precision": [
+          0.32487064599990845,
+          0.3391934633255005
+        ],
+        "class_ci_precision": [
+          0.23431691527366638,
+          0.4326476752758026
+        ],
+        "query_ci_map": [
+          0.3218904733657837,
+          0.33650192618370056
+        ],
+        "class_ci_map": [
+          0.23681405186653137,
+          0.42764246463775635
+        ]
+      },
+      {
+        "method": "struct-none-agreement",
+        "reference": "native-clip",
+        "delta_precision": 0.19075587391853333,
+        "delta_map": 0.16920329630374908,
+        "query_ci_precision": [
+          0.184879869222641,
+          0.19676031172275543
+        ],
+        "class_ci_precision": [
+          0.09560492634773254,
+          0.2826617360115051
+        ],
+        "query_ci_map": [
+          0.16332991421222687,
+          0.17517516016960144
+        ],
+        "class_ci_map": [
+          0.07611214369535446,
+          0.2581745386123657
+        ]
+      },
+      {
+        "method": "struct-both-k320-w010",
+        "reference": "native-clip",
+        "delta_precision": 0.260041743516922,
+        "delta_map": 0.25236502289772034,
+        "query_ci_precision": [
+          0.253487765789032,
+          0.26678359508514404
+        ],
+        "class_ci_precision": [
+          0.1621856987476349,
+          0.3546925485134125
+        ],
+        "query_ci_map": [
+          0.24574251472949982,
+          0.259089857339859
+        ],
+        "class_ci_map": [
+          0.15680302679538727,
+          0.34351664781570435
+        ]
+      },
+      {
+        "method": "visual-graph-k64-g1-r1.5",
+        "reference": "native-clip",
+        "delta_precision": 0.44179651141166687,
+        "delta_map": 0.43059632182121277,
+        "query_ci_precision": [
+          0.4351321756839752,
+          0.448407381772995
+        ],
+        "class_ci_precision": [
+          0.37123042345046997,
+          0.5193859934806824
+        ],
+        "query_ci_map": [
+          0.4236690402030945,
+          0.437382310628891
+        ],
+        "class_ci_map": [
+          0.3584344685077667,
+          0.5092514753341675
+        ]
+      },
+      {
+        "method": "route-neighbors100-k128-q75",
+        "reference": "native-clip",
+        "delta_precision": 0.4508287310600281,
+        "delta_map": 0.4457988440990448,
+        "query_ci_precision": [
+          0.44435688853263855,
+          0.45729830861091614
+        ],
+        "class_ci_precision": [
+          0.38180071115493774,
+          0.5222724676132202
+        ],
+        "query_ci_map": [
+          0.4390312433242798,
+          0.4526839554309845
+        ],
+        "class_ci_map": [
+          0.3733762204647064,
+          0.5203866958618164
+        ]
+      },
+      {
+        "method": "struct-both-k320-w010",
+        "reference": "struct-none-agreement",
+        "delta_precision": 0.06928588449954987,
+        "delta_map": 0.08316170424222946,
+        "query_ci_precision": [
+          0.06474152207374573,
+          0.07392890751361847
+        ],
+        "class_ci_precision": [
+          0.036163344979286194,
+          0.10369332879781723
+        ],
+        "query_ci_map": [
+          0.07812820374965668,
+          0.0883404091000557
+        ],
+        "class_ci_map": [
+          0.05181465670466423,
+          0.11604414880275726
+        ]
+      },
+      {
+        "method": "domain-retain0-joint",
+        "reference": "visual-graph-k64-g1-r1.5",
+        "delta_precision": -0.10991176962852478,
+        "delta_map": -0.10150232166051865,
+        "query_ci_precision": [
+          -0.1172451451420784,
+          -0.10255465656518936
+        ],
+        "class_ci_precision": [
+          -0.19744503498077393,
+          -0.03392455354332924
+        ],
+        "query_ci_map": [
+          -0.10895900428295135,
+          -0.09406165033578873
+        ],
+        "class_ci_map": [
+          -0.18791596591472626,
+          -0.027803141623735428
+        ]
+      },
+      {
+        "method": "domain-retain0-joint",
+        "reference": "route-neighbors100-k128-q75",
+        "delta_precision": -0.11894398927688599,
+        "delta_map": -0.11670481413602829,
+        "query_ci_precision": [
+          -0.12587541341781616,
+          -0.11207329481840134
+        ],
+        "class_ci_precision": [
+          -0.19223077595233917,
+          -0.05599791184067726
+        ],
+        "query_ci_map": [
+          -0.12370388954877853,
+          -0.10964399576187134
+        ],
+        "class_ci_map": [
+          -0.19309698045253754,
+          -0.052878253161907196
+        ]
+      },
+      {
+        "method": "domain-retain0-joint",
+        "reference": "frame-images-one",
+        "delta_precision": 0.14430952072143555,
+        "delta_map": 0.16313061118125916,
+        "query_ci_precision": [
+          0.13757352530956268,
+          0.15108872950077057
+        ],
+        "class_ci_precision": [
+          0.08731330186128616,
+          0.20076999068260193
+        ],
+        "query_ci_map": [
+          0.155985489487648,
+          0.17032583057880402
+        ],
+        "class_ci_map": [
+          0.11205843091011047,
+          0.21584397554397583
+        ]
+      },
+      {
+        "method": "domain-default-joint",
+        "reference": "domain-neutral-joint",
+        "delta_precision": 0.03239050135016441,
+        "delta_map": 0.04488425701856613,
+        "query_ci_precision": [
+          0.02783713862299919,
+          0.03717387467622757
+        ],
+        "class_ci_precision": [
+          0.001325269229710102,
+          0.06190202012658119
+        ],
+        "query_ci_map": [
+          0.04000239819288254,
+          0.04985984042286873
+        ],
+        "class_ci_map": [
+          0.008627342991530895,
+          0.07920145243406296
+        ]
+      },
+      {
+        "method": "domain-default-joint",
+        "reference": "domain-unpaired-joint",
+        "delta_precision": 0.12610171735286713,
+        "delta_map": 0.12299590557813644,
+        "query_ci_precision": [
+          0.11948185414075851,
+          0.13273648917675018
+        ],
+        "class_ci_precision": [
+          0.09288221597671509,
+          0.15964773297309875
+        ],
+        "query_ci_map": [
+          0.11621164530515671,
+          0.129802405834198
+        ],
+        "class_ci_map": [
+          0.09192728996276855,
+          0.15635232627391815
+        ]
+      },
+      {
+        "method": "domain-default-separate",
+        "reference": "domain-neutral-separate",
+        "delta_precision": 0.04452064260840416,
+        "delta_map": 0.06505370885133743,
+        "query_ci_precision": [
+          0.040049098432064056,
+          0.04897955060005188
+        ],
+        "class_ci_precision": [
+          0.0051012965850532055,
+          0.08211889117956161
+        ],
+        "query_ci_map": [
+          0.06026598811149597,
+          0.07003199309110641
+        ],
+        "class_ci_map": [
+          0.02173651196062565,
+          0.10629115253686905
+        ]
+      },
+      {
+        "method": "domain-default-separate",
+        "reference": "domain-unpaired-separate",
+        "delta_precision": 0.25566843152046204,
+        "delta_map": 0.2583998441696167,
+        "query_ci_precision": [
+          0.24782414734363556,
+          0.2635718286037445
+        ],
+        "class_ci_precision": [
+          0.20868636667728424,
+          0.3065628409385681
+        ],
+        "query_ci_map": [
+          0.25027284026145935,
+          0.2664162814617157
+        ],
+        "class_ci_map": [
+          0.20915459096431732,
+          0.3097322881221771
+        ]
+      },
+      {
+        "method": "struct-both-k192-w030",
+        "reference": "struct-shuffled-k192-w030",
+        "delta_precision": 0.007860405370593071,
+        "delta_map": 0.014720529317855835,
+        "query_ci_precision": [
+          0.006024311762303114,
+          0.009723510593175888
+        ],
+        "class_ci_precision": [
+          0.00025480854674242437,
+          0.01688409224152565
+        ],
+        "query_ci_map": [
+          0.012487675994634628,
+          0.016988132148981094
+        ],
+        "class_ci_map": [
+          0.003035280155017972,
+          0.02810721844434738
+        ]
+      }
+    ],
+    "tuberlin": [
+      {
+        "method": "frame-images-one",
+        "reference": "native-clip",
+        "delta_precision": 0.22753052413463593,
+        "delta_map": 0.39358237385749817,
+        "query_ci_precision": [
+          0.21371221542358398,
+          0.24208064377307892
+        ],
+        "class_ci_precision": [
+          0.16623513400554657,
+          0.291942834854126
+        ],
+        "query_ci_map": [
+          0.38148245215415955,
+          0.40520066022872925
+        ],
+        "class_ci_map": [
+          0.33607304096221924,
+          0.44937148690223694
+        ]
+      },
+      {
+        "method": "domain-retain0-joint",
+        "reference": "native-clip",
+        "delta_precision": 0.3254460096359253,
+        "delta_map": 0.489007830619812,
+        "query_ci_precision": [
+          0.3092854619026184,
+          0.3414228856563568
+        ],
+        "class_ci_precision": [
+          0.25613167881965637,
+          0.40032958984375
+        ],
+        "query_ci_map": [
+          0.4766969382762909,
+          0.5011076927185059
+        ],
+        "class_ci_map": [
+          0.43271127343177795,
+          0.5466393232345581
+        ]
+      },
+      {
+        "method": "struct-none-agreement",
+        "reference": "native-clip",
+        "delta_precision": 0.2464178502559662,
+        "delta_map": 0.409684956073761,
+        "query_ci_precision": [
+          0.2319185435771942,
+          0.2618124783039093
+        ],
+        "class_ci_precision": [
+          0.18367552757263184,
+          0.31480443477630615
+        ],
+        "query_ci_map": [
+          0.39735808968544006,
+          0.42198610305786133
+        ],
+        "class_ci_map": [
+          0.35155001282691956,
+          0.468364417552948
+        ]
+      },
+      {
+        "method": "struct-both-k320-w010",
+        "reference": "native-clip",
+        "delta_precision": 0.26852110028266907,
+        "delta_map": 0.29365143179893494,
+        "query_ci_precision": [
+          0.25316327810287476,
+          0.28437113761901855
+        ],
+        "class_ci_precision": [
+          0.2007574886083603,
+          0.3427986204624176
+        ],
+        "query_ci_map": [
+          0.2819555401802063,
+          0.30554667115211487
+        ],
+        "class_ci_map": [
+          0.22699031233787537,
+          0.3651771545410156
+        ]
+      },
+      {
+        "method": "visual-graph-k64-g1-r1.5",
+        "reference": "native-clip",
+        "delta_precision": 0.353145569562912,
+        "delta_map": 0.48737043142318726,
+        "query_ci_precision": [
+          0.3376282751560211,
+          0.36893942952156067
+        ],
+        "class_ci_precision": [
+          0.28298819065093994,
+          0.4269261956214905
+        ],
+        "query_ci_map": [
+          0.47493481636047363,
+          0.4993963837623596
+        ],
+        "class_ci_map": [
+          0.4243467152118683,
+          0.5493454933166504
+        ]
+      },
+      {
+        "method": "route-neighbors100-k128-q75",
+        "reference": "native-clip",
+        "delta_precision": 0.3624178469181061,
+        "delta_map": 0.50942462682724,
+        "query_ci_precision": [
+          0.3469340205192566,
+          0.37854474782943726
+        ],
+        "class_ci_precision": [
+          0.29245081543922424,
+          0.4355824291706085
+        ],
+        "query_ci_map": [
+          0.49721553921699524,
+          0.5215053558349609
+        ],
+        "class_ci_map": [
+          0.45005741715431213,
+          0.5657581686973572
+        ]
+      },
+      {
+        "method": "struct-both-k320-w010",
+        "reference": "struct-none-agreement",
+        "delta_precision": 0.022103285416960716,
+        "delta_map": -0.11603350937366486,
+        "query_ci_precision": [
+          0.014135798439383507,
+          0.030192488804459572
+        ],
+        "class_ci_precision": [
+          0.0050225164741277695,
+          0.04132450744509697
+        ],
+        "query_ci_map": [
+          -0.12193536758422852,
+          -0.1101471483707428
+        ],
+        "class_ci_map": [
+          -0.14804665744304657,
+          -0.08506030589342117
+        ]
+      },
+      {
+        "method": "domain-retain0-joint",
+        "reference": "visual-graph-k64-g1-r1.5",
+        "delta_precision": -0.027699531987309456,
+        "delta_map": 0.0016374073456972837,
+        "query_ci_precision": [
+          -0.04161584749817848,
+          -0.013661854900419712
+        ],
+        "class_ci_precision": [
+          -0.07431288808584213,
+          0.016035590320825577
+        ],
+        "query_ci_map": [
+          -0.007610884960740805,
+          0.011107207275927067
+        ],
+        "class_ci_map": [
+          -0.03154155611991882,
+          0.03299058601260185
+        ]
+      },
+      {
+        "method": "domain-retain0-joint",
+        "reference": "route-neighbors100-k128-q75",
+        "delta_precision": -0.03697183355689049,
+        "delta_map": -0.020416852086782455,
+        "query_ci_precision": [
+          -0.05040880665183067,
+          -0.024083800613880157
+        ],
+        "class_ci_precision": [
+          -0.07759973406791687,
+          -0.0012153248535469174
+        ],
+        "query_ci_map": [
+          -0.028398422524333,
+          -0.012492516078054905
+        ],
+        "class_ci_map": [
+          -0.03989022597670555,
+          -0.001672059646807611
+        ]
+      },
+      {
+        "method": "domain-retain0-joint",
+        "reference": "frame-images-one",
+        "delta_precision": 0.09791549295186996,
+        "delta_map": 0.09542541950941086,
+        "query_ci_precision": [
+          0.08225762844085693,
+          0.11240433901548386
+        ],
+        "class_ci_precision": [
+          0.05693332478404045,
+          0.1440785676240921
+        ],
+        "query_ci_map": [
+          0.08495374023914337,
+          0.10569534450769424
+        ],
+        "class_ci_map": [
+          0.05853750556707382,
+          0.1342904269695282
+        ]
+      }
+    ]
+  },
+  "sketchy_best_per_split": {
+    "sketchy_1": {
+      "domain": {
+        "method": "domain-retain0-joint",
+        "precision": 0.7814923524856567,
+        "mAP": 0.7617608904838562
+      },
+      "structure": {
+        "method": "struct-both-k320-w010",
+        "precision": 0.6862190365791321,
+        "mAP": 0.63724684715271
+      }
+    },
+    "sketchy_2": {
+      "domain": {
+        "method": "domain-retain0-separate",
+        "precision": 0.6722159385681152,
+        "mAP": 0.6960616707801819
+      },
+      "structure": {
+        "method": "struct-both-k320-w010",
+        "precision": 0.598503589630127,
+        "mAP": 0.6158141493797302
+      }
+    }
+  },
+  "bootstrap_replicates": 5000,
+  "bootstrap_seed": 51387,
+  "tu_subgroups": {
+    "distinct_name": {
+      "classes": [
+        "wrist-watch",
+        "mermaid",
+        "mosquito",
+        "couch",
+        "hammer",
+        "house",
+        "baseball bat",
+        "toilet",
+        "panda",
+        "mug",
+        "wineglass",
+        "motorbike",
+        "eyeglasses",
+        "hot air balloon",
+        "skull",
+        "truck",
+        "palm tree",
+        "cell phone",
+        "sailboat",
+        "suv",
+        "church",
+        "floor lamp",
+        "bus",
+        "tv"
+      ],
+      "queries": 1700,
+      "full_gallery": 27262,
+      "methods": {
+        "native-clip": {
+          "mAP": 0.31248119473457336,
+          "precision": 0.47868236899375916
+        },
+        "frame-images-one": {
+          "mAP": 0.6819450855255127,
+          "precision": 0.690747082233429
+        },
+        "domain-retain0-joint": {
+          "mAP": 0.7797456383705139,
+          "precision": 0.7906647324562073
+        },
+        "struct-none-agreement": {
+          "mAP": 0.6930776238441467,
+          "precision": 0.7071235179901123
+        },
+        "struct-both-k320-w010": {
+          "mAP": 0.5767794251441956,
+          "precision": 0.7309588193893433
+        },
+        "visual-graph-k64-g1-r1.5": {
+          "mAP": 0.7789791226387024,
+          "precision": 0.8268764615058899
+        },
+        "route-neighbors100-k128-q75": {
+          "mAP": 0.804999053478241,
+          "precision": 0.8341882228851318
+        }
+      }
+    },
+    "same_name": {
+      "classes": [
+        "helicopter",
+        "pear",
+        "airplane",
+        "butterfly",
+        "cup",
+        "horse"
+      ],
+      "queries": 430,
+      "full_gallery": 27262,
+      "methods": {
+        "native-clip": {
+          "mAP": 0.20431344211101532,
+          "precision": 0.3993023633956909
+        },
+        "frame-images-one": {
+          "mAP": 0.6932477951049805,
+          "precision": 0.6879767775535583
+        },
+        "domain-retain0-joint": {
+          "mAP": 0.7792835235595703,
+          "precision": 0.7779766917228699
+        },
+        "struct-none-agreement": {
+          "mAP": 0.7289994955062866,
+          "precision": 0.7167907953262329
+        },
+        "struct-both-k320-w010": {
+          "mAP": 0.6140124797821045,
+          "precision": 0.7320464849472046
+        },
+        "visual-graph-k64-g1-r1.5": {
+          "mAP": 0.7742027640342712,
+          "precision": 0.7720232605934143
+        },
+        "route-neighbors100-k128-q75": {
+          "mAP": 0.7805788516998291,
+          "precision": 0.7890465259552002
+        }
+      }
+    }
+  },
+  "tuberlin_coverage": {
+    "classes_with_queries": 30,
+    "classes_with_photos": 30,
+    "queries": 2130,
+    "full_gallery_for_every_query": 27262,
+    "methods": 7,
+    "per_class_rows": 210,
+    "table": "tuberlin-per-class.csv"
+  }
+}

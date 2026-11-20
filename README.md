@@ -94,6 +94,8 @@ Run the local checks with `python -m unittest discover -s tests`.
 
 ## Colab
 
+The [Sketchy to TU-Berlin report](docs/SKETCHY_TUBERLIN_TRANSFER_VI.md) gives results for parameters selected on both Sketchy splits and frozen before inference on all 30 TU-Berlin classes. The [per-class table](docs/results/tuberlin-per-class.csv) covers 2,130 queries against the full 27,262-photo gallery.
+
 Clone the repository into the GPU runtime and install `requirements.txt`.
 Point `--root` to the directory containing the dataset's `photo` and `sketch`
 folders. Keep datasets, cache and run output under the runtime's local disk.

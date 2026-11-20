@@ -1,0 +1,107 @@
+{
+  "revision": "f06e76dc5412261706911fa4572dd5130188b5e0",
+  "checkpoint_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+  "tu_split_sha256": "64fa2e05b5ce359af89caf817c2a90d8d48b268280e2f4896283aaa2d58f8bcd",
+  "data_used_for_selection": [
+    "sketchy_1",
+    "sketchy_2"
+  ],
+  "selection_metric": "equal mean precision then equal mean mAP",
+  "templates": [
+    [
+      "a drawing of a {}.",
+      "a sketch of the {}."
+    ],
+    [
+      "a photo of a {}.",
+      "a photo of the {}."
+    ]
+  ],
+  "generic_configurations_on_each_sketchy_split": 36,
+  "ledger_sha256": "8bf7e113bb27b358b0da4d81ec3264e794a1bd4931ed3a0528dbe8643cc03c7c",
+  "winners": {
+    "general_visual": {
+      "name": "frame-images-one",
+      "parameters": {
+        "views": 1,
+        "gallery_k": 192,
+        "channels": "images"
+      },
+      "sketchy": {
+        "sketchy_1": {
+          "precision": 0.6077825427055359,
+          "mAP": 0.646676778793335,
+          "parameters": {
+            "views": 1,
+            "gallery_k": 192,
+            "channels": "images"
+          }
+        },
+        "sketchy_2": {
+          "precision": 0.5260370969772339,
+          "mAP": 0.5294124484062195,
+          "parameters": {
+            "views": 1,
+            "gallery_k": 192,
+            "channels": "images"
+          }
+        }
+      }
+    },
+    "general_semantic": {
+      "name": "domain-retain0-joint",
+      "parameters": {
+        "retain": 0.0,
+        "semantic_share": 0.35,
+        "support": 64,
+        "carry": 1.0,
+        "penalty": 1.0,
+        "prompts": "paired",
+        "pairing": "intact",
+        "fusion": "joint",
+        "views": 6,
+        "gallery_k": 192
+      },
+      "sketchy": {
+        "sketchy_1": {
+          "precision": 0.7814923524856567,
+          "mAP": 0.7617608904838562,
+          "parameters": {
+            "retain": 0.0,
+            "semantic_share": 0.35,
+            "support": 64,
+            "carry": 1.0,
+            "penalty": 1.0,
+            "prompts": "paired",
+            "pairing": "intact",
+            "fusion": "joint",
+            "views": 6,
+            "gallery_k": 192
+          }
+        },
+        "sketchy_2": {
+          "precision": 0.6703465580940247,
+          "mAP": 0.6925431489944458,
+          "parameters": {
+            "retain": 0.0,
+            "semantic_share": 0.35,
+            "support": 64,
+            "carry": 1.0,
+            "penalty": 1.0,
+            "prompts": "paired",
+            "pairing": "intact",
+            "fusion": "joint",
+            "views": 6,
+            "gallery_k": 192
+          }
+        }
+      }
+    }
+  },
+  "previous_sketchy_winners": [
+    "visual-graph-k64-g1-r1.5",
+    "route-neighbors100-k128-q75"
+  ],
+  "previous_sketchy_report": "https://github.com/HieuNM1804/training-free-ZS-SBIR/blob/61cb327/docs/results/sketchy-colab-l4.csv",
+  "freeze_sha256": "a4e1d21edc9de4915c00419a3f7bb271a60c97d74a14103733b47f7747d6ad3a"
+}

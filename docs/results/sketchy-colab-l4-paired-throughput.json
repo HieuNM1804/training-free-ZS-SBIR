@@ -1,0 +1,195 @@
+{
+  "gpu": "NVIDIA L4",
+  "torch": "2.14.1+cu130",
+  "cpus": 12,
+  "graph_gallery": 17100,
+  "graph_queries": 768,
+  "repeats": 2,
+  "revision": "61cb32785e53fcf8cbffdc9c313a7ea437cd603c",
+  "rgb": [
+    {
+      "batch": 64,
+      "workers": 2,
+      "median_seconds": 1.0531485610003983,
+      "items_per_second": 729.241845300978,
+      "peak_cuda_mib": 486
+    },
+    {
+      "batch": 192,
+      "workers": 6,
+      "median_seconds": 1.5039564049998262,
+      "items_per_second": 510.65309968216053,
+      "peak_cuda_mib": 788
+    },
+    {
+      "batch": 320,
+      "workers": 8,
+      "median_seconds": 1.8388917144998231,
+      "items_per_second": 417.6428627875434,
+      "peak_cuda_mib": 1042
+    },
+    {
+      "batch": 448,
+      "workers": 10,
+      "median_seconds": 2.0505874645000404,
+      "items_per_second": 374.52681892174166,
+      "peak_cuda_mib": 1306
+    }
+  ],
+  "contours": [
+    {
+      "batch": 64,
+      "workers": 2,
+      "median_seconds": 2.1872092680000605,
+      "items_per_second": 351.1323819061189,
+      "peak_cuda_mib": 652
+    },
+    {
+      "batch": 192,
+      "workers": 6,
+      "median_seconds": 2.751855335500295,
+      "items_per_second": 279.0844380852511,
+      "peak_cuda_mib": 1180
+    },
+    {
+      "batch": 320,
+      "workers": 8,
+      "median_seconds": 3.424153767500229,
+      "items_per_second": 224.28899288616677,
+      "peak_cuda_mib": 1692
+    },
+    {
+      "batch": 448,
+      "workers": 10,
+      "median_seconds": 4.164014658999349,
+      "items_per_second": 184.43739105004914,
+      "peak_cuda_mib": 2218
+    }
+  ],
+  "crop_views": [
+    {
+      "batch": 192,
+      "workers": 6,
+      "median_seconds": 1.7701621339997473,
+      "items_per_second": 1735.43425260075,
+      "peak_cuda_mib": 816
+    },
+    {
+      "batch": 384,
+      "workers": 6,
+      "median_seconds": 1.9094266129995958,
+      "items_per_second": 1608.8599473189863,
+      "peak_cuda_mib": 1236
+    },
+    {
+      "batch": 384,
+      "workers": 8,
+      "median_seconds": 2.112518180499592,
+      "items_per_second": 1454.1886684608314,
+      "peak_cuda_mib": 1236
+    },
+    {
+      "batch": 512,
+      "workers": 10,
+      "median_seconds": 2.2669340779998493,
+      "items_per_second": 1355.1342448874705,
+      "peak_cuda_mib": 1506
+    }
+  ],
+  "query_graph": [
+    {
+      "batch": 64,
+      "median_seconds": 0.6778387764998115,
+      "items_per_second": 1133.0127850840258,
+      "peak_cuda_mib": 902
+    },
+    {
+      "batch": 128,
+      "median_seconds": 0.4819178899997496,
+      "items_per_second": 1593.6324754418206,
+      "peak_cuda_mib": 1160
+    },
+    {
+      "batch": 192,
+      "median_seconds": 0.45762909100039906,
+      "items_per_second": 1678.2149891763115,
+      "peak_cuda_mib": 1486
+    },
+    {
+      "batch": 256,
+      "median_seconds": 0.4317701565000789,
+      "items_per_second": 1778.7241393091967,
+      "peak_cuda_mib": 1800
+    },
+    {
+      "batch": 384,
+      "median_seconds": 0.4064471520000552,
+      "items_per_second": 1889.5445477248556,
+      "peak_cuda_mib": 2256
+    }
+  ],
+  "evaluator_sketchy_1": [
+    {
+      "workers": 2,
+      "median_seconds": 1.2856010615000741,
+      "items_per_second": 796.5145881298271,
+      "peak_cuda_mib": 716
+    },
+    {
+      "workers": 4,
+      "median_seconds": 0.7824623494998377,
+      "items_per_second": 1308.6891665197143,
+      "peak_cuda_mib": 716
+    },
+    {
+      "workers": 6,
+      "median_seconds": 0.9172334639997644,
+      "items_per_second": 1116.400611393593,
+      "peak_cuda_mib": 716
+    },
+    {
+      "workers": 8,
+      "median_seconds": 1.2077470955000535,
+      "items_per_second": 847.8596254259877,
+      "peak_cuda_mib": 716
+    },
+    {
+      "workers": 12,
+      "median_seconds": 1.5497475819997817,
+      "items_per_second": 660.7527650913569,
+      "peak_cuda_mib": 716
+    }
+  ],
+  "evaluator_sketchy_2": [
+    {
+      "workers": 2,
+      "median_seconds": 0.5428329295000367,
+      "items_per_second": 1886.3999296121015,
+      "peak_cuda_mib": 716
+    },
+    {
+      "workers": 4,
+      "median_seconds": 0.7565285919999951,
+      "items_per_second": 1353.5509573972672,
+      "peak_cuda_mib": 716
+    },
+    {
+      "workers": 6,
+      "median_seconds": 1.099342921999778,
+      "items_per_second": 931.4654958957447,
+      "peak_cuda_mib": 716
+    },
+    {
+      "workers": 8,
+      "median_seconds": 1.322286436000013,
+      "items_per_second": 774.4161719586677,
+      "peak_cuda_mib": 716
+    },
+    {
+      "workers": 12,
+      "median_seconds": 1.5826070435000474,
+      "items_per_second": 647.0336424987415,
+      "peak_cuda_mib": 716
+    }
+  ]
+}

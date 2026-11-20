@@ -1,0 +1,22 @@
+{
+  "utc": "2026-11-20T03:57:38.666156+00:00",
+  "tu_rows_when_declared": [
+    0,
+    0
+  ],
+  "plan": {
+    "primary_rule": "Across frame-images, domain-prompt and universal-structure families select the eligible configuration with the highest equal-weight mean precision on Sketchy Ext-1 and Ext-2, then equal-weight mean mAP. Ignore TU scores.",
+    "selection_datasets": [
+      "sketchy_1",
+      "sketchy_2"
+    ],
+    "test_dataset": "tuberlin",
+    "subgroup": "Partition TU queries by whether the normalized class name occurs in the two Sketchy splits. Keep the full 27262-photo TU gallery for both groups.",
+    "contrasts": [
+      "general methods vs native-clip",
+      "structure vs matched four-view visual control",
+      "primary general method vs historical contour visual and router",
+      "paired vs shuffled and domain vs neutral prompts on Sketchy"
+    ]
+  }
+}

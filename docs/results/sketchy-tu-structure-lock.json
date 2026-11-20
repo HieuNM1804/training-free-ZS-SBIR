@@ -1,0 +1,29 @@
+{
+  "revision": "81116309a3d589772cca5458c52ed0c4625c5eb0",
+  "checkpoint_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+  "selection_splits": [
+    "sketchy_1",
+    "sketchy_2"
+  ],
+  "ledger_sha256": "96c26dc74cea110797beabbdbb721f8ea7b55ce04e0cffc0606c8121e3bc40e9",
+  "best_including_ablation": "struct-both-k320-w010",
+  "best_using_structure": "struct-both-k320-w010",
+  "heldout_controls": [
+    "struct-none-agreement"
+  ],
+  "selection_metric": "equal mean precision then equal mean mAP",
+  "parameters": {
+    "struct-none-agreement": {
+      "views": 4,
+      "gallery_k": 192,
+      "channels": "images"
+    },
+    "struct-both-k320-w010": {
+      "layer": "both",
+      "gallery_k": 320,
+      "fusion": "w010",
+      "views": 4
+    }
+  },
+  "freeze_sha256": "2db2561f260fda2737543736b995fbc1b723c953aac6451489220739b00dd4ef"
+}
