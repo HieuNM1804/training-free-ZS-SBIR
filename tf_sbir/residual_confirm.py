@@ -4,7 +4,7 @@ Run this script by absolute path with PYTHONPATH set to the measured method work
 """
 
 import argparse
-from dataclasses import asdict
+from dataclasses import asdict,replace
 from datetime import datetime,timezone
 from importlib import import_module
 from pathlib import Path
@@ -138,6 +138,13 @@ def run(w,family,stage):
     lock={}
     if stage=="pilot":
         cfgs=[method.Config(**r) for r in full_ranking(folder)[:6]]+method.refine(base)
+        if family=="gallery-vocabulary-cover":
+            # The first two independent Sketchy samples favored the minimum
+            # dictionary size. Test both sides of that boundary in confirmation.
+            cfgs.extend(replace(base,words=n,evidence_temp=t) for n in (12,24,36,40,56,72,80,96)
+                        for t in (.012,.025,.04))
+            cfgs.extend(replace(base,words=n,direct=d,support=k) for n in (24,40,72)
+                        for d in (0.,.3) for k in (96,256))
     elif stage=="full":
         rows=[read(folder/f"confirm/pilot-{s}.json")["scores"] for s in SKETCHY_SPLITS]
         cfgs=[method.Config(**p) for p in ordered(rows)[:5]]
