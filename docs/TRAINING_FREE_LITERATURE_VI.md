@@ -1,5 +1,9 @@
 # Training-free CLIP và VLM cho categorical ZS-SBIR
 
+## Đối chứng tám view chỉ dùng đặc trưng ảnh
+
+Nhánh `research/visual-paired-graph` bỏ từ điển tại cả ba vị trí dùng thông tin ngôn ngữ trong mô hình đầy đủ gồm query, tập ứng viên và cạnh của gallery. Các ảnh gallery tạo cặp contour–RGB, phép chiếu phổ và đồ thị Jaccard. Các đối chứng một view, tám view với cosine và tám view với đồ thị dùng chung embedding CLIP. Lượt chuẩn giữ 64 láng giềng, hệ số phạt 1, hệ số phần dư 1 và rủi ro mũ 4. Thay từng tham số một và xáo vector sai số giữa các anchor để đo tác dụng của thông tin đích. [IsoCLIP, CVPR 2026](https://openaccess.thecvf.com/content/CVPR2026/html/Magistri_IsoCLIP_Decomposing_CLIP_Projectors_for_Efficient_Intra-modal_Alignment_CVPR_2026_paper.html) · [Neighbor Embedding, CVPR 2004](https://cse.hkust.edu.hk/~dyyeung/paper/pdf/yeung.cvpr2004.pdf) · [Query Specific Fusion, ECCV 2012](https://link.springer.com/chapter/10.1007/978-3-642-33709-3_47)
+
 Khảo sát tập trung vào việc chuyển cơ chế từ các bài toán khác sang truy hồi một sketch trong gallery ảnh không nhãn. Điều kiện của các thí nghiệm là encoder đóng băng, không backpropagation, không học prompt, không dùng DINO và chỉ dùng tên lớp của benchmark trong loader và evaluator. Thống kê, láng giềng và đồ thị được xây từ ảnh gallery. Nhánh ngôn ngữ lấy danh mục Open Images V7 đầy đủ từ nguồn công khai, cố định trước khi truy hồi.
 
 ## Các paper ZS-SBIR được cung cấp

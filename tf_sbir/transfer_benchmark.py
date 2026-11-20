@@ -32,6 +32,7 @@ from .transfer_reconstruction import anchor_errors, gallery_index, nearest_ancho
 from .transfer_channels import channel_prefix, channel_settings
 from .union_density import density_rows
 from .view_hypotheses import ink_box_image, view_concepts
+from .visual_paired_graph import score_visual_graph
 
 
 VIEW_WEIGHTS = {"fixed": (0., 0.), "cohesion": (4., 0.), "risk1": (4., 1.),
@@ -55,12 +56,12 @@ class AnchorSketchViews(Dataset):
 def arguments():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", required=True, type=Path)
-    parser.add_argument("--vocabulary", required=True, type=Path)
+    parser.add_argument("--vocabulary", type=Path)
     parser.add_argument("--clip-checkpoint", required=True)
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--cache", type=Path, default=Path(".cache"))
     parser.add_argument("--splits", nargs="+", choices=SKETCHY_SPLITS, default=SKETCHY_SPLITS)
-    parser.add_argument("--stage", choices=("references", "views", "channels", "reflection", "reflection-controls", "prepare-reflection", "prepare", "projector"), default="references")
+    parser.add_argument("--stage", choices=("references", "views", "channels", "reflection", "reflection-controls", "visual-graph", "prepare-reflection", "prepare", "projector"), default="references")
     parser.add_argument("--batch-size", type=int, default=48)
     parser.add_argument("--workers", type=int, default=4)
     parser.add_argument("--crop-batch-size", type=int, default=128)
@@ -71,6 +72,8 @@ def arguments():
     args = parser.parse_args()
     if min(args.batch_size, args.crop_batch_size, args.score_batch, args.metric_workers) <= 0 or args.workers < 0:
         parser.error("Batch sizes and metric workers must be positive, and image workers must be nonnegative")
+    if not args.vocabulary and args.stage not in ("visual-graph", "projector", "prepare-reflection"):
+        parser.error("--vocabulary is required for the selected text-based study")
     return args
 
 
@@ -191,9 +194,11 @@ def run(args):
     photo_paths, photos = merge_inputs(args.root, args.splits, "photo")
     all_q, all_p, contours = load_global_inputs(args, query_paths, photo_paths, True)
     extras = load_view_features(args, AnchorSketchViews(query_paths), 4, "sketch", "ink-scales-mirror-v1")["features"]
-    mirrors = load_reflected_views(args, query_paths) if args.stage in ("reflection", "reflection-controls") else None
-    terms = read_words(args.vocabulary)
-    sketch_words, photo_words = [v.to(device) for v in load_words(args, terms)]
+    mirrors = load_reflected_views(args, query_paths) if args.stage in ("reflection", "reflection-controls", "visual-graph") else None
+    terms = []
+    if args.stage != "visual-graph":
+        terms = read_words(args.vocabulary)
+        sketch_words, photo_words = [v.to(device) for v in load_words(args, terms)]
     if args.stage == "prepare":
         return
     transform = torch.load(projection_path, map_location=device, weights_only=True)
@@ -206,6 +211,11 @@ def run(args):
     for split in args.splits:
         q_ids, q_labels = queries[split]
         p_ids, p_labels = photos[split]
+        if args.stage == "visual-graph":
+            score_visual_graph(args, split, q_ids, q_labels, p_labels, (all_q, extras, mirrors),
+                               all_p[p_ids].to(device), contours[p_ids].to(device), transform,
+                               metadata | {"study": "visual-paired-graph"}, write_result)
+            continue
         if mirrors is not None:
             score_reflections(args, split, q_ids, q_labels, p_labels, (all_q, extras, mirrors),
                               all_p[p_ids].to(device), contours[p_ids].to(device), sketch_words, photo_words,
