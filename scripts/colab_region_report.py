@@ -13,6 +13,94 @@ from colab_region_studies import JOINT, PHASE, PHASE_REV, TU_FOLDERS, combined_l
 from colab_saliency_report import PRIOR, class_validation
 
 REPO = Path(__file__).resolve().parents[1]
+FREQUENCY = "freedom-gallery-frequency"
+
+
+def fixed_baselines(workspace):
+    from tf_sbir.benchmark import merge_inputs
+    from tf_sbir.crossdomain_inputs import runtime
+    from tf_sbir.data import SKETCHY_SPLITS, UNSEEN_CLASSES
+    from tf_sbir.encoding import load_global_inputs
+    from tf_sbir.foundation import load_words
+    from tf_sbir.manifold_benchmark import dot_rows
+    from tf_sbir.metrics import cosine_rows
+    from tf_sbir.semantic import frequency_transfer, read_words
+    from tf_sbir.transfer_benchmark import write_result
+    from tf_sbir.phase_benchmark import PROTOCOL
+
+    out = workspace / "results/region-fixed-baselines"
+    out.mkdir(exist_ok=True)
+    for ds in ("sketchy", "tuberlin"):
+        splits = SKETCHY_SPLITS if ds == "sketchy" else ("tuberlin",)
+        args = runtime(workspace, ds, batch=64, workers=2, crop_batch=192)
+        args.output = out
+        qp, qi = merge_inputs(args.root, splits, "sketch")
+        pp, pi = merge_inputs(args.root, splits, "photo")
+        q, p, _ = load_global_inputs(args, qp, pp, False)
+        vocab = read_words(args.vocabulary)
+        texts = tuple(t.cuda() for t in load_words(args, vocab))
+        for s in splits:
+            qids, ql = qi[s]
+            pids, pl = pi[s]
+            query, gallery = q[qids].cuda(), p[pids].cuda()
+            args.metric_workers = 2 if s == "sketchy_2" else 4
+            previous = (
+                workspace / "results" / ("domain-tuberlin-frozen" if s == "tuberlin" else "domain-sketchy")
+            )
+            names = [FREQUENCY]
+            if not (previous / "per-query" / (s + "-native-clip.pt")).is_file():
+                names.append("native-clip")
+            for n in names:
+                fixed = n == FREQUENCY
+                if not (out / (s + "-" + n + ".json")).is_file():
+                    order = (
+                        dot_rows(frequency_transfer(query, gallery, *texts), gallery, 192)
+                        if fixed
+                        else cosine_rows(query, gallery, 1)
+                    )
+                    meta = {
+                        "backbone": "OpenAI CLIP ViT-B/32",
+                        "checkpoint_sha256": CHECKPOINT,
+                        "gpu": torch.cuda.get_device_name(),
+                        "torch": str(torch.__version__),
+                        "revision": PHASE_REV,
+                        "study": "fixed-references",
+                        "classes": len(UNSEEN_CLASSES[s]),
+                        "external_vocabulary": len(vocab) if fixed else 0,
+                        "exploratory_unseen": False,
+                        "freeze_sha256": None,
+                    }
+                    params = (
+                        {
+                            "natural_gallery_neighbors": 19,
+                            "include_query": True,
+                            "terms_per_image": 7,
+                            "output_terms": 7,
+                            "visual_memory": "own unlabeled photo gallery",
+                            "domain_prompt_banks": 2,
+                        }
+                        if fixed
+                        else {"views": 1, "ranking": "raw cosine"}
+                    )
+                    write_result(args, s, n, order, ql, pl, meta, params)
+                row = json.loads((out / (s + "-" + n + ".json")).read_text())
+                tensor = torch.load(
+                    out / "per-query" / (s + "-" + n + ".pt"), map_location="cpu", weights_only=True
+                )
+                if (
+                    row["method"] != n
+                    or row["checkpoint_sha256"] != CHECKPOINT
+                    or row["revision"] != PHASE_REV
+                    or tuple(row[k] for k in ("queries", "gallery", "p_k", "map_k")) != PROTOCOL[s]
+                    or row["exploratory_unseen"]
+                    or row["external_vocabulary"] != (20931 if fixed else 0)
+                    or tensor.shape != (len(ql), 2)
+                    or not torch.allclose(
+                        tensor.mean(0), torch.tensor([row["mAP"], row["precision"]]), atol=5e-7, rtol=0
+                    )
+                ):
+                    raise ValueError(f"Invalid fixed non-tuned reference {s} {n}")
+    return out
 
 
 def extra_sketchy(workspace, held):
@@ -101,6 +189,7 @@ def run(workspace):
         raise ValueError("Selection hash mismatch")
     held = {n: None if v is None else (Config(**v["config"]), v["mode"]) for n, v in phase["heldout"].items()}
     extra_sketchy(workspace, held)
+    reference_dir = fixed_baselines(workspace)
     all_splits = (*SKETCHY_SPLITS, "tuberlin")
     catalog = entries()
     qroot = {
@@ -143,6 +232,8 @@ def run(workspace):
                     family += "-sketchy"
                 d = folder / family
             artifact = d / "per-query" / (s + "-" + n + ".pt")
+            if n == "native-clip" and not artifact.is_file():
+                artifact = reference_dir / "per-query" / (s + "-" + n + ".pt")
             if artifact.is_file():
                 t = torch.load(artifact, map_location="cpu", weights_only=True)
                 if t.shape != (len(labels[s]), 2) or not torch.allclose(
@@ -153,6 +244,10 @@ def run(workspace):
                 ):
                     raise ValueError(f"Historical measurements changed for {n}")
                 vals[s][n] = t
+        measured[s][FREQUENCY] = json.loads((reference_dir / (s + "-" + FREQUENCY + ".json")).read_text())
+        vals[s][FREQUENCY] = torch.load(
+            reference_dir / "per-query" / (s + "-" + FREQUENCY + ".pt"), map_location="cpu", weights_only=True
+        )
 
     def key(n):
         return tuple(sum(measured[s][n][k] for s in SKETCHY_SPLITS) / 2 for k in ("precision", "mAP"))
@@ -161,7 +256,7 @@ def run(workspace):
     image = max((sal["freeze"]["winners"]["image"], phase["winner_including_ablation"]), key=key)
     combined = max((chosen, "domain-retain0-joint", "struct-both-k320-w010"), key=key)
     controls = [n for n in held if n != top]
-    names = list(dict.fromkeys([chosen, *sal_names, top, BASE, *held, *PRIOR]))
+    names = list(dict.fromkeys([chosen, *sal_names, top, BASE, *held, *PRIOR, FREQUENCY]))
     report = {
         "winner_this_round": chosen,
         "image_winner_this_round": image,
@@ -187,7 +282,7 @@ def run(workspace):
         for b in [*controls, "native-clip", "struct-both-k320-w010", "visual-graph-k64-g1-r1.5", sal_names[0]]
     ]
     contrasts.extend(
-        (chosen, b) for b in ("native-clip", "domain-retain0-joint", "route-neighbors100-k128-q75")
+        (chosen, b) for b in ("native-clip", FREQUENCY, "domain-retain0-joint", "route-neighbors100-k128-q75")
     )
     rng = torch.Generator(device="cuda").manual_seed(571)
     for s in all_splits:
