@@ -1,0 +1,475 @@
+{
+  "family": "gallery-aspect-retrieval",
+  "active_revision": "d38cf85d560842b25222555408d1980c718c06ae",
+  "initial_freeze": "0453e12751f67c1c28845461c77653b554fe6c2e1054d28e22ef63691da6e2a4",
+  "final_freeze": "079560ae80a83157d381bb471a79f4500c6aaba87e0eaecfdec64afdfcc599c6",
+  "joint_freeze": "ff8635cd3b55f6e7b851ca8f4eefed5e876b7f62a80a0a400e4e6ba02b8a4a35",
+  "chosen": {
+    "groups": 192,
+    "naming": "votes",
+    "words": 8,
+    "distinct": 0.0,
+    "geometry": 0.0,
+    "query_temp": 0.04,
+    "image_temp": 0.1,
+    "prior": 0.0,
+    "mix": 1.0,
+    "pairing": "paired"
+  },
+  "primary": false,
+  "splits": {
+    "sketchy_1": {
+      "queries": 14179,
+      "gallery": 17100,
+      "classes": 25,
+      "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-paired",
+      "controls": {
+        "primary": {
+          "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-paired",
+          "precision": 0.8124155402183533,
+          "mAP": 0.8007975816726685
+        },
+        "no_groups": {
+          "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m0-paired",
+          "precision": 0.7660949230194092,
+          "mAP": 0.7122051119804382
+        },
+        "groups_only": {
+          "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-paired",
+          "precision": 0.8124155402183533,
+          "mAP": 0.8007975816726685
+        },
+        "pure_rgb_geometry": {
+          "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-paired",
+          "precision": 0.8124155402183533,
+          "mAP": 0.8007975816726685
+        },
+        "uniform_word_prior": {
+          "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-paired",
+          "precision": 0.8124155402183533,
+          "mAP": 0.8007975816726685
+        },
+        "uniform_group_prior": {
+          "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-paired",
+          "precision": 0.8124155402183533,
+          "mAP": 0.8007975816726685
+        },
+        "random_group_links": {
+          "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-random_groups",
+          "precision": 0.019963325932621956,
+          "mAP": 0.051944147795438766
+        },
+        "neutral_words": {
+          "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-neutral",
+          "precision": 0.7938395142555237,
+          "mAP": 0.7827968597412109
+        },
+        "rgb_only": {
+          "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-rgb",
+          "precision": 0.40231049060821533,
+          "mAP": 0.47745710611343384
+        }
+      },
+      "vs_previous": {
+        "mAP": {
+          "delta_pp": -0.7723194419834806,
+          "ci95_class": [
+            -2.811593328778368,
+            1.0711988480727086
+          ],
+          "classes_up": 13,
+          "classes": 25
+        },
+        "precision": {
+          "delta_pp": 1.0983143965499225,
+          "ci95_class": [
+            -0.45791048810290375,
+            2.597319886868162
+          ],
+          "classes_up": 19,
+          "classes": 25
+        }
+      },
+      "top1": {
+        "old_wrong": 2758,
+        "new_wrong": 2783,
+        "rescued": 357,
+        "regressed": 382,
+        "confusion_pairs": [
+          {
+            "class": "chicken",
+            "old_wrong": "parrot",
+            "old_count": 141,
+            "correct_now": 26,
+            "still_same": 105
+          },
+          {
+            "class": "rifle",
+            "old_wrong": "scissors",
+            "old_count": 115,
+            "correct_now": 23,
+            "still_same": 92
+          },
+          {
+            "class": "windmill",
+            "old_wrong": "bell",
+            "old_count": 90,
+            "correct_now": 12,
+            "still_same": 56
+          },
+          {
+            "class": "butterfly",
+            "old_wrong": "ray",
+            "old_count": 74,
+            "correct_now": 4,
+            "still_same": 13
+          },
+          {
+            "class": "windmill",
+            "old_wrong": "scissors",
+            "old_count": 72,
+            "correct_now": 8,
+            "still_same": 49
+          },
+          {
+            "class": "butterfly",
+            "old_wrong": "snail",
+            "old_count": 71,
+            "correct_now": 4,
+            "still_same": 45
+          },
+          {
+            "class": "airplane",
+            "old_wrong": "ray",
+            "old_count": 59,
+            "correct_now": 4,
+            "still_same": 32
+          },
+          {
+            "class": "snail",
+            "old_wrong": "ray",
+            "old_count": 58,
+            "correct_now": 21,
+            "still_same": 14
+          },
+          {
+            "class": "harp",
+            "old_wrong": "bell",
+            "old_count": 56,
+            "correct_now": 4,
+            "still_same": 34
+          },
+          {
+            "class": "airplane",
+            "old_wrong": "scissors",
+            "old_count": 50,
+            "correct_now": 0,
+            "still_same": 47
+          }
+        ]
+      }
+    },
+    "sketchy_2": {
+      "queries": 12694,
+      "gallery": 12552,
+      "classes": 21,
+      "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-paired",
+      "controls": {
+        "primary": {
+          "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-paired",
+          "precision": 0.7262229919433594,
+          "mAP": 0.7434757351875305
+        },
+        "no_groups": {
+          "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m0-paired",
+          "precision": 0.6834225058555603,
+          "mAP": 0.6914999485015869
+        },
+        "groups_only": {
+          "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-paired",
+          "precision": 0.7262229919433594,
+          "mAP": 0.7434757351875305
+        },
+        "pure_rgb_geometry": {
+          "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-paired",
+          "precision": 0.7262229919433594,
+          "mAP": 0.7434757351875305
+        },
+        "uniform_word_prior": {
+          "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-paired",
+          "precision": 0.7262229919433594,
+          "mAP": 0.7434757351875305
+        },
+        "uniform_group_prior": {
+          "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-paired",
+          "precision": 0.7262229919433594,
+          "mAP": 0.7434757351875305
+        },
+        "random_group_links": {
+          "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-random_groups",
+          "precision": 0.041204117238521576,
+          "mAP": 0.04742228239774704
+        },
+        "neutral_words": {
+          "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-neutral",
+          "precision": 0.6864223480224609,
+          "mAP": 0.7065826058387756
+        },
+        "rgb_only": {
+          "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-rgb",
+          "precision": 0.365175724029541,
+          "mAP": 0.35714593529701233
+        }
+      },
+      "vs_previous": {
+        "mAP": {
+          "delta_pp": 1.1855888532597014,
+          "ci95_class": [
+            -0.530284738409493,
+            2.849641029470112
+          ],
+          "classes_up": 14,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 1.0310382049601763,
+          "ci95_class": [
+            -0.974035107635243,
+            2.9717927107321023
+          ],
+          "classes_up": 15,
+          "classes": 21
+        }
+      },
+      "top1": {
+        "old_wrong": 3454,
+        "new_wrong": 3423,
+        "rescued": 537,
+        "regressed": 506,
+        "confusion_pairs": [
+          {
+            "class": "saw",
+            "old_wrong": "sword",
+            "old_count": 222,
+            "correct_now": 44,
+            "still_same": 175
+          },
+          {
+            "class": "songbird",
+            "old_wrong": "seagull",
+            "old_count": 181,
+            "correct_now": 6,
+            "still_same": 174
+          },
+          {
+            "class": "dolphin",
+            "old_wrong": "seagull",
+            "old_count": 172,
+            "correct_now": 20,
+            "still_same": 127
+          },
+          {
+            "class": "raccoon",
+            "old_wrong": "mouse",
+            "old_count": 160,
+            "correct_now": 68,
+            "still_same": 80
+          },
+          {
+            "class": "door",
+            "old_wrong": "window",
+            "old_count": 143,
+            "correct_now": 36,
+            "still_same": 101
+          },
+          {
+            "class": "windmill",
+            "old_wrong": "sword",
+            "old_count": 137,
+            "correct_now": 5,
+            "still_same": 100
+          },
+          {
+            "class": "giraffe",
+            "old_wrong": "cow",
+            "old_count": 115,
+            "correct_now": 39,
+            "still_same": 71
+          },
+          {
+            "class": "rhinoceros",
+            "old_wrong": "cow",
+            "old_count": 104,
+            "correct_now": 0,
+            "still_same": 99
+          },
+          {
+            "class": "helicopter",
+            "old_wrong": "scissors",
+            "old_count": 86,
+            "correct_now": 1,
+            "still_same": 56
+          },
+          {
+            "class": "raccoon",
+            "old_wrong": "rhinoceros",
+            "old_count": 83,
+            "correct_now": 10,
+            "still_same": 33
+          }
+        ]
+      }
+    },
+    "tuberlin": {
+      "queries": 2130,
+      "gallery": 27262,
+      "classes": 30,
+      "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-paired",
+      "controls": {
+        "primary": {
+          "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-paired",
+          "precision": 0.7962113618850708,
+          "mAP": 0.7614520192146301
+        },
+        "no_groups": {
+          "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m0-paired",
+          "precision": 0.7716948390007019,
+          "mAP": 0.6936522722244263
+        },
+        "groups_only": {
+          "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-paired",
+          "precision": 0.7962113618850708,
+          "mAP": 0.7614520192146301
+        },
+        "pure_rgb_geometry": {
+          "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-paired",
+          "precision": 0.7962113618850708,
+          "mAP": 0.7614520192146301
+        },
+        "uniform_word_prior": {
+          "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-paired",
+          "precision": 0.7962113618850708,
+          "mAP": 0.7614520192146301
+        },
+        "uniform_group_prior": {
+          "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-paired",
+          "precision": 0.7962113618850708,
+          "mAP": 0.7614520192146301
+        },
+        "random_group_links": {
+          "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-random_groups",
+          "precision": 0.010591549798846245,
+          "mAP": 0.04414505511522293
+        },
+        "neutral_words": {
+          "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-neutral",
+          "precision": 0.7919625043869019,
+          "mAP": 0.7652132511138916
+        },
+        "rgb_only": {
+          "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-rgb",
+          "precision": 0.47921594977378845,
+          "mAP": 0.47992849349975586
+        }
+      },
+      "vs_previous": {
+        "mAP": {
+          "delta_pp": -0.8179704935679064,
+          "ci95_class": [
+            -3.3103328284124296,
+            1.5937917463640767
+          ],
+          "classes_up": 15,
+          "classes": 30
+        },
+        "precision": {
+          "delta_pp": -0.9924883112101488,
+          "ci95_class": [
+            -4.109550375527113,
+            1.342941373212497
+          ],
+          "classes_up": 18,
+          "classes": 30
+        }
+      },
+      "top1": {
+        "old_wrong": 392,
+        "new_wrong": 439,
+        "rescued": 76,
+        "regressed": 123,
+        "confusion_pairs": [
+          {
+            "class": "cup",
+            "old_wrong": "mug",
+            "old_count": 33,
+            "correct_now": 33,
+            "still_same": 0
+          },
+          {
+            "class": "mug",
+            "old_wrong": "cup",
+            "old_count": 23,
+            "correct_now": 0,
+            "still_same": 23
+          },
+          {
+            "class": "hot air balloon",
+            "old_wrong": "floor lamp",
+            "old_count": 22,
+            "correct_now": 0,
+            "still_same": 21
+          },
+          {
+            "class": "wrist-watch",
+            "old_wrong": "hammer",
+            "old_count": 21,
+            "correct_now": 0,
+            "still_same": 21
+          },
+          {
+            "class": "butterfly",
+            "old_wrong": "mosquito",
+            "old_count": 19,
+            "correct_now": 1,
+            "still_same": 16
+          },
+          {
+            "class": "truck",
+            "old_wrong": "suv",
+            "old_count": 14,
+            "correct_now": 3,
+            "still_same": 11
+          },
+          {
+            "class": "baseball bat",
+            "old_wrong": "hammer",
+            "old_count": 10,
+            "correct_now": 0,
+            "still_same": 10
+          },
+          {
+            "class": "mermaid",
+            "old_wrong": "pear",
+            "old_count": 8,
+            "correct_now": 1,
+            "still_same": 6
+          },
+          {
+            "class": "suv",
+            "old_wrong": "truck",
+            "old_count": 8,
+            "correct_now": 2,
+            "still_same": 6
+          },
+          {
+            "class": "bus",
+            "old_wrong": "suv",
+            "old_count": 8,
+            "correct_now": 1,
+            "still_same": 6
+          }
+        ]
+      }
+    }
+  }
+}
