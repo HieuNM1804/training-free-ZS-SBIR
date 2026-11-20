@@ -1,5 +1,11 @@
 # Training-free CLIP và VLM cho categorical ZS-SBIR
 
+## Dùng chính gallery không nhãn để ước lượng cách xếp hạng phù hợp cho một sketch
+
+Hai cấu hình có sẵn gồm bỏ phiếu thị giác và từ riêng với 192 láng giềng, và gộp theo Jaccard với 320 láng giềng. Chia ngẫu nhiên các cặp contour–RGB của gallery thành bốn phần. Lần lượt dùng hai contour thật của mỗi ảnh ở phần được giữ làm truy vấn thay thế, xây hệ số chuyển miền chỉ bằng ba phần còn lại và tìm kiếm trên toàn gallery RGB. Một cấu hình được đánh giá qua tỉ lệ khôi phục 100 hoặc 200 láng giềng RGB của ảnh tương ứng, hoặc qua hạng của chính ảnh đó. Ba mục tiêu đều tính được từ các cặp không nhãn.
+
+Với sketch thật, lấy trung bình chênh lệch chất lượng của hai cấu hình quanh các anchor gần sketch. Quy tắc quyết định mặc định chọn cấu hình có chất lượng ước lượng cao hơn. Các phân vị của gallery cho phép kiểm tra độ nhạy với ngưỡng, và phép xáo kết nối giữa vị trí anchor và chất lượng ước lượng kiểm tra tác dụng của tính cục bộ. Chốt toàn bộ quyết định trước khi đọc điểm của các sketch thật. Hai đầu mút được chấm trên toàn gallery. Một cấu hình định tuyến còn được chấm trực tiếp lại trên toàn bộ sketch để đối chiếu với phép chọn hàng metric của hai đầu mút. Đây là phần điều chỉnh của cách gộp phụ thuộc truy vấn và cách truyền thông tin qua láng giềng. [Query Specific Fusion, ECCV 2012](https://link.springer.com/chapter/10.1007/978-3-642-33709-3_47) · [Neighbor Embedding, CVPR 2004](https://cse.hkust.edu.hk/~dyyeung/paper/pdf/yeung.cvpr2004.pdf)
+
 ## Chọn bán kính đồ thị theo độ bảo toàn láng giềng giữa hai miền
 
 Với mỗi ảnh gallery, đo Jaccard giữa tập láng giềng của phiên bản contour và tập láng giềng của phiên bản RGB cho năm giá trị k. Loại chính ảnh đó trước khi tìm láng giềng và đổi mỗi độ chồng sang phân vị trong gallery cùng k, dùng trung hạng cho các điểm bằng nhau. Mỗi sketch đọc các phân vị ở 32 anchor nguồn gần nhất của khung gốc và crop bao nét vẽ. Điểm theo bán kính dùng để chọn một danh sách hoặc tính trọng số khi gộp năm danh sách. Các đối chứng giữ cố định một bán kính, gộp đều và hoán đổi hồ sơ độ tin cậy giữa các ảnh. Tỉ lệ gộp là tham số thăm dò trên unseen. Các hệ số được suy ra từ các cặp tham chiếu của gallery nên không cần sketch khác lúc suy luận.
