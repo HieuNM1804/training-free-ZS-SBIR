@@ -1,0 +1,503 @@
+{
+  "family": "gallery-vocabulary-cover",
+  "active_revision": "40211aa6a6010ad91a722843fb8e6b08527d4deb",
+  "initial_freeze": "b00443933b11b9d92be2f9c2945fe53c7632b14db796ce06f7c86fed8fdc890c",
+  "final_freeze": "0bd9dee64652eeac0c473309c8d3ee8b12a293ff7a6d1fb8d5df0729aa1f3348",
+  "joint_freeze": "ff8635cd3b55f6e7b851ca8f4eefed5e876b7f62a80a0a400e4e6ba02b8a4a35",
+  "chosen": {
+    "words": 64,
+    "selection": "cover",
+    "evidence_temp": 0.025,
+    "direct": 0.0,
+    "support": 256,
+    "expansion": 0.65,
+    "neighbors": 0,
+    "pairing": "paired"
+  },
+  "primary": true,
+  "splits": {
+    "sketchy_1": {
+      "queries": 14179,
+      "gallery": 17100,
+      "classes": 25,
+      "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-paired",
+      "controls": {
+        "primary": {
+          "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-paired",
+          "precision": 0.8253043293952942,
+          "mAP": 0.8153945803642273
+        },
+        "mass_only": {
+          "method": "vocab64-frequency-t0.025-d0-n256-e0.65-k0-paired",
+          "precision": 0.7428810596466064,
+          "mAP": 0.7505714893341064
+        },
+        "coverage_only": {
+          "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-paired",
+          "precision": 0.8253043293952942,
+          "mAP": 0.8153945803642273
+        },
+        "uniform_candidates": {
+          "method": "vocab64-random-t0.025-d0-n256-e0.65-k0-paired",
+          "precision": 0.30254247784614563,
+          "mAP": 0.324163019657135
+        },
+        "unrestricted": {
+          "method": "vocab64-cover-t0.025-d1-n256-e0.65-k0-paired",
+          "precision": 0.8071303367614746,
+          "mAP": 0.7855547070503235
+        },
+        "restricted_only": {
+          "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-paired",
+          "precision": 0.8253043293952942,
+          "mAP": 0.8153945803642273
+        },
+        "no_feedback": {
+          "method": "vocab64-cover-t0.025-d0-n256-e0-k0-paired",
+          "precision": 0.807776927947998,
+          "mAP": 0.783649742603302
+        },
+        "no_gallery_averaging": {
+          "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-paired",
+          "precision": 0.8253043293952942,
+          "mAP": 0.8153945803642273
+        },
+        "neutral": {
+          "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-neutral",
+          "precision": 0.812550961971283,
+          "mAP": 0.8031609654426575
+        },
+        "shuffled_words": {
+          "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-shuffled",
+          "precision": 0.0393652617931366,
+          "mAP": 0.07773158699274063
+        },
+        "rgb_only": {
+          "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-rgb",
+          "precision": 0.4495190382003784,
+          "mAP": 0.4171467125415802
+        }
+      },
+      "vs_previous": {
+        "mAP": {
+          "delta_pp": 0.6873692415803891,
+          "ci95_class": [
+            -1.3928693612412801,
+            2.8502073514255293
+          ],
+          "classes_up": 13,
+          "classes": 25
+        },
+        "precision": {
+          "delta_pp": 2.387192317001746,
+          "ci95_class": [
+            0.6818921194156735,
+            4.322405203621186
+          ],
+          "classes_up": 17,
+          "classes": 25
+        }
+      },
+      "top1": {
+        "old_wrong": 2758,
+        "new_wrong": 2497,
+        "rescued": 544,
+        "regressed": 283,
+        "confusion_pairs": [
+          {
+            "class": "chicken",
+            "old_wrong": "parrot",
+            "old_count": 141,
+            "correct_now": 30,
+            "still_same": 102
+          },
+          {
+            "class": "rifle",
+            "old_wrong": "scissors",
+            "old_count": 115,
+            "correct_now": 47,
+            "still_same": 58
+          },
+          {
+            "class": "windmill",
+            "old_wrong": "bell",
+            "old_count": 90,
+            "correct_now": 23,
+            "still_same": 53
+          },
+          {
+            "class": "butterfly",
+            "old_wrong": "ray",
+            "old_count": 74,
+            "correct_now": 0,
+            "still_same": 67
+          },
+          {
+            "class": "windmill",
+            "old_wrong": "scissors",
+            "old_count": 72,
+            "correct_now": 30,
+            "still_same": 19
+          },
+          {
+            "class": "butterfly",
+            "old_wrong": "snail",
+            "old_count": 71,
+            "correct_now": 4,
+            "still_same": 23
+          },
+          {
+            "class": "airplane",
+            "old_wrong": "ray",
+            "old_count": 59,
+            "correct_now": 6,
+            "still_same": 48
+          },
+          {
+            "class": "snail",
+            "old_wrong": "ray",
+            "old_count": 58,
+            "correct_now": 9,
+            "still_same": 43
+          },
+          {
+            "class": "harp",
+            "old_wrong": "bell",
+            "old_count": 56,
+            "correct_now": 9,
+            "still_same": 37
+          },
+          {
+            "class": "airplane",
+            "old_wrong": "scissors",
+            "old_count": 50,
+            "correct_now": 9,
+            "still_same": 21
+          }
+        ]
+      }
+    },
+    "sketchy_2": {
+      "queries": 12694,
+      "gallery": 12552,
+      "classes": 21,
+      "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-paired",
+      "controls": {
+        "primary": {
+          "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-paired",
+          "precision": 0.7387632131576538,
+          "mAP": 0.7497791051864624
+        },
+        "mass_only": {
+          "method": "vocab64-frequency-t0.025-d0-n256-e0.65-k0-paired",
+          "precision": 0.6671695113182068,
+          "mAP": 0.679486870765686
+        },
+        "coverage_only": {
+          "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-paired",
+          "precision": 0.7387632131576538,
+          "mAP": 0.7497791051864624
+        },
+        "uniform_candidates": {
+          "method": "vocab64-random-t0.025-d0-n256-e0.65-k0-paired",
+          "precision": 0.21947652101516724,
+          "mAP": 0.2219659686088562
+        },
+        "unrestricted": {
+          "method": "vocab64-cover-t0.025-d1-n256-e0.65-k0-paired",
+          "precision": 0.7167173027992249,
+          "mAP": 0.7307355999946594
+        },
+        "restricted_only": {
+          "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-paired",
+          "precision": 0.7387632131576538,
+          "mAP": 0.7497791051864624
+        },
+        "no_feedback": {
+          "method": "vocab64-cover-t0.025-d0-n256-e0-k0-paired",
+          "precision": 0.7286958694458008,
+          "mAP": 0.7396904826164246
+        },
+        "no_gallery_averaging": {
+          "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-paired",
+          "precision": 0.7387632131576538,
+          "mAP": 0.7497791051864624
+        },
+        "neutral": {
+          "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-neutral",
+          "precision": 0.7084043025970459,
+          "mAP": 0.7174806594848633
+        },
+        "shuffled_words": {
+          "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-shuffled",
+          "precision": 0.013080982491374016,
+          "mAP": 0.013971807435154915
+        },
+        "rgb_only": {
+          "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-rgb",
+          "precision": 0.38209980726242065,
+          "mAP": 0.3965655267238617
+        }
+      },
+      "vs_previous": {
+        "mAP": {
+          "delta_pp": 1.8159180867597366,
+          "ci95_class": [
+            -0.6301776788212866,
+            4.279396060449164
+          ],
+          "classes_up": 12,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 2.2850558388806856,
+          "ci95_class": [
+            -0.28009888711694214,
+            4.846525175079223
+          ],
+          "classes_up": 13,
+          "classes": 21
+        }
+      },
+      "top1": {
+        "old_wrong": 3454,
+        "new_wrong": 3181,
+        "rescued": 658,
+        "regressed": 385,
+        "confusion_pairs": [
+          {
+            "class": "saw",
+            "old_wrong": "sword",
+            "old_count": 222,
+            "correct_now": 26,
+            "still_same": 169
+          },
+          {
+            "class": "songbird",
+            "old_wrong": "seagull",
+            "old_count": 181,
+            "correct_now": 42,
+            "still_same": 138
+          },
+          {
+            "class": "dolphin",
+            "old_wrong": "seagull",
+            "old_count": 172,
+            "correct_now": 62,
+            "still_same": 84
+          },
+          {
+            "class": "raccoon",
+            "old_wrong": "mouse",
+            "old_count": 160,
+            "correct_now": 37,
+            "still_same": 120
+          },
+          {
+            "class": "door",
+            "old_wrong": "window",
+            "old_count": 143,
+            "correct_now": 20,
+            "still_same": 122
+          },
+          {
+            "class": "windmill",
+            "old_wrong": "sword",
+            "old_count": 137,
+            "correct_now": 36,
+            "still_same": 79
+          },
+          {
+            "class": "giraffe",
+            "old_wrong": "cow",
+            "old_count": 115,
+            "correct_now": 17,
+            "still_same": 97
+          },
+          {
+            "class": "rhinoceros",
+            "old_wrong": "cow",
+            "old_count": 104,
+            "correct_now": 7,
+            "still_same": 97
+          },
+          {
+            "class": "helicopter",
+            "old_wrong": "scissors",
+            "old_count": 86,
+            "correct_now": 16,
+            "still_same": 41
+          },
+          {
+            "class": "raccoon",
+            "old_wrong": "rhinoceros",
+            "old_count": 83,
+            "correct_now": 1,
+            "still_same": 36
+          }
+        ]
+      }
+    },
+    "tuberlin": {
+      "queries": 2130,
+      "gallery": 27262,
+      "classes": 30,
+      "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-paired",
+      "controls": {
+        "primary": {
+          "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-paired",
+          "precision": 0.7300939559936523,
+          "mAP": 0.7007650136947632
+        },
+        "mass_only": {
+          "method": "vocab64-frequency-t0.025-d0-n256-e0.65-k0-paired",
+          "precision": 0.6282300353050232,
+          "mAP": 0.61019366979599
+        },
+        "coverage_only": {
+          "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-paired",
+          "precision": 0.7300939559936523,
+          "mAP": 0.7007650136947632
+        },
+        "uniform_candidates": {
+          "method": "vocab64-random-t0.025-d0-n256-e0.65-k0-paired",
+          "precision": 0.4003051519393921,
+          "mAP": 0.3905993700027466
+        },
+        "unrestricted": {
+          "method": "vocab64-cover-t0.025-d1-n256-e0.65-k0-paired",
+          "precision": 0.7963709831237793,
+          "mAP": 0.7449971437454224
+        },
+        "restricted_only": {
+          "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-paired",
+          "precision": 0.7300939559936523,
+          "mAP": 0.7007650136947632
+        },
+        "no_feedback": {
+          "method": "vocab64-cover-t0.025-d0-n256-e0-k0-paired",
+          "precision": 0.732122004032135,
+          "mAP": 0.7055513262748718
+        },
+        "no_gallery_averaging": {
+          "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-paired",
+          "precision": 0.7300939559936523,
+          "mAP": 0.7007650136947632
+        },
+        "neutral": {
+          "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-neutral",
+          "precision": 0.7252957820892334,
+          "mAP": 0.7022099494934082
+        },
+        "shuffled_words": {
+          "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-shuffled",
+          "precision": 0.022389672696590424,
+          "mAP": 0.05608629807829857
+        },
+        "rgb_only": {
+          "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-rgb",
+          "precision": 0.5237511396408081,
+          "mAP": 0.4440128207206726
+        }
+      },
+      "vs_previous": {
+        "mAP": {
+          "delta_pp": -6.886672227394203,
+          "ci95_class": [
+            -13.483790400588129,
+            -1.477967893148611
+          ],
+          "classes_up": 10,
+          "classes": 30
+        },
+        "precision": {
+          "delta_pp": -7.60422537304426,
+          "ci95_class": [
+            -15.788502327320655,
+            -1.0647749004850264
+          ],
+          "classes_up": 14,
+          "classes": 30
+        }
+      },
+      "top1": {
+        "old_wrong": 392,
+        "new_wrong": 568,
+        "rescued": 81,
+        "regressed": 257,
+        "confusion_pairs": [
+          {
+            "class": "cup",
+            "old_wrong": "mug",
+            "old_count": 33,
+            "correct_now": 30,
+            "still_same": 0
+          },
+          {
+            "class": "mug",
+            "old_wrong": "cup",
+            "old_count": 23,
+            "correct_now": 0,
+            "still_same": 20
+          },
+          {
+            "class": "hot air balloon",
+            "old_wrong": "floor lamp",
+            "old_count": 22,
+            "correct_now": 3,
+            "still_same": 19
+          },
+          {
+            "class": "wrist-watch",
+            "old_wrong": "hammer",
+            "old_count": 21,
+            "correct_now": 6,
+            "still_same": 12
+          },
+          {
+            "class": "butterfly",
+            "old_wrong": "mosquito",
+            "old_count": 19,
+            "correct_now": 0,
+            "still_same": 16
+          },
+          {
+            "class": "truck",
+            "old_wrong": "suv",
+            "old_count": 14,
+            "correct_now": 6,
+            "still_same": 8
+          },
+          {
+            "class": "baseball bat",
+            "old_wrong": "hammer",
+            "old_count": 10,
+            "correct_now": 1,
+            "still_same": 9
+          },
+          {
+            "class": "mermaid",
+            "old_wrong": "pear",
+            "old_count": 8,
+            "correct_now": 0,
+            "still_same": 8
+          },
+          {
+            "class": "suv",
+            "old_wrong": "truck",
+            "old_count": 8,
+            "correct_now": 3,
+            "still_same": 5
+          },
+          {
+            "class": "bus",
+            "old_wrong": "suv",
+            "old_count": 8,
+            "correct_now": 0,
+            "still_same": 4
+          }
+        ]
+      }
+    }
+  }
+}

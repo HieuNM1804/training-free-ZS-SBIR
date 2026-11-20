@@ -1,0 +1,158 @@
+{
+  "utc": "2026-11-20T14:38:02.469627+00:00",
+  "revision": "40211aa6a6010ad91a722843fb8e6b08527d4deb",
+  "winner": {
+    "words": 64,
+    "selection": "cover",
+    "evidence_temp": 0.025,
+    "direct": 0.0,
+    "support": 96,
+    "expansion": 0.65,
+    "neighbors": 0,
+    "pairing": "paired"
+  },
+  "method": "vocab64-cover-t0.025-d0-n96-e0.65-k0-paired",
+  "controls": {
+    "primary": {
+      "words": 64,
+      "selection": "cover",
+      "evidence_temp": 0.025,
+      "direct": 0.0,
+      "support": 96,
+      "expansion": 0.65,
+      "neighbors": 0,
+      "pairing": "paired"
+    },
+    "mass_only": {
+      "words": 64,
+      "selection": "frequency",
+      "evidence_temp": 0.025,
+      "direct": 0.0,
+      "support": 96,
+      "expansion": 0.65,
+      "neighbors": 0,
+      "pairing": "paired"
+    },
+    "coverage_only": {
+      "words": 64,
+      "selection": "cover",
+      "evidence_temp": 0.025,
+      "direct": 0.0,
+      "support": 96,
+      "expansion": 0.65,
+      "neighbors": 0,
+      "pairing": "paired"
+    },
+    "uniform_candidates": {
+      "words": 64,
+      "selection": "random",
+      "evidence_temp": 0.025,
+      "direct": 0.0,
+      "support": 96,
+      "expansion": 0.65,
+      "neighbors": 0,
+      "pairing": "paired"
+    },
+    "unrestricted": {
+      "words": 64,
+      "selection": "cover",
+      "evidence_temp": 0.025,
+      "direct": 1.0,
+      "support": 96,
+      "expansion": 0.65,
+      "neighbors": 0,
+      "pairing": "paired"
+    },
+    "restricted_only": {
+      "words": 64,
+      "selection": "cover",
+      "evidence_temp": 0.025,
+      "direct": 0.0,
+      "support": 96,
+      "expansion": 0.65,
+      "neighbors": 0,
+      "pairing": "paired"
+    },
+    "no_feedback": {
+      "words": 64,
+      "selection": "cover",
+      "evidence_temp": 0.025,
+      "direct": 0.0,
+      "support": 96,
+      "expansion": 0.0,
+      "neighbors": 0,
+      "pairing": "paired"
+    },
+    "no_gallery_averaging": {
+      "words": 64,
+      "selection": "cover",
+      "evidence_temp": 0.025,
+      "direct": 0.0,
+      "support": 96,
+      "expansion": 0.65,
+      "neighbors": 0,
+      "pairing": "paired"
+    },
+    "neutral": {
+      "words": 64,
+      "selection": "cover",
+      "evidence_temp": 0.025,
+      "direct": 0.0,
+      "support": 96,
+      "expansion": 0.65,
+      "neighbors": 0,
+      "pairing": "neutral"
+    },
+    "shuffled_words": {
+      "words": 64,
+      "selection": "cover",
+      "evidence_temp": 0.025,
+      "direct": 0.0,
+      "support": 96,
+      "expansion": 0.65,
+      "neighbors": 0,
+      "pairing": "shuffled"
+    },
+    "rgb_only": {
+      "words": 64,
+      "selection": "cover",
+      "evidence_temp": 0.025,
+      "direct": 0.0,
+      "support": 96,
+      "expansion": 0.65,
+      "neighbors": 0,
+      "pairing": "rgb"
+    }
+  },
+  "rule": "equal mean Sketchy precision, then mAP",
+  "sketchy_rows": {
+    "sketchy_1-vocab64-cover-t0.025-d0-n96-e0.65-k0-shuffled.json": "8b2158ae43c5f95ff3c9697b57cdf1844585b0df90a852bdec4aba70fb8b9399",
+    "sketchy_1-vocab48-cover-t0.02-d0-n96-e0.65-k0-paired.json": "27afbb945f367f215ee8f501e92a50f639837f41617f3133c567502f47dff472",
+    "sketchy_1-vocab64-cover-t0.025-d1-n96-e0.65-k0-paired.json": "611f2c034cdfff41720a3fd03f394e095f4cd355572795c63b331b94c956dfb9",
+    "sketchy_1-vocab48-cover-t0.02-d0-n160-e0.65-k0-paired.json": "415f9c1bcfa89e775ebcc459065bf4666de55d6ec358412b9b2a37b2a56afaaa",
+    "sketchy_1-vocab64-cover-t0.025-d0-n96-e0.65-k0-rgb.json": "823d357e6ef0db7b5af33278f1e7181719533e9c261863eb49113430ab608912",
+    "sketchy_1-vocab48-cover-t0.02-d0.2-n96-e0.4-k0-paired.json": "aa72c5cc0046272c6f9b850f903dff78cc857b4047df10d24902d7454b6d7ae6",
+    "sketchy_1-vocab64-cover-t0.025-d0-n96-e0-k0-paired.json": "c13d53ffd3c3cc5ffa00476f03345f9d9a1d9cac66444f5b8f852fdeec50a761",
+    "sketchy_1-vocab64-frequency-t0.025-d0-n96-e0.65-k0-paired.json": "d5a56de6fccdec7db45dec4e99ddf9e24e53b6792b5ab6b742d445ea0c74b604",
+    "sketchy_1-vocab64-random-t0.025-d0-n96-e0.65-k0-paired.json": "5b10cc3fc9a29c85a942ef7f96ca7a3e4bf2de69dcc9bdedce9bbbd0ee21a13a",
+    "sketchy_1-vocab64-cover-t0.025-d0-n96-e0.65-k0-paired.json": "73d0771a4a54e7ed9c589fecce0105f982abbf69025bcb0f010495fed045c07b",
+    "sketchy_1-vocab48-cover-t0.02-d0-n256-e0.65-k0-paired.json": "70b165bed52a6d6f270cddfdfe775db874908bd56e0fea9fbd8387c7602a297e",
+    "sketchy_1-vocab64-cover-t0.025-d0-n96-e0.65-k0-neutral.json": "1ce8c8174adcad1f39e1dc795ec3a0f2fac9a5a4b6d547c760a498b97c2c42c1",
+    "sketchy_1-vocab48-cover-t0.02-d0.2-n96-e0.7-k0-paired.json": "ce099cc98b4ee3ae492231bf0e69d3e5d395a37a60d0e9a669247e24e3aee5d7",
+    "sketchy_2-vocab64-cover-t0.025-d0-n96-e0.65-k0-shuffled.json": "fd24e1046d525d32a9a704a316346daf8031ba9663d4eab0d890490db845b5cc",
+    "sketchy_2-vocab48-cover-t0.02-d0-n96-e0.65-k0-paired.json": "63b624fe8797847d4e84d663e26872754e855bfb7ed3ba38a0fad7bc9303aca2",
+    "sketchy_2-vocab64-cover-t0.025-d1-n96-e0.65-k0-paired.json": "49336bba125e1248ef2ec939fb9655aeff7b9745dfe17eeb5852f82bb145025b",
+    "sketchy_2-vocab48-cover-t0.02-d0-n160-e0.65-k0-paired.json": "dded0176f7ea444b9406e07dc4f4528bd2ff42324a951ef2095e3b38df7452de",
+    "sketchy_2-vocab64-cover-t0.025-d0-n96-e0.65-k0-rgb.json": "17a45742b3238403afa8cc9f5e671417f7b902772031cd7b0fd60d48a6ce25e4",
+    "sketchy_2-vocab48-cover-t0.02-d0.2-n96-e0.4-k0-paired.json": "f0a5591b68a55de96883e695698f602ce250297f32fa99c48dafc83f0d146202",
+    "sketchy_2-vocab64-cover-t0.025-d0-n96-e0-k0-paired.json": "22682d11ed6a1418507fc54b3391c2d5536641b2fcad32caad925a5deacf838b",
+    "sketchy_2-vocab64-frequency-t0.025-d0-n96-e0.65-k0-paired.json": "86d8293eacdb93f09d2a3d2358e41d4a255fb60d0a5400a9f8b60868ebad9165",
+    "sketchy_2-vocab64-random-t0.025-d0-n96-e0.65-k0-paired.json": "29986fb3a2b37ec0dbf9bb8b4ea34760f59ca40646d76d5f8b31bc30a2c1b7b3",
+    "sketchy_2-vocab64-cover-t0.025-d0-n96-e0.65-k0-paired.json": "d008baf13c2f3ddd80f76e39abeb6141a996302cae274f351143da81b01de935",
+    "sketchy_2-vocab48-cover-t0.02-d0-n256-e0.65-k0-paired.json": "6c2508d741debad4055939ac5a4d6c734b77f94801abd517ea81a662543e8aa4",
+    "sketchy_2-vocab64-cover-t0.025-d0-n96-e0.65-k0-neutral.json": "4f6240378d50570ac4c969c292911232d141919734a3ef0b0a8135783a1c1a67",
+    "sketchy_2-vocab48-cover-t0.02-d0.2-n96-e0.7-k0-paired.json": "d6306ceadfb0d7189adc17bec764c2aa73c2e283cff63588bee049c4b96b7280"
+  },
+  "tu_score_count": 0,
+  "freeze_sha256": "b00443933b11b9d92be2f9c2945fe53c7632b14db796ce06f7c86fed8fdc890c"
+}
