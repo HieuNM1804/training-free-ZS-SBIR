@@ -25,14 +25,17 @@ def by_precision(rows, prefix="mean"):
 
 
 @torch.inference_mode()
-def report(workspace, include_scale=False):
+def report(workspace, include_scale=False, include_refinement=False):
     torch.set_num_threads(1)
     root = Path(json.loads((workspace / "ready.json").read_text())["root"])
     results = workspace / "results"
     studies = STUDIES.copy()
-    if include_scale:
+    if include_scale or include_refinement:
         studies["paired-scale"] = (22, 20931, "c2036a38218886e17bc6a49ffd69405f017fa695")
-    output = results / ("combined-report" if include_scale else "precision-report")
+    if include_refinement:
+        studies["scale-refine"] = (24, 20931, "b01ad6b99926e7ce51b040566c8714806b83fbd5")
+    folder = "full-report" if include_refinement else ("combined-report" if include_scale else "precision-report")
+    output = results / folder
     output.mkdir(exist_ok=True)
     values = {s: {} for s in SKETCHY_SPLITS}
     summary = {"selection": "Exploratory unseen; equal mean split precision, then equal mean split mAP.",
@@ -98,7 +101,7 @@ def report(workspace, include_scale=False):
                        (VISUAL, "visual-graph-shuffled-errors"),
                        ("balance-index0-graph2-text35", REFERENCE), ("balance-index2-graph0-text35", REFERENCE),
                        ("balance-index0-graph0-text35", REFERENCE)]
-        if include_scale:
+        if "paired-scale" in studies:
             scale = summary["families"]["paired-scale"]
             for strategy, parent in (("text35", REFERENCE), ("sharp", SHARP)):
                 stem = "scale-" + strategy + "-"
@@ -109,7 +112,17 @@ def report(workspace, include_scale=False):
                 for name in (scale["common"]["method"], scale["per_split"][split]["method"]):
                     if name.startswith(stem):
                         comparisons.extend([(name, stem + "k192"), (name, best_k), (name, stem + "uniform")])
-        pairs = list(dict.fromkeys((a, b) for a, b in comparisons if a != b))
+        if include_refinement:
+            refine = summary["families"]["scale-refine"]
+            for method in (refine["common"]["method"], refine["per_split"][split]["method"]):
+                prefix = method.split("-mix", 1)[0]
+                comparisons.extend([(method, prefix + "-mix0-s32"), (method, prefix + "-mix4-s32"),
+                                    (method, "refine-k192-" + method.split("-", 2)[2]),
+                                    (method, summary["families"]["paired-scale"]["common"]["method"])])
+            for k in (192, 320):
+                comparisons.extend([(f"refine-k{k}-mix0-s32", f"scale-text35-k{k}"),
+                                    (f"refine-k{k}-mix4-s32", f"scale-sharp-k{k}")])
+        pairs = list(dict.fromkeys((a, b) for a, b in comparisons if a != b and a in values[split] and b in values[split]))
         summary["comparisons"][split] = intervals(values[split], labels, pairs, rng)
         difference = values[split][vocab] - values[split][REFERENCE]
         summary["class_changes_vs_equal_gallery_weights"][split] = {
@@ -129,5 +142,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--workspace", type=Path, default=Path("/content/sbir"))
     parser.add_argument("--include-scale", action="store_true")
+    parser.add_argument("--include-refinement", action="store_true")
     args = parser.parse_args()
-    report(args.workspace, args.include_scale)
+    report(args.workspace, args.include_scale, args.include_refinement)
