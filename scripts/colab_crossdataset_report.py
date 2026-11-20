@@ -45,6 +45,51 @@ def normalize_name(name):
     return " ".join(name.lower().replace("_", " ").replace("-", " ").split())
 
 
+def write_tu_classes(dest, root, query_labels, names, per_query):
+    classes = UNSEEN_CLASSES[TU]
+    _, gallery_labels = collect_paths(root, classes, "photo")
+    q_counts, p_counts = (torch.bincount(x, minlength=len(classes)) for x in (query_labels, gallery_labels))
+    if (
+        len(set(classes)) != 30
+        or len(q_counts) != 30
+        or len(p_counts) != 30
+        or min(q_counts.min().item(), p_counts.min().item()) < 1
+        or (int(q_counts.sum()), int(p_counts.sum())) != PROTOCOL[TU][:2]
+    ):
+        raise ValueError("Every official TU-Berlin class must contribute queries and gallery images")
+    ordered = tuple(dict.fromkeys(names))
+    with (dest / "tuberlin-per-class.csv").open("w", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow(
+            (
+                "class_index",
+                "class_name",
+                "sketches",
+                "photos_in_class",
+                "full_gallery",
+                "method",
+                "precision_at_100",
+                "map_all",
+            )
+        )
+        for i, category in enumerate(classes):
+            mask = query_labels.eq(i)
+            for name in ordered:
+                ap, precision = per_query[name][mask].mean(0).tolist()
+                writer.writerow(
+                    (i, category, int(q_counts[i]), int(p_counts[i]), len(gallery_labels), name, precision, ap)
+                )
+    return {
+        "classes_with_queries": int(q_counts.gt(0).sum()),
+        "classes_with_photos": int(p_counts.gt(0).sum()),
+        "queries": len(query_labels),
+        "full_gallery_for_every_query": len(gallery_labels),
+        "methods": len(ordered),
+        "per_class_rows": len(ordered) * len(classes),
+        "table": "tuberlin-per-class.csv",
+    }
+
+
 @torch.inference_mode()
 def run(workspace):
     if not torch.cuda.is_available() or not Path("/content").is_dir():
@@ -204,6 +249,7 @@ def run(workspace):
         }
     dest = folder / "sketchy-tu-report"
     dest.mkdir(exist_ok=True)
+    report["tuberlin_coverage"] = write_tu_classes(dest, roots[TU], labels[TU], (primary, *names), details[TU])
     (dest / "summary.json").write_text(json.dumps(report, indent=2) + "\n")
     keys = (
         "split",
