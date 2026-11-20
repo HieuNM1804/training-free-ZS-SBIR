@@ -72,10 +72,11 @@ class Kernel:
 
 
 class Index:
-    def __init__(self, data):
+    def __init__(self, data, *, rgb_only=False):
         self.d = data
-        semantic = F.normalize(data.a @ data.target, dim=1)
-        self.features = (data.p, semantic)
+        self.features = (data.p,)
+        if not rgb_only:
+            self.features += (F.normalize(data.a @ data.target, dim=1),)
         self.neighbors = [nearest_gallery(x, 256) for x in self.features]
         self.permutation = torch.randperm(len(data.p), generator=torch.Generator().manual_seed(17491)).to(data.p.device)
         self.cache = None
@@ -104,18 +105,24 @@ class Index:
             signals = torch.sparse.mm(self.kernels[i].local, signals)
         return signals
 
-    def score(self, c):
+    def score(self, c, evidence=None):
+        if evidence is None:
+            evidence = self.d.base
         if c.mode == "direct":
-            return self.d.base
+            return evidence
+        if len(self.features) == 1 and c.mode != "rgb":
+            raise ValueError("An RGB-only index requires the RGB propagation mode")
         self.prepare(c)
         previous_precision = torch.get_float32_matmul_precision()
         try:
             torch.set_float32_matmul_precision("high")
-            return self.propagate(c)
+            return self.propagate(c, evidence)
         finally:
             torch.set_float32_matmul_precision(previous_precision)
 
-    def propagate(self, c):
+    def propagate(self, c, evidence=None):
+        if evidence is None:
+            evidence = self.d.base
         starts = (0,) if c.mode == "rgb" else (1,) if c.mode == "semantic" else (0, 1)
         def apply(signals):
             combined = self.path(signals, starts[0], c)
@@ -124,9 +131,9 @@ class Index:
             return combined
         # Kernel row normalization makes output the expected evidence of a neighboring
         # photo. The raw status matrix is also evaluated as a prospective ablation.
-        mass = apply(self.d.base.new_ones((len(self.d.p), 1))).clamp_min_(1e-30) if c.normalize_mass else 1.
-        scores = torch.empty_like(self.d.base)
+        mass = apply(evidence.new_ones((len(self.d.p), 1))).clamp_min_(1e-30) if c.normalize_mass else 1.
+        scores = torch.empty_like(evidence)
         for first in range(0, len(scores), 384):
-            x = self.d.base[first:first + 384].T.contiguous()
+            x = evidence[first:first + 384].T.contiguous()
             scores[first:first + x.size(1)] = (apply(x) / mass).T
         return scores
