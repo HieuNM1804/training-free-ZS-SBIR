@@ -1,0 +1,490 @@
+{
+  "family": "spectral-object-retrieval",
+  "active_revision": "b90fe812672e9d9e1bddd55977d9021a42a835a6",
+  "initial_freeze": "b0ebc53850407d29a6b012e36da56ced38c72fac56a49ed1a144d6a0daff6b46",
+  "final_freeze": "4fdbd6c09ed85fa00dab3aee8c135d073cc1105fd1696d1cd9d78a89c4d82f49",
+  "joint_freeze": "ff8635cd3b55f6e7b851ca8f4eefed5e876b7f62a80a0a400e4e6ba02b8a4a35",
+  "chosen": {
+    "mode": "late",
+    "location": "object",
+    "query_weight": 0.35,
+    "photo_weight": 0.35,
+    "terms": 4,
+    "neighbors": 96,
+    "rounds": 0,
+    "support": 192,
+    "expansion": 0.75,
+    "pairing": "paired"
+  },
+  "primary": false,
+  "splits": {
+    "sketchy_1": {
+      "queries": 14179,
+      "gallery": 17100,
+      "classes": 25,
+      "method": "late-object-q0.35-p0.35-w4-k96x0-n192-e0.75-paired",
+      "controls": {
+        "primary": {
+          "method": "late-object-q0.35-p0.35-w4-k96x0-n192-e0.75-paired",
+          "precision": 0.8186888694763184,
+          "mAP": 0.7939695715904236
+        },
+        "whole_sketch": {
+          "method": "late-object-q0-p0.35-w4-k96x0-n192-e0.75-paired",
+          "precision": 0.8074314594268799,
+          "mAP": 0.7849857211112976
+        },
+        "whole_gallery": {
+          "method": "late-object-q0.35-p0-w4-k96x0-n192-e0.75-paired",
+          "precision": 0.8189209699630737,
+          "mAP": 0.7935895919799805
+        },
+        "both_full_frames": {
+          "method": "late-object-q0-p0-w4-k96x0-n192-e0.75-paired",
+          "precision": 0.8075090646743774,
+          "mAP": 0.7845059037208557
+        },
+        "same_size_center": {
+          "method": "late-center-q0.35-p0.35-w4-k96x0-n192-e0.75-paired",
+          "precision": 0.8168495297431946,
+          "mAP": 0.7931851744651794
+        },
+        "same_size_opposite": {
+          "method": "late-opposite-q0.35-p0.35-w4-k96x0-n192-e0.75-paired",
+          "precision": 0.8077128529548645,
+          "mAP": 0.782686710357666
+        },
+        "no_averaging": {
+          "method": "late-object-q0.35-p0.35-w4-k96x0-n192-e0.75-paired",
+          "precision": 0.8186888694763184,
+          "mAP": 0.7939695715904236
+        },
+        "no_feedback": {
+          "method": "late-object-q0.35-p0.35-w4-k96x0-n192-e0-paired",
+          "precision": 0.7769327759742737,
+          "mAP": 0.7114876508712769
+        },
+        "shuffled_words": {
+          "method": "late-object-q0.35-p0.35-w4-k96x0-n192-e0.75-shuffled",
+          "precision": 0.013445940800011158,
+          "mAP": 0.046425364911556244
+        },
+        "native": {
+          "method": "late-object-q0.35-p0.35-w4-k96x0-n192-e0.75-rgb",
+          "precision": 0.44245293736457825,
+          "mAP": 0.37980619072914124
+        }
+      },
+      "vs_previous": {
+        "mAP": {
+          "delta_pp": -1.4551308917994223,
+          "ci95_class": [
+            -3.4518472384991066,
+            0.34178373239000714
+          ],
+          "classes_up": 11,
+          "classes": 25
+        },
+        "precision": {
+          "delta_pp": 1.7256506064161736,
+          "ci95_class": [
+            0.034427671205606296,
+            3.494261180173874
+          ],
+          "classes_up": 17,
+          "classes": 25
+        }
+      },
+      "top1": {
+        "old_wrong": 2758,
+        "new_wrong": 2607,
+        "rescued": 526,
+        "regressed": 375,
+        "confusion_pairs": [
+          {
+            "class": "chicken",
+            "old_wrong": "parrot",
+            "old_count": 141,
+            "correct_now": 64,
+            "still_same": 65
+          },
+          {
+            "class": "rifle",
+            "old_wrong": "scissors",
+            "old_count": 115,
+            "correct_now": 13,
+            "still_same": 100
+          },
+          {
+            "class": "windmill",
+            "old_wrong": "bell",
+            "old_count": 90,
+            "correct_now": 9,
+            "still_same": 43
+          },
+          {
+            "class": "butterfly",
+            "old_wrong": "ray",
+            "old_count": 74,
+            "correct_now": 3,
+            "still_same": 33
+          },
+          {
+            "class": "windmill",
+            "old_wrong": "scissors",
+            "old_count": 72,
+            "correct_now": 7,
+            "still_same": 53
+          },
+          {
+            "class": "butterfly",
+            "old_wrong": "snail",
+            "old_count": 71,
+            "correct_now": 2,
+            "still_same": 53
+          },
+          {
+            "class": "airplane",
+            "old_wrong": "ray",
+            "old_count": 59,
+            "correct_now": 2,
+            "still_same": 46
+          },
+          {
+            "class": "snail",
+            "old_wrong": "ray",
+            "old_count": 58,
+            "correct_now": 22,
+            "still_same": 26
+          },
+          {
+            "class": "harp",
+            "old_wrong": "bell",
+            "old_count": 56,
+            "correct_now": 16,
+            "still_same": 25
+          },
+          {
+            "class": "airplane",
+            "old_wrong": "scissors",
+            "old_count": 50,
+            "correct_now": 0,
+            "still_same": 41
+          }
+        ]
+      }
+    },
+    "sketchy_2": {
+      "queries": 12694,
+      "gallery": 12552,
+      "classes": 21,
+      "method": "late-object-q0.35-p0.35-w4-k96x0-n192-e0.75-paired",
+      "controls": {
+        "primary": {
+          "method": "late-object-q0.35-p0.35-w4-k96x0-n192-e0.75-paired",
+          "precision": 0.7237225770950317,
+          "mAP": 0.7382754683494568
+        },
+        "whole_sketch": {
+          "method": "late-object-q0-p0.35-w4-k96x0-n192-e0.75-paired",
+          "precision": 0.718847930431366,
+          "mAP": 0.7323956489562988
+        },
+        "whole_gallery": {
+          "method": "late-object-q0.35-p0-w4-k96x0-n192-e0.75-paired",
+          "precision": 0.7218493223190308,
+          "mAP": 0.7376267313957214
+        },
+        "both_full_frames": {
+          "method": "late-object-q0-p0-w4-k96x0-n192-e0.75-paired",
+          "precision": 0.716955304145813,
+          "mAP": 0.731468915939331
+        },
+        "same_size_center": {
+          "method": "late-center-q0.35-p0.35-w4-k96x0-n192-e0.75-paired",
+          "precision": 0.7188414931297302,
+          "mAP": 0.7332820296287537
+        },
+        "same_size_opposite": {
+          "method": "late-opposite-q0.35-p0.35-w4-k96x0-n192-e0.75-paired",
+          "precision": 0.7126670479774475,
+          "mAP": 0.7271108627319336
+        },
+        "no_averaging": {
+          "method": "late-object-q0.35-p0.35-w4-k96x0-n192-e0.75-paired",
+          "precision": 0.7237225770950317,
+          "mAP": 0.7382754683494568
+        },
+        "no_feedback": {
+          "method": "late-object-q0.35-p0.35-w4-k96x0-n192-e0-paired",
+          "precision": 0.682222306728363,
+          "mAP": 0.6909558773040771
+        },
+        "shuffled_words": {
+          "method": "late-object-q0.35-p0.35-w4-k96x0-n192-e0.75-shuffled",
+          "precision": 0.03292775899171829,
+          "mAP": 0.03684808313846588
+        },
+        "native": {
+          "method": "late-object-q0.35-p0.35-w4-k96x0-n192-e0.75-rgb",
+          "precision": 0.37221917510032654,
+          "mAP": 0.3987007141113281
+        }
+      },
+      "vs_previous": {
+        "mAP": {
+          "delta_pp": 0.6655626173844443,
+          "ci95_class": [
+            -1.3817810867339058,
+            2.488785757283893
+          ],
+          "classes_up": 14,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 0.7809988001887679,
+          "ci95_class": [
+            -1.3939339818275411,
+            2.634210837477778
+          ],
+          "classes_up": 15,
+          "classes": 21
+        }
+      },
+      "top1": {
+        "old_wrong": 3454,
+        "new_wrong": 3302,
+        "rescued": 632,
+        "regressed": 480,
+        "confusion_pairs": [
+          {
+            "class": "saw",
+            "old_wrong": "sword",
+            "old_count": 222,
+            "correct_now": 53,
+            "still_same": 144
+          },
+          {
+            "class": "songbird",
+            "old_wrong": "seagull",
+            "old_count": 181,
+            "correct_now": 3,
+            "still_same": 178
+          },
+          {
+            "class": "dolphin",
+            "old_wrong": "seagull",
+            "old_count": 172,
+            "correct_now": 33,
+            "still_same": 124
+          },
+          {
+            "class": "raccoon",
+            "old_wrong": "mouse",
+            "old_count": 160,
+            "correct_now": 39,
+            "still_same": 76
+          },
+          {
+            "class": "door",
+            "old_wrong": "window",
+            "old_count": 143,
+            "correct_now": 24,
+            "still_same": 118
+          },
+          {
+            "class": "windmill",
+            "old_wrong": "sword",
+            "old_count": 137,
+            "correct_now": 16,
+            "still_same": 80
+          },
+          {
+            "class": "giraffe",
+            "old_wrong": "cow",
+            "old_count": 115,
+            "correct_now": 11,
+            "still_same": 104
+          },
+          {
+            "class": "rhinoceros",
+            "old_wrong": "cow",
+            "old_count": 104,
+            "correct_now": 8,
+            "still_same": 96
+          },
+          {
+            "class": "helicopter",
+            "old_wrong": "scissors",
+            "old_count": 86,
+            "correct_now": 6,
+            "still_same": 64
+          },
+          {
+            "class": "raccoon",
+            "old_wrong": "rhinoceros",
+            "old_count": 83,
+            "correct_now": 6,
+            "still_same": 24
+          }
+        ]
+      }
+    },
+    "tuberlin": {
+      "queries": 2130,
+      "gallery": 27262,
+      "classes": 30,
+      "method": "late-object-q0.35-p0.35-w4-k96x0-n192-e0.75-paired",
+      "controls": {
+        "primary": {
+          "method": "late-object-q0.35-p0.35-w4-k96x0-n192-e0.75-paired",
+          "precision": 0.7869014143943787,
+          "mAP": 0.7347685098648071
+        },
+        "whole_sketch": {
+          "method": "late-object-q0-p0.35-w4-k96x0-n192-e0.75-paired",
+          "precision": 0.7921643257141113,
+          "mAP": 0.7409045100212097
+        },
+        "whole_gallery": {
+          "method": "late-object-q0.35-p0-w4-k96x0-n192-e0.75-paired",
+          "precision": 0.7867041826248169,
+          "mAP": 0.7345752120018005
+        },
+        "both_full_frames": {
+          "method": "late-object-q0-p0-w4-k96x0-n192-e0.75-paired",
+          "precision": 0.7927182912826538,
+          "mAP": 0.7414376735687256
+        },
+        "same_size_center": {
+          "method": "late-center-q0.35-p0.35-w4-k96x0-n192-e0.75-paired",
+          "precision": 0.7882206439971924,
+          "mAP": 0.7365438342094421
+        },
+        "same_size_opposite": {
+          "method": "late-opposite-q0.35-p0.35-w4-k96x0-n192-e0.75-paired",
+          "precision": 0.7896760106086731,
+          "mAP": 0.7339069843292236
+        },
+        "no_averaging": {
+          "method": "late-object-q0.35-p0.35-w4-k96x0-n192-e0.75-paired",
+          "precision": 0.7869014143943787,
+          "mAP": 0.7347685098648071
+        },
+        "no_feedback": {
+          "method": "late-object-q0.35-p0.35-w4-k96x0-n192-e0-paired",
+          "precision": 0.7554835081100464,
+          "mAP": 0.6683809757232666
+        },
+        "shuffled_words": {
+          "method": "late-object-q0.35-p0.35-w4-k96x0-n192-e0.75-shuffled",
+          "precision": 0.04507042095065117,
+          "mAP": 0.08183750510215759
+        },
+        "native": {
+          "method": "late-object-q0.35-p0.35-w4-k96x0-n192-e0.75-rgb",
+          "precision": 0.4603286385536194,
+          "mAP": 0.36694392561912537
+        }
+      },
+      "vs_previous": {
+        "mAP": {
+          "delta_pp": -3.4863162131437884,
+          "ci95_class": [
+            -5.825903312905879,
+            -1.471875704936686
+          ],
+          "classes_up": 7,
+          "classes": 30
+        },
+        "precision": {
+          "delta_pp": -1.9234742240831606,
+          "ci95_class": [
+            -4.82297929514374,
+            0.5335644077656981
+          ],
+          "classes_up": 17,
+          "classes": 30
+        }
+      },
+      "top1": {
+        "old_wrong": 392,
+        "new_wrong": 460,
+        "rescued": 84,
+        "regressed": 152,
+        "confusion_pairs": [
+          {
+            "class": "cup",
+            "old_wrong": "mug",
+            "old_count": 33,
+            "correct_now": 33,
+            "still_same": 0
+          },
+          {
+            "class": "mug",
+            "old_wrong": "cup",
+            "old_count": 23,
+            "correct_now": 0,
+            "still_same": 23
+          },
+          {
+            "class": "hot air balloon",
+            "old_wrong": "floor lamp",
+            "old_count": 22,
+            "correct_now": 1,
+            "still_same": 21
+          },
+          {
+            "class": "wrist-watch",
+            "old_wrong": "hammer",
+            "old_count": 21,
+            "correct_now": 0,
+            "still_same": 19
+          },
+          {
+            "class": "butterfly",
+            "old_wrong": "mosquito",
+            "old_count": 19,
+            "correct_now": 1,
+            "still_same": 17
+          },
+          {
+            "class": "truck",
+            "old_wrong": "suv",
+            "old_count": 14,
+            "correct_now": 7,
+            "still_same": 7
+          },
+          {
+            "class": "baseball bat",
+            "old_wrong": "hammer",
+            "old_count": 10,
+            "correct_now": 1,
+            "still_same": 9
+          },
+          {
+            "class": "mermaid",
+            "old_wrong": "pear",
+            "old_count": 8,
+            "correct_now": 0,
+            "still_same": 8
+          },
+          {
+            "class": "suv",
+            "old_wrong": "truck",
+            "old_count": 8,
+            "correct_now": 1,
+            "still_same": 7
+          },
+          {
+            "class": "bus",
+            "old_wrong": "suv",
+            "old_count": 8,
+            "correct_now": 0,
+            "still_same": 5
+          }
+        ]
+      }
+    }
+  }
+}
