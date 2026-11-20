@@ -1,0 +1,12 @@
+{
+  "utc": "2026-11-20T15:14:03.620947+00:00",
+  "tu_rows": {
+    "shared-concept-likelihood": 0,
+    "conditional-semantic-index": 0
+  },
+  "parameter_selection": false,
+  "seed": 19073,
+  "source_prior": "Fit on the union of distinct gallery photos across both Sketchy splits without class labels. Apply unchanged to TU and report as a stricter deployment setting.",
+  "crossfit": "Fit gallery prior on either randomly assigned half and score all photos; additionally score the opposite half as an indexing diagnostic.",
+  "gallery_fit_criterion": "Compare out-of-sample relative log likelihood with uniform; compare query P and mAP afterwards."
+}

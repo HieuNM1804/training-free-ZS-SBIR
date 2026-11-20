@@ -1,0 +1,48 @@
+{
+  "utc": "2026-11-20T15:17:06.261652+00:00",
+  "studies": {
+    "conditional-semantic-index": {
+      "primary": "bare-witness",
+      "freeze_sha256": "97ac1591ff730b348f931fc35be2668aad3978d8af7ce89481653ac8d8966a16",
+      "tu_rows_prelock": 0,
+      "scores": [
+        {
+          "split": "sketchy_1",
+          "mAP": 0.755946159362793,
+          "precision": 0.7830397486686707,
+          "sha256": "e46d3636001f928c9ae4bb6b5586c56a384b3e76231ba8e1ba2531c60cf8470b"
+        },
+        {
+          "split": "sketchy_2",
+          "mAP": 0.6591318845748901,
+          "precision": 0.6456058025360107,
+          "sha256": "eee26d48a4ca1b7dd90621aa505c2fc4bf9afa4ecb274e41ea04f64d55c3c3d1"
+        }
+      ],
+      "revision": "d9f0d0a24491acedee2e0382004b4d8cd778e09f"
+    },
+    "shared-concept-likelihood": {
+      "primary": "named-likelihood",
+      "freeze_sha256": "d14ec39fced8dd97c1737618d64fe9c3bc61de7ca0e3657e673c1b95b1414e24",
+      "tu_rows_prelock": 0,
+      "scores": [
+        {
+          "split": "sketchy_1",
+          "mAP": 0.8060232996940613,
+          "precision": 0.8127124905586243,
+          "sha256": "4741cb795f14bfb7a391475fc85349f8e5b2bbf95e18d36bf3766a4e121067a8"
+        },
+        {
+          "split": "sketchy_2",
+          "mAP": 0.7401893138885498,
+          "precision": 0.7285922765731812,
+          "sha256": "873c9c03586300442bf67f9c59c7552e5797e79b34d384ba8847019372804b15"
+        }
+      ],
+      "revision": "781b4e1e5a0caaee5493f0287172e8c470c00e1f"
+    }
+  },
+  "selected": "shared-concept-likelihood",
+  "rule": "mean Sketchy precision then mean Sketchy mAP, two fixed hypotheses",
+  "sha256": "080af21548e79e5b200db1f152e5323e8ba04d47e4818bfab9bcd6e900ea8329"
+}

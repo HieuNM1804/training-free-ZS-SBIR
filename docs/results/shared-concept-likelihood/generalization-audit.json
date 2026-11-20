@@ -1,0 +1,1866 @@
+{
+  "joint": "080af21548e79e5b200db1f152e5323e8ba04d47e4818bfab9bcd6e900ea8329",
+  "chosen": "shared-concept-likelihood",
+  "strict_source_prior": {
+    "utc": "2026-11-20T15:15:19.090819+00:00",
+    "revision_of_diagnostic": "bf06399b2d07629d48c4737ded101c64bf7a2a80",
+    "estimation": "unique Sketchy gallery files",
+    "photos": 27447,
+    "words": 20931,
+    "prior_sha256": "1c15b9d80caaa6b867f080e3bfe9e8355c1719e271115033542db48feeebdc96",
+    "plan_sha256": "42fbb34b3d0a3e3032d3ee10c655c3b9abac8de4d971f3932b95d04f3e685563",
+    "fit": {
+      "iterations": 16,
+      "relative_log_likelihood": -4.925797780459056,
+      "last_increase": 0.00032022787485974646,
+      "tolerance_nats": 0.00034526698300124393,
+      "effective_number_of_concepts": 109.0950698852539,
+      "maximum_mass": 0.026002321392297745
+    },
+    "new_tu_scores_at_lock": 0
+  },
+  "splits": {
+    "sketchy_1": {
+      "queries": 14179,
+      "gallery": 17100,
+      "classes": 25,
+      "conditions": {
+        "shared-concept-likelihood/bare-likelihood": {
+          "mAP": 0.7569097280502319,
+          "precision": 0.7750928401947021
+        },
+        "shared-concept-likelihood/named-likelihood": {
+          "mAP": 0.806023359298706,
+          "precision": 0.8127124309539795
+        },
+        "shared-concept-likelihood/one-update": {
+          "mAP": 0.7936106324195862,
+          "precision": 0.8059157729148865
+        },
+        "shared-concept-likelihood/posterior-mean": {
+          "mAP": 0.7642055153846741,
+          "precision": 0.7743874192237854
+        },
+        "shared-concept-likelihood/shuffled-identity": {
+          "mAP": 0.07646549493074417,
+          "precision": 0.043922703713178635
+        },
+        "shared-concept-likelihood/uniform": {
+          "mAP": 0.7530822157859802,
+          "precision": 0.7894104719161987
+        },
+        "conditional-semantic-index/bare-conditional": {
+          "mAP": 0.609110951423645,
+          "precision": 0.7284554243087769
+        },
+        "conditional-semantic-index/bare-direct": {
+          "mAP": 0.667076826095581,
+          "precision": 0.7537760138511658
+        },
+        "conditional-semantic-index/bare-witness": {
+          "mAP": 0.7559462189674377,
+          "precision": 0.7830397486686707
+        },
+        "conditional-semantic-index/named-witness": {
+          "mAP": 0.7714298367500305,
+          "precision": 0.8016694188117981
+        },
+        "conditional-semantic-index/native": {
+          "mAP": 0.3028952181339264,
+          "precision": 0.41636714339256287
+        },
+        "conditional-semantic-index/reference-half-a": {
+          "mAP": 0.7560125589370728,
+          "precision": 0.7831200361251831
+        },
+        "conditional-semantic-index/reference-half-b": {
+          "mAP": 0.7550216913223267,
+          "precision": 0.7821651101112366
+        },
+        "conditional-semantic-index/rgb-witness": {
+          "mAP": 0.3780565559864044,
+          "precision": 0.3837950527667999
+        },
+        "conditional-semantic-index/shuffled-witness": {
+          "mAP": 0.05601805821061134,
+          "precision": 0.02900063619017601
+        },
+        "patch-style-invariance/center": {
+          "mAP": 0.04948494955897331,
+          "precision": 0.037018124014139175
+        },
+        "patch-style-invariance/instance": {
+          "mAP": 0.04855455085635185,
+          "precision": 0.042083363980054855
+        },
+        "patch-style-invariance/native": {
+          "mAP": 0.3028952181339264,
+          "precision": 0.41636714339256287
+        },
+        "patch-style-invariance/scale": {
+          "mAP": 0.04911015182733536,
+          "precision": 0.040945060551166534
+        },
+        "prior/source-prior": {
+          "mAP": 0.801520586013794,
+          "precision": 0.8086853623390198
+        },
+        "prior/reference-half-a": {
+          "mAP": 0.8060802817344666,
+          "precision": 0.8124980926513672
+        },
+        "prior/reference-half-b": {
+          "mAP": 0.8062039613723755,
+          "precision": 0.8127413392066956
+        },
+        "previous": {
+          "mAP": 0.8085208535194397,
+          "precision": 0.8014324307441711
+        }
+      },
+      "primary_contrasts": {
+        "shared-concept-likelihood/bare-likelihood": {
+          "mAP": {
+            "delta_pp": 4.9113581653560106,
+            "ci95_class": [
+              2.1248561631175127,
+              7.844632660709882
+            ],
+            "classes_up": 18,
+            "classes": 25
+          },
+          "precision": {
+            "delta_pp": 3.7619719814220933,
+            "ci95_class": [
+              0.7701117932839726,
+              7.404822850419437
+            ],
+            "classes_up": 17,
+            "classes": 25
+          }
+        },
+        "shared-concept-likelihood/named-likelihood": {
+          "mAP": {
+            "delta_pp": 0.0,
+            "ci95_class": [
+              0.0,
+              0.0
+            ],
+            "classes_up": 0,
+            "classes": 25
+          },
+          "precision": {
+            "delta_pp": 0.0,
+            "ci95_class": [
+              0.0,
+              0.0
+            ],
+            "classes_up": 0,
+            "classes": 25
+          }
+        },
+        "shared-concept-likelihood/one-update": {
+          "mAP": {
+            "delta_pp": 1.2412691138639034,
+            "ci95_class": [
+              0.4898435738118387,
+              1.9542671531527638
+            ],
+            "classes_up": 21,
+            "classes": 25
+          },
+          "precision": {
+            "delta_pp": 0.6796671070778005,
+            "ci95_class": [
+              -0.3141760593559251,
+              1.6317933917797758
+            ],
+            "classes_up": 15,
+            "classes": 25
+          }
+        },
+        "shared-concept-likelihood/posterior-mean": {
+          "mAP": {
+            "delta_pp": 4.181779591035999,
+            "ci95_class": [
+              2.5773874812791693,
+              5.821255858157759
+            ],
+            "classes_up": 21,
+            "classes": 25
+          },
+          "precision": {
+            "delta_pp": 3.832498786957705,
+            "ci95_class": [
+              1.4158768504700503,
+              6.447809674487631
+            ],
+            "classes_up": 19,
+            "classes": 25
+          }
+        },
+        "shared-concept-likelihood/shuffled-identity": {
+          "mAP": {
+            "delta_pp": 72.95578117851832,
+            "ci95_class": [
+              67.64334099000266,
+              77.97989637833145
+            ],
+            "classes_up": 25,
+            "classes": 25
+          },
+          "precision": {
+            "delta_pp": 76.87897613956885,
+            "ci95_class": [
+              71.31772860446114,
+              81.75081982385443
+            ],
+            "classes_up": 25,
+            "classes": 25
+          }
+        },
+        "shared-concept-likelihood/uniform": {
+          "mAP": {
+            "delta_pp": 5.294105381727791,
+            "ci95_class": [
+              3.6818171854392134,
+              6.987538980443863
+            ],
+            "classes_up": 22,
+            "classes": 25
+          },
+          "precision": {
+            "delta_pp": 2.330206708709476,
+            "ci95_class": [
+              0.8829977924122475,
+              3.7644253428259145
+            ],
+            "classes_up": 20,
+            "classes": 25
+          }
+        },
+        "conditional-semantic-index/bare-witness": {
+          "mAP": {
+            "delta_pp": 5.0077092902587355,
+            "ci95_class": [
+              1.36780342656605,
+              8.771357491824705
+            ],
+            "classes_up": 18,
+            "classes": 25
+          },
+          "precision": {
+            "delta_pp": 2.9672757142520108,
+            "ci95_class": [
+              -1.0786930595717288,
+              7.257132577226367
+            ],
+            "classes_up": 14,
+            "classes": 25
+          }
+        },
+        "conditional-semantic-index/native": {
+          "mAP": {
+            "delta_pp": 50.31280937486442,
+            "ci95_class": [
+              44.79519121465862,
+              55.72624581354173
+            ],
+            "classes_up": 25,
+            "classes": 25
+          },
+          "precision": {
+            "delta_pp": 39.634530068624045,
+            "ci95_class": [
+              31.10575644020758,
+              47.728406518365944
+            ],
+            "classes_up": 24,
+            "classes": 25
+          }
+        },
+        "prior/source-prior": {
+          "mAP": {
+            "delta_pp": 0.4502732698322267,
+            "ci95_class": [
+              0.21819387945861402,
+              0.7567435614414272
+            ],
+            "classes_up": 21,
+            "classes": 25
+          },
+          "precision": {
+            "delta_pp": 0.40270826107432134,
+            "ci95_class": [
+              0.19727399698391412,
+              0.6220972054164667
+            ],
+            "classes_up": 16,
+            "classes": 25
+          }
+        },
+        "prior/reference-half-a": {
+          "mAP": {
+            "delta_pp": -0.005700341950973542,
+            "ci95_class": [
+              -0.10369084123262132,
+              0.09282135318796073
+            ],
+            "classes_up": 12,
+            "classes": 25
+          },
+          "precision": {
+            "delta_pp": 0.021440159208650642,
+            "ci95_class": [
+              -0.15574586618308123,
+              0.2046827547759795
+            ],
+            "classes_up": 11,
+            "classes": 25
+          }
+        },
+        "prior/reference-half-b": {
+          "mAP": {
+            "delta_pp": -0.018063823031924307,
+            "ci95_class": [
+              -0.1439595084395437,
+              0.10231481720402368
+            ],
+            "classes_up": 10,
+            "classes": 25
+          },
+          "precision": {
+            "delta_pp": -0.0028915825336110115,
+            "ci95_class": [
+              -0.23649049688324333,
+              0.27534196619842943
+            ],
+            "classes_up": 10,
+            "classes": 25
+          }
+        },
+        "previous": {
+          "mAP": {
+            "delta_pp": -0.2497534703478292,
+            "ci95_class": [
+              -3.874219847270854,
+              3.23537993352443
+            ],
+            "classes_up": 15,
+            "classes": 25
+          },
+          "precision": {
+            "delta_pp": 1.1280063679385979,
+            "ci95_class": [
+              -1.98945033493098,
+              3.867577864856603
+            ],
+            "classes_up": 14,
+            "classes": 25
+          }
+        }
+      },
+      "prior": {
+        "iterations": 16,
+        "relative_log_likelihood": -4.501462127423426,
+        "last_increase": 0.0002766764930814958,
+        "tolerance_nats": 0.00034526698300124393,
+        "effective_number_of_concepts": 65.22610473632812,
+        "maximum_mass": 0.04185593128204346
+      },
+      "KD_check": {
+        "queries": 14179,
+        "mAP": 0.806023359298706,
+        "precision": 0.8127124309539795,
+        "kd_minus_pipeline_max_abs_same_order_AP_P": [
+          0.0,
+          0.0
+        ],
+        "max_per_query_abs_AP_P": [
+          0.0,
+          0.0
+        ],
+        "mean_per_query_abs_AP_P": [
+          0.0,
+          0.0
+        ],
+        "queries_within_1e-6_both": 14179
+      },
+      "error_pairs": {
+        "native_wrong_top1": 8979,
+        "primary_ranks_native_first_positive_above_native_wrong": 7604,
+        "uniform_ranks_native_first_positive_above_native_wrong": 6886,
+        "rescued": 5936,
+        "regressed": 578,
+        "examples": [
+          {
+            "case": "rescued",
+            "sketch": "sketch/airplane/n02691156_9453-4.png",
+            "native_top1": "photo/scissors/ext_244.jpg",
+            "method_top1": "photo/airplane/ext_188.jpg",
+            "top_shared_word_contributions": [
+              [
+                "dornier 328",
+                0.9909133315086365
+              ],
+              [
+                "airliner",
+                0.00324611715041101
+              ],
+              [
+                "airline",
+                0.0021942120511084795
+              ]
+            ]
+          },
+          {
+            "case": "rescued",
+            "sketch": "sketch/airplane/n02691156_1270-1.png",
+            "native_top1": "photo/scissors/ext_244.jpg",
+            "method_top1": "photo/airplane/n02691156_149121.jpg",
+            "top_shared_word_contributions": [
+              [
+                "aerobatics",
+                0.9447860717773438
+              ],
+              [
+                "light aircraft",
+                0.02944222092628479
+              ],
+              [
+                "airliner",
+                0.021449821069836617
+              ]
+            ]
+          },
+          {
+            "case": "rescued",
+            "sketch": "sketch/bell/n02824448_29643-2.png",
+            "native_top1": "photo/scissors/ext_154.jpg",
+            "method_top1": "photo/bell/n02824448_113761.jpg",
+            "top_shared_word_contributions": [
+              [
+                "bell",
+                0.9991967678070068
+              ],
+              [
+                "church bell",
+                0.0006980002508498728
+              ],
+              [
+                "cowbell",
+                3.618754999479279e-05
+              ]
+            ]
+          },
+          {
+            "case": "regressed",
+            "sketch": "sketch/chicken/n01791625_19631-7.png",
+            "native_top1": "photo/chicken/ext_441.jpg",
+            "method_top1": "photo/ray/ext_266.jpg",
+            "top_shared_word_contributions": [
+              [
+                "white cut chicken",
+                0.9964918494224548
+              ],
+              [
+                "rooster",
+                0.0021582769695669413
+              ],
+              [
+                "indian game (chicken)",
+                0.001230175024829805
+              ]
+            ]
+          },
+          {
+            "case": "regressed",
+            "sketch": "sketch/scissors/n04148054_8423-1.png",
+            "native_top1": "photo/scissors/ext_283.jpg",
+            "method_top1": "photo/bell/ext_108.jpg",
+            "top_shared_word_contributions": [
+              [
+                "handbell",
+                0.9181931614875793
+              ],
+              [
+                "bell",
+                0.048840343952178955
+              ],
+              [
+                "wind chime",
+                0.016136985272169113
+              ]
+            ]
+          },
+          {
+            "case": "regressed",
+            "sketch": "sketch/pineapple/n07753275_19418-5.png",
+            "native_top1": "photo/pineapple/ext_5.jpg",
+            "method_top1": "photo/tree/ext_99.jpg",
+            "top_shared_word_contributions": [
+              [
+                "palm tree",
+                0.9972686171531677
+              ],
+              [
+                "pineapple",
+                0.001778719131834805
+              ],
+              [
+                "desert palm",
+                0.00091472954954952
+              ]
+            ]
+          },
+          {
+            "case": "still_wrong",
+            "sketch": "sketch/umbrella/n04507155_13221-5.png",
+            "native_top1": "photo/scissors/ext_525.jpg",
+            "method_top1": "photo/bell/ext_294.jpg",
+            "top_shared_word_contributions": [
+              [
+                "cymbal",
+                0.8914411664009094
+              ],
+              [
+                "effects cymbal",
+                0.09654338657855988
+              ],
+              [
+                "hand drum",
+                0.0039674355648458
+              ]
+            ]
+          },
+          {
+            "case": "still_wrong",
+            "sketch": "sketch/ray/n01496331_14714-1.png",
+            "native_top1": "photo/scissors/ext_515.jpg",
+            "method_top1": "photo/swan/n01858441_9966.jpg",
+            "top_shared_word_contributions": [
+              [
+                "swan",
+                0.9698954224586487
+              ],
+              [
+                "whooper swan",
+                0.026047229766845703
+              ],
+              [
+                "black swan",
+                0.0026307369116693735
+              ]
+            ]
+          },
+          {
+            "case": "still_wrong",
+            "sketch": "sketch/camel/n02437136_5064-5.png",
+            "native_top1": "photo/horse/ext_166.jpg",
+            "method_top1": "photo/horse/ext_285.jpg",
+            "top_shared_word_contributions": [
+              [
+                "miniature horse",
+                0.9954843521118164
+              ],
+              [
+                "foal",
+                0.004289134871214628
+              ],
+              [
+                "horse meat",
+                0.00015294045442715287
+              ]
+            ]
+          }
+        ]
+      },
+      "name_disjoint_checks": {},
+      "native_errors": {
+        "wrong_at1": 8979,
+        "wrong_at10": 88662,
+        "wrong_top10_share_top1pct": 0.9967629909515381
+      },
+      "primary_errors": {
+        "wrong_at1": 3621,
+        "wrong_at10": 28708,
+        "wrong_top10_share_top1pct": 0.6133133769035339
+      }
+    },
+    "sketchy_2": {
+      "queries": 12694,
+      "gallery": 12552,
+      "classes": 21,
+      "conditions": {
+        "shared-concept-likelihood/bare-likelihood": {
+          "mAP": 0.7103721499443054,
+          "precision": 0.6926043629646301
+        },
+        "shared-concept-likelihood/named-likelihood": {
+          "mAP": 0.7401893138885498,
+          "precision": 0.7285922765731812
+        },
+        "shared-concept-likelihood/one-update": {
+          "mAP": 0.729083776473999,
+          "precision": 0.7185208797454834
+        },
+        "shared-concept-likelihood/posterior-mean": {
+          "mAP": 0.6898837089538574,
+          "precision": 0.6783878207206726
+        },
+        "shared-concept-likelihood/shuffled-identity": {
+          "mAP": 0.0788959264755249,
+          "precision": 0.036230895668268204
+        },
+        "shared-concept-likelihood/uniform": {
+          "mAP": 0.7141595482826233,
+          "precision": 0.7027930617332458
+        },
+        "conditional-semantic-index/bare-conditional": {
+          "mAP": 0.6155717372894287,
+          "precision": 0.588767945766449
+        },
+        "conditional-semantic-index/bare-direct": {
+          "mAP": 0.6600250005722046,
+          "precision": 0.6445497870445251
+        },
+        "conditional-semantic-index/bare-witness": {
+          "mAP": 0.6591318845748901,
+          "precision": 0.6456058025360107
+        },
+        "conditional-semantic-index/named-witness": {
+          "mAP": 0.6880300641059875,
+          "precision": 0.6743608117103577
+        },
+        "conditional-semantic-index/native": {
+          "mAP": 0.3634491264820099,
+          "precision": 0.33846187591552734
+        },
+        "conditional-semantic-index/reference-half-a": {
+          "mAP": 0.6582692861557007,
+          "precision": 0.6447258591651917
+        },
+        "conditional-semantic-index/reference-half-b": {
+          "mAP": 0.6597751379013062,
+          "precision": 0.6462596654891968
+        },
+        "conditional-semantic-index/rgb-witness": {
+          "mAP": 0.33988049626350403,
+          "precision": 0.3299330472946167
+        },
+        "conditional-semantic-index/shuffled-witness": {
+          "mAP": 0.06721509248018265,
+          "precision": 0.061203327029943466
+        },
+        "patch-style-invariance/center": {
+          "mAP": 0.06815293431282043,
+          "precision": 0.0470852330327034
+        },
+        "patch-style-invariance/instance": {
+          "mAP": 0.07226400822401047,
+          "precision": 0.0500953234732151
+        },
+        "patch-style-invariance/native": {
+          "mAP": 0.3634491264820099,
+          "precision": 0.33846187591552734
+        },
+        "patch-style-invariance/scale": {
+          "mAP": 0.06588616222143173,
+          "precision": 0.04944225400686264
+        },
+        "prior/source-prior": {
+          "mAP": 0.732452929019928,
+          "precision": 0.7253856062889099
+        },
+        "prior/reference-half-a": {
+          "mAP": 0.7416757345199585,
+          "precision": 0.7283157110214233
+        },
+        "prior/reference-half-b": {
+          "mAP": 0.7381613254547119,
+          "precision": 0.7288970351219177
+        },
+        "previous": {
+          "mAP": 0.7316199541091919,
+          "precision": 0.7159126400947571
+        }
+      },
+      "primary_contrasts": {
+        "shared-concept-likelihood/bare-likelihood": {
+          "mAP": {
+            "delta_pp": 2.9817187032042085,
+            "ci95_class": [
+              -0.019239366251909362,
+              5.916962849359339
+            ],
+            "classes_up": 15,
+            "classes": 21
+          },
+          "precision": {
+            "delta_pp": 3.5987868706462574,
+            "ci95_class": [
+              0.27771019685970416,
+              6.804008806402497
+            ],
+            "classes_up": 16,
+            "classes": 21
+          }
+        },
+        "shared-concept-likelihood/named-likelihood": {
+          "mAP": {
+            "delta_pp": 0.0,
+            "ci95_class": [
+              0.0,
+              0.0
+            ],
+            "classes_up": 0,
+            "classes": 21
+          },
+          "precision": {
+            "delta_pp": 0.0,
+            "ci95_class": [
+              0.0,
+              0.0
+            ],
+            "classes_up": 0,
+            "classes": 21
+          }
+        },
+        "shared-concept-likelihood/one-update": {
+          "mAP": {
+            "delta_pp": 1.1105554030338904,
+            "ci95_class": [
+              0.3979148049239918,
+              1.9385368842520037
+            ],
+            "classes_up": 16,
+            "classes": 21
+          },
+          "precision": {
+            "delta_pp": 1.0071292988752307,
+            "ci95_class": [
+              0.16643268722289006,
+              1.9589240728792778
+            ],
+            "classes_up": 14,
+            "classes": 21
+          }
+        },
+        "shared-concept-likelihood/posterior-mean": {
+          "mAP": {
+            "delta_pp": 5.030556755816575,
+            "ci95_class": [
+              1.3733011582484258,
+              8.675569573267998
+            ],
+            "classes_up": 16,
+            "classes": 21
+          },
+          "precision": {
+            "delta_pp": 5.020442757490223,
+            "ci95_class": [
+              1.7000790049739314,
+              8.301842897183262
+            ],
+            "classes_up": 16,
+            "classes": 21
+          }
+        },
+        "shared-concept-likelihood/shuffled-identity": {
+          "mAP": {
+            "delta_pp": 66.12933803743641,
+            "ci95_class": [
+              57.27161351043108,
+              74.61106487379992
+            ],
+            "classes_up": 21,
+            "classes": 21
+          },
+          "precision": {
+            "delta_pp": 69.236135376281,
+            "ci95_class": [
+              60.58911659421456,
+              77.49760018429895
+            ],
+            "classes_up": 21,
+            "classes": 21
+          }
+        },
+        "shared-concept-likelihood/uniform": {
+          "mAP": {
+            "delta_pp": 2.6029776111184995,
+            "ci95_class": [
+              0.9911815315009599,
+              4.195770368196524
+            ],
+            "classes_up": 15,
+            "classes": 21
+          },
+          "precision": {
+            "delta_pp": 2.579919678207921,
+            "ci95_class": [
+              0.30268659409249987,
+              4.9025967622253495
+            ],
+            "classes_up": 14,
+            "classes": 21
+          }
+        },
+        "conditional-semantic-index/bare-witness": {
+          "mAP": {
+            "delta_pp": 8.105743314900069,
+            "ci95_class": [
+              0.746206874484018,
+              15.198929156812492
+            ],
+            "classes_up": 15,
+            "classes": 21
+          },
+          "precision": {
+            "delta_pp": 8.298645202643913,
+            "ci95_class": [
+              0.36949204621317583,
+              15.952690848391597
+            ],
+            "classes_up": 15,
+            "classes": 21
+          }
+        },
+        "conditional-semantic-index/native": {
+          "mAP": {
+            "delta_pp": 37.67401852428327,
+            "ci95_class": [
+              28.241875734361972,
+              46.63463149709261
+            ],
+            "classes_up": 20,
+            "classes": 21
+          },
+          "precision": {
+            "delta_pp": 39.01303784410543,
+            "ci95_class": [
+              29.583070632946622,
+              48.03639712249046
+            ],
+            "classes_up": 20,
+            "classes": 21
+          }
+        },
+        "prior/source-prior": {
+          "mAP": {
+            "delta_pp": 0.7736310091907663,
+            "ci95_class": [
+              0.11267427447448243,
+              1.5408156618239737
+            ],
+            "classes_up": 16,
+            "classes": 21
+          },
+          "precision": {
+            "delta_pp": 0.3206633111044978,
+            "ci95_class": [
+              -0.024492588836177213,
+              0.7403823874686136
+            ],
+            "classes_up": 14,
+            "classes": 21
+          }
+        },
+        "prior/reference-half-a": {
+          "mAP": {
+            "delta_pp": -0.14864101173094696,
+            "ci95_class": [
+              -0.6523078198992621,
+              0.24229235553687306
+            ],
+            "classes_up": 9,
+            "classes": 21
+          },
+          "precision": {
+            "delta_pp": 0.02765082905331061,
+            "ci95_class": [
+              -0.1900146622274551,
+              0.251101063560709
+            ],
+            "classes_up": 11,
+            "classes": 21
+          }
+        },
+        "prior/reference-half-b": {
+          "mAP": {
+            "delta_pp": 0.20280232187067057,
+            "ci95_class": [
+              -0.14180135834187585,
+              0.6180480030763439
+            ],
+            "classes_up": 12,
+            "classes": 21
+          },
+          "precision": {
+            "delta_pp": -0.030486849351616305,
+            "ci95_class": [
+              -0.22606496668543488,
+              0.1488330117752658
+            ],
+            "classes_up": 12,
+            "classes": 21
+          }
+        },
+        "previous": {
+          "mAP": {
+            "delta_pp": 0.8569389494410076,
+            "ci95_class": [
+              -3.0146033771127247,
+              4.381348515703914
+            ],
+            "classes_up": 11,
+            "classes": 21
+          },
+          "precision": {
+            "delta_pp": 1.2679612476655127,
+            "ci95_class": [
+              -3.3131516630974542,
+              5.497671473451481
+            ],
+            "classes_up": 12,
+            "classes": 21
+          }
+        }
+      },
+      "prior": {
+        "iterations": 16,
+        "relative_log_likelihood": -4.211215699987855,
+        "last_increase": 0.0003117484564683082,
+        "tolerance_nats": 0.00034526698300124393,
+        "effective_number_of_concepts": 56.89141082763672,
+        "maximum_mass": 0.056554436683654785
+      },
+      "KD_check": {
+        "queries": 12694,
+        "mAP": 0.7401893138885498,
+        "precision": 0.7285922765731812,
+        "kd_minus_pipeline_max_abs_same_order_AP_P": [
+          0.0,
+          0.0
+        ],
+        "max_per_query_abs_AP_P": [
+          0.0,
+          0.0
+        ],
+        "mean_per_query_abs_AP_P": [
+          0.0,
+          0.0
+        ],
+        "queries_within_1e-6_both": 12694
+      },
+      "error_pairs": {
+        "native_wrong_top1": 8008,
+        "primary_ranks_native_first_positive_above_native_wrong": 6770,
+        "uniform_ranks_native_first_positive_above_native_wrong": 6015,
+        "rescued": 4454,
+        "regressed": 529,
+        "examples": [
+          {
+            "case": "rescued",
+            "sketch": "sketch/windmill/n04587404_19144-3.png",
+            "native_top1": "photo/scissors/ext_283.jpg",
+            "method_top1": "photo/windmill/ext_23.jpg",
+            "top_shared_word_contributions": [
+              [
+                "wind turbine",
+                0.9989557862281799
+              ],
+              [
+                "windmill",
+                0.0010434365831315517
+              ],
+              [
+                "sword",
+                1.6857569562489516e-07
+              ]
+            ]
+          },
+          {
+            "case": "rescued",
+            "sketch": "sketch/helicopter/n03512147_1488-1.png",
+            "native_top1": "photo/scissors/ext_331.jpg",
+            "method_top1": "photo/helicopter/ext_506.jpg",
+            "top_shared_word_contributions": [
+              [
+                "helicopter",
+                0.9938945770263672
+              ],
+              [
+                "military helicopter",
+                0.004068613518029451
+              ],
+              [
+                "bell 206",
+                0.0007415693253278732
+              ]
+            ]
+          },
+          {
+            "case": "rescued",
+            "sketch": "sketch/seagull/n02041246_12694-2.png",
+            "native_top1": "photo/giraffe/ext_126.jpg",
+            "method_top1": "photo/seagull/n02041246_93841.jpg",
+            "top_shared_word_contributions": [
+              [
+                "western gull",
+                0.9880051612854004
+              ],
+              [
+                "gull dong",
+                0.007963618263602257
+              ],
+              [
+                "gull",
+                0.002468072809278965
+              ]
+            ]
+          },
+          {
+            "case": "regressed",
+            "sketch": "sketch/mouse/n02330245_2993-2.png",
+            "native_top1": "photo/mouse/ext_179.jpg",
+            "method_top1": "photo/raccoon/n02508021_17521.jpg",
+            "top_shared_word_contributions": [
+              [
+                "marsh rice rat",
+                0.9945796728134155
+              ],
+              [
+                "white footed mouse",
+                0.001527127344161272
+              ],
+              [
+                "rat na",
+                0.0014617226552218199
+              ]
+            ]
+          },
+          {
+            "case": "regressed",
+            "sketch": "sketch/giraffe/n02439033_10295-1.png",
+            "native_top1": "photo/giraffe/ext_126.jpg",
+            "method_top1": "photo/cow/ext_354.jpg",
+            "top_shared_word_contributions": [
+              [
+                "zebu",
+                0.9788110852241516
+              ],
+              [
+                "dairy cow",
+                0.009385749697685242
+              ],
+              [
+                "bovine",
+                0.005633010063320398
+              ]
+            ]
+          },
+          {
+            "case": "regressed",
+            "sketch": "sketch/giraffe/n02439033_5004-3.png",
+            "native_top1": "photo/giraffe/ext_43.jpg",
+            "method_top1": "photo/cow/ext_354.jpg",
+            "top_shared_word_contributions": [
+              [
+                "zebu",
+                0.964504063129425
+              ],
+              [
+                "dairy cow",
+                0.020186616107821465
+              ],
+              [
+                "bovine",
+                0.010900179855525494
+              ]
+            ]
+          },
+          {
+            "case": "still_wrong",
+            "sketch": "sketch/cow/n01887787_6520-5.png",
+            "native_top1": "photo/giraffe/ext_126.jpg",
+            "method_top1": "photo/rhinoceros/ext_332.jpg",
+            "top_shared_word_contributions": [
+              [
+                "rhinoceros",
+                0.9200528860092163
+              ],
+              [
+                "black rhinoceros",
+                0.029562462121248245
+              ],
+              [
+                "indian rhinoceros",
+                0.027688831090927124
+              ]
+            ]
+          },
+          {
+            "case": "still_wrong",
+            "sketch": "sketch/cabin/n02932400_16983-2.png",
+            "native_top1": "photo/scissors/ext_515.jpg",
+            "method_top1": "photo/skyscraper/n04233124_11631.jpg",
+            "top_shared_word_contributions": [
+              [
+                "skyscraper",
+                0.999965488910675
+              ],
+              [
+                "corporate headquarters",
+                2.258544736832846e-05
+              ],
+              [
+                "video",
+                2.9396933314274065e-06
+              ]
+            ]
+          },
+          {
+            "case": "still_wrong",
+            "sketch": "sketch/bat/n02139199_13855-2.png",
+            "native_top1": "photo/scissors/ext_515.jpg",
+            "method_top1": "photo/sword/n04373894_31203.jpg",
+            "top_shared_word_contributions": [
+              [
+                "baguazhang",
+                0.5387948155403137
+              ],
+              [
+                "wushu",
+                0.45228877663612366
+              ],
+              [
+                "juggling",
+                0.0057308254763484
+              ]
+            ]
+          }
+        ]
+      },
+      "name_disjoint_checks": {},
+      "native_errors": {
+        "wrong_at1": 8008,
+        "wrong_at10": 84768,
+        "wrong_top10_share_top1pct": 0.9794380068778992
+      },
+      "primary_errors": {
+        "wrong_at1": 4083,
+        "wrong_at10": 37852,
+        "wrong_top10_share_top1pct": 0.5822677612304688
+      }
+    },
+    "tuberlin": {
+      "queries": 2130,
+      "gallery": 27262,
+      "classes": 30,
+      "conditions": {
+        "shared-concept-likelihood/bare-likelihood": {
+          "mAP": 0.7155588269233704,
+          "precision": 0.7321596145629883
+        },
+        "shared-concept-likelihood/named-likelihood": {
+          "mAP": 0.7659157514572144,
+          "precision": 0.7707746624946594
+        },
+        "shared-concept-likelihood/one-update": {
+          "mAP": 0.7647472023963928,
+          "precision": 0.7790845036506653
+        },
+        "shared-concept-likelihood/posterior-mean": {
+          "mAP": 0.7428615093231201,
+          "precision": 0.7685728073120117
+        },
+        "shared-concept-likelihood/shuffled-identity": {
+          "mAP": 0.08327941596508026,
+          "precision": 0.06773708760738373
+        },
+        "shared-concept-likelihood/uniform": {
+          "mAP": 0.7335394024848938,
+          "precision": 0.7722299695014954
+        },
+        "conditional-semantic-index/bare-conditional": {
+          "mAP": 0.5493648052215576,
+          "precision": 0.6727418303489685
+        },
+        "conditional-semantic-index/bare-direct": {
+          "mAP": 0.6694383025169373,
+          "precision": 0.7605727910995483
+        },
+        "conditional-semantic-index/bare-witness": {
+          "mAP": 0.6840917468070984,
+          "precision": 0.7569765448570251
+        },
+        "conditional-semantic-index/named-witness": {
+          "mAP": 0.6775084733963013,
+          "precision": 0.7524600625038147
+        },
+        "conditional-semantic-index/native": {
+          "mAP": 0.29065898060798645,
+          "precision": 0.46264317631721497
+        },
+        "conditional-semantic-index/reference-half-a": {
+          "mAP": 0.685748815536499,
+          "precision": 0.7589999437332153
+        },
+        "conditional-semantic-index/reference-half-b": {
+          "mAP": 0.6814436316490173,
+          "precision": 0.7538497447967529
+        },
+        "conditional-semantic-index/rgb-witness": {
+          "mAP": 0.4891110360622406,
+          "precision": 0.5625492930412292
+        },
+        "conditional-semantic-index/shuffled-witness": {
+          "mAP": 0.03943035751581192,
+          "precision": 0.013370892032980919
+        },
+        "patch-style-invariance/center": {
+          "mAP": 0.04113185778260231,
+          "precision": 0.04783568158745766
+        },
+        "patch-style-invariance/instance": {
+          "mAP": 0.038003548979759216,
+          "precision": 0.042122066020965576
+        },
+        "patch-style-invariance/native": {
+          "mAP": 0.29065898060798645,
+          "precision": 0.46264317631721497
+        },
+        "patch-style-invariance/scale": {
+          "mAP": 0.03817743435502052,
+          "precision": 0.04084507003426552
+        },
+        "prior/source-prior": {
+          "mAP": 0.40217721462249756,
+          "precision": 0.46676525473594666
+        },
+        "prior/reference-half-a": {
+          "mAP": 0.7661795020103455,
+          "precision": 0.7708449959754944
+        },
+        "prior/reference-half-b": {
+          "mAP": 0.7646610140800476,
+          "precision": 0.7695305347442627
+        },
+        "previous": {
+          "mAP": 0.7696316838264465,
+          "precision": 0.8061361908912659
+        }
+      },
+      "primary_contrasts": {
+        "shared-concept-likelihood/bare-likelihood": {
+          "mAP": {
+            "delta_pp": 5.035699565737495,
+            "ci95_class": [
+              1.5832202297092863,
+              8.966152073369768
+            ],
+            "classes_up": 20,
+            "classes": 30
+          },
+          "precision": {
+            "delta_pp": 3.8615023185599577,
+            "ci95_class": [
+              -0.31880061213129746,
+              9.540405901308068
+            ],
+            "classes_up": 17,
+            "classes": 30
+          }
+        },
+        "shared-concept-likelihood/named-likelihood": {
+          "mAP": {
+            "delta_pp": 0.0,
+            "ci95_class": [
+              0.0,
+              0.0
+            ],
+            "classes_up": 0,
+            "classes": 30
+          },
+          "precision": {
+            "delta_pp": 0.0,
+            "ci95_class": [
+              0.0,
+              0.0
+            ],
+            "classes_up": 0,
+            "classes": 30
+          }
+        },
+        "shared-concept-likelihood/one-update": {
+          "mAP": {
+            "delta_pp": 0.11685840284862849,
+            "ci95_class": [
+              -0.9019878290832046,
+              1.181149608399386
+            ],
+            "classes_up": 17,
+            "classes": 30
+          },
+          "precision": {
+            "delta_pp": -0.8309860017692818,
+            "ci95_class": [
+              -2.2447260583015223,
+              0.552150104819356
+            ],
+            "classes_up": 15,
+            "classes": 30
+          }
+        },
+        "shared-concept-likelihood/posterior-mean": {
+          "mAP": {
+            "delta_pp": 2.3054289713309544,
+            "ci95_class": [
+              0.26578386906064383,
+              4.327829391419553
+            ],
+            "classes_up": 25,
+            "classes": 30
+          },
+          "precision": {
+            "delta_pp": 0.22018781893759826,
+            "ci95_class": [
+              -2.516115774858947,
+              2.5587441592647777
+            ],
+            "classes_up": 20,
+            "classes": 30
+          }
+        },
+        "shared-concept-likelihood/shuffled-identity": {
+          "mAP": {
+            "delta_pp": 68.26363395386869,
+            "ci95_class": [
+              60.302290197421236,
+              75.60929880567035
+            ],
+            "classes_up": 30,
+            "classes": 30
+          },
+          "precision": {
+            "delta_pp": 70.30375601513914,
+            "ci95_class": [
+              61.25241703134345,
+              78.85096464532764
+            ],
+            "classes_up": 30,
+            "classes": 30
+          }
+        },
+        "shared-concept-likelihood/uniform": {
+          "mAP": {
+            "delta_pp": 3.237631343810124,
+            "ci95_class": [
+              1.683785262583479,
+              4.729332134034136
+            ],
+            "classes_up": 24,
+            "classes": 30
+          },
+          "precision": {
+            "delta_pp": -0.14553993004658414,
+            "ci95_class": [
+              -1.8256587138778255,
+              1.4630331475998306
+            ],
+            "classes_up": 16,
+            "classes": 30
+          }
+        },
+        "conditional-semantic-index/bare-witness": {
+          "mAP": {
+            "delta_pp": 8.182395602589551,
+            "ci95_class": [
+              3.708262511682688,
+              12.803357401642275
+            ],
+            "classes_up": 22,
+            "classes": 30
+          },
+          "precision": {
+            "delta_pp": 1.3798122715747132,
+            "ci95_class": [
+              -3.5467535949100286,
+              6.05099131697795
+            ],
+            "classes_up": 18,
+            "classes": 30
+          }
+        },
+        "conditional-semantic-index/native": {
+          "mAP": {
+            "delta_pp": 47.52567667214576,
+            "ci95_class": [
+              41.67889543282592,
+              53.09768062706845
+            ],
+            "classes_up": 30,
+            "classes": 30
+          },
+          "precision": {
+            "delta_pp": 30.813145573062936,
+            "ci95_class": [
+              23.832209413545034,
+              38.12455971854244
+            ],
+            "classes_up": 29,
+            "classes": 30
+          }
+        },
+        "prior/source-prior": {
+          "mAP": {
+            "delta_pp": 36.37385380259789,
+            "ci95_class": [
+              25.788588747584818,
+              46.83823629175475
+            ],
+            "classes_up": 26,
+            "classes": 30
+          },
+          "precision": {
+            "delta_pp": 30.400939067134836,
+            "ci95_class": [
+              18.695745925461384,
+              41.7678785971409
+            ],
+            "classes_up": 22,
+            "classes": 30
+          }
+        },
+        "prior/reference-half-a": {
+          "mAP": {
+            "delta_pp": -0.026368942098613356,
+            "ci95_class": [
+              -0.130249293330798,
+              0.06580108730814958
+            ],
+            "classes_up": 13,
+            "classes": 30
+          },
+          "precision": {
+            "delta_pp": -0.007042254762890193,
+            "ci95_class": [
+              -0.24326963919103517,
+              0.27669392293101425
+            ],
+            "classes_up": 15,
+            "classes": 30
+          }
+        },
+        "prior/reference-half-b": {
+          "mAP": {
+            "delta_pp": 0.12547802822795553,
+            "ci95_class": [
+              -0.0006021816034338691,
+              0.2819273010149886
+            ],
+            "classes_up": 20,
+            "classes": 30
+          },
+          "precision": {
+            "delta_pp": 0.12441316199764399,
+            "ci95_class": [
+              -0.016746106956492552,
+              0.26112815460109123
+            ],
+            "classes_up": 19,
+            "classes": 30
+          }
+        },
+        "previous": {
+          "mAP": {
+            "delta_pp": -0.3715921996135107,
+            "ci95_class": [
+              -4.079440048913616,
+              3.214246989719566
+            ],
+            "classes_up": 14,
+            "classes": 30
+          },
+          "precision": {
+            "delta_pp": -3.536150152816879,
+            "ci95_class": [
+              -7.869341917495376,
+              -0.0705715106002427
+            ],
+            "classes_up": 14,
+            "classes": 30
+          }
+        }
+      },
+      "prior": {
+        "iterations": 18,
+        "relative_log_likelihood": -4.730658164098514,
+        "last_increase": 0.0003218024643327766,
+        "tolerance_nats": 0.00034526698300124393,
+        "effective_number_of_concepts": 87.41191864013672,
+        "maximum_mass": 0.04983057826757431
+      },
+      "KD_check": {
+        "queries": 2130,
+        "mAP": 0.7659157514572144,
+        "precision": 0.7707746624946594,
+        "kd_minus_pipeline_max_abs_same_order_AP_P": [
+          0.0,
+          0.0
+        ],
+        "max_per_query_abs_AP_P": [
+          0.0,
+          0.0
+        ],
+        "mean_per_query_abs_AP_P": [
+          0.0,
+          0.0
+        ],
+        "queries_within_1e-6_both": 2130
+      },
+      "error_pairs": {
+        "native_wrong_top1": 881,
+        "primary_ranks_native_first_positive_above_native_wrong": 683,
+        "uniform_ranks_native_first_positive_above_native_wrong": 591,
+        "rescued": 485,
+        "regressed": 125,
+        "examples": [
+          {
+            "case": "rescued",
+            "sketch": "sketch/couch/4712.png",
+            "native_top1": "photo/floor lamp/n03367059_1305.JPEG",
+            "method_top1": "photo/couch/n04344873_8378.JPEG",
+            "top_shared_word_contributions": [
+              [
+                "loveseat",
+                0.8943421244621277
+              ],
+              [
+                "sofa bed",
+                0.10464397817850113
+              ],
+              [
+                "couch",
+                0.000499097048304975
+              ]
+            ]
+          },
+          {
+            "case": "rescued",
+            "sketch": "sketch/church/4177.png",
+            "native_top1": "photo/floor lamp/n03367059_6511.JPEG",
+            "method_top1": "photo/church/n03028079_17779.JPEG",
+            "top_shared_word_contributions": [
+              [
+                "church bell",
+                0.7116684913635254
+              ],
+              [
+                "church",
+                0.2327430546283722
+              ],
+              [
+                "eastern orthodox church architecture",
+                0.01624559797346592
+              ]
+            ]
+          },
+          {
+            "case": "rescued",
+            "sketch": "sketch/house/8814.png",
+            "native_top1": "photo/floor lamp/n03367059_6511.JPEG",
+            "method_top1": "photo/house/n03545150_17762.JPEG",
+            "top_shared_word_contributions": [
+              [
+                "house flies",
+                0.9503504037857056
+              ],
+              [
+                "house",
+                0.03212437406182289
+              ],
+              [
+                "renting",
+                0.008269643411040306
+              ]
+            ]
+          },
+          {
+            "case": "regressed",
+            "sketch": "sketch/baseball bat/994.png",
+            "native_top1": "photo/baseball bat/n02799175_6112.JPEG",
+            "method_top1": "photo/hammer/n03481172_8.JPEG",
+            "top_shared_word_contributions": [
+              [
+                "ball-peen hammer",
+                0.9717118144035339
+              ],
+              [
+                "bush hammer",
+                0.020534079521894455
+              ],
+              [
+                "stonemason's hammer",
+                0.0028702721465379
+              ]
+            ]
+          },
+          {
+            "case": "regressed",
+            "sketch": "sketch/helicopter/8396.png",
+            "native_top1": "photo/helicopter/n03512147_3759.JPEG",
+            "method_top1": "photo/mosquito/n02200198_4971.JPEG",
+            "top_shared_word_contributions": [
+              [
+                "mosquito",
+                0.9991357326507568
+              ],
+              [
+                "house flies",
+                0.0006040902226231992
+              ],
+              [
+                "crane fly",
+                0.00017209276848006994
+              ]
+            ]
+          },
+          {
+            "case": "regressed",
+            "sketch": "sketch/panda/11500.png",
+            "native_top1": "photo/panda/n02510455_240.JPEG",
+            "method_top1": "photo/hammer/n03481172_18745.JPEG",
+            "top_shared_word_contributions": [
+              [
+                "bush hammer",
+                0.9991504549980164
+              ],
+              [
+                "ball-peen hammer",
+                0.0005553998053073883
+              ],
+              [
+                "stonemason's hammer",
+                6.028559437254444e-05
+              ]
+            ]
+          },
+          {
+            "case": "still_wrong",
+            "sketch": "sketch/pear/11901.png",
+            "native_top1": "photo/floor lamp/n03367059_1305.JPEG",
+            "method_top1": "photo/hammer/n03481172_14876.JPEG",
+            "top_shared_word_contributions": [
+              [
+                "egg shaker",
+                0.8767086267471313
+              ],
+              [
+                "wine glass",
+                0.10227078199386597
+              ],
+              [
+                "table lamp",
+                0.00933342706412077
+              ]
+            ]
+          },
+          {
+            "case": "still_wrong",
+            "sketch": "sketch/suv/16827.png",
+            "native_top1": "photo/truck/n03930630_649.JPEG",
+            "method_top1": "photo/truck/n03930630_1702.JPEG",
+            "top_shared_word_contributions": [
+              [
+                "mini moke",
+                0.9644769430160522
+              ],
+              [
+                "dodge d series",
+                0.015875838696956635
+              ],
+              [
+                "studebaker m series truck",
+                0.008734188042581081
+              ]
+            ]
+          },
+          {
+            "case": "still_wrong",
+            "sketch": "sketch/bus/2687.png",
+            "native_top1": "photo/floor lamp/n03367059_1305.JPEG",
+            "method_top1": "photo/truck/n03930630_11012.JPEG",
+            "top_shared_word_contributions": [
+              [
+                "nissan hardbody truck",
+                0.9323814511299133
+              ],
+              [
+                "pickup truck",
+                0.038086723536252975
+              ],
+              [
+                "dodge d series",
+                0.020252859219908714
+              ]
+            ]
+          }
+        ]
+      },
+      "name_disjoint_checks": {
+        "names_shared_with_Sketchy": {
+          "classes": [
+            "helicopter",
+            "pear",
+            "airplane",
+            "butterfly",
+            "cup",
+            "horse"
+          ],
+          "queries": 430,
+          "methods": {
+            "shared-concept-likelihood/named-likelihood": {
+              "mAP": 0.7067965269088745,
+              "precision": 0.7311627864837646
+            },
+            "shared-concept-likelihood/uniform": {
+              "mAP": 0.673370361328125,
+              "precision": 0.7083487510681152
+            },
+            "conditional-semantic-index/bare-witness": {
+              "mAP": 0.6046075224876404,
+              "precision": 0.6293022632598877
+            },
+            "conditional-semantic-index/native": {
+              "mAP": 0.20431242883205414,
+              "precision": 0.3995348811149597
+            },
+            "prior/source-prior": {
+              "mAP": 0.6378523111343384,
+              "precision": 0.7076976895332336
+            },
+            "prior/reference-half-a": {
+              "mAP": 0.7064445614814758,
+              "precision": 0.7302557826042175
+            },
+            "prior/reference-half-b": {
+              "mAP": 0.7023038864135742,
+              "precision": 0.729534924030304
+            }
+          },
+          "primary_vs_native": {
+            "mAP": {
+              "delta_pp": 50.248411514059924,
+              "ci95_class": [
+                36.733692223317036,
+                62.0759576583902
+              ],
+              "classes_up": 6,
+              "classes": 6
+            },
+            "precision": {
+              "delta_pp": 33.1627908401018,
+              "ci95_class": [
+                19.426190393666428,
+                45.83953503519297
+              ],
+              "classes_up": 6,
+              "classes": 6
+            }
+          }
+        },
+        "names_absent_from_Sketchy": {
+          "classes": [
+            "wrist-watch",
+            "mermaid",
+            "mosquito",
+            "couch",
+            "hammer",
+            "house",
+            "baseball bat",
+            "toilet",
+            "panda",
+            "mug",
+            "wineglass",
+            "motorbike",
+            "eyeglasses",
+            "hot air balloon",
+            "skull",
+            "truck",
+            "palm tree",
+            "cell phone",
+            "sailboat",
+            "suv",
+            "church",
+            "floor lamp",
+            "bus",
+            "tv"
+          ],
+          "queries": 1700,
+          "methods": {
+            "shared-concept-likelihood/named-likelihood": {
+              "mAP": 0.7808694243431091,
+              "precision": 0.780794084072113
+            },
+            "shared-concept-likelihood/uniform": {
+              "mAP": 0.7487587332725525,
+              "precision": 0.7883882522583008
+            },
+            "conditional-semantic-index/bare-witness": {
+              "mAP": 0.7041966319084167,
+              "precision": 0.7892705798149109
+            },
+            "conditional-semantic-index/native": {
+              "mAP": 0.3124995827674866,
+              "precision": 0.47860589623451233
+            },
+            "prior/source-prior": {
+              "mAP": 0.34256529808044434,
+              "precision": 0.40582355856895447
+            },
+            "prior/reference-half-a": {
+              "mAP": 0.7812888622283936,
+              "precision": 0.7811117768287659
+            },
+            "prior/reference-half-b": {
+              "mAP": 0.7804336547851562,
+              "precision": 0.7796470522880554
+            }
+          },
+          "primary_vs_native": {
+            "mAP": {
+              "delta_pp": 46.83698491801453,
+              "ci95_class": [
+                40.32396173121332,
+                53.073316228497646
+              ],
+              "classes_up": 24,
+              "classes": 24
+            },
+            "precision": {
+              "delta_pp": 30.218823534929577,
+              "ci95_class": [
+                21.871581625451604,
+                38.773974803352125
+              ],
+              "classes_up": 23,
+              "classes": 24
+            }
+          }
+        }
+      },
+      "native_errors": {
+        "wrong_at1": 881,
+        "wrong_at10": 9814,
+        "wrong_top10_share_top1pct": 0.9794171452522278
+      },
+      "primary_errors": {
+        "wrong_at1": 521,
+        "wrong_at10": 4959,
+        "wrong_top10_share_top1pct": 0.7852389812469482
+      }
+    }
+  }
+}
