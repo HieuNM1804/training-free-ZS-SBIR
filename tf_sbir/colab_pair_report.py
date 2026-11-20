@@ -20,19 +20,26 @@ REFERENCE = "balance-index2-graph2-text35"
 SHARP = "balance-index2-graph2-sharp"
 
 
+def by_precision(rows, prefix="mean"):
+    return max(rows, key=lambda r: (r[prefix + "_precision_pct"], r[prefix + "_map_pct"]))
+
+
 @torch.inference_mode()
-def report(workspace):
+def report(workspace, include_scale=False):
     torch.set_num_threads(1)
     root = Path(json.loads((workspace / "ready.json").read_text())["root"])
     results = workspace / "results"
-    output = results / "precision-report"
+    studies = STUDIES.copy()
+    if include_scale:
+        studies["paired-scale"] = (22, 20931, "c2036a38218886e17bc6a49ffd69405f017fa695")
+    output = results / ("combined-report" if include_scale else "precision-report")
     output.mkdir(exist_ok=True)
     values = {s: {} for s in SKETCHY_SPLITS}
     summary = {"selection": "Exploratory unseen; equal mean split precision, then equal mean split mAP.",
                "families": {}, "bootstrap": {"samples": 5000, "seed": 907}}
     table = []
     gpu = torch.cuda.get_device_name()
-    for study, (expected, vocab, revision) in STUDIES.items():
+    for study, (expected, vocab, revision) in studies.items():
         folder = results / study
         per_query = load_query_results(folder)
         names = sorted(per_query[SKETCHY_SPLITS[0]])
@@ -65,12 +72,15 @@ def report(workspace):
         eligible = [r for r in group if r["eligible"]]
         summary["families"][study] = {
             "tested": len(group), "eligible": len(eligible),
-            "common": max(eligible, key=lambda r: (r["mean_precision_pct"], r["mean_map_pct"])),
-            "per_split": {s: max(eligible, key=lambda r: (r[f"ext{i}_precision_pct"], r[f"ext{i}_map_pct"]))
+            "common": by_precision(eligible),
+            "per_split": {s: by_precision(eligible, f"ext{i}")
                           for i, s in enumerate(SKETCHY_SPLITS, 1)}}
         table.extend(group)
-    validate_classes(root, [results / study for study in STUDIES], output / "class-validation.json")
-    vocab = summary["families"]["gallery-balance"]["common"]["method"]
+    validate_classes(root, [results / study for study in studies], output / "class-validation.json")
+    terms = [r for r in table if r["public_concepts"] and r["eligible"]]
+    summary["with_vocabulary"] = {"common": by_precision(terms), "per_split": {
+        s: by_precision(terms, f"ext{i}") for i, s in enumerate(SKETCHY_SPLITS, 1)}}
+    vocab = summary["with_vocabulary"]["common"]["method"]
     vision = summary["families"]["visual-graph"]["common"]["method"]
     summary["comparisons"] = {}
     summary["class_changes_vs_equal_gallery_weights"] = {}
@@ -78,14 +88,27 @@ def report(workspace):
     for split in SKETCHY_SPLITS:
         _, labels = collect_paths(root, UNSEEN_CLASSES[split], "sketch")
         best = summary["families"]["gallery-balance"]["per_split"][split]["method"]
-        control = lambda method: "balance-index2-graph2-" + method.rsplit("-", 1)[-1]
-        comparisons = [(vocab, REFERENCE), (vocab, control(vocab)), (best, control(best)), (vocab, vision),
+        gallery_best = summary["families"]["gallery-balance"]["common"]["method"]
+        comparisons = [(vocab, REFERENCE), (vocab, gallery_best),
+                       (gallery_best, "balance-index2-graph2-" + gallery_best.rsplit("-", 1)[-1]),
+                       (best, "balance-index2-graph2-" + best.rsplit("-", 1)[-1]), (vocab, vision),
                        (REFERENCE, VISUAL), (SHARP, REFERENCE), (vision, VISUAL),
                        (VISUAL, "visual-graph-full"), (VISUAL, "visual-graph-cosine-eight"),
                        ("visual-graph-full", "visual-graph-cosine-full"), (VISUAL, "visual-graph-k64-g0-r1"),
                        (VISUAL, "visual-graph-shuffled-errors"),
                        ("balance-index0-graph2-text35", REFERENCE), ("balance-index2-graph0-text35", REFERENCE),
                        ("balance-index0-graph0-text35", REFERENCE)]
+        if include_scale:
+            scale = summary["families"]["paired-scale"]
+            for strategy, parent in (("text35", REFERENCE), ("sharp", SHARP)):
+                stem = "scale-" + strategy + "-"
+                best_k = by_precision(r for r in table if r["method"].startswith(stem + "k"))["method"]
+                comparisons.extend([(stem + "k192", parent), (stem + "uniform", stem + "k192"),
+                                    (stem + "paired8", stem + "uniform"), (stem + "paired8", stem + "shuffled8"),
+                                    (stem + "select", best_k)])
+                for name in (scale["common"]["method"], scale["per_split"][split]["method"]):
+                    if name.startswith(stem):
+                        comparisons.extend([(name, stem + "k192"), (name, best_k), (name, stem + "uniform")])
         pairs = list(dict.fromkeys((a, b) for a, b in comparisons if a != b))
         summary["comparisons"][split] = intervals(values[split], labels, pairs, rng)
         difference = values[split][vocab] - values[split][REFERENCE]
@@ -105,4 +128,6 @@ def report(workspace):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--workspace", type=Path, default=Path("/content/sbir"))
-    report(parser.parse_args().workspace)
+    parser.add_argument("--include-scale", action="store_true")
+    args = parser.parse_args()
+    report(args.workspace, args.include_scale)
