@@ -11,6 +11,9 @@ from tqdm.auto import tqdm
 from .encoding import load_frozen_clip, save_tensor
 
 
+DEFAULT_DOMAIN_TEMPLATES = (("a drawing of a {}.", "a sketch of the {}."), ("a photo of a {}.", "a photo of the {}."))
+
+
 def cache_file(args, key):
     model = "b32"
     if args.clip_checkpoint:
@@ -22,8 +25,11 @@ def cache_file(args, key):
 
 
 @torch.inference_mode()
-def load_words(args, words):
+def load_words(args, words, templates=DEFAULT_DOMAIN_TEMPLATES):
     signatures = hashlib.sha256("\0".join(words).encode()).hexdigest()[:20]
+    if templates != DEFAULT_DOMAIN_TEMPLATES:
+        extra = "\0".join(sentence for domain in templates for sentence in domain)
+        signatures += "-" + hashlib.sha256(extra.encode()).hexdigest()[:16]
     file = cache_file(args, f"text/{signatures}")
     if file.is_file():
         return torch.load(file, map_location="cpu", weights_only=True, mmap=getattr(args, "memory_map", False))
@@ -33,10 +39,6 @@ def load_words(args, words):
     views = [[], []]
     for start in tqdm(range(0, len(words), 256), desc="CLIP B/32 public text vocabulary", mininterval=1.0):
         terms = words[start:start+256]
-        templates = (
-            ("a drawing of a {}.", "a sketch of the {}."),
-            ("a photo of a {}.", "a photo of the {}."),
-        )
         for result, (first, second) in zip(views, templates, strict=True):
             a = F.normalize(model.encode_text(tokenizer([first.format(w) for w in terms]).to(device)).float(), dim=-1)
             b = F.normalize(model.encode_text(tokenizer([second.format(w) for w in terms]).to(device)).float(), dim=-1)
