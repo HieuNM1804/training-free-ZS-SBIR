@@ -127,7 +127,7 @@ def run(args):
                 actual = (row["queries"], row["gallery"], row["p_k"], row["map_k"])
                 if actual != expected or details.shape != (expected[0], 2) or row["backbone"] != "OpenAI CLIP ViT-B/32":
                     raise ValueError(f"Invalid protocol for {split} {name}")
-                visual_only = name.startswith("transfer-image-") or name == "ground-cosine-native"
+                visual_only = name.startswith(("transfer-image-", "visual-graph-")) or name == "ground-cosine-native"
                 if not row["exploratory_unseen"] or row["external_vocabulary"] != (0 if visual_only else 20931):
                     raise ValueError(f"Invalid vocabulary or tuning origin for {name}")
                 if row["checkpoint_sha256"] != "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af":
@@ -216,6 +216,14 @@ def run(args):
                 name = "correlated-" + tag
                 for compare in ("independent", "target", "source", "features", "shuffled"):
                     pairs.append((name + "both-0.5", name + compare))
+        if "visual-graph" in evidence["families"]:
+            family = evidence["families"]["visual-graph"]
+            visual = "visual-graph-k64-g1-r1"
+            pairs.extend([(family["common"], visual), (family["common"], "transfer-image-k64-g1-r1"),
+                          ("reflect-control-risk4", visual), (visual, "visual-graph-full"),
+                          (visual, "visual-graph-fixed"), (visual, "visual-graph-cosine-eight"),
+                          (visual, "visual-graph-k64-g0-r1"), (visual, "visual-graph-shuffled-errors"),
+                          ("visual-graph-cosine-full", "transfer-image-k64-g1-r1")])
         pairs = list(dict.fromkeys((a, b) for a, b in pairs if a in scores and b in scores and a != b))
         class_scores = {c: per_query[split][common][labels.eq(i)].mean(dim=0).tolist()
                         for i, c in enumerate(UNSEEN_CLASSES[split])}
@@ -228,6 +236,12 @@ def run(args):
                 change = (per_query[split][common][is_category] - per_query[split][base][is_category]).mean(dim=0)
                 evidence[split]["class_change_vs_two_views"][category] = {
                     "queries": int(is_category.sum()), "delta_precision": float(change[1]), "delta_map": float(change[0])}
+    evidence["vocabulary_comparisons"] = {}
+    for size in sorted(set(row["public_concepts"] for row in table)):
+        candidates = [r for r in table if r["eligible_for_selection"] and r["public_concepts"] == size]
+        choice = max(candidates, key=lambda r: (r["mean_precision_pct"], r["ext1_mAP_all_pct"] + r["ext2_mAP200_pct"]))
+        evidence["vocabulary_comparisons"][str(size)] = {"eligible": len(candidates), "common": choice["method"],
+            "best_by_split": {s: rankings({r["method"]: results[s][r["method"]] for r in candidates}) for s in SKETCHY_SPLITS}}
     args.output.write_text(json.dumps(evidence, indent=2) + "\n", encoding="utf-8")
     with args.output.with_suffix(".csv").open("w", encoding="utf-8-sig", newline="") as file:
         writer = csv.DictWriter(file, fieldnames=list(table[0]))
