@@ -1,0 +1,7 @@
+# Phép thử cho một điểm truy hồi độc lập với gallery
+
+Giữ prior đều trên toàn bộ 20.931 từ và đúng nhiệt độ CLIP. Phép so đã đo ở nhánh likelihood dùng tích của hai phân bố phản hồi của CLIP. Tự so một phân bố với chính nó theo công thức đó vẫn phụ thuộc vào độ tập trung của phân bố. Để kiểm tra tác động của việc này, đối chiếu với hệ số Bhattacharyya, bằng tích vô hướng giữa căn bậc hai của hai phân bố. Điểm của một cặp chỉ phụ thuộc hai ảnh, tên miền và checkpoint. Không ước lượng bất kỳ đại lượng nào từ ảnh tham chiếu của Sketchy hoặc TU.
+
+Kiểm tra âm bằng tích vô hướng gốc và cosine giữa hai posterior chưa lấy căn. Phép áp dụng Hellinger cho histogram ảnh đã được kiểm chứng với RootSIFT, còn sử dụng tỉ lệ xác suất ngữ nghĩa để truy hồi có tiền lệ trong cross-modal retrieval. [Arandjelović và Zisserman, CVPR 2012](https://www.robots.ox.ac.uk/~vgg/publications/2012/Arandjelovic12/arandjelovic12.pdf) · [Rasiwasia và cộng sự, ACM MM 2010](https://www.mit.edu/~rplevy/papers/rasiwasia-etal-2010-acm.pdf)
+
+Quyết định dùng riêng Sketchy. Chỉ chấm TU cho phép lấy căn nếu precision cao hơn phép tích posterior trên cả hai split Sketchy và trung bình mAP cũng cao hơn ở lượt toàn bộ. Nếu điều kiện thất bại, giữ đây như đối chứng âm. Đây là giả thuyết hình học bổ sung, được xét sau khi hai benchmark đã có các kết quả lịch sử, và không thay thế phép chọn giữa hai cơ chế chính đã khóa trước đó.
