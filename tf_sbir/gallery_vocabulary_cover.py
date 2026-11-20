@@ -71,11 +71,11 @@ class Index:
         self.orders={"frequency":self.freq,"random":self.randint}
         self.banks,self.graphs,self.visual_banks,self.global_words={},{},{},{}
 
-    def cover(self):
+    def cover(self,seed=711):
         # Submodular facility location. Each selected term covers reference
         # photos that have a weak match to all of the previously selected terms.
         candidates=self.freq[:2048]
-        generator=torch.Generator().manual_seed(711)
+        generator=torch.Generator().manual_seed(seed)
         sample=torch.randperm(len(self.p),generator=generator)[:1536].to(self.p.device)
         logits=self.p[sample]@self.target[candidates].T
         utility=((logits-logits.amax(1,keepdim=True))/.035).exp()
