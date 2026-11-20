@@ -146,8 +146,9 @@ def run(workspace, study, stage):
     if not all(len(t) == 20931 for t in texts):
         raise ValueError("Wrong public vocabulary")
     source, target = (t.cuda() for t in texts)
-    multi_q = get_views(args, qp, "sketch") if method.USE_VIEWS else None
-    multi_p = get_views(args, pp, "photo") if method.USE_VIEWS else None
+    loader = getattr(method, "get_views", get_views)
+    multi_q = loader(args, qp, "sketch") if method.USE_VIEWS else None
+    multi_p = loader(args, pp, "photo") if method.USE_VIEWS else None
     out = folder / ("heldout" if held else "sketchy")
     for s,(qi,ql) in qs.items():
         pi,pl = gs[s]
