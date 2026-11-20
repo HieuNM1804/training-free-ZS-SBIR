@@ -1,0 +1,160 @@
+{
+  "kd_sha256": "adaa5781082173d333b5605f18045f2c2fecb6dbe23685902104dfc0828855ee",
+  "splits": {
+    "sketchy_1": {
+      "queries": 14179,
+      "gallery": 17100,
+      "scores": {
+        "hellinger": {
+          "precision": 0.6735292077064514,
+          "mAP": 0.5723109841346741,
+          "paired_vs_uniform": {
+            "mAP": {
+              "delta_pp": -18.077123314566542,
+              "ci95_class": [
+                -22.183389605677405,
+                -13.896397189079234
+              ],
+              "classes_up": 0,
+              "classes": 25
+            },
+            "precision": {
+              "delta_pp": -11.588123279450743,
+              "ci95_class": [
+                -15.933490474981799,
+                -7.582754659827843
+              ],
+              "classes_up": 2,
+              "classes": 25
+            }
+          },
+          "kd": {
+            "queries": 14179,
+            "mAP": 0.5723109841346741,
+            "precision": 0.6735291481018066,
+            "kd_minus_pipeline_max_abs_same_order_AP_P": [
+              0.0,
+              0.0
+            ],
+            "max_per_query_abs_AP_P": [
+              0.0,
+              0.0
+            ],
+            "mean_per_query_abs_AP_P": [
+              0.0,
+              0.0
+            ],
+            "queries_within_1e-6_both": 14179
+          }
+        },
+        "cosine_posterior": {
+          "precision": 0.7499513626098633,
+          "mAP": 0.7101695537567139,
+          "paired_vs_uniform": {
+            "mAP": {
+              "delta_pp": -4.291266241173983,
+              "ci95_class": [
+                -5.745294272795255,
+                -2.9056595334095734
+              ],
+              "classes_up": 2,
+              "classes": 25
+            },
+            "precision": {
+              "delta_pp": -3.9459058896817965,
+              "ci95_class": [
+                -5.694800054927272,
+                -2.280787225222416
+              ],
+              "classes_up": 5,
+              "classes": 25
+            }
+          }
+        },
+        "uniform": {
+          "mAP": 0.7530822157859802,
+          "precision": 0.7894104719161987
+        }
+      }
+    },
+    "sketchy_2": {
+      "queries": 12694,
+      "gallery": 12552,
+      "scores": {
+        "hellinger": {
+          "precision": 0.5788017511367798,
+          "mAP": 0.5986841917037964,
+          "paired_vs_uniform": {
+            "mAP": {
+              "delta_pp": -11.547533244360311,
+              "ci95_class": [
+                -14.244065079001881,
+                -8.963647626076375
+              ],
+              "classes_up": 0,
+              "classes": 21
+            },
+            "precision": {
+              "delta_pp": -12.39912564223842,
+              "ci95_class": [
+                -15.41256625539998,
+                -9.53402943705956
+              ],
+              "classes_up": 0,
+              "classes": 21
+            }
+          },
+          "kd": {
+            "queries": 12694,
+            "mAP": 0.5986841917037964,
+            "precision": 0.5788017511367798,
+            "kd_minus_pipeline_max_abs_same_order_AP_P": [
+              0.0,
+              0.0
+            ],
+            "max_per_query_abs_AP_P": [
+              0.0,
+              0.0
+            ],
+            "mean_per_query_abs_AP_P": [
+              0.0,
+              0.0
+            ],
+            "queries_within_1e-6_both": 12694
+          }
+        },
+        "cosine_posterior": {
+          "precision": 0.6598841547966003,
+          "mAP": 0.669908881187439,
+          "paired_vs_uniform": {
+            "mAP": {
+              "delta_pp": -4.425067434653643,
+              "ci95_class": [
+                -6.386214774034607,
+                -2.522145658564381
+              ],
+              "classes_up": 2,
+              "classes": 21
+            },
+            "precision": {
+              "delta_pp": -4.290885473085749,
+              "ci95_class": [
+                -6.580164431275972,
+                -2.0794534750944442
+              ],
+              "classes_up": 4,
+              "classes": 21
+            }
+          }
+        },
+        "uniform": {
+          "mAP": 0.7141595482826233,
+          "precision": 0.7027930617332458
+        }
+      }
+    }
+  },
+  "qualified": false,
+  "utc": "2026-11-20T15:24:54.513632+00:00",
+  "tu_rows_prelock": 0
+}

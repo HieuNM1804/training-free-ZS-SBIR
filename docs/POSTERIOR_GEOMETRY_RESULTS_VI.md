@@ -1,0 +1,3 @@
+# Căn bậc hai của posterior làm giảm chất lượng truy hồi
+
+P@100 trên Ext-1 giảm từ **78,94% xuống 67,35%** khi chuyển từ tích posterior sang hệ số Bhattacharyya. P@200 trên Ext-2 giảm từ **70,28% xuống 57,88%**. Cosine giữa các posterior gốc cũng thấp hơn phép tích, lần lượt đạt 75,00% và 65,99%. Căn bậc hai làm tăng ảnh hưởng tương đối của khái niệm xác suất thấp. Trong phép thử này, điều đó gây hại cho thứ hạng. Nhánh dừng ở Sketchy theo điều kiện đã ghi trước khi chấm. [Giao thức](POSTERIOR_GEOMETRY_PROTOCOL_VI.md) · [Các thứ hạng đối chiếu bằng KD-SBIR](results/semantic-posterior-geometry/sketchy.json)
