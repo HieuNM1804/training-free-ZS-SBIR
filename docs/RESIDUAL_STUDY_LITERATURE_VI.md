@@ -4,6 +4,8 @@ Trên Sketchy Ext-1 và Ext-2, phương pháp chuyển ảnh gallery qua prompt 
 
 ## Nghiên cứu và phép thử có thể phân biệt các cách giải thích
 
+Trong bảng literature review người dùng gửi, FreeCP và S2C2Seg trực tiếp gợi ý câu hỏi về danh mục dư thừa. FreeCP kiểm tra kích hoạt nhầm của lớp vắng mặt hoặc có tên gần nhau. S2C2Seg tách việc chọn tập lớp khỏi việc làm nhất quán dự đoán không gian. Chuyển sang SBIR, đơn vị cần chẩn đoán là cả gallery ảnh và một bảng xếp hạng. Phép thử giữ kích thước từ điển bằng nhau rồi thay cách chọn từ để tách ảnh hưởng của dữ liệu gallery khỏi tác dụng đơn thuần của việc giảm số từ. [FreeCP, ICCV 2025](https://openaccess.thecvf.com/content/ICCV2025/papers/Chen_Training-Free_Class_Purification_for_Open-Vocabulary_Semantic_Segmentation_ICCV_2025_paper.pdf) · [S2C2Seg, CVPR 2026](https://openaccess.thecvf.com/content/CVPR2026/papers/Qing_S2C2Seg_Semantic-Spatial_Consistency_and_Category_Optimization_for_Open-Vocabulary_Segmentation_CVPR_2026_paper.pdf)
+
 | Nguồn | Quan sát và đối chứng của tác giả | Phép thử chuyển sang SBIR và điều có thể bác bỏ giả thuyết |
 |---|---|---|
 | FreeDom, WACV 2025 | Đảo ảnh truy vấn qua từ vựng rời rạc, dùng ảnh lân cận hỗ trợ chọn từ, rồi ghép tên miền đích. Tác giả đánh giá vai trò của từng bước trên các benchmark chuyển miền. | Giữ phép chuyển miền ở phía gallery đã kiểm chứng trước đây. So các ảnh dùng toàn bộ danh mục và dùng một danh mục chung được suy ra từ gallery. Nếu từ ngẫu nhiên cùng số lượng giữ được mức tăng, việc chọn danh mục có nghĩa mất sức giải thích. [Paper](https://arxiv.org/abs/2412.03297) |

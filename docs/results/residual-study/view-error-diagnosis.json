@@ -1,0 +1,152 @@
+{
+  "sketchy_1": {
+    "queries": 1000,
+    "native_locked_reference_P": 0.8053100109100342,
+    "top1_wrong": 185,
+    "oracle_view_rescues": 89,
+    "median_bbox_area": 0.5099549889564514,
+    "mean_bbox_offset": 0.11014539003372192,
+    "variants": {
+      "mirror": {
+        "P": 0.8026200532913208,
+        "rescued_top1": 33,
+        "lost_top1": 40
+      },
+      "center_180": {
+        "P": 0.7937700748443604,
+        "rescued_top1": 44,
+        "lost_top1": 59
+      },
+      "center_144": {
+        "P": 0.7222700715065002,
+        "rescued_top1": 44,
+        "lost_top1": 135
+      },
+      "object": {
+        "P": 0.7389500737190247,
+        "rescued_top1": 42,
+        "lost_top1": 112
+      },
+      "padded": {
+        "P": 0.7800899744033813,
+        "rescued_top1": 30,
+        "lost_top1": 60
+      },
+      "size_center": {
+        "P": 0.7475400567054749,
+        "rescued_top1": 45,
+        "lost_top1": 115
+      },
+      "same_size_opposite": {
+        "P": 0.6280701160430908,
+        "rescued_top1": 34,
+        "lost_top1": 212
+      }
+    },
+    "area_quartiles": [
+      {
+        "queries": 250,
+        "area": 0.33994781970977783,
+        "object_P": 0.6952800750732422,
+        "center_P": 0.6834400296211243,
+        "ref_P": 0.7920000553131104
+      },
+      {
+        "queries": 250,
+        "area": 0.45882561802864075,
+        "object_P": 0.7125999927520752,
+        "center_P": 0.7492800354957581,
+        "ref_P": 0.8061600923538208
+      },
+      {
+        "queries": 250,
+        "area": 0.5560482740402222,
+        "object_P": 0.7571600079536438,
+        "center_P": 0.7640399932861328,
+        "ref_P": 0.8103600144386292
+      },
+      {
+        "queries": 250,
+        "area": 0.7227068543434143,
+        "object_P": 0.7907600402832031,
+        "center_P": 0.7934000492095947,
+        "ref_P": 0.812720000743866
+      }
+    ]
+  },
+  "sketchy_2": {
+    "queries": 840,
+    "native_locked_reference_P": 0.7115357518196106,
+    "top1_wrong": 227,
+    "oracle_view_rescues": 127,
+    "median_bbox_area": 0.489766001701355,
+    "mean_bbox_offset": 0.11304357647895813,
+    "variants": {
+      "mirror": {
+        "P": 0.714321494102478,
+        "rescued_top1": 44,
+        "lost_top1": 33
+      },
+      "center_180": {
+        "P": 0.6880179047584534,
+        "rescued_top1": 49,
+        "lost_top1": 73
+      },
+      "center_144": {
+        "P": 0.6329880952835083,
+        "rescued_top1": 51,
+        "lost_top1": 121
+      },
+      "object": {
+        "P": 0.6476786732673645,
+        "rescued_top1": 60,
+        "lost_top1": 117
+      },
+      "padded": {
+        "P": 0.6824464797973633,
+        "rescued_top1": 42,
+        "lost_top1": 70
+      },
+      "size_center": {
+        "P": 0.6317916512489319,
+        "rescued_top1": 59,
+        "lost_top1": 129
+      },
+      "same_size_opposite": {
+        "P": 0.5476548075675964,
+        "rescued_top1": 50,
+        "lost_top1": 197
+      }
+    },
+    "area_quartiles": [
+      {
+        "queries": 210,
+        "area": 0.32454007863998413,
+        "object_P": 0.5592619776725769,
+        "center_P": 0.5433095693588257,
+        "ref_P": 0.7056904435157776
+      },
+      {
+        "queries": 210,
+        "area": 0.45010876655578613,
+        "object_P": 0.6245952248573303,
+        "center_P": 0.6129047274589539,
+        "ref_P": 0.721928596496582
+      },
+      {
+        "queries": 210,
+        "area": 0.5327870845794678,
+        "object_P": 0.6404523849487305,
+        "center_P": 0.6129761934280396,
+        "ref_P": 0.6669285893440247
+      },
+      {
+        "queries": 210,
+        "area": 0.7095105051994324,
+        "object_P": 0.7664048075675964,
+        "center_P": 0.757976233959198,
+        "ref_P": 0.7515951991081238
+      }
+    ]
+  }
+}
