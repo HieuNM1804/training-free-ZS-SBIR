@@ -13,6 +13,7 @@ import urllib.request
 
 VISUAL = ("visual-paired-graph", "c268df56c1eda43e0ff288abcb9ecb46e5189072", "visual-graph")
 REFLECTION = ("reflection-paired-transfer", "19bc037c54d8953c5b11f3f6247f2e98a47528f7", "reflection-controls")
+BALANCE = ("gallery-semantic-balance", "7f411f8f9d56479b45054d105c5ac184438574ae", "gallery-balance")
 CHECKPOINT = "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af"
 
 
@@ -59,12 +60,12 @@ def checkout(workspace, repo, branch, revision):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--workspace", type=Path, default=Path("/content/sbir"))
-    parser.add_argument("--phase", choices=("visual", "reflection"), required=True)
+    parser.add_argument("--phase", choices=("visual", "reflection", "balance"), required=True)
     parser.add_argument("--batch-size", type=int, default=192)
     parser.add_argument("--crop-batch-size", type=int, default=384)
     parser.add_argument("--score-batch", type=int, default=192)
     parser.add_argument("--workers", type=int, default=6)
-    parser.add_argument("--metric-workers", type=int, default=8)
+    parser.add_argument("--metric-workers", type=int, default=4)
     args = parser.parse_args()
     if sys.platform != "linux" or not Path("/content").is_dir():
         raise RuntimeError("Choose a Google Colab GPU kernel")
@@ -76,7 +77,7 @@ def main():
         raise RuntimeError("Install the pinned repository requirements on the Colab runtime")
     repo = Path(__file__).resolve().parents[1]
     root, checkpoint, words = prepare(args.workspace, repo)
-    branch, revision, stage = VISUAL if args.phase == "visual" else REFLECTION
+    branch, revision, stage = {"visual": VISUAL, "reflection": REFLECTION, "balance": BALANCE}[args.phase]
     method = checkout(args.workspace, repo, branch, revision)
     output = args.workspace / "results" / stage
     output.mkdir(parents=True, exist_ok=True)
