@@ -1,0 +1,60 @@
+{
+  "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "queries": 2048,
+  "gallery": 17100,
+  "steps": 256,
+  "candidate_top_k_per_source": 1280,
+  "graph": [
+    {
+      "batch": 128,
+      "median_seconds": 0.43135214999983873,
+      "peak_mib": 917.12060546875,
+      "identical": true
+    },
+    {
+      "batch": 256,
+      "median_seconds": 0.2362683500005005,
+      "peak_mib": 1015.10107421875,
+      "identical": true
+    },
+    {
+      "batch": 384,
+      "median_seconds": 0.18583124999986467,
+      "peak_mib": 1112.189453125,
+      "identical": true
+    },
+    {
+      "batch": 512,
+      "median_seconds": 0.1467078999999103,
+      "peak_mib": 1211.96044921875,
+      "identical": true
+    }
+  ],
+  "metric": [
+    {
+      "workers": 1,
+      "median_seconds": 3.181261849999828,
+      "identical": true
+    },
+    {
+      "workers": 2,
+      "median_seconds": 1.6454553000003216,
+      "identical": true
+    },
+    {
+      "workers": 4,
+      "median_seconds": 0.9729216499995346,
+      "identical": true
+    },
+    {
+      "workers": 6,
+      "median_seconds": 0.7529205000000729,
+      "identical": true
+    },
+    {
+      "workers": 8,
+      "median_seconds": 0.7044684500001495,
+      "identical": true
+    }
+  ]
+}

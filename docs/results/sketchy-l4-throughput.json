@@ -1,0 +1,60 @@
+{
+  "gpu": "NVIDIA L4",
+  "queries": 2048,
+  "gallery": 17100,
+  "steps": 256,
+  "candidate_top_k_per_source": 1280,
+  "graph": [
+    {
+      "batch": 128,
+      "median_seconds": 0.4597255335002046,
+      "peak_mib": 916.7109375,
+      "identical": true
+    },
+    {
+      "batch": 256,
+      "median_seconds": 0.2311356194995824,
+      "peak_mib": 1015.591796875,
+      "identical": true
+    },
+    {
+      "batch": 384,
+      "median_seconds": 0.17201783349992184,
+      "peak_mib": 1112.9287109375,
+      "identical": true
+    },
+    {
+      "batch": 512,
+      "median_seconds": 0.11573604200020782,
+      "peak_mib": 1211.12158203125,
+      "identical": true
+    }
+  ],
+  "metric": [
+    {
+      "workers": 1,
+      "median_seconds": 4.611910432499826,
+      "identical": true
+    },
+    {
+      "workers": 2,
+      "median_seconds": 2.450899472000856,
+      "identical": true
+    },
+    {
+      "workers": 4,
+      "median_seconds": 1.526770469499752,
+      "identical": true
+    },
+    {
+      "workers": 6,
+      "median_seconds": 1.7844124660005036,
+      "identical": true
+    },
+    {
+      "workers": 8,
+      "median_seconds": 2.4574458110000705,
+      "identical": true
+    }
+  ]
+}
