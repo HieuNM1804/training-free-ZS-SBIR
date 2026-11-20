@@ -25,16 +25,18 @@ def by_precision(rows, prefix="mean"):
 
 
 @torch.inference_mode()
-def report(workspace, include_scale=False, include_refinement=False):
+def report(workspace, include_scale=False, include_refinement=False, include_routing=False):
     torch.set_num_threads(1)
     root = Path(json.loads((workspace / "ready.json").read_text())["root"])
     results = workspace / "results"
     studies = STUDIES.copy()
-    if include_scale or include_refinement:
+    if include_scale or include_refinement or include_routing:
         studies["paired-scale"] = (22, 20931, "c2036a38218886e17bc6a49ffd69405f017fa695")
-    if include_refinement:
+    if include_refinement or include_routing:
         studies["scale-refine"] = (24, 20931, "b01ad6b99926e7ce51b040566c8714806b83fbd5")
-    folder = "full-report" if include_refinement else ("combined-report" if include_scale else "precision-report")
+    if include_routing:
+        studies["gallery-routing"] = (59, 20931, "1cdcde36e1b29240e364dd15af399a08e6a3fb43")
+    folder = {2: "precision-report", 3: "combined-report", 4: "full-report", 5: "routing-report"}[len(studies)]
     output = results / folder
     output.mkdir(exist_ok=True)
     values = {s: {} for s in SKETCHY_SPLITS}
@@ -112,7 +114,7 @@ def report(workspace, include_scale=False, include_refinement=False):
                 for name in (scale["common"]["method"], scale["per_split"][split]["method"]):
                     if name.startswith(stem):
                         comparisons.extend([(name, stem + "k192"), (name, best_k), (name, stem + "uniform")])
-        if include_refinement:
+        if "scale-refine" in studies:
             refine = summary["families"]["scale-refine"]
             for method in (refine["common"]["method"], refine["per_split"][split]["method"]):
                 prefix = method.split("-mix", 1)[0]
@@ -122,6 +124,30 @@ def report(workspace, include_scale=False, include_refinement=False):
             for k in (192, 320):
                 comparisons.extend([(f"refine-k{k}-mix0-s32", f"scale-text35-k{k}"),
                                     (f"refine-k{k}-mix4-s32", f"scale-sharp-k{k}")])
+        if include_routing:
+            routing = summary["families"]["gallery-routing"]
+            fixed_a, fixed_b = "route-fixed-text35", "route-fixed-sharp"
+            a, b = values[split][fixed_a], values[split][fixed_b]
+            mask_dir = results / "gallery-routing"
+            choices = torch.load(mask_dir / f"{split}-routing-choices.pt", map_location="cpu", weights_only=True)
+            for method, mask in choices.items():
+                if not torch.equal(torch.where(mask[:, None], b, a), values[split][method]):
+                    raise ValueError(f"Independent retrieval and routed per-query scores differ on {split} {method}")
+            oracle = torch.where(((b[:, 1] > a[:, 1]) | ((b[:, 1] == a[:, 1]) & (b[:, 0] > a[:, 0])))[:, None], b, a)
+            summary.setdefault("routing_audit", {})[split] = {"real_queries": len(a), "decision_masks_checked": len(choices),
+                "verified_direct": "route-neighbors100-k32-zero", "label_oracle_ap_p": oracle.mean(0).tolist(),
+                "calibration": json.loads((mask_dir / f"{split}-calibration.json").read_text())}
+            comparisons.extend([(fixed_a, "scale-text35-k192"), (fixed_b, "scale-sharp-k320")])
+            for method in dict.fromkeys((routing["common"]["method"], routing["per_split"][split]["method"],
+                                         "route-neighbors100-k32-zero", "route-neighbors100-k32-q50")):
+                comparisons.extend([(method, fixed_a), (method, fixed_b)])
+                if method in choices:
+                    # Conditional on the observed allocation, this is the expected score of an independent random choice.
+                    fraction = choices[method].float().mean()
+                    tag = method + "-random-at-same-rate"
+                    values[split][tag] = a.lerp(b, fraction)
+                    comparisons.append((method, tag))
+            comparisons.append(("route-neighbors100-k32-q50", "route-neighbors100-shuffled"))
         pairs = list(dict.fromkeys((a, b) for a, b in comparisons if a != b and a in values[split] and b in values[split]))
         summary["comparisons"][split] = intervals(values[split], labels, pairs, rng)
         difference = values[split][vocab] - values[split][REFERENCE]
@@ -143,5 +169,6 @@ if __name__ == "__main__":
     parser.add_argument("--workspace", type=Path, default=Path("/content/sbir"))
     parser.add_argument("--include-scale", action="store_true")
     parser.add_argument("--include-refinement", action="store_true")
+    parser.add_argument("--include-routing", action="store_true")
     args = parser.parse_args()
-    report(args.workspace, args.include_scale, args.include_refinement)
+    report(args.workspace, args.include_scale, args.include_refinement, args.include_routing)
