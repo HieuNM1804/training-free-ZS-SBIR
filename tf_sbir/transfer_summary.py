@@ -146,6 +146,9 @@ def run(args):
         evidence["families"][study.name] = {"variants_per_split": len(by_method), "common": common,
                                             "best_by_split": {s: rankings(groups[s]) for s in SKETCHY_SPLITS},
                                             "common_rows": {s: groups[s][common] for s in SKETCHY_SPLITS}}
+        if study.name == "correlated":
+            nonzero = {n: v for n, v in by_method.items() if groups["sketchy_1"][n]["parameters"]["fraction"] > 0}
+            evidence["families"][study.name]["best_common_with_correlation"] = rankings(nonzero)
         for name, mean in by_method.items():
             first, second = (groups[s][name] for s in SKETCHY_SPLITS)
             table.append({"study": study.name, "method": name, "revision": first["revision"],
@@ -201,6 +204,18 @@ def run(args):
         if "reciprocal" in evidence["families"]:
             winner = evidence["families"]["reciprocal"]["common"]
             pairs.extend([(winner, "reciprocal-forward-p0"), (winner, "reciprocal-forward-p4")])
+        if "correlated" in evidence["families"]:
+            family = evidence["families"]["correlated"]
+            for winner in (family["common"], family["best_common_with_correlation"], family["best_by_split"][split]):
+                params = scores[winner]["parameters"]
+                tag = "sharp-" if params["sharp"] else (f"power{params['risk_power']:g}-" if params["risk_power"] != 4 else "")
+                pairs.append((winner, "correlated-" + tag + "independent"))
+            pairs.extend([("correlated-independent", "reflect-control-risk4"),
+                          ("correlated-sharp-independent", "reflect-control-sharp-source")])
+            for tag in ("", "sharp-"):
+                name = "correlated-" + tag
+                for compare in ("independent", "target", "source", "features", "shuffled"):
+                    pairs.append((name + "both-0.5", name + compare))
         pairs = list(dict.fromkeys((a, b) for a, b in pairs if a in scores and b in scores and a != b))
         class_scores = {c: per_query[split][common][labels.eq(i)].mean(dim=0).tolist()
                         for i, c in enumerate(UNSEEN_CLASSES[split])}
