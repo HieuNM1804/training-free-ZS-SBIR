@@ -45,7 +45,7 @@ def runtime(workspace, dataset, batch=192, workers=6, crop_batch=384, metric_wor
         raise RuntimeError("Run this experiment on the connected Google Colab GPU")
     torch.set_num_threads(1)
     torch.set_float32_matmul_precision("highest")
-    data = "ready.json" if dataset == "sketchy" else "tuberlin-data.json"
+    data = {"sketchy": "ready.json", "tuberlin": "tuberlin-data.json", "quickdraw": "quickdraw-data.json"}[dataset]
     root = Path(json.loads((workspace / data).read_text())["root"])
     cache = workspace / "features"
     checkpoint = str(workspace / "assets/ViT-B-32.pt")
