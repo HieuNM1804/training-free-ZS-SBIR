@@ -1,0 +1,62 @@
+{
+  "dataset": "quickdraw",
+  "source": {
+    "dataset": "b20dccn616nguynhutun/quickdraw",
+    "download_url": "https://www.kaggle.com/api/v1/datasets/download/b20dccn616nguynhutun/quickdraw",
+    "currentVersionNumber": 1,
+    "lastUpdated": "2026-01-30T16:18:36.803Z",
+    "totalBytes": 7937988726,
+    "id": 9377709,
+    "ref": "b20dccn616nguynhutun/quickdraw"
+  },
+  "archive_sha256": "7daf9ba814d8612373d7f1d2eff65ce4c880620bb6cae2e1e45001ce5566c01d",
+  "image_manifest_sha256": "dc590caa2f8a9ac5a90406662532b116dd14a4d3fee76d17aaaa45209ce0da68",
+  "class_list_sha256": "de129ecf410271ecb69ad614a57b4a8ab567bb448876d022e2338f1b2185a89c",
+  "family": "cross-diffusion-map",
+  "configuration": {
+    "neighbors": 16,
+    "bandwidth": 0.36,
+    "iterations": 2,
+    "mode": "rgb",
+    "normalize_mass": true,
+    "shuffle_semantic": false
+  },
+  "measured_method_revision": "c6e518221ac5aeee052bf16cd6b741247bff10c0",
+  "revision": "b033e8a0755d7b5158504efc8d90ef3b8a73b2b4",
+  "joint_sha256": "90eee74f8730e3e76fe17ac93fef4b48648f91b04bcc8371e6c296cbcca7158d",
+  "freeze_sha256": "d9a77cfdb847a09f93ef334270ae7d05c52c188c4a15af3f090740d2112cc13c",
+  "selection_utc": "2026-11-20T16:07:56.775694+00:00",
+  "selection_data": [
+    "sketchy_1",
+    "sketchy_2"
+  ],
+  "checkpoint_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+  "external_words": 20931,
+  "external_words_sha256": "84a4373a0efb7fd6d93fe19b0e7ceb6c1b855c233d13b9b78a9a33655c9fdce3",
+  "kd_reference_file_sha256": "adaa5781082173d333b5605f18045f2c2fecb6dbe23685902104dfc0828855ee",
+  "kd_function_sha256": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+  "utc": "2026-11-20T16:23:25.102928+00:00",
+  "queries": 91491,
+  "gallery": 56407,
+  "classes": 30,
+  "mAP": 0.4568755030632019,
+  "precision": 0.46306440234184265,
+  "map_k": 0,
+  "p_k": 200,
+  "original_kd_queries": 91491,
+  "verification_max_abs_AP_P": [
+    2.384185791015625e-07,
+    5.960464477539063e-08
+  ],
+  "gpu": "NVIDIA L4",
+  "peak_allocated_MiB": 18181.94921875,
+  "frozen_code_comparison": {
+    "queries": 12,
+    "photos": 768,
+    "identical_complete_ranks": true,
+    "max_score_difference": 0.0,
+    "frozen_source_sha256": "5eb3d2e07c35501e1329cb04fc92063f26c1f5d383bbb030dbab8635af22d9f8"
+  },
+  "per_query_sha256": "af8f2a842d3fa33b093af291b2bf48663f0dd6f7faf1409ea1c0e5720b957644",
+  "per_class_sha256": "0e39bf32a79f61a7a5f688a578dd8faa22756913aced82e01709d87f045f1fb9"
+}
