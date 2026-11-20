@@ -1,0 +1,15 @@
+# Kiểm chứng theo mAP trên Sketchy và TU-Berlin
+
+Đơn vị suy luận là một sketch. Gallery chỉ gồm embedding của ảnh đích, có thể lập chỉ mục trước. Mô hình là OpenAI CLIP ViT-B/32 cố định. Nhánh ngôn ngữ dùng toàn bộ 20.931 tên Open Images với cùng prompt sketch và photo cho cả hai bộ. Dùng nhãn để đo kết quả và chọn cấu hình thăm dò trên hai split unseen của Sketchy. Các thuật toán xếp hạng nhận embedding, tên miền và từ điển công khai.
+
+| Hướng | Dự đoán có thể kiểm tra | Dấu hiệu bác bỏ hoặc giới hạn giải thích |
+|---|---|---|
+| Ước lượng từ ảnh lân cận, `52a8ba4c0beb` | Nếu từ ngữ của từng ảnh thiếu bằng chứng thị giác về vật thể, các ảnh gần nó trong RGB có thể dự đoán phân bố từ tốt hơn cho retrieval. | Thay lân cận bằng ảnh ngẫu nhiên mà vẫn giữ mức tăng. Lỗi dự đoán từ và AP có thể chọn hai bán kính khác nhau. |
+| Dịch khái niệm, `6abef3985d1f` | Một từ trên sketch và một từ khác trên photo có thể cùng chỉ nội dung cần truy hồi. Thử kênh đồng xuất hiện gallery và kênh lân cận text. | Xáo từ đích vẫn giữ điểm, hoặc kênh dịch thua so khớp chính xác từ. |
+| Cross-diffusion, `c6e518221ac5` | Lân cận thị giác và lân cận do CLIP mô tả bằng từ có thể sửa hai nhóm lỗi khác nhau. Truyền qua cả hai có thể khôi phục ảnh đúng ở hạng sâu. | So cùng độ sâu với từng đồ thị, với trung bình hai quá trình độc lập, với đồ thị ngữ nghĩa xáo và với điểm gốc. Nếu từng đồ thị đã đạt cùng mAP, chưa có bằng chứng cho tương tác hai nguồn. |
+
+Mỗi hướng có một branch. Trên mỗi split lấy tối đa 48 sketch/lớp với seed 4783 cho pilot, dùng toàn bộ gallery. Chọn tối đa năm cấu hình có trung bình mAP cao nhất của hai pilot và thêm cấu hình chuẩn. Chấm từng cấu hình trên mọi sketch của cả hai split, dùng trung bình không trọng số của mAP@all Ext-1 và mAP@200 Ext-2. Khi hòa dùng trung bình P@100 và P@200. Chọn giữa ba hướng mới và mô hình shared-concept likelihood đã lưu theo cùng tiêu chí. Chỉ cấu hình thắng của mỗi hướng tham gia so phương pháp. Cấu hình mang tên đối chứng được xác định từ trước. Mỗi lần chốt ghi mã nguồn và SHA-256 của bản ghi.
+
+Sau khi khóa chung, chạy từng hướng cùng các đối chứng trên toàn bộ 2.130 sketch, 27.262 ảnh, 30 lớp của TU-Berlin. Mọi cấu hình dùng đúng hàm sinh và tham số đã khóa. Điểm TU lịch sử của các mô hình đời trước đã công khai trong repo. Tuyệt đối không dùng kết quả TU mới để đổi thứ hạng các ứng viên hay chọn lại tham số.
+
+Phân tích hậu kiểm của phương pháp chính dùng AP và precision ghép cặp trên từng sketch, bootstrap theo cụm lớp 5.000 lần, và báo cả số lớp tăng. Tách các truy vấn TU có tên lớp khác toàn bộ lớp ở hai split Sketchy sau khi xếp hạng, giữ đủ gallery. Trên mẫu cố định tối đa 48 sketch/lớp (seed 55429), đo đóng góp từ hạng 1–10, 11–100, 101–200, 201–1.000 và phần còn lại. Thử chia gallery ngẫu nhiên thành hai nửa bằng seed 29173. Giữ nguyên cấu hình, lập lại chỉ mục trên từng nửa rồi so với điểm từ toàn gallery hạn chế về cùng các ảnh. Lưu trường hợp sửa đúng và hồi quy theo một tiêu chí chọn truy vấn xác định trước. Phép thử làm rõ độ nhạy với thành phần gallery và với lớp mới trong phạm vi sketch → ảnh.
