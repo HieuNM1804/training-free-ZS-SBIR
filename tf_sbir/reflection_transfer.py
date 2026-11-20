@@ -151,8 +151,7 @@ def file_tensor(folder, name, shape):
     return torch.from_file(path, shared=True, size=math.prod(shape), dtype=torch.float32).view(shape)
 
 
-def evaluate_views(args, folder, split, query_ids, q_labels, p_labels, data, index, source, target,
-                   source_center, transform, sketch_words, photo_words, metadata, record, five_rows):
+def cache_reflection_features(folder, query_ids, data, source, target, source_center, transform, sketch_words, photo_words):
     original, extras, reflected = data
     n, d = len(query_ids), target.size(1)
     vectors = file_tensor(folder, "vectors", (n, 8, d))
@@ -173,6 +172,14 @@ def evaluate_views(args, folder, split, query_ids, q_labels, p_labels, data, ind
         concepts[loc] = view_concepts(raw, sketch_words, photo_words).cpu()
     del raw, mapped, q, neighbors, cropped, mirror, uncertainty, errors
     torch.cuda.empty_cache()
+    return vectors, risks, concepts
+
+
+def evaluate_views(args, folder, split, query_ids, q_labels, p_labels, data, index, source, target,
+                   source_center, transform, sketch_words, photo_words, metadata, record, five_rows):
+    n, device = len(query_ids), source.device
+    vectors, risks, concepts = cache_reflection_features(folder, query_ids, data, source, target, source_center,
+                                                        transform, sketch_words, photo_words)
 
     controls = args.stage == "reflection-controls"
     configs = matched_controls() if controls else SETTINGS

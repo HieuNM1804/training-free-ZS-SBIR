@@ -1,5 +1,9 @@
 # Training-free CLIP và VLM cho categorical ZS-SBIR
 
+## Trọng số ngữ nghĩa ở hai bước xây đồ thị gallery
+
+Nhánh `research/gallery-semantic-balance` giữ phép chuyển tọa độ giữa các cặp contour–RGB. Nó thay đổi tỷ trọng của cạnh từ vựng khi làm trơn embedding của ảnh gallery và khi xếp hạng bằng lân cận Jaccard. Tỷ trọng còn lại chia đều cho hai biểu diễn ảnh. Tại mức một phần ba, ba nguồn có trọng số bằng nhau. Mỗi đồ thị được thử với ba trọng số từ vựng của query và một cách gộp theo độ chồng lân cận. Tất cả đều dùng chung tám view, câu chữ công khai và một CLIP ViT-B/32 cố định. Đây là phép dò tham số và tách đóng góp của hai công đoạn trong phương pháp ba paper. [Query Specific Fusion for Image Retrieval, ECCV 2012](https://link.springer.com/chapter/10.1007/978-3-642-33709-3_47)
+
 Khảo sát tập trung vào việc chuyển cơ chế từ các bài toán khác sang truy hồi một sketch trong gallery ảnh không nhãn. Điều kiện của các thí nghiệm là encoder đóng băng, không backpropagation, không học prompt, không dùng DINO và chỉ dùng tên lớp của benchmark trong loader và evaluator. Thống kê, láng giềng và đồ thị được xây từ ảnh gallery. Nhánh ngôn ngữ lấy danh mục Open Images V7 đầy đủ từ nguồn công khai, cố định trước khi truy hồi.
 
 ## Các paper ZS-SBIR được cung cấp
