@@ -1,0 +1,92 @@
+{
+  "freeze_sha256": "97ac1591ff730b348f931fc35be2668aad3978d8af7ce89481653ac8d8966a16",
+  "literal_terms": 20931,
+  "scale": 100.0,
+  "kd_source_sha256": "adaa5781082173d333b5605f18045f2c2fecb6dbe23685902104dfc0828855ee",
+  "splits": {
+    "sketchy_1": {
+      "queries": 800,
+      "gallery": 17100,
+      "scores": {
+        "native": {
+          "precision": 0.4117624759674072,
+          "top1": 0.3462499976158142
+        },
+        "bare-direct": {
+          "precision": 0.7635374665260315,
+          "top1": 0.7274999618530273
+        },
+        "bare-conditional": {
+          "precision": 0.734624981880188,
+          "top1": 0.7724999785423279
+        },
+        "bare-witness": {
+          "precision": 0.794712483882904,
+          "top1": 0.8025000095367432
+        },
+        "named-witness": {
+          "precision": 0.808912456035614,
+          "top1": 0.8087499737739563
+        },
+        "rgb-witness": {
+          "precision": 0.3755749762058258,
+          "top1": 0.35999998450279236
+        },
+        "shuffled-witness": {
+          "precision": 0.02837499976158142,
+          "top1": 0.042500000447034836
+        },
+        "reference-half-a": {
+          "precision": 0.7944374680519104,
+          "top1": 0.8037499785423279
+        },
+        "reference-half-b": {
+          "precision": 0.7940624952316284,
+          "top1": 0.8062499761581421
+        }
+      }
+    },
+    "sketchy_2": {
+      "queries": 672,
+      "gallery": 12552,
+      "scores": {
+        "native": {
+          "precision": 0.33627232909202576,
+          "top1": 0.3660714328289032
+        },
+        "bare-direct": {
+          "precision": 0.6328050494194031,
+          "top1": 0.6160714626312256
+        },
+        "bare-conditional": {
+          "precision": 0.5807738304138184,
+          "top1": 0.6294642686843872
+        },
+        "bare-witness": {
+          "precision": 0.6323139667510986,
+          "top1": 0.65625
+        },
+        "named-witness": {
+          "precision": 0.6647768020629883,
+          "top1": 0.6830357313156128
+        },
+        "rgb-witness": {
+          "precision": 0.3185863196849823,
+          "top1": 0.355654776096344
+        },
+        "shuffled-witness": {
+          "precision": 0.06165922433137894,
+          "top1": 0.065476194024086
+        },
+        "reference-half-a": {
+          "precision": 0.6320981979370117,
+          "top1": 0.6577380895614624
+        },
+        "reference-half-b": {
+          "precision": 0.6325297355651855,
+          "top1": 0.6532738208770752
+        }
+      }
+    }
+  }
+}
