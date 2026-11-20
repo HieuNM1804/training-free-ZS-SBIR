@@ -1,0 +1,505 @@
+{
+  "family": "view-consensus-retrieval",
+  "active_revision": "87a43fcc31258f1b86ea9dd359d43b3b723fbf78",
+  "initial_freeze": "d07cf89353d3ce2fdb91ead5237f54ca4f8950a0d563ac2f9ad13fb3127e9ee6",
+  "final_freeze": "8306fa995d5a1e214504e61d77cf9fc5f4559489e638428572faefa6e214855a",
+  "joint_freeze": "ff8635cd3b55f6e7b851ca8f4eefed5e876b7f62a80a0a400e4e6ba02b8a4a35",
+  "chosen": {
+    "query_views": 2,
+    "photo_views": 1,
+    "pool": "entropy",
+    "terms": 4,
+    "neighbors": 64,
+    "rounds": 0,
+    "support": 192,
+    "expansion": 0.7,
+    "ridge": 0.0,
+    "pairing": "paired"
+  },
+  "primary": false,
+  "splits": {
+    "sketchy_1": {
+      "queries": 14179,
+      "gallery": 17100,
+      "classes": 25,
+      "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-paired",
+      "controls": {
+        "primary": {
+          "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-paired",
+          "precision": 0.8153042793273926,
+          "mAP": 0.7921149730682373
+        },
+        "one_sketch_view": {
+          "method": "v1-1-uniform-c4-k64x0-n192-e0.7-r0-paired",
+          "precision": 0.807447612285614,
+          "mAP": 0.7848320603370667
+        },
+        "one_photo_view": {
+          "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-paired",
+          "precision": 0.8153042793273926,
+          "mAP": 0.7921149730682373
+        },
+        "one_view_both": {
+          "method": "v1-1-uniform-c4-k64x0-n192-e0.7-r0-paired",
+          "precision": 0.807447612285614,
+          "mAP": 0.7848320603370667
+        },
+        "uniform_views": {
+          "method": "v2-1-uniform-c4-k64x0-n192-e0.7-r0-paired",
+          "precision": 0.8142683506011963,
+          "mAP": 0.7907447218894958
+        },
+        "agreement": {
+          "method": "v2-1-agreement-c4-k64x0-n192-e0.7-r0-paired",
+          "precision": 0.8142683506011963,
+          "mAP": 0.7907446026802063
+        },
+        "without_gallery_averaging": {
+          "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-paired",
+          "precision": 0.8153042793273926,
+          "mAP": 0.7921149730682373
+        },
+        "without_feedback": {
+          "method": "v2-1-entropy-c4-k64x0-n192-e0-r0-paired",
+          "precision": 0.7747647762298584,
+          "mAP": 0.7138862013816833
+        },
+        "centroid_feedback": {
+          "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-paired",
+          "precision": 0.8153042793273926,
+          "mAP": 0.7921149730682373
+        },
+        "shuffled_words": {
+          "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-shuffled",
+          "precision": 0.012230057269334793,
+          "mAP": 0.04623475298285484
+        },
+        "rgb_only": {
+          "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-rgb",
+          "precision": 0.4357282221317291,
+          "mAP": 0.40998977422714233
+        }
+      },
+      "vs_previous": {
+        "mAP": {
+          "delta_pp": -1.640591170873683,
+          "ci95_class": [
+            -3.8399451703935656,
+            0.24855699440177856
+          ],
+          "classes_up": 10,
+          "classes": 25
+        },
+        "precision": {
+          "delta_pp": 1.387192326624077,
+          "ci95_class": [
+            -0.20905534326251385,
+            3.1089394019669916
+          ],
+          "classes_up": 16,
+          "classes": 25
+        }
+      },
+      "top1": {
+        "old_wrong": 2758,
+        "new_wrong": 2638,
+        "rescued": 493,
+        "regressed": 373,
+        "confusion_pairs": [
+          {
+            "class": "chicken",
+            "old_wrong": "parrot",
+            "old_count": 141,
+            "correct_now": 66,
+            "still_same": 65
+          },
+          {
+            "class": "rifle",
+            "old_wrong": "scissors",
+            "old_count": 115,
+            "correct_now": 21,
+            "still_same": 88
+          },
+          {
+            "class": "windmill",
+            "old_wrong": "bell",
+            "old_count": 90,
+            "correct_now": 10,
+            "still_same": 44
+          },
+          {
+            "class": "butterfly",
+            "old_wrong": "ray",
+            "old_count": 74,
+            "correct_now": 1,
+            "still_same": 38
+          },
+          {
+            "class": "windmill",
+            "old_wrong": "scissors",
+            "old_count": 72,
+            "correct_now": 9,
+            "still_same": 52
+          },
+          {
+            "class": "butterfly",
+            "old_wrong": "snail",
+            "old_count": 71,
+            "correct_now": 2,
+            "still_same": 50
+          },
+          {
+            "class": "airplane",
+            "old_wrong": "ray",
+            "old_count": 59,
+            "correct_now": 3,
+            "still_same": 43
+          },
+          {
+            "class": "snail",
+            "old_wrong": "ray",
+            "old_count": 58,
+            "correct_now": 34,
+            "still_same": 12
+          },
+          {
+            "class": "harp",
+            "old_wrong": "bell",
+            "old_count": 56,
+            "correct_now": 14,
+            "still_same": 23
+          },
+          {
+            "class": "airplane",
+            "old_wrong": "scissors",
+            "old_count": 50,
+            "correct_now": 1,
+            "still_same": 42
+          }
+        ]
+      }
+    },
+    "sketchy_2": {
+      "queries": 12694,
+      "gallery": 12552,
+      "classes": 21,
+      "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-paired",
+      "controls": {
+        "primary": {
+          "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-paired",
+          "precision": 0.7222629189491272,
+          "mAP": 0.7361023426055908
+        },
+        "one_sketch_view": {
+          "method": "v1-1-uniform-c4-k64x0-n192-e0.7-r0-paired",
+          "precision": 0.7172183990478516,
+          "mAP": 0.731509804725647
+        },
+        "one_photo_view": {
+          "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-paired",
+          "precision": 0.7222629189491272,
+          "mAP": 0.7361023426055908
+        },
+        "one_view_both": {
+          "method": "v1-1-uniform-c4-k64x0-n192-e0.7-r0-paired",
+          "precision": 0.7172183990478516,
+          "mAP": 0.731509804725647
+        },
+        "uniform_views": {
+          "method": "v2-1-uniform-c4-k64x0-n192-e0.7-r0-paired",
+          "precision": 0.7206999659538269,
+          "mAP": 0.7345795035362244
+        },
+        "agreement": {
+          "method": "v2-1-agreement-c4-k64x0-n192-e0.7-r0-paired",
+          "precision": 0.7206999659538269,
+          "mAP": 0.7345795035362244
+        },
+        "without_gallery_averaging": {
+          "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-paired",
+          "precision": 0.7222629189491272,
+          "mAP": 0.7361023426055908
+        },
+        "without_feedback": {
+          "method": "v2-1-entropy-c4-k64x0-n192-e0-r0-paired",
+          "precision": 0.6865747570991516,
+          "mAP": 0.6940819025039673
+        },
+        "centroid_feedback": {
+          "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-paired",
+          "precision": 0.7222629189491272,
+          "mAP": 0.7361023426055908
+        },
+        "shuffled_words": {
+          "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-shuffled",
+          "precision": 0.0411769300699234,
+          "mAP": 0.04504519701004028
+        },
+        "rgb_only": {
+          "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-rgb",
+          "precision": 0.3795383870601654,
+          "mAP": 0.3910018503665924
+        }
+      },
+      "vs_previous": {
+        "mAP": {
+          "delta_pp": 0.4482448903863716,
+          "ci95_class": [
+            -1.6906135418439445,
+            2.4269202133836543
+          ],
+          "classes_up": 12,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 0.6350243111509769,
+          "ci95_class": [
+            -1.7417495020990947,
+            2.670996650889922
+          ],
+          "classes_up": 14,
+          "classes": 21
+        }
+      },
+      "top1": {
+        "old_wrong": 3454,
+        "new_wrong": 3402,
+        "rescued": 562,
+        "regressed": 510,
+        "confusion_pairs": [
+          {
+            "class": "saw",
+            "old_wrong": "sword",
+            "old_count": 222,
+            "correct_now": 43,
+            "still_same": 169
+          },
+          {
+            "class": "songbird",
+            "old_wrong": "seagull",
+            "old_count": 181,
+            "correct_now": 5,
+            "still_same": 176
+          },
+          {
+            "class": "dolphin",
+            "old_wrong": "seagull",
+            "old_count": 172,
+            "correct_now": 32,
+            "still_same": 131
+          },
+          {
+            "class": "raccoon",
+            "old_wrong": "mouse",
+            "old_count": 160,
+            "correct_now": 31,
+            "still_same": 108
+          },
+          {
+            "class": "door",
+            "old_wrong": "window",
+            "old_count": 143,
+            "correct_now": 32,
+            "still_same": 109
+          },
+          {
+            "class": "windmill",
+            "old_wrong": "sword",
+            "old_count": 137,
+            "correct_now": 12,
+            "still_same": 92
+          },
+          {
+            "class": "giraffe",
+            "old_wrong": "cow",
+            "old_count": 115,
+            "correct_now": 18,
+            "still_same": 96
+          },
+          {
+            "class": "rhinoceros",
+            "old_wrong": "cow",
+            "old_count": 104,
+            "correct_now": 7,
+            "still_same": 97
+          },
+          {
+            "class": "helicopter",
+            "old_wrong": "scissors",
+            "old_count": 86,
+            "correct_now": 7,
+            "still_same": 59
+          },
+          {
+            "class": "raccoon",
+            "old_wrong": "rhinoceros",
+            "old_count": 83,
+            "correct_now": 1,
+            "still_same": 28
+          }
+        ]
+      }
+    },
+    "tuberlin": {
+      "queries": 2130,
+      "gallery": 27262,
+      "classes": 30,
+      "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-paired",
+      "controls": {
+        "primary": {
+          "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-paired",
+          "precision": 0.799910843372345,
+          "mAP": 0.7498369216918945
+        },
+        "one_sketch_view": {
+          "method": "v1-1-uniform-c4-k64x0-n192-e0.7-r0-paired",
+          "precision": 0.7928356528282166,
+          "mAP": 0.7428759932518005
+        },
+        "one_photo_view": {
+          "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-paired",
+          "precision": 0.799910843372345,
+          "mAP": 0.7498369216918945
+        },
+        "one_view_both": {
+          "method": "v1-1-uniform-c4-k64x0-n192-e0.7-r0-paired",
+          "precision": 0.7928356528282166,
+          "mAP": 0.7428759932518005
+        },
+        "uniform_views": {
+          "method": "v2-1-uniform-c4-k64x0-n192-e0.7-r0-paired",
+          "precision": 0.7980281710624695,
+          "mAP": 0.7483850121498108
+        },
+        "agreement": {
+          "method": "v2-1-agreement-c4-k64x0-n192-e0.7-r0-paired",
+          "precision": 0.7980281710624695,
+          "mAP": 0.7483850121498108
+        },
+        "without_gallery_averaging": {
+          "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-paired",
+          "precision": 0.799910843372345,
+          "mAP": 0.7498369216918945
+        },
+        "without_feedback": {
+          "method": "v2-1-entropy-c4-k64x0-n192-e0-r0-paired",
+          "precision": 0.7720563411712646,
+          "mAP": 0.6862542033195496
+        },
+        "centroid_feedback": {
+          "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-paired",
+          "precision": 0.799910843372345,
+          "mAP": 0.7498369216918945
+        },
+        "shuffled_words": {
+          "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-shuffled",
+          "precision": 0.04373709112405777,
+          "mAP": 0.07644117623567581
+        },
+        "rgb_only": {
+          "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-rgb",
+          "precision": 0.5288403630256653,
+          "mAP": 0.45426544547080994
+        }
+      },
+      "vs_previous": {
+        "mAP": {
+          "delta_pp": -1.9794785735271696,
+          "ci95_class": [
+            -4.249205189166955,
+            -0.025273669478087683
+          ],
+          "classes_up": 13,
+          "classes": 30
+        },
+        "precision": {
+          "delta_pp": -0.6225352151922776,
+          "ci95_class": [
+            -3.486709350204572,
+            1.7308820176890238
+          ],
+          "classes_up": 18,
+          "classes": 30
+        }
+      },
+      "top1": {
+        "old_wrong": 392,
+        "new_wrong": 398,
+        "rescued": 100,
+        "regressed": 106,
+        "confusion_pairs": [
+          {
+            "class": "cup",
+            "old_wrong": "mug",
+            "old_count": 33,
+            "correct_now": 28,
+            "still_same": 5
+          },
+          {
+            "class": "mug",
+            "old_wrong": "cup",
+            "old_count": 23,
+            "correct_now": 9,
+            "still_same": 14
+          },
+          {
+            "class": "hot air balloon",
+            "old_wrong": "floor lamp",
+            "old_count": 22,
+            "correct_now": 1,
+            "still_same": 21
+          },
+          {
+            "class": "wrist-watch",
+            "old_wrong": "hammer",
+            "old_count": 21,
+            "correct_now": 2,
+            "still_same": 18
+          },
+          {
+            "class": "butterfly",
+            "old_wrong": "mosquito",
+            "old_count": 19,
+            "correct_now": 0,
+            "still_same": 18
+          },
+          {
+            "class": "truck",
+            "old_wrong": "suv",
+            "old_count": 14,
+            "correct_now": 6,
+            "still_same": 7
+          },
+          {
+            "class": "baseball bat",
+            "old_wrong": "hammer",
+            "old_count": 10,
+            "correct_now": 1,
+            "still_same": 9
+          },
+          {
+            "class": "mermaid",
+            "old_wrong": "pear",
+            "old_count": 8,
+            "correct_now": 2,
+            "still_same": 5
+          },
+          {
+            "class": "suv",
+            "old_wrong": "truck",
+            "old_count": 8,
+            "correct_now": 1,
+            "still_same": 6
+          },
+          {
+            "class": "bus",
+            "old_wrong": "suv",
+            "old_count": 8,
+            "correct_now": 1,
+            "still_same": 4
+          }
+        ]
+      }
+    }
+  }
+}
