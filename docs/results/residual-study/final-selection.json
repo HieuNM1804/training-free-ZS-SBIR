@@ -1,0 +1,112 @@
+{
+  "utc": "2026-11-20T14:43:11.994672+00:00",
+  "families": {
+    "reverse-prompt-diffusion": {
+      "revision": "d3439103c5b26bf75ff5a4cf60c7bf78de667b05",
+      "freeze_sha256": "dc902e3a5f0df8df6550fa10c309ac7993a01a10c12852b527846c6a96178342",
+      "tu_rows_prelock": 0,
+      "scores": [
+        {
+          "split": "sketchy_1",
+          "method": "reverse-paired-c8-t0.03-k96-d0.92-n96-e0.6-u0.6",
+          "precision": 0.8014324307441711,
+          "mAP": 0.8085207939147949
+        },
+        {
+          "split": "sketchy_2",
+          "method": "reverse-paired-c8-t0.03-k96-d0.92-n96-e0.6-u0.6",
+          "precision": 0.7159126400947571,
+          "mAP": 0.7316199541091919
+        }
+      ],
+      "historical": true
+    },
+    "view-consensus-retrieval": {
+      "revision": "87a43fcc31258f1b86ea9dd359d43b3b723fbf78",
+      "freeze_sha256": "8306fa995d5a1e214504e61d77cf9fc5f4559489e638428572faefa6e214855a",
+      "scores": [
+        {
+          "split": "sketchy_1",
+          "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-paired",
+          "mAP": 0.7921149730682373,
+          "precision": 0.8153042793273926
+        },
+        {
+          "split": "sketchy_2",
+          "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-paired",
+          "mAP": 0.7361023426055908,
+          "precision": 0.7222629189491272
+        }
+      ],
+      "historical": false,
+      "tu_rows_prelock": 0
+    },
+    "gallery-aspect-retrieval": {
+      "revision": "d38cf85d560842b25222555408d1980c718c06ae",
+      "freeze_sha256": "079560ae80a83157d381bb471a79f4500c6aaba87e0eaecfdec64afdfcc599c6",
+      "scores": [
+        {
+          "split": "sketchy_1",
+          "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-paired",
+          "mAP": 0.8007975816726685,
+          "precision": 0.8124155402183533
+        },
+        {
+          "split": "sketchy_2",
+          "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-paired",
+          "mAP": 0.7434757351875305,
+          "precision": 0.7262229919433594
+        }
+      ],
+      "historical": false,
+      "tu_rows_prelock": 0
+    },
+    "spectral-object-retrieval": {
+      "revision": "b90fe812672e9d9e1bddd55977d9021a42a835a6",
+      "freeze_sha256": "4fdbd6c09ed85fa00dab3aee8c135d073cc1105fd1696d1cd9d78a89c4d82f49",
+      "scores": [
+        {
+          "split": "sketchy_1",
+          "method": "late-object-q0.35-p0.35-w4-k96x0-n192-e0.75-paired",
+          "mAP": 0.7939695715904236,
+          "precision": 0.8186888694763184
+        },
+        {
+          "split": "sketchy_2",
+          "method": "late-object-q0.35-p0.35-w4-k96x0-n192-e0.75-paired",
+          "mAP": 0.7382754683494568,
+          "precision": 0.7237225770950317
+        }
+      ],
+      "historical": false,
+      "tu_rows_prelock": 0
+    },
+    "gallery-vocabulary-cover": {
+      "revision": "40211aa6a6010ad91a722843fb8e6b08527d4deb",
+      "freeze_sha256": "0bd9dee64652eeac0c473309c8d3ee8b12a293ff7a6d1fb8d5df0729aa1f3348",
+      "scores": [
+        {
+          "split": "sketchy_1",
+          "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-paired",
+          "mAP": 0.8153945803642273,
+          "precision": 0.8253043293952942
+        },
+        {
+          "split": "sketchy_2",
+          "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-paired",
+          "mAP": 0.7497791051864624,
+          "precision": 0.7387632131576538
+        }
+      ],
+      "historical": false,
+      "tu_rows_prelock": 0
+    }
+  },
+  "primary": "gallery-vocabulary-cover",
+  "rule": "equal mean Sketchy precision, then equal mean mAP",
+  "selection_splits": [
+    "sketchy_1",
+    "sketchy_2"
+  ],
+  "sha256": "ff8635cd3b55f6e7b851ca8f4eefed5e876b7f62a80a0a400e4e6ba02b8a4a35"
+}

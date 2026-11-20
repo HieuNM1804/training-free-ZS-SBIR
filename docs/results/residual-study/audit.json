@@ -1,0 +1,3244 @@
+{
+  "primary": "gallery-vocabulary-cover",
+  "joint_freeze_sha256": "ff8635cd3b55f6e7b851ca8f4eefed5e876b7f62a80a0a400e4e6ba02b8a4a35",
+  "kd_source_sha256": "adaa5781082173d333b5605f18045f2c2fecb6dbe23685902104dfc0828855ee",
+  "splits": {
+    "sketchy_1": {
+      "queries": 14179,
+      "gallery": 17100,
+      "classes": 25,
+      "selection_AP_P": [
+        0.8153945803642273,
+        0.8253043293952942
+      ],
+      "incumbent_AP_P": [
+        0.8085208535194397,
+        0.8014324307441711
+      ],
+      "native_AP_P": [
+        0.3028952181339264,
+        0.41636714339256287
+      ],
+      "paired": {
+        "reverse-prompt-diffusion": {
+          "mAP": {
+            "delta_pp": 0.6873692415803891,
+            "ci95_class": [
+              -1.3928693612412801,
+              2.8502073514255293
+            ],
+            "classes_up": 13,
+            "classes": 25
+          },
+          "precision": {
+            "delta_pp": 2.387192317001746,
+            "ci95_class": [
+              0.6818921194156735,
+              4.322405203621186
+            ],
+            "classes_up": 17,
+            "classes": 25
+          }
+        },
+        "native": {
+          "mAP": {
+            "delta_pp": 51.24993208679264,
+            "ci95_class": [
+              45.471044432462676,
+              56.79350597285216
+            ],
+            "classes_up": 25,
+            "classes": 25
+          },
+          "precision": {
+            "delta_pp": 40.89371601768719,
+            "ci95_class": [
+              32.341018186107185,
+              49.01482714705743
+            ],
+            "classes_up": 24,
+            "classes": 25
+          }
+        },
+        "view-consensus-retrieval": {
+          "mAP": {
+            "delta_pp": 2.3279604124540723,
+            "ci95_class": [
+              0.6679757154086398,
+              4.255940208357338
+            ],
+            "classes_up": 18,
+            "classes": 25
+          },
+          "precision": {
+            "delta_pp": 0.999999990377669,
+            "ci95_class": [
+              -0.9181932517763247,
+              3.233228836954014
+            ],
+            "classes_up": 12,
+            "classes": 25
+          }
+        },
+        "gallery-aspect-retrieval": {
+          "mAP": {
+            "delta_pp": 1.4596886835638698,
+            "ci95_class": [
+              -0.1863169540435747,
+              3.2891423371340025
+            ],
+            "classes_up": 16,
+            "classes": 25
+          },
+          "precision": {
+            "delta_pp": 1.2888779204518235,
+            "ci95_class": [
+              -0.6252641593591146,
+              3.619799612162859
+            ],
+            "classes_up": 13,
+            "classes": 25
+          }
+        },
+        "spectral-object-retrieval": {
+          "mAP": {
+            "delta_pp": 2.1425001333798113,
+            "ci95_class": [
+              0.43247173764594704,
+              4.071398342747673
+            ],
+            "classes_up": 16,
+            "classes": 25
+          },
+          "precision": {
+            "delta_pp": 0.6615417105855722,
+            "ci95_class": [
+              -1.313606502177211,
+              2.887821953940412
+            ],
+            "classes_up": 12,
+            "classes": 25
+          }
+        },
+        "gallery-vocabulary-cover/primary": {
+          "mAP": {
+            "delta_pp": 0.0,
+            "ci95_class": [
+              0.0,
+              0.0
+            ],
+            "classes_up": 0,
+            "classes": 25
+          },
+          "precision": {
+            "delta_pp": 0.0,
+            "ci95_class": [
+              0.0,
+              0.0
+            ],
+            "classes_up": 0,
+            "classes": 25
+          }
+        },
+        "gallery-vocabulary-cover": {
+          "mAP": {
+            "delta_pp": 0.0,
+            "ci95_class": [
+              0.0,
+              0.0
+            ],
+            "classes_up": 0,
+            "classes": 25
+          },
+          "precision": {
+            "delta_pp": 0.0,
+            "ci95_class": [
+              0.0,
+              0.0
+            ],
+            "classes_up": 0,
+            "classes": 25
+          }
+        },
+        "gallery-vocabulary-cover/mass_only": {
+          "mAP": {
+            "delta_pp": 6.482304351007452,
+            "ci95_class": [
+              0.7032141325983677,
+              13.851278227280371
+            ],
+            "classes_up": 15,
+            "classes": 25
+          },
+          "precision": {
+            "delta_pp": 8.242330204263792,
+            "ci95_class": [
+              1.3292826859914284,
+              17.05154319785986
+            ],
+            "classes_up": 14,
+            "classes": 25
+          }
+        },
+        "gallery-vocabulary-cover/coverage_only": {
+          "mAP": {
+            "delta_pp": 0.0,
+            "ci95_class": [
+              0.0,
+              0.0
+            ],
+            "classes_up": 0,
+            "classes": 25
+          },
+          "precision": {
+            "delta_pp": 0.0,
+            "ci95_class": [
+              0.0,
+              0.0
+            ],
+            "classes_up": 0,
+            "classes": 25
+          }
+        },
+        "gallery-vocabulary-cover/uniform_candidates": {
+          "mAP": {
+            "delta_pp": 49.12315226424102,
+            "ci95_class": [
+              38.92020465463505,
+              58.56811293773637
+            ],
+            "classes_up": 23,
+            "classes": 25
+          },
+          "precision": {
+            "delta_pp": 52.27618302441348,
+            "ci95_class": [
+              40.05780948883915,
+              63.63054075049482
+            ],
+            "classes_up": 23,
+            "classes": 25
+          }
+        },
+        "gallery-vocabulary-cover/unrestricted": {
+          "mAP": {
+            "delta_pp": 2.983984491293322,
+            "ci95_class": [
+              1.2659442796339253,
+              4.9724582777887365
+            ],
+            "classes_up": 18,
+            "classes": 25
+          },
+          "precision": {
+            "delta_pp": 1.8174060177990947,
+            "ci95_class": [
+              -0.07924722210472282,
+              4.068038142423997
+            ],
+            "classes_up": 14,
+            "classes": 25
+          }
+        },
+        "gallery-vocabulary-cover/restricted_only": {
+          "mAP": {
+            "delta_pp": 0.0,
+            "ci95_class": [
+              0.0,
+              0.0
+            ],
+            "classes_up": 0,
+            "classes": 25
+          },
+          "precision": {
+            "delta_pp": 0.0,
+            "ci95_class": [
+              0.0,
+              0.0
+            ],
+            "classes_up": 0,
+            "classes": 25
+          }
+        },
+        "gallery-vocabulary-cover/no_feedback": {
+          "mAP": {
+            "delta_pp": 3.174476178118755,
+            "ci95_class": [
+              2.0610425852612297,
+              4.478260180439562
+            ],
+            "classes_up": 23,
+            "classes": 25
+          },
+          "precision": {
+            "delta_pp": 1.7527328294039328,
+            "ci95_class": [
+              1.0991773382124488,
+              2.5162744789795366
+            ],
+            "classes_up": 24,
+            "classes": 25
+          }
+        },
+        "gallery-vocabulary-cover/no_gallery_averaging": {
+          "mAP": {
+            "delta_pp": 0.0,
+            "ci95_class": [
+              0.0,
+              0.0
+            ],
+            "classes_up": 0,
+            "classes": 25
+          },
+          "precision": {
+            "delta_pp": 0.0,
+            "ci95_class": [
+              0.0,
+              0.0
+            ],
+            "classes_up": 0,
+            "classes": 25
+          }
+        },
+        "gallery-vocabulary-cover/neutral": {
+          "mAP": {
+            "delta_pp": 1.2233628237794583,
+            "ci95_class": [
+              -1.1867821419335913,
+              3.550476217678257
+            ],
+            "classes_up": 15,
+            "classes": 25
+          },
+          "precision": {
+            "delta_pp": 1.2753367772132371,
+            "ci95_class": [
+              -1.5404086741107463,
+              4.0170036050296885
+            ],
+            "classes_up": 14,
+            "classes": 25
+          }
+        },
+        "gallery-vocabulary-cover/shuffled_words": {
+          "mAP": {
+            "delta_pp": 73.76629546725673,
+            "ci95_class": [
+              68.78931917398803,
+              78.17968006533602
+            ],
+            "classes_up": 25,
+            "classes": 25
+          },
+          "precision": {
+            "delta_pp": 78.59390649719381,
+            "ci95_class": [
+              73.1920642209121,
+              83.60612068577284
+            ],
+            "classes_up": 25,
+            "classes": 25
+          }
+        },
+        "gallery-vocabulary-cover/rgb_only": {
+          "mAP": {
+            "delta_pp": 39.8247829534445,
+            "ci95_class": [
+              31.64498784549474,
+              47.76042229801346
+            ],
+            "classes_up": 24,
+            "classes": 25
+          },
+          "precision": {
+            "delta_pp": 37.57853161814748,
+            "ci95_class": [
+              27.28055696410854,
+              47.63634722133762
+            ],
+            "classes_up": 22,
+            "classes": 25
+          }
+        }
+      },
+      "methods": {
+        "view-consensus-retrieval": {
+          "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-paired",
+          "controls": {
+            "primary": {
+              "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-paired",
+              "precision": 0.8153042793273926,
+              "mAP": 0.7921149730682373
+            },
+            "one_sketch_view": {
+              "method": "v1-1-uniform-c4-k64x0-n192-e0.7-r0-paired",
+              "precision": 0.807447612285614,
+              "mAP": 0.7848320603370667
+            },
+            "one_photo_view": {
+              "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-paired",
+              "precision": 0.8153042793273926,
+              "mAP": 0.7921149730682373
+            },
+            "one_view_both": {
+              "method": "v1-1-uniform-c4-k64x0-n192-e0.7-r0-paired",
+              "precision": 0.807447612285614,
+              "mAP": 0.7848320603370667
+            },
+            "uniform_views": {
+              "method": "v2-1-uniform-c4-k64x0-n192-e0.7-r0-paired",
+              "precision": 0.8142683506011963,
+              "mAP": 0.7907447218894958
+            },
+            "agreement": {
+              "method": "v2-1-agreement-c4-k64x0-n192-e0.7-r0-paired",
+              "precision": 0.8142683506011963,
+              "mAP": 0.7907446026802063
+            },
+            "without_gallery_averaging": {
+              "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-paired",
+              "precision": 0.8153042793273926,
+              "mAP": 0.7921149730682373
+            },
+            "without_feedback": {
+              "method": "v2-1-entropy-c4-k64x0-n192-e0-r0-paired",
+              "precision": 0.7747647762298584,
+              "mAP": 0.7138862013816833
+            },
+            "centroid_feedback": {
+              "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-paired",
+              "precision": 0.8153042793273926,
+              "mAP": 0.7921149730682373
+            },
+            "shuffled_words": {
+              "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-shuffled",
+              "precision": 0.012230057269334793,
+              "mAP": 0.04623475298285484
+            },
+            "rgb_only": {
+              "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-rgb",
+              "precision": 0.4357282221317291,
+              "mAP": 0.40998977422714233
+            }
+          },
+          "vs_previous": {
+            "mAP": {
+              "delta_pp": -1.640591170873683,
+              "ci95_class": [
+                -3.8399451703935656,
+                0.24855699440177856
+              ],
+              "classes_up": 10,
+              "classes": 25
+            },
+            "precision": {
+              "delta_pp": 1.387192326624077,
+              "ci95_class": [
+                -0.20905534326251385,
+                3.1089394019669916
+              ],
+              "classes_up": 16,
+              "classes": 25
+            }
+          },
+          "top1": {
+            "old_wrong": 2758,
+            "new_wrong": 2638,
+            "rescued": 493,
+            "regressed": 373,
+            "confusion_pairs": [
+              {
+                "class": "chicken",
+                "old_wrong": "parrot",
+                "old_count": 141,
+                "correct_now": 66,
+                "still_same": 65
+              },
+              {
+                "class": "rifle",
+                "old_wrong": "scissors",
+                "old_count": 115,
+                "correct_now": 21,
+                "still_same": 88
+              },
+              {
+                "class": "windmill",
+                "old_wrong": "bell",
+                "old_count": 90,
+                "correct_now": 10,
+                "still_same": 44
+              },
+              {
+                "class": "butterfly",
+                "old_wrong": "ray",
+                "old_count": 74,
+                "correct_now": 1,
+                "still_same": 38
+              },
+              {
+                "class": "windmill",
+                "old_wrong": "scissors",
+                "old_count": 72,
+                "correct_now": 9,
+                "still_same": 52
+              },
+              {
+                "class": "butterfly",
+                "old_wrong": "snail",
+                "old_count": 71,
+                "correct_now": 2,
+                "still_same": 50
+              },
+              {
+                "class": "airplane",
+                "old_wrong": "ray",
+                "old_count": 59,
+                "correct_now": 3,
+                "still_same": 43
+              },
+              {
+                "class": "snail",
+                "old_wrong": "ray",
+                "old_count": 58,
+                "correct_now": 34,
+                "still_same": 12
+              },
+              {
+                "class": "harp",
+                "old_wrong": "bell",
+                "old_count": 56,
+                "correct_now": 14,
+                "still_same": 23
+              },
+              {
+                "class": "airplane",
+                "old_wrong": "scissors",
+                "old_count": 50,
+                "correct_now": 1,
+                "still_same": 42
+              }
+            ]
+          }
+        },
+        "gallery-aspect-retrieval": {
+          "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-paired",
+          "controls": {
+            "primary": {
+              "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-paired",
+              "precision": 0.8124155402183533,
+              "mAP": 0.8007975816726685
+            },
+            "no_groups": {
+              "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m0-paired",
+              "precision": 0.7660949230194092,
+              "mAP": 0.7122051119804382
+            },
+            "groups_only": {
+              "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-paired",
+              "precision": 0.8124155402183533,
+              "mAP": 0.8007975816726685
+            },
+            "pure_rgb_geometry": {
+              "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-paired",
+              "precision": 0.8124155402183533,
+              "mAP": 0.8007975816726685
+            },
+            "uniform_word_prior": {
+              "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-paired",
+              "precision": 0.8124155402183533,
+              "mAP": 0.8007975816726685
+            },
+            "uniform_group_prior": {
+              "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-paired",
+              "precision": 0.8124155402183533,
+              "mAP": 0.8007975816726685
+            },
+            "random_group_links": {
+              "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-random_groups",
+              "precision": 0.019963325932621956,
+              "mAP": 0.051944147795438766
+            },
+            "neutral_words": {
+              "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-neutral",
+              "precision": 0.7938395142555237,
+              "mAP": 0.7827968597412109
+            },
+            "rgb_only": {
+              "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-rgb",
+              "precision": 0.40231049060821533,
+              "mAP": 0.47745710611343384
+            }
+          },
+          "vs_previous": {
+            "mAP": {
+              "delta_pp": -0.7723194419834806,
+              "ci95_class": [
+                -2.811593328778368,
+                1.0711988480727086
+              ],
+              "classes_up": 13,
+              "classes": 25
+            },
+            "precision": {
+              "delta_pp": 1.0983143965499225,
+              "ci95_class": [
+                -0.45791048810290375,
+                2.597319886868162
+              ],
+              "classes_up": 19,
+              "classes": 25
+            }
+          },
+          "top1": {
+            "old_wrong": 2758,
+            "new_wrong": 2783,
+            "rescued": 357,
+            "regressed": 382,
+            "confusion_pairs": [
+              {
+                "class": "chicken",
+                "old_wrong": "parrot",
+                "old_count": 141,
+                "correct_now": 26,
+                "still_same": 105
+              },
+              {
+                "class": "rifle",
+                "old_wrong": "scissors",
+                "old_count": 115,
+                "correct_now": 23,
+                "still_same": 92
+              },
+              {
+                "class": "windmill",
+                "old_wrong": "bell",
+                "old_count": 90,
+                "correct_now": 12,
+                "still_same": 56
+              },
+              {
+                "class": "butterfly",
+                "old_wrong": "ray",
+                "old_count": 74,
+                "correct_now": 4,
+                "still_same": 13
+              },
+              {
+                "class": "windmill",
+                "old_wrong": "scissors",
+                "old_count": 72,
+                "correct_now": 8,
+                "still_same": 49
+              },
+              {
+                "class": "butterfly",
+                "old_wrong": "snail",
+                "old_count": 71,
+                "correct_now": 4,
+                "still_same": 45
+              },
+              {
+                "class": "airplane",
+                "old_wrong": "ray",
+                "old_count": 59,
+                "correct_now": 4,
+                "still_same": 32
+              },
+              {
+                "class": "snail",
+                "old_wrong": "ray",
+                "old_count": 58,
+                "correct_now": 21,
+                "still_same": 14
+              },
+              {
+                "class": "harp",
+                "old_wrong": "bell",
+                "old_count": 56,
+                "correct_now": 4,
+                "still_same": 34
+              },
+              {
+                "class": "airplane",
+                "old_wrong": "scissors",
+                "old_count": 50,
+                "correct_now": 0,
+                "still_same": 47
+              }
+            ]
+          }
+        },
+        "spectral-object-retrieval": {
+          "method": "late-object-q0.35-p0.35-w4-k96x0-n192-e0.75-paired",
+          "controls": {
+            "primary": {
+              "method": "late-object-q0.35-p0.35-w4-k96x0-n192-e0.75-paired",
+              "precision": 0.8186888694763184,
+              "mAP": 0.7939695715904236
+            },
+            "whole_sketch": {
+              "method": "late-object-q0-p0.35-w4-k96x0-n192-e0.75-paired",
+              "precision": 0.8074314594268799,
+              "mAP": 0.7849857211112976
+            },
+            "whole_gallery": {
+              "method": "late-object-q0.35-p0-w4-k96x0-n192-e0.75-paired",
+              "precision": 0.8189209699630737,
+              "mAP": 0.7935895919799805
+            },
+            "both_full_frames": {
+              "method": "late-object-q0-p0-w4-k96x0-n192-e0.75-paired",
+              "precision": 0.8075090646743774,
+              "mAP": 0.7845059037208557
+            },
+            "same_size_center": {
+              "method": "late-center-q0.35-p0.35-w4-k96x0-n192-e0.75-paired",
+              "precision": 0.8168495297431946,
+              "mAP": 0.7931851744651794
+            },
+            "same_size_opposite": {
+              "method": "late-opposite-q0.35-p0.35-w4-k96x0-n192-e0.75-paired",
+              "precision": 0.8077128529548645,
+              "mAP": 0.782686710357666
+            },
+            "no_averaging": {
+              "method": "late-object-q0.35-p0.35-w4-k96x0-n192-e0.75-paired",
+              "precision": 0.8186888694763184,
+              "mAP": 0.7939695715904236
+            },
+            "no_feedback": {
+              "method": "late-object-q0.35-p0.35-w4-k96x0-n192-e0-paired",
+              "precision": 0.7769327759742737,
+              "mAP": 0.7114876508712769
+            },
+            "shuffled_words": {
+              "method": "late-object-q0.35-p0.35-w4-k96x0-n192-e0.75-shuffled",
+              "precision": 0.013445940800011158,
+              "mAP": 0.046425364911556244
+            },
+            "native": {
+              "method": "late-object-q0.35-p0.35-w4-k96x0-n192-e0.75-rgb",
+              "precision": 0.44245293736457825,
+              "mAP": 0.37980619072914124
+            }
+          },
+          "vs_previous": {
+            "mAP": {
+              "delta_pp": -1.4551308917994223,
+              "ci95_class": [
+                -3.4518472384991066,
+                0.34178373239000714
+              ],
+              "classes_up": 11,
+              "classes": 25
+            },
+            "precision": {
+              "delta_pp": 1.7256506064161736,
+              "ci95_class": [
+                0.034427671205606296,
+                3.494261180173874
+              ],
+              "classes_up": 17,
+              "classes": 25
+            }
+          },
+          "top1": {
+            "old_wrong": 2758,
+            "new_wrong": 2607,
+            "rescued": 526,
+            "regressed": 375,
+            "confusion_pairs": [
+              {
+                "class": "chicken",
+                "old_wrong": "parrot",
+                "old_count": 141,
+                "correct_now": 64,
+                "still_same": 65
+              },
+              {
+                "class": "rifle",
+                "old_wrong": "scissors",
+                "old_count": 115,
+                "correct_now": 13,
+                "still_same": 100
+              },
+              {
+                "class": "windmill",
+                "old_wrong": "bell",
+                "old_count": 90,
+                "correct_now": 9,
+                "still_same": 43
+              },
+              {
+                "class": "butterfly",
+                "old_wrong": "ray",
+                "old_count": 74,
+                "correct_now": 3,
+                "still_same": 33
+              },
+              {
+                "class": "windmill",
+                "old_wrong": "scissors",
+                "old_count": 72,
+                "correct_now": 7,
+                "still_same": 53
+              },
+              {
+                "class": "butterfly",
+                "old_wrong": "snail",
+                "old_count": 71,
+                "correct_now": 2,
+                "still_same": 53
+              },
+              {
+                "class": "airplane",
+                "old_wrong": "ray",
+                "old_count": 59,
+                "correct_now": 2,
+                "still_same": 46
+              },
+              {
+                "class": "snail",
+                "old_wrong": "ray",
+                "old_count": 58,
+                "correct_now": 22,
+                "still_same": 26
+              },
+              {
+                "class": "harp",
+                "old_wrong": "bell",
+                "old_count": 56,
+                "correct_now": 16,
+                "still_same": 25
+              },
+              {
+                "class": "airplane",
+                "old_wrong": "scissors",
+                "old_count": 50,
+                "correct_now": 0,
+                "still_same": 41
+              }
+            ]
+          }
+        },
+        "gallery-vocabulary-cover": {
+          "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-paired",
+          "controls": {
+            "primary": {
+              "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-paired",
+              "precision": 0.8253043293952942,
+              "mAP": 0.8153945803642273
+            },
+            "mass_only": {
+              "method": "vocab64-frequency-t0.025-d0-n256-e0.65-k0-paired",
+              "precision": 0.7428810596466064,
+              "mAP": 0.7505714893341064
+            },
+            "coverage_only": {
+              "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-paired",
+              "precision": 0.8253043293952942,
+              "mAP": 0.8153945803642273
+            },
+            "uniform_candidates": {
+              "method": "vocab64-random-t0.025-d0-n256-e0.65-k0-paired",
+              "precision": 0.30254247784614563,
+              "mAP": 0.324163019657135
+            },
+            "unrestricted": {
+              "method": "vocab64-cover-t0.025-d1-n256-e0.65-k0-paired",
+              "precision": 0.8071303367614746,
+              "mAP": 0.7855547070503235
+            },
+            "restricted_only": {
+              "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-paired",
+              "precision": 0.8253043293952942,
+              "mAP": 0.8153945803642273
+            },
+            "no_feedback": {
+              "method": "vocab64-cover-t0.025-d0-n256-e0-k0-paired",
+              "precision": 0.807776927947998,
+              "mAP": 0.783649742603302
+            },
+            "no_gallery_averaging": {
+              "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-paired",
+              "precision": 0.8253043293952942,
+              "mAP": 0.8153945803642273
+            },
+            "neutral": {
+              "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-neutral",
+              "precision": 0.812550961971283,
+              "mAP": 0.8031609654426575
+            },
+            "shuffled_words": {
+              "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-shuffled",
+              "precision": 0.0393652617931366,
+              "mAP": 0.07773158699274063
+            },
+            "rgb_only": {
+              "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-rgb",
+              "precision": 0.4495190382003784,
+              "mAP": 0.4171467125415802
+            }
+          },
+          "vs_previous": {
+            "mAP": {
+              "delta_pp": 0.6873692415803891,
+              "ci95_class": [
+                -1.3928693612412801,
+                2.8502073514255293
+              ],
+              "classes_up": 13,
+              "classes": 25
+            },
+            "precision": {
+              "delta_pp": 2.387192317001746,
+              "ci95_class": [
+                0.6818921194156735,
+                4.322405203621186
+              ],
+              "classes_up": 17,
+              "classes": 25
+            }
+          },
+          "top1": {
+            "old_wrong": 2758,
+            "new_wrong": 2497,
+            "rescued": 544,
+            "regressed": 283,
+            "confusion_pairs": [
+              {
+                "class": "chicken",
+                "old_wrong": "parrot",
+                "old_count": 141,
+                "correct_now": 30,
+                "still_same": 102
+              },
+              {
+                "class": "rifle",
+                "old_wrong": "scissors",
+                "old_count": 115,
+                "correct_now": 47,
+                "still_same": 58
+              },
+              {
+                "class": "windmill",
+                "old_wrong": "bell",
+                "old_count": 90,
+                "correct_now": 23,
+                "still_same": 53
+              },
+              {
+                "class": "butterfly",
+                "old_wrong": "ray",
+                "old_count": 74,
+                "correct_now": 0,
+                "still_same": 67
+              },
+              {
+                "class": "windmill",
+                "old_wrong": "scissors",
+                "old_count": 72,
+                "correct_now": 30,
+                "still_same": 19
+              },
+              {
+                "class": "butterfly",
+                "old_wrong": "snail",
+                "old_count": 71,
+                "correct_now": 4,
+                "still_same": 23
+              },
+              {
+                "class": "airplane",
+                "old_wrong": "ray",
+                "old_count": 59,
+                "correct_now": 6,
+                "still_same": 48
+              },
+              {
+                "class": "snail",
+                "old_wrong": "ray",
+                "old_count": 58,
+                "correct_now": 9,
+                "still_same": 43
+              },
+              {
+                "class": "harp",
+                "old_wrong": "bell",
+                "old_count": 56,
+                "correct_now": 9,
+                "still_same": 37
+              },
+              {
+                "class": "airplane",
+                "old_wrong": "scissors",
+                "old_count": 50,
+                "correct_now": 9,
+                "still_same": 21
+              }
+            ]
+          }
+        }
+      },
+      "kd_replay": {
+        "queries": 14179,
+        "mAP": 0.8153945803642273,
+        "precision": 0.8253043293952942,
+        "kd_minus_pipeline_max_abs_same_order_AP_P": [
+          0.0,
+          0.0
+        ],
+        "max_per_query_abs_AP_P": [
+          0.0,
+          0.0
+        ],
+        "mean_per_query_abs_AP_P": [
+          0.0,
+          0.0
+        ],
+        "queries_within_1e-6_both": 14179,
+        "single_vs_batch_score_max": 9.298324584960938e-06
+      },
+      "proposal_area_quartiles": [
+        {
+          "count": 3545,
+          "mean_box_area_fraction": 0.3305742144584656,
+          "primary_AP_P": [
+            0.7879972457885742,
+            0.812877357006073
+          ],
+          "both_full_frames_AP_P": [
+            0.7738023400306702,
+            0.7962623238563538
+          ],
+          "same_size_center_AP_P": [
+            0.7840569019317627,
+            0.8084287643432617
+          ],
+          "same_size_opposite_AP_P": [
+            0.7720394730567932,
+            0.796874463558197
+          ]
+        },
+        {
+          "count": 3545,
+          "mean_box_area_fraction": 0.45478516817092896,
+          "primary_AP_P": [
+            0.7777174115180969,
+            0.8046121597290039
+          ],
+          "both_full_frames_AP_P": [
+            0.7663007378578186,
+            0.7902116775512695
+          ],
+          "same_size_center_AP_P": [
+            0.7770535945892334,
+            0.802592396736145
+          ],
+          "same_size_opposite_AP_P": [
+            0.763306736946106,
+            0.7889506816864014
+          ]
+        },
+        {
+          "count": 3545,
+          "mean_box_area_fraction": 0.5550768375396729,
+          "primary_AP_P": [
+            0.7952298521995544,
+            0.8201777338981628
+          ],
+          "both_full_frames_AP_P": [
+            0.7876791954040527,
+            0.8120310306549072
+          ],
+          "same_size_center_AP_P": [
+            0.7962450981140137,
+            0.821086049079895
+          ],
+          "same_size_opposite_AP_P": [
+            0.7859680652618408,
+            0.8136107921600342
+          ]
+        },
+        {
+          "count": 3544,
+          "mean_box_area_fraction": 0.7230246663093567,
+          "primary_AP_P": [
+            0.8149396181106567,
+            0.837093710899353
+          ],
+          "both_full_frames_AP_P": [
+            0.810248613357544,
+            0.8315378427505493
+          ],
+          "same_size_center_AP_P": [
+            0.8153912425041199,
+            0.8352962732315063
+          ],
+          "same_size_opposite_AP_P": [
+            0.809440016746521,
+            0.8314222097396851
+          ]
+        }
+      ]
+    },
+    "sketchy_2": {
+      "queries": 12694,
+      "gallery": 12552,
+      "classes": 21,
+      "selection_AP_P": [
+        0.7497790455818176,
+        0.7387632131576538
+      ],
+      "incumbent_AP_P": [
+        0.7316199541091919,
+        0.7159126400947571
+      ],
+      "native_AP_P": [
+        0.3634491264820099,
+        0.33846187591552734
+      ],
+      "paired": {
+        "reverse-prompt-diffusion": {
+          "mAP": {
+            "delta_pp": 1.8159180867597366,
+            "ci95_class": [
+              -0.6301776788212866,
+              4.279396060449164
+            ],
+            "classes_up": 12,
+            "classes": 21
+          },
+          "precision": {
+            "delta_pp": 2.2850558388806856,
+            "ci95_class": [
+              -0.28009888711694214,
+              4.846525175079223
+            ],
+            "classes_up": 13,
+            "classes": 21
+          }
+        },
+        "native": {
+          "mAP": {
+            "delta_pp": 38.632997661602,
+            "ci95_class": [
+              29.700889774681173,
+              47.01289241310497
+            ],
+            "classes_up": 20,
+            "classes": 21
+          },
+          "precision": {
+            "delta_pp": 40.0301324353206,
+            "ci95_class": [
+              31.59383165140065,
+              48.056394846050885
+            ],
+            "classes_up": 21,
+            "classes": 21
+          }
+        },
+        "view-consensus-retrieval": {
+          "mAP": {
+            "delta_pp": 1.367673196373365,
+            "ci95_class": [
+              -0.7746178367710381,
+              3.7136190082822402
+            ],
+            "classes_up": 12,
+            "classes": 21
+          },
+          "precision": {
+            "delta_pp": 1.6500315277297088,
+            "ci95_class": [
+              -0.4972324445101776,
+              3.91950700060766
+            ],
+            "classes_up": 13,
+            "classes": 21
+          }
+        },
+        "gallery-aspect-retrieval": {
+          "mAP": {
+            "delta_pp": 0.6303292335000353,
+            "ci95_class": [
+              -1.611534580398307,
+              2.892946772084124
+            ],
+            "classes_up": 10,
+            "classes": 21
+          },
+          "precision": {
+            "delta_pp": 1.2540176339205094,
+            "ci95_class": [
+              -1.3795197909657386,
+              3.8258378626318565
+            ],
+            "classes_up": 14,
+            "classes": 21
+          }
+        },
+        "spectral-object-retrieval": {
+          "mAP": {
+            "delta_pp": 1.1503554693752924,
+            "ci95_class": [
+              -1.0219434221477874,
+              3.4299755124226423
+            ],
+            "classes_up": 13,
+            "classes": 21
+          },
+          "precision": {
+            "delta_pp": 1.5040570386919179,
+            "ci95_class": [
+              -0.616709140048584,
+              3.7346924267226647
+            ],
+            "classes_up": 13,
+            "classes": 21
+          }
+        },
+        "gallery-vocabulary-cover/primary": {
+          "mAP": {
+            "delta_pp": 0.0,
+            "ci95_class": [
+              0.0,
+              0.0
+            ],
+            "classes_up": 0,
+            "classes": 21
+          },
+          "precision": {
+            "delta_pp": 0.0,
+            "ci95_class": [
+              0.0,
+              0.0
+            ],
+            "classes_up": 0,
+            "classes": 21
+          }
+        },
+        "gallery-vocabulary-cover": {
+          "mAP": {
+            "delta_pp": 0.0,
+            "ci95_class": [
+              0.0,
+              0.0
+            ],
+            "classes_up": 0,
+            "classes": 21
+          },
+          "precision": {
+            "delta_pp": 0.0,
+            "ci95_class": [
+              0.0,
+              0.0
+            ],
+            "classes_up": 0,
+            "classes": 21
+          }
+        },
+        "gallery-vocabulary-cover/mass_only": {
+          "mAP": {
+            "delta_pp": 7.029222737481559,
+            "ci95_class": [
+              0.0025919055695270113,
+              16.19538811375138
+            ],
+            "classes_up": 14,
+            "classes": 21
+          },
+          "precision": {
+            "delta_pp": 7.1593666829451115,
+            "ci95_class": [
+              0.1714927263528789,
+              16.209641139363832
+            ],
+            "classes_up": 14,
+            "classes": 21
+          }
+        },
+        "gallery-vocabulary-cover/coverage_only": {
+          "mAP": {
+            "delta_pp": 0.0,
+            "ci95_class": [
+              0.0,
+              0.0
+            ],
+            "classes_up": 0,
+            "classes": 21
+          },
+          "precision": {
+            "delta_pp": 0.0,
+            "ci95_class": [
+              0.0,
+              0.0
+            ],
+            "classes_up": 0,
+            "classes": 21
+          }
+        },
+        "gallery-vocabulary-cover/uniform_candidates": {
+          "mAP": {
+            "delta_pp": 52.78131308416892,
+            "ci95_class": [
+              40.07440999668597,
+              65.03553195145423
+            ],
+            "classes_up": 20,
+            "classes": 21
+          },
+          "precision": {
+            "delta_pp": 51.928667173262646,
+            "ci95_class": [
+              39.23382639156063,
+              64.05314908020026
+            ],
+            "classes_up": 20,
+            "classes": 21
+          }
+        },
+        "gallery-vocabulary-cover/unrestricted": {
+          "mAP": {
+            "delta_pp": 1.9043475287793723,
+            "ci95_class": [
+              -0.254098403658233,
+              4.066666147485176
+            ],
+            "classes_up": 13,
+            "classes": 21
+          },
+          "precision": {
+            "delta_pp": 2.204584848828002,
+            "ci95_class": [
+              0.013682975111627691,
+              4.389640679880957
+            ],
+            "classes_up": 14,
+            "classes": 21
+          }
+        },
+        "gallery-vocabulary-cover/restricted_only": {
+          "mAP": {
+            "delta_pp": 0.0,
+            "ci95_class": [
+              0.0,
+              0.0
+            ],
+            "classes_up": 0,
+            "classes": 21
+          },
+          "precision": {
+            "delta_pp": 0.0,
+            "ci95_class": [
+              0.0,
+              0.0
+            ],
+            "classes_up": 0,
+            "classes": 21
+          }
+        },
+        "gallery-vocabulary-cover/no_feedback": {
+          "mAP": {
+            "delta_pp": 1.0088607448481737,
+            "ci95_class": [
+              -0.2552291812656818,
+              2.2569833192910362
+            ],
+            "classes_up": 15,
+            "classes": 21
+          },
+          "precision": {
+            "delta_pp": 1.0067354158454473,
+            "ci95_class": [
+              -0.11461496561148525,
+              2.1101434703688047
+            ],
+            "classes_up": 16,
+            "classes": 21
+          }
+        },
+        "gallery-vocabulary-cover/no_gallery_averaging": {
+          "mAP": {
+            "delta_pp": 0.0,
+            "ci95_class": [
+              0.0,
+              0.0
+            ],
+            "classes_up": 0,
+            "classes": 21
+          },
+          "precision": {
+            "delta_pp": 0.0,
+            "ci95_class": [
+              0.0,
+              0.0
+            ],
+            "classes_up": 0,
+            "classes": 21
+          }
+        },
+        "gallery-vocabulary-cover/neutral": {
+          "mAP": {
+            "delta_pp": 3.22984985115656,
+            "ci95_class": [
+              1.080219451757231,
+              5.448924837896106
+            ],
+            "classes_up": 16,
+            "classes": 21
+          },
+          "precision": {
+            "delta_pp": 3.035883099760444,
+            "ci95_class": [
+              0.9216915760682816,
+              5.253963064551743
+            ],
+            "classes_up": 16,
+            "classes": 21
+          }
+        },
+        "gallery-vocabulary-cover/shuffled_words": {
+          "mAP": {
+            "delta_pp": 73.58072853438956,
+            "ci95_class": [
+              65.76219537552907,
+              80.90287324883091
+            ],
+            "classes_up": 21,
+            "classes": 21
+          },
+          "precision": {
+            "delta_pp": 72.56822130315321,
+            "ci95_class": [
+              64.42455253903546,
+              80.0879339953683
+            ],
+            "classes_up": 21,
+            "classes": 21
+          }
+        },
+        "gallery-vocabulary-cover/rgb_only": {
+          "mAP": {
+            "delta_pp": 35.32135484847841,
+            "ci95_class": [
+              24.63390072468736,
+              45.581916500585855
+            ],
+            "classes_up": 18,
+            "classes": 21
+          },
+          "precision": {
+            "delta_pp": 35.666338500136995,
+            "ci95_class": [
+              25.25456899129052,
+              45.46870384498645
+            ],
+            "classes_up": 18,
+            "classes": 21
+          }
+        }
+      },
+      "methods": {
+        "view-consensus-retrieval": {
+          "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-paired",
+          "controls": {
+            "primary": {
+              "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-paired",
+              "precision": 0.7222629189491272,
+              "mAP": 0.7361023426055908
+            },
+            "one_sketch_view": {
+              "method": "v1-1-uniform-c4-k64x0-n192-e0.7-r0-paired",
+              "precision": 0.7172183990478516,
+              "mAP": 0.731509804725647
+            },
+            "one_photo_view": {
+              "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-paired",
+              "precision": 0.7222629189491272,
+              "mAP": 0.7361023426055908
+            },
+            "one_view_both": {
+              "method": "v1-1-uniform-c4-k64x0-n192-e0.7-r0-paired",
+              "precision": 0.7172183990478516,
+              "mAP": 0.731509804725647
+            },
+            "uniform_views": {
+              "method": "v2-1-uniform-c4-k64x0-n192-e0.7-r0-paired",
+              "precision": 0.7206999659538269,
+              "mAP": 0.7345795035362244
+            },
+            "agreement": {
+              "method": "v2-1-agreement-c4-k64x0-n192-e0.7-r0-paired",
+              "precision": 0.7206999659538269,
+              "mAP": 0.7345795035362244
+            },
+            "without_gallery_averaging": {
+              "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-paired",
+              "precision": 0.7222629189491272,
+              "mAP": 0.7361023426055908
+            },
+            "without_feedback": {
+              "method": "v2-1-entropy-c4-k64x0-n192-e0-r0-paired",
+              "precision": 0.6865747570991516,
+              "mAP": 0.6940819025039673
+            },
+            "centroid_feedback": {
+              "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-paired",
+              "precision": 0.7222629189491272,
+              "mAP": 0.7361023426055908
+            },
+            "shuffled_words": {
+              "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-shuffled",
+              "precision": 0.0411769300699234,
+              "mAP": 0.04504519701004028
+            },
+            "rgb_only": {
+              "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-rgb",
+              "precision": 0.3795383870601654,
+              "mAP": 0.3910018503665924
+            }
+          },
+          "vs_previous": {
+            "mAP": {
+              "delta_pp": 0.4482448903863716,
+              "ci95_class": [
+                -1.6906135418439445,
+                2.4269202133836543
+              ],
+              "classes_up": 12,
+              "classes": 21
+            },
+            "precision": {
+              "delta_pp": 0.6350243111509769,
+              "ci95_class": [
+                -1.7417495020990947,
+                2.670996650889922
+              ],
+              "classes_up": 14,
+              "classes": 21
+            }
+          },
+          "top1": {
+            "old_wrong": 3454,
+            "new_wrong": 3402,
+            "rescued": 562,
+            "regressed": 510,
+            "confusion_pairs": [
+              {
+                "class": "saw",
+                "old_wrong": "sword",
+                "old_count": 222,
+                "correct_now": 43,
+                "still_same": 169
+              },
+              {
+                "class": "songbird",
+                "old_wrong": "seagull",
+                "old_count": 181,
+                "correct_now": 5,
+                "still_same": 176
+              },
+              {
+                "class": "dolphin",
+                "old_wrong": "seagull",
+                "old_count": 172,
+                "correct_now": 32,
+                "still_same": 131
+              },
+              {
+                "class": "raccoon",
+                "old_wrong": "mouse",
+                "old_count": 160,
+                "correct_now": 31,
+                "still_same": 108
+              },
+              {
+                "class": "door",
+                "old_wrong": "window",
+                "old_count": 143,
+                "correct_now": 32,
+                "still_same": 109
+              },
+              {
+                "class": "windmill",
+                "old_wrong": "sword",
+                "old_count": 137,
+                "correct_now": 12,
+                "still_same": 92
+              },
+              {
+                "class": "giraffe",
+                "old_wrong": "cow",
+                "old_count": 115,
+                "correct_now": 18,
+                "still_same": 96
+              },
+              {
+                "class": "rhinoceros",
+                "old_wrong": "cow",
+                "old_count": 104,
+                "correct_now": 7,
+                "still_same": 97
+              },
+              {
+                "class": "helicopter",
+                "old_wrong": "scissors",
+                "old_count": 86,
+                "correct_now": 7,
+                "still_same": 59
+              },
+              {
+                "class": "raccoon",
+                "old_wrong": "rhinoceros",
+                "old_count": 83,
+                "correct_now": 1,
+                "still_same": 28
+              }
+            ]
+          }
+        },
+        "gallery-aspect-retrieval": {
+          "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-paired",
+          "controls": {
+            "primary": {
+              "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-paired",
+              "precision": 0.7262229919433594,
+              "mAP": 0.7434757351875305
+            },
+            "no_groups": {
+              "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m0-paired",
+              "precision": 0.6834225058555603,
+              "mAP": 0.6914999485015869
+            },
+            "groups_only": {
+              "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-paired",
+              "precision": 0.7262229919433594,
+              "mAP": 0.7434757351875305
+            },
+            "pure_rgb_geometry": {
+              "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-paired",
+              "precision": 0.7262229919433594,
+              "mAP": 0.7434757351875305
+            },
+            "uniform_word_prior": {
+              "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-paired",
+              "precision": 0.7262229919433594,
+              "mAP": 0.7434757351875305
+            },
+            "uniform_group_prior": {
+              "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-paired",
+              "precision": 0.7262229919433594,
+              "mAP": 0.7434757351875305
+            },
+            "random_group_links": {
+              "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-random_groups",
+              "precision": 0.041204117238521576,
+              "mAP": 0.04742228239774704
+            },
+            "neutral_words": {
+              "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-neutral",
+              "precision": 0.6864223480224609,
+              "mAP": 0.7065826058387756
+            },
+            "rgb_only": {
+              "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-rgb",
+              "precision": 0.365175724029541,
+              "mAP": 0.35714593529701233
+            }
+          },
+          "vs_previous": {
+            "mAP": {
+              "delta_pp": 1.1855888532597014,
+              "ci95_class": [
+                -0.530284738409493,
+                2.849641029470112
+              ],
+              "classes_up": 14,
+              "classes": 21
+            },
+            "precision": {
+              "delta_pp": 1.0310382049601763,
+              "ci95_class": [
+                -0.974035107635243,
+                2.9717927107321023
+              ],
+              "classes_up": 15,
+              "classes": 21
+            }
+          },
+          "top1": {
+            "old_wrong": 3454,
+            "new_wrong": 3423,
+            "rescued": 537,
+            "regressed": 506,
+            "confusion_pairs": [
+              {
+                "class": "saw",
+                "old_wrong": "sword",
+                "old_count": 222,
+                "correct_now": 44,
+                "still_same": 175
+              },
+              {
+                "class": "songbird",
+                "old_wrong": "seagull",
+                "old_count": 181,
+                "correct_now": 6,
+                "still_same": 174
+              },
+              {
+                "class": "dolphin",
+                "old_wrong": "seagull",
+                "old_count": 172,
+                "correct_now": 20,
+                "still_same": 127
+              },
+              {
+                "class": "raccoon",
+                "old_wrong": "mouse",
+                "old_count": 160,
+                "correct_now": 68,
+                "still_same": 80
+              },
+              {
+                "class": "door",
+                "old_wrong": "window",
+                "old_count": 143,
+                "correct_now": 36,
+                "still_same": 101
+              },
+              {
+                "class": "windmill",
+                "old_wrong": "sword",
+                "old_count": 137,
+                "correct_now": 5,
+                "still_same": 100
+              },
+              {
+                "class": "giraffe",
+                "old_wrong": "cow",
+                "old_count": 115,
+                "correct_now": 39,
+                "still_same": 71
+              },
+              {
+                "class": "rhinoceros",
+                "old_wrong": "cow",
+                "old_count": 104,
+                "correct_now": 0,
+                "still_same": 99
+              },
+              {
+                "class": "helicopter",
+                "old_wrong": "scissors",
+                "old_count": 86,
+                "correct_now": 1,
+                "still_same": 56
+              },
+              {
+                "class": "raccoon",
+                "old_wrong": "rhinoceros",
+                "old_count": 83,
+                "correct_now": 10,
+                "still_same": 33
+              }
+            ]
+          }
+        },
+        "spectral-object-retrieval": {
+          "method": "late-object-q0.35-p0.35-w4-k96x0-n192-e0.75-paired",
+          "controls": {
+            "primary": {
+              "method": "late-object-q0.35-p0.35-w4-k96x0-n192-e0.75-paired",
+              "precision": 0.7237225770950317,
+              "mAP": 0.7382754683494568
+            },
+            "whole_sketch": {
+              "method": "late-object-q0-p0.35-w4-k96x0-n192-e0.75-paired",
+              "precision": 0.718847930431366,
+              "mAP": 0.7323956489562988
+            },
+            "whole_gallery": {
+              "method": "late-object-q0.35-p0-w4-k96x0-n192-e0.75-paired",
+              "precision": 0.7218493223190308,
+              "mAP": 0.7376267313957214
+            },
+            "both_full_frames": {
+              "method": "late-object-q0-p0-w4-k96x0-n192-e0.75-paired",
+              "precision": 0.716955304145813,
+              "mAP": 0.731468915939331
+            },
+            "same_size_center": {
+              "method": "late-center-q0.35-p0.35-w4-k96x0-n192-e0.75-paired",
+              "precision": 0.7188414931297302,
+              "mAP": 0.7332820296287537
+            },
+            "same_size_opposite": {
+              "method": "late-opposite-q0.35-p0.35-w4-k96x0-n192-e0.75-paired",
+              "precision": 0.7126670479774475,
+              "mAP": 0.7271108627319336
+            },
+            "no_averaging": {
+              "method": "late-object-q0.35-p0.35-w4-k96x0-n192-e0.75-paired",
+              "precision": 0.7237225770950317,
+              "mAP": 0.7382754683494568
+            },
+            "no_feedback": {
+              "method": "late-object-q0.35-p0.35-w4-k96x0-n192-e0-paired",
+              "precision": 0.682222306728363,
+              "mAP": 0.6909558773040771
+            },
+            "shuffled_words": {
+              "method": "late-object-q0.35-p0.35-w4-k96x0-n192-e0.75-shuffled",
+              "precision": 0.03292775899171829,
+              "mAP": 0.03684808313846588
+            },
+            "native": {
+              "method": "late-object-q0.35-p0.35-w4-k96x0-n192-e0.75-rgb",
+              "precision": 0.37221917510032654,
+              "mAP": 0.3987007141113281
+            }
+          },
+          "vs_previous": {
+            "mAP": {
+              "delta_pp": 0.6655626173844443,
+              "ci95_class": [
+                -1.3817810867339058,
+                2.488785757283893
+              ],
+              "classes_up": 14,
+              "classes": 21
+            },
+            "precision": {
+              "delta_pp": 0.7809988001887679,
+              "ci95_class": [
+                -1.3939339818275411,
+                2.634210837477778
+              ],
+              "classes_up": 15,
+              "classes": 21
+            }
+          },
+          "top1": {
+            "old_wrong": 3454,
+            "new_wrong": 3302,
+            "rescued": 632,
+            "regressed": 480,
+            "confusion_pairs": [
+              {
+                "class": "saw",
+                "old_wrong": "sword",
+                "old_count": 222,
+                "correct_now": 53,
+                "still_same": 144
+              },
+              {
+                "class": "songbird",
+                "old_wrong": "seagull",
+                "old_count": 181,
+                "correct_now": 3,
+                "still_same": 178
+              },
+              {
+                "class": "dolphin",
+                "old_wrong": "seagull",
+                "old_count": 172,
+                "correct_now": 33,
+                "still_same": 124
+              },
+              {
+                "class": "raccoon",
+                "old_wrong": "mouse",
+                "old_count": 160,
+                "correct_now": 39,
+                "still_same": 76
+              },
+              {
+                "class": "door",
+                "old_wrong": "window",
+                "old_count": 143,
+                "correct_now": 24,
+                "still_same": 118
+              },
+              {
+                "class": "windmill",
+                "old_wrong": "sword",
+                "old_count": 137,
+                "correct_now": 16,
+                "still_same": 80
+              },
+              {
+                "class": "giraffe",
+                "old_wrong": "cow",
+                "old_count": 115,
+                "correct_now": 11,
+                "still_same": 104
+              },
+              {
+                "class": "rhinoceros",
+                "old_wrong": "cow",
+                "old_count": 104,
+                "correct_now": 8,
+                "still_same": 96
+              },
+              {
+                "class": "helicopter",
+                "old_wrong": "scissors",
+                "old_count": 86,
+                "correct_now": 6,
+                "still_same": 64
+              },
+              {
+                "class": "raccoon",
+                "old_wrong": "rhinoceros",
+                "old_count": 83,
+                "correct_now": 6,
+                "still_same": 24
+              }
+            ]
+          }
+        },
+        "gallery-vocabulary-cover": {
+          "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-paired",
+          "controls": {
+            "primary": {
+              "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-paired",
+              "precision": 0.7387632131576538,
+              "mAP": 0.7497791051864624
+            },
+            "mass_only": {
+              "method": "vocab64-frequency-t0.025-d0-n256-e0.65-k0-paired",
+              "precision": 0.6671695113182068,
+              "mAP": 0.679486870765686
+            },
+            "coverage_only": {
+              "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-paired",
+              "precision": 0.7387632131576538,
+              "mAP": 0.7497791051864624
+            },
+            "uniform_candidates": {
+              "method": "vocab64-random-t0.025-d0-n256-e0.65-k0-paired",
+              "precision": 0.21947652101516724,
+              "mAP": 0.2219659686088562
+            },
+            "unrestricted": {
+              "method": "vocab64-cover-t0.025-d1-n256-e0.65-k0-paired",
+              "precision": 0.7167173027992249,
+              "mAP": 0.7307355999946594
+            },
+            "restricted_only": {
+              "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-paired",
+              "precision": 0.7387632131576538,
+              "mAP": 0.7497791051864624
+            },
+            "no_feedback": {
+              "method": "vocab64-cover-t0.025-d0-n256-e0-k0-paired",
+              "precision": 0.7286958694458008,
+              "mAP": 0.7396904826164246
+            },
+            "no_gallery_averaging": {
+              "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-paired",
+              "precision": 0.7387632131576538,
+              "mAP": 0.7497791051864624
+            },
+            "neutral": {
+              "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-neutral",
+              "precision": 0.7084043025970459,
+              "mAP": 0.7174806594848633
+            },
+            "shuffled_words": {
+              "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-shuffled",
+              "precision": 0.013080982491374016,
+              "mAP": 0.013971807435154915
+            },
+            "rgb_only": {
+              "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-rgb",
+              "precision": 0.38209980726242065,
+              "mAP": 0.3965655267238617
+            }
+          },
+          "vs_previous": {
+            "mAP": {
+              "delta_pp": 1.8159180867597366,
+              "ci95_class": [
+                -0.6301776788212866,
+                4.279396060449164
+              ],
+              "classes_up": 12,
+              "classes": 21
+            },
+            "precision": {
+              "delta_pp": 2.2850558388806856,
+              "ci95_class": [
+                -0.28009888711694214,
+                4.846525175079223
+              ],
+              "classes_up": 13,
+              "classes": 21
+            }
+          },
+          "top1": {
+            "old_wrong": 3454,
+            "new_wrong": 3181,
+            "rescued": 658,
+            "regressed": 385,
+            "confusion_pairs": [
+              {
+                "class": "saw",
+                "old_wrong": "sword",
+                "old_count": 222,
+                "correct_now": 26,
+                "still_same": 169
+              },
+              {
+                "class": "songbird",
+                "old_wrong": "seagull",
+                "old_count": 181,
+                "correct_now": 42,
+                "still_same": 138
+              },
+              {
+                "class": "dolphin",
+                "old_wrong": "seagull",
+                "old_count": 172,
+                "correct_now": 62,
+                "still_same": 84
+              },
+              {
+                "class": "raccoon",
+                "old_wrong": "mouse",
+                "old_count": 160,
+                "correct_now": 37,
+                "still_same": 120
+              },
+              {
+                "class": "door",
+                "old_wrong": "window",
+                "old_count": 143,
+                "correct_now": 20,
+                "still_same": 122
+              },
+              {
+                "class": "windmill",
+                "old_wrong": "sword",
+                "old_count": 137,
+                "correct_now": 36,
+                "still_same": 79
+              },
+              {
+                "class": "giraffe",
+                "old_wrong": "cow",
+                "old_count": 115,
+                "correct_now": 17,
+                "still_same": 97
+              },
+              {
+                "class": "rhinoceros",
+                "old_wrong": "cow",
+                "old_count": 104,
+                "correct_now": 7,
+                "still_same": 97
+              },
+              {
+                "class": "helicopter",
+                "old_wrong": "scissors",
+                "old_count": 86,
+                "correct_now": 16,
+                "still_same": 41
+              },
+              {
+                "class": "raccoon",
+                "old_wrong": "rhinoceros",
+                "old_count": 83,
+                "correct_now": 1,
+                "still_same": 36
+              }
+            ]
+          }
+        }
+      },
+      "kd_replay": {
+        "queries": 12694,
+        "mAP": 0.7497790455818176,
+        "precision": 0.7387632131576538,
+        "kd_minus_pipeline_max_abs_same_order_AP_P": [
+          0.0,
+          0.0
+        ],
+        "max_per_query_abs_AP_P": [
+          0.0,
+          0.0
+        ],
+        "mean_per_query_abs_AP_P": [
+          0.0,
+          0.0
+        ],
+        "queries_within_1e-6_both": 12694,
+        "single_vs_batch_score_max": 1.2278556823730469e-05
+      },
+      "proposal_area_quartiles": [
+        {
+          "count": 3174,
+          "mean_box_area_fraction": 0.32871803641319275,
+          "primary_AP_P": [
+            0.6998634338378906,
+            0.6868414878845215
+          ],
+          "both_full_frames_AP_P": [
+            0.6917555928230286,
+            0.6787838339805603
+          ],
+          "same_size_center_AP_P": [
+            0.6905384659767151,
+            0.6770384311676025
+          ],
+          "same_size_opposite_AP_P": [
+            0.6841968894004822,
+            0.6704395413398743
+          ]
+        },
+        {
+          "count": 3174,
+          "mean_box_area_fraction": 0.4503590762615204,
+          "primary_AP_P": [
+            0.7297532558441162,
+            0.7117280960083008
+          ],
+          "both_full_frames_AP_P": [
+            0.7203102111816406,
+            0.7035491466522217
+          ],
+          "same_size_center_AP_P": [
+            0.7227454781532288,
+            0.7056411504745483
+          ],
+          "same_size_opposite_AP_P": [
+            0.7162845730781555,
+            0.6988784074783325
+          ]
+        },
+        {
+          "count": 3173,
+          "mean_box_area_fraction": 0.543465793132782,
+          "primary_AP_P": [
+            0.7483497858047485,
+            0.7323952317237854
+          ],
+          "both_full_frames_AP_P": [
+            0.7428516745567322,
+            0.7267585396766663
+          ],
+          "same_size_center_AP_P": [
+            0.7486124634742737,
+            0.7327450513839722
+          ],
+          "same_size_opposite_AP_P": [
+            0.7396067976951599,
+            0.7240151166915894
+          ]
+        },
+        {
+          "count": 3173,
+          "mean_box_area_fraction": 0.7178173661231995,
+          "primary_AP_P": [
+            0.7751504778862,
+            0.7639410495758057
+          ],
+          "both_full_frames_AP_P": [
+            0.7709743976593018,
+            0.7587456107139587
+          ],
+          "same_size_center_AP_P": [
+            0.7712483406066895,
+            0.7599589824676514
+          ],
+          "same_size_opposite_AP_P": [
+            0.7683718800544739,
+            0.7573527097702026
+          ]
+        }
+      ]
+    },
+    "tuberlin": {
+      "queries": 2130,
+      "gallery": 27262,
+      "classes": 30,
+      "selection_AP_P": [
+        0.7007649540901184,
+        0.7300939559936523
+      ],
+      "incumbent_AP_P": [
+        0.7696316838264465,
+        0.8061361908912659
+      ],
+      "native_AP_P": [
+        0.29065898060798645,
+        0.46264317631721497
+      ],
+      "paired": {
+        "reverse-prompt-diffusion": {
+          "mAP": {
+            "delta_pp": -6.886672227394203,
+            "ci95_class": [
+              -13.483790400588129,
+              -1.477967893148611
+            ],
+            "classes_up": 10,
+            "classes": 30
+          },
+          "precision": {
+            "delta_pp": -7.60422537304426,
+            "ci95_class": [
+              -15.788502327320655,
+              -1.0647749004850264
+            ],
+            "classes_up": 14,
+            "classes": 30
+          }
+        },
+        "native": {
+          "mAP": {
+            "delta_pp": 41.010596644365066,
+            "ci95_class": [
+              33.7658876129525,
+              47.92540804866239
+            ],
+            "classes_up": 29,
+            "classes": 30
+          },
+          "precision": {
+            "delta_pp": 26.745070352835555,
+            "ci95_class": [
+              19.53659647920985,
+              34.09734327961693
+            ],
+            "classes_up": 28,
+            "classes": 30
+          }
+        },
+        "view-consensus-retrieval": {
+          "mAP": {
+            "delta_pp": -4.907193653867034,
+            "ci95_class": [
+              -10.701770557721526,
+              -0.3207866745375708
+            ],
+            "classes_up": 13,
+            "classes": 30
+          },
+          "precision": {
+            "delta_pp": -6.9816901578519825,
+            "ci95_class": [
+              -14.835871514893515,
+              -1.0589643635579538
+            ],
+            "classes_up": 13,
+            "classes": 30
+          }
+        },
+        "gallery-aspect-retrieval": {
+          "mAP": {
+            "delta_pp": -6.0687017338262965,
+            "ci95_class": [
+              -11.066513509907265,
+              -1.9369211524025087
+            ],
+            "classes_up": 8,
+            "classes": 30
+          },
+          "precision": {
+            "delta_pp": -6.611737061834112,
+            "ci95_class": [
+              -14.332599843683287,
+              -0.6681757811116094
+            ],
+            "classes_up": 11,
+            "classes": 30
+          }
+        },
+        "spectral-object-retrieval": {
+          "mAP": {
+            "delta_pp": -3.4003560142504146,
+            "ci95_class": [
+              -8.87524598632421,
+              0.9106444898795705
+            ],
+            "classes_up": 16,
+            "classes": 30
+          },
+          "precision": {
+            "delta_pp": -5.680751148961099,
+            "ci95_class": [
+              -13.126889959346828,
+              -0.13438855468191332
+            ],
+            "classes_up": 12,
+            "classes": 30
+          }
+        },
+        "gallery-vocabulary-cover/primary": {
+          "mAP": {
+            "delta_pp": 0.0,
+            "ci95_class": [
+              0.0,
+              0.0
+            ],
+            "classes_up": 0,
+            "classes": 30
+          },
+          "precision": {
+            "delta_pp": 0.0,
+            "ci95_class": [
+              0.0,
+              0.0
+            ],
+            "classes_up": 0,
+            "classes": 30
+          }
+        },
+        "gallery-vocabulary-cover": {
+          "mAP": {
+            "delta_pp": 0.0,
+            "ci95_class": [
+              0.0,
+              0.0
+            ],
+            "classes_up": 0,
+            "classes": 30
+          },
+          "precision": {
+            "delta_pp": 0.0,
+            "ci95_class": [
+              0.0,
+              0.0
+            ],
+            "classes_up": 0,
+            "classes": 30
+          }
+        },
+        "gallery-vocabulary-cover/mass_only": {
+          "mAP": {
+            "delta_pp": 9.057126532662922,
+            "ci95_class": [
+              0.8254569628046569,
+              18.772435491211738
+            ],
+            "classes_up": 13,
+            "classes": 30
+          },
+          "precision": {
+            "delta_pp": 10.186385040569334,
+            "ci95_class": [
+              0.8219565817069178,
+              21.078241415147325
+            ],
+            "classes_up": 15,
+            "classes": 30
+          }
+        },
+        "gallery-vocabulary-cover/coverage_only": {
+          "mAP": {
+            "delta_pp": 0.0,
+            "ci95_class": [
+              0.0,
+              0.0
+            ],
+            "classes_up": 0,
+            "classes": 30
+          },
+          "precision": {
+            "delta_pp": 0.0,
+            "ci95_class": [
+              0.0,
+              0.0
+            ],
+            "classes_up": 0,
+            "classes": 30
+          }
+        },
+        "gallery-vocabulary-cover/uniform_candidates": {
+          "mAP": {
+            "delta_pp": 31.016555847621966,
+            "ci95_class": [
+              20.79469451921352,
+              41.41229385107595
+            ],
+            "classes_up": 26,
+            "classes": 30
+          },
+          "precision": {
+            "delta_pp": 32.978873209844174,
+            "ci95_class": [
+              19.713197858471933,
+              46.05879111739505
+            ],
+            "classes_up": 26,
+            "classes": 30
+          }
+        },
+        "gallery-vocabulary-cover/unrestricted": {
+          "mAP": {
+            "delta_pp": -4.423215925745981,
+            "ci95_class": [
+              -10.121595396950262,
+              -0.033617298975905346
+            ],
+            "classes_up": 14,
+            "classes": 30
+          },
+          "precision": {
+            "delta_pp": -6.627699567416045,
+            "ci95_class": [
+              -14.150740856743303,
+              -1.1200274440445424
+            ],
+            "classes_up": 12,
+            "classes": 30
+          }
+        },
+        "gallery-vocabulary-cover/restricted_only": {
+          "mAP": {
+            "delta_pp": 0.0,
+            "ci95_class": [
+              0.0,
+              0.0
+            ],
+            "classes_up": 0,
+            "classes": 30
+          },
+          "precision": {
+            "delta_pp": 0.0,
+            "ci95_class": [
+              0.0,
+              0.0
+            ],
+            "classes_up": 0,
+            "classes": 30
+          }
+        },
+        "gallery-vocabulary-cover/no_feedback": {
+          "mAP": {
+            "delta_pp": -0.47864257126277043,
+            "ci95_class": [
+              -2.5706643295574767,
+              1.330053319423457
+            ],
+            "classes_up": 18,
+            "classes": 30
+          },
+          "precision": {
+            "delta_pp": -0.20281693710127907,
+            "ci95_class": [
+              -2.0257424294312694,
+              1.014107949332172
+            ],
+            "classes_up": 17,
+            "classes": 30
+          }
+        },
+        "gallery-vocabulary-cover/no_gallery_averaging": {
+          "mAP": {
+            "delta_pp": 0.0,
+            "ci95_class": [
+              0.0,
+              0.0
+            ],
+            "classes_up": 0,
+            "classes": 30
+          },
+          "precision": {
+            "delta_pp": 0.0,
+            "ci95_class": [
+              0.0,
+              0.0
+            ],
+            "classes_up": 0,
+            "classes": 30
+          }
+        },
+        "gallery-vocabulary-cover/neutral": {
+          "mAP": {
+            "delta_pp": -0.1444997601298519,
+            "ci95_class": [
+              -2.244995410051047,
+              1.8330456467613536
+            ],
+            "classes_up": 12,
+            "classes": 30
+          },
+          "precision": {
+            "delta_pp": 0.4798121795827794,
+            "ci95_class": [
+              -2.181206512180224,
+              3.1179054777570885
+            ],
+            "classes_up": 13,
+            "classes": 30
+          }
+        },
+        "gallery-vocabulary-cover/shuffled_words": {
+          "mAP": {
+            "delta_pp": 64.46786643084612,
+            "ci95_class": [
+              56.19881130983463,
+              71.74754134158387
+            ],
+            "classes_up": 30,
+            "classes": 30
+          },
+          "precision": {
+            "delta_pp": 70.7704225569054,
+            "ci95_class": [
+              61.6092108970158,
+              78.97795788223809
+            ],
+            "classes_up": 30,
+            "classes": 30
+          }
+        },
+        "gallery-vocabulary-cover/rgb_only": {
+          "mAP": {
+            "delta_pp": 25.675212359602426,
+            "ci95_class": [
+              19.243177188186596,
+              32.564817996655144
+            ],
+            "classes_up": 28,
+            "classes": 30
+          },
+          "precision": {
+            "delta_pp": 20.63427230080878,
+            "ci95_class": [
+              13.372183062787663,
+              28.76720491627005
+            ],
+            "classes_up": 25,
+            "classes": 30
+          }
+        }
+      },
+      "methods": {
+        "view-consensus-retrieval": {
+          "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-paired",
+          "controls": {
+            "primary": {
+              "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-paired",
+              "precision": 0.799910843372345,
+              "mAP": 0.7498369216918945
+            },
+            "one_sketch_view": {
+              "method": "v1-1-uniform-c4-k64x0-n192-e0.7-r0-paired",
+              "precision": 0.7928356528282166,
+              "mAP": 0.7428759932518005
+            },
+            "one_photo_view": {
+              "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-paired",
+              "precision": 0.799910843372345,
+              "mAP": 0.7498369216918945
+            },
+            "one_view_both": {
+              "method": "v1-1-uniform-c4-k64x0-n192-e0.7-r0-paired",
+              "precision": 0.7928356528282166,
+              "mAP": 0.7428759932518005
+            },
+            "uniform_views": {
+              "method": "v2-1-uniform-c4-k64x0-n192-e0.7-r0-paired",
+              "precision": 0.7980281710624695,
+              "mAP": 0.7483850121498108
+            },
+            "agreement": {
+              "method": "v2-1-agreement-c4-k64x0-n192-e0.7-r0-paired",
+              "precision": 0.7980281710624695,
+              "mAP": 0.7483850121498108
+            },
+            "without_gallery_averaging": {
+              "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-paired",
+              "precision": 0.799910843372345,
+              "mAP": 0.7498369216918945
+            },
+            "without_feedback": {
+              "method": "v2-1-entropy-c4-k64x0-n192-e0-r0-paired",
+              "precision": 0.7720563411712646,
+              "mAP": 0.6862542033195496
+            },
+            "centroid_feedback": {
+              "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-paired",
+              "precision": 0.799910843372345,
+              "mAP": 0.7498369216918945
+            },
+            "shuffled_words": {
+              "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-shuffled",
+              "precision": 0.04373709112405777,
+              "mAP": 0.07644117623567581
+            },
+            "rgb_only": {
+              "method": "v2-1-entropy-c4-k64x0-n192-e0.7-r0-rgb",
+              "precision": 0.5288403630256653,
+              "mAP": 0.45426544547080994
+            }
+          },
+          "vs_previous": {
+            "mAP": {
+              "delta_pp": -1.9794785735271696,
+              "ci95_class": [
+                -4.249205189166955,
+                -0.025273669478087683
+              ],
+              "classes_up": 13,
+              "classes": 30
+            },
+            "precision": {
+              "delta_pp": -0.6225352151922776,
+              "ci95_class": [
+                -3.486709350204572,
+                1.7308820176890238
+              ],
+              "classes_up": 18,
+              "classes": 30
+            }
+          },
+          "top1": {
+            "old_wrong": 392,
+            "new_wrong": 398,
+            "rescued": 100,
+            "regressed": 106,
+            "confusion_pairs": [
+              {
+                "class": "cup",
+                "old_wrong": "mug",
+                "old_count": 33,
+                "correct_now": 28,
+                "still_same": 5
+              },
+              {
+                "class": "mug",
+                "old_wrong": "cup",
+                "old_count": 23,
+                "correct_now": 9,
+                "still_same": 14
+              },
+              {
+                "class": "hot air balloon",
+                "old_wrong": "floor lamp",
+                "old_count": 22,
+                "correct_now": 1,
+                "still_same": 21
+              },
+              {
+                "class": "wrist-watch",
+                "old_wrong": "hammer",
+                "old_count": 21,
+                "correct_now": 2,
+                "still_same": 18
+              },
+              {
+                "class": "butterfly",
+                "old_wrong": "mosquito",
+                "old_count": 19,
+                "correct_now": 0,
+                "still_same": 18
+              },
+              {
+                "class": "truck",
+                "old_wrong": "suv",
+                "old_count": 14,
+                "correct_now": 6,
+                "still_same": 7
+              },
+              {
+                "class": "baseball bat",
+                "old_wrong": "hammer",
+                "old_count": 10,
+                "correct_now": 1,
+                "still_same": 9
+              },
+              {
+                "class": "mermaid",
+                "old_wrong": "pear",
+                "old_count": 8,
+                "correct_now": 2,
+                "still_same": 5
+              },
+              {
+                "class": "suv",
+                "old_wrong": "truck",
+                "old_count": 8,
+                "correct_now": 1,
+                "still_same": 6
+              },
+              {
+                "class": "bus",
+                "old_wrong": "suv",
+                "old_count": 8,
+                "correct_now": 1,
+                "still_same": 4
+              }
+            ]
+          }
+        },
+        "gallery-aspect-retrieval": {
+          "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-paired",
+          "controls": {
+            "primary": {
+              "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-paired",
+              "precision": 0.7962113618850708,
+              "mAP": 0.7614520192146301
+            },
+            "no_groups": {
+              "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m0-paired",
+              "precision": 0.7716948390007019,
+              "mAP": 0.6936522722244263
+            },
+            "groups_only": {
+              "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-paired",
+              "precision": 0.7962113618850708,
+              "mAP": 0.7614520192146301
+            },
+            "pure_rgb_geometry": {
+              "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-paired",
+              "precision": 0.7962113618850708,
+              "mAP": 0.7614520192146301
+            },
+            "uniform_word_prior": {
+              "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-paired",
+              "precision": 0.7962113618850708,
+              "mAP": 0.7614520192146301
+            },
+            "uniform_group_prior": {
+              "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-paired",
+              "precision": 0.7962113618850708,
+              "mAP": 0.7614520192146301
+            },
+            "random_group_links": {
+              "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-random_groups",
+              "precision": 0.010591549798846245,
+              "mAP": 0.04414505511522293
+            },
+            "neutral_words": {
+              "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-neutral",
+              "precision": 0.7919625043869019,
+              "mAP": 0.7652132511138916
+            },
+            "rgb_only": {
+              "method": "g192-votes-w8-d0-v0-q0.04-i0.1-p0-m1-rgb",
+              "precision": 0.47921594977378845,
+              "mAP": 0.47992849349975586
+            }
+          },
+          "vs_previous": {
+            "mAP": {
+              "delta_pp": -0.8179704935679064,
+              "ci95_class": [
+                -3.3103328284124296,
+                1.5937917463640767
+              ],
+              "classes_up": 15,
+              "classes": 30
+            },
+            "precision": {
+              "delta_pp": -0.9924883112101488,
+              "ci95_class": [
+                -4.109550375527113,
+                1.342941373212497
+              ],
+              "classes_up": 18,
+              "classes": 30
+            }
+          },
+          "top1": {
+            "old_wrong": 392,
+            "new_wrong": 439,
+            "rescued": 76,
+            "regressed": 123,
+            "confusion_pairs": [
+              {
+                "class": "cup",
+                "old_wrong": "mug",
+                "old_count": 33,
+                "correct_now": 33,
+                "still_same": 0
+              },
+              {
+                "class": "mug",
+                "old_wrong": "cup",
+                "old_count": 23,
+                "correct_now": 0,
+                "still_same": 23
+              },
+              {
+                "class": "hot air balloon",
+                "old_wrong": "floor lamp",
+                "old_count": 22,
+                "correct_now": 0,
+                "still_same": 21
+              },
+              {
+                "class": "wrist-watch",
+                "old_wrong": "hammer",
+                "old_count": 21,
+                "correct_now": 0,
+                "still_same": 21
+              },
+              {
+                "class": "butterfly",
+                "old_wrong": "mosquito",
+                "old_count": 19,
+                "correct_now": 1,
+                "still_same": 16
+              },
+              {
+                "class": "truck",
+                "old_wrong": "suv",
+                "old_count": 14,
+                "correct_now": 3,
+                "still_same": 11
+              },
+              {
+                "class": "baseball bat",
+                "old_wrong": "hammer",
+                "old_count": 10,
+                "correct_now": 0,
+                "still_same": 10
+              },
+              {
+                "class": "mermaid",
+                "old_wrong": "pear",
+                "old_count": 8,
+                "correct_now": 1,
+                "still_same": 6
+              },
+              {
+                "class": "suv",
+                "old_wrong": "truck",
+                "old_count": 8,
+                "correct_now": 2,
+                "still_same": 6
+              },
+              {
+                "class": "bus",
+                "old_wrong": "suv",
+                "old_count": 8,
+                "correct_now": 1,
+                "still_same": 6
+              }
+            ]
+          }
+        },
+        "spectral-object-retrieval": {
+          "method": "late-object-q0.35-p0.35-w4-k96x0-n192-e0.75-paired",
+          "controls": {
+            "primary": {
+              "method": "late-object-q0.35-p0.35-w4-k96x0-n192-e0.75-paired",
+              "precision": 0.7869014143943787,
+              "mAP": 0.7347685098648071
+            },
+            "whole_sketch": {
+              "method": "late-object-q0-p0.35-w4-k96x0-n192-e0.75-paired",
+              "precision": 0.7921643257141113,
+              "mAP": 0.7409045100212097
+            },
+            "whole_gallery": {
+              "method": "late-object-q0.35-p0-w4-k96x0-n192-e0.75-paired",
+              "precision": 0.7867041826248169,
+              "mAP": 0.7345752120018005
+            },
+            "both_full_frames": {
+              "method": "late-object-q0-p0-w4-k96x0-n192-e0.75-paired",
+              "precision": 0.7927182912826538,
+              "mAP": 0.7414376735687256
+            },
+            "same_size_center": {
+              "method": "late-center-q0.35-p0.35-w4-k96x0-n192-e0.75-paired",
+              "precision": 0.7882206439971924,
+              "mAP": 0.7365438342094421
+            },
+            "same_size_opposite": {
+              "method": "late-opposite-q0.35-p0.35-w4-k96x0-n192-e0.75-paired",
+              "precision": 0.7896760106086731,
+              "mAP": 0.7339069843292236
+            },
+            "no_averaging": {
+              "method": "late-object-q0.35-p0.35-w4-k96x0-n192-e0.75-paired",
+              "precision": 0.7869014143943787,
+              "mAP": 0.7347685098648071
+            },
+            "no_feedback": {
+              "method": "late-object-q0.35-p0.35-w4-k96x0-n192-e0-paired",
+              "precision": 0.7554835081100464,
+              "mAP": 0.6683809757232666
+            },
+            "shuffled_words": {
+              "method": "late-object-q0.35-p0.35-w4-k96x0-n192-e0.75-shuffled",
+              "precision": 0.04507042095065117,
+              "mAP": 0.08183750510215759
+            },
+            "native": {
+              "method": "late-object-q0.35-p0.35-w4-k96x0-n192-e0.75-rgb",
+              "precision": 0.4603286385536194,
+              "mAP": 0.36694392561912537
+            }
+          },
+          "vs_previous": {
+            "mAP": {
+              "delta_pp": -3.4863162131437884,
+              "ci95_class": [
+                -5.825903312905879,
+                -1.471875704936686
+              ],
+              "classes_up": 7,
+              "classes": 30
+            },
+            "precision": {
+              "delta_pp": -1.9234742240831606,
+              "ci95_class": [
+                -4.82297929514374,
+                0.5335644077656981
+              ],
+              "classes_up": 17,
+              "classes": 30
+            }
+          },
+          "top1": {
+            "old_wrong": 392,
+            "new_wrong": 460,
+            "rescued": 84,
+            "regressed": 152,
+            "confusion_pairs": [
+              {
+                "class": "cup",
+                "old_wrong": "mug",
+                "old_count": 33,
+                "correct_now": 33,
+                "still_same": 0
+              },
+              {
+                "class": "mug",
+                "old_wrong": "cup",
+                "old_count": 23,
+                "correct_now": 0,
+                "still_same": 23
+              },
+              {
+                "class": "hot air balloon",
+                "old_wrong": "floor lamp",
+                "old_count": 22,
+                "correct_now": 1,
+                "still_same": 21
+              },
+              {
+                "class": "wrist-watch",
+                "old_wrong": "hammer",
+                "old_count": 21,
+                "correct_now": 0,
+                "still_same": 19
+              },
+              {
+                "class": "butterfly",
+                "old_wrong": "mosquito",
+                "old_count": 19,
+                "correct_now": 1,
+                "still_same": 17
+              },
+              {
+                "class": "truck",
+                "old_wrong": "suv",
+                "old_count": 14,
+                "correct_now": 7,
+                "still_same": 7
+              },
+              {
+                "class": "baseball bat",
+                "old_wrong": "hammer",
+                "old_count": 10,
+                "correct_now": 1,
+                "still_same": 9
+              },
+              {
+                "class": "mermaid",
+                "old_wrong": "pear",
+                "old_count": 8,
+                "correct_now": 0,
+                "still_same": 8
+              },
+              {
+                "class": "suv",
+                "old_wrong": "truck",
+                "old_count": 8,
+                "correct_now": 1,
+                "still_same": 7
+              },
+              {
+                "class": "bus",
+                "old_wrong": "suv",
+                "old_count": 8,
+                "correct_now": 0,
+                "still_same": 5
+              }
+            ]
+          }
+        },
+        "gallery-vocabulary-cover": {
+          "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-paired",
+          "controls": {
+            "primary": {
+              "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-paired",
+              "precision": 0.7300939559936523,
+              "mAP": 0.7007650136947632
+            },
+            "mass_only": {
+              "method": "vocab64-frequency-t0.025-d0-n256-e0.65-k0-paired",
+              "precision": 0.6282300353050232,
+              "mAP": 0.61019366979599
+            },
+            "coverage_only": {
+              "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-paired",
+              "precision": 0.7300939559936523,
+              "mAP": 0.7007650136947632
+            },
+            "uniform_candidates": {
+              "method": "vocab64-random-t0.025-d0-n256-e0.65-k0-paired",
+              "precision": 0.4003051519393921,
+              "mAP": 0.3905993700027466
+            },
+            "unrestricted": {
+              "method": "vocab64-cover-t0.025-d1-n256-e0.65-k0-paired",
+              "precision": 0.7963709831237793,
+              "mAP": 0.7449971437454224
+            },
+            "restricted_only": {
+              "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-paired",
+              "precision": 0.7300939559936523,
+              "mAP": 0.7007650136947632
+            },
+            "no_feedback": {
+              "method": "vocab64-cover-t0.025-d0-n256-e0-k0-paired",
+              "precision": 0.732122004032135,
+              "mAP": 0.7055513262748718
+            },
+            "no_gallery_averaging": {
+              "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-paired",
+              "precision": 0.7300939559936523,
+              "mAP": 0.7007650136947632
+            },
+            "neutral": {
+              "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-neutral",
+              "precision": 0.7252957820892334,
+              "mAP": 0.7022099494934082
+            },
+            "shuffled_words": {
+              "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-shuffled",
+              "precision": 0.022389672696590424,
+              "mAP": 0.05608629807829857
+            },
+            "rgb_only": {
+              "method": "vocab64-cover-t0.025-d0-n256-e0.65-k0-rgb",
+              "precision": 0.5237511396408081,
+              "mAP": 0.4440128207206726
+            }
+          },
+          "vs_previous": {
+            "mAP": {
+              "delta_pp": -6.886672227394203,
+              "ci95_class": [
+                -13.483790400588129,
+                -1.477967893148611
+              ],
+              "classes_up": 10,
+              "classes": 30
+            },
+            "precision": {
+              "delta_pp": -7.60422537304426,
+              "ci95_class": [
+                -15.788502327320655,
+                -1.0647749004850264
+              ],
+              "classes_up": 14,
+              "classes": 30
+            }
+          },
+          "top1": {
+            "old_wrong": 392,
+            "new_wrong": 568,
+            "rescued": 81,
+            "regressed": 257,
+            "confusion_pairs": [
+              {
+                "class": "cup",
+                "old_wrong": "mug",
+                "old_count": 33,
+                "correct_now": 30,
+                "still_same": 0
+              },
+              {
+                "class": "mug",
+                "old_wrong": "cup",
+                "old_count": 23,
+                "correct_now": 0,
+                "still_same": 20
+              },
+              {
+                "class": "hot air balloon",
+                "old_wrong": "floor lamp",
+                "old_count": 22,
+                "correct_now": 3,
+                "still_same": 19
+              },
+              {
+                "class": "wrist-watch",
+                "old_wrong": "hammer",
+                "old_count": 21,
+                "correct_now": 6,
+                "still_same": 12
+              },
+              {
+                "class": "butterfly",
+                "old_wrong": "mosquito",
+                "old_count": 19,
+                "correct_now": 0,
+                "still_same": 16
+              },
+              {
+                "class": "truck",
+                "old_wrong": "suv",
+                "old_count": 14,
+                "correct_now": 6,
+                "still_same": 8
+              },
+              {
+                "class": "baseball bat",
+                "old_wrong": "hammer",
+                "old_count": 10,
+                "correct_now": 1,
+                "still_same": 9
+              },
+              {
+                "class": "mermaid",
+                "old_wrong": "pear",
+                "old_count": 8,
+                "correct_now": 0,
+                "still_same": 8
+              },
+              {
+                "class": "suv",
+                "old_wrong": "truck",
+                "old_count": 8,
+                "correct_now": 3,
+                "still_same": 5
+              },
+              {
+                "class": "bus",
+                "old_wrong": "suv",
+                "old_count": 8,
+                "correct_now": 0,
+                "still_same": 4
+              }
+            ]
+          }
+        }
+      },
+      "kd_replay": {
+        "queries": 2130,
+        "mAP": 0.7007649540901184,
+        "precision": 0.7300939559936523,
+        "kd_minus_pipeline_max_abs_same_order_AP_P": [
+          0.0,
+          0.0
+        ],
+        "max_per_query_abs_AP_P": [
+          0.0,
+          0.0
+        ],
+        "mean_per_query_abs_AP_P": [
+          0.0,
+          0.0
+        ],
+        "queries_within_1e-6_both": 2130,
+        "single_vs_batch_score_max": 4.6193599700927734e-06
+      },
+      "proposal_area_quartiles": [
+        {
+          "count": 533,
+          "mean_box_area_fraction": 0.29924988746643066,
+          "primary_AP_P": [
+            0.6740823984146118,
+            0.719962477684021
+          ],
+          "both_full_frames_AP_P": [
+            0.6988194584846497,
+            0.7432645559310913
+          ],
+          "same_size_center_AP_P": [
+            0.6737164855003357,
+            0.7224202752113342
+          ],
+          "same_size_opposite_AP_P": [
+            0.6708933115005493,
+            0.7232832908630371
+          ]
+        },
+        {
+          "count": 533,
+          "mean_box_area_fraction": 0.5203995704650879,
+          "primary_AP_P": [
+            0.7298890948295593,
+            0.7950844168663025
+          ],
+          "both_full_frames_AP_P": [
+            0.7434120774269104,
+            0.8125891089439392
+          ],
+          "same_size_center_AP_P": [
+            0.7357214093208313,
+            0.8019699454307556
+          ],
+          "same_size_opposite_AP_P": [
+            0.7336261868476868,
+            0.8052345514297485
+          ]
+        },
+        {
+          "count": 532,
+          "mean_box_area_fraction": 0.714111328125,
+          "primary_AP_P": [
+            0.7387157082557678,
+            0.8042857050895691
+          ],
+          "both_full_frames_AP_P": [
+            0.7366368770599365,
+            0.7999247908592224
+          ],
+          "same_size_center_AP_P": [
+            0.7411821484565735,
+            0.8037970066070557
+          ],
+          "same_size_opposite_AP_P": [
+            0.7367787957191467,
+            0.8046053051948547
+          ]
+        },
+        {
+          "count": 532,
+          "mean_box_area_fraction": 0.7728347182273865,
+          "primary_AP_P": [
+            0.7965102195739746,
+            0.8283834457397461
+          ],
+          "both_full_frames_AP_P": [
+            0.7869588136672974,
+            0.8151503801345825
+          ],
+          "same_size_center_AP_P": [
+            0.7956751585006714,
+            0.8247932195663452
+          ],
+          "same_size_opposite_AP_P": [
+            0.7944486737251282,
+            0.825676679611206
+          ]
+        }
+      ]
+    }
+  }
+}
