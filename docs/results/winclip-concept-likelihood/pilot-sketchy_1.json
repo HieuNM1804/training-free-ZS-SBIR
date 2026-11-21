@@ -1,0 +1,120 @@
+{
+  "revision": "24b9cae9603c255b345b2fa5dfcbf3605fb370ae",
+  "family": "winclip-concept-likelihood",
+  "queries": 1200,
+  "gallery": 17100,
+  "classes": 25,
+  "checkpoint_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+  "dataset_sha256": "8fafaf3aedf4751e28e2b33f073832e02fdf3ca1b36a9d7fda5ff328f26b0642",
+  "kd_sha256": "3433c60a3739e852c94e573832dd53d51446f433326a453392d316b402402fbe",
+  "gpu": "NVIDIA L4",
+  "external_vocabulary": 20931,
+  "exploratory_unseen": true,
+  "freeze_sha256": null,
+  "settings": {
+    "14eb724d5d665f1f": {
+      "parameters": {
+        "side": 2,
+        "encoding": "masked",
+        "mix": 0.25
+      },
+      "mAP": 0.7401739954948425,
+      "precision": 0.7804417014122009
+    },
+    "a0ca346fda38d55d": {
+      "parameters": {
+        "side": 2,
+        "encoding": "masked",
+        "mix": 0.5
+      },
+      "mAP": 0.7359355092048645,
+      "precision": 0.7806416749954224
+    },
+    "96b2fc3903b4730b": {
+      "parameters": {
+        "side": 2,
+        "encoding": "masked",
+        "mix": 1.0
+      },
+      "mAP": 0.5714836716651917,
+      "precision": 0.7073166370391846
+    },
+    "a3c27472f5d8b3a3": {
+      "parameters": {
+        "side": 3,
+        "encoding": "masked",
+        "mix": 0.25
+      },
+      "mAP": 0.7411098480224609,
+      "precision": 0.7808500528335571
+    },
+    "a1f2b26d6bf3d105": {
+      "parameters": {
+        "side": 3,
+        "encoding": "masked",
+        "mix": 0.5
+      },
+      "mAP": 0.736406683921814,
+      "precision": 0.7799083590507507
+    },
+    "bf72b8fb191c5bae": {
+      "parameters": {
+        "side": 3,
+        "encoding": "masked",
+        "mix": 1.0
+      },
+      "mAP": 0.6773578524589539,
+      "precision": 0.7553750276565552
+    },
+    "a037ebee7c99bdee": {
+      "parameters": {
+        "side": 5,
+        "encoding": "masked",
+        "mix": 0.25
+      },
+      "mAP": 0.742180347442627,
+      "precision": 0.7811500430107117
+    },
+    "4599e6c5890344df": {
+      "parameters": {
+        "side": 5,
+        "encoding": "masked",
+        "mix": 0.5
+      },
+      "mAP": 0.7421389818191528,
+      "precision": 0.7810083627700806
+    },
+    "69e5b07c2cade83a": {
+      "parameters": {
+        "side": 5,
+        "encoding": "masked",
+        "mix": 1.0
+      },
+      "mAP": 0.7361959218978882,
+      "precision": 0.7792167067527771
+    }
+  },
+  "seed": 4783,
+  "diagnostic": {
+    "masked2": [
+      27447,
+      36,
+      512
+    ],
+    "masked3": [
+      27447,
+      25,
+      512
+    ],
+    "masked5": [
+      27447,
+      9,
+      512
+    ],
+    "patch": [
+      27447,
+      49,
+      512
+    ]
+  }
+}
