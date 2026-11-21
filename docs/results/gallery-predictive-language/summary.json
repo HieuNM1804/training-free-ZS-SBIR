@@ -1,0 +1,566 @@
+{
+  "family": "gallery-predictive-language",
+  "joint": "90eee74f8730e3e76fe17ac93fef4b48648f91b04bcc8371e6c296cbcca7158d",
+  "freeze": "70eb608df917dc57f860ae80342763994abb9df55e2ca48420a1241f9390e931",
+  "revision": "52a8ba4c0beb9be115d58fbab43b346dff9e132e",
+  "selected_parameters": {
+    "neighbors": 256,
+    "estimator": "context",
+    "geometry": "rgb",
+    "alignment": "paired"
+  },
+  "splits": {
+    "sketchy_1": {
+      "primary": {
+        "mAP": 0.8188566565513611,
+        "precision": 0.8163770437240601,
+        "map_k": 0,
+        "p_k": 100,
+        "revision": "52a8ba4c0beb9be115d58fbab43b346dff9e132e",
+        "sha256": "b8cbfce410b031464432ec77f0ece69d8dbac82a3a3d5e3c3cdec964203b35e2"
+      },
+      "controls": {
+        "primary": {
+          "mAP": 0.8188566565513611,
+          "precision": 0.8163770437240601,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "52a8ba4c0beb9be115d58fbab43b346dff9e132e",
+          "sha256": "b8cbfce410b031464432ec77f0ece69d8dbac82a3a3d5e3c3cdec964203b35e2",
+          "parameters": {
+            "neighbors": 256,
+            "estimator": "context",
+            "geometry": "rgb",
+            "alignment": "paired"
+          }
+        },
+        "no_neighborhood": {
+          "mAP": 0.7530821561813354,
+          "precision": 0.7894096970558167,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "52a8ba4c0beb9be115d58fbab43b346dff9e132e",
+          "sha256": "b3317b7b9afe422533ac61555a90ef5deb945d27ce660aaa8f723a0e655dbfac",
+          "parameters": {
+            "neighbors": 256,
+            "estimator": "direct",
+            "geometry": "rgb",
+            "alignment": "paired"
+          }
+        },
+        "context_alone": {
+          "mAP": 0.8188566565513611,
+          "precision": 0.8163770437240601,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "52a8ba4c0beb9be115d58fbab43b346dff9e132e",
+          "sha256": "b8cbfce410b031464432ec77f0ece69d8dbac82a3a3d5e3c3cdec964203b35e2",
+          "parameters": {
+            "neighbors": 256,
+            "estimator": "context",
+            "geometry": "rgb",
+            "alignment": "paired"
+          }
+        },
+        "own_and_context_mixture": {
+          "mAP": 0.796748697757721,
+          "precision": 0.80131596326828,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "52a8ba4c0beb9be115d58fbab43b346dff9e132e",
+          "sha256": "84f2ca122794474688f4a7ad5479569e5e07854d3e53702642204cc4e9598614",
+          "parameters": {
+            "neighbors": 256,
+            "estimator": "mixture",
+            "geometry": "rgb",
+            "alignment": "paired"
+          }
+        },
+        "product_with_local_prior": {
+          "mAP": 0.7884734869003296,
+          "precision": 0.8016185760498047,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "52a8ba4c0beb9be115d58fbab43b346dff9e132e",
+          "sha256": "235c903c4166222f0c0ee493df958a206e18c4ecb5fe47e460e2f5ea9058af6a",
+          "parameters": {
+            "neighbors": 256,
+            "estimator": "predictive",
+            "geometry": "rgb",
+            "alignment": "paired"
+          }
+        },
+        "geometric_pool": {
+          "mAP": 0.7978705167770386,
+          "precision": 0.8072550296783447,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "52a8ba4c0beb9be115d58fbab43b346dff9e132e",
+          "sha256": "9a80fd2ee8543c66e95757d634e357a2e59e4c322a4c377134c31c9abc569e7a",
+          "parameters": {
+            "neighbors": 256,
+            "estimator": "geometric",
+            "geometry": "rgb",
+            "alignment": "paired"
+          }
+        },
+        "label_free_bandwidth": {
+          "mAP": 0.7857474684715271,
+          "precision": 0.8004499673843384,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "52a8ba4c0beb9be115d58fbab43b346dff9e132e",
+          "sha256": "f2f8a424385ec1c1235b54d25980d856256493b19086c6de582f63760fdcc37c",
+          "parameters": {
+            "neighbors": 0,
+            "estimator": "context",
+            "geometry": "rgb",
+            "alignment": "paired"
+          }
+        },
+        "small_neighborhood": {
+          "mAP": 0.7997183203697205,
+          "precision": 0.806919276714325,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "52a8ba4c0beb9be115d58fbab43b346dff9e132e",
+          "sha256": "556b70880e12cc6e3c8cae2707aee7cb7324fb0803f31b0929dbea813b86b296",
+          "parameters": {
+            "neighbors": 16,
+            "estimator": "context",
+            "geometry": "rgb",
+            "alignment": "paired"
+          }
+        },
+        "larger_neighborhood": {
+          "mAP": 0.8188566565513611,
+          "precision": 0.8163770437240601,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "52a8ba4c0beb9be115d58fbab43b346dff9e132e",
+          "sha256": "b8cbfce410b031464432ec77f0ece69d8dbac82a3a3d5e3c3cdec964203b35e2",
+          "parameters": {
+            "neighbors": 256,
+            "estimator": "context",
+            "geometry": "rgb",
+            "alignment": "paired"
+          }
+        },
+        "shuffled_images": {
+          "mAP": 0.05076802149415016,
+          "precision": 0.02449326403439045,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "52a8ba4c0beb9be115d58fbab43b346dff9e132e",
+          "sha256": "34f9c64491e367ad39aa2e73c774bf7ae3f75577faee93c3a8b4fc1eb5f7cd11",
+          "parameters": {
+            "neighbors": 256,
+            "estimator": "context",
+            "geometry": "rgb",
+            "alignment": "shuffle"
+          }
+        },
+        "centered_rgb": {
+          "mAP": 0.816853940486908,
+          "precision": 0.8159200549125671,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "52a8ba4c0beb9be115d58fbab43b346dff9e132e",
+          "sha256": "99d9b6c7d46e1894487fd462c63a9ade62b2dcc24600b29ff3fd114be8c8b3a2",
+          "parameters": {
+            "neighbors": 256,
+            "estimator": "context",
+            "geometry": "centered",
+            "alignment": "paired"
+          }
+        }
+      },
+      "replay": {
+        "queries": 14179,
+        "mAP": 0.8188566565513611,
+        "precision": 0.8163770437240601,
+        "kd_minus_pipeline_max_abs_same_order_AP_P": [
+          0.0,
+          0.0
+        ],
+        "max_per_query_abs_AP_P": [
+          0.0,
+          0.0
+        ],
+        "mean_per_query_abs_AP_P": [
+          0.0,
+          0.0
+        ],
+        "queries_within_1e-6_both": 14179
+      }
+    },
+    "sketchy_2": {
+      "primary": {
+        "mAP": 0.7333682775497437,
+        "precision": 0.725911021232605,
+        "map_k": 200,
+        "p_k": 200,
+        "revision": "52a8ba4c0beb9be115d58fbab43b346dff9e132e",
+        "sha256": "5c4ca7f2829d10e2a1d533b96600ce51b682ec109b7ac4de929465d8655afd35"
+      },
+      "controls": {
+        "primary": {
+          "mAP": 0.7333682775497437,
+          "precision": 0.725911021232605,
+          "map_k": 200,
+          "p_k": 200,
+          "revision": "52a8ba4c0beb9be115d58fbab43b346dff9e132e",
+          "sha256": "5c4ca7f2829d10e2a1d533b96600ce51b682ec109b7ac4de929465d8655afd35",
+          "parameters": {
+            "neighbors": 256,
+            "estimator": "context",
+            "geometry": "rgb",
+            "alignment": "paired"
+          }
+        },
+        "no_neighborhood": {
+          "mAP": 0.7141598463058472,
+          "precision": 0.7027934193611145,
+          "map_k": 200,
+          "p_k": 200,
+          "revision": "52a8ba4c0beb9be115d58fbab43b346dff9e132e",
+          "sha256": "8dfabfa2964a2a9753380c133bf55d69e4c1d3c7f4c47ac52fdb2c1f8e4cdf04",
+          "parameters": {
+            "neighbors": 256,
+            "estimator": "direct",
+            "geometry": "rgb",
+            "alignment": "paired"
+          }
+        },
+        "context_alone": {
+          "mAP": 0.7333682775497437,
+          "precision": 0.725911021232605,
+          "map_k": 200,
+          "p_k": 200,
+          "revision": "52a8ba4c0beb9be115d58fbab43b346dff9e132e",
+          "sha256": "5c4ca7f2829d10e2a1d533b96600ce51b682ec109b7ac4de929465d8655afd35",
+          "parameters": {
+            "neighbors": 256,
+            "estimator": "context",
+            "geometry": "rgb",
+            "alignment": "paired"
+          }
+        },
+        "own_and_context_mixture": {
+          "mAP": 0.7268489003181458,
+          "precision": 0.7165404558181763,
+          "map_k": 200,
+          "p_k": 200,
+          "revision": "52a8ba4c0beb9be115d58fbab43b346dff9e132e",
+          "sha256": "f20389279833fc381205332db588bd12d0ab7e600a699d34d15fba7e44ae4fca",
+          "parameters": {
+            "neighbors": 256,
+            "estimator": "mixture",
+            "geometry": "rgb",
+            "alignment": "paired"
+          }
+        },
+        "product_with_local_prior": {
+          "mAP": 0.7270436882972717,
+          "precision": 0.7163565158843994,
+          "map_k": 200,
+          "p_k": 200,
+          "revision": "52a8ba4c0beb9be115d58fbab43b346dff9e132e",
+          "sha256": "e0e67a3ddacf553987dee11745f801b695e4c816102c009e93de10cae25ff377",
+          "parameters": {
+            "neighbors": 256,
+            "estimator": "predictive",
+            "geometry": "rgb",
+            "alignment": "paired"
+          }
+        },
+        "geometric_pool": {
+          "mAP": 0.7307721376419067,
+          "precision": 0.7212120294570923,
+          "map_k": 200,
+          "p_k": 200,
+          "revision": "52a8ba4c0beb9be115d58fbab43b346dff9e132e",
+          "sha256": "67010f53572f104dcf5cd0d1a2adb20fadb736296f0a1b2a6e3c2efacb06d54b",
+          "parameters": {
+            "neighbors": 256,
+            "estimator": "geometric",
+            "geometry": "rgb",
+            "alignment": "paired"
+          }
+        },
+        "label_free_bandwidth": {
+          "mAP": 0.7262664437294006,
+          "precision": 0.714819610118866,
+          "map_k": 200,
+          "p_k": 200,
+          "revision": "52a8ba4c0beb9be115d58fbab43b346dff9e132e",
+          "sha256": "d38f341cacdca3e4b57804feb0498bb42c119bd4df08f47c3583261ea9944bd3",
+          "parameters": {
+            "neighbors": 0,
+            "estimator": "context",
+            "geometry": "rgb",
+            "alignment": "paired"
+          }
+        },
+        "small_neighborhood": {
+          "mAP": 0.733727216720581,
+          "precision": 0.7216571569442749,
+          "map_k": 200,
+          "p_k": 200,
+          "revision": "52a8ba4c0beb9be115d58fbab43b346dff9e132e",
+          "sha256": "14380e1384319c6a86aee905444885e0164366af2a2a26a606ac65cbe5894d28",
+          "parameters": {
+            "neighbors": 16,
+            "estimator": "context",
+            "geometry": "rgb",
+            "alignment": "paired"
+          }
+        },
+        "larger_neighborhood": {
+          "mAP": 0.7333682775497437,
+          "precision": 0.725911021232605,
+          "map_k": 200,
+          "p_k": 200,
+          "revision": "52a8ba4c0beb9be115d58fbab43b346dff9e132e",
+          "sha256": "5c4ca7f2829d10e2a1d533b96600ce51b682ec109b7ac4de929465d8655afd35",
+          "parameters": {
+            "neighbors": 256,
+            "estimator": "context",
+            "geometry": "rgb",
+            "alignment": "paired"
+          }
+        },
+        "shuffled_images": {
+          "mAP": 0.0770384669303894,
+          "precision": 0.06387978047132492,
+          "map_k": 200,
+          "p_k": 200,
+          "revision": "52a8ba4c0beb9be115d58fbab43b346dff9e132e",
+          "sha256": "d5919a6091243a2cd1cf1629c984a6c5825102b71fdc61ca970dc7e6d64a317f",
+          "parameters": {
+            "neighbors": 256,
+            "estimator": "context",
+            "geometry": "rgb",
+            "alignment": "shuffle"
+          }
+        },
+        "centered_rgb": {
+          "mAP": 0.733817994594574,
+          "precision": 0.7252492904663086,
+          "map_k": 200,
+          "p_k": 200,
+          "revision": "52a8ba4c0beb9be115d58fbab43b346dff9e132e",
+          "sha256": "4aca09cbcaf8665d7075a861d8eb1af6370fd30bc599b90bcaa9b51bc6fbedeb",
+          "parameters": {
+            "neighbors": 256,
+            "estimator": "context",
+            "geometry": "centered",
+            "alignment": "paired"
+          }
+        }
+      },
+      "replay": {
+        "queries": 12694,
+        "mAP": 0.7333682775497437,
+        "precision": 0.725911021232605,
+        "kd_minus_pipeline_max_abs_same_order_AP_P": [
+          0.0,
+          0.0
+        ],
+        "max_per_query_abs_AP_P": [
+          0.0,
+          0.0
+        ],
+        "mean_per_query_abs_AP_P": [
+          0.0,
+          0.0
+        ],
+        "queries_within_1e-6_both": 12694
+      }
+    },
+    "tuberlin": {
+      "primary": {
+        "mAP": 0.7865108251571655,
+        "precision": 0.794746458530426,
+        "map_k": 0,
+        "p_k": 100,
+        "revision": "52a8ba4c0beb9be115d58fbab43b346dff9e132e",
+        "sha256": "bf3ae2155c393a414125d4eccf36a90eea79a1fdf3da5cb6c2ae0ccd241f8bf8"
+      },
+      "controls": {
+        "primary": {
+          "mAP": 0.7865108251571655,
+          "precision": 0.794746458530426,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "52a8ba4c0beb9be115d58fbab43b346dff9e132e",
+          "sha256": "bf3ae2155c393a414125d4eccf36a90eea79a1fdf3da5cb6c2ae0ccd241f8bf8",
+          "parameters": {
+            "neighbors": 256,
+            "estimator": "context",
+            "geometry": "rgb",
+            "alignment": "paired"
+          }
+        },
+        "no_neighborhood": {
+          "mAP": 0.7335332632064819,
+          "precision": 0.7722159624099731,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "52a8ba4c0beb9be115d58fbab43b346dff9e132e",
+          "sha256": "d791b5078b071ffaacad815261151d7a18ba235ff7469c445cd50f26a32cc0d3",
+          "parameters": {
+            "neighbors": 256,
+            "estimator": "direct",
+            "geometry": "rgb",
+            "alignment": "paired"
+          }
+        },
+        "context_alone": {
+          "mAP": 0.7865108251571655,
+          "precision": 0.794746458530426,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "52a8ba4c0beb9be115d58fbab43b346dff9e132e",
+          "sha256": "bf3ae2155c393a414125d4eccf36a90eea79a1fdf3da5cb6c2ae0ccd241f8bf8",
+          "parameters": {
+            "neighbors": 256,
+            "estimator": "context",
+            "geometry": "rgb",
+            "alignment": "paired"
+          }
+        },
+        "own_and_context_mixture": {
+          "mAP": 0.769786536693573,
+          "precision": 0.7817792892456055,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "52a8ba4c0beb9be115d58fbab43b346dff9e132e",
+          "sha256": "b8e715bb3c1b5cae561f63bb7bb5869e494ce413e1974fe678987ebc029a301a",
+          "parameters": {
+            "neighbors": 256,
+            "estimator": "mixture",
+            "geometry": "rgb",
+            "alignment": "paired"
+          }
+        },
+        "product_with_local_prior": {
+          "mAP": 0.7588611841201782,
+          "precision": 0.7775304913520813,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "52a8ba4c0beb9be115d58fbab43b346dff9e132e",
+          "sha256": "65570a624da2074d57e2d2b417bb1f43720edb20b216e5d5725d6baf30b5bb88",
+          "parameters": {
+            "neighbors": 256,
+            "estimator": "predictive",
+            "geometry": "rgb",
+            "alignment": "paired"
+          }
+        },
+        "geometric_pool": {
+          "mAP": 0.7769144773483276,
+          "precision": 0.7879765033721924,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "52a8ba4c0beb9be115d58fbab43b346dff9e132e",
+          "sha256": "4f2383f359308ab6d643092974765c547a08a11eeb4ef228e1c2e2bf92abd90e",
+          "parameters": {
+            "neighbors": 256,
+            "estimator": "geometric",
+            "geometry": "rgb",
+            "alignment": "paired"
+          }
+        },
+        "label_free_bandwidth": {
+          "mAP": 0.7783542275428772,
+          "precision": 0.7846478819847107,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "52a8ba4c0beb9be115d58fbab43b346dff9e132e",
+          "sha256": "a0aef51f2fd2216f25b7144b89e6cb848feaf9551c98a60a3dc50469b97101a2",
+          "parameters": {
+            "neighbors": 0,
+            "estimator": "context",
+            "geometry": "rgb",
+            "alignment": "paired"
+          }
+        },
+        "small_neighborhood": {
+          "mAP": 0.7783542275428772,
+          "precision": 0.7846478819847107,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "52a8ba4c0beb9be115d58fbab43b346dff9e132e",
+          "sha256": "d6ce7fc32a87e71e62e61678919dd88b0af777a9fe1edb5ea72ebb104ebb7fbf",
+          "parameters": {
+            "neighbors": 16,
+            "estimator": "context",
+            "geometry": "rgb",
+            "alignment": "paired"
+          }
+        },
+        "larger_neighborhood": {
+          "mAP": 0.7865108251571655,
+          "precision": 0.794746458530426,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "52a8ba4c0beb9be115d58fbab43b346dff9e132e",
+          "sha256": "bf3ae2155c393a414125d4eccf36a90eea79a1fdf3da5cb6c2ae0ccd241f8bf8",
+          "parameters": {
+            "neighbors": 256,
+            "estimator": "context",
+            "geometry": "rgb",
+            "alignment": "paired"
+          }
+        },
+        "shuffled_images": {
+          "mAP": 0.044371265918016434,
+          "precision": 0.040220655500888824,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "52a8ba4c0beb9be115d58fbab43b346dff9e132e",
+          "sha256": "95b462cd4a7103f20124a4fd54b5d3171c17a2d903f1e1c67199be673bc00b88",
+          "parameters": {
+            "neighbors": 256,
+            "estimator": "context",
+            "geometry": "rgb",
+            "alignment": "shuffle"
+          }
+        },
+        "centered_rgb": {
+          "mAP": 0.7858840227127075,
+          "precision": 0.793633759021759,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "52a8ba4c0beb9be115d58fbab43b346dff9e132e",
+          "sha256": "e7a013057da9492ff38ec1c1bd124fd301fb9a3b8359419021b7439ecd46d557",
+          "parameters": {
+            "neighbors": 256,
+            "estimator": "context",
+            "geometry": "centered",
+            "alignment": "paired"
+          }
+        }
+      },
+      "replay": {
+        "queries": 2130,
+        "mAP": 0.7865107655525208,
+        "precision": 0.794746458530426,
+        "kd_minus_pipeline_max_abs_same_order_AP_P": [
+          0.0,
+          0.0
+        ],
+        "max_per_query_abs_AP_P": [
+          0.0,
+          0.0
+        ],
+        "mean_per_query_abs_AP_P": [
+          0.0,
+          0.0
+        ],
+        "queries_within_1e-6_both": 2130
+      }
+    }
+  }
+}

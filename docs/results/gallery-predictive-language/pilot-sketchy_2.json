@@ -1,0 +1,230 @@
+{
+  "revision": "52a8ba4c0beb9be115d58fbab43b346dff9e132e",
+  "family": "gallery-predictive-language",
+  "queries": 1008,
+  "gallery": 12552,
+  "classes": 21,
+  "checkpoint_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+  "dataset_sha256": "30baecaac02eeff22cc54e533eb6bc1b757ba3a891a84f61a77ee837f073d8c6",
+  "kd_sha256": "adaa5781082173d333b5605f18045f2c2fecb6dbe23685902104dfc0828855ee",
+  "gpu": "NVIDIA L4",
+  "external_vocabulary": 20931,
+  "exploratory_unseen": true,
+  "freeze_sha256": null,
+  "settings": {
+    "54e3b4c3f30fcb26": {
+      "parameters": {
+        "neighbors": 0,
+        "estimator": "context",
+        "geometry": "rgb",
+        "alignment": "paired"
+      },
+      "mAP": 0.7398049831390381,
+      "precision": 0.7303125262260437
+    },
+    "c81680fe3922424f": {
+      "parameters": {
+        "neighbors": 0,
+        "estimator": "geometric",
+        "geometry": "rgb",
+        "alignment": "paired"
+      },
+      "mAP": 0.7379023432731628,
+      "precision": 0.7284572720527649
+    },
+    "446295b6f3ff3607": {
+      "parameters": {
+        "neighbors": 0,
+        "estimator": "mixture",
+        "geometry": "rgb",
+        "alignment": "paired"
+      },
+      "mAP": 0.7356744408607483,
+      "precision": 0.7267360687255859
+    },
+    "3e48dd495c1a8c71": {
+      "parameters": {
+        "neighbors": 0,
+        "estimator": "predictive",
+        "geometry": "rgb",
+        "alignment": "paired"
+      },
+      "mAP": 0.7307212948799133,
+      "precision": 0.7233482599258423
+    },
+    "ffae90d5422bbc50": {
+      "parameters": {
+        "neighbors": 16,
+        "estimator": "context",
+        "geometry": "rgb",
+        "alignment": "paired"
+      },
+      "mAP": 0.7516524791717529,
+      "precision": 0.7388492822647095
+    },
+    "2c077d1bfdec0880": {
+      "parameters": {
+        "neighbors": 16,
+        "estimator": "geometric",
+        "geometry": "rgb",
+        "alignment": "paired"
+      },
+      "mAP": 0.7427543997764587,
+      "precision": 0.7325298190116882
+    },
+    "0a694f05cc8c8184": {
+      "parameters": {
+        "neighbors": 16,
+        "estimator": "mixture",
+        "geometry": "rgb",
+        "alignment": "paired"
+      },
+      "mAP": 0.7392162084579468,
+      "precision": 0.7304067611694336
+    },
+    "f03ee9ab231f7c7a": {
+      "parameters": {
+        "neighbors": 16,
+        "estimator": "predictive",
+        "geometry": "rgb",
+        "alignment": "paired"
+      },
+      "mAP": 0.7337170243263245,
+      "precision": 0.7263145446777344
+    },
+    "892358a1fdac535b": {
+      "parameters": {
+        "neighbors": 64,
+        "estimator": "context",
+        "geometry": "rgb",
+        "alignment": "paired"
+      },
+      "mAP": 0.7536782622337341,
+      "precision": 0.7424653768539429
+    },
+    "b6059337a8e19e0e": {
+      "parameters": {
+        "neighbors": 64,
+        "estimator": "geometric",
+        "geometry": "rgb",
+        "alignment": "paired"
+      },
+      "mAP": 0.7444393634796143,
+      "precision": 0.734955370426178
+    },
+    "1d345e996960a74e": {
+      "parameters": {
+        "neighbors": 64,
+        "estimator": "mixture",
+        "geometry": "rgb",
+        "alignment": "paired"
+      },
+      "mAP": 0.7397117614746094,
+      "precision": 0.7318304181098938
+    },
+    "997c9fc58fc848f0": {
+      "parameters": {
+        "neighbors": 64,
+        "estimator": "predictive",
+        "geometry": "rgb",
+        "alignment": "paired"
+      },
+      "mAP": 0.736730694770813,
+      "precision": 0.7294245958328247
+    },
+    "67bd40493643b646": {
+      "parameters": {
+        "neighbors": 256,
+        "estimator": "context",
+        "geometry": "rgb",
+        "alignment": "paired"
+      },
+      "mAP": 0.7472450137138367,
+      "precision": 0.7391121983528137
+    },
+    "ced0cbcc4e61ef5f": {
+      "parameters": {
+        "neighbors": 256,
+        "estimator": "geometric",
+        "geometry": "rgb",
+        "alignment": "paired"
+      },
+      "mAP": 0.7446248531341553,
+      "precision": 0.7355308532714844
+    },
+    "6cba5c7cc9a30cb4": {
+      "parameters": {
+        "neighbors": 256,
+        "estimator": "mixture",
+        "geometry": "rgb",
+        "alignment": "paired"
+      },
+      "mAP": 0.7380282878875732,
+      "precision": 0.7303621172904968
+    },
+    "3dad8fd66c74cce1": {
+      "parameters": {
+        "neighbors": 256,
+        "estimator": "predictive",
+        "geometry": "rgb",
+        "alignment": "paired"
+      },
+      "mAP": 0.7380498647689819,
+      "precision": 0.7314087748527527
+    },
+    "b4d21c6071ecf1c2": {
+      "parameters": {
+        "neighbors": 1024,
+        "estimator": "context",
+        "geometry": "rgb",
+        "alignment": "paired"
+      },
+      "mAP": 0.7252631187438965,
+      "precision": 0.7115873694419861
+    },
+    "f278d862f078a8da": {
+      "parameters": {
+        "neighbors": 1024,
+        "estimator": "geometric",
+        "geometry": "rgb",
+        "alignment": "paired"
+      },
+      "mAP": 0.7432204484939575,
+      "precision": 0.7335318326950073
+    },
+    "b856c8fd69bb16ba": {
+      "parameters": {
+        "neighbors": 1024,
+        "estimator": "mixture",
+        "geometry": "rgb",
+        "alignment": "paired"
+      },
+      "mAP": 0.7311749458312988,
+      "precision": 0.7222718000411987
+    },
+    "6ae889502d498aaf": {
+      "parameters": {
+        "neighbors": 1024,
+        "estimator": "predictive",
+        "geometry": "rgb",
+        "alignment": "paired"
+      },
+      "mAP": 0.7401041984558105,
+      "precision": 0.7325298190116882
+    }
+  },
+  "seed": 4783,
+  "diagnostic": {
+    "rgb": {
+      "loo_cross_entropy": {
+        "4": 5.038228988647461,
+        "16": 5.082424163818359,
+        "64": 5.198518753051758,
+        "256": 5.413713455200195,
+        "1024": 5.979525566101074
+      },
+      "selected_neighbors": 4,
+      "reference_photos": 1024
+    }
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "utc": "2026-11-20T16:00:53.860805+00:00",
+  "revision": "52a8ba4c0beb9be115d58fbab43b346dff9e132e",
+  "criterion": "equal mean Sketchy mAP, then precision",
+  "canonical": {
+    "neighbors": 0,
+    "estimator": "predictive",
+    "geometry": "rgb",
+    "alignment": "paired"
+  },
+  "winner": {
+    "neighbors": 256,
+    "estimator": "context",
+    "geometry": "rgb",
+    "alignment": "paired"
+  },
+  "winner_id": "67bd40493643b646",
+  "controls": {
+    "primary": {
+      "neighbors": 256,
+      "estimator": "context",
+      "geometry": "rgb",
+      "alignment": "paired"
+    },
+    "no_neighborhood": {
+      "neighbors": 256,
+      "estimator": "direct",
+      "geometry": "rgb",
+      "alignment": "paired"
+    },
+    "context_alone": {
+      "neighbors": 256,
+      "estimator": "context",
+      "geometry": "rgb",
+      "alignment": "paired"
+    },
+    "own_and_context_mixture": {
+      "neighbors": 256,
+      "estimator": "mixture",
+      "geometry": "rgb",
+      "alignment": "paired"
+    },
+    "product_with_local_prior": {
+      "neighbors": 256,
+      "estimator": "predictive",
+      "geometry": "rgb",
+      "alignment": "paired"
+    },
+    "geometric_pool": {
+      "neighbors": 256,
+      "estimator": "geometric",
+      "geometry": "rgb",
+      "alignment": "paired"
+    },
+    "label_free_bandwidth": {
+      "neighbors": 0,
+      "estimator": "context",
+      "geometry": "rgb",
+      "alignment": "paired"
+    },
+    "small_neighborhood": {
+      "neighbors": 16,
+      "estimator": "context",
+      "geometry": "rgb",
+      "alignment": "paired"
+    },
+    "larger_neighborhood": {
+      "neighbors": 256,
+      "estimator": "context",
+      "geometry": "rgb",
+      "alignment": "paired"
+    },
+    "shuffled_images": {
+      "neighbors": 256,
+      "estimator": "context",
+      "geometry": "rgb",
+      "alignment": "shuffle"
+    },
+    "centered_rgb": {
+      "neighbors": 256,
+      "estimator": "context",
+      "geometry": "centered",
+      "alignment": "paired"
+    }
+  },
+  "sources": {
+    "sketchy_1-6cba5c7cc9a30cb4.json": "84f2ca122794474688f4a7ad5479569e5e07854d3e53702642204cc4e9598614",
+    "sketchy_1-99bcb0a48c8b07b5.json": "99d9b6c7d46e1894487fd462c63a9ade62b2dcc24600b29ff3fd114be8c8b3a2",
+    "sketchy_1-ffae90d5422bbc50.json": "556b70880e12cc6e3c8cae2707aee7cb7324fb0803f31b0929dbea813b86b296",
+    "sketchy_1-3dad8fd66c74cce1.json": "235c903c4166222f0c0ee493df958a206e18c4ecb5fe47e460e2f5ea9058af6a",
+    "sketchy_1-892358a1fdac535b.json": "905879706ffeb2f9733c11de1fa001eaa1035d34051e99587fc5c8ada1001315",
+    "sketchy_1-cac80a85afd383f3.json": "b3317b7b9afe422533ac61555a90ef5deb945d27ce660aaa8f723a0e655dbfac",
+    "sketchy_1-3e48dd495c1a8c71.json": "1c86401e3921a53388b6d55738e9965f99c3facddd0571696b3b2925593b572c",
+    "sketchy_1-f278d862f078a8da.json": "5aab90cce755e0ff7102942815a4902e4ee3a8186066bbc19d1bd116dab0e48c",
+    "sketchy_1-ced0cbcc4e61ef5f.json": "9a80fd2ee8543c66e95757d634e357a2e59e4c322a4c377134c31c9abc569e7a",
+    "sketchy_1-67bd40493643b646.json": "b8cbfce410b031464432ec77f0ece69d8dbac82a3a3d5e3c3cdec964203b35e2",
+    "sketchy_1-54e3b4c3f30fcb26.json": "f2f8a424385ec1c1235b54d25980d856256493b19086c6de582f63760fdcc37c",
+    "sketchy_1-f3a5dc5b1ee2b440.json": "34f9c64491e367ad39aa2e73c774bf7ae3f75577faee93c3a8b4fc1eb5f7cd11",
+    "sketchy_2-6cba5c7cc9a30cb4.json": "f20389279833fc381205332db588bd12d0ab7e600a699d34d15fba7e44ae4fca",
+    "sketchy_2-99bcb0a48c8b07b5.json": "4aca09cbcaf8665d7075a861d8eb1af6370fd30bc599b90bcaa9b51bc6fbedeb",
+    "sketchy_2-ffae90d5422bbc50.json": "14380e1384319c6a86aee905444885e0164366af2a2a26a606ac65cbe5894d28",
+    "sketchy_2-3dad8fd66c74cce1.json": "e0e67a3ddacf553987dee11745f801b695e4c816102c009e93de10cae25ff377",
+    "sketchy_2-892358a1fdac535b.json": "0dcd944e3a27ac8972b34869febda6001d9d980b1d1a1704fdd1408e2d676659",
+    "sketchy_2-cac80a85afd383f3.json": "8dfabfa2964a2a9753380c133bf55d69e4c1d3c7f4c47ac52fdb2c1f8e4cdf04",
+    "sketchy_2-3e48dd495c1a8c71.json": "1840915f8b282b13680c5ea88bf401a1fb81f13101ed478baf4ac173719d3a27",
+    "sketchy_2-f278d862f078a8da.json": "6200ac66da101726590009e4671c40f46a80b9c272e30db7a95b4b9c041d6e22",
+    "sketchy_2-ced0cbcc4e61ef5f.json": "67010f53572f104dcf5cd0d1a2adb20fadb736296f0a1b2a6e3c2efacb06d54b",
+    "sketchy_2-67bd40493643b646.json": "5c4ca7f2829d10e2a1d533b96600ce51b682ec109b7ac4de929465d8655afd35",
+    "sketchy_2-54e3b4c3f30fcb26.json": "d38f341cacdca3e4b57804feb0498bb42c119bd4df08f47c3583261ea9944bd3",
+    "sketchy_2-f3a5dc5b1ee2b440.json": "d5919a6091243a2cd1cf1629c984a6c5825102b71fdc61ca970dc7e6d64a317f"
+  },
+  "tu_rows_before_freeze": 0,
+  "sha256": "70eb608df917dc57f860ae80342763994abb9df55e2ca48420a1241f9390e931"
+}
