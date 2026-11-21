@@ -1,6 +1,7 @@
 """Evaluate invariance and natural-vocabulary retrieval on a single Colab GPU."""
 
 from concurrent.futures import ThreadPoolExecutor
+from dataclasses import dataclass
 import argparse
 import hashlib
 import inspect
@@ -32,6 +33,23 @@ from .shared_concept_likelihood import emission
 FAMILY = "correlated-lexical-choice"
 
 
+@dataclass(frozen=True)
+class Study:
+    family: str
+    index: type
+    primary: str
+    comparisons: tuple
+    stability_pairs: dict
+
+
+CHOICE = Study(FAMILY, WordChoices, "correlated",
+               ("matched_temperature", "iid_sample", "wrong_geometry", "gallery_mle", "second_seed"),
+               {"softmax_copies": ("diffusion", "baseline_clones"),
+                "softmax_thinning": ("diffusion", "baseline_thin"),
+                "correlated_thinning": ("correlated", "correlated_thin"),
+                "two_mc_seeds": ("correlated", "second_seed")})
+
+
 def stability(reference, changed):
     # Search each index against sorted photo ids in the other top 100.
     ordered = changed.sort(1).values
@@ -42,7 +60,7 @@ def stability(reference, changed):
 
 
 @torch.inference_mode()
-def measure(folder, meta, q, p, ql, pl, words, source, target, scale, kd, workers):
+def measure(folder, meta, q, p, ql, pl, words, source, target, scale, kd, workers, study):
     split = meta["split"]
     path, per_query = folder / (split + ".json"), folder / (split + ".pt")
     if path.is_file() and per_query.is_file():
@@ -54,7 +72,7 @@ def measure(folder, meta, q, p, ql, pl, words, source, target, scale, kd, worker
     config = Config(neighbors=16, bandwidth=.36, iterations=2, mode="rgb")
     graph = Index(SimpleNamespace(p=p), rgb_only=True)
     graph.prepare(config)
-    bank = WordChoices(p, source, target, scale)
+    bank = study.index(p, source, target, scale)
     if bank.clone_check["different_semantic_winners"]:
         raise ValueError("Exact copies changed the latent concept in paired draws")
     torch.cuda.synchronize()
@@ -63,10 +81,7 @@ def measure(folder, meta, q, p, ql, pl, words, source, target, scale, kd, worker
     replay = Replay(kd, pl, split)
     gl = pl.cuda()
     per_method, errors = {}, {}
-    stability_pairs = {"softmax_copies": ("diffusion", "baseline_clones"),
-                       "softmax_thinning": ("diffusion", "baseline_thin"),
-                       "correlated_thinning": ("correlated", "correlated_thin"),
-                       "two_mc_seeds": ("correlated", "second_seed")}
+    stability_pairs = study.stability_pairs
     stability_data = {key: [] for key in stability_pairs}
     with ThreadPoolExecutor(max_workers=workers) as pool:
         for i in range(0, len(ql), 192):
@@ -97,8 +112,8 @@ def measure(folder, meta, q, p, ql, pl, words, source, target, scale, kd, worker
     result = {"protocol":meta,"map_k":replay.cutoffs[0],"p_k":replay.cutoffs[1],
               "scores":{k:dict(zip(("mAP","precision"),v.mean(0).tolist())) for k,v in values.items()},
               "paired_vs_diffusion":{k:paired_delta(v,values["diffusion"],ql) for k,v in values.items()},
-              "correlated_vs_controls":{k:paired_delta(values["correlated"],values[k],ql) for k in
-                                        ("matched_temperature","iid_sample","wrong_geometry","gallery_mle","second_seed")},
+              study.primary+"_vs_controls":{k:paired_delta(values[study.primary],values[k],ql)
+                                            for k in study.comparisons},
               "stability":{k:{"top1_changes":int(v[:,0].sum()),"top100_retained":float(v[:,1].mean())}
                            for k,v in change.items()},
               "thinning": {"pairs":len(bank.pairs),"min_cosine":min((v for _,_,v in bank.pairs), default=None),
@@ -112,8 +127,8 @@ def measure(folder, meta, q, p, ql, pl, words, source, target, scale, kd, worker
     print(split,result["scores"],result["stability"],flush=True)
 
 
-def run(w,workers):
-    folder = w/"results"/FAMILY
+def run(w,workers,study=CHOICE):
+    folder = w/"results"/study.family
     kd,_ = load_kd(w)
     if hashlib.sha256(inspect.getsource(kd).strip().encode()).hexdigest()!=KD_FUNCTION_SHA:
         raise ValueError("KD-SBIR reference changed")
@@ -125,7 +140,7 @@ def run(w,workers):
         _,scale = bare_words(cfg,words)
         source,target = (x.cuda() for x in load_words(cfg,words))
         if dataset=="tuberlin":
-            lock={"candidate":"correlated","parameters":{"draws":WordChoices.samples,"seed":WordChoices.first_seed},
+            lock={"candidate":study.primary,"parameters":{"draws":study.index.samples,"seed":study.index.first_seed},
                   "revision":revision(),"scores_before_transfer":{s:checksum(folder/(s+".json")) for s in ("sketchy_1","sketchy_2")}}
             atomic_json(folder/"freeze.json",lock|{"sha256":digest(lock)})
         for split,(qi,ql) in queries.items():
@@ -136,7 +151,7 @@ def run(w,workers):
                   "vocabulary_sha256":checksum(cfg.vocabulary),"revision":revision(),"gpu":torch.cuda.get_device_name(),
                   "queries":len(ql),"gallery":len(pl),"classes":len(pl.unique()),"samples":WordChoices.samples,
                   "primary_seed":WordChoices.first_seed,"secondary_seed":WordChoices.second_seed}
-            measure(folder,meta,qraw[qi].cuda(),praw[pi].cuda(),ql,pl,words,source,target,scale,kd,workers)
+            measure(folder,meta,qraw[qi].cuda(),praw[pi].cuda(),ql,pl,words,source,target,scale,kd,workers,study)
 
 
 if __name__=="__main__":
