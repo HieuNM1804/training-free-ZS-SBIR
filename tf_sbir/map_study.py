@@ -41,7 +41,8 @@ def settings_from_pilot(module,folder):
         raise ValueError("Incomplete mAP pilot")
     keys=sorted(candidates,key=lambda cid:(-score_key([t[cid] for t in records])[0],
         -score_key([t[cid] for t in records])[1],cid))
-    return list(dict.fromkeys([*(candidates[k] for k in keys[:5]),module.canonical()]))
+    count=getattr(module,"FULL_FINALISTS",5)
+    return list(dict.fromkeys([*(candidates[k] for k in keys[:count]),module.canonical()]))
 
 
 def selected(module,folder):
@@ -153,7 +154,7 @@ def run(workspace,name,stage):
         return
     held=stage=="heldout";pilot=stage=="pilot";locked=None
     if held:
-        locked=make_lock(module,folder);dec=read(root/"map-study/joint-freeze.json")
+        locked=make_lock(module,folder);dec=read(root/getattr(module,"DECISION","map-study/joint-freeze.json"))
         sig=dec.pop("sha256")
         if digest(dec)!=sig or dec["families"][name]["freeze"]!=locked["sha256"]:
             raise ValueError("Missing pre-TU decision")
@@ -164,8 +165,8 @@ def run(workspace,name,stage):
         configs=settings_from_pilot(module,folder)
     else:
         configs=list(module.controls(selected(module,folder)).values())
-    a,_,queries,_,galleries,raw,rgb=global_inputs(workspace,"tuberlin" if held else "sketchy")
-    words=read_words(a.vocabulary);_,scale=bare_words(a,words)
+    a,qpaths,queries,ppaths,galleries,raw,rgb=global_inputs(workspace,"tuberlin" if held else "sketchy")
+    words=read_words(a.vocabulary);literal,scale=bare_words(a,words)
     src,tgt=(x.cuda() for x in load_words(a,words)); kd,kd_sha=load_kd(workspace)
     for s,(qi,ql) in queries.items():
         pi,pl=galleries[s]
@@ -174,6 +175,10 @@ def run(workspace,name,stage):
         if pilot:
             ids=stratified_sample(ql,48,4783);qi,ql=qi[ids],ql[ids]
         data=Data(raw[qi].cuda(),rgb[pi].cuda(),src,tgt,scale)
+        if getattr(module,"USES_LITERAL",False):
+            data.literal=literal.to(data.q.device)
+        if hasattr(module,"prepare_ir_data"):
+            module.prepare_ir_data(data,a,qpaths,ppaths,qi,pi)
         index=module.Index(data)
         out=folder/("heldout" if held else "sketchy")
         meta={"revision":revision(),"family":name,"queries":len(ql),"gallery":len(pl),"classes":len(pl.unique()),
