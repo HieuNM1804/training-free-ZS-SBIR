@@ -1,0 +1,179 @@
+{
+  "revision": "017131c005cb29a9f98ebb27dd92df9404ac35bd",
+  "family": "public-word-calibration",
+  "queries": 1200,
+  "gallery": 17100,
+  "classes": 25,
+  "checkpoint_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+  "dataset_sha256": "8fafaf3aedf4751e28e2b33f073832e02fdf3ca1b36a9d7fda5ff328f26b0642",
+  "kd_sha256": "3433c60a3739e852c94e573832dd53d51446f433326a453392d316b402402fbe",
+  "gpu": "NVIDIA L4",
+  "external_vocabulary": 20931,
+  "exploratory_unseen": true,
+  "freeze_sha256": null,
+  "settings": {
+    "300eb4a0caff8cb5": {
+      "parameters": {
+        "temperature_ratio": 0.25,
+        "include_identity": false,
+        "side": "both",
+        "shuffled": false
+      },
+      "mAP": 0.5562718510627747,
+      "precision": 0.581766664981842
+    },
+    "22f83031e29177c0": {
+      "parameters": {
+        "temperature_ratio": 0.25,
+        "include_identity": true,
+        "side": "both",
+        "shuffled": false
+      },
+      "mAP": 0.6664740443229675,
+      "precision": 0.6932250261306763
+    },
+    "8de44a62852bbe3e": {
+      "parameters": {
+        "temperature_ratio": 0.5,
+        "include_identity": false,
+        "side": "both",
+        "shuffled": false
+      },
+      "mAP": 0.18705236911773682,
+      "precision": 0.23022502660751343
+    },
+    "e86078b83d604b12": {
+      "parameters": {
+        "temperature_ratio": 0.5,
+        "include_identity": true,
+        "side": "both",
+        "shuffled": false
+      },
+      "mAP": 0.7005454897880554,
+      "precision": 0.7359916567802429
+    },
+    "10def17dd935d5fa": {
+      "parameters": {
+        "temperature_ratio": 1.0,
+        "include_identity": false,
+        "side": "both",
+        "shuffled": false
+      },
+      "mAP": 0.07286426424980164,
+      "precision": 0.09288333356380463
+    },
+    "2bff9cfc707015e6": {
+      "parameters": {
+        "temperature_ratio": 1.0,
+        "include_identity": true,
+        "side": "both",
+        "shuffled": false
+      },
+      "mAP": 0.1747969537973404,
+      "precision": 0.16037499904632568
+    }
+  },
+  "seed": 4783,
+  "diagnostic": {
+    "reference": "only fixed sketch/photo text prompts for public words",
+    "image_or_label_rows_used_to_calibrate": 0,
+    "log_partitions": {
+      "(0.25, False)": {
+        "query_min_decile_median_upper_decile_max": [
+          16.84294891357422,
+          23.158161163330078,
+          26.21657371520996,
+          28.021350860595703,
+          29.643280029296875
+        ],
+        "photo_min_decile_median_upper_decile_max": [
+          17.222469329833984,
+          23.423690795898438,
+          26.320693969726562,
+          28.00330352783203,
+          30.740604400634766
+        ]
+      },
+      "(0.25, True)": {
+        "query_min_decile_median_upper_decile_max": [
+          20.771760940551758,
+          23.489763259887695,
+          26.249025344848633,
+          28.028282165527344,
+          29.645069122314453
+        ],
+        "photo_min_decile_median_upper_decile_max": [
+          21.345550537109375,
+          23.692893981933594,
+          26.348970413208008,
+          28.010107040405273,
+          30.74258041381836
+        ]
+      },
+      "(0.5, False)": {
+        "query_min_decile_median_upper_decile_max": [
+          28.890178680419922,
+          40.11783218383789,
+          44.3182487487793,
+          47.50142288208008,
+          50.98472595214844
+        ],
+        "photo_min_decile_median_upper_decile_max": [
+          28.077743530273438,
+          40.16659927368164,
+          44.446537017822266,
+          47.53580093383789,
+          52.94480895996094
+        ]
+      },
+      "(0.5, True)": {
+        "query_min_decile_median_upper_decile_max": [
+          37.25775909423828,
+          44.02804183959961,
+          45.882102966308594,
+          47.74488067626953,
+          50.99756622314453
+        ],
+        "photo_min_decile_median_upper_decile_max": [
+          40.90739440917969,
+          44.085182189941406,
+          45.94654846191406,
+          47.756935119628906,
+          52.964515686035156
+        ]
+      },
+      "(1.0, False)": {
+        "query_min_decile_median_upper_decile_max": [
+          53.42927932739258,
+          76.89578247070312,
+          84.858154296875,
+          89.6078109741211,
+          97.80597686767578
+        ],
+        "photo_min_decile_median_upper_decile_max": [
+          52.35512924194336,
+          76.6924057006836,
+          84.8355941772461,
+          89.38152313232422,
+          99.525390625
+        ]
+      },
+      "(1.0, True)": {
+        "query_min_decile_median_upper_decile_max": [
+          74.46516418457031,
+          87.5379638671875,
+          90.96659851074219,
+          92.84893035888672,
+          98.24340057373047
+        ],
+        "photo_min_decile_median_upper_decile_max": [
+          80.88800048828125,
+          87.56674194335938,
+          90.95851135253906,
+          92.8023452758789,
+          99.73246002197266
+        ]
+      }
+    }
+  }
+}

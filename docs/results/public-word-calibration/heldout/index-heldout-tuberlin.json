@@ -1,0 +1,68 @@
+{
+  "revision": "017131c005cb29a9f98ebb27dd92df9404ac35bd",
+  "family": "public-word-calibration",
+  "queries": 2130,
+  "gallery": 27262,
+  "classes": 30,
+  "checkpoint_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+  "dataset_sha256": "64fa2e05b5ce359af89caf817c2a90d8d48b268280e2f4896283aaa2d58f8bcd",
+  "kd_sha256": "3433c60a3739e852c94e573832dd53d51446f433326a453392d316b402402fbe",
+  "gpu": "NVIDIA L4",
+  "external_vocabulary": 20931,
+  "exploratory_unseen": false,
+  "freeze_sha256": "9d7d9312fafebf7dd009a67d901286e780dfa2993aac095d29ce1baca215f88c",
+  "diagnostic": {
+    "reference": "only fixed sketch/photo text prompts for public words",
+    "image_or_label_rows_used_to_calibrate": 0,
+    "log_partitions": {
+      "(0.5, False)": {
+        "query_min_decile_median_upper_decile_max": [
+          28.890178680419922,
+          40.11783218383789,
+          44.3182487487793,
+          47.50142288208008,
+          50.98472595214844
+        ],
+        "photo_min_decile_median_upper_decile_max": [
+          28.077743530273438,
+          40.16659927368164,
+          44.446537017822266,
+          47.53580093383789,
+          52.94480895996094
+        ]
+      },
+      "(0.5, True)": {
+        "query_min_decile_median_upper_decile_max": [
+          37.25775909423828,
+          44.02804183959961,
+          45.882102966308594,
+          47.74488067626953,
+          50.99756622314453
+        ],
+        "photo_min_decile_median_upper_decile_max": [
+          40.90739440917969,
+          44.085182189941406,
+          45.94654846191406,
+          47.756935119628906,
+          52.964515686035156
+        ]
+      },
+      "(1.0, True)": {
+        "query_min_decile_median_upper_decile_max": [
+          74.46516418457031,
+          87.5379638671875,
+          90.96659851074219,
+          92.84893035888672,
+          98.24340057373047
+        ],
+        "photo_min_decile_median_upper_decile_max": [
+          80.88800048828125,
+          87.56674194335938,
+          90.95851135253906,
+          92.8023452758789,
+          99.73246002197266
+        ]
+      }
+    }
+  }
+}
