@@ -1,0 +1,86 @@
+{
+  "utc": "2026-11-21T03:18:55.343842+00:00",
+  "families": {
+    "shared-concept-likelihood": {
+      "name": "uniform",
+      "freeze": "d14ec39fced8dd97c1737618d64fe9c3bc61de7ca0e3657e673c1b95b1414e24",
+      "scores": [
+        {
+          "split": "sketchy_1",
+          "sha256": "5aa691b7df88a08ed3dc88809662fcb9f16e6c875586c01792c018c53746b4e6",
+          "mAP": 0.7530822157859802,
+          "precision": 0.7894103527069092
+        },
+        {
+          "split": "sketchy_2",
+          "sha256": "22c2ed7578253cfa8f5d7968107873458b1e9316bac6c1eb0102931e270d4926",
+          "mAP": 0.7141594290733337,
+          "precision": 0.7027930617332458
+        }
+      ]
+    },
+    "winclip-concept-likelihood": {
+      "name": "a037ebee7c99bdee",
+      "freeze": "87d6ca116a5e3f15c17560519b8676f2738f948de0589d5c43df672eeafcfdff",
+      "scores": [
+        {
+          "split": "sketchy_1",
+          "sha256": "59b58e73e851834bbed65a0c6d77f18c29d7eaf575cc94b0ad151d3f0dc03d59",
+          "mAP": 0.7549622654914856,
+          "precision": 0.7897136211395264
+        },
+        {
+          "split": "sketchy_2",
+          "sha256": "9263305b1f769bc489afc5222ba35716ca45aec4a4dc20dd62d6cada8fb9f994",
+          "mAP": 0.7142217755317688,
+          "precision": 0.7028335928916931
+        }
+      ]
+    },
+    "public-word-calibration": {
+      "name": "e86078b83d604b12",
+      "freeze": "9d7d9312fafebf7dd009a67d901286e780dfa2993aac095d29ce1baca215f88c",
+      "scores": [
+        {
+          "split": "sketchy_1",
+          "sha256": "3e5e1de9c297b2b9b97b45a9be57ecd65fe9cd4a47861f4c8cb3fd4a0e9c1207",
+          "mAP": 0.7156817317008972,
+          "precision": 0.7509817481040955
+        },
+        {
+          "split": "sketchy_2",
+          "sha256": "f93313c02057305ab4801a9dee2bc26df7fba81a55b62717716553fc272e5595",
+          "mAP": 0.6557878851890564,
+          "precision": 0.6471052765846252
+        }
+      ]
+    },
+    "public-semantic-translation": {
+      "name": "4e892fd6b91f5a04",
+      "freeze": "b2e2484b3590721b82489f881481bc4ee76c7ec4c761115b4b70a3d8a52992f7",
+      "scores": [
+        {
+          "split": "sketchy_1",
+          "sha256": "0a1c12fe9900faf98c7e096dfffa135b607e096ccbedaf9df70964e0e961eb28",
+          "mAP": 0.7596092820167542,
+          "precision": 0.7887072563171387
+        },
+        {
+          "split": "sketchy_2",
+          "sha256": "c5d0229b21e4115fe72002b8d14c83ad4c35a05c461aa5f13990a0600f9a8031",
+          "mAP": 0.7160326242446899,
+          "precision": 0.7066330313682556
+        }
+      ]
+    }
+  },
+  "primary": "public-semantic-translation",
+  "selection_data": [
+    "sketchy_1",
+    "sketchy_2"
+  ],
+  "new_tu_rows_at_lock": 0,
+  "eligibility": "Scores depend only on one query, one photo, frozen CLIP and public resources",
+  "rule": "equal mean Sketchy mAP then equal mean precision",
+  "sha256": "d3bcb153a207fe4557cbf12df362678341e6bba79416c205e147b57d248ce6d3"
+}

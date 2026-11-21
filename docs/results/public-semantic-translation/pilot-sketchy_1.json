@@ -1,0 +1,86 @@
+{
+  "revision": "b2bb1506d8afd2be318b60b510530229a8a5ebcb",
+  "family": "public-semantic-translation",
+  "queries": 1200,
+  "gallery": 17100,
+  "classes": 25,
+  "checkpoint_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+  "dataset_sha256": "8fafaf3aedf4751e28e2b33f073832e02fdf3ca1b36a9d7fda5ff328f26b0642",
+  "kd_sha256": "3433c60a3739e852c94e573832dd53d51446f433326a453392d316b402402fbe",
+  "gpu": "NVIDIA L4",
+  "external_vocabulary": 20931,
+  "exploratory_unseen": true,
+  "freeze_sha256": null,
+  "settings": {
+    "8adfb5984dc19095": {
+      "parameters": {
+        "support": "all",
+        "mass": 0.25,
+        "bandwidth": "local",
+        "shuffle": false
+      },
+      "mAP": 0.7401847839355469,
+      "precision": 0.7803666591644287
+    },
+    "d367ea64c521cbda": {
+      "parameters": {
+        "support": "all",
+        "mass": 0.5,
+        "bandwidth": "local",
+        "shuffle": false
+      },
+      "mAP": 0.7402452826499939,
+      "precision": 0.7803083658218384
+    },
+    "df04e9132d86c22f": {
+      "parameters": {
+        "support": "all",
+        "mass": 1.0,
+        "bandwidth": "local",
+        "shuffle": false
+      },
+      "mAP": 0.6179630756378174,
+      "precision": 0.6943416595458984
+    },
+    "d14d758f363deff7": {
+      "parameters": {
+        "support": "nearest",
+        "mass": 0.25,
+        "bandwidth": "local",
+        "shuffle": false
+      },
+      "mAP": 0.7463268041610718,
+      "precision": 0.7806167006492615
+    },
+    "4e892fd6b91f5a04": {
+      "parameters": {
+        "support": "nearest",
+        "mass": 0.5,
+        "bandwidth": "local",
+        "shuffle": false
+      },
+      "mAP": 0.7478002309799194,
+      "precision": 0.7806083559989929
+    },
+    "88f69d80fb25329e": {
+      "parameters": {
+        "support": "nearest",
+        "mass": 1.0,
+        "bandwidth": "local",
+        "shuffle": false
+      },
+      "mAP": 0.7340980172157288,
+      "precision": 0.7698000073432922
+    }
+  },
+  "seed": 4783,
+  "diagnostic": {
+    "text_only": true,
+    "neighbors_for_radius": 7,
+    "radius_deciles_and_median": [
+      0.42422986030578613,
+      0.5450617671012878,
+      0.6910967230796814
+    ]
+  }
+}
