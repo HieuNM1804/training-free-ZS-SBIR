@@ -1,0 +1,210 @@
+{
+  "utc": "2026-11-21T04:22:31.596499+00:00",
+  "families": {
+    "public-semantic-translation": {
+      "scope": "pairwise",
+      "fresh": false,
+      "name": "4e892fd6b91f5a04",
+      "freeze": "b2e2484b3590721b82489f881481bc4ee76c7ec4c761115b4b70a3d8a52992f7",
+      "settings": {
+        "support": "nearest",
+        "mass": 0.5,
+        "bandwidth": "local",
+        "shuffle": false
+      },
+      "revision": "b2bb1506d8afd2be318b60b510530229a8a5ebcb",
+      "scores": [
+        {
+          "split": "sketchy_1",
+          "sha256": "0a1c12fe9900faf98c7e096dfffa135b607e096ccbedaf9df70964e0e961eb28",
+          "mAP": 0.7596092820167542,
+          "precision": 0.7887072563171387
+        },
+        {
+          "split": "sketchy_2",
+          "sha256": "c5d0229b21e4115fe72002b8d14c83ad4c35a05c461aa5f13990a0600f9a8031",
+          "mAP": 0.7160326242446899,
+          "precision": 0.7066330313682556
+        }
+      ]
+    },
+    "neighborhood-calibrated-likelihood": {
+      "scope": "gallery",
+      "fresh": false,
+      "name": "182e69d1e116fb5e",
+      "freeze": "2be510938d30f89e574618b5fea1a1541c8a712409982e4a04015c77ef9eee53",
+      "settings": {
+        "k": 256,
+        "calibration": "posterior",
+        "estimator": "mle",
+        "weighting": "cosine",
+        "shuffled": false
+      },
+      "revision": "a8a73530a993133cb4f8058bfe61e7f70cb0f68f",
+      "scores": [
+        {
+          "split": "sketchy_1",
+          "sha256": "9a78ce441ac4eb9a9bcb3d6ce96d4becd50df3b0eec33f24833694afb3e1448a",
+          "mAP": 0.8265085816383362,
+          "precision": 0.8209894895553589
+        },
+        {
+          "split": "sketchy_2",
+          "sha256": "57d6ef79d194c5be6fef45b3053736a5358474d2543f38d5e866657b3454ad6a",
+          "mAP": 0.7478904128074646,
+          "precision": 0.73594731092453
+        }
+      ]
+    },
+    "retrieval-semantic-whitening": {
+      "scope": "pairwise",
+      "fresh": true,
+      "name": "e1d1f0f51bf5ce35",
+      "freeze": "7cadfefe1e7d4768397f7ff2f8753d17fe8d5f5479818c2683514a2d75c80f36",
+      "settings": {
+        "dimensions": 128,
+        "power": 1.0,
+        "reference": "words",
+        "mode": "semantic"
+      },
+      "revision": "eb4e87301f19158a00b14be4dba67cb0cb1e109c",
+      "scores": [
+        {
+          "split": "sketchy_1",
+          "sha256": "d48d9797d6fd02bb3961a4af5a3ef4db8c71141f68823694660769377ff9ecd0",
+          "mAP": 0.6200953722000122,
+          "precision": 0.6830474138259888
+        },
+        {
+          "split": "sketchy_2",
+          "sha256": "188b0b1ea00bcbb7dd7a76ded5ba701558e752d5c62b47aac4229fdf3bffdd05",
+          "mAP": 0.6018482446670532,
+          "precision": 0.5833614468574524
+        }
+      ]
+    },
+    "retrieval-vocabulary-tree": {
+      "scope": "pairwise",
+      "fresh": true,
+      "name": "493eba191e7a7778",
+      "freeze": "00041e392715875139db4eabd4d791291f567e397757bb1febe33a447d88cb47",
+      "settings": {
+        "terms": 64,
+        "levels": "all",
+        "metric": "intersection",
+        "idf": true,
+        "control": "matched"
+      },
+      "revision": "0883e1f4d1af4c497e7a2dfa5473222fa748be6f",
+      "scores": [
+        {
+          "split": "sketchy_1",
+          "sha256": "b4f1c6d0c50cbf5d715d039b67e09e411e3b10d9c5fe3f708cf0b6c8f5f9b8f4",
+          "mAP": 0.5854946374893188,
+          "precision": 0.687563955783844
+        },
+        {
+          "split": "sketchy_2",
+          "sha256": "d27550762b961a645968cf5448674311362de6e4cb413d3f436f2c74294ee377",
+          "mAP": 0.6139585375785828,
+          "precision": 0.5792378187179565
+        }
+      ]
+    },
+    "retrieval-democratic-regions": {
+      "scope": "pairwise",
+      "fresh": true,
+      "name": "1cdeb087918958f7",
+      "freeze": "73975dd441a764b1ea9532d158f002c3e62502163e6fb4a23b2a34937132654c",
+      "settings": {
+        "scales": "5",
+        "grouping": "by_scale",
+        "side": "photo",
+        "pooling": "democratic",
+        "mode": "semantic"
+      },
+      "revision": "80da36faba95eff4d04ec754cc57da913cf0c60e",
+      "scores": [
+        {
+          "split": "sketchy_1",
+          "sha256": "a599d91e4ff91aba4e1e264fd39aa90188176cef4e7a77dba416f1dc3af8dae9",
+          "mAP": 0.754285991191864,
+          "precision": 0.7904971837997437
+        },
+        {
+          "split": "sketchy_2",
+          "sha256": "8f09789752f0b7b08c5778700646174129ad33bfc7447b9a98efb2e1b0d618fb",
+          "mAP": 0.715425968170166,
+          "precision": 0.7037111520767212
+        }
+      ]
+    },
+    "retrieval-reciprocal-encoding": {
+      "scope": "gallery",
+      "fresh": true,
+      "name": "8b0ef3e36ea54297",
+      "freeze": "30ccaad3e4c5dbbe7b2b1dd990cf7cc6613512f7bc12078357841d8170a5c21f",
+      "settings": {
+        "k": 60,
+        "expansion": 1,
+        "original_weight": 0.7,
+        "backoff": "likelihood",
+        "geometry": "semantic",
+        "neighborhoods": "reciprocal"
+      },
+      "revision": "a3a4853c3138d3a78af98d8527dd39f87ab019a0",
+      "scores": [
+        {
+          "split": "sketchy_1",
+          "sha256": "1803e5a02a13146f1cd029e2d08909d0e6d147d99109e0fb46a48da1bc7a559d",
+          "mAP": 0.7390317916870117,
+          "precision": 0.7603188157081604
+        },
+        {
+          "split": "sketchy_2",
+          "sha256": "4c5addffa361a21417709d70af8021ff121d17865610f07a9fda94d1a1e9d59a",
+          "mAP": 0.6874319314956665,
+          "precision": 0.6819245219230652
+        }
+      ]
+    },
+    "retrieval-composed-modality": {
+      "scope": "pairwise",
+      "fresh": true,
+      "name": "3ea2c6762ea8e431",
+      "freeze": "b60a04e5fb81454009813ba143c1a74a124d42b27a9aaa184a3410f8313d438a",
+      "settings": {
+        "alpha": 0.1,
+        "beta": 1.0,
+        "modifier": "content",
+        "descriptions": "all",
+        "mode": "matched"
+      },
+      "revision": "69e7d71ad845fa4490ef319a1d05fd73b1f2ba94",
+      "scores": [
+        {
+          "split": "sketchy_1",
+          "sha256": "6da4345a0d6b48867f04b27366bd63258fe2a4a36784fe4658496990ae9e318c",
+          "mAP": 0.6597408652305603,
+          "precision": 0.7723914980888367
+        },
+        {
+          "split": "sketchy_2",
+          "sha256": "1620fb0f3f978312a9e6f5ec3e1601e11db214c40bc2cd398dcc6ba6c734ddc7",
+          "mAP": 0.6852157115936279,
+          "precision": 0.6536450386047363
+        }
+      ]
+    }
+  },
+  "selection_data": [
+    "sketchy_1",
+    "sketchy_2"
+  ],
+  "new_tu_rows": 0,
+  "primary": "neighborhood-calibrated-likelihood",
+  "pairwise": "public-semantic-translation",
+  "gallery": "neighborhood-calibrated-likelihood",
+  "criterion": "mean Sketchy mAP@all and mAP@200 equally, then mean precision",
+  "sha256": "b1bf24539da3280f37c28f566c4de5fa872a12dfe5c362856dd326e87d229596"
+}

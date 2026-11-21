@@ -1,0 +1,287 @@
+{
+  "decision_data": [
+    "sketchy_1",
+    "sketchy_2"
+  ],
+  "qualified": true,
+  "best": {
+    "query_scale": 0.875,
+    "photo_scale": 1.0,
+    "terms": 0,
+    "norm": "mass",
+    "control": "uniform"
+  },
+  "best_mAP_P": [
+    0.7342687547206879,
+    0.7508823573589325
+  ],
+  "checkpoint_mAP_P": [
+    0.7332780659198761,
+    0.748550534248352
+  ],
+  "new_TU_at_screen": 0,
+  "signed_choice": "ff5bc8663d8c8a20e18a376d1176287c28969e62a74130d4de7f32015cb5f746",
+  "primary_pairwise_after_refine": "public-semantic-translation",
+  "config": {
+    "query_scale": 0.875,
+    "photo_scale": 1.0,
+    "terms": 0,
+    "norm": "mass",
+    "control": "uniform"
+  },
+  "revision": "8bb5d9a05f6f53a868002bac858e1e13bcfea729",
+  "splits": {
+    "sketchy_1": {
+      "primary": {
+        "mAP": 0.7520632147789001,
+        "precision": 0.7929409742355347,
+        "queries": 14179,
+        "gallery": 17100,
+        "classes": 25,
+        "delta_vs_this_control": {
+          "delta_pp": 0.0,
+          "ci95_class": [
+            0.0,
+            0.0
+          ],
+          "classes_up": 0,
+          "classes": 25
+        },
+        "kd": {
+          "queries": 14179,
+          "mAP": 0.7520632147789001,
+          "precision": 0.7929409146308899,
+          "kd_minus_pipeline_max_abs_same_order_AP_P": [
+            0.0,
+            0.0
+          ],
+          "max_per_query_abs_AP_P": [
+            0.0,
+            0.0
+          ],
+          "mean_per_query_abs_AP_P": [
+            0.0,
+            0.0
+          ],
+          "queries_within_1e-6_both": 14179
+        }
+      },
+      "checkpoint": {
+        "mAP": 0.7530821561813354,
+        "precision": 0.7894103527069092,
+        "queries": 14179,
+        "gallery": 17100,
+        "classes": 25,
+        "delta_vs_this_control": {
+          "delta_pp": -0.10189998140098161,
+          "ci95_class": [
+            -0.24575157904987632,
+            0.028560290533163012
+          ],
+          "classes_up": 10,
+          "classes": 25
+        }
+      },
+      "both_query_width": {
+        "mAP": 0.7523326277732849,
+        "precision": 0.7924811840057373,
+        "queries": 14179,
+        "gallery": 17100,
+        "classes": 25,
+        "delta_vs_this_control": {
+          "delta_pp": -0.02694503565846516,
+          "ci95_class": [
+            -0.3801608736582725,
+            0.33334271650765634
+          ],
+          "classes_up": 12,
+          "classes": 25
+        }
+      },
+      "both_photo_width": {
+        "mAP": 0.7530821561813354,
+        "precision": 0.7894103527069092,
+        "queries": 14179,
+        "gallery": 17100,
+        "classes": 25,
+        "delta_vs_this_control": {
+          "delta_pp": -0.10189998140098161,
+          "ci95_class": [
+            -0.24575157904987632,
+            0.028560290533163012
+          ],
+          "classes_up": 10,
+          "classes": 25
+        }
+      }
+    },
+    "sketchy_2": {
+      "primary": {
+        "mAP": 0.7174212336540222,
+        "precision": 0.7047899961471558,
+        "queries": 12694,
+        "gallery": 12552,
+        "classes": 21,
+        "delta_vs_this_control": {
+          "delta_pp": 0.0,
+          "ci95_class": [
+            0.0,
+            0.0
+          ],
+          "classes_up": 0,
+          "classes": 21
+        },
+        "kd": {
+          "queries": 12694,
+          "mAP": 0.7174212336540222,
+          "precision": 0.7047899961471558,
+          "kd_minus_pipeline_max_abs_same_order_AP_P": [
+            0.0,
+            0.0
+          ],
+          "max_per_query_abs_AP_P": [
+            0.0,
+            0.0
+          ],
+          "mean_per_query_abs_AP_P": [
+            0.0,
+            0.0
+          ],
+          "queries_within_1e-6_both": 12694
+        }
+      },
+      "checkpoint": {
+        "mAP": 0.7141599655151367,
+        "precision": 0.7027926445007324,
+        "queries": 12694,
+        "gallery": 12552,
+        "classes": 21,
+        "delta_vs_this_control": {
+          "delta_pp": 0.32611631469753233,
+          "ci95_class": [
+            0.19490870800938864,
+            0.4564312152624754
+          ],
+          "classes_up": 18,
+          "classes": 21
+        }
+      },
+      "both_query_width": {
+        "mAP": 0.7157382369041443,
+        "precision": 0.7031223177909851,
+        "queries": 12694,
+        "gallery": 12552,
+        "classes": 21,
+        "delta_vs_this_control": {
+          "delta_pp": 0.1683017840621867,
+          "ci95_class": [
+            -0.36706774944757786,
+            0.6949168950871968
+          ],
+          "classes_up": 13,
+          "classes": 21
+        }
+      },
+      "both_photo_width": {
+        "mAP": 0.7141599655151367,
+        "precision": 0.7027926445007324,
+        "queries": 12694,
+        "gallery": 12552,
+        "classes": 21,
+        "delta_vs_this_control": {
+          "delta_pp": 0.32611631469753233,
+          "ci95_class": [
+            0.19490870800938864,
+            0.4564312152624754
+          ],
+          "classes_up": 18,
+          "classes": 21
+        }
+      }
+    },
+    "tuberlin": {
+      "primary": {
+        "mAP": 0.7310014963150024,
+        "precision": 0.7734740972518921,
+        "queries": 2130,
+        "gallery": 27262,
+        "classes": 30,
+        "delta_vs_this_control": {
+          "delta_pp": 0.0,
+          "ci95_class": [
+            0.0,
+            0.0
+          ],
+          "classes_up": 0,
+          "classes": 30
+        },
+        "kd": {
+          "queries": 2130,
+          "mAP": 0.7310015559196472,
+          "precision": 0.7734742164611816,
+          "kd_minus_pipeline_max_abs_same_order_AP_P": [
+            0.0,
+            0.0
+          ],
+          "max_per_query_abs_AP_P": [
+            0.0,
+            0.0
+          ],
+          "mean_per_query_abs_AP_P": [
+            0.0,
+            0.0
+          ],
+          "queries_within_1e-6_both": 2130
+        }
+      },
+      "checkpoint": {
+        "mAP": 0.7335334420204163,
+        "precision": 0.7721971869468689,
+        "queries": 2130,
+        "gallery": 27262,
+        "classes": 30,
+        "delta_vs_this_control": {
+          "delta_pp": -0.25319413179225625,
+          "ci95_class": [
+            -0.4200692759239971,
+            -0.0829842394792995
+          ],
+          "classes_up": 8,
+          "classes": 30
+        }
+      },
+      "both_query_width": {
+        "mAP": 0.7345425486564636,
+        "precision": 0.7740939259529114,
+        "queries": 2130,
+        "gallery": 27262,
+        "classes": 30,
+        "delta_vs_this_control": {
+          "delta_pp": -0.3541047976597129,
+          "ci95_class": [
+            -0.6844072496981636,
+            -0.0627411263706941
+          ],
+          "classes_up": 8,
+          "classes": 30
+        }
+      },
+      "both_photo_width": {
+        "mAP": 0.7335334420204163,
+        "precision": 0.7721971869468689,
+        "queries": 2130,
+        "gallery": 27262,
+        "classes": 30,
+        "delta_vs_this_control": {
+          "delta_pp": -0.25319413179225625,
+          "ci95_class": [
+            -0.4200692759239971,
+            -0.0829842394792995
+          ],
+          "classes_up": 8,
+          "classes": 30
+        }
+      }
+    }
+  }
+}
