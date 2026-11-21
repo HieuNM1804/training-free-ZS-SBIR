@@ -174,6 +174,7 @@ def run(workspace,name,stage):
         if pilot:
             ids=stratified_sample(ql,48,4783);qi,ql=qi[ids],ql[ids]
         data=Data(raw[qi].cuda(),rgb[pi].cuda(),src,tgt,scale)
+        module.prepare_data(data,a,words)
         index=module.Index(data)
         out=folder/("heldout" if held else "sketchy")
         meta={"revision":revision(),"family":name,"queries":len(ql),"gallery":len(pl),"classes":len(pl.unique()),
