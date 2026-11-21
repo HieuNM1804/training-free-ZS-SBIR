@@ -1,0 +1,45 @@
+{
+  "revision": "a3a4853c3138d3a78af98d8527dd39f87ab019a0",
+  "family": "retrieval-reciprocal-encoding",
+  "queries": 2130,
+  "gallery": 27262,
+  "classes": 30,
+  "checkpoint_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+  "dataset_sha256": "64fa2e05b5ce359af89caf817c2a90d8d48b268280e2f4896283aaa2d58f8bcd",
+  "kd_sha256": "3433c60a3739e852c94e573832dd53d51446f433326a453392d316b402402fbe",
+  "gpu": "NVIDIA L4",
+  "external_vocabulary": 20931,
+  "exploratory_unseen": false,
+  "freeze_sha256": "30ccaad3e4c5dbbe7b2b1dd990cf7cc6613512f7bc12078357841d8170a5c21f",
+  "diagnostic": {
+    "gallery": "fixed across independent queries",
+    "distance": "half of one minus cosine",
+    "graph_components": {
+      "('rgb', 60, 1, 'reciprocal')": {
+        "mean_reciprocal_query_core": 0.19718309859154928,
+        "queries_without_core": 1788,
+        "mean_nonzero_photo_weights": 35.875394321766564
+      },
+      "('semantic', 20, 6, 'reciprocal')": {
+        "mean_reciprocal_query_core": 7.357276995305164,
+        "queries_without_core": 107,
+        "mean_nonzero_photo_weights": 45.089721957303205
+      },
+      "('semantic', 60, 1, 'no_half')": {
+        "mean_reciprocal_query_core": 23.864788732394366,
+        "queries_without_core": 21,
+        "mean_nonzero_photo_weights": 31.833321106301813
+      },
+      "('semantic', 60, 1, 'one_way')": {
+        "mean_reciprocal_query_core": 60.0,
+        "queries_without_core": 0,
+        "mean_nonzero_photo_weights": 112.77584183112025
+      },
+      "('semantic', 60, 1, 'reciprocal')": {
+        "mean_reciprocal_query_core": 23.864788732394366,
+        "queries_without_core": 21,
+        "mean_nonzero_photo_weights": 50.931479715354705
+      }
+    }
+  }
+}

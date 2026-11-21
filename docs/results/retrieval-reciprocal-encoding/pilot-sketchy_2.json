@@ -1,0 +1,288 @@
+{
+  "revision": "a3a4853c3138d3a78af98d8527dd39f87ab019a0",
+  "family": "retrieval-reciprocal-encoding",
+  "queries": 1008,
+  "gallery": 12552,
+  "classes": 21,
+  "checkpoint_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+  "dataset_sha256": "30baecaac02eeff22cc54e533eb6bc1b757ba3a891a84f61a77ee837f073d8c6",
+  "kd_sha256": "3433c60a3739e852c94e573832dd53d51446f433326a453392d316b402402fbe",
+  "gpu": "NVIDIA L4",
+  "external_vocabulary": 20931,
+  "exploratory_unseen": true,
+  "freeze_sha256": null,
+  "settings": {
+    "41ea4affa47b0bfe": {
+      "parameters": {
+        "k": 20,
+        "expansion": 6,
+        "original_weight": 0.3,
+        "backoff": "geometry",
+        "geometry": "semantic",
+        "neighborhoods": "reciprocal"
+      },
+      "mAP": 0.5473148822784424,
+      "precision": 0.4935714602470398
+    },
+    "e3238a0759d822e2": {
+      "parameters": {
+        "k": 20,
+        "expansion": 6,
+        "original_weight": 0.7,
+        "backoff": "geometry",
+        "geometry": "semantic",
+        "neighborhoods": "reciprocal"
+      },
+      "mAP": 0.5522997975349426,
+      "precision": 0.49453872442245483
+    },
+    "db8f64b540bc5735": {
+      "parameters": {
+        "k": 20,
+        "expansion": 6,
+        "original_weight": 0.3,
+        "backoff": "likelihood",
+        "geometry": "semantic",
+        "neighborhoods": "reciprocal"
+      },
+      "mAP": 0.6018141508102417,
+      "precision": 0.5981696248054504
+    },
+    "516f3c15112bcdd5": {
+      "parameters": {
+        "k": 20,
+        "expansion": 6,
+        "original_weight": 0.7,
+        "backoff": "likelihood",
+        "geometry": "semantic",
+        "neighborhoods": "reciprocal"
+      },
+      "mAP": 0.6728320121765137,
+      "precision": 0.6693700551986694
+    },
+    "748e7e3f72d70fcd": {
+      "parameters": {
+        "k": 60,
+        "expansion": 1,
+        "original_weight": 0.3,
+        "backoff": "geometry",
+        "geometry": "semantic",
+        "neighborhoods": "reciprocal"
+      },
+      "mAP": 0.5620559453964233,
+      "precision": 0.5068402886390686
+    },
+    "7f42594bcdbab746": {
+      "parameters": {
+        "k": 60,
+        "expansion": 1,
+        "original_weight": 0.7,
+        "backoff": "geometry",
+        "geometry": "semantic",
+        "neighborhoods": "reciprocal"
+      },
+      "mAP": 0.5644516348838806,
+      "precision": 0.5053472518920898
+    },
+    "02f253c1d49edc61": {
+      "parameters": {
+        "k": 60,
+        "expansion": 1,
+        "original_weight": 0.3,
+        "backoff": "likelihood",
+        "geometry": "semantic",
+        "neighborhoods": "reciprocal"
+      },
+      "mAP": 0.6407927870750427,
+      "precision": 0.6387947201728821
+    },
+    "8b0ef3e36ea54297": {
+      "parameters": {
+        "k": 60,
+        "expansion": 1,
+        "original_weight": 0.7,
+        "backoff": "likelihood",
+        "geometry": "semantic",
+        "neighborhoods": "reciprocal"
+      },
+      "mAP": 0.6973139643669128,
+      "precision": 0.694851279258728
+    },
+    "f78fb97fb48c3664": {
+      "parameters": {
+        "k": 60,
+        "expansion": 6,
+        "original_weight": 0.3,
+        "backoff": "geometry",
+        "geometry": "semantic",
+        "neighborhoods": "reciprocal"
+      },
+      "mAP": 0.5692493915557861,
+      "precision": 0.5238987803459167
+    },
+    "e3cd5d2fd5342d74": {
+      "parameters": {
+        "k": 60,
+        "expansion": 6,
+        "original_weight": 0.7,
+        "backoff": "geometry",
+        "geometry": "semantic",
+        "neighborhoods": "reciprocal"
+      },
+      "mAP": 0.5709606409072876,
+      "precision": 0.5243353843688965
+    },
+    "16bd73d43574a1ab": {
+      "parameters": {
+        "k": 60,
+        "expansion": 6,
+        "original_weight": 0.3,
+        "backoff": "likelihood",
+        "geometry": "semantic",
+        "neighborhoods": "reciprocal"
+      },
+      "mAP": 0.592631995677948,
+      "precision": 0.5729017853736877
+    },
+    "5319e95b06fc6e0f": {
+      "parameters": {
+        "k": 60,
+        "expansion": 6,
+        "original_weight": 0.7,
+        "backoff": "likelihood",
+        "geometry": "semantic",
+        "neighborhoods": "reciprocal"
+      },
+      "mAP": 0.6578320860862732,
+      "precision": 0.647911787033081
+    },
+    "1b5f5afa214348cc": {
+      "parameters": {
+        "k": 60,
+        "expansion": 12,
+        "original_weight": 0.3,
+        "backoff": "geometry",
+        "geometry": "semantic",
+        "neighborhoods": "reciprocal"
+      },
+      "mAP": 0.5773358941078186,
+      "precision": 0.5352083444595337
+    },
+    "cd33c327694278cc": {
+      "parameters": {
+        "k": 60,
+        "expansion": 12,
+        "original_weight": 0.7,
+        "backoff": "geometry",
+        "geometry": "semantic",
+        "neighborhoods": "reciprocal"
+      },
+      "mAP": 0.5774310827255249,
+      "precision": 0.5328670740127563
+    },
+    "54eb26f4a04da91e": {
+      "parameters": {
+        "k": 60,
+        "expansion": 12,
+        "original_weight": 0.3,
+        "backoff": "likelihood",
+        "geometry": "semantic",
+        "neighborhoods": "reciprocal"
+      },
+      "mAP": 0.5906630158424377,
+      "precision": 0.56667160987854
+    },
+    "2c80edc986ed0f67": {
+      "parameters": {
+        "k": 60,
+        "expansion": 12,
+        "original_weight": 0.7,
+        "backoff": "likelihood",
+        "geometry": "semantic",
+        "neighborhoods": "reciprocal"
+      },
+      "mAP": 0.6508737206459045,
+      "precision": 0.6392112970352173
+    },
+    "6c93efa0acd7073b": {
+      "parameters": {
+        "k": 120,
+        "expansion": 6,
+        "original_weight": 0.3,
+        "backoff": "geometry",
+        "geometry": "semantic",
+        "neighborhoods": "reciprocal"
+      },
+      "mAP": 0.587280809879303,
+      "precision": 0.5524206757545471
+    },
+    "fd5f415eba538a16": {
+      "parameters": {
+        "k": 120,
+        "expansion": 6,
+        "original_weight": 0.7,
+        "backoff": "geometry",
+        "geometry": "semantic",
+        "neighborhoods": "reciprocal"
+      },
+      "mAP": 0.5861520171165466,
+      "precision": 0.5480159521102905
+    },
+    "c7dc45ee7a07e5c2": {
+      "parameters": {
+        "k": 120,
+        "expansion": 6,
+        "original_weight": 0.3,
+        "backoff": "likelihood",
+        "geometry": "semantic",
+        "neighborhoods": "reciprocal"
+      },
+      "mAP": 0.5981763005256653,
+      "precision": 0.5759127736091614
+    },
+    "1414c262dd8c9cc6": {
+      "parameters": {
+        "k": 120,
+        "expansion": 6,
+        "original_weight": 0.7,
+        "backoff": "likelihood",
+        "geometry": "semantic",
+        "neighborhoods": "reciprocal"
+      },
+      "mAP": 0.6513826251029968,
+      "precision": 0.6377778053283691
+    }
+  },
+  "seed": 4783,
+  "diagnostic": {
+    "gallery": "fixed across independent queries",
+    "distance": "half of one minus cosine",
+    "graph_components": {
+      "('semantic', 20, 6, 'reciprocal')": {
+        "mean_reciprocal_query_core": 7.637896825396825,
+        "queries_without_core": 53,
+        "mean_nonzero_photo_weights": 42.92415551306565
+      },
+      "('semantic', 60, 1, 'reciprocal')": {
+        "mean_reciprocal_query_core": 27.802579365079364,
+        "queries_without_core": 16,
+        "mean_nonzero_photo_weights": 57.79485340981517
+      },
+      "('semantic', 60, 6, 'reciprocal')": {
+        "mean_reciprocal_query_core": 27.802579365079364,
+        "queries_without_core": 16,
+        "mean_nonzero_photo_weights": 119.67535054174634
+      },
+      "('semantic', 60, 12, 'reciprocal')": {
+        "mean_reciprocal_query_core": 27.802579365079364,
+        "queries_without_core": 16,
+        "mean_nonzero_photo_weights": 158.98908540471638
+      },
+      "('semantic', 120, 6, 'reciprocal')": {
+        "mean_reciprocal_query_core": 64.54662698412699,
+        "queries_without_core": 9,
+        "mean_nonzero_photo_weights": 224.03832058636073
+      }
+    }
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "utc": "2026-11-21T04:22:31.208916+00:00",
+  "revision": "a3a4853c3138d3a78af98d8527dd39f87ab019a0",
+  "criterion": "equal mean Sketchy mAP, then precision",
+  "canonical": {
+    "k": 20,
+    "expansion": 6,
+    "original_weight": 0.3,
+    "backoff": "geometry",
+    "geometry": "semantic",
+    "neighborhoods": "reciprocal"
+  },
+  "winner": {
+    "k": 60,
+    "expansion": 1,
+    "original_weight": 0.7,
+    "backoff": "likelihood",
+    "geometry": "semantic",
+    "neighborhoods": "reciprocal"
+  },
+  "winner_id": "8b0ef3e36ea54297",
+  "controls": {
+    "primary": {
+      "k": 60,
+      "expansion": 1,
+      "original_weight": 0.7,
+      "backoff": "likelihood",
+      "geometry": "semantic",
+      "neighborhoods": "reciprocal"
+    },
+    "paper_settings": {
+      "k": 20,
+      "expansion": 6,
+      "original_weight": 0.3,
+      "backoff": "geometry",
+      "geometry": "semantic",
+      "neighborhoods": "reciprocal"
+    },
+    "no_reranking": {
+      "k": 60,
+      "expansion": 1,
+      "original_weight": 1.0,
+      "backoff": "likelihood",
+      "geometry": "semantic",
+      "neighborhoods": "reciprocal"
+    },
+    "no_original_score": {
+      "k": 60,
+      "expansion": 1,
+      "original_weight": 0.0,
+      "backoff": "likelihood",
+      "geometry": "semantic",
+      "neighborhoods": "reciprocal"
+    },
+    "one_way": {
+      "k": 60,
+      "expansion": 1,
+      "original_weight": 0.7,
+      "backoff": "likelihood",
+      "geometry": "semantic",
+      "neighborhoods": "one_way"
+    },
+    "no_half_set_expansion": {
+      "k": 60,
+      "expansion": 1,
+      "original_weight": 0.7,
+      "backoff": "likelihood",
+      "geometry": "semantic",
+      "neighborhoods": "no_half"
+    },
+    "no_local_query_expansion": {
+      "k": 60,
+      "expansion": 1,
+      "original_weight": 0.7,
+      "backoff": "likelihood",
+      "geometry": "semantic",
+      "neighborhoods": "reciprocal"
+    },
+    "raw_rgb_geometry": {
+      "k": 60,
+      "expansion": 1,
+      "original_weight": 0.7,
+      "backoff": "geometry",
+      "geometry": "rgb",
+      "neighborhoods": "reciprocal"
+    },
+    "shuffled_gallery_context": {
+      "k": 60,
+      "expansion": 1,
+      "original_weight": 0.7,
+      "backoff": "likelihood",
+      "geometry": "semantic",
+      "neighborhoods": "shuffle"
+    },
+    "exact_word_seed": {
+      "k": 60,
+      "expansion": 1,
+      "original_weight": 1.0,
+      "backoff": "likelihood",
+      "geometry": "semantic",
+      "neighborhoods": "reciprocal"
+    }
+  },
+  "sources": {
+    "sketchy_1-bf3ab2021bcccc2c.json": "8f6f842498917ad9b68edfb704aa252a7e9ab71dbb85cd814449372bc5f82922",
+    "sketchy_1-d0b24b120010fd44.json": "8c367ad706db0e0fa7b3419e33e8341a4a3d817836100cea0cf717b279f7b0ce",
+    "sketchy_1-8b0ef3e36ea54297.json": "1803e5a02a13146f1cd029e2d08909d0e6d147d99109e0fb46a48da1bc7a559d",
+    "sketchy_1-ae697c5e0169cbbb.json": "556bfc056473db7ddd2b3c10b034e15264c14378e0687101f4a5024c786b36ea",
+    "sketchy_1-139d6c7d08873159.json": "1debcc41dadbd26c7c71f927de405a3ec192aef8aa45e4c7699d0604aae177d2",
+    "sketchy_1-41ea4affa47b0bfe.json": "c9d122dc64113a73ad5a730cb39f7c1427d2d438080c23e67af109a5525086f7",
+    "sketchy_1-5eecf150f08071a4.json": "5f7f48418dd52ae4e1acca664b97c7b154259da8421623b499a186f2fb424164",
+    "sketchy_1-9a6d190e95ad08df.json": "765eab152264bae06cf12b89198549117d23f333ff7a5b8018bc2c24fd4fdece",
+    "sketchy_1-516f3c15112bcdd5.json": "0f56c9de9b5c89667e51426eb101928f9ece23a999a666ebd7e728939ea6c6b2",
+    "sketchy_2-bf3ab2021bcccc2c.json": "5cd54e1b34eacc4f0431d76a74055cbcf9c6f281f1e8ba0787799ae6037e4d51",
+    "sketchy_2-d0b24b120010fd44.json": "8619f294e44bf08080885cf66c24fc24937b3567da8c85e9d402bf96ff30271c",
+    "sketchy_2-8b0ef3e36ea54297.json": "4c5addffa361a21417709d70af8021ff121d17865610f07a9fda94d1a1e9d59a",
+    "sketchy_2-ae697c5e0169cbbb.json": "08f250ade39b39f1d8f18cb88412be33ded460a93af57d3a0e1e7516e8db59e8",
+    "sketchy_2-139d6c7d08873159.json": "6fbfe16a8fed57f608ff7bce89a15a0bf57d1e5fae3c17c24a177a6a37b80150",
+    "sketchy_2-41ea4affa47b0bfe.json": "539d907f49f3420f69fea280b34a58243a0056283c8f58ec1653ad74125395fa",
+    "sketchy_2-5eecf150f08071a4.json": "0f72dab5b076c187a04287a91bbdb5254eb4b491772a48248c6170e0d6b9f0bb",
+    "sketchy_2-9a6d190e95ad08df.json": "f0fb7a38921018b32ba9c6e73924a98289e885d88801890695f1009e215564bc",
+    "sketchy_2-516f3c15112bcdd5.json": "df429ac341e188b352f58e2d74e0f206fa01f36904aa28f48b3229b54b1a7ad2"
+  },
+  "tu_rows_before_freeze": 0,
+  "sha256": "30ccaad3e4c5dbbe7b2b1dd990cf7cc6613512f7bc12078357841d8170a5c21f"
+}

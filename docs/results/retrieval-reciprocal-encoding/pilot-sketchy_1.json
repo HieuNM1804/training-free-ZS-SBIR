@@ -1,0 +1,288 @@
+{
+  "revision": "a3a4853c3138d3a78af98d8527dd39f87ab019a0",
+  "family": "retrieval-reciprocal-encoding",
+  "queries": 1200,
+  "gallery": 17100,
+  "classes": 25,
+  "checkpoint_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+  "dataset_sha256": "8fafaf3aedf4751e28e2b33f073832e02fdf3ca1b36a9d7fda5ff328f26b0642",
+  "kd_sha256": "3433c60a3739e852c94e573832dd53d51446f433326a453392d316b402402fbe",
+  "gpu": "NVIDIA L4",
+  "external_vocabulary": 20931,
+  "exploratory_unseen": true,
+  "freeze_sha256": null,
+  "settings": {
+    "41ea4affa47b0bfe": {
+      "parameters": {
+        "k": 20,
+        "expansion": 6,
+        "original_weight": 0.3,
+        "backoff": "geometry",
+        "geometry": "semantic",
+        "neighborhoods": "reciprocal"
+      },
+      "mAP": 0.41281378269195557,
+      "precision": 0.5911333560943604
+    },
+    "e3238a0759d822e2": {
+      "parameters": {
+        "k": 20,
+        "expansion": 6,
+        "original_weight": 0.7,
+        "backoff": "geometry",
+        "geometry": "semantic",
+        "neighborhoods": "reciprocal"
+      },
+      "mAP": 0.4107481837272644,
+      "precision": 0.5936916470527649
+    },
+    "db8f64b540bc5735": {
+      "parameters": {
+        "k": 20,
+        "expansion": 6,
+        "original_weight": 0.3,
+        "backoff": "likelihood",
+        "geometry": "semantic",
+        "neighborhoods": "reciprocal"
+      },
+      "mAP": 0.6657494306564331,
+      "precision": 0.6428166627883911
+    },
+    "516f3c15112bcdd5": {
+      "parameters": {
+        "k": 20,
+        "expansion": 6,
+        "original_weight": 0.7,
+        "backoff": "likelihood",
+        "geometry": "semantic",
+        "neighborhoods": "reciprocal"
+      },
+      "mAP": 0.7110676169395447,
+      "precision": 0.7238750457763672
+    },
+    "748e7e3f72d70fcd": {
+      "parameters": {
+        "k": 60,
+        "expansion": 1,
+        "original_weight": 0.3,
+        "backoff": "geometry",
+        "geometry": "semantic",
+        "neighborhoods": "reciprocal"
+      },
+      "mAP": 0.4101705849170685,
+      "precision": 0.6038166284561157
+    },
+    "7f42594bcdbab746": {
+      "parameters": {
+        "k": 60,
+        "expansion": 1,
+        "original_weight": 0.7,
+        "backoff": "geometry",
+        "geometry": "semantic",
+        "neighborhoods": "reciprocal"
+      },
+      "mAP": 0.40813928842544556,
+      "precision": 0.603141725063324
+    },
+    "02f253c1d49edc61": {
+      "parameters": {
+        "k": 60,
+        "expansion": 1,
+        "original_weight": 0.3,
+        "backoff": "likelihood",
+        "geometry": "semantic",
+        "neighborhoods": "reciprocal"
+      },
+      "mAP": 0.6899616718292236,
+      "precision": 0.6852083206176758
+    },
+    "8b0ef3e36ea54297": {
+      "parameters": {
+        "k": 60,
+        "expansion": 1,
+        "original_weight": 0.7,
+        "backoff": "likelihood",
+        "geometry": "semantic",
+        "neighborhoods": "reciprocal"
+      },
+      "mAP": 0.7253665924072266,
+      "precision": 0.7506749629974365
+    },
+    "f78fb97fb48c3664": {
+      "parameters": {
+        "k": 60,
+        "expansion": 6,
+        "original_weight": 0.3,
+        "backoff": "geometry",
+        "geometry": "semantic",
+        "neighborhoods": "reciprocal"
+      },
+      "mAP": 0.45124971866607666,
+      "precision": 0.6154999732971191
+    },
+    "e3cd5d2fd5342d74": {
+      "parameters": {
+        "k": 60,
+        "expansion": 6,
+        "original_weight": 0.7,
+        "backoff": "geometry",
+        "geometry": "semantic",
+        "neighborhoods": "reciprocal"
+      },
+      "mAP": 0.4379705488681793,
+      "precision": 0.6157166957855225
+    },
+    "16bd73d43574a1ab": {
+      "parameters": {
+        "k": 60,
+        "expansion": 6,
+        "original_weight": 0.3,
+        "backoff": "likelihood",
+        "geometry": "semantic",
+        "neighborhoods": "reciprocal"
+      },
+      "mAP": 0.6339356899261475,
+      "precision": 0.6376500129699707
+    },
+    "5319e95b06fc6e0f": {
+      "parameters": {
+        "k": 60,
+        "expansion": 6,
+        "original_weight": 0.7,
+        "backoff": "likelihood",
+        "geometry": "semantic",
+        "neighborhoods": "reciprocal"
+      },
+      "mAP": 0.6961005926132202,
+      "precision": 0.7113916873931885
+    },
+    "1b5f5afa214348cc": {
+      "parameters": {
+        "k": 60,
+        "expansion": 12,
+        "original_weight": 0.3,
+        "backoff": "geometry",
+        "geometry": "semantic",
+        "neighborhoods": "reciprocal"
+      },
+      "mAP": 0.46688997745513916,
+      "precision": 0.6159667372703552
+    },
+    "cd33c327694278cc": {
+      "parameters": {
+        "k": 60,
+        "expansion": 12,
+        "original_weight": 0.7,
+        "backoff": "geometry",
+        "geometry": "semantic",
+        "neighborhoods": "reciprocal"
+      },
+      "mAP": 0.4497884213924408,
+      "precision": 0.6157666444778442
+    },
+    "54eb26f4a04da91e": {
+      "parameters": {
+        "k": 60,
+        "expansion": 12,
+        "original_weight": 0.3,
+        "backoff": "likelihood",
+        "geometry": "semantic",
+        "neighborhoods": "reciprocal"
+      },
+      "mAP": 0.6201205849647522,
+      "precision": 0.6299499869346619
+    },
+    "2c80edc986ed0f67": {
+      "parameters": {
+        "k": 60,
+        "expansion": 12,
+        "original_weight": 0.7,
+        "backoff": "likelihood",
+        "geometry": "semantic",
+        "neighborhoods": "reciprocal"
+      },
+      "mAP": 0.6861963272094727,
+      "precision": 0.7006832957267761
+    },
+    "6c93efa0acd7073b": {
+      "parameters": {
+        "k": 120,
+        "expansion": 6,
+        "original_weight": 0.3,
+        "backoff": "geometry",
+        "geometry": "semantic",
+        "neighborhoods": "reciprocal"
+      },
+      "mAP": 0.4921717345714569,
+      "precision": 0.6260666847229004
+    },
+    "fd5f415eba538a16": {
+      "parameters": {
+        "k": 120,
+        "expansion": 6,
+        "original_weight": 0.7,
+        "backoff": "geometry",
+        "geometry": "semantic",
+        "neighborhoods": "reciprocal"
+      },
+      "mAP": 0.4722651243209839,
+      "precision": 0.6257333755493164
+    },
+    "c7dc45ee7a07e5c2": {
+      "parameters": {
+        "k": 120,
+        "expansion": 6,
+        "original_weight": 0.3,
+        "backoff": "likelihood",
+        "geometry": "semantic",
+        "neighborhoods": "reciprocal"
+      },
+      "mAP": 0.6171960830688477,
+      "precision": 0.6380000114440918
+    },
+    "1414c262dd8c9cc6": {
+      "parameters": {
+        "k": 120,
+        "expansion": 6,
+        "original_weight": 0.7,
+        "backoff": "likelihood",
+        "geometry": "semantic",
+        "neighborhoods": "reciprocal"
+      },
+      "mAP": 0.6838566064834595,
+      "precision": 0.7041667103767395
+    }
+  },
+  "seed": 4783,
+  "diagnostic": {
+    "gallery": "fixed across independent queries",
+    "distance": "half of one minus cosine",
+    "graph_components": {
+      "('semantic', 20, 6, 'reciprocal')": {
+        "mean_reciprocal_query_core": 7.42,
+        "queries_without_core": 65,
+        "mean_nonzero_photo_weights": 41.85368421052632
+      },
+      "('semantic', 60, 1, 'reciprocal')": {
+        "mean_reciprocal_query_core": 26.620833333333334,
+        "queries_without_core": 17,
+        "mean_nonzero_photo_weights": 53.881052631578946
+      },
+      "('semantic', 60, 6, 'reciprocal')": {
+        "mean_reciprocal_query_core": 26.620833333333334,
+        "queries_without_core": 17,
+        "mean_nonzero_photo_weights": 115.29385964912281
+      },
+      "('semantic', 60, 12, 'reciprocal')": {
+        "mean_reciprocal_query_core": 26.620833333333334,
+        "queries_without_core": 17,
+        "mean_nonzero_photo_weights": 154.1795321637427
+      },
+      "('semantic', 120, 6, 'reciprocal')": {
+        "mean_reciprocal_query_core": 61.04,
+        "queries_without_core": 10,
+        "mean_nonzero_photo_weights": 216.18766081871345
+      }
+    }
+  }
+}
