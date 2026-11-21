@@ -1,0 +1,45 @@
+{
+  "methods": {
+    "public-semantic-translation": {
+      "configuration": {
+        "support": "nearest",
+        "mass": 0.5,
+        "bandwidth": "local",
+        "shuffle": false
+      },
+      "freeze": "b2e2484b3590721b82489f881481bc4ee76c7ec4c761115b4b70a3d8a52992f7",
+      "mAP": 0.36618557572364807,
+      "P200": 0.4236401915550232,
+      "KD_queries": 91491,
+      "max_error": [
+        2.384185791015625e-07,
+        5.960464477539063e-08
+      ]
+    },
+    "cross-diffusion-map": {
+      "configuration": {
+        "neighbors": 16,
+        "bandwidth": 0.36,
+        "iterations": 2,
+        "mode": "rgb",
+        "normalize_mass": true,
+        "shuffle_semantic": false
+      },
+      "freeze": "d9a77cfdb847a09f93ef334270ae7d05c52c188c4a15af3f090740d2112cc13c",
+      "mAP": 0.4568682014942169,
+      "P200": 0.46306002140045166,
+      "KD_queries": 91491,
+      "max_error": [
+        2.384185791015625e-07,
+        5.960464477539063e-08
+      ]
+    }
+  },
+  "queries": 91491,
+  "gallery": 56407,
+  "classes": 30,
+  "checkpoint": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+  "kd_function": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+  "manifest": "dc590caa2f8a9ac5a90406662532b116dd14a4d3fee76d17aaaa45209ce0da68",
+  "gpu": "NVIDIA L4"
+}
