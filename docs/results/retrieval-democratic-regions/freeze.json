@@ -1,0 +1,107 @@
+{
+  "utc": "2026-11-21T04:10:22.763196+00:00",
+  "revision": "80da36faba95eff4d04ec754cc57da913cf0c60e",
+  "criterion": "equal mean Sketchy mAP, then precision",
+  "canonical": {
+    "scales": "5",
+    "grouping": "together",
+    "side": "both",
+    "pooling": "democratic",
+    "mode": "semantic"
+  },
+  "winner": {
+    "scales": "5",
+    "grouping": "by_scale",
+    "side": "photo",
+    "pooling": "democratic",
+    "mode": "semantic"
+  },
+  "winner_id": "1cdeb087918958f7",
+  "controls": {
+    "primary": {
+      "scales": "5",
+      "grouping": "by_scale",
+      "side": "photo",
+      "pooling": "democratic",
+      "mode": "semantic"
+    },
+    "canonical": {
+      "scales": "5",
+      "grouping": "together",
+      "side": "both",
+      "pooling": "democratic",
+      "mode": "semantic"
+    },
+    "same_regions_equal_weights": {
+      "scales": "5",
+      "grouping": "by_scale",
+      "side": "photo",
+      "pooling": "mean",
+      "mode": "semantic"
+    },
+    "region_only": {
+      "scales": "5",
+      "grouping": "region_only",
+      "side": "photo",
+      "pooling": "democratic",
+      "mode": "semantic"
+    },
+    "full_frame": {
+      "scales": "5",
+      "grouping": "by_scale",
+      "side": "photo",
+      "pooling": "democratic",
+      "mode": "frame"
+    },
+    "rgb_without_words": {
+      "scales": "5",
+      "grouping": "by_scale",
+      "side": "photo",
+      "pooling": "democratic",
+      "mode": "rgb"
+    },
+    "photo_only": {
+      "scales": "5",
+      "grouping": "by_scale",
+      "side": "photo",
+      "pooling": "democratic",
+      "mode": "semantic"
+    },
+    "sketch_only": {
+      "scales": "5",
+      "grouping": "by_scale",
+      "side": "sketch",
+      "pooling": "democratic",
+      "mode": "semantic"
+    },
+    "shuffled_photos": {
+      "scales": "5",
+      "grouping": "by_scale",
+      "side": "photo",
+      "pooling": "democratic",
+      "mode": "shuffle"
+    }
+  },
+  "sources": {
+    "sketchy_1-0cf0edec9251cd19.json": "9da0af5319fca52bdb76261a5901cc93906e4a53736a5bc9192dd27e19135c6e",
+    "sketchy_1-806f19989ec6448c.json": "fd1d7e065d61be778992a5ed8b1efaf23ec9ae2a86d7818afe719d6fa4037688",
+    "sketchy_1-c1bd9b7d6d60bbc1.json": "5a2578d59439a5d702f4247daec325f9876dffacb7d2757ab09dadc708b7d80b",
+    "sketchy_1-fdef5e6c4f7bc9f2.json": "fac4d8ad7fb1d73dbab1d710073b60625fa436f0dc4ea89f924f0843a091e8fa",
+    "sketchy_1-bf6297d691e7a951.json": "b1570abde41aff7e5a2b31de762f00895a4366ee473bde4a94b11500ca4f10e9",
+    "sketchy_1-a017f5cc8433b743.json": "5e9dd48673bc4d8ccabf3051d87086a4193de6f5709abfa1d5ff523a735926b8",
+    "sketchy_1-1cdeb087918958f7.json": "a599d91e4ff91aba4e1e264fd39aa90188176cef4e7a77dba416f1dc3af8dae9",
+    "sketchy_1-6d7388674aa9e1a9.json": "4b7edf9cea4af111f644cb5ab24f237e243b0f2e8ac0eb52a44c492eb24a737a",
+    "sketchy_1-01fa754b3efa8bca.json": "b564032665c9952bb742c65a4df07590f7b42fc17771093bd93998fcb9866da5",
+    "sketchy_2-0cf0edec9251cd19.json": "b1afb0df44af632b3e6310bd8f4a60eb174f9729643dd2e3ecafce8948755c09",
+    "sketchy_2-806f19989ec6448c.json": "585223336bd2aedef02643b540df18e98ca4c3ccdbbed5e5411c4ce9c7b51b36",
+    "sketchy_2-c1bd9b7d6d60bbc1.json": "36f19ce43f93e8a12a4a3551854ca7c848382f0f0185e1e05c6df5a69b1403ca",
+    "sketchy_2-fdef5e6c4f7bc9f2.json": "05bf35bc3bd2104815c27cfe27d1dba4475f1ae4a19dae6188e5646fa0f754fd",
+    "sketchy_2-bf6297d691e7a951.json": "a7f68be23e972d444b35f0522cdf6e0c86dfaedb3ecdc4daa8df7d8744e11a4c",
+    "sketchy_2-a017f5cc8433b743.json": "55f7cf79e5bfbbd0b12ba3669137dbe98fa77f36c7abb5d697c59181623369d6",
+    "sketchy_2-1cdeb087918958f7.json": "8f09789752f0b7b08c5778700646174129ad33bfc7447b9a98efb2e1b0d618fb",
+    "sketchy_2-6d7388674aa9e1a9.json": "ba976e3530ab2edf045e929bf1d6721d676bb385b20487422f93ff226b97dccd",
+    "sketchy_2-01fa754b3efa8bca.json": "87cf6121cfe8d1a9bcbb66ebf3240e7de8228ce626e64b6d51450bbd9a8a9cf8"
+  },
+  "tu_rows_before_freeze": 0,
+  "sha256": "73975dd441a764b1ea9532d158f002c3e62502163e6fb4a23b2a34937132654c"
+}

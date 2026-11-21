@@ -1,0 +1,154 @@
+{
+  "revision": "80da36faba95eff4d04ec754cc57da913cf0c60e",
+  "family": "retrieval-democratic-regions",
+  "queries": 1200,
+  "gallery": 17100,
+  "classes": 25,
+  "checkpoint_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+  "dataset_sha256": "8fafaf3aedf4751e28e2b33f073832e02fdf3ca1b36a9d7fda5ff328f26b0642",
+  "kd_sha256": "3433c60a3739e852c94e573832dd53d51446f433326a453392d316b402402fbe",
+  "gpu": "NVIDIA L4",
+  "external_vocabulary": 20931,
+  "exploratory_unseen": true,
+  "freeze_sha256": null,
+  "settings": {
+    "bab09656b54f007f": {
+      "parameters": {
+        "scales": "3",
+        "grouping": "by_scale",
+        "side": "both",
+        "pooling": "democratic",
+        "mode": "semantic"
+      },
+      "mAP": 0.6862844824790955,
+      "precision": 0.7596750259399414
+    },
+    "37dbfbcf23e33916": {
+      "parameters": {
+        "scales": "3",
+        "grouping": "by_scale",
+        "side": "photo",
+        "pooling": "democratic",
+        "mode": "semantic"
+      },
+      "mAP": 0.7358279824256897,
+      "precision": 0.7824333906173706
+    },
+    "b83353237e2333b8": {
+      "parameters": {
+        "scales": "3",
+        "grouping": "together",
+        "side": "both",
+        "pooling": "democratic",
+        "mode": "semantic"
+      },
+      "mAP": 0.3426834046840668,
+      "precision": 0.4507833421230316
+    },
+    "f04f97372dfb31da": {
+      "parameters": {
+        "scales": "3",
+        "grouping": "together",
+        "side": "photo",
+        "pooling": "democratic",
+        "mode": "semantic"
+      },
+      "mAP": 0.6619524955749512,
+      "precision": 0.7585833668708801
+    },
+    "a7ad494481991804": {
+      "parameters": {
+        "scales": "3+5",
+        "grouping": "by_scale",
+        "side": "both",
+        "pooling": "democratic",
+        "mode": "semantic"
+      },
+      "mAP": 0.6967414617538452,
+      "precision": 0.7628583312034607
+    },
+    "fdef5e6c4f7bc9f2": {
+      "parameters": {
+        "scales": "3+5",
+        "grouping": "by_scale",
+        "side": "photo",
+        "pooling": "democratic",
+        "mode": "semantic"
+      },
+      "mAP": 0.7388835549354553,
+      "precision": 0.7833917140960693
+    },
+    "98eab89e3c58d790": {
+      "parameters": {
+        "scales": "3+5",
+        "grouping": "together",
+        "side": "both",
+        "pooling": "democratic",
+        "mode": "semantic"
+      },
+      "mAP": 0.5238375663757324,
+      "precision": 0.6367500424385071
+    },
+    "52da84e081cbfd94": {
+      "parameters": {
+        "scales": "3+5",
+        "grouping": "together",
+        "side": "photo",
+        "pooling": "democratic",
+        "mode": "semantic"
+      },
+      "mAP": 0.7051702737808228,
+      "precision": 0.7738416790962219
+    },
+    "261eb0ce44c5a62b": {
+      "parameters": {
+        "scales": "5",
+        "grouping": "by_scale",
+        "side": "both",
+        "pooling": "democratic",
+        "mode": "semantic"
+      },
+      "mAP": 0.7301968336105347,
+      "precision": 0.7785166501998901
+    },
+    "1cdeb087918958f7": {
+      "parameters": {
+        "scales": "5",
+        "grouping": "by_scale",
+        "side": "photo",
+        "pooling": "democratic",
+        "mode": "semantic"
+      },
+      "mAP": 0.7415494322776794,
+      "precision": 0.7817249894142151
+    },
+    "0cf0edec9251cd19": {
+      "parameters": {
+        "scales": "5",
+        "grouping": "together",
+        "side": "both",
+        "pooling": "democratic",
+        "mode": "semantic"
+      },
+      "mAP": 0.6986910104751587,
+      "precision": 0.7541750073432922
+    },
+    "ae79a32d6c89b5f8": {
+      "parameters": {
+        "scales": "5",
+        "grouping": "together",
+        "side": "photo",
+        "pooling": "democratic",
+        "mode": "semantic"
+      },
+      "mAP": 0.7367463111877441,
+      "precision": 0.7813166975975037
+    }
+  },
+  "seed": 4783,
+  "diagnostic": {
+    "regions": "3x3 and 5x5 masked-window CLS, 7x7 patch grid",
+    "gram": "positive cosine kernel per individual image",
+    "iterations": 18
+  }
+}
