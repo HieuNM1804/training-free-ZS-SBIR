@@ -1,0 +1,44 @@
+{
+  "revision": "0883e1f4d1af4c497e7a2dfa5473222fa748be6f",
+  "family": "retrieval-vocabulary-tree",
+  "queries": 2130,
+  "gallery": 27262,
+  "classes": 30,
+  "checkpoint_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+  "dataset_sha256": "64fa2e05b5ce359af89caf817c2a90d8d48b268280e2f4896283aaa2d58f8bcd",
+  "kd_sha256": "3433c60a3739e852c94e573832dd53d51446f433326a453392d316b402402fbe",
+  "gpu": "NVIDIA L4",
+  "external_vocabulary": 20931,
+  "exploratory_unseen": false,
+  "freeze_sha256": "00041e392715875139db4eabd4d791291f567e397757bb1febe33a447d88cb47",
+  "name": "493eba191e7a7778",
+  "parameters": {
+    "terms": 64,
+    "levels": "all",
+    "metric": "intersection",
+    "idf": true,
+    "control": "matched"
+  },
+  "mAP": 0.5885240435600281,
+  "precision": 0.7025352716445923,
+  "map_k": 0,
+  "p_k": 100,
+  "kd_check": {
+    "queries": 2130,
+    "mAP": 0.5885239839553833,
+    "precision": 0.7025351524353027,
+    "kd_minus_pipeline_max_abs_same_order_AP_P": [
+      0.0,
+      0.0
+    ],
+    "max_per_query_abs_AP_P": [
+      0.0,
+      0.0
+    ],
+    "mean_per_query_abs_AP_P": [
+      0.0,
+      0.0
+    ],
+    "queries_within_1e-6_both": 2130
+  }
+}

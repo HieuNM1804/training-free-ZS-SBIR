@@ -1,0 +1,197 @@
+{
+  "revision": "0883e1f4d1af4c497e7a2dfa5473222fa748be6f",
+  "family": "retrieval-vocabulary-tree",
+  "queries": 1200,
+  "gallery": 17100,
+  "classes": 25,
+  "checkpoint_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+  "dataset_sha256": "8fafaf3aedf4751e28e2b33f073832e02fdf3ca1b36a9d7fda5ff328f26b0642",
+  "kd_sha256": "3433c60a3739e852c94e573832dd53d51446f433326a453392d316b402402fbe",
+  "gpu": "NVIDIA L4",
+  "external_vocabulary": 20931,
+  "exploratory_unseen": true,
+  "freeze_sha256": null,
+  "settings": {
+    "7f64dd9e908a2293": {
+      "parameters": {
+        "terms": 4,
+        "levels": "all",
+        "metric": "cosine",
+        "idf": true,
+        "control": "matched"
+      },
+      "mAP": 0.4410552978515625,
+      "precision": 0.6133666634559631
+    },
+    "dc0f926635d49f62": {
+      "parameters": {
+        "terms": 4,
+        "levels": "all",
+        "metric": "intersection",
+        "idf": true,
+        "control": "matched"
+      },
+      "mAP": 0.41604146361351013,
+      "precision": 0.595300018787384
+    },
+    "181efd9195cd43d8": {
+      "parameters": {
+        "terms": 4,
+        "levels": "internal",
+        "metric": "cosine",
+        "idf": true,
+        "control": "matched"
+      },
+      "mAP": 0.34186309576034546,
+      "precision": 0.4759666919708252
+    },
+    "b865925859e3004c": {
+      "parameters": {
+        "terms": 4,
+        "levels": "internal",
+        "metric": "intersection",
+        "idf": true,
+        "control": "matched"
+      },
+      "mAP": 0.3317416310310364,
+      "precision": 0.4669249951839447
+    },
+    "d5608bbbe567a5e3": {
+      "parameters": {
+        "terms": 16,
+        "levels": "all",
+        "metric": "cosine",
+        "idf": true,
+        "control": "matched"
+      },
+      "mAP": 0.5303885340690613,
+      "precision": 0.6520166397094727
+    },
+    "3d2fef9363f76f80": {
+      "parameters": {
+        "terms": 16,
+        "levels": "all",
+        "metric": "intersection",
+        "idf": true,
+        "control": "matched"
+      },
+      "mAP": 0.5232365131378174,
+      "precision": 0.6526583433151245
+    },
+    "f539b0b28a96e63c": {
+      "parameters": {
+        "terms": 16,
+        "levels": "internal",
+        "metric": "cosine",
+        "idf": true,
+        "control": "matched"
+      },
+      "mAP": 0.4235681891441345,
+      "precision": 0.5367166996002197
+    },
+    "ae300095007bc737": {
+      "parameters": {
+        "terms": 16,
+        "levels": "internal",
+        "metric": "intersection",
+        "idf": true,
+        "control": "matched"
+      },
+      "mAP": 0.4201999008655548,
+      "precision": 0.542608380317688
+    },
+    "be71c10c0dc7d286": {
+      "parameters": {
+        "terms": 64,
+        "levels": "all",
+        "metric": "cosine",
+        "idf": true,
+        "control": "matched"
+      },
+      "mAP": 0.5410504341125488,
+      "precision": 0.6439416408538818
+    },
+    "493eba191e7a7778": {
+      "parameters": {
+        "terms": 64,
+        "levels": "all",
+        "metric": "intersection",
+        "idf": true,
+        "control": "matched"
+      },
+      "mAP": 0.5632534027099609,
+      "precision": 0.6693000197410583
+    },
+    "37041aab5ea78b73": {
+      "parameters": {
+        "terms": 64,
+        "levels": "internal",
+        "metric": "cosine",
+        "idf": true,
+        "control": "matched"
+      },
+      "mAP": 0.44997626543045044,
+      "precision": 0.5486750602722168
+    },
+    "cd213f84de5dba40": {
+      "parameters": {
+        "terms": 64,
+        "levels": "internal",
+        "metric": "intersection",
+        "idf": true,
+        "control": "matched"
+      },
+      "mAP": 0.45042964816093445,
+      "precision": 0.5606917142868042
+    }
+  },
+  "seed": 4783,
+  "diagnostic": {
+    "nodes": [
+      10,
+      100,
+      849
+    ],
+    "reference_documents": "20931 standalone public words",
+    "branching": 10,
+    "max_lloyd_iterations": 24,
+    "sample_score_ties": {
+      "Config(terms=4, levels='all', metric='cosine', idf=True, control='matched')": {
+        "fraction_zero": 0.15284721553325653
+      },
+      "Config(terms=4, levels='all', metric='intersection', idf=True, control='matched')": {
+        "fraction_zero": 0.15284721553325653
+      },
+      "Config(terms=4, levels='internal', metric='cosine', idf=True, control='matched')": {
+        "fraction_zero": 0.15284721553325653
+      },
+      "Config(terms=4, levels='internal', metric='intersection', idf=True, control='matched')": {
+        "fraction_zero": 0.15284721553325653
+      },
+      "Config(terms=16, levels='all', metric='cosine', idf=True, control='matched')": {
+        "fraction_zero": 0.008620248176157475
+      },
+      "Config(terms=16, levels='all', metric='intersection', idf=True, control='matched')": {
+        "fraction_zero": 0.008620248176157475
+      },
+      "Config(terms=16, levels='internal', metric='cosine', idf=True, control='matched')": {
+        "fraction_zero": 0.008620248176157475
+      },
+      "Config(terms=16, levels='internal', metric='intersection', idf=True, control='matched')": {
+        "fraction_zero": 0.008620248176157475
+      },
+      "Config(terms=64, levels='all', metric='cosine', idf=True, control='matched')": {
+        "fraction_zero": 0.0
+      },
+      "Config(terms=64, levels='all', metric='intersection', idf=True, control='matched')": {
+        "fraction_zero": 0.0
+      },
+      "Config(terms=64, levels='internal', metric='cosine', idf=True, control='matched')": {
+        "fraction_zero": 0.0
+      },
+      "Config(terms=64, levels='internal', metric='intersection', idf=True, control='matched')": {
+        "fraction_zero": 0.0
+      }
+    }
+  }
+}

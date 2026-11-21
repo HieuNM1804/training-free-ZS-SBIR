@@ -1,0 +1,91 @@
+{
+  "utc": "2026-11-21T04:16:41.340989+00:00",
+  "revision": "0883e1f4d1af4c497e7a2dfa5473222fa748be6f",
+  "criterion": "equal mean Sketchy mAP, then precision",
+  "canonical": {
+    "terms": 16,
+    "levels": "all",
+    "metric": "intersection",
+    "idf": true,
+    "control": "matched"
+  },
+  "winner": {
+    "terms": 64,
+    "levels": "all",
+    "metric": "intersection",
+    "idf": true,
+    "control": "matched"
+  },
+  "winner_id": "493eba191e7a7778",
+  "controls": {
+    "primary": {
+      "terms": 64,
+      "levels": "all",
+      "metric": "intersection",
+      "idf": true,
+      "control": "matched"
+    },
+    "canonical": {
+      "terms": 16,
+      "levels": "all",
+      "metric": "intersection",
+      "idf": true,
+      "control": "matched"
+    },
+    "exact_leaf_only": {
+      "terms": 64,
+      "levels": "leaf",
+      "metric": "intersection",
+      "idf": true,
+      "control": "matched"
+    },
+    "no_idf": {
+      "terms": 64,
+      "levels": "all",
+      "metric": "intersection",
+      "idf": false,
+      "control": "matched"
+    },
+    "shuffled_tree": {
+      "terms": 64,
+      "levels": "all",
+      "metric": "intersection",
+      "idf": true,
+      "control": "shuffle"
+    },
+    "permuted_tie_order": {
+      "terms": 64,
+      "levels": "all",
+      "metric": "intersection",
+      "idf": true,
+      "control": "ties"
+    },
+    "seed": {
+      "terms": 64,
+      "levels": "all",
+      "metric": "intersection",
+      "idf": true,
+      "control": "seed"
+    }
+  },
+  "sources": {
+    "sketchy_1-d5608bbbe567a5e3.json": "125300c3d805941edc36dc2f433902f382ad2eb6f24f04bf27216a8a08813dfd",
+    "sketchy_1-2eff971978bf32e2.json": "abe1e8dc59c2341c7531c3ade0fd468d3bdcfb2b2883473ce50a9f9962d147e8",
+    "sketchy_1-3d2fef9363f76f80.json": "bd8dd10ad5e30ce1e8b6ca41f3ad5423d7077137b6141e52e769c9fa3a1d22a1",
+    "sketchy_1-493eba191e7a7778.json": "b4f1c6d0c50cbf5d715d039b67e09e411e3b10d9c5fe3f708cf0b6c8f5f9b8f4",
+    "sketchy_1-390c728ce66cf1ac.json": "5853fa219ebfcdebd818c4f2af655078b1be627a21ed9a53bf2fa4c4c68f1196",
+    "sketchy_1-574f16a80a0ae8d3.json": "8183fd8295d873a730c9baffd3aadf49e2e3f16e59245685f55ca6a651f36085",
+    "sketchy_1-72d49e7f50f40cc7.json": "4b817fe29fc98a3a5c9ec2a0f5558d1186c189a4f3979e705b5a49119ed68ab1",
+    "sketchy_1-623b965023012e92.json": "be97a7028bcb53bfdba86925c5db562d9c936147931f815f2700edecccc73a1b",
+    "sketchy_2-d5608bbbe567a5e3.json": "d871b40f5d3d8e14a00d229689c0cac71001b12a1c7d896b750519cebf39cb67",
+    "sketchy_2-2eff971978bf32e2.json": "82c6c86d50a9ee1635091f9013546305ab0d414303788cde72489ea98716d3cd",
+    "sketchy_2-3d2fef9363f76f80.json": "f0110b24f4b9f2ba235fc5d074dd9e187c3e9d23c942deeeee68ab5872e1439f",
+    "sketchy_2-493eba191e7a7778.json": "d27550762b961a645968cf5448674311362de6e4cb413d3f436f2c74294ee377",
+    "sketchy_2-390c728ce66cf1ac.json": "3213bf39d49384913a76260dd06911b276916351f274b290d50a20460af44d98",
+    "sketchy_2-574f16a80a0ae8d3.json": "43a0b3e359a1d5ed2dcbf1b9631a5ebfaca0133884605a7b400f09261834baca",
+    "sketchy_2-72d49e7f50f40cc7.json": "94a9b8e362fecb976fa8f25ee32362c2cd09129ab2edc591bd2fcaf90531d0e2",
+    "sketchy_2-623b965023012e92.json": "043a509eee21f05bf7b05920ba6a2976ce12ca70d39d1f32399b1e3aa9a08f98"
+  },
+  "tu_rows_before_freeze": 0,
+  "sha256": "00041e392715875139db4eabd4d791291f567e397757bb1febe33a447d88cb47"
+}
