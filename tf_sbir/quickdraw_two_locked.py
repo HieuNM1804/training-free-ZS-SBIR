@@ -12,6 +12,8 @@ w=Path("/content/sbir")
 this=Path(__file__).resolve().parents[1]
 cross=w/"worktrees/quickdraw-confirm"
 sys.path.insert(0,str(cross))
+import tf_sbir
+tf_sbir.__path__.insert(0,str(cross/"tf_sbir"))
 from tf_sbir.quickdraw_locked import OfficialMetrics, paths, load_global_inputs, read_words, bare_words, load_words, load_kd, KD_FUNCTION_SHA, Index, Config, emission, target_inputs, read, digest, save_tensor, atomic_json, CHECKPOINT, checksum
 
 spec=util.spec_from_file_location("tf_sbir.frozen_translation",this/"tf_sbir/public_semantic_translation.py")
