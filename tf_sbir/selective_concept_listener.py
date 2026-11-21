@@ -54,12 +54,12 @@ def scores(q,source,photo,prior,scale,temp,nlist,orderkind):
     logits=scale*temp*(q@source.T)
     u=(logits-logits.amax(1,keepdim=True)).exp()
     if orderkind=="query":
-        order=u.argsort(1,descending=True,stable=True)
+        order=u.argsort(dim=1,descending=True,stable=True)
     elif orderkind=="prior":
         order=prior.argsort(descending=True,stable=True)[None].expand(len(q),-1)
     elif orderkind=="shuffled":
         random=torch.randperm(len(source),generator=torch.Generator().manual_seed(15299)).to(q.device)
-        order=u[:,random].argsort(1,descending=True,stable=True)
+        order=u[:,random].argsort(dim=1,descending=True,stable=True)
     else:
         raise ValueError(orderkind)
     return exact_best_of(u,photo,prior,order,nlist)
