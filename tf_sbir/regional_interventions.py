@@ -89,7 +89,7 @@ def obtain(w, dataset, cfg, paths, raw, ids, batch=56):
         old=torch.cat(([old] if old is not None else [])+chunks)[order]
         save_tensor({"ids":old_ids,"features":old},file)
         atomic_json(info,{"signature":h,"native_one_minus_cosine":error,"count":len(old_ids)})
-    positions=old_ids.searchsorted(ids)
+    positions=torch.searchsorted(old_ids,ids)
     if not torch.equal(old_ids[positions],ids):raise ValueError("Cache index mismatch")
     return old[positions]
 

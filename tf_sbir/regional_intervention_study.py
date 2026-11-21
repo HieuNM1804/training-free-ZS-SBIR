@@ -170,7 +170,8 @@ def run(w,phase,workers):
                     if stage=="final" and rec["per_query_sha256"]!=checksum(folder/(s+".pt")):raise ValueError("Missing query evidence")
                     table[s]=rec["values"]
                     continue
-                ids=plan[s]; loc=combined.searchsorted(qi[ids])
+                ids=plan[s]
+                loc=torch.searchsorted(combined,qi[ids])
                 if not torch.equal(combined[loc],qi[ids]):raise ValueError("Misaligned view order")
                 info=digest({"scorer":signature,"paths":digest([str(pp[i]) for i in pi.tolist()]),"words":checksum(cfg.vocabulary)})[:16]
                 heads,b=index(w,s,praw[pi].cuda(),tgt,scale,info)
