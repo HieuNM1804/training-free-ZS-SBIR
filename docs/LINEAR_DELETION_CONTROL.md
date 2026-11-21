@@ -1,0 +1,3 @@
+# Matched deletion check on the original linear index
+
+Evaluate the same frozen index, query set, stratified sample, all 20,931 term interventions, exhaustive real-query checks and numerical tolerance with the original linear scorer. Its single-word decrease at candidate i is simply the product of that word's sketch likelihood and the gallery profile for the word. The two-image method has both a forward and a reverse term and a diagonal correction. The comparison tests whether extra retrieval accuracy implies greater stability in either the first photo or its predicted class. It also provides a sanity check: in the linear model the direct-path-only attribution must match the exact pairwise attribution. No configuration is selected from this control.

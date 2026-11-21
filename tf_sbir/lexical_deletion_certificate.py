@@ -111,9 +111,22 @@ def aggregate_flags(records):
             "maximum_normalized_error":max(x["winner_max_scale_relative_error"] for x in records)}
 
 
+class LinearAudit(DeletionAudit):
+    """Exactly matched deletion intervention for the original linear word index."""
+    def __init__(self, index):
+        self.b = index.index
+
+    def scores(self, l):
+        return accurate_product(l,self.b.T), None
+
+    def drops(self, l, response, candidate):
+        influence = l * self.b[candidate]
+        return influence, influence
+
+
 @torch.inference_mode()
-def run(w):
-    root=w/"results"/FAMILY
+def run(w, family=FAMILY):
+    root=w/"results"/family
     for dataset in ("sketchy","tuberlin"):
         if dataset=="tuberlin":
             atomic_json(root/"freeze.json",{"revision":revision(),"sample_per_class":4,"seed":79307,
@@ -134,7 +147,7 @@ def run(w):
                     continue
             q,p=qraw[qi].cuda(),praw[pi].cuda()
             idx=LexicalFeedback(p,target,scale)
-            audit=DeletionAudit(idx)
+            audit=LinearAudit(idx) if family=="word-deletion-linear-control" else DeletionAudit(idx)
             del idx
             labels=pl.cuda()
             selected=set(stratified_sample(ql,4,79307).tolist())
@@ -194,7 +207,7 @@ def run(w):
             positive=values["worst_margin"]>TOL
             negative=values["worst_margin"]<-TOL
             save_tensor({"query_labels":ql,"fields":values},details)
-            result={"protocol":{"revision":revision(),"split":split,"queries":len(q),"gallery":len(p),"terms":len(terms),
+            result={"protocol":{"revision":revision(),"family":family,"split":split,"queries":len(q),"gallery":len(p),"terms":len(terms),
                                 "vocabulary_sha256":checksum(cfg.vocabulary),"classes":len(pl.unique()),
                                 "checkpoint":CHECKPOINT,"gpu":torch.cuda.get_device_name()},
                     "pair":{"certainly_stable":int(positive.sum()),"certainly_flippable":int(negative.sum()),
@@ -215,8 +228,11 @@ def run(w):
 if __name__=="__main__":
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--workspace",type=Path,default=Path("/content/sbir"))
-    workspace=parser.parse_args().workspace
-    output=workspace/"results"/FAMILY
+    parser.add_argument("--linear-control",action="store_true")
+    args=parser.parse_args()
+    workspace=args.workspace
+    family="word-deletion-linear-control" if args.linear_control else FAMILY
+    output=workspace/"results"/family
     output.mkdir(parents=True,exist_ok=True)
     with (output/".audit.lock").open("a") as guard:
         try:
@@ -224,4 +240,4 @@ if __name__=="__main__":
         except BlockingIOError:
             print("An audit is already running in this Colab workspace.",flush=True)
         else:
-            run(workspace)
+            run(workspace,family)
