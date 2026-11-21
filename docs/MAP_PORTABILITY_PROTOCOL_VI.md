@@ -1,0 +1,9 @@
+# Kiểm tra độ phụ thuộc vào từ điển và gallery
+
+Áp dụng cho phương pháp hiệu chỉnh phân bố khái niệm theo lân cận nếu phương pháp này thắng theo trung bình mAP của hai split Sketchy. Mục đích là kiểm tra giả thuyết rằng thuật toán có thể lập chỉ mục ảnh mới từ một tập tham chiếu cùng miền. Các phép thử dưới đây đánh giá một cấu hình duy nhất đã khóa. Nhãn lớp chỉ dùng sau khi xếp hạng để chấm và tính thống kê.
+
+1. Trên từng split, xáo ngẫu nhiên danh sách ảnh gallery bằng seed 15517 và chia thành hai phần. Với mỗi phần, chỉ dùng ảnh trong đó để ước lượng prior từ, bề rộng kernel và làm nguồn láng giềng. Mỗi lần vẫn chấm đủ mọi sketch trên toàn bộ gallery. Chấm thêm trên những ảnh nằm ngoài phần tham chiếu và đối chiếu với thứ hạng gốc hạn chế trên đúng các ảnh đó.
+2. Chia đôi danh sách 20.931 từ công khai bằng seed 9241. Ước lượng lại chỉ mục trên mỗi nửa từ điển với cùng tham số đã khóa. Sau khi chấm, đối chiếu tên lớp với các từ thực sự có mặt trong từng nửa. Nhờ phép chia độc lập với tên benchmark, có thể đo độ nhạy với vốn từ và sự trùng tên lớp. Việc bỏ hàng nghìn từ cùng lúc cũng thay đổi từ đồng nghĩa và từ chỉ vật thể liên quan, nên chênh lệch này mang tính liên hệ.
+3. Ước lượng prior trên tập hợp các ảnh riêng biệt thuộc hai gallery Sketchy và mang nguyên vector prior sang TU. Giữ nguyên cơ chế láng giềng RGB của TU, nhằm tách vai trò của prior so với các phần còn lại. Trường hợp này kiểm tra một ràng buộc triển khai nghiêm hơn cách ước lượng prior từ gallery đích không nhãn.
+
+Báo cáo mAP@all cho Ext-1 và TU, mAP@200 cho Ext-2, P@K tương ứng, số truy vấn, số ảnh, kết quả theo từng nửa và khoảng tin cậy bootstrap theo lớp cho các khác biệt ghép cặp. Các phép thay thế chỉ dùng trong phần phân tích. Quy tắc lựa chọn phương pháp đã ghi riêng trong kế hoạch thí nghiệm.
