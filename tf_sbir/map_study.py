@@ -153,7 +153,8 @@ def run(workspace,name,stage):
         return
     held=stage=="heldout";pilot=stage=="pilot";locked=None
     if held:
-        locked=make_lock(module,folder);dec=read(root/"map-study/joint-freeze.json")
+        locked=make_lock(module,folder)
+        dec=read(root/getattr(module,"DECISION","map-study/joint-freeze.json"))
         sig=dec.pop("sha256")
         if digest(dec)!=sig or dec["families"][name]["freeze"]!=locked["sha256"]:
             raise ValueError("Missing pre-TU decision")
