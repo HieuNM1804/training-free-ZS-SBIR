@@ -1,0 +1,487 @@
+{
+  "revision": "c6e518221ac5aeee052bf16cd6b741247bff10c0",
+  "family": "cross-diffusion-map",
+  "queries": 1008,
+  "gallery": 12552,
+  "classes": 21,
+  "checkpoint_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+  "dataset_sha256": "30baecaac02eeff22cc54e533eb6bc1b757ba3a891a84f61a77ee837f073d8c6",
+  "kd_sha256": "adaa5781082173d333b5605f18045f2c2fecb6dbe23685902104dfc0828855ee",
+  "gpu": "NVIDIA L4",
+  "external_vocabulary": 20931,
+  "exploratory_unseen": true,
+  "freeze_sha256": null,
+  "settings": {
+    "fdff373c5c5edff6": {
+      "parameters": {
+        "neighbors": 16,
+        "bandwidth": 0.06,
+        "iterations": 1,
+        "mode": "cross",
+        "normalize_mass": true,
+        "shuffle_semantic": false
+      },
+      "mAP": 0.7354825139045715,
+      "precision": 0.7249057292938232
+    },
+    "b4c1f62927f2c3c4": {
+      "parameters": {
+        "neighbors": 16,
+        "bandwidth": 0.06,
+        "iterations": 1,
+        "mode": "rgb",
+        "normalize_mass": true,
+        "shuffle_semantic": false
+      },
+      "mAP": 0.7364134788513184,
+      "precision": 0.7250545620918274
+    },
+    "372831f6a0f4d74a": {
+      "parameters": {
+        "neighbors": 16,
+        "bandwidth": 0.06,
+        "iterations": 1,
+        "mode": "semantic",
+        "normalize_mass": true,
+        "shuffle_semantic": false
+      },
+      "mAP": 0.7299655079841614,
+      "precision": 0.7207540273666382
+    },
+    "db9f41d49b35e971": {
+      "parameters": {
+        "neighbors": 16,
+        "bandwidth": 0.06,
+        "iterations": 2,
+        "mode": "cross",
+        "normalize_mass": true,
+        "shuffle_semantic": false
+      },
+      "mAP": 0.7403323650360107,
+      "precision": 0.7286657094955444
+    },
+    "e94f61a16167b22b": {
+      "parameters": {
+        "neighbors": 16,
+        "bandwidth": 0.06,
+        "iterations": 2,
+        "mode": "rgb",
+        "normalize_mass": true,
+        "shuffle_semantic": false
+      },
+      "mAP": 0.7392891049385071,
+      "precision": 0.7280059456825256
+    },
+    "707add6a3377057e": {
+      "parameters": {
+        "neighbors": 16,
+        "bandwidth": 0.06,
+        "iterations": 2,
+        "mode": "semantic",
+        "normalize_mass": true,
+        "shuffle_semantic": false
+      },
+      "mAP": 0.7322264909744263,
+      "precision": 0.7223016619682312
+    },
+    "213283fc4c993daa": {
+      "parameters": {
+        "neighbors": 16,
+        "bandwidth": 0.36,
+        "iterations": 1,
+        "mode": "cross",
+        "normalize_mass": true,
+        "shuffle_semantic": false
+      },
+      "mAP": 0.755664587020874,
+      "precision": 0.7401785850524902
+    },
+    "64feae56ee8b886c": {
+      "parameters": {
+        "neighbors": 16,
+        "bandwidth": 0.36,
+        "iterations": 1,
+        "mode": "rgb",
+        "normalize_mass": true,
+        "shuffle_semantic": false
+      },
+      "mAP": 0.7598863244056702,
+      "precision": 0.7415178418159485
+    },
+    "528d28641bc9e01c": {
+      "parameters": {
+        "neighbors": 16,
+        "bandwidth": 0.36,
+        "iterations": 1,
+        "mode": "semantic",
+        "normalize_mass": true,
+        "shuffle_semantic": false
+      },
+      "mAP": 0.7397501468658447,
+      "precision": 0.7299455404281616
+    },
+    "a0ce5897018b61b1": {
+      "parameters": {
+        "neighbors": 16,
+        "bandwidth": 0.36,
+        "iterations": 2,
+        "mode": "cross",
+        "normalize_mass": true,
+        "shuffle_semantic": false
+      },
+      "mAP": 0.7614559531211853,
+      "precision": 0.7417807579040527
+    },
+    "7bda495b2fb3eb35": {
+      "parameters": {
+        "neighbors": 16,
+        "bandwidth": 0.36,
+        "iterations": 2,
+        "mode": "rgb",
+        "normalize_mass": true,
+        "shuffle_semantic": false
+      },
+      "mAP": 0.758811891078949,
+      "precision": 0.7424256205558777
+    },
+    "82b1e7558a081cbf": {
+      "parameters": {
+        "neighbors": 16,
+        "bandwidth": 0.36,
+        "iterations": 2,
+        "mode": "semantic",
+        "normalize_mass": true,
+        "shuffle_semantic": false
+      },
+      "mAP": 0.7456272840499878,
+      "precision": 0.7324554920196533
+    },
+    "5939400eccf0c389": {
+      "parameters": {
+        "neighbors": 64,
+        "bandwidth": 0.06,
+        "iterations": 1,
+        "mode": "cross",
+        "normalize_mass": true,
+        "shuffle_semantic": false
+      },
+      "mAP": 0.7371587753295898,
+      "precision": 0.726483166217804
+    },
+    "cd97c8be4d79d268": {
+      "parameters": {
+        "neighbors": 64,
+        "bandwidth": 0.06,
+        "iterations": 1,
+        "mode": "rgb",
+        "normalize_mass": true,
+        "shuffle_semantic": false
+      },
+      "mAP": 0.7378345727920532,
+      "precision": 0.726790726184845
+    },
+    "f34d74e98e2d87e3": {
+      "parameters": {
+        "neighbors": 64,
+        "bandwidth": 0.06,
+        "iterations": 1,
+        "mode": "semantic",
+        "normalize_mass": true,
+        "shuffle_semantic": false
+      },
+      "mAP": 0.73116534948349,
+      "precision": 0.722326397895813
+    },
+    "ecbbab7271f84154": {
+      "parameters": {
+        "neighbors": 64,
+        "bandwidth": 0.06,
+        "iterations": 2,
+        "mode": "cross",
+        "normalize_mass": true,
+        "shuffle_semantic": false
+      },
+      "mAP": 0.7427446246147156,
+      "precision": 0.7311756610870361
+    },
+    "28a3483b57d0a4e4": {
+      "parameters": {
+        "neighbors": 64,
+        "bandwidth": 0.06,
+        "iterations": 2,
+        "mode": "rgb",
+        "normalize_mass": true,
+        "shuffle_semantic": false
+      },
+      "mAP": 0.7411532998085022,
+      "precision": 0.7291021943092346
+    },
+    "0016702529854f65": {
+      "parameters": {
+        "neighbors": 64,
+        "bandwidth": 0.06,
+        "iterations": 2,
+        "mode": "semantic",
+        "normalize_mass": true,
+        "shuffle_semantic": false
+      },
+      "mAP": 0.7342106103897095,
+      "precision": 0.7242162823677063
+    },
+    "34002300026c50f9": {
+      "parameters": {
+        "neighbors": 64,
+        "bandwidth": 0.36,
+        "iterations": 1,
+        "mode": "cross",
+        "normalize_mass": true,
+        "shuffle_semantic": false
+      },
+      "mAP": 0.7576452493667603,
+      "precision": 0.7408532500267029
+    },
+    "14531226e31c0d6a": {
+      "parameters": {
+        "neighbors": 64,
+        "bandwidth": 0.36,
+        "iterations": 1,
+        "mode": "rgb",
+        "normalize_mass": true,
+        "shuffle_semantic": false
+      },
+      "mAP": 0.7492846846580505,
+      "precision": 0.7384722828865051
+    },
+    "e2625989af3e81a1": {
+      "parameters": {
+        "neighbors": 64,
+        "bandwidth": 0.36,
+        "iterations": 1,
+        "mode": "semantic",
+        "normalize_mass": true,
+        "shuffle_semantic": false
+      },
+      "mAP": 0.7467125058174133,
+      "precision": 0.7329612970352173
+    },
+    "50ae3b92f5a2bdb5": {
+      "parameters": {
+        "neighbors": 64,
+        "bandwidth": 0.36,
+        "iterations": 2,
+        "mode": "cross",
+        "normalize_mass": true,
+        "shuffle_semantic": false
+      },
+      "mAP": 0.7526243329048157,
+      "precision": 0.7397222518920898
+    },
+    "aee595dcba74d842": {
+      "parameters": {
+        "neighbors": 64,
+        "bandwidth": 0.36,
+        "iterations": 2,
+        "mode": "rgb",
+        "normalize_mass": true,
+        "shuffle_semantic": false
+      },
+      "mAP": 0.7462837100028992,
+      "precision": 0.7370734214782715
+    },
+    "260b39e43ea5fb67": {
+      "parameters": {
+        "neighbors": 64,
+        "bandwidth": 0.36,
+        "iterations": 2,
+        "mode": "semantic",
+        "normalize_mass": true,
+        "shuffle_semantic": false
+      },
+      "mAP": 0.7499848008155823,
+      "precision": 0.7331846356391907
+    },
+    "b06f9802f9823b5e": {
+      "parameters": {
+        "neighbors": 256,
+        "bandwidth": 0.06,
+        "iterations": 1,
+        "mode": "cross",
+        "normalize_mass": true,
+        "shuffle_semantic": false
+      },
+      "mAP": 0.7407612204551697,
+      "precision": 0.7295635342597961
+    },
+    "8d9c2394ec821aaf": {
+      "parameters": {
+        "neighbors": 256,
+        "bandwidth": 0.06,
+        "iterations": 1,
+        "mode": "rgb",
+        "normalize_mass": true,
+        "shuffle_semantic": false
+      },
+      "mAP": 0.7400007843971252,
+      "precision": 0.7286210656166077
+    },
+    "1a89431a511677ad": {
+      "parameters": {
+        "neighbors": 256,
+        "bandwidth": 0.06,
+        "iterations": 1,
+        "mode": "semantic",
+        "normalize_mass": true,
+        "shuffle_semantic": false
+      },
+      "mAP": 0.7341834306716919,
+      "precision": 0.7254564166069031
+    },
+    "6364940399560e37": {
+      "parameters": {
+        "neighbors": 256,
+        "bandwidth": 0.06,
+        "iterations": 2,
+        "mode": "cross",
+        "normalize_mass": true,
+        "shuffle_semantic": false
+      },
+      "mAP": 0.7475066184997559,
+      "precision": 0.7345783710479736
+    },
+    "6d708b0eb9076a3c": {
+      "parameters": {
+        "neighbors": 256,
+        "bandwidth": 0.06,
+        "iterations": 2,
+        "mode": "rgb",
+        "normalize_mass": true,
+        "shuffle_semantic": false
+      },
+      "mAP": 0.7438554167747498,
+      "precision": 0.7311160564422607
+    },
+    "d59ea62bc8530fff": {
+      "parameters": {
+        "neighbors": 256,
+        "bandwidth": 0.06,
+        "iterations": 2,
+        "mode": "semantic",
+        "normalize_mass": true,
+        "shuffle_semantic": false
+      },
+      "mAP": 0.7390666007995605,
+      "precision": 0.7292410731315613
+    },
+    "1696f69720103590": {
+      "parameters": {
+        "neighbors": 256,
+        "bandwidth": 0.36,
+        "iterations": 1,
+        "mode": "cross",
+        "normalize_mass": true,
+        "shuffle_semantic": false
+      },
+      "mAP": 0.7410205602645874,
+      "precision": 0.7331597805023193
+    },
+    "54044b2af4bb7707": {
+      "parameters": {
+        "neighbors": 256,
+        "bandwidth": 0.36,
+        "iterations": 1,
+        "mode": "rgb",
+        "normalize_mass": true,
+        "shuffle_semantic": false
+      },
+      "mAP": 0.7396353483200073,
+      "precision": 0.7263790369033813
+    },
+    "373c8a0f0ba4812f": {
+      "parameters": {
+        "neighbors": 256,
+        "bandwidth": 0.36,
+        "iterations": 1,
+        "mode": "semantic",
+        "normalize_mass": true,
+        "shuffle_semantic": false
+      },
+      "mAP": 0.7456302046775818,
+      "precision": 0.7297123074531555
+    },
+    "f717ec932f4412d1": {
+      "parameters": {
+        "neighbors": 256,
+        "bandwidth": 0.36,
+        "iterations": 2,
+        "mode": "cross",
+        "normalize_mass": true,
+        "shuffle_semantic": false
+      },
+      "mAP": 0.738732635974884,
+      "precision": 0.7285019755363464
+    },
+    "5c22278abcbf54b8": {
+      "parameters": {
+        "neighbors": 256,
+        "bandwidth": 0.36,
+        "iterations": 2,
+        "mode": "rgb",
+        "normalize_mass": true,
+        "shuffle_semantic": false
+      },
+      "mAP": 0.7251952886581421,
+      "precision": 0.7157688736915588
+    },
+    "bdb1fc90eb7f96a2": {
+      "parameters": {
+        "neighbors": 256,
+        "bandwidth": 0.36,
+        "iterations": 2,
+        "mode": "semantic",
+        "normalize_mass": true,
+        "shuffle_semantic": false
+      },
+      "mAP": 0.7453159689903259,
+      "precision": 0.7266022562980652
+    }
+  },
+  "seed": 4783,
+  "diagnostic": {
+    "(16, 0.06, False)": {
+      "gaussian_denominators": [
+        0.015463408082723618,
+        0.0006884432514198124
+      ]
+    },
+    "(16, 0.36, False)": {
+      "gaussian_denominators": [
+        0.0927804559469223,
+        0.0041306596249341965
+      ]
+    },
+    "(64, 0.06, False)": {
+      "gaussian_denominators": [
+        0.018976353108882904,
+        0.0011630300432443619
+      ]
+    },
+    "(64, 0.36, False)": {
+      "gaussian_denominators": [
+        0.11385812610387802,
+        0.006978180725127459
+      ]
+    },
+    "(256, 0.06, False)": {
+      "gaussian_denominators": [
+        0.02418673224747181,
+        0.002160600619390607
+      ]
+    },
+    "(256, 0.36, False)": {
+      "gaussian_denominators": [
+        0.14512039721012115,
+        0.012963605113327503
+      ]
+    }
+  }
+}

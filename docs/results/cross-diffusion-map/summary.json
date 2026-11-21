@@ -1,0 +1,538 @@
+{
+  "family": "cross-diffusion-map",
+  "joint": "90eee74f8730e3e76fe17ac93fef4b48648f91b04bcc8371e6c296cbcca7158d",
+  "freeze": "d9a77cfdb847a09f93ef334270ae7d05c52c188c4a15af3f090740d2112cc13c",
+  "revision": "c6e518221ac5aeee052bf16cd6b741247bff10c0",
+  "selected_parameters": {
+    "neighbors": 16,
+    "bandwidth": 0.36,
+    "iterations": 2,
+    "mode": "rgb",
+    "normalize_mass": true,
+    "shuffle_semantic": false
+  },
+  "splits": {
+    "sketchy_1": {
+      "primary": {
+        "mAP": 0.8185591697692871,
+        "precision": 0.8132555484771729,
+        "map_k": 0,
+        "p_k": 100,
+        "revision": "c6e518221ac5aeee052bf16cd6b741247bff10c0",
+        "sha256": "7b0c89c16ba6a120c804ac67fbf812f7b75502f899567e0836c02349f633410d"
+      },
+      "controls": {
+        "primary": {
+          "mAP": 0.8185591697692871,
+          "precision": 0.8132555484771729,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "c6e518221ac5aeee052bf16cd6b741247bff10c0",
+          "sha256": "7b0c89c16ba6a120c804ac67fbf812f7b75502f899567e0836c02349f633410d",
+          "parameters": {
+            "neighbors": 16,
+            "bandwidth": 0.36,
+            "iterations": 2,
+            "mode": "rgb",
+            "normalize_mass": true,
+            "shuffle_semantic": false
+          }
+        },
+        "direct_concepts": {
+          "mAP": 0.7530821561813354,
+          "precision": 0.7894096970558167,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "c6e518221ac5aeee052bf16cd6b741247bff10c0",
+          "sha256": "5c232ba907a6204a06320e26ae5194649530d0613caf0992bbbfbc4e94ffb472",
+          "parameters": {
+            "neighbors": 16,
+            "bandwidth": 0.36,
+            "iterations": 2,
+            "mode": "direct",
+            "normalize_mass": true,
+            "shuffle_semantic": false
+          }
+        },
+        "same_depth_rgb": {
+          "mAP": 0.8185591697692871,
+          "precision": 0.8132555484771729,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "c6e518221ac5aeee052bf16cd6b741247bff10c0",
+          "sha256": "7b0c89c16ba6a120c804ac67fbf812f7b75502f899567e0836c02349f633410d",
+          "parameters": {
+            "neighbors": 16,
+            "bandwidth": 0.36,
+            "iterations": 2,
+            "mode": "rgb",
+            "normalize_mass": true,
+            "shuffle_semantic": false
+          }
+        },
+        "same_depth_semantic": {
+          "mAP": 0.7778972387313843,
+          "precision": 0.801186203956604,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "c6e518221ac5aeee052bf16cd6b741247bff10c0",
+          "sha256": "6753c2681b25d103f8f86b14f77b866c8cab777664b4f19cb1648967dad8faf1",
+          "parameters": {
+            "neighbors": 16,
+            "bandwidth": 0.36,
+            "iterations": 2,
+            "mode": "semantic",
+            "normalize_mass": true,
+            "shuffle_semantic": false
+          }
+        },
+        "crossed": {
+          "mAP": 0.8138240575790405,
+          "precision": 0.8108068704605103,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "c6e518221ac5aeee052bf16cd6b741247bff10c0",
+          "sha256": "19a1e03883fed5bd0773942be5231324e878418160d25eea94e007573e70094b",
+          "parameters": {
+            "neighbors": 16,
+            "bandwidth": 0.36,
+            "iterations": 2,
+            "mode": "cross",
+            "normalize_mass": true,
+            "shuffle_semantic": false
+          }
+        },
+        "separate_paths": {
+          "mAP": 0.8064361214637756,
+          "precision": 0.8080400228500366,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "c6e518221ac5aeee052bf16cd6b741247bff10c0",
+          "sha256": "bf8aa78a9930b4bde7d7ec999e957167ba0606987f25bd4ca4026587f11a1360",
+          "parameters": {
+            "neighbors": 16,
+            "bandwidth": 0.36,
+            "iterations": 2,
+            "mode": "independent",
+            "normalize_mass": true,
+            "shuffle_semantic": false
+          }
+        },
+        "initial_status_only": {
+          "mAP": 0.7850353121757507,
+          "precision": 0.7991770505905151,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "c6e518221ac5aeee052bf16cd6b741247bff10c0",
+          "sha256": "fcde4b6c7e89c0c69c75b9449f7bfc9e296e98b1d7ae6466140aa2e738b8a15b",
+          "parameters": {
+            "neighbors": 16,
+            "bandwidth": 0.36,
+            "iterations": 0,
+            "mode": "cross",
+            "normalize_mass": true,
+            "shuffle_semantic": false
+          }
+        },
+        "unnormalized_cross": {
+          "mAP": 0.8086011409759521,
+          "precision": 0.8103244304656982,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "c6e518221ac5aeee052bf16cd6b741247bff10c0",
+          "sha256": "e3c780d26f7f68cbab0436bc7c1c12858eb8b64f057a3fd78da0fd31286bcdfb",
+          "parameters": {
+            "neighbors": 16,
+            "bandwidth": 0.36,
+            "iterations": 2,
+            "mode": "cross",
+            "normalize_mass": false,
+            "shuffle_semantic": false
+          }
+        },
+        "shuffled_semantic_edges": {
+          "mAP": 0.6356288194656372,
+          "precision": 0.7516369819641113,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "c6e518221ac5aeee052bf16cd6b741247bff10c0",
+          "sha256": "097a40638d554c9b1339c6001aa35e082c806afafe1d234efb77379c032e4eb0",
+          "parameters": {
+            "neighbors": 16,
+            "bandwidth": 0.36,
+            "iterations": 2,
+            "mode": "cross",
+            "normalize_mass": true,
+            "shuffle_semantic": true
+          }
+        }
+      },
+      "replay": {
+        "queries": 14179,
+        "mAP": 0.8185591101646423,
+        "precision": 0.8132554888725281,
+        "kd_minus_pipeline_max_abs_same_order_AP_P": [
+          0.0,
+          0.0
+        ],
+        "max_per_query_abs_AP_P": [
+          0.0,
+          0.0
+        ],
+        "mean_per_query_abs_AP_P": [
+          0.0,
+          0.0
+        ],
+        "queries_within_1e-6_both": 14179
+      }
+    },
+    "sketchy_2": {
+      "primary": {
+        "mAP": 0.7419516444206238,
+        "precision": 0.7267866730690002,
+        "map_k": 200,
+        "p_k": 200,
+        "revision": "c6e518221ac5aeee052bf16cd6b741247bff10c0",
+        "sha256": "0a4111a34a34c538b55af846974e0dbe9faf6545eeaf4668bad5047b67904d10"
+      },
+      "controls": {
+        "primary": {
+          "mAP": 0.7419516444206238,
+          "precision": 0.7267866730690002,
+          "map_k": 200,
+          "p_k": 200,
+          "revision": "c6e518221ac5aeee052bf16cd6b741247bff10c0",
+          "sha256": "0a4111a34a34c538b55af846974e0dbe9faf6545eeaf4668bad5047b67904d10",
+          "parameters": {
+            "neighbors": 16,
+            "bandwidth": 0.36,
+            "iterations": 2,
+            "mode": "rgb",
+            "normalize_mass": true,
+            "shuffle_semantic": false
+          }
+        },
+        "direct_concepts": {
+          "mAP": 0.7141598463058472,
+          "precision": 0.7027934193611145,
+          "map_k": 200,
+          "p_k": 200,
+          "revision": "c6e518221ac5aeee052bf16cd6b741247bff10c0",
+          "sha256": "278f978c2a6fbcb17164b27cc9bbadda9c06ef33489866132d9337356ac304d3",
+          "parameters": {
+            "neighbors": 16,
+            "bandwidth": 0.36,
+            "iterations": 2,
+            "mode": "direct",
+            "normalize_mass": true,
+            "shuffle_semantic": false
+          }
+        },
+        "same_depth_rgb": {
+          "mAP": 0.7419516444206238,
+          "precision": 0.7267866730690002,
+          "map_k": 200,
+          "p_k": 200,
+          "revision": "c6e518221ac5aeee052bf16cd6b741247bff10c0",
+          "sha256": "0a4111a34a34c538b55af846974e0dbe9faf6545eeaf4668bad5047b67904d10",
+          "parameters": {
+            "neighbors": 16,
+            "bandwidth": 0.36,
+            "iterations": 2,
+            "mode": "rgb",
+            "normalize_mass": true,
+            "shuffle_semantic": false
+          }
+        },
+        "same_depth_semantic": {
+          "mAP": 0.7337515354156494,
+          "precision": 0.715397834777832,
+          "map_k": 200,
+          "p_k": 200,
+          "revision": "c6e518221ac5aeee052bf16cd6b741247bff10c0",
+          "sha256": "516f6599b587ab02db01cc5ea76d8d0cd49d8b0176c94fc06a97c323e3e8754b",
+          "parameters": {
+            "neighbors": 16,
+            "bandwidth": 0.36,
+            "iterations": 2,
+            "mode": "semantic",
+            "normalize_mass": true,
+            "shuffle_semantic": false
+          }
+        },
+        "crossed": {
+          "mAP": 0.7458376288414001,
+          "precision": 0.7245151400566101,
+          "map_k": 200,
+          "p_k": 200,
+          "revision": "c6e518221ac5aeee052bf16cd6b741247bff10c0",
+          "sha256": "28c7ae8bb0e0babc12d3cf9def20e127b4fb7c5b9fef9093129dafe181e98ed8",
+          "parameters": {
+            "neighbors": 16,
+            "bandwidth": 0.36,
+            "iterations": 2,
+            "mode": "cross",
+            "normalize_mass": true,
+            "shuffle_semantic": false
+          }
+        },
+        "separate_paths": {
+          "mAP": 0.7409129738807678,
+          "precision": 0.7230175137519836,
+          "map_k": 200,
+          "p_k": 200,
+          "revision": "c6e518221ac5aeee052bf16cd6b741247bff10c0",
+          "sha256": "28ee05acaff616a1421dd9dc1bc284cb8e4ed4167f6db58afdbc30761eac04cb",
+          "parameters": {
+            "neighbors": 16,
+            "bandwidth": 0.36,
+            "iterations": 2,
+            "mode": "independent",
+            "normalize_mass": true,
+            "shuffle_semantic": false
+          }
+        },
+        "initial_status_only": {
+          "mAP": 0.7248338460922241,
+          "precision": 0.7138750553131104,
+          "map_k": 200,
+          "p_k": 200,
+          "revision": "c6e518221ac5aeee052bf16cd6b741247bff10c0",
+          "sha256": "2273c869e0c5faf62c758755b0eb2aeb446cc0441410b3d385c989a8d100e2d7",
+          "parameters": {
+            "neighbors": 16,
+            "bandwidth": 0.36,
+            "iterations": 0,
+            "mode": "cross",
+            "normalize_mass": true,
+            "shuffle_semantic": false
+          }
+        },
+        "unnormalized_cross": {
+          "mAP": 0.7386605143547058,
+          "precision": 0.7230836749076843,
+          "map_k": 200,
+          "p_k": 200,
+          "revision": "c6e518221ac5aeee052bf16cd6b741247bff10c0",
+          "sha256": "46e6c5aa575bf586d4c316e3d586906418b3a32cf1d5e3184e380adc41ef82b8",
+          "parameters": {
+            "neighbors": 16,
+            "bandwidth": 0.36,
+            "iterations": 2,
+            "mode": "cross",
+            "normalize_mass": false,
+            "shuffle_semantic": false
+          }
+        },
+        "shuffled_semantic_edges": {
+          "mAP": 0.6860858798027039,
+          "precision": 0.6652261018753052,
+          "map_k": 200,
+          "p_k": 200,
+          "revision": "c6e518221ac5aeee052bf16cd6b741247bff10c0",
+          "sha256": "4d7b352e171b1d9fe29efaec445f0460f0075f156e285d2232540f1dfde82b50",
+          "parameters": {
+            "neighbors": 16,
+            "bandwidth": 0.36,
+            "iterations": 2,
+            "mode": "cross",
+            "normalize_mass": true,
+            "shuffle_semantic": true
+          }
+        }
+      },
+      "replay": {
+        "queries": 12694,
+        "mAP": 0.7419516444206238,
+        "precision": 0.7267866730690002,
+        "kd_minus_pipeline_max_abs_same_order_AP_P": [
+          0.0,
+          0.0
+        ],
+        "max_per_query_abs_AP_P": [
+          0.0,
+          0.0
+        ],
+        "mean_per_query_abs_AP_P": [
+          0.0,
+          0.0
+        ],
+        "queries_within_1e-6_both": 12694
+      }
+    },
+    "tuberlin": {
+      "primary": {
+        "mAP": 0.7916370034217834,
+        "precision": 0.8023896813392639,
+        "map_k": 0,
+        "p_k": 100,
+        "revision": "c6e518221ac5aeee052bf16cd6b741247bff10c0",
+        "sha256": "d814864b7a25e236efecb30758a4633f196b793b9036ce649159e3128c534904"
+      },
+      "controls": {
+        "primary": {
+          "mAP": 0.7916370034217834,
+          "precision": 0.8023896813392639,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "c6e518221ac5aeee052bf16cd6b741247bff10c0",
+          "sha256": "d814864b7a25e236efecb30758a4633f196b793b9036ce649159e3128c534904",
+          "parameters": {
+            "neighbors": 16,
+            "bandwidth": 0.36,
+            "iterations": 2,
+            "mode": "rgb",
+            "normalize_mass": true,
+            "shuffle_semantic": false
+          }
+        },
+        "direct_concepts": {
+          "mAP": 0.7335332632064819,
+          "precision": 0.7722159624099731,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "c6e518221ac5aeee052bf16cd6b741247bff10c0",
+          "sha256": "b6ebff199f8d26c01833e4e43540c4c9bf20043a1496efa1442fae61ec7bfdb2",
+          "parameters": {
+            "neighbors": 16,
+            "bandwidth": 0.36,
+            "iterations": 2,
+            "mode": "direct",
+            "normalize_mass": true,
+            "shuffle_semantic": false
+          }
+        },
+        "same_depth_rgb": {
+          "mAP": 0.7916370034217834,
+          "precision": 0.8023896813392639,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "c6e518221ac5aeee052bf16cd6b741247bff10c0",
+          "sha256": "d814864b7a25e236efecb30758a4633f196b793b9036ce649159e3128c534904",
+          "parameters": {
+            "neighbors": 16,
+            "bandwidth": 0.36,
+            "iterations": 2,
+            "mode": "rgb",
+            "normalize_mass": true,
+            "shuffle_semantic": false
+          }
+        },
+        "same_depth_semantic": {
+          "mAP": 0.7627102732658386,
+          "precision": 0.780131459236145,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "c6e518221ac5aeee052bf16cd6b741247bff10c0",
+          "sha256": "0ec62df66ac7d6833f174ea6d07121cabb3d9e52b0aae8085ad5a4b350cabff3",
+          "parameters": {
+            "neighbors": 16,
+            "bandwidth": 0.36,
+            "iterations": 2,
+            "mode": "semantic",
+            "normalize_mass": true,
+            "shuffle_semantic": false
+          }
+        },
+        "crossed": {
+          "mAP": 0.7966827750205994,
+          "precision": 0.7958545088768005,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "c6e518221ac5aeee052bf16cd6b741247bff10c0",
+          "sha256": "d9847b65bf6ca88fcce16b13fb13699e79341fee01d4d1bdbd8c2e2ad7bd82f2",
+          "parameters": {
+            "neighbors": 16,
+            "bandwidth": 0.36,
+            "iterations": 2,
+            "mode": "cross",
+            "normalize_mass": true,
+            "shuffle_semantic": false
+          }
+        },
+        "separate_paths": {
+          "mAP": 0.7869482040405273,
+          "precision": 0.7919812202453613,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "c6e518221ac5aeee052bf16cd6b741247bff10c0",
+          "sha256": "a00ca74bd963fcea1780802b6f819b39c04351e7d71c7f06a3bdb0cc0657cf08",
+          "parameters": {
+            "neighbors": 16,
+            "bandwidth": 0.36,
+            "iterations": 2,
+            "mode": "independent",
+            "normalize_mass": true,
+            "shuffle_semantic": false
+          }
+        },
+        "initial_status_only": {
+          "mAP": 0.7632343769073486,
+          "precision": 0.7815117239952087,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "c6e518221ac5aeee052bf16cd6b741247bff10c0",
+          "sha256": "b6b6c8380c73808b6dc8e406503e5448631298856bc51ae6efe9c051deb8d15f",
+          "parameters": {
+            "neighbors": 16,
+            "bandwidth": 0.36,
+            "iterations": 0,
+            "mode": "cross",
+            "normalize_mass": true,
+            "shuffle_semantic": false
+          }
+        },
+        "unnormalized_cross": {
+          "mAP": 0.7915903329849243,
+          "precision": 0.7966994643211365,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "c6e518221ac5aeee052bf16cd6b741247bff10c0",
+          "sha256": "75bf61e644702c063b08dcc5864ca828146292f2bfd09dc385e4260a01bc8f26",
+          "parameters": {
+            "neighbors": 16,
+            "bandwidth": 0.36,
+            "iterations": 2,
+            "mode": "cross",
+            "normalize_mass": false,
+            "shuffle_semantic": false
+          }
+        },
+        "shuffled_semantic_edges": {
+          "mAP": 0.6331198215484619,
+          "precision": 0.7501596808433533,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "c6e518221ac5aeee052bf16cd6b741247bff10c0",
+          "sha256": "0b1ad57e4b45ed168e2e97a256eb23c4438e51d4feeea1a355b61d30a06ec3fc",
+          "parameters": {
+            "neighbors": 16,
+            "bandwidth": 0.36,
+            "iterations": 2,
+            "mode": "cross",
+            "normalize_mass": true,
+            "shuffle_semantic": true
+          }
+        }
+      },
+      "replay": {
+        "queries": 2130,
+        "mAP": 0.7916370630264282,
+        "precision": 0.8023896813392639,
+        "kd_minus_pipeline_max_abs_same_order_AP_P": [
+          0.0,
+          0.0
+        ],
+        "max_per_query_abs_AP_P": [
+          0.0,
+          0.0
+        ],
+        "mean_per_query_abs_AP_P": [
+          0.0,
+          0.0
+        ],
+        "queries_within_1e-6_both": 2130
+      }
+    }
+  }
+}
