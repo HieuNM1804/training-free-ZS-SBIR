@@ -68,6 +68,8 @@ class Lexicon:
             n = len(d)
             if c.bandwidth == "local":
                 logits = -d / (self.radii[start:start+n, None] * self.radii)
+            elif c.bandwidth == "uniform":
+                logits = torch.zeros_like(d).masked_fill_(~d.isfinite(), -torch.inf)
             else:
                 logits = d * (-.5*self.scale)
             if c.support == "nearest":

@@ -158,6 +158,60 @@ def error_pairs(scores, native_scores, qnames, pnames, ql, pl, words, q, p, sour
             "regressed_top1":int(by_type["native_correct_now_top1_wrong"].sum()), "examples":examples}
 
 
+def translation_pairs(scorer, scores, base_scores, q, p, qnames, pnames, ql, pl, words):
+    exact_top = base_scores.argmax(1).cpu()
+    new_top = scores.argmax(1).cpu()
+    relevant = ql[:, None] == pl[None, :]
+    positive = base_scores.masked_fill(~relevant.to(q.device), -torch.inf).argmax(1).cpu()
+    old_wrong = pl[exact_top] != ql
+    new_wrong = pl[new_top] != ql
+    rows = torch.arange(len(q))
+    flipped = (scores[rows,positive] > scores[rows,exact_top]).cpu() & old_wrong
+    channel = scorer.channel
+    ids = channel.neighbors
+    distances = (2.-2.*(channel.bank[:,None]*channel.bank[ids]).sum(2)).clamp_min_(0.)
+    weights = (-distances/(channel.radii[:,None]*channel.radii[ids])).softmax(1)
+    examples = {}
+    for label, mask in (("exact_wrong_pair_reversed",flipped),("top1_lost",~old_wrong & new_wrong)):
+        available=torch.where(mask)[0]
+        picks=available[torch.randperm(len(available),generator=torch.Generator().manual_seed(5165))[:5]]
+        examples[label]=[]
+        for j in picks.tolist():
+            query=emission(q[j:j+1],scorer.source,scorer.scale)[0]
+            pairs={}
+            for role,i in (("exact_top",int(exact_top[j])),("best_old_positive",int(positive[j])),("new_top",int(new_top[j]))):
+                posterior=(scorer.scale*(p[i:i+1]@scorer.target.T)).softmax(1)[0]
+                joint=posterior[:,None]*weights*query[ids]
+                pos=int(joint.argmax()); v,u=divmod(pos,ids.size(1))
+                word=int((query*posterior).argmax())
+                pairs[role]={"photo":short_path(pnames[i]),"leading_exact_word":words[word],
+                    "leading_translation_photo_word":words[v],"leading_translation_sketch_word":words[int(ids[v,u])],
+                    "share_of_translated_evidence":float(joint[v,u]/joint.sum().clamp_min(1e-38)),
+                    "old_score":float(base_scores[j,i]),"new_score":float(scores[j,i])}
+            examples[label].append({"sketch":short_path(qnames[j]),"pairs":pairs})
+    return {"exact_wrong_top1":int(old_wrong.sum()),"witness_pairs_reversed":int(flipped.sum()),
+            "top1_rescued":int((old_wrong&~new_wrong).sum()),"top1_lost":int((~old_wrong&new_wrong).sum()),
+            "examples":examples}
+
+
+def name_overlap(words, halves, measured, ql, split):
+    norm=lambda term:" ".join(term.lower().replace("_"," ").replace("-"," ").split())
+    vocab=[{norm(words[j]) for j in ids.tolist()} for ids in halves]
+    present,absent,labels=[],[],[]
+    for c,term in enumerate(UNSEEN_CLASSES[split]):
+        where=[norm(term) in bank for bank in vocab]
+        if sum(where)==1:
+            i=where.index(True)
+            mask=ql==c
+            present.append(measured[i][mask]);absent.append(measured[1-i][mask])
+            labels.append(torch.full((int(mask.sum()),),len(labels),dtype=torch.long))
+    if not present:
+        return {"classes":0}
+    yes,no=torch.cat(present),torch.cat(absent)
+    return {"classes":len(labels),"queries":len(yes),"present_AP_P":yes.mean(0).tolist(),
+            "absent_AP_P":no.mean(0).tolist(),"paired_delta":paired_delta(yes,no,torch.cat(labels))}
+
+
 @torch.inference_mode()
 def run(w):
     root = w/"results"
@@ -188,7 +242,9 @@ def run(w):
             stats={}
             bank_ids=torch.randperm(len(words),generator=torch.Generator().manual_seed(9241))
             definitions={"full":(src,tgt,literal), "bare_prompts":(literal,literal,literal)}
-            for i,section in enumerate(bank_ids.tensor_split(2)):
+            halves=bank_ids.tensor_split(2)
+            half_metrics=[]
+            for i,section in enumerate(halves):
                 definitions[f"half_{i}"]=(src[section],tgt[section],literal[section])
             baseline_sample=None
             for name,banks in definitions.items():
@@ -214,8 +270,19 @@ def run(w):
                         raise ValueError("Score unexpectedly depends on batch composition")
                     item["native_witnesses"]=error_pairs(scores,q@p.T,[qp[i] for i in qi[sample].tolist()],
                         [pp[i] for i in pi.tolist()],ql_sample,pl,words,q,p,src,tgt,scale)
+                    if primary==TRANSLATION and params["support"]=="nearest":
+                        exact=Scorer(UNIFORM,{},banks,scale,None).score(q,p,pi)
+                        item["matched_word_witnesses"]=translation_pairs(scorer,scores,exact,q,p,
+                            [qp[i] for i in qi[sample].tolist()],[pp[i] for i in pi.tolist()],ql_sample,pl,words)
+                        uniform=Scorer(primary,params|{"bandwidth":"uniform"},banks,scale,None).score(q,p,pi)
+                        equi=score_sample(uniform,ql_sample,pl,split)
+                        item["equal_translation_weights"]={"AP_P":equi.mean(0).tolist(),
+                            "local_minus_equal":paired_delta(measured,equi,ql_sample)}
+                        del uniform,exact
                 else:
                     item["versus_full"]=paired_delta(measured,baseline_sample,ql_sample)
+                    if name.startswith("half_"):
+                        half_metrics.append(measured)
                 stats[name]=item
                 del scorer,scores
             other={}
@@ -227,7 +294,8 @@ def run(w):
                 other={"queries":int(mask.sum()),"classes":len(unseen),"all_gallery":len(pl),
                        "AP_P":{n:v[mask].mean(0).tolist() for n,v in details.items()}}
             output["splits"][split]={"full":full,"dictionary_sample":{"queries":len(q),"gallery":len(pl),
-                                              "classes":len(ql.unique()),"conditions":stats},"distinct_names":other}
+                "classes":len(ql.unique()),"conditions":stats,
+                "name_association_after_ranking":name_overlap(words,halves,half_metrics,ql_sample,split)},"distinct_names":other}
             atomic_json(dest/f"{split}.json",output["splits"][split])
             print(split, primary,full[primary]["mAP"],stats["full"]["invariance"],flush=True)
     atomic_json(dest/"report.json",output)
