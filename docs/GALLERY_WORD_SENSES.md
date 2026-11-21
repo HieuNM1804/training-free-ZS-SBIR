@@ -1,0 +1,23 @@
+# Assigning a gallery-dependent meaning to a public word
+
+Two photos can both give weight to the same word while differing in what made that word plausible. The previous Sketchy experiment found a high rate of off-class gallery evidence among incorrectly retrieved photos. In the original word matcher a sketch gives a word the same likelihood for every candidate. The hypothesis here is that it helps to ask which of two visually grounded contexts that sketch supports. A context can reflect object identity, background or viewpoint. Calling it a linguistic sense requires separate evidence.
+
+## Constructing the visual contexts
+
+Use the existing compact gallery index. Its 64 most supported words come from a mixture prior fit to the unlabelled target photos. Each photo has a probability for each retained word. A query never contributes to this index. For each word, split the photos into two deterministic random folds. On one fold, find the principal direction of the word-weighted CLIP photo covariance. Use the weighted empirical distribution on this axis to give each photo a soft membership in either end of the axis. For each end, choose the other public term making the largest positive contribution to the KL divergence of its word distribution from the pooled distribution. The frozen CLIP text encoder contextualizes the head word with that term in parentheses. Use that fold's direction and texts to score photos in the other fold, then exchange the folds. Gallery-only estimates used by the parent index are shared across the folds.
+
+## Scoring one sketch
+
+For word $w$, let $g_i$ be the membership of photo $i$ in the upper context. Let $p$ be its weighted mean among the photos receiving this fold's readout, with weights $B_{iw}$. For a query let $r_+,r_-$ be the exponentiated similarities to the two contextualized sketch prompts. The multiplier for this word in photo $i$ is
+
+$$M_i = \frac{g_i r_+ + (1-g_i)r_-}{p r_+ + (1-p)r_-}.$$
+
+The word-weighted mean of $M_i$ is exactly one. Equal context responses give a multiplier of one for every photo. This lets an experiment isolate which candidate receives evidence from a shared word while holding its total evidence fixed. Also compare using the pooled contextual likelihood as the head-word reading. Score all photos by summing the resulting word contributions, and combine with the historical gallery score as in the matched compact baseline.
+
+## Test and stopping decision
+
+Start with the same full gallery and 40 randomly sampled sketches per unseen class on each Sketchy split, seed 39109. Compare the directional assignment, the same contextualized prompts marginalized over the assignment, an independently tuned word-only compact baseline, the sign-reversed assignment, and a CLIP text vector made by adding the head and context embeddings. Score a hard control that uses only the auxiliary word as well. Record agreement of the photo text contrasts and the held-out visual axis, the total-mass identity and class-level rescue or loss of rank. A positive candidate must beat a separately selected pooled-context model as well as the matched model to attribute the gain to candidate-specific context. If the full-split comparison does not support this part, retain the negative finding. Choose on the two full Sketchy splits, then run TU-Berlin once under a frozen configuration. A balanced pilot is an exploratory diagnostic.
+
+Three direct precedents cover public word inversion, gallery diffusion and limited linguistic context for visual word-sense disambiguation. The new component is estimating both contexts from a target gallery and using a query-specific, word-mass-preserving exchange between its photos. The two input domains are named in CLIP prompts. No class list nominates a word or context. [FreeDom at WACV 2025](https://openaccess.thecvf.com/content/WACV2025/html/Efthymiadis_Composed_Image_Retrieval_for_Training-Free_Domain_Conversion_WACV_2025_paper.html) · [Wang et al. at CVPR 2012](https://pages.ucsd.edu/~ztu/publication/cvpr12_CrDP.pdf) · [Visual Word Sense Disambiguation at SemEval 2023](https://aclanthology.org/2023.semeval-1.308/)
+
+Other work gives useful comparisons for interpretation. Zhang et al. trained on visually grounded relations from language, and Young et al. measured the sets of images denoted by phrases. The current construction infers a conditional distinction from a gallery of photos. It does not assert a hierarchy between the two selected terms. [Zhang et al. at EMNLP 2020](https://aclanthology.org/2020.emnlp-main.60/) · [Young et al. in TACL 2014](https://aclanthology.org/Q14-1006/)
