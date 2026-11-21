@@ -145,7 +145,7 @@ def evaluate(a,path,split,scores,ql,pl,c,meta,perform_replay,kd):
 
 
 @torch.inference_mode()
-def run(workspace,name,stage):
+def run(workspace,name,stage,heldout_decision=None):
     module=import_module("tf_sbir."+name.replace("-","_"))
     root=workspace/"results"; folder=root/name
     if stage=="freeze":
@@ -153,7 +153,7 @@ def run(workspace,name,stage):
         return
     held=stage=="heldout";pilot=stage=="pilot";locked=None
     if held:
-        locked=make_lock(module,folder);dec=read(root/"map-study/joint-freeze.json")
+        locked=make_lock(module,folder);dec=read(heldout_decision or root/"map-study/joint-freeze.json")
         sig=dec.pop("sha256")
         if digest(dec)!=sig or dec["families"][name]["freeze"]!=locked["sha256"]:
             raise ValueError("Missing pre-TU decision")
