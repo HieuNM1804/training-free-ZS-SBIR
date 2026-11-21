@@ -1,0 +1,293 @@
+{
+  "utc": "2026-11-21T02:48:20.525465+00:00",
+  "revision": "dbedfb43edb14e6d4f602685cfa2c50073ab5e03",
+  "qualified": true,
+  "rule": "shared Sketchy pilot mean mAP, then mean P, relative to the frozen FreeDom variant",
+  "reference_id": "b3464bf029a5ad9d",
+  "pilot_winner": {
+    "proxies": 0,
+    "background": 0.5,
+    "prior": "mle",
+    "first_pass": "concept",
+    "scoring": "cross_entropy",
+    "shuffle": false
+  },
+  "reference": [
+    {
+      "parameters": {
+        "proxies": 96,
+        "words_per_proxy": 7,
+        "retained_words": 7,
+        "search": "semantic",
+        "composition": "word-domain",
+        "shuffled": false
+      },
+      "mAP": 0.7710707783699036,
+      "precision": 0.8004167079925537
+    },
+    {
+      "parameters": {
+        "proxies": 96,
+        "words_per_proxy": 7,
+        "retained_words": 7,
+        "search": "semantic",
+        "composition": "word-domain",
+        "shuffled": false
+      },
+      "mAP": 0.7354686260223389,
+      "precision": 0.7221131324768066
+    }
+  ],
+  "best": [
+    {
+      "parameters": {
+        "proxies": 0,
+        "background": 0.5,
+        "prior": "mle",
+        "first_pass": "concept",
+        "scoring": "cross_entropy",
+        "shuffle": false
+      },
+      "mAP": 0.8049935102462769,
+      "precision": 0.8077582716941833
+    },
+    {
+      "parameters": {
+        "proxies": 0,
+        "background": 0.5,
+        "prior": "mle",
+        "first_pass": "concept",
+        "scoring": "cross_entropy",
+        "shuffle": false
+      },
+      "mAP": 0.7560690641403198,
+      "precision": 0.746344268321991
+    }
+  ],
+  "threshold": [
+    0.7532697021961212,
+    0.7612649202346802
+  ],
+  "pilot_score": [
+    0.7805312871932983,
+    0.7770512700080872
+  ],
+  "primary_after_full_Sketchy": "neighborhood-calibrated-likelihood",
+  "parameters": {
+    "proxies": 0,
+    "background": 0.5,
+    "prior": "mle",
+    "first_pass": "concept",
+    "scoring": "cross_entropy",
+    "shuffle": false
+  },
+  "full_scores": {
+    "sketchy_1": {
+      "mAP": 0.8155539631843567,
+      "precision": 0.815711259841919,
+      "queries": 14179,
+      "gallery": 17100,
+      "classes": 25,
+      "versus_incumbent": {
+        "mAP": {
+          "delta_pp": -1.095463161256449,
+          "ci95_class": [
+            -2.254637911701408,
+            -0.13202341338184326
+          ],
+          "classes_up": 11,
+          "classes": 25
+        },
+        "precision": {
+          "delta_pp": -0.5278227219053447,
+          "ci95_class": [
+            -1.6278191554767967,
+            0.6067321100721945
+          ],
+          "classes_up": 13,
+          "classes": 25
+        }
+      },
+      "controls": {
+        "primary": {
+          "mAP": 0.8155539631843567,
+          "precision": 0.815711259841919
+        },
+        "initial_query_likelihood": {
+          "mAP": 0.8060232996940613,
+          "precision": 0.8127124905586243
+        },
+        "no_feedback": {
+          "mAP": 0.3756065368652344,
+          "precision": 0.44819167256355286
+        },
+        "linear_word_score": {
+          "mAP": 0.7975321412086487,
+          "precision": 0.8026067018508911
+        },
+        "no_background": {
+          "mAP": 0.7129319310188293,
+          "precision": 0.7454658150672913
+        },
+        "uniform_prior": {
+          "mAP": 0.7875401973724365,
+          "precision": 0.8126553297042847
+        },
+        "gallery_prior": {
+          "mAP": 0.8155539631843567,
+          "precision": 0.815711259841919
+        },
+        "paper_canonical": {
+          "mAP": 0.7846594452857971,
+          "precision": 0.8053310513496399
+        },
+        "rgb_first_pass": {
+          "mAP": 0.46834754943847656,
+          "precision": 0.43219903111457825
+        },
+        "shuffled_proxy_identity": {
+          "mAP": 0.04994579032063484,
+          "precision": 0.03880104050040245
+        }
+      }
+    },
+    "sketchy_2": {
+      "mAP": 0.7462736964225769,
+      "precision": 0.7356064915657043,
+      "queries": 12694,
+      "gallery": 12552,
+      "classes": 21,
+      "versus_incumbent": {
+        "mAP": {
+          "delta_pp": -0.16167277455337525,
+          "ci95_class": [
+            -2.5134719644315227,
+            2.0836130042511543
+          ],
+          "classes_up": 10,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -0.03407122436702505,
+          "ci95_class": [
+            -1.884702045553534,
+            1.6146971838119428
+          ],
+          "classes_up": 10,
+          "classes": 21
+        }
+      },
+      "controls": {
+        "primary": {
+          "mAP": 0.7462736964225769,
+          "precision": 0.7356064915657043
+        },
+        "initial_query_likelihood": {
+          "mAP": 0.7401891350746155,
+          "precision": 0.7285922765731812
+        },
+        "no_feedback": {
+          "mAP": 0.3736124038696289,
+          "precision": 0.3402954041957855
+        },
+        "linear_word_score": {
+          "mAP": 0.7402500510215759,
+          "precision": 0.7305715084075928
+        },
+        "no_background": {
+          "mAP": 0.6717848181724548,
+          "precision": 0.6620289087295532
+        },
+        "uniform_prior": {
+          "mAP": 0.714333713054657,
+          "precision": 0.7074598073959351
+        },
+        "gallery_prior": {
+          "mAP": 0.7462736964225769,
+          "precision": 0.7356064915657043
+        },
+        "paper_canonical": {
+          "mAP": 0.7243175506591797,
+          "precision": 0.7167818546295166
+        },
+        "rgb_first_pass": {
+          "mAP": 0.3905656933784485,
+          "precision": 0.3775055408477783
+        },
+        "shuffled_proxy_identity": {
+          "mAP": 0.06704357266426086,
+          "precision": 0.0432015098631382
+        }
+      }
+    },
+    "tuberlin": {
+      "mAP": 0.7598215937614441,
+      "precision": 0.7611643075942993,
+      "queries": 2130,
+      "gallery": 27262,
+      "classes": 30,
+      "versus_incumbent": {
+        "mAP": {
+          "delta_pp": -2.3330128637466037,
+          "ci95_class": [
+            -4.6359238328479595,
+            -0.261595607469563
+          ],
+          "classes_up": 11,
+          "classes": 30
+        },
+        "precision": {
+          "delta_pp": -1.4807511085180889,
+          "ci95_class": [
+            -4.47461330566917,
+            1.6403895041691807
+          ],
+          "classes_up": 13,
+          "classes": 30
+        }
+      },
+      "controls": {
+        "primary": {
+          "mAP": 0.7598215937614441,
+          "precision": 0.7611643075942993
+        },
+        "initial_query_likelihood": {
+          "mAP": 0.765921413898468,
+          "precision": 0.7707793712615967
+        },
+        "no_feedback": {
+          "mAP": 0.44876834750175476,
+          "precision": 0.5029061436653137
+        },
+        "linear_word_score": {
+          "mAP": 0.7230428457260132,
+          "precision": 0.7244365811347961
+        },
+        "no_background": {
+          "mAP": 0.6822448968887329,
+          "precision": 0.704267680644989
+        },
+        "uniform_prior": {
+          "mAP": 0.7444574236869812,
+          "precision": 0.7726337909698486
+        },
+        "gallery_prior": {
+          "mAP": 0.7598215937614441,
+          "precision": 0.7611643075942993
+        },
+        "paper_canonical": {
+          "mAP": 0.7669311761856079,
+          "precision": 0.7855352163314819
+        },
+        "rgb_first_pass": {
+          "mAP": 0.6103469729423523,
+          "precision": 0.5888966917991638
+        },
+        "shuffled_proxy_identity": {
+          "mAP": 0.03942650556564331,
+          "precision": 0.032938968390226364
+        }
+      }
+    }
+  }
+}

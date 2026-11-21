@@ -1,0 +1,113 @@
+{
+  "revision": "46f6f6b06de6658f2308af03da1ad99960edbf41",
+  "utc": "2026-11-21T02:43:08.520073+00:00",
+  "primary": "neighborhood-calibrated-likelihood",
+  "families": {
+    "cross-diffusion-map": {
+      "scores": [
+        {
+          "mAP": 0.8185591697692871,
+          "precision": 0.8132555484771729,
+          "split": "sketchy_1",
+          "sha256": "7b0c89c16ba6a120c804ac67fbf812f7b75502f899567e0836c02349f633410d"
+        },
+        {
+          "mAP": 0.7419516444206238,
+          "precision": 0.7267866730690002,
+          "split": "sketchy_2",
+          "sha256": "0a4111a34a34c538b55af846974e0dbe9faf6545eeaf4668bad5047b67904d10"
+        }
+      ],
+      "name": "7bda495b2fb3eb35",
+      "freeze": "d9a77cfdb847a09f93ef334270ae7d05c52c188c4a15af3f090740d2112cc13c",
+      "historical": true,
+      "tu_rows_prelock": 0
+    },
+    "neighborhood-calibrated-likelihood": {
+      "scores": [
+        {
+          "mAP": 0.8265085816383362,
+          "precision": 0.8209894895553589,
+          "split": "sketchy_1",
+          "sha256": "9a78ce441ac4eb9a9bcb3d6ce96d4becd50df3b0eec33f24833694afb3e1448a"
+        },
+        {
+          "mAP": 0.7478904128074646,
+          "precision": 0.73594731092453,
+          "split": "sketchy_2",
+          "sha256": "57d6ef79d194c5be6fef45b3053736a5358474d2543f38d5e866657b3454ad6a"
+        }
+      ],
+      "name": "182e69d1e116fb5e",
+      "freeze": "2be510938d30f89e574618b5fea1a1541c8a712409982e4a04015c77ef9eee53",
+      "historical": false,
+      "tu_rows_prelock": 0,
+      "parameters": {
+        "k": 256,
+        "calibration": "posterior",
+        "estimator": "mle",
+        "weighting": "cosine",
+        "shuffled": false
+      }
+    },
+    "winclip-concept-likelihood": {
+      "scores": [
+        {
+          "mAP": 0.7549622654914856,
+          "precision": 0.7897136211395264,
+          "split": "sketchy_1",
+          "sha256": "59b58e73e851834bbed65a0c6d77f18c29d7eaf575cc94b0ad151d3f0dc03d59"
+        },
+        {
+          "mAP": 0.7142217755317688,
+          "precision": 0.7028335928916931,
+          "split": "sketchy_2",
+          "sha256": "9263305b1f769bc489afc5222ba35716ca45aec4a4dc20dd62d6cada8fb9f994"
+        }
+      ],
+      "name": "a037ebee7c99bdee",
+      "freeze": "87d6ca116a5e3f15c17560519b8676f2738f948de0589d5c43df672eeafcfdff",
+      "historical": false,
+      "tu_rows_prelock": 0,
+      "parameters": {
+        "side": 5,
+        "encoding": "masked",
+        "mix": 0.25
+      }
+    },
+    "freedom-gallery-transfer": {
+      "scores": [
+        {
+          "mAP": 0.7798838019371033,
+          "precision": 0.8076556324958801,
+          "split": "sketchy_1",
+          "sha256": "0a434ca0ef651ad6401327e56e63f108877c38b13860564ed4bd497947dde8e7"
+        },
+        {
+          "mAP": 0.7229596376419067,
+          "precision": 0.7099952697753906,
+          "split": "sketchy_2",
+          "sha256": "d939a8017d1ac8ca6824048018925da9ac424a82d2cc6b2cc3c00979f41f1c03"
+        }
+      ],
+      "name": "b3464bf029a5ad9d",
+      "freeze": "f0dad24f14169d04cbe259fca461dd91758c42ab326cb7139ca29dd7457a0d49",
+      "historical": false,
+      "tu_rows_prelock": 0,
+      "parameters": {
+        "proxies": 96,
+        "words_per_proxy": 7,
+        "retained_words": 7,
+        "search": "semantic",
+        "composition": "word-domain",
+        "shuffled": false
+      }
+    }
+  },
+  "selection": "equal mean official Sketchy mAP, tie break equal mean precision",
+  "selection_data": [
+    "sketchy_1",
+    "sketchy_2"
+  ],
+  "sha256": "53e79e32a7a063021c5c45b2d54fc0d0f36007af80335fb546a5b29ed05fe418"
+}

@@ -1,0 +1,60 @@
+{
+  "revision": "ef97c9a0febcef193dd5e39fd8bda051ac02166c",
+  "family_revision": "5f874b5570ec7fab5df380080cb4dd5d903b1167",
+  "seed": 55429,
+  "proxies": 20,
+  "split": {
+    "sketchy_1": {
+      "mean_proxy_fraction_relevant": {
+        "rgb": 0.3862719237804413,
+        "semantic": 0.7799123525619507
+      },
+      "mean_ap": {
+        "rgb": 0.45236095786094666,
+        "semantic": 0.7573862671852112
+      },
+      "rgb_zero_relevant_proxies": 509,
+      "semantic_zero_relevant_proxies": 167,
+      "more_relevant_proxies": {
+        "count": 793,
+        "mean_AP_gain_pp": 47.04132676124573
+      },
+      "fewer_relevant_proxies": {
+        "count": 35,
+        "mean_AP_gain_pp": -24.539418518543243
+      },
+      "same_relevant_proxies": {
+        "count": 372,
+        "mean_AP_gain_pp": 0.4251246340572834
+      },
+      "top1_rescued": 433,
+      "top1_lost": 10
+    },
+    "sketchy_2": {
+      "mean_proxy_fraction_relevant": {
+        "rgb": 0.3314536511898041,
+        "semantic": 0.6963764429092407
+      },
+      "mean_ap": {
+        "rgb": 0.4003247618675232,
+        "semantic": 0.715526819229126
+      },
+      "rgb_zero_relevant_proxies": 368,
+      "semantic_zero_relevant_proxies": 141,
+      "more_relevant_proxies": {
+        "count": 699,
+        "mean_AP_gain_pp": 49.58115816116333
+      },
+      "fewer_relevant_proxies": {
+        "count": 93,
+        "mean_AP_gain_pp": -30.768784880638123
+      },
+      "same_relevant_proxies": {
+        "count": 216,
+        "mean_AP_gain_pp": -0.10819261660799384
+      },
+      "top1_rescued": 356,
+      "top1_lost": 31
+    }
+  }
+}

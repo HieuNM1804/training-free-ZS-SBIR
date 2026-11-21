@@ -1,0 +1,723 @@
+{
+  "primary": "neighborhood-calibrated-likelihood",
+  "examined_new_method": "neighborhood-calibrated-likelihood",
+  "joint_lock": "53e79e32a7a063021c5c45b2d54fc0d0f36007af80335fb546a5b29ed05fe418",
+  "splits": {
+    "sketchy_1": {
+      "examples": [
+        {
+          "event": "improved_AP",
+          "query": "sketch/windmill/n04587559_11407-6.png",
+          "query_category": "windmill",
+          "top1_photo": "photo/windmill/n04587404_180101.jpg",
+          "top1_relevant": true,
+          "native_AP": 0.029427308589220047,
+          "uniform_AP": 0.4031200110912323,
+          "incumbent_AP": 0.4758906662464142,
+          "new_AP": 0.9928185343742371,
+          "relevant_in_top10": 10
+        },
+        {
+          "event": "improved_AP",
+          "query": "sketch/wine_bottle/n04591713_5973-4.png",
+          "query_category": "wine_bottle",
+          "top1_photo": "photo/rifle/ext_451.jpg",
+          "top1_relevant": false,
+          "native_AP": 0.040424980223178864,
+          "uniform_AP": 0.15012812614440918,
+          "incumbent_AP": 0.18435123562812805,
+          "new_AP": 0.45402151346206665,
+          "relevant_in_top10": 0
+        },
+        {
+          "event": "improved_AP",
+          "query": "sketch/deer/n02430045_7052-5.png",
+          "query_category": "deer",
+          "top1_photo": "photo/horse/ext_417.jpg",
+          "top1_relevant": false,
+          "native_AP": 0.2683064937591553,
+          "uniform_AP": 0.29429173469543457,
+          "incumbent_AP": 0.2643088400363922,
+          "new_AP": 0.4199785590171814,
+          "relevant_in_top10": 0
+        },
+        {
+          "event": "lost_AP",
+          "query": "sketch/ray/n01496331_8205-3.png",
+          "query_category": "ray",
+          "top1_photo": "photo/snail/ext_465.jpg",
+          "top1_relevant": false,
+          "native_AP": 0.05399255082011223,
+          "uniform_AP": 0.4693647623062134,
+          "incumbent_AP": 0.7909168601036072,
+          "new_AP": 0.30620649456977844,
+          "relevant_in_top10": 0
+        },
+        {
+          "event": "lost_AP",
+          "query": "sketch/airplane/n02691156_8226-8.png",
+          "query_category": "airplane",
+          "top1_photo": "photo/airplane/n02691156_149121.jpg",
+          "top1_relevant": true,
+          "native_AP": 0.08723552525043488,
+          "uniform_AP": 0.8607004880905151,
+          "incumbent_AP": 0.9993122220039368,
+          "new_AP": 0.6979618072509766,
+          "relevant_in_top10": 10
+        },
+        {
+          "event": "lost_AP",
+          "query": "sketch/butterfly/n02274259_12667-3.png",
+          "query_category": "butterfly",
+          "top1_photo": "photo/butterfly/n02274259_14223.jpg",
+          "top1_relevant": true,
+          "native_AP": 0.1191105991601944,
+          "uniform_AP": 0.5740461945533752,
+          "incumbent_AP": 0.9981337189674377,
+          "new_AP": 0.8282580375671387,
+          "relevant_in_top10": 10
+        }
+      ],
+      "per_class_gain": [
+        {
+          "class": "cup",
+          "queries": 647,
+          "mAP_gain_pp": 1.1036168336868286
+        },
+        {
+          "class": "swan",
+          "queries": 536,
+          "mAP_gain_pp": -4.69110107421875
+        },
+        {
+          "class": "harp",
+          "queries": 534,
+          "mAP_gain_pp": -1.1586332321166992
+        },
+        {
+          "class": "squirrel",
+          "queries": 638,
+          "mAP_gain_pp": 0.5487275123596191
+        },
+        {
+          "class": "snail",
+          "queries": 590,
+          "mAP_gain_pp": 8.458824157714844
+        },
+        {
+          "class": "ray",
+          "queries": 468,
+          "mAP_gain_pp": -2.394974946975708
+        },
+        {
+          "class": "pineapple",
+          "queries": 555,
+          "mAP_gain_pp": 0.35978230834007263
+        },
+        {
+          "class": "volcano",
+          "queries": 504,
+          "mAP_gain_pp": 2.125436544418335
+        },
+        {
+          "class": "rifle",
+          "queries": 571,
+          "mAP_gain_pp": 6.766016483306885
+        },
+        {
+          "class": "scissors",
+          "queries": 558,
+          "mAP_gain_pp": 0.1900997757911682
+        },
+        {
+          "class": "parrot",
+          "queries": 552,
+          "mAP_gain_pp": -7.017971992492676
+        },
+        {
+          "class": "windmill",
+          "queries": 598,
+          "mAP_gain_pp": 2.3631091117858887
+        },
+        {
+          "class": "teddy_bear",
+          "queries": 521,
+          "mAP_gain_pp": 1.7827914953231812
+        },
+        {
+          "class": "tree",
+          "queries": 533,
+          "mAP_gain_pp": 5.290023326873779
+        },
+        {
+          "class": "wine_bottle",
+          "queries": 553,
+          "mAP_gain_pp": 3.855273962020874
+        },
+        {
+          "class": "deer",
+          "queries": 518,
+          "mAP_gain_pp": 1.3778841495513916
+        },
+        {
+          "class": "chicken",
+          "queries": 624,
+          "mAP_gain_pp": 0.1685485541820526
+        },
+        {
+          "class": "airplane",
+          "queries": 659,
+          "mAP_gain_pp": 3.252213954925537
+        },
+        {
+          "class": "wheelchair",
+          "queries": 542,
+          "mAP_gain_pp": 1.0135338306427002
+        },
+        {
+          "class": "tank",
+          "queries": 556,
+          "mAP_gain_pp": -3.8195993900299072
+        },
+        {
+          "class": "umbrella",
+          "queries": 496,
+          "mAP_gain_pp": 6.6886091232299805
+        },
+        {
+          "class": "butterfly",
+          "queries": 562,
+          "mAP_gain_pp": -7.457777500152588
+        },
+        {
+          "class": "camel",
+          "queries": 640,
+          "mAP_gain_pp": -0.569801926612854
+        },
+        {
+          "class": "horse",
+          "queries": 688,
+          "mAP_gain_pp": 1.4530621767044067
+        },
+        {
+          "class": "bell",
+          "queries": 536,
+          "mAP_gain_pp": -0.6312325596809387
+        }
+      ],
+      "by_original_AP": [
+        {
+          "original_AP_interval": [
+            0,
+            0.25
+          ],
+          "count": 1747,
+          "new_mAP_gain_pp": 4.948831558227539
+        },
+        {
+          "original_AP_interval": [
+            0.25,
+            0.5
+          ],
+          "count": 901,
+          "new_mAP_gain_pp": 14.863080978393555
+        },
+        {
+          "original_AP_interval": [
+            0.5,
+            0.75
+          ],
+          "count": 540,
+          "new_mAP_gain_pp": 3.4035043716430664
+        },
+        {
+          "original_AP_interval": [
+            0.75,
+            1.0
+          ],
+          "count": 10991,
+          "new_mAP_gain_pp": -1.1467183828353882
+        }
+      ]
+    },
+    "sketchy_2": {
+      "examples": [
+        {
+          "event": "improved_AP",
+          "query": "sketch/giraffe/n02439033_14784-5.png",
+          "query_category": "giraffe",
+          "top1_photo": "photo/saw/n04140064_31311.jpg",
+          "top1_relevant": false,
+          "native_AP": 0.04228764399886131,
+          "uniform_AP": 0.02728494629263878,
+          "incumbent_AP": 0.0,
+          "new_AP": 0.37859058380126953,
+          "relevant_in_top10": 0
+        },
+        {
+          "event": "improved_AP",
+          "query": "sketch/helicopter/n03512147_438-4.png",
+          "query_category": "helicopter",
+          "top1_photo": "photo/seagull/n02041246_65331.jpg",
+          "top1_relevant": false,
+          "native_AP": 0.03849291056394577,
+          "uniform_AP": 0.145295649766922,
+          "incumbent_AP": 0.16078564524650574,
+          "new_AP": 0.8785009980201721,
+          "relevant_in_top10": 3
+        },
+        {
+          "event": "improved_AP",
+          "query": "sketch/skyscraper/n04233124_10163-2.png",
+          "query_category": "skyscraper",
+          "top1_photo": "photo/tree/n12523475_5928.jpg",
+          "top1_relevant": false,
+          "native_AP": 0.0,
+          "uniform_AP": 0.38660135865211487,
+          "incumbent_AP": 0.7591729164123535,
+          "new_AP": 0.9557774662971497,
+          "relevant_in_top10": 8
+        },
+        {
+          "event": "lost_AP",
+          "query": "sketch/rhinoceros/n02391994_14679-3.png",
+          "query_category": "rhinoceros",
+          "top1_photo": "photo/cow/n02404432_38931.jpg",
+          "top1_relevant": false,
+          "native_AP": 0.40523651242256165,
+          "uniform_AP": 0.5500485301017761,
+          "incumbent_AP": 1.0,
+          "new_AP": 0.6190273761749268,
+          "relevant_in_top10": 1
+        },
+        {
+          "event": "lost_AP",
+          "query": "sketch/rhinoceros/n02391994_15347-3.png",
+          "query_category": "rhinoceros",
+          "top1_photo": "photo/cow/n02403454_17363.jpg",
+          "top1_relevant": false,
+          "native_AP": 0.4630177319049835,
+          "uniform_AP": 1.0,
+          "incumbent_AP": 1.0,
+          "new_AP": 0.28461384773254395,
+          "relevant_in_top10": 0
+        },
+        {
+          "event": "lost_AP",
+          "query": "sketch/saw/n04140064_26866-1.png",
+          "query_category": "saw",
+          "top1_photo": "photo/sword/n04147793_7939.jpg",
+          "top1_relevant": false,
+          "native_AP": 0.03527535870671272,
+          "uniform_AP": 0.3808838129043579,
+          "incumbent_AP": 0.7115179300308228,
+          "new_AP": 0.4920358657836914,
+          "relevant_in_top10": 6
+        }
+      ],
+      "per_class_gain": [
+        {
+          "class": "bat",
+          "queries": 635,
+          "mAP_gain_pp": 4.9628376960754395
+        },
+        {
+          "class": "cabin",
+          "queries": 546,
+          "mAP_gain_pp": -3.4685418605804443
+        },
+        {
+          "class": "cow",
+          "queries": 728,
+          "mAP_gain_pp": 1.4525424242019653
+        },
+        {
+          "class": "dolphin",
+          "queries": 590,
+          "mAP_gain_pp": 0.05023574456572533
+        },
+        {
+          "class": "door",
+          "queries": 578,
+          "mAP_gain_pp": 9.897595405578613
+        },
+        {
+          "class": "giraffe",
+          "queries": 673,
+          "mAP_gain_pp": 1.1312737464904785
+        },
+        {
+          "class": "helicopter",
+          "queries": 746,
+          "mAP_gain_pp": 8.342849731445312
+        },
+        {
+          "class": "mouse",
+          "queries": 670,
+          "mAP_gain_pp": 0.4753517806529999
+        },
+        {
+          "class": "pear",
+          "queries": 575,
+          "mAP_gain_pp": 0.8273698687553406
+        },
+        {
+          "class": "raccoon",
+          "queries": 735,
+          "mAP_gain_pp": -7.359879016876221
+        },
+        {
+          "class": "rhinoceros",
+          "queries": 556,
+          "mAP_gain_pp": -5.355191230773926
+        },
+        {
+          "class": "saw",
+          "queries": 532,
+          "mAP_gain_pp": -3.261871099472046
+        },
+        {
+          "class": "scissors",
+          "queries": 558,
+          "mAP_gain_pp": -1.5340689420700073
+        },
+        {
+          "class": "seagull",
+          "queries": 666,
+          "mAP_gain_pp": -1.6890596151351929
+        },
+        {
+          "class": "skyscraper",
+          "queries": 545,
+          "mAP_gain_pp": 6.362088203430176
+        },
+        {
+          "class": "songbird",
+          "queries": 529,
+          "mAP_gain_pp": -3.280717372894287
+        },
+        {
+          "class": "sword",
+          "queries": 605,
+          "mAP_gain_pp": 4.832339763641357
+        },
+        {
+          "class": "tree",
+          "queries": 533,
+          "mAP_gain_pp": 1.2219561338424683
+        },
+        {
+          "class": "wheelchair",
+          "queries": 542,
+          "mAP_gain_pp": 1.66431725025177
+        },
+        {
+          "class": "windmill",
+          "queries": 598,
+          "mAP_gain_pp": 2.156909227371216
+        },
+        {
+          "class": "window",
+          "queries": 554,
+          "mAP_gain_pp": -6.681315898895264
+        }
+      ],
+      "by_original_AP": [
+        {
+          "original_AP_interval": [
+            0,
+            0.25
+          ],
+          "count": 2950,
+          "new_mAP_gain_pp": 9.134267807006836
+        },
+        {
+          "original_AP_interval": [
+            0.25,
+            0.5
+          ],
+          "count": 272,
+          "new_mAP_gain_pp": 5.679177761077881
+        },
+        {
+          "original_AP_interval": [
+            0.5,
+            0.75
+          ],
+          "count": 256,
+          "new_mAP_gain_pp": -3.6801204681396484
+        },
+        {
+          "original_AP_interval": [
+            0.75,
+            1.0
+          ],
+          "count": 9216,
+          "new_mAP_gain_pp": -2.1712231636047363
+        }
+      ]
+    },
+    "tuberlin": {
+      "examples": [
+        {
+          "event": "improved_AP",
+          "query": "sketch/helicopter/8352.png",
+          "query_category": "helicopter",
+          "top1_photo": "photo/helicopter/n03512147_536.JPEG",
+          "top1_relevant": true,
+          "native_AP": 0.03618834167718887,
+          "uniform_AP": 0.10280709713697433,
+          "incumbent_AP": 0.12034926563501358,
+          "new_AP": 0.572665810585022,
+          "relevant_in_top10": 10
+        },
+        {
+          "event": "improved_AP",
+          "query": "sketch/couch/4661.png",
+          "query_category": "couch",
+          "top1_photo": "photo/couch/n04344873_4249.JPEG",
+          "top1_relevant": true,
+          "native_AP": 0.050190962851047516,
+          "uniform_AP": 0.7217532992362976,
+          "incumbent_AP": 0.6609933376312256,
+          "new_AP": 0.8778485655784607,
+          "relevant_in_top10": 10
+        },
+        {
+          "event": "improved_AP",
+          "query": "sketch/baseball bat/997.png",
+          "query_category": "baseball bat",
+          "top1_photo": "photo/baseball bat/n02799175_5428.JPEG",
+          "top1_relevant": true,
+          "native_AP": 0.05763687938451767,
+          "uniform_AP": 0.4973401725292206,
+          "incumbent_AP": 0.8100008964538574,
+          "new_AP": 0.9430405497550964,
+          "relevant_in_top10": 10
+        },
+        {
+          "event": "lost_AP",
+          "query": "sketch/mermaid/10300.png",
+          "query_category": "mermaid",
+          "top1_photo": "photo/pear/n07767847_6711.JPEG",
+          "top1_relevant": false,
+          "native_AP": 0.023572653532028198,
+          "uniform_AP": 0.12368342280387878,
+          "incumbent_AP": 0.38182589411735535,
+          "new_AP": 0.02925850637257099,
+          "relevant_in_top10": 0
+        },
+        {
+          "event": "lost_AP",
+          "query": "sketch/baseball bat/999.png",
+          "query_category": "baseball bat",
+          "top1_photo": "photo/hammer/n03481172_23209.JPEG",
+          "top1_relevant": false,
+          "native_AP": 0.07072554528713226,
+          "uniform_AP": 0.25666072964668274,
+          "incumbent_AP": 0.3896150588989258,
+          "new_AP": 0.2494594007730484,
+          "relevant_in_top10": 0
+        },
+        {
+          "event": "lost_AP",
+          "query": "sketch/suv/16814.png",
+          "query_category": "suv",
+          "top1_photo": "photo/truck/n03930630_708.JPEG",
+          "top1_relevant": false,
+          "native_AP": 0.07694553583860397,
+          "uniform_AP": 0.5226820707321167,
+          "incumbent_AP": 0.7382665872573853,
+          "new_AP": 0.5481802225112915,
+          "relevant_in_top10": 0
+        }
+      ],
+      "per_class_gain": [
+        {
+          "class": "helicopter",
+          "queries": 70,
+          "mAP_gain_pp": 2.672219753265381
+        },
+        {
+          "class": "wrist-watch",
+          "queries": 70,
+          "mAP_gain_pp": -1.5464030504226685
+        },
+        {
+          "class": "mermaid",
+          "queries": 70,
+          "mAP_gain_pp": -2.6380903720855713
+        },
+        {
+          "class": "mosquito",
+          "queries": 70,
+          "mAP_gain_pp": -2.223247528076172
+        },
+        {
+          "class": "pear",
+          "queries": 70,
+          "mAP_gain_pp": 0.04480944201350212
+        },
+        {
+          "class": "couch",
+          "queries": 70,
+          "mAP_gain_pp": 7.456644058227539
+        },
+        {
+          "class": "hammer",
+          "queries": 70,
+          "mAP_gain_pp": 6.175212860107422
+        },
+        {
+          "class": "airplane",
+          "queries": 70,
+          "mAP_gain_pp": -4.669989585876465
+        },
+        {
+          "class": "house",
+          "queries": 70,
+          "mAP_gain_pp": 2.873107433319092
+        },
+        {
+          "class": "baseball bat",
+          "queries": 70,
+          "mAP_gain_pp": -7.093554496765137
+        },
+        {
+          "class": "toilet",
+          "queries": 70,
+          "mAP_gain_pp": 0.05626226216554642
+        },
+        {
+          "class": "panda",
+          "queries": 70,
+          "mAP_gain_pp": -0.6122070550918579
+        },
+        {
+          "class": "butterfly",
+          "queries": 70,
+          "mAP_gain_pp": 5.532112121582031
+        },
+        {
+          "class": "mug",
+          "queries": 70,
+          "mAP_gain_pp": -0.38961589336395264
+        },
+        {
+          "class": "wineglass",
+          "queries": 70,
+          "mAP_gain_pp": 1.4004102945327759
+        },
+        {
+          "class": "motorbike",
+          "queries": 70,
+          "mAP_gain_pp": 2.0325064659118652
+        },
+        {
+          "class": "eyeglasses",
+          "queries": 70,
+          "mAP_gain_pp": 9.789325714111328
+        },
+        {
+          "class": "hot air balloon",
+          "queries": 80,
+          "mAP_gain_pp": -10.53449821472168
+        },
+        {
+          "class": "cup",
+          "queries": 70,
+          "mAP_gain_pp": -1.1256555318832397
+        },
+        {
+          "class": "skull",
+          "queries": 70,
+          "mAP_gain_pp": -1.0289099216461182
+        },
+        {
+          "class": "truck",
+          "queries": 70,
+          "mAP_gain_pp": -11.97562026977539
+        },
+        {
+          "class": "palm tree",
+          "queries": 70,
+          "mAP_gain_pp": 2.4208788871765137
+        },
+        {
+          "class": "cell phone",
+          "queries": 70,
+          "mAP_gain_pp": -2.5871758460998535
+        },
+        {
+          "class": "horse",
+          "queries": 80,
+          "mAP_gain_pp": 1.2158628702163696
+        },
+        {
+          "class": "sailboat",
+          "queries": 70,
+          "mAP_gain_pp": -0.4891000986099243
+        },
+        {
+          "class": "suv",
+          "queries": 70,
+          "mAP_gain_pp": -11.141615867614746
+        },
+        {
+          "class": "church",
+          "queries": 70,
+          "mAP_gain_pp": 1.6029504537582397
+        },
+        {
+          "class": "floor lamp",
+          "queries": 70,
+          "mAP_gain_pp": -4.646113872528076
+        },
+        {
+          "class": "bus",
+          "queries": 80,
+          "mAP_gain_pp": -5.017233848571777
+        },
+        {
+          "class": "tv",
+          "queries": 70,
+          "mAP_gain_pp": 0.6753147840499878
+        }
+      ],
+      "by_original_AP": [
+        {
+          "original_AP_interval": [
+            0,
+            0.25
+          ],
+          "count": 249,
+          "new_mAP_gain_pp": 4.690903186798096
+        },
+        {
+          "original_AP_interval": [
+            0.25,
+            0.5
+          ],
+          "count": 190,
+          "new_mAP_gain_pp": -2.171880006790161
+        },
+        {
+          "original_AP_interval": [
+            0.5,
+            0.75
+          ],
+          "count": 129,
+          "new_mAP_gain_pp": -3.6368181705474854
+        },
+        {
+          "original_AP_interval": [
+            0.75,
+            1.0
+          ],
+          "count": 1562,
+          "new_mAP_gain_pp": -1.340323567390442
+        }
+      ]
+    }
+  }
+}

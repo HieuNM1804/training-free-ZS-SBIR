@@ -1,0 +1,3309 @@
+{
+  "revision": "0daf97d511297ce4bb51f849233718a0cac76ef2",
+  "primary": "public-semantic-translation",
+  "parameters": {
+    "support": "nearest",
+    "mass": 0.5,
+    "bandwidth": "local",
+    "shuffle": false
+  },
+  "criterion": "equal mean Sketchy mAP then equal mean precision",
+  "decision": "21dd93328f0db06af04469942a5071df10f6d088888152f2de7cbcf8df16a9bc",
+  "sample_seed": 4379,
+  "words_split_seed": 9241,
+  "splits": {
+    "sketchy_1": {
+      "full": {
+        "shared-concept-likelihood": {
+          "mAP": 0.7530822157859802,
+          "precision": 0.7894103527069092,
+          "queries": 14179,
+          "gallery": 17100,
+          "classes": 25,
+          "source_sha256": "5aa691b7df88a08ed3dc88809662fcb9f16e6c875586c01792c018c53746b4e6",
+          "revision": "781b4e1e5a0caaee5493f0287172e8c470c00e1f",
+          "primary_minus_method": {
+            "mAP": {
+              "delta_pp": 0.6527009159006019,
+              "ci95_class": [
+                -0.1649031291947913,
+                1.5977988507262089
+              ],
+              "classes_up": 17,
+              "classes": 25
+            },
+            "precision": {
+              "delta_pp": -0.07031524823327623,
+              "ci95_class": [
+                -0.5672846096847647,
+                0.40083720989434113
+              ],
+              "classes_up": 13,
+              "classes": 25
+            }
+          },
+          "method_minus_uniform": {
+            "mAP": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 25
+            },
+            "precision": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 25
+            }
+          }
+        },
+        "winclip-concept-likelihood": {
+          "mAP": 0.7549622654914856,
+          "precision": 0.7897136211395264,
+          "queries": 14179,
+          "gallery": 17100,
+          "classes": 25,
+          "source_sha256": "59b58e73e851834bbed65a0c6d77f18c29d7eaf575cc94b0ad151d3f0dc03d59",
+          "revision": "24b9cae9603c255b345b2fa5dfcbf3605fb370ae",
+          "kd_check": {
+            "queries": 14179,
+            "mAP": 0.7549622058868408,
+            "precision": 0.7897137999534607,
+            "kd_minus_pipeline_max_abs_same_order_AP_P": [
+              0.0,
+              0.0
+            ],
+            "max_per_query_abs_AP_P": [
+              0.0,
+              0.0
+            ],
+            "mean_per_query_abs_AP_P": [
+              0.0,
+              0.0
+            ],
+            "queries_within_1e-6_both": 14179
+          },
+          "controls": {
+            "primary": {
+              "mAP": 0.7549622654914856,
+              "precision": 0.7897136211395264
+            },
+            "full_frame": {
+              "mAP": 0.7530821561813354,
+              "precision": 0.7894096970558167
+            },
+            "window_only": {
+              "mAP": 0.7489086389541626,
+              "precision": 0.7869370579719543
+            },
+            "penultimate_patches": {
+              "mAP": 0.752638578414917,
+              "precision": 0.7892467379570007
+            },
+            "shuffled_window_assignment": {
+              "mAP": 0.6619830131530762,
+              "precision": 0.776373565196991
+            },
+            "small_windows": {
+              "mAP": 0.7531607747077942,
+              "precision": 0.7894625067710876
+            },
+            "medium_windows": {
+              "mAP": 0.7540825009346008,
+              "precision": 0.7895951867103577
+            },
+            "large_windows": {
+              "mAP": 0.7549622654914856,
+              "precision": 0.7897136211395264
+            }
+          },
+          "primary_minus_method": {
+            "mAP": {
+              "delta_pp": 0.4646992675292197,
+              "ci95_class": [
+                -0.3837423120777643,
+                1.4190079484699583
+              ],
+              "classes_up": 14,
+              "classes": 25
+            },
+            "precision": {
+              "delta_pp": -0.10064176703295576,
+              "ci95_class": [
+                -0.5984994532524196,
+                0.3724751794730544
+              ],
+              "classes_up": 12,
+              "classes": 25
+            }
+          },
+          "method_minus_uniform": {
+            "mAP": {
+              "delta_pp": 0.18800164837138222,
+              "ci95_class": [
+                0.10328516771096671,
+                0.2679861771727663
+              ],
+              "classes_up": 19,
+              "classes": 25
+            },
+            "precision": {
+              "delta_pp": 0.03032651879967953,
+              "ci95_class": [
+                -0.03760442247246875,
+                0.09686508932045376
+              ],
+              "classes_up": 15,
+              "classes": 25
+            }
+          }
+        },
+        "public-word-calibration": {
+          "mAP": 0.7156817317008972,
+          "precision": 0.7509817481040955,
+          "queries": 14179,
+          "gallery": 17100,
+          "classes": 25,
+          "source_sha256": "3e5e1de9c297b2b9b97b45a9be57ecd65fe9cd4a47861f4c8cb3fd4a0e9c1207",
+          "revision": "017131c005cb29a9f98ebb27dd92df9404ac35bd",
+          "kd_check": {
+            "queries": 14179,
+            "mAP": 0.7156816720962524,
+            "precision": 0.7509817481040955,
+            "kd_minus_pipeline_max_abs_same_order_AP_P": [
+              0.0,
+              0.0
+            ],
+            "max_per_query_abs_AP_P": [
+              0.0,
+              0.0
+            ],
+            "mean_per_query_abs_AP_P": [
+              0.0,
+              0.0
+            ],
+            "queries_within_1e-6_both": 14179
+          },
+          "controls": {
+            "primary": {
+              "mAP": 0.7156817317008972,
+              "precision": 0.7509817481040955
+            },
+            "original": {
+              "mAP": 0.1840866506099701,
+              "precision": 0.16723182797431946
+            },
+            "uniform": {
+              "mAP": 0.7530821561813354,
+              "precision": 0.7894096970558167
+            },
+            "query_only": {
+              "mAP": 0.7453405857086182,
+              "precision": 0.7767282128334045
+            },
+            "photo_only": {
+              "mAP": 0.7404718995094299,
+              "precision": 0.780899167060852
+            },
+            "identity_control": {
+              "mAP": 0.19893266260623932,
+              "precision": 0.2463812679052353
+            },
+            "permuted_words": {
+              "mAP": 0.6933289766311646,
+              "precision": 0.7301509380340576
+            }
+          },
+          "primary_minus_method": {
+            "mAP": {
+              "delta_pp": 4.392755369880621,
+              "ci95_class": [
+                1.5709543587441368,
+                7.02242105658403
+              ],
+              "classes_up": 21,
+              "classes": 25
+            },
+            "precision": {
+              "delta_pp": 3.772550918318458,
+              "ci95_class": [
+                0.7373361368779604,
+                6.649900471593499
+              ],
+              "classes_up": 18,
+              "classes": 25
+            }
+          },
+          "method_minus_uniform": {
+            "mAP": {
+              "delta_pp": -3.7400544539800196,
+              "ci95_class": [
+                -6.384066740314244,
+                -0.7421441992428558
+              ],
+              "classes_up": 5,
+              "classes": 25
+            },
+            "precision": {
+              "delta_pp": -3.842866166551734,
+              "ci95_class": [
+                -6.816259814041907,
+                -0.6650983861499006
+              ],
+              "classes_up": 7,
+              "classes": 25
+            }
+          }
+        },
+        "public-semantic-translation": {
+          "mAP": 0.7596092820167542,
+          "precision": 0.7887072563171387,
+          "queries": 14179,
+          "gallery": 17100,
+          "classes": 25,
+          "source_sha256": "0a1c12fe9900faf98c7e096dfffa135b607e096ccbedaf9df70964e0e961eb28",
+          "revision": "b2bb1506d8afd2be318b60b510530229a8a5ebcb",
+          "kd_check": {
+            "queries": 14179,
+            "mAP": 0.7596092820167542,
+            "precision": 0.7887072563171387,
+            "kd_minus_pipeline_max_abs_same_order_AP_P": [
+              0.0,
+              0.0
+            ],
+            "max_per_query_abs_AP_P": [
+              0.0,
+              0.0
+            ],
+            "mean_per_query_abs_AP_P": [
+              0.0,
+              0.0
+            ],
+            "queries_within_1e-6_both": 14179
+          },
+          "controls": {
+            "primary": {
+              "mAP": 0.7596092820167542,
+              "precision": 0.7887072563171387
+            },
+            "original": {
+              "mAP": 0.7531058192253113,
+              "precision": 0.7893313765525818
+            },
+            "literal_match": {
+              "mAP": 0.7530821561813354,
+              "precision": 0.7894096970558167
+            },
+            "translation_only": {
+              "mAP": 0.743706464767456,
+              "precision": 0.7746315002441406
+            },
+            "checkpoint_bandwidth": {
+              "mAP": 0.7621674537658691,
+              "precision": 0.791693389415741
+            },
+            "permuted_translation": {
+              "mAP": 0.7206937670707703,
+              "precision": 0.7736666202545166
+            },
+            "alternative_support": {
+              "mAP": 0.7531058192253113,
+              "precision": 0.7893313765525818
+            }
+          },
+          "primary_minus_method": {
+            "mAP": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 25
+            },
+            "precision": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 25
+            }
+          },
+          "method_minus_uniform": {
+            "mAP": {
+              "delta_pp": 0.6527009159006019,
+              "ci95_class": [
+                -0.1649031291947913,
+                1.5977988507262089
+              ],
+              "classes_up": 17,
+              "classes": 25
+            },
+            "precision": {
+              "delta_pp": -0.07031524823327623,
+              "ci95_class": [
+                -0.5672846096847647,
+                0.40083720989434113
+              ],
+              "classes_up": 13,
+              "classes": 25
+            }
+          }
+        },
+        "conditional-semantic-index": {
+          "mAP": 0.302895188331604,
+          "precision": 0.41636720299720764,
+          "queries": 14179,
+          "gallery": 17100,
+          "classes": 25,
+          "source_sha256": "9c7b9a7cd3df6f3f058bdf7e86083d1e6d7fc75152e39ebc77a2c4b0301b3778",
+          "revision": "d9f0d0a24491acedee2e0382004b4d8cd778e09f",
+          "primary_minus_method": {
+            "mAP": {
+              "delta_pp": 45.67140490903723,
+              "ci95_class": [
+                40.3922693336681,
+                50.925809180002176
+              ],
+              "classes_up": 25,
+              "classes": 25
+            },
+            "precision": {
+              "delta_pp": 37.23400811168129,
+              "ci95_class": [
+                29.250727659816377,
+                45.001391378455615
+              ],
+              "classes_up": 24,
+              "classes": 25
+            }
+          },
+          "method_minus_uniform": {
+            "mAP": {
+              "delta_pp": -45.01870399313663,
+              "ci95_class": [
+                -50.14533337719564,
+                -39.93388903597615
+              ],
+              "classes_up": 0,
+              "classes": 25
+            },
+            "precision": {
+              "delta_pp": -37.30432335991457,
+              "ci95_class": [
+                -45.06415601036103,
+                -29.279689325031022
+              ],
+              "classes_up": 1,
+              "classes": 25
+            }
+          }
+        }
+      },
+      "dictionary_sample": {
+        "queries": 600,
+        "gallery": 17100,
+        "classes": 25,
+        "conditions": {
+          "full": {
+            "mAP": 0.7579666376113892,
+            "precision": 0.789566695690155,
+            "words": 20931,
+            "mean_minus_official_pp": [
+              9.931003053983054e-07,
+              0.0
+            ],
+            "invariance": {
+              "max_subgallery_abs": 3.5762786865234375e-07,
+              "max_singleton_abs": 9.220093488693237e-08,
+              "paired_query_count": 50,
+              "paired_photo_count": 200,
+              "singletons": 5
+            },
+            "native_witnesses": {
+              "native_wrong": 403,
+              "native_wrong_pair_flipped": 325,
+              "corrected_top1": 243,
+              "regressed_top1": 8,
+              "examples": {
+                "native_wrong_now_top1_correct": [
+                  {
+                    "query": "sketch/umbrella/n04507155_2158-1.png",
+                    "native_wrong_or_top": "photo/scissors/ext_283.jpg",
+                    "native_best_positive": "photo/umbrella/ext_119.jpg",
+                    "new_top": "photo/umbrella/ext_213.jpg",
+                    "shared_exact_words_on_three_pairs": [
+                      "umbrella",
+                      "umbrella",
+                      "umbrella"
+                    ],
+                    "native_scores": [
+                      0.824915885925293,
+                      0.7492877244949341,
+                      0.5258209109306335
+                    ],
+                    "pair_method_scores": [
+                      0.0028285933658480644,
+                      0.28420937061309814,
+                      0.5038197636604309
+                    ]
+                  },
+                  {
+                    "query": "sketch/rifle/n02749479_8200-5.png",
+                    "native_wrong_or_top": "photo/scissors/ext_510.jpg",
+                    "native_best_positive": "photo/rifle/n04090263_4286.jpg",
+                    "new_top": "photo/rifle/ext_131.jpg",
+                    "shared_exact_words_on_three_pairs": [
+                      "gun",
+                      "assault rifle",
+                      "assault rifle"
+                    ],
+                    "native_scores": [
+                      0.7976114749908447,
+                      0.7948320508003235,
+                      0.5692010521888733
+                    ],
+                    "pair_method_scores": [
+                      0.05769433081150055,
+                      0.11533068865537643,
+                      0.46097809076309204
+                    ]
+                  },
+                  {
+                    "query": "sketch/snail/n01944390_773-2.png",
+                    "native_wrong_or_top": "photo/scissors/ext_525.jpg",
+                    "native_best_positive": "photo/snail/ext_134.jpg",
+                    "new_top": "photo/snail/ext_191.jpg",
+                    "shared_exact_words_on_three_pairs": [
+                      "letter (symbol)",
+                      "snail",
+                      "snail"
+                    ],
+                    "native_scores": [
+                      0.8261097073554993,
+                      0.7055967450141907,
+                      0.6198575496673584
+                    ],
+                    "pair_method_scores": [
+                      0.04227488860487938,
+                      0.09280196577310562,
+                      0.4576234817504883
+                    ]
+                  }
+                ],
+                "native_correct_now_top1_wrong": [
+                  {
+                    "query": "sketch/scissors/n04148054_9098-3.png",
+                    "native_wrong_or_top": "photo/scissors/ext_525.jpg",
+                    "native_best_positive": "photo/scissors/ext_525.jpg",
+                    "new_top": "photo/bell/ext_480.jpg",
+                    "shared_exact_words_on_three_pairs": [
+                      "ribbon (rhythmic gymnastics)",
+                      "ribbon (rhythmic gymnastics)",
+                      "baton twirling"
+                    ],
+                    "native_scores": [
+                      0.7964362502098083,
+                      0.7964362502098083,
+                      0.6155491471290588
+                    ],
+                    "pair_method_scores": [
+                      0.006596823688596487,
+                      0.006596823688596487,
+                      0.0722380131483078
+                    ]
+                  },
+                  {
+                    "query": "sketch/deer/n02432983_8470-4.png",
+                    "native_wrong_or_top": "photo/deer/ext_306.jpg",
+                    "native_best_positive": "photo/deer/ext_306.jpg",
+                    "new_top": "photo/camel/n02437136_44371.jpg",
+                    "shared_exact_words_on_three_pairs": [
+                      "elk",
+                      "elk",
+                      "camelid"
+                    ],
+                    "native_scores": [
+                      0.7940869331359863,
+                      0.7940869331359863,
+                      0.6863368153572083
+                    ],
+                    "pair_method_scores": [
+                      0.008204348385334015,
+                      0.008204348385334015,
+                      0.3563512861728668
+                    ]
+                  },
+                  {
+                    "query": "sketch/tree/n12523475_5928-3.png",
+                    "native_wrong_or_top": "photo/tree/ext_376.jpg",
+                    "native_best_positive": "photo/tree/ext_376.jpg",
+                    "new_top": "photo/ray/ext_481.jpg",
+                    "shared_exact_words_on_three_pairs": [
+                      "slippery elm",
+                      "slippery elm",
+                      "beef brain"
+                    ],
+                    "native_scores": [
+                      0.7955142259597778,
+                      0.7955142259597778,
+                      0.6026694178581238
+                    ],
+                    "pair_method_scores": [
+                      0.010896931402385235,
+                      0.010896931402385235,
+                      0.04568454623222351
+                    ]
+                  }
+                ],
+                "stays_wrong_at_top1": [
+                  {
+                    "query": "sketch/camel/n02437136_1418-4.png",
+                    "native_wrong_or_top": "photo/scissors/ext_515.jpg",
+                    "native_best_positive": "photo/camel/ext_452.jpg",
+                    "new_top": "photo/wheelchair/ext_109.jpg",
+                    "shared_exact_words_on_three_pairs": [
+                      "thumb signal",
+                      "camel",
+                      "bodybuilder"
+                    ],
+                    "native_scores": [
+                      0.8054097294807434,
+                      0.7399497032165527,
+                      0.5982398986816406
+                    ],
+                    "pair_method_scores": [
+                      0.028046369552612305,
+                      0.027805199846625328,
+                      0.16492266952991486
+                    ]
+                  },
+                  {
+                    "query": "sketch/tank/n04389033_23858-5.png",
+                    "native_wrong_or_top": "photo/scissors/ext_193.jpg",
+                    "native_best_positive": "photo/tank/ext_119.jpg",
+                    "new_top": "photo/wheelchair/n04576002_6351.jpg",
+                    "shared_exact_words_on_three_pairs": [
+                      "single scull",
+                      "suspension part",
+                      "wheelchair"
+                    ],
+                    "native_scores": [
+                      0.8106602430343628,
+                      0.6682164669036865,
+                      0.6375390887260437
+                    ],
+                    "pair_method_scores": [
+                      0.008102044463157654,
+                      0.02230004407465458,
+                      0.08977337926626205
+                    ]
+                  },
+                  {
+                    "query": "sketch/harp/n03495258_4931-3.png",
+                    "native_wrong_or_top": "photo/scissors/ext_126.jpg",
+                    "native_best_positive": "photo/harp/ext_448.jpg",
+                    "new_top": "photo/snail/ext_442.jpg",
+                    "shared_exact_words_on_three_pairs": [
+                      "tooth",
+                      "aeolian harp",
+                      "conch (shell)"
+                    ],
+                    "native_scores": [
+                      0.7923163771629333,
+                      0.7171077132225037,
+                      0.573022723197937
+                    ],
+                    "pair_method_scores": [
+                      0.0007469021365977824,
+                      0.014669915661215782,
+                      0.09912595897912979
+                    ]
+                  }
+                ]
+              }
+            },
+            "matched_word_witnesses": {
+              "exact_wrong_top1": 164,
+              "witness_pairs_reversed": 7,
+              "top1_rescued": 5,
+              "top1_lost": 9,
+              "examples": {
+                "exact_wrong_pair_reversed": [
+                  {
+                    "sketch": "sketch/harp/n03495258_8516-1.png",
+                    "pairs": {
+                      "exact_top": {
+                        "photo": "photo/bell/ext_373.jpg",
+                        "leading_exact_word": "triangle (musical instrument)",
+                        "leading_translation_photo_word": "triangle (musical instrument)",
+                        "leading_translation_sketch_word": "triangle",
+                        "share_of_translated_evidence": 0.2724228501319885,
+                        "old_score": 0.11673559993505478,
+                        "new_score": 0.06986641883850098
+                      },
+                      "best_old_positive": {
+                        "photo": "photo/harp/n03495258_9911.jpg",
+                        "leading_exact_word": "triangle (musical instrument)",
+                        "leading_translation_photo_word": "eigenharp",
+                        "leading_translation_sketch_word": "harp",
+                        "share_of_translated_evidence": 0.2200501561164856,
+                        "old_score": 0.11356879770755768,
+                        "new_score": 0.07230305671691895
+                      },
+                      "new_top": {
+                        "photo": "photo/harp/n03495258_9911.jpg",
+                        "leading_exact_word": "triangle (musical instrument)",
+                        "leading_translation_photo_word": "eigenharp",
+                        "leading_translation_sketch_word": "harp",
+                        "share_of_translated_evidence": 0.2200501561164856,
+                        "old_score": 0.11356879770755768,
+                        "new_score": 0.07230305671691895
+                      }
+                    }
+                  },
+                  {
+                    "sketch": "sketch/ray/n01498041_8156-1.png",
+                    "pairs": {
+                      "exact_top": {
+                        "photo": "photo/bell/ext_389.jpg",
+                        "leading_exact_word": "cowbell",
+                        "leading_translation_photo_word": "cowbell",
+                        "leading_translation_sketch_word": "shovel",
+                        "share_of_translated_evidence": 0.5085690021514893,
+                        "old_score": 0.022512750700116158,
+                        "new_score": 0.0120620708912611
+                      },
+                      "best_old_positive": {
+                        "photo": "photo/ray/ext_45.jpg",
+                        "leading_exact_word": "caribbean electric ray",
+                        "leading_translation_photo_word": "caribbean electric ray",
+                        "leading_translation_sketch_word": "electric ray",
+                        "share_of_translated_evidence": 0.45352593064308167,
+                        "old_score": 0.021121183410286903,
+                        "new_score": 0.01476410310715437
+                      },
+                      "new_top": {
+                        "photo": "photo/ray/ext_205.jpg",
+                        "leading_exact_word": "caribbean electric ray",
+                        "leading_translation_photo_word": "caribbean electric ray",
+                        "leading_translation_sketch_word": "electric ray",
+                        "share_of_translated_evidence": 0.5000250339508057,
+                        "old_score": 0.02107088826596737,
+                        "new_score": 0.014885233715176582
+                      }
+                    }
+                  },
+                  {
+                    "sketch": "sketch/scissors/n04148054_1255-4.png",
+                    "pairs": {
+                      "exact_top": {
+                        "photo": "photo/rifle/ext_462.jpg",
+                        "leading_exact_word": "lens hood",
+                        "leading_translation_photo_word": "lens hood",
+                        "leading_translation_sketch_word": "lens cap",
+                        "share_of_translated_evidence": 0.2748456597328186,
+                        "old_score": 0.11719930171966553,
+                        "new_score": 0.07083819806575775
+                      },
+                      "best_old_positive": {
+                        "photo": "photo/scissors/ext_217.jpg",
+                        "leading_exact_word": "ribbon (rhythmic gymnastics)",
+                        "leading_translation_photo_word": "ribbon (rhythmic gymnastics)",
+                        "leading_translation_sketch_word": "rope (rhythmic gymnastics)",
+                        "share_of_translated_evidence": 0.25532710552215576,
+                        "old_score": 0.10740246623754501,
+                        "new_score": 0.07895255833864212
+                      },
+                      "new_top": {
+                        "photo": "photo/umbrella/ext_168.jpg",
+                        "leading_exact_word": "bicycle shoe cover",
+                        "leading_translation_photo_word": "bicycle shoe cover",
+                        "leading_translation_sketch_word": "bicycle shoe",
+                        "share_of_translated_evidence": 0.3386160731315613,
+                        "old_score": 0.11017972230911255,
+                        "new_score": 0.08309738337993622
+                      }
+                    }
+                  },
+                  {
+                    "sketch": "sketch/tree/n11759853_18275-1.png",
+                    "pairs": {
+                      "exact_top": {
+                        "photo": "photo/teddy_bear/n04399382_11857.jpg",
+                        "leading_exact_word": "bougainvillea",
+                        "leading_translation_photo_word": "bougainvillea",
+                        "leading_translation_sketch_word": "hydrangea",
+                        "share_of_translated_evidence": 0.4388115108013153,
+                        "old_score": 0.12773165106773376,
+                        "new_score": 0.07550785690546036
+                      },
+                      "best_old_positive": {
+                        "photo": "photo/tree/ext_188.jpg",
+                        "leading_exact_word": "tagetes erecta",
+                        "leading_translation_photo_word": "tagetes erecta",
+                        "leading_translation_sketch_word": "tanacetum parthenium",
+                        "share_of_translated_evidence": 0.18389077484607697,
+                        "old_score": 0.10613680630922318,
+                        "new_score": 0.0905037522315979
+                      },
+                      "new_top": {
+                        "photo": "photo/snail/ext_89.jpg",
+                        "leading_exact_word": "tagetes patula",
+                        "leading_translation_photo_word": "tagetes patula",
+                        "leading_translation_sketch_word": "tanacetum parthenium",
+                        "share_of_translated_evidence": 0.21482059359550476,
+                        "old_score": 0.0932483971118927,
+                        "new_score": 0.09142883867025375
+                      }
+                    }
+                  },
+                  {
+                    "sketch": "sketch/pineapple/n07753275_11091-6.png",
+                    "pairs": {
+                      "exact_top": {
+                        "photo": "photo/tree/n12713866_52171.jpg",
+                        "leading_exact_word": "chile de árbol",
+                        "leading_translation_photo_word": "chile de árbol",
+                        "leading_translation_sketch_word": "carajillo",
+                        "share_of_translated_evidence": 0.26642122864723206,
+                        "old_score": 0.03829081356525421,
+                        "new_score": 0.02043822966516018
+                      },
+                      "best_old_positive": {
+                        "photo": "photo/pineapple/ext_395.jpg",
+                        "leading_exact_word": "prussian asparagus",
+                        "leading_translation_photo_word": "asparagus",
+                        "leading_translation_sketch_word": "prussian asparagus",
+                        "share_of_translated_evidence": 0.28384241461753845,
+                        "old_score": 0.03387854993343353,
+                        "new_score": 0.02610808052122593
+                      },
+                      "new_top": {
+                        "photo": "photo/pineapple/ext_395.jpg",
+                        "leading_exact_word": "prussian asparagus",
+                        "leading_translation_photo_word": "asparagus",
+                        "leading_translation_sketch_word": "prussian asparagus",
+                        "share_of_translated_evidence": 0.28384241461753845,
+                        "old_score": 0.03387854993343353,
+                        "new_score": 0.02610808052122593
+                      }
+                    }
+                  }
+                ],
+                "top1_lost": [
+                  {
+                    "sketch": "sketch/parrot/n01817953_1040-2.png",
+                    "pairs": {
+                      "exact_top": {
+                        "photo": "photo/parrot/n01819313_1154.jpg",
+                        "leading_exact_word": "cockatoo",
+                        "leading_translation_photo_word": "cockatoo",
+                        "leading_translation_sketch_word": "cockapoo",
+                        "share_of_translated_evidence": 0.3417432904243469,
+                        "old_score": 0.1825658082962036,
+                        "new_score": 0.11728674173355103
+                      },
+                      "best_old_positive": {
+                        "photo": "photo/parrot/n01819313_1154.jpg",
+                        "leading_exact_word": "cockatoo",
+                        "leading_translation_photo_word": "cockatoo",
+                        "leading_translation_sketch_word": "cockapoo",
+                        "share_of_translated_evidence": 0.3417432904243469,
+                        "old_score": 0.1825658082962036,
+                        "new_score": 0.11728674173355103
+                      },
+                      "new_top": {
+                        "photo": "photo/swan/n01858845_14085.jpg",
+                        "leading_exact_word": "gull dong",
+                        "leading_translation_photo_word": "gull dong",
+                        "leading_translation_sketch_word": "western gull",
+                        "share_of_translated_evidence": 0.09023767709732056,
+                        "old_score": 0.1650768667459488,
+                        "new_score": 0.130201518535614
+                      }
+                    }
+                  },
+                  {
+                    "sketch": "sketch/airplane/n02691156_8352-5.png",
+                    "pairs": {
+                      "exact_top": {
+                        "photo": "photo/airplane/n02691156_11421.jpg",
+                        "leading_exact_word": "aerobatics",
+                        "leading_translation_photo_word": "aerobatics",
+                        "leading_translation_sketch_word": "air sports",
+                        "share_of_translated_evidence": 0.1321640908718109,
+                        "old_score": 0.20266230404376984,
+                        "new_score": 0.13781176507472992
+                      },
+                      "best_old_positive": {
+                        "photo": "photo/airplane/n02691156_11421.jpg",
+                        "leading_exact_word": "aerobatics",
+                        "leading_translation_photo_word": "aerobatics",
+                        "leading_translation_sketch_word": "air sports",
+                        "share_of_translated_evidence": 0.1321640908718109,
+                        "old_score": 0.20266230404376984,
+                        "new_score": 0.13781176507472992
+                      },
+                      "new_top": {
+                        "photo": "photo/umbrella/ext_112.jpg",
+                        "leading_exact_word": "sport kite",
+                        "leading_translation_photo_word": "sport kite",
+                        "leading_translation_sketch_word": "kite (bird)",
+                        "share_of_translated_evidence": 0.2019970864057541,
+                        "old_score": 0.1687404364347458,
+                        "new_score": 0.16027791798114777
+                      }
+                    }
+                  },
+                  {
+                    "sketch": "sketch/bell/n02824448_3633-2.png",
+                    "pairs": {
+                      "exact_top": {
+                        "photo": "photo/bell/ext_416.jpg",
+                        "leading_exact_word": "bell",
+                        "leading_translation_photo_word": "bell",
+                        "leading_translation_sketch_word": "crotal bell",
+                        "share_of_translated_evidence": 0.5407600402832031,
+                        "old_score": 0.0966736376285553,
+                        "new_score": 0.0537145659327507
+                      },
+                      "best_old_positive": {
+                        "photo": "photo/bell/ext_416.jpg",
+                        "leading_exact_word": "bell",
+                        "leading_translation_photo_word": "bell",
+                        "leading_translation_sketch_word": "crotal bell",
+                        "share_of_translated_evidence": 0.5407600402832031,
+                        "old_score": 0.0966736376285553,
+                        "new_score": 0.0537145659327507
+                      },
+                      "new_top": {
+                        "photo": "photo/teddy_bear/ext_424.jpg",
+                        "leading_exact_word": "ushanka",
+                        "leading_translation_photo_word": "ushanka",
+                        "leading_translation_sketch_word": "cloche hat",
+                        "share_of_translated_evidence": 0.37678295373916626,
+                        "old_score": 0.07863019406795502,
+                        "new_score": 0.07126729190349579
+                      }
+                    }
+                  },
+                  {
+                    "sketch": "sketch/snail/n01944390_12766-8.png",
+                    "pairs": {
+                      "exact_top": {
+                        "photo": "photo/snail/ext_233.jpg",
+                        "leading_exact_word": "snail",
+                        "leading_translation_photo_word": "snail",
+                        "leading_translation_sketch_word": "slug",
+                        "share_of_translated_evidence": 0.3905634582042694,
+                        "old_score": 0.1374746859073639,
+                        "new_score": 0.09165095537900925
+                      },
+                      "best_old_positive": {
+                        "photo": "photo/snail/ext_233.jpg",
+                        "leading_exact_word": "snail",
+                        "leading_translation_photo_word": "snail",
+                        "leading_translation_sketch_word": "slug",
+                        "share_of_translated_evidence": 0.3905634582042694,
+                        "old_score": 0.1374746859073639,
+                        "new_score": 0.09165095537900925
+                      },
+                      "new_top": {
+                        "photo": "photo/deer/ext_269.jpg",
+                        "leading_exact_word": "rock pocket mouse",
+                        "leading_translation_photo_word": "rock pocket mouse",
+                        "leading_translation_sketch_word": "white footed mouse",
+                        "share_of_translated_evidence": 0.18598216772079468,
+                        "old_score": 0.10629648715257645,
+                        "new_score": 0.0995049923658371
+                      }
+                    }
+                  },
+                  {
+                    "sketch": "sketch/snail/n01944390_7221-4.png",
+                    "pairs": {
+                      "exact_top": {
+                        "photo": "photo/snail/ext_191.jpg",
+                        "leading_exact_word": "snail",
+                        "leading_translation_photo_word": "snail",
+                        "leading_translation_sketch_word": "sea snail",
+                        "share_of_translated_evidence": 0.35610395669937134,
+                        "old_score": 0.07904946058988571,
+                        "new_score": 0.04968653619289398
+                      },
+                      "best_old_positive": {
+                        "photo": "photo/snail/ext_191.jpg",
+                        "leading_exact_word": "snail",
+                        "leading_translation_photo_word": "snail",
+                        "leading_translation_sketch_word": "sea snail",
+                        "share_of_translated_evidence": 0.35610395669937134,
+                        "old_score": 0.07904946058988571,
+                        "new_score": 0.04968653619289398
+                      },
+                      "new_top": {
+                        "photo": "photo/scissors/ext_217.jpg",
+                        "leading_exact_word": "ribbon (rhythmic gymnastics)",
+                        "leading_translation_photo_word": "ribbon (rhythmic gymnastics)",
+                        "leading_translation_sketch_word": "rope (rhythmic gymnastics)",
+                        "share_of_translated_evidence": 0.27172285318374634,
+                        "old_score": 0.06939270347356796,
+                        "new_score": 0.05389827862381935
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "equal_translation_weights": {
+              "AP_P": [
+                0.7569732666015625,
+                0.7893332242965698
+              ],
+              "local_minus_equal": {
+                "mAP": {
+                  "delta_pp": 0.09934187214821577,
+                  "ci95_class": [
+                    0.0015758269544069968,
+                    0.2044774400380749
+                  ],
+                  "classes_up": 15,
+                  "classes": 25
+                },
+                "precision": {
+                  "delta_pp": 0.02333335547397534,
+                  "ci95_class": [
+                    -0.11999995733300844,
+                    0.1616667035035789
+                  ],
+                  "classes_up": 13,
+                  "classes": 25
+                }
+              }
+            }
+          },
+          "bare_prompts": {
+            "mAP": 0.7458258271217346,
+            "precision": 0.7810333967208862,
+            "words": 20931,
+            "versus_full": {
+              "mAP": {
+                "delta_pp": -1.2140807782610257,
+                "ci95_class": [
+                  -3.292327840005358,
+                  0.7519364798519135
+                ],
+                "classes_up": 11,
+                "classes": 25
+              },
+              "precision": {
+                "delta_pp": -0.8533333456143737,
+                "ci95_class": [
+                  -2.9450416499748826,
+                  1.1283749809799088
+                ],
+                "classes_up": 12,
+                "classes": 25
+              }
+            }
+          },
+          "half_0": {
+            "mAP": 0.7116304039955139,
+            "precision": 0.7559499740600586,
+            "words": 10466,
+            "versus_full": {
+              "mAP": {
+                "delta_pp": -4.633625908444325,
+                "ci95_class": [
+                  -9.257067071320488,
+                  -0.9408851369284096
+                ],
+                "classes_up": 7,
+                "classes": 25
+              },
+              "precision": {
+                "delta_pp": -3.3616666846598187,
+                "ci95_class": [
+                  -7.733416676381603,
+                  0.09862493987505211
+                ],
+                "classes_up": 11,
+                "classes": 25
+              }
+            }
+          },
+          "half_1": {
+            "mAP": 0.7381853461265564,
+            "precision": 0.7734999656677246,
+            "words": 10465,
+            "versus_full": {
+              "mAP": {
+                "delta_pp": -1.978133140752713,
+                "ci95_class": [
+                  -3.726141467364505,
+                  -0.4739118238445372
+                ],
+                "classes_up": 8,
+                "classes": 25
+              },
+              "precision": {
+                "delta_pp": -1.6066665748755138,
+                "ci95_class": [
+                  -3.2634582858532664,
+                  -0.0449582385752977
+                ],
+                "classes_up": 10,
+                "classes": 25
+              }
+            }
+          }
+        },
+        "name_association_after_ranking": {
+          "classes": 24,
+          "queries": 576,
+          "present_AP_P": [
+            0.7699259519577026,
+            0.8074305057525635
+          ],
+          "absent_AP_P": [
+            0.7052624225616455,
+            0.7520139217376709
+          ],
+          "paired_delta": {
+            "mAP": {
+              "delta_pp": 6.466363023436214,
+              "ci95_class": [
+                2.068244769163559,
+                11.703643745673205
+              ],
+              "classes_up": 16,
+              "classes": 24
+            },
+            "precision": {
+              "delta_pp": 5.541666650484937,
+              "ci95_class": [
+                1.4491752687980708,
+                10.32157112934833
+              ],
+              "classes_up": 15,
+              "classes": 24
+            }
+          }
+        }
+      },
+      "distinct_names": {}
+    },
+    "sketchy_2": {
+      "full": {
+        "shared-concept-likelihood": {
+          "mAP": 0.7141594290733337,
+          "precision": 0.7027930617332458,
+          "queries": 12694,
+          "gallery": 12552,
+          "classes": 21,
+          "source_sha256": "22c2ed7578253cfa8f5d7968107873458b1e9316bac6c1eb0102931e270d4926",
+          "revision": "781b4e1e5a0caaee5493f0287172e8c470c00e1f",
+          "primary_minus_method": {
+            "mAP": {
+              "delta_pp": 0.18730861407312724,
+              "ci95_class": [
+                -0.3727971743843022,
+                0.8018803970610778
+              ],
+              "classes_up": 12,
+              "classes": 21
+            },
+            "precision": {
+              "delta_pp": 0.3840003165703872,
+              "ci95_class": [
+                -0.37902711998879285,
+                1.1723250855566913
+              ],
+              "classes_up": 14,
+              "classes": 21
+            }
+          },
+          "method_minus_uniform": {
+            "mAP": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 21
+            },
+            "precision": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 21
+            }
+          }
+        },
+        "winclip-concept-likelihood": {
+          "mAP": 0.7142217755317688,
+          "precision": 0.7028335928916931,
+          "queries": 12694,
+          "gallery": 12552,
+          "classes": 21,
+          "source_sha256": "9263305b1f769bc489afc5222ba35716ca45aec4a4dc20dd62d6cada8fb9f994",
+          "revision": "24b9cae9603c255b345b2fa5dfcbf3605fb370ae",
+          "kd_check": {
+            "queries": 12694,
+            "mAP": 0.7142218351364136,
+            "precision": 0.7028335928916931,
+            "kd_minus_pipeline_max_abs_same_order_AP_P": [
+              0.0,
+              0.0
+            ],
+            "max_per_query_abs_AP_P": [
+              0.0,
+              0.0
+            ],
+            "mean_per_query_abs_AP_P": [
+              0.0,
+              0.0
+            ],
+            "queries_within_1e-6_both": 12694
+          },
+          "controls": {
+            "primary": {
+              "mAP": 0.7142217755317688,
+              "precision": 0.7028335928916931
+            },
+            "full_frame": {
+              "mAP": 0.7141598463058472,
+              "precision": 0.7027934193611145
+            },
+            "window_only": {
+              "mAP": 0.7096275687217712,
+              "precision": 0.6968032717704773
+            },
+            "penultimate_patches": {
+              "mAP": 0.7140661478042603,
+              "precision": 0.7026150226593018
+            },
+            "shuffled_window_assignment": {
+              "mAP": 0.7034748792648315,
+              "precision": 0.6743674278259277
+            },
+            "small_windows": {
+              "mAP": 0.7143722176551819,
+              "precision": 0.7025760412216187
+            },
+            "medium_windows": {
+              "mAP": 0.7139096260070801,
+              "precision": 0.7020725607872009
+            },
+            "large_windows": {
+              "mAP": 0.7142217755317688,
+              "precision": 0.7028335928916931
+            }
+          },
+          "primary_minus_method": {
+            "mAP": {
+              "delta_pp": 0.18107903551510446,
+              "ci95_class": [
+                -0.35971001409314907,
+                0.7940907488921249
+              ],
+              "classes_up": 12,
+              "classes": 21
+            },
+            "precision": {
+              "delta_pp": 0.37994328783556514,
+              "ci95_class": [
+                -0.3402100043975719,
+                1.1417537864573306
+              ],
+              "classes_up": 12,
+              "classes": 21
+            }
+          },
+          "method_minus_uniform": {
+            "mAP": {
+              "delta_pp": 0.006229578558022777,
+              "ci95_class": [
+                -0.10664170610775636,
+                0.1040907906800402
+              ],
+              "classes_up": 10,
+              "classes": 21
+            },
+            "precision": {
+              "delta_pp": 0.004057028734822038,
+              "ci95_class": [
+                -0.12565948683041148,
+                0.12134090903886537
+              ],
+              "classes_up": 14,
+              "classes": 21
+            }
+          }
+        },
+        "public-word-calibration": {
+          "mAP": 0.6557878851890564,
+          "precision": 0.6471052765846252,
+          "queries": 12694,
+          "gallery": 12552,
+          "classes": 21,
+          "source_sha256": "f93313c02057305ab4801a9dee2bc26df7fba81a55b62717716553fc272e5595",
+          "revision": "017131c005cb29a9f98ebb27dd92df9404ac35bd",
+          "kd_check": {
+            "queries": 12694,
+            "mAP": 0.6557879447937012,
+            "precision": 0.6471052765846252,
+            "kd_minus_pipeline_max_abs_same_order_AP_P": [
+              0.0,
+              0.0
+            ],
+            "max_per_query_abs_AP_P": [
+              0.0,
+              0.0
+            ],
+            "mean_per_query_abs_AP_P": [
+              0.0,
+              0.0
+            ],
+            "queries_within_1e-6_both": 12694
+          },
+          "controls": {
+            "primary": {
+              "mAP": 0.6557878851890564,
+              "precision": 0.6471052765846252
+            },
+            "original": {
+              "mAP": 0.20601584017276764,
+              "precision": 0.18463881313800812
+            },
+            "uniform": {
+              "mAP": 0.7141598463058472,
+              "precision": 0.7027934193611145
+            },
+            "query_only": {
+              "mAP": 0.7006433606147766,
+              "precision": 0.6940031051635742
+            },
+            "photo_only": {
+              "mAP": 0.7050219178199768,
+              "precision": 0.691311240196228
+            },
+            "identity_control": {
+              "mAP": 0.317935585975647,
+              "precision": 0.27701079845428467
+            },
+            "permuted_words": {
+              "mAP": 0.6448991298675537,
+              "precision": 0.6308937072753906
+            }
+          },
+          "primary_minus_method": {
+            "mAP": {
+              "delta_pp": 6.02447312116583,
+              "ci95_class": [
+                2.705455410886546,
+                9.722419637232107
+              ],
+              "classes_up": 15,
+              "classes": 21
+            },
+            "precision": {
+              "delta_pp": 5.9527729412757076,
+              "ci95_class": [
+                2.361924211991,
+                10.015991140618848
+              ],
+              "classes_up": 14,
+              "classes": 21
+            }
+          },
+          "method_minus_uniform": {
+            "mAP": {
+              "delta_pp": -5.8371645070927025,
+              "ci95_class": [
+                -9.322986643181013,
+                -2.6685862837611447
+              ],
+              "classes_up": 6,
+              "classes": 21
+            },
+            "precision": {
+              "delta_pp": -5.56877262470532,
+              "ci95_class": [
+                -9.308212927699211,
+                -2.2651348420766255
+              ],
+              "classes_up": 6,
+              "classes": 21
+            }
+          }
+        },
+        "public-semantic-translation": {
+          "mAP": 0.7160326242446899,
+          "precision": 0.7066330313682556,
+          "queries": 12694,
+          "gallery": 12552,
+          "classes": 21,
+          "source_sha256": "c5d0229b21e4115fe72002b8d14c83ad4c35a05c461aa5f13990a0600f9a8031",
+          "revision": "b2bb1506d8afd2be318b60b510530229a8a5ebcb",
+          "kd_check": {
+            "queries": 12694,
+            "mAP": 0.7160326242446899,
+            "precision": 0.7066330313682556,
+            "kd_minus_pipeline_max_abs_same_order_AP_P": [
+              0.0,
+              0.0
+            ],
+            "max_per_query_abs_AP_P": [
+              0.0,
+              0.0
+            ],
+            "mean_per_query_abs_AP_P": [
+              0.0,
+              0.0
+            ],
+            "queries_within_1e-6_both": 12694
+          },
+          "controls": {
+            "primary": {
+              "mAP": 0.7160326242446899,
+              "precision": 0.7066330313682556
+            },
+            "original": {
+              "mAP": 0.7141755819320679,
+              "precision": 0.7028749585151672
+            },
+            "literal_match": {
+              "mAP": 0.7141598463058472,
+              "precision": 0.7027934193611145
+            },
+            "translation_only": {
+              "mAP": 0.6982666254043579,
+              "precision": 0.6883102655410767
+            },
+            "checkpoint_bandwidth": {
+              "mAP": 0.7137496471405029,
+              "precision": 0.7016452550888062
+            },
+            "permuted_translation": {
+              "mAP": 0.6960753202438354,
+              "precision": 0.6809906363487244
+            },
+            "alternative_support": {
+              "mAP": 0.7141755819320679,
+              "precision": 0.7028749585151672
+            }
+          },
+          "primary_minus_method": {
+            "mAP": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 21
+            },
+            "precision": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 21
+            }
+          },
+          "method_minus_uniform": {
+            "mAP": {
+              "delta_pp": 0.18730861407312724,
+              "ci95_class": [
+                -0.3727971743843022,
+                0.8018803970610778
+              ],
+              "classes_up": 12,
+              "classes": 21
+            },
+            "precision": {
+              "delta_pp": 0.3840003165703872,
+              "ci95_class": [
+                -0.37902711998879285,
+                1.1723250855566913
+              ],
+              "classes_up": 14,
+              "classes": 21
+            }
+          }
+        },
+        "conditional-semantic-index": {
+          "mAP": 0.3634491264820099,
+          "precision": 0.33846187591552734,
+          "queries": 12694,
+          "gallery": 12552,
+          "classes": 21,
+          "source_sha256": "87e1db501e70ed271be3e6eef62b17eed1225ca65571ad62124628f5b067b19e",
+          "revision": "d9f0d0a24491acedee2e0382004b4d8cd778e09f",
+          "primary_minus_method": {
+            "mAP": {
+              "delta_pp": 35.2583495272379,
+              "ci95_class": [
+                27.05381783988593,
+                43.15633544684783
+              ],
+              "classes_up": 20,
+              "classes": 21
+            },
+            "precision": {
+              "delta_pp": 36.8171184824679,
+              "ci95_class": [
+                28.98287919142013,
+                44.37990695938027
+              ],
+              "classes_up": 21,
+              "classes": 21
+            }
+          },
+          "method_minus_uniform": {
+            "mAP": {
+              "delta_pp": -35.071040913164765,
+              "ci95_class": [
+                -43.17483291340596,
+                -26.589295430968605
+              ],
+              "classes_up": 1,
+              "classes": 21
+            },
+            "precision": {
+              "delta_pp": -36.43311816589751,
+              "ci95_class": [
+                -44.33241015449437,
+                -28.352862872209293
+              ],
+              "classes_up": 0,
+              "classes": 21
+            }
+          }
+        }
+      },
+      "dictionary_sample": {
+        "queries": 504,
+        "gallery": 12552,
+        "classes": 21,
+        "conditions": {
+          "full": {
+            "mAP": 0.7344356775283813,
+            "precision": 0.7311905026435852,
+            "words": 20931,
+            "mean_minus_official_pp": [
+              0.00011525190775356597,
+              0.0
+            ],
+            "invariance": {
+              "max_subgallery_abs": 3.8743019104003906e-07,
+              "max_singleton_abs": 4.887580871582031e-06,
+              "paired_query_count": 42,
+              "paired_photo_count": 168,
+              "singletons": 5
+            },
+            "native_witnesses": {
+              "native_wrong": 317,
+              "native_wrong_pair_flipped": 242,
+              "corrected_top1": 167,
+              "regressed_top1": 17,
+              "examples": {
+                "native_wrong_now_top1_correct": [
+                  {
+                    "query": "sketch/wheelchair/n04576002_5349-3.png",
+                    "native_wrong_or_top": "photo/scissors/ext_87.jpg",
+                    "native_best_positive": "photo/wheelchair/ext_88.jpg",
+                    "new_top": "photo/wheelchair/ext_120.jpg",
+                    "shared_exact_words_on_three_pairs": [
+                      "stationary bicycle",
+                      "wheelchair",
+                      "wheelchair basketball"
+                    ],
+                    "native_scores": [
+                      0.7628054618835449,
+                      0.7477183938026428,
+                      0.5692703127861023
+                    ],
+                    "pair_method_scores": [
+                      0.0032563484273850918,
+                      0.2651152014732361,
+                      0.4785858988761902
+                    ]
+                  },
+                  {
+                    "query": "sketch/window/n04587648_3054-5.png",
+                    "native_wrong_or_top": "photo/scissors/ext_193.jpg",
+                    "native_best_positive": "photo/window/ext_217.jpg",
+                    "new_top": "photo/window/ext_104.jpg",
+                    "shared_exact_words_on_three_pairs": [
+                      "transparent material",
+                      "window",
+                      "window valance"
+                    ],
+                    "native_scores": [
+                      0.8135698437690735,
+                      0.790836751461029,
+                      0.6460753083229065
+                    ],
+                    "pair_method_scores": [
+                      0.0024591709952801466,
+                      0.22625699639320374,
+                      0.43317270278930664
+                    ]
+                  },
+                  {
+                    "query": "sketch/seagull/n02041246_5670-3.png",
+                    "native_wrong_or_top": "photo/scissors/ext_283.jpg",
+                    "native_best_positive": "photo/seagull/ext_396.jpg",
+                    "new_top": "photo/seagull/ext_407.jpg",
+                    "shared_exact_words_on_three_pairs": [
+                      "equestrian glove",
+                      "fujian white crane",
+                      "snow goose"
+                    ],
+                    "native_scores": [
+                      0.828018844127655,
+                      0.768357515335083,
+                      0.6316409707069397
+                    ],
+                    "pair_method_scores": [
+                      0.005398389883339405,
+                      0.03535940498113632,
+                      0.13544759154319763
+                    ]
+                  }
+                ],
+                "native_correct_now_top1_wrong": [
+                  {
+                    "query": "sketch/raccoon/n02508021_15552-4.png",
+                    "native_wrong_or_top": "photo/raccoon/ext_187.jpg",
+                    "native_best_positive": "photo/raccoon/ext_187.jpg",
+                    "new_top": "photo/cow/ext_125.jpg",
+                    "shared_exact_words_on_three_pairs": [
+                      "swedish vallhund",
+                      "swedish vallhund",
+                      "domestic pig"
+                    ],
+                    "native_scores": [
+                      0.7727679014205933,
+                      0.7727679014205933,
+                      0.6609339714050293
+                    ],
+                    "pair_method_scores": [
+                      0.019831392914056778,
+                      0.019831392914056778,
+                      0.07825116813182831
+                    ]
+                  },
+                  {
+                    "query": "sketch/giraffe/n02439033_13384-4.png",
+                    "native_wrong_or_top": "photo/giraffe/ext_126.jpg",
+                    "native_best_positive": "photo/giraffe/ext_126.jpg",
+                    "new_top": "photo/cow/ext_227.jpg",
+                    "shared_exact_words_on_three_pairs": [
+                      "giraffe",
+                      "giraffe",
+                      "zebu"
+                    ],
+                    "native_scores": [
+                      0.7912001609802246,
+                      0.7912001609802246,
+                      0.643626868724823
+                    ],
+                    "pair_method_scores": [
+                      0.023677952587604523,
+                      0.023677952587604523,
+                      0.3515642285346985
+                    ]
+                  },
+                  {
+                    "query": "sketch/rhinoceros/n02391994_19039-6.png",
+                    "native_wrong_or_top": "photo/rhinoceros/ext_557.jpg",
+                    "native_best_positive": "photo/rhinoceros/ext_557.jpg",
+                    "new_top": "photo/cow/ext_227.jpg",
+                    "shared_exact_words_on_three_pairs": [
+                      "indian rhinoceros",
+                      "indian rhinoceros",
+                      "zebu"
+                    ],
+                    "native_scores": [
+                      0.8238681554794312,
+                      0.8238681554794312,
+                      0.6615607142448425
+                    ],
+                    "pair_method_scores": [
+                      0.15765193104743958,
+                      0.15765193104743958,
+                      0.3032398819923401
+                    ]
+                  }
+                ],
+                "stays_wrong_at_top1": [
+                  {
+                    "query": "sketch/skyscraper/n04233124_5131-1.png",
+                    "native_wrong_or_top": "photo/scissors/ext_154.jpg",
+                    "native_best_positive": "photo/skyscraper/n04233124_51311.jpg",
+                    "new_top": "photo/sword/n04373894_301661.jpg",
+                    "shared_exact_words_on_three_pairs": [
+                      "dominoes",
+                      "skyscraper",
+                      "ice scraper"
+                    ],
+                    "native_scores": [
+                      0.7811968326568604,
+                      0.6789397597312927,
+                      0.5223546624183655
+                    ],
+                    "pair_method_scores": [
+                      0.002367922104895115,
+                      0.01134975254535675,
+                      0.06208711490035057
+                    ]
+                  },
+                  {
+                    "query": "sketch/helicopter/n03512147_2669-4.png",
+                    "native_wrong_or_top": "photo/scissors/ext_515.jpg",
+                    "native_best_positive": "photo/helicopter/ext_272.jpg",
+                    "new_top": "photo/scissors/ext_515.jpg",
+                    "shared_exact_words_on_three_pairs": [
+                      "sign language",
+                      "v sign",
+                      "sign language"
+                    ],
+                    "native_scores": [
+                      0.8451601266860962,
+                      0.7306052446365356,
+                      0.8451601266860962
+                    ],
+                    "pair_method_scores": [
+                      0.03103530965745449,
+                      0.00043803357402794063,
+                      0.03103530965745449
+                    ]
+                  },
+                  {
+                    "query": "sketch/cabin/n03686924_6712-3.png",
+                    "native_wrong_or_top": "photo/scissors/ext_515.jpg",
+                    "native_best_positive": "photo/cabin/ext_80.jpg",
+                    "new_top": "photo/window/ext_53.jpg",
+                    "shared_exact_words_on_three_pairs": [
+                      "animation",
+                      "house flies",
+                      "house flies"
+                    ],
+                    "native_scores": [
+                      0.7756525874137878,
+                      0.724858283996582,
+                      0.7255641222000122
+                    ],
+                    "pair_method_scores": [
+                      0.0005264475475996733,
+                      0.09002763777971268,
+                      0.1160523071885109
+                    ]
+                  }
+                ]
+              }
+            },
+            "matched_word_witnesses": {
+              "exact_wrong_top1": 170,
+              "witness_pairs_reversed": 15,
+              "top1_rescued": 15,
+              "top1_lost": 12,
+              "examples": {
+                "exact_wrong_pair_reversed": [
+                  {
+                    "sketch": "sketch/door/n03222318_5731-3.png",
+                    "pairs": {
+                      "exact_top": {
+                        "photo": "photo/window/n04587648_1510.jpg",
+                        "leading_exact_word": "wrought iron",
+                        "leading_translation_photo_word": "wrought iron",
+                        "leading_translation_sketch_word": "metal",
+                        "share_of_translated_evidence": 0.15271282196044922,
+                        "old_score": 0.38921263813972473,
+                        "new_score": 0.19923348724842072
+                      },
+                      "best_old_positive": {
+                        "photo": "photo/door/ext_57.jpg",
+                        "leading_exact_word": "screen door",
+                        "leading_translation_photo_word": "sliding glass door",
+                        "leading_translation_sketch_word": "screen door",
+                        "share_of_translated_evidence": 0.10344471037387848,
+                        "old_score": 0.36783838272094727,
+                        "new_score": 0.23307937383651733
+                      },
+                      "new_top": {
+                        "photo": "photo/door/ext_57.jpg",
+                        "leading_exact_word": "screen door",
+                        "leading_translation_photo_word": "sliding glass door",
+                        "leading_translation_sketch_word": "screen door",
+                        "share_of_translated_evidence": 0.10344471037387848,
+                        "old_score": 0.36783838272094727,
+                        "new_score": 0.23307937383651733
+                      }
+                    }
+                  },
+                  {
+                    "sketch": "sketch/scissors/n04148054_7459-1.png",
+                    "pairs": {
+                      "exact_top": {
+                        "photo": "photo/mouse/ext_231.jpg",
+                        "leading_exact_word": "computer mouse",
+                        "leading_translation_photo_word": "computer mouse",
+                        "leading_translation_sketch_word": "mouse",
+                        "share_of_translated_evidence": 0.3182655870914459,
+                        "old_score": 0.1070689707994461,
+                        "new_score": 0.056226346641778946
+                      },
+                      "best_old_positive": {
+                        "photo": "photo/scissors/ext_281.jpg",
+                        "leading_exact_word": "pruning shears",
+                        "leading_translation_photo_word": "pruning shears",
+                        "leading_translation_sketch_word": "lineman's pliers",
+                        "share_of_translated_evidence": 0.15052840113639832,
+                        "old_score": 0.10385387390851974,
+                        "new_score": 0.07121216505765915
+                      },
+                      "new_top": {
+                        "photo": "photo/saw/ext_187.jpg",
+                        "leading_exact_word": "trapeze",
+                        "leading_translation_photo_word": "static trapeze",
+                        "leading_translation_sketch_word": "trapeze",
+                        "share_of_translated_evidence": 0.09508159756660461,
+                        "old_score": 0.08911695331335068,
+                        "new_score": 0.07393203675746918
+                      }
+                    }
+                  },
+                  {
+                    "sketch": "sketch/saw/n03474779_14656-2.png",
+                    "pairs": {
+                      "exact_top": {
+                        "photo": "photo/sword/ext_93.jpg",
+                        "leading_exact_word": "eagle bone whistle",
+                        "leading_translation_photo_word": "eagle bone whistle",
+                        "leading_translation_sketch_word": "wind instrument",
+                        "share_of_translated_evidence": 0.1539643555879593,
+                        "old_score": 0.07582908123731613,
+                        "new_score": 0.03934913128614426
+                      },
+                      "best_old_positive": {
+                        "photo": "photo/saw/n02770585_89671.jpg",
+                        "leading_exact_word": "stonemason's hammer",
+                        "leading_translation_photo_word": "masonry trowel",
+                        "leading_translation_sketch_word": "stonemason's hammer",
+                        "share_of_translated_evidence": 0.24800743162631989,
+                        "old_score": 0.06939499825239182,
+                        "new_score": 0.05982343479990959
+                      },
+                      "new_top": {
+                        "photo": "photo/saw/n02770585_89671.jpg",
+                        "leading_exact_word": "stonemason's hammer",
+                        "leading_translation_photo_word": "masonry trowel",
+                        "leading_translation_sketch_word": "stonemason's hammer",
+                        "share_of_translated_evidence": 0.24800743162631989,
+                        "old_score": 0.06939499825239182,
+                        "new_score": 0.05982343479990959
+                      }
+                    }
+                  },
+                  {
+                    "sketch": "sketch/rhinoceros/n02391994_13777-6.png",
+                    "pairs": {
+                      "exact_top": {
+                        "photo": "photo/cow/ext_254.jpg",
+                        "leading_exact_word": "tapir",
+                        "leading_translation_photo_word": "tapir",
+                        "leading_translation_sketch_word": "boar",
+                        "share_of_translated_evidence": 0.3786071836948395,
+                        "old_score": 0.4207322597503662,
+                        "new_score": 0.22995974123477936
+                      },
+                      "best_old_positive": {
+                        "photo": "photo/rhinoceros/n02391994_172801.jpg",
+                        "leading_exact_word": "tapir",
+                        "leading_translation_photo_word": "tapir",
+                        "leading_translation_sketch_word": "boar",
+                        "share_of_translated_evidence": 0.213081955909729,
+                        "old_score": 0.41723495721817017,
+                        "new_score": 0.24211961030960083
+                      },
+                      "new_top": {
+                        "photo": "photo/rhinoceros/n02391994_172801.jpg",
+                        "leading_exact_word": "tapir",
+                        "leading_translation_photo_word": "tapir",
+                        "leading_translation_sketch_word": "boar",
+                        "share_of_translated_evidence": 0.213081955909729,
+                        "old_score": 0.41723495721817017,
+                        "new_score": 0.24211961030960083
+                      }
+                    }
+                  },
+                  {
+                    "sketch": "sketch/cabin/n03686924_2211-7.png",
+                    "pairs": {
+                      "exact_top": {
+                        "photo": "photo/window/ext_53.jpg",
+                        "leading_exact_word": "house flies",
+                        "leading_translation_photo_word": "siding",
+                        "leading_translation_sketch_word": "building material",
+                        "share_of_translated_evidence": 0.15540747344493866,
+                        "old_score": 0.16816584765911102,
+                        "new_score": 0.08982697874307632
+                      },
+                      "best_old_positive": {
+                        "photo": "photo/cabin/ext_80.jpg",
+                        "leading_exact_word": "house flies",
+                        "leading_translation_photo_word": "tree house",
+                        "leading_translation_sketch_word": "birdhouse",
+                        "share_of_translated_evidence": 0.7208249568939209,
+                        "old_score": 0.16775910556316376,
+                        "new_score": 0.11961334198713303
+                      },
+                      "new_top": {
+                        "photo": "photo/cabin/ext_80.jpg",
+                        "leading_exact_word": "house flies",
+                        "leading_translation_photo_word": "tree house",
+                        "leading_translation_sketch_word": "birdhouse",
+                        "share_of_translated_evidence": 0.7208249568939209,
+                        "old_score": 0.16775910556316376,
+                        "new_score": 0.11961334198713303
+                      }
+                    }
+                  }
+                ],
+                "top1_lost": [
+                  {
+                    "sketch": "sketch/raccoon/n02508021_2797-10.png",
+                    "pairs": {
+                      "exact_top": {
+                        "photo": "photo/raccoon/ext_345.jpg",
+                        "leading_exact_word": "loris",
+                        "leading_translation_photo_word": "slow loris",
+                        "leading_translation_sketch_word": "pygmy slow loris",
+                        "share_of_translated_evidence": 0.31860092282295227,
+                        "old_score": 0.2571214437484741,
+                        "new_score": 0.15224701166152954
+                      },
+                      "best_old_positive": {
+                        "photo": "photo/raccoon/ext_345.jpg",
+                        "leading_exact_word": "loris",
+                        "leading_translation_photo_word": "slow loris",
+                        "leading_translation_sketch_word": "pygmy slow loris",
+                        "share_of_translated_evidence": 0.31860092282295227,
+                        "old_score": 0.2571214437484741,
+                        "new_score": 0.15224701166152954
+                      },
+                      "new_top": {
+                        "photo": "photo/mouse/ext_215.jpg",
+                        "leading_exact_word": "mouse lemur",
+                        "leading_translation_photo_word": "mouse lemur",
+                        "leading_translation_sketch_word": "slow loris",
+                        "share_of_translated_evidence": 0.7462391257286072,
+                        "old_score": 0.17373338341712952,
+                        "new_score": 0.15801335871219635
+                      }
+                    }
+                  },
+                  {
+                    "sketch": "sketch/giraffe/n02439033_10811-4.png",
+                    "pairs": {
+                      "exact_top": {
+                        "photo": "photo/giraffe/ext_491.jpg",
+                        "leading_exact_word": "giraffe",
+                        "leading_translation_photo_word": "giraffe",
+                        "leading_translation_sketch_word": "horse",
+                        "share_of_translated_evidence": 0.4802543520927429,
+                        "old_score": 0.30907735228538513,
+                        "new_score": 0.2083597034215927
+                      },
+                      "best_old_positive": {
+                        "photo": "photo/giraffe/ext_491.jpg",
+                        "leading_exact_word": "giraffe",
+                        "leading_translation_photo_word": "giraffe",
+                        "leading_translation_sketch_word": "horse",
+                        "share_of_translated_evidence": 0.4802543520927429,
+                        "old_score": 0.30907735228538513,
+                        "new_score": 0.2083597034215927
+                      },
+                      "new_top": {
+                        "photo": "photo/cow/n02404432_9133.jpg",
+                        "leading_exact_word": "texas longhorn",
+                        "leading_translation_photo_word": "texas longhorn",
+                        "leading_translation_sketch_word": "horse",
+                        "share_of_translated_evidence": 0.43735089898109436,
+                        "old_score": 0.29140812158584595,
+                        "new_score": 0.21050363779067993
+                      }
+                    }
+                  },
+                  {
+                    "sketch": "sketch/skyscraper/n04233124_15445-5.png",
+                    "pairs": {
+                      "exact_top": {
+                        "photo": "photo/skyscraper/n04233124_143681.jpg",
+                        "leading_exact_word": "skyscraper",
+                        "leading_translation_photo_word": "skyscraper",
+                        "leading_translation_sketch_word": "tower block",
+                        "share_of_translated_evidence": 0.5915082097053528,
+                        "old_score": 0.04206979647278786,
+                        "new_score": 0.02295864000916481
+                      },
+                      "best_old_positive": {
+                        "photo": "photo/skyscraper/n04233124_143681.jpg",
+                        "leading_exact_word": "skyscraper",
+                        "leading_translation_photo_word": "skyscraper",
+                        "leading_translation_sketch_word": "tower block",
+                        "share_of_translated_evidence": 0.5915082097053528,
+                        "old_score": 0.04206979647278786,
+                        "new_score": 0.02295864000916481
+                      },
+                      "new_top": {
+                        "photo": "photo/saw/n04140064_82361.jpg",
+                        "leading_exact_word": "ladder golf",
+                        "leading_translation_photo_word": "ladder golf",
+                        "leading_translation_sketch_word": "ladder",
+                        "share_of_translated_evidence": 0.9946032166481018,
+                        "old_score": 0.01621544361114502,
+                        "new_score": 0.03641462326049805
+                      }
+                    }
+                  },
+                  {
+                    "sketch": "sketch/window/n03227184_732-5.png",
+                    "pairs": {
+                      "exact_top": {
+                        "photo": "photo/window/ext_224.jpg",
+                        "leading_exact_word": "sash window",
+                        "leading_translation_photo_word": "sash window",
+                        "leading_translation_sketch_word": "window shutter",
+                        "share_of_translated_evidence": 0.3259460926055908,
+                        "old_score": 0.16624566912651062,
+                        "new_score": 0.10846319049596786
+                      },
+                      "best_old_positive": {
+                        "photo": "photo/window/ext_224.jpg",
+                        "leading_exact_word": "sash window",
+                        "leading_translation_photo_word": "sash window",
+                        "leading_translation_sketch_word": "window shutter",
+                        "share_of_translated_evidence": 0.3259460926055908,
+                        "old_score": 0.16624566912651062,
+                        "new_score": 0.10846319049596786
+                      },
+                      "new_top": {
+                        "photo": "photo/door/ext_34.jpg",
+                        "leading_exact_word": "sliding door",
+                        "leading_translation_photo_word": "folding door",
+                        "leading_translation_sketch_word": "sliding door",
+                        "share_of_translated_evidence": 0.12040404230356216,
+                        "old_score": 0.16612857580184937,
+                        "new_score": 0.1532825529575348
+                      }
+                    }
+                  },
+                  {
+                    "sketch": "sketch/giraffe/n02439033_14784-2.png",
+                    "pairs": {
+                      "exact_top": {
+                        "photo": "photo/giraffe/ext_250.jpg",
+                        "leading_exact_word": "llama",
+                        "leading_translation_photo_word": "llama",
+                        "leading_translation_sketch_word": "alpaca",
+                        "share_of_translated_evidence": 0.16145442426204681,
+                        "old_score": 0.15995922684669495,
+                        "new_score": 0.11386983841657639
+                      },
+                      "best_old_positive": {
+                        "photo": "photo/giraffe/ext_250.jpg",
+                        "leading_exact_word": "llama",
+                        "leading_translation_photo_word": "llama",
+                        "leading_translation_sketch_word": "alpaca",
+                        "share_of_translated_evidence": 0.16145442426204681,
+                        "old_score": 0.15995922684669495,
+                        "new_score": 0.11386983841657639
+                      },
+                      "new_top": {
+                        "photo": "photo/cow/n01887787_11.jpg",
+                        "leading_exact_word": "foal",
+                        "leading_translation_photo_word": "foal",
+                        "leading_translation_sketch_word": "horse",
+                        "share_of_translated_evidence": 0.19861461222171783,
+                        "old_score": 0.153044193983078,
+                        "new_score": 0.12227782607078552
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "equal_translation_weights": {
+              "AP_P": [
+                0.7344329357147217,
+                0.7307837009429932
+              ],
+              "local_minus_equal": {
+                "mAP": {
+                  "delta_pp": 0.00027281200764552944,
+                  "ci95_class": [
+                    -0.15276370801508338,
+                    0.15967826660868467
+                  ],
+                  "classes_up": 9,
+                  "classes": 21
+                },
+                "precision": {
+                  "delta_pp": 0.040674565677782375,
+                  "ci95_class": [
+                    -0.06547618372317789,
+                    0.1428819548833875
+                  ],
+                  "classes_up": 13,
+                  "classes": 21
+                }
+              }
+            }
+          },
+          "bare_prompts": {
+            "mAP": 0.7271955609321594,
+            "precision": 0.720912754535675,
+            "words": 20931,
+            "versus_full": {
+              "mAP": {
+                "delta_pp": -0.7240100496722061,
+                "ci95_class": [
+                  -3.040730381929149,
+                  1.5365209379062483
+                ],
+                "classes_up": 10,
+                "classes": 21
+              },
+              "precision": {
+                "delta_pp": -1.0277777313373038,
+                "ci95_class": [
+                  -3.218402779187142,
+                  1.2093503561447414
+                ],
+                "classes_up": 10,
+                "classes": 21
+              }
+            }
+          },
+          "half_0": {
+            "mAP": 0.6941937208175659,
+            "precision": 0.6886805295944214,
+            "words": 10466,
+            "versus_full": {
+              "mAP": {
+                "delta_pp": -4.02419515035396,
+                "ci95_class": [
+                  -8.181315109931534,
+                  -0.506436963958782
+                ],
+                "classes_up": 6,
+                "classes": 21
+              },
+              "precision": {
+                "delta_pp": -4.250992194098967,
+                "ci95_class": [
+                  -8.97934047192047,
+                  -0.3024307441840428
+                ],
+                "classes_up": 7,
+                "classes": 21
+              }
+            }
+          },
+          "half_1": {
+            "mAP": 0.7191002368927002,
+            "precision": 0.7077975869178772,
+            "words": 10465,
+            "versus_full": {
+              "mAP": {
+                "delta_pp": -1.5335391319933391,
+                "ci95_class": [
+                  -3.8781819487219704,
+                  0.45828137159881305
+                ],
+                "classes_up": 9,
+                "classes": 21
+              },
+              "precision": {
+                "delta_pp": -2.3392857429349707,
+                "ci95_class": [
+                  -5.016889933590031,
+                  -0.05354657740561357
+                ],
+                "classes_up": 10,
+                "classes": 21
+              }
+            }
+          }
+        },
+        "name_association_after_ranking": {
+          "classes": 18,
+          "queries": 432,
+          "present_AP_P": [
+            0.7194228768348694,
+            0.7194443941116333
+          ],
+          "absent_AP_P": [
+            0.6610337495803833,
+            0.6418750286102295
+          ],
+          "paired_delta": {
+            "mAP": {
+              "delta_pp": 5.838908241734047,
+              "ci95_class": [
+                0.159502419523455,
+                11.591248117051517
+              ],
+              "classes_up": 15,
+              "classes": 18
+            },
+            "precision": {
+              "delta_pp": 7.756944544423647,
+              "ci95_class": [
+                1.5554399720794108,
+                14.059635461798505
+              ],
+              "classes_up": 15,
+              "classes": 18
+            }
+          }
+        }
+      },
+      "distinct_names": {}
+    },
+    "tuberlin": {
+      "full": {
+        "shared-concept-likelihood": {
+          "mAP": 0.7335394024848938,
+          "precision": 0.7722300887107849,
+          "queries": 2130,
+          "gallery": 27262,
+          "classes": 30,
+          "source_sha256": "540c68695b8cc6bffb4fd2e66a86d793c81241d4cb4ce495baba9b439bbcbf8a",
+          "revision": "781b4e1e5a0caaee5493f0287172e8c470c00e1f",
+          "primary_minus_method": {
+            "mAP": {
+              "delta_pp": 0.32488029945353175,
+              "ci95_class": [
+                -0.07314328209331349,
+                0.7754563855411573
+              ],
+              "classes_up": 17,
+              "classes": 30
+            },
+            "precision": {
+              "delta_pp": -0.22253515522384867,
+              "ci95_class": [
+                -0.9275368618615407,
+                0.4738405018713348
+              ],
+              "classes_up": 16,
+              "classes": 30
+            }
+          },
+          "method_minus_uniform": {
+            "mAP": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 30
+            },
+            "precision": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 30
+            }
+          }
+        },
+        "winclip-concept-likelihood": {
+          "mAP": 0.7374932765960693,
+          "precision": 0.7743896245956421,
+          "queries": 2130,
+          "gallery": 27262,
+          "classes": 30,
+          "source_sha256": "fee88914592a29bca8f8d8ecec2da7839be0f5823a562349317206c443dc0c31",
+          "revision": "24b9cae9603c255b345b2fa5dfcbf3605fb370ae",
+          "kd_check": {
+            "queries": 2130,
+            "mAP": 0.7374932169914246,
+            "precision": 0.7743896245956421,
+            "kd_minus_pipeline_max_abs_same_order_AP_P": [
+              0.0,
+              0.0
+            ],
+            "max_per_query_abs_AP_P": [
+              0.0,
+              0.0
+            ],
+            "mean_per_query_abs_AP_P": [
+              0.0,
+              0.0
+            ],
+            "queries_within_1e-6_both": 2130
+          },
+          "controls": {
+            "primary": {
+              "mAP": 0.7374932765960693,
+              "precision": 0.7743896245956421
+            },
+            "full_frame": {
+              "mAP": 0.7335332632064819,
+              "precision": 0.7722159624099731
+            },
+            "window_only": {
+              "mAP": 0.7332040667533875,
+              "precision": 0.7747089266777039
+            },
+            "penultimate_patches": {
+              "mAP": 0.7330013513565063,
+              "precision": 0.7720516324043274
+            },
+            "shuffled_window_assignment": {
+              "mAP": 0.6490772366523743,
+              "precision": 0.7619108557701111
+            },
+            "small_windows": {
+              "mAP": 0.7372793555259705,
+              "precision": 0.7737558484077454
+            },
+            "medium_windows": {
+              "mAP": 0.7400107383728027,
+              "precision": 0.7752066254615784
+            },
+            "large_windows": {
+              "mAP": 0.7374932765960693,
+              "precision": 0.7743896245956421
+            }
+          },
+          "primary_minus_method": {
+            "mAP": {
+              "delta_pp": -0.07050219114362634,
+              "ci95_class": [
+                -0.43202719662209865,
+                0.3331853834934215
+              ],
+              "classes_up": 12,
+              "classes": 30
+            },
+            "precision": {
+              "delta_pp": -0.43849763080057963,
+              "ci95_class": [
+                -1.1571157566679346,
+                0.23270553177216347
+              ],
+              "classes_up": 9,
+              "classes": 30
+            }
+          },
+          "method_minus_uniform": {
+            "mAP": {
+              "delta_pp": 0.39538249059715813,
+              "ci95_class": [
+                0.23452588649506537,
+                0.5585567678560326
+              ],
+              "classes_up": 26,
+              "classes": 30
+            },
+            "precision": {
+              "delta_pp": 0.21596247557673096,
+              "ci95_class": [
+                0.12084822026851529,
+                0.3205607964931421
+              ],
+              "classes_up": 25,
+              "classes": 30
+            }
+          }
+        },
+        "public-word-calibration": {
+          "mAP": 0.7066351175308228,
+          "precision": 0.7530750632286072,
+          "queries": 2130,
+          "gallery": 27262,
+          "classes": 30,
+          "source_sha256": "6185248afe3ba0680db7f3a5908382724673ace722895d8302f20c225d4768eb",
+          "revision": "017131c005cb29a9f98ebb27dd92df9404ac35bd",
+          "kd_check": {
+            "queries": 2130,
+            "mAP": 0.706635057926178,
+            "precision": 0.753075122833252,
+            "kd_minus_pipeline_max_abs_same_order_AP_P": [
+              0.0,
+              0.0
+            ],
+            "max_per_query_abs_AP_P": [
+              0.0,
+              0.0
+            ],
+            "mean_per_query_abs_AP_P": [
+              0.0,
+              0.0
+            ],
+            "queries_within_1e-6_both": 2130
+          },
+          "controls": {
+            "primary": {
+              "mAP": 0.7066351175308228,
+              "precision": 0.7530750632286072
+            },
+            "original": {
+              "mAP": 0.15697962045669556,
+              "precision": 0.1255493015050888
+            },
+            "uniform": {
+              "mAP": 0.7335332632064819,
+              "precision": 0.7722159624099731
+            },
+            "query_only": {
+              "mAP": 0.7252670526504517,
+              "precision": 0.7712581753730774
+            },
+            "photo_only": {
+              "mAP": 0.720198929309845,
+              "precision": 0.7644789218902588
+            },
+            "identity_control": {
+              "mAP": 0.21098162233829498,
+              "precision": 0.30150702595710754
+            },
+            "permuted_words": {
+              "mAP": 0.643365204334259,
+              "precision": 0.6734741926193237
+            }
+          },
+          "primary_minus_method": {
+            "mAP": {
+              "delta_pp": 3.015317607915877,
+              "ci95_class": [
+                0.7248603546898398,
+                5.497109136009202
+              ],
+              "classes_up": 20,
+              "classes": 30
+            },
+            "precision": {
+              "delta_pp": 1.6929577742244157,
+              "ci95_class": [
+                -0.8107501731320549,
+                4.4248312527668014
+              ],
+              "classes_up": 18,
+              "classes": 30
+            }
+          },
+          "method_minus_uniform": {
+            "mAP": {
+              "delta_pp": -2.690437308462345,
+              "ci95_class": [
+                -5.209120580016804,
+                -0.3238815052159094
+              ],
+              "classes_up": 7,
+              "classes": 30
+            },
+            "precision": {
+              "delta_pp": -1.9154929294482643,
+              "ci95_class": [
+                -4.6171563836896,
+                0.6832277135980327
+              ],
+              "classes_up": 10,
+              "classes": 30
+            }
+          }
+        },
+        "public-semantic-translation": {
+          "mAP": 0.736788272857666,
+          "precision": 0.7700046896934509,
+          "queries": 2130,
+          "gallery": 27262,
+          "classes": 30,
+          "source_sha256": "c14bb4445e9e17b86f98ffccf3da700958603b7d8f309be40705b419b08e909c",
+          "revision": "b2bb1506d8afd2be318b60b510530229a8a5ebcb",
+          "kd_check": {
+            "queries": 2130,
+            "mAP": 0.736788272857666,
+            "precision": 0.7700046896934509,
+            "kd_minus_pipeline_max_abs_same_order_AP_P": [
+              0.0,
+              0.0
+            ],
+            "max_per_query_abs_AP_P": [
+              0.0,
+              0.0
+            ],
+            "mean_per_query_abs_AP_P": [
+              0.0,
+              0.0
+            ],
+            "queries_within_1e-6_both": 2130
+          },
+          "controls": {
+            "primary": {
+              "mAP": 0.736788272857666,
+              "precision": 0.7700046896934509
+            },
+            "original": {
+              "mAP": 0.7335705757141113,
+              "precision": 0.7722958326339722
+            },
+            "literal_match": {
+              "mAP": 0.7335332632064819,
+              "precision": 0.7722159624099731
+            },
+            "translation_only": {
+              "mAP": 0.7250857949256897,
+              "precision": 0.7574459910392761
+            },
+            "checkpoint_bandwidth": {
+              "mAP": 0.7385256290435791,
+              "precision": 0.7731643319129944
+            },
+            "permuted_translation": {
+              "mAP": 0.7032145261764526,
+              "precision": 0.7563145756721497
+            },
+            "alternative_support": {
+              "mAP": 0.7335705757141113,
+              "precision": 0.7722958326339722
+            }
+          },
+          "primary_minus_method": {
+            "mAP": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 30
+            },
+            "precision": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 30
+            }
+          },
+          "method_minus_uniform": {
+            "mAP": {
+              "delta_pp": 0.32488029945353175,
+              "ci95_class": [
+                -0.07314328209331349,
+                0.7754563855411573
+              ],
+              "classes_up": 17,
+              "classes": 30
+            },
+            "precision": {
+              "delta_pp": -0.22253515522384867,
+              "ci95_class": [
+                -0.9275368618615407,
+                0.4738405018713348
+              ],
+              "classes_up": 16,
+              "classes": 30
+            }
+          }
+        },
+        "conditional-semantic-index": {
+          "mAP": 0.29065901041030884,
+          "precision": 0.46264320611953735,
+          "queries": 2130,
+          "gallery": 27262,
+          "classes": 30,
+          "source_sha256": "22961d404da16a20d436330c8cce7e47f99a6b80974dbd0106a3e7469a47038e",
+          "revision": "d9f0d0a24491acedee2e0382004b4d8cd778e09f",
+          "primary_minus_method": {
+            "mAP": {
+              "delta_pp": 44.61292562778917,
+              "ci95_class": [
+                38.49475331235153,
+                50.17921582317451
+              ],
+              "classes_up": 29,
+              "classes": 30
+            },
+            "precision": {
+              "delta_pp": 30.736150347885673,
+              "ci95_class": [
+                23.82827838253502,
+                37.88618295305839
+              ],
+              "classes_up": 28,
+              "classes": 30
+            }
+          },
+          "method_minus_uniform": {
+            "mAP": {
+              "delta_pp": -44.288045328335635,
+              "ci95_class": [
+                -49.844026101536805,
+                -38.20274869703674
+              ],
+              "classes_up": 1,
+              "classes": 30
+            },
+            "precision": {
+              "delta_pp": -30.95868550310952,
+              "ci95_class": [
+                -37.874363498395915,
+                -24.282525748130865
+              ],
+              "classes_up": 2,
+              "classes": 30
+            }
+          }
+        }
+      },
+      "dictionary_sample": {
+        "queries": 720,
+        "gallery": 27262,
+        "classes": 30,
+        "conditions": {
+          "full": {
+            "mAP": 0.7405439615249634,
+            "precision": 0.7748194336891174,
+            "words": 20931,
+            "mean_minus_official_pp": [
+              0.00015407425558401478,
+              4.13921144273546e-09
+            ],
+            "invariance": {
+              "max_subgallery_abs": 5.066394805908203e-07,
+              "max_singleton_abs": 1.0728836059570312e-06,
+              "paired_query_count": 60,
+              "paired_photo_count": 240,
+              "singletons": 5
+            },
+            "native_witnesses": {
+              "native_wrong": 283,
+              "native_wrong_pair_flipped": 208,
+              "corrected_top1": 146,
+              "regressed_top1": 43,
+              "examples": {
+                "native_wrong_now_top1_correct": [
+                  {
+                    "query": "sketch/hot air balloon/8580.png",
+                    "native_wrong_or_top": "photo/wineglass/n04592099_4513.JPEG",
+                    "native_best_positive": "photo/hot air balloon/n03541923_2420.JPEG",
+                    "new_top": "photo/hot air balloon/n03541923_3535.JPEG",
+                    "shared_exact_words_on_three_pairs": [
+                      "balloon",
+                      "balloon",
+                      "balloon"
+                    ],
+                    "native_scores": [
+                      0.7373459339141846,
+                      0.6986056566238403,
+                      0.6406993865966797
+                    ],
+                    "pair_method_scores": [
+                      0.016542481258511543,
+                      0.15988972783088684,
+                      0.35847318172454834
+                    ]
+                  },
+                  {
+                    "query": "sketch/church/4161.png",
+                    "native_wrong_or_top": "photo/hammer/n03481172_23867.JPEG",
+                    "native_best_positive": "photo/church/n03028079_10425.JPEG",
+                    "new_top": "photo/church/n03028079_27905.JPEG",
+                    "shared_exact_words_on_three_pairs": [
+                      "minesweeper",
+                      "church",
+                      "cross"
+                    ],
+                    "native_scores": [
+                      0.6477406024932861,
+                      0.6336053609848022,
+                      0.5035001039505005
+                    ],
+                    "pair_method_scores": [
+                      0.004351228009909391,
+                      0.018109800294041634,
+                      0.10745449364185333
+                    ]
+                  },
+                  {
+                    "query": "sketch/butterfly/2855.png",
+                    "native_wrong_or_top": "photo/mosquito/n02200198_11594.JPEG",
+                    "native_best_positive": "photo/butterfly/n02274259_12680.JPEG",
+                    "new_top": "photo/butterfly/n02274259_2429.JPEG",
+                    "shared_exact_words_on_three_pairs": [
+                      "insect",
+                      "hesperia (butterfly)",
+                      "colias hyale"
+                    ],
+                    "native_scores": [
+                      0.7558386325836182,
+                      0.7338948249816895,
+                      0.7334470748901367
+                    ],
+                    "pair_method_scores": [
+                      0.01073769573122263,
+                      0.10312942415475845,
+                      0.22966040670871735
+                    ]
+                  }
+                ],
+                "native_correct_now_top1_wrong": [
+                  {
+                    "query": "sketch/floor lamp/6792.png",
+                    "native_wrong_or_top": "photo/floor lamp/n03367059_1305.JPEG",
+                    "native_best_positive": "photo/floor lamp/n03367059_1305.JPEG",
+                    "new_top": "photo/motorbike/n03790512_7537.JPEG",
+                    "shared_exact_words_on_three_pairs": [
+                      "desk lamp",
+                      "desk lamp",
+                      "motorized scooter"
+                    ],
+                    "native_scores": [
+                      0.737872838973999,
+                      0.737872838973999,
+                      0.5316421985626221
+                    ],
+                    "pair_method_scores": [
+                      0.0034274153877049685,
+                      0.0034274153877049685,
+                      0.10047823935747147
+                    ]
+                  },
+                  {
+                    "query": "sketch/baseball bat/1019.png",
+                    "native_wrong_or_top": "photo/baseball bat/n02799175_6112.JPEG",
+                    "native_best_positive": "photo/baseball bat/n02799175_6112.JPEG",
+                    "new_top": "photo/hammer/n03481172_11848.JPEG",
+                    "shared_exact_words_on_three_pairs": [
+                      "screwdriver",
+                      "screwdriver",
+                      "ball-peen hammer"
+                    ],
+                    "native_scores": [
+                      0.7398704886436462,
+                      0.7398704886436462,
+                      0.6394459009170532
+                    ],
+                    "pair_method_scores": [
+                      0.012327275238931179,
+                      0.012327275238931179,
+                      0.17942453920841217
+                    ]
+                  },
+                  {
+                    "query": "sketch/pear/11872.png",
+                    "native_wrong_or_top": "photo/pear/n07767847_12235.JPEG",
+                    "native_best_positive": "photo/pear/n07767847_12235.JPEG",
+                    "new_top": "photo/wineglass/n04592099_10864.JPEG",
+                    "shared_exact_words_on_three_pairs": [
+                      "pear",
+                      "pear",
+                      "wine bottle"
+                    ],
+                    "native_scores": [
+                      0.7108734846115112,
+                      0.7108734846115112,
+                      0.5016220808029175
+                    ],
+                    "pair_method_scores": [
+                      0.004097762983292341,
+                      0.004097762983292341,
+                      0.06449056416749954
+                    ]
+                  }
+                ],
+                "stays_wrong_at_top1": [
+                  {
+                    "query": "sketch/pear/11901.png",
+                    "native_wrong_or_top": "photo/floor lamp/n03367059_1305.JPEG",
+                    "native_best_positive": "photo/pear/n07767847_14260.JPEG",
+                    "new_top": "photo/church/n03028079_17779.JPEG",
+                    "shared_exact_words_on_three_pairs": [
+                      "lamp",
+                      "pear",
+                      "bell"
+                    ],
+                    "native_scores": [
+                      0.7187676429748535,
+                      0.708336353302002,
+                      0.4634508192539215
+                    ],
+                    "pair_method_scores": [
+                      0.010056075640022755,
+                      0.0061598727479577065,
+                      0.07255066186189651
+                    ]
+                  },
+                  {
+                    "query": "sketch/house/8861.png",
+                    "native_wrong_or_top": "photo/floor lamp/n03367059_6511.JPEG",
+                    "native_best_positive": "photo/house/n03545150_15997.JPEG",
+                    "new_top": "photo/floor lamp/n03367059_5353.JPEG",
+                    "shared_exact_words_on_three_pairs": [
+                      "house flies",
+                      "house",
+                      "pillow"
+                    ],
+                    "native_scores": [
+                      0.6791245937347412,
+                      0.5998267531394958,
+                      0.5884208083152771
+                    ],
+                    "pair_method_scores": [
+                      0.005059150978922844,
+                      0.10655701905488968,
+                      0.15220865607261658
+                    ]
+                  },
+                  {
+                    "query": "sketch/cup/5141.png",
+                    "native_wrong_or_top": "photo/mug/n03797390_5142.JPEG",
+                    "native_best_positive": "photo/cup/n03797390_5142.JPEG",
+                    "new_top": "photo/mug/n03797390_266.JPEG",
+                    "shared_exact_words_on_three_pairs": [
+                      "coffee cup",
+                      "coffee cup",
+                      "coffee cup"
+                    ],
+                    "native_scores": [
+                      0.7921996712684631,
+                      0.7921996712684631,
+                      0.7144182324409485
+                    ],
+                    "pair_method_scores": [
+                      0.14803291857242584,
+                      0.14803291857242584,
+                      0.26452913880348206
+                    ]
+                  }
+                ]
+              }
+            },
+            "matched_word_witnesses": {
+              "exact_wrong_top1": 183,
+              "witness_pairs_reversed": 14,
+              "top1_rescued": 15,
+              "top1_lost": 12,
+              "examples": {
+                "exact_wrong_pair_reversed": [
+                  {
+                    "sketch": "sketch/mermaid/10275.png",
+                    "pairs": {
+                      "exact_top": {
+                        "photo": "photo/floor lamp/n03367059_2961.JPEG",
+                        "leading_exact_word": "nude photography",
+                        "leading_translation_photo_word": "nude photography",
+                        "leading_translation_sketch_word": "women's erotica",
+                        "share_of_translated_evidence": 0.09240120649337769,
+                        "old_score": 0.06563869118690491,
+                        "new_score": 0.03927179053425789
+                      },
+                      "best_old_positive": {
+                        "photo": "photo/mermaid/pic_00259.jpg",
+                        "leading_exact_word": "mermaid",
+                        "leading_translation_photo_word": "mermaid",
+                        "leading_translation_sketch_word": "swimmer",
+                        "share_of_translated_evidence": 0.638023853302002,
+                        "old_score": 0.0565761998295784,
+                        "new_score": 0.050890348851680756
+                      },
+                      "new_top": {
+                        "photo": "photo/mermaid/pic_00259.jpg",
+                        "leading_exact_word": "mermaid",
+                        "leading_translation_photo_word": "mermaid",
+                        "leading_translation_sketch_word": "swimmer",
+                        "share_of_translated_evidence": 0.638023853302002,
+                        "old_score": 0.0565761998295784,
+                        "new_score": 0.050890348851680756
+                      }
+                    }
+                  },
+                  {
+                    "sketch": "sketch/suv/16824.png",
+                    "pairs": {
+                      "exact_top": {
+                        "photo": "photo/hot air balloon/n03541923_3892.JPEG",
+                        "leading_exact_word": "kite buggy",
+                        "leading_translation_photo_word": "kite buggy",
+                        "leading_translation_sketch_word": "go-kart",
+                        "share_of_translated_evidence": 0.1968519687652588,
+                        "old_score": 0.1638508141040802,
+                        "new_score": 0.08719068765640259
+                      },
+                      "best_old_positive": {
+                        "photo": "photo/suv/n04285965_580.JPEG",
+                        "leading_exact_word": "volkswagen country buggy",
+                        "leading_translation_photo_word": "volkswagen country buggy",
+                        "leading_translation_sketch_word": "compact sport utility vehicle",
+                        "share_of_translated_evidence": 0.07858607172966003,
+                        "old_score": 0.13563841581344604,
+                        "new_score": 0.08794623613357544
+                      },
+                      "new_top": {
+                        "photo": "photo/truck/n03930630_4515.JPEG",
+                        "leading_exact_word": "off-road vehicle",
+                        "leading_translation_photo_word": "off-road vehicle",
+                        "leading_translation_sketch_word": "toy vehicle",
+                        "share_of_translated_evidence": 0.16548962891101837,
+                        "old_score": 0.13938242197036743,
+                        "new_score": 0.10715381056070328
+                      }
+                    }
+                  },
+                  {
+                    "sketch": "sketch/tv/19023.png",
+                    "pairs": {
+                      "exact_top": {
+                        "photo": "photo/couch/n04344873_15286.JPEG",
+                        "leading_exact_word": "futon pad",
+                        "leading_translation_photo_word": "futon",
+                        "leading_translation_sketch_word": "futon pad",
+                        "share_of_translated_evidence": 0.21523472666740417,
+                        "old_score": 0.04424276947975159,
+                        "new_score": 0.03371228650212288
+                      },
+                      "best_old_positive": {
+                        "photo": "photo/tv/n06277280_15561.JPEG",
+                        "leading_exact_word": "digital photo frame",
+                        "leading_translation_photo_word": "digital photo frame",
+                        "leading_translation_sketch_word": "picture frame",
+                        "share_of_translated_evidence": 0.6858293414115906,
+                        "old_score": 0.04261567071080208,
+                        "new_score": 0.03745925799012184
+                      },
+                      "new_top": {
+                        "photo": "photo/tv/n06277280_15561.JPEG",
+                        "leading_exact_word": "digital photo frame",
+                        "leading_translation_photo_word": "digital photo frame",
+                        "leading_translation_sketch_word": "picture frame",
+                        "share_of_translated_evidence": 0.6858293414115906,
+                        "old_score": 0.04261567071080208,
+                        "new_score": 0.03745925799012184
+                      }
+                    }
+                  },
+                  {
+                    "sketch": "sketch/pear/11864.png",
+                    "pairs": {
+                      "exact_top": {
+                        "photo": "photo/wineglass/n04592099_694.JPEG",
+                        "leading_exact_word": "decanter",
+                        "leading_translation_photo_word": "decanter",
+                        "leading_translation_sketch_word": "coffee decanter",
+                        "share_of_translated_evidence": 0.5044283866882324,
+                        "old_score": 0.12111012637615204,
+                        "new_score": 0.0706600695848465
+                      },
+                      "best_old_positive": {
+                        "photo": "photo/pear/n07767847_12278.JPEG",
+                        "leading_exact_word": "pear",
+                        "leading_translation_photo_word": "pear",
+                        "leading_translation_sketch_word": "european pear",
+                        "share_of_translated_evidence": 0.26715633273124695,
+                        "old_score": 0.11746780574321747,
+                        "new_score": 0.07911214977502823
+                      },
+                      "new_top": {
+                        "photo": "photo/pear/n07767847_4130.JPEG",
+                        "leading_exact_word": "pear",
+                        "leading_translation_photo_word": "european pear",
+                        "leading_translation_sketch_word": "pear",
+                        "share_of_translated_evidence": 0.2916167676448822,
+                        "old_score": 0.1156570315361023,
+                        "new_score": 0.08050630986690521
+                      }
+                    }
+                  },
+                  {
+                    "sketch": "sketch/couch/4665.png",
+                    "pairs": {
+                      "exact_top": {
+                        "photo": "photo/mug/n03797390_1960.JPEG",
+                        "leading_exact_word": "mug",
+                        "leading_translation_photo_word": "mug",
+                        "leading_translation_sketch_word": "coffee cup",
+                        "share_of_translated_evidence": 0.14472408592700958,
+                        "old_score": 0.08457820117473602,
+                        "new_score": 0.05057176202535629
+                      },
+                      "best_old_positive": {
+                        "photo": "photo/couch/n04344873_8378.JPEG",
+                        "leading_exact_word": "couch",
+                        "leading_translation_photo_word": "loveseat",
+                        "leading_translation_sketch_word": "couch",
+                        "share_of_translated_evidence": 0.2328694462776184,
+                        "old_score": 0.06890573352575302,
+                        "new_score": 0.05467362701892853
+                      },
+                      "new_top": {
+                        "photo": "photo/couch/n04344873_8378.JPEG",
+                        "leading_exact_word": "couch",
+                        "leading_translation_photo_word": "loveseat",
+                        "leading_translation_sketch_word": "couch",
+                        "share_of_translated_evidence": 0.2328694462776184,
+                        "old_score": 0.06890573352575302,
+                        "new_score": 0.05467362701892853
+                      }
+                    }
+                  }
+                ],
+                "top1_lost": [
+                  {
+                    "sketch": "sketch/hot air balloon/8592.png",
+                    "pairs": {
+                      "exact_top": {
+                        "photo": "photo/hot air balloon/n03541923_3535.JPEG",
+                        "leading_exact_word": "balloon",
+                        "leading_translation_photo_word": "balloon",
+                        "leading_translation_sketch_word": "helium",
+                        "share_of_translated_evidence": 0.2870972752571106,
+                        "old_score": 0.5304041504859924,
+                        "new_score": 0.3019097149372101
+                      },
+                      "best_old_positive": {
+                        "photo": "photo/hot air balloon/n03541923_3535.JPEG",
+                        "leading_exact_word": "balloon",
+                        "leading_translation_photo_word": "balloon",
+                        "leading_translation_sketch_word": "helium",
+                        "share_of_translated_evidence": 0.2870972752571106,
+                        "old_score": 0.5304041504859924,
+                        "new_score": 0.3019097149372101
+                      },
+                      "new_top": {
+                        "photo": "photo/floor lamp/n03367059_7010.JPEG",
+                        "leading_exact_word": "light bulb",
+                        "leading_translation_photo_word": "incandescent light bulb",
+                        "leading_translation_sketch_word": "light bulb",
+                        "share_of_translated_evidence": 0.23021161556243896,
+                        "old_score": 0.3801048994064331,
+                        "new_score": 0.3102513551712036
+                      }
+                    }
+                  },
+                  {
+                    "sketch": "sketch/mosquito/10643.png",
+                    "pairs": {
+                      "exact_top": {
+                        "photo": "photo/mosquito/n02200198_6059.JPEG",
+                        "leading_exact_word": "harvestmen",
+                        "leading_translation_photo_word": "harvestman",
+                        "leading_translation_sketch_word": "harvestmen",
+                        "share_of_translated_evidence": 0.1412927657365799,
+                        "old_score": 0.040053583681583405,
+                        "new_score": 0.029951391741633415
+                      },
+                      "best_old_positive": {
+                        "photo": "photo/mosquito/n02200198_6059.JPEG",
+                        "leading_exact_word": "harvestmen",
+                        "leading_translation_photo_word": "harvestman",
+                        "leading_translation_sketch_word": "harvestmen",
+                        "share_of_translated_evidence": 0.1412927657365799,
+                        "old_score": 0.040053583681583405,
+                        "new_score": 0.029951391741633415
+                      },
+                      "new_top": {
+                        "photo": "photo/eyeglasses/n04272054_34985.JPEG",
+                        "leading_exact_word": "barbed wire",
+                        "leading_translation_photo_word": "chain-link fencing",
+                        "leading_translation_sketch_word": "barbed wire",
+                        "share_of_translated_evidence": 0.5020536780357361,
+                        "old_score": 0.02148463763296604,
+                        "new_score": 0.04006721079349518
+                      }
+                    }
+                  },
+                  {
+                    "sketch": "sketch/cell phone/3924.png",
+                    "pairs": {
+                      "exact_top": {
+                        "photo": "photo/cell phone/n02992529_6100.JPEG",
+                        "leading_exact_word": "computer mouse",
+                        "leading_translation_photo_word": "computer mouse",
+                        "leading_translation_sketch_word": "desktop computer",
+                        "share_of_translated_evidence": 0.23720911145210266,
+                        "old_score": 0.12233873456716537,
+                        "new_score": 0.06645997613668442
+                      },
+                      "best_old_positive": {
+                        "photo": "photo/cell phone/n02992529_6100.JPEG",
+                        "leading_exact_word": "computer mouse",
+                        "leading_translation_photo_word": "computer mouse",
+                        "leading_translation_sketch_word": "desktop computer",
+                        "share_of_translated_evidence": 0.23720911145210266,
+                        "old_score": 0.12233873456716537,
+                        "new_score": 0.06645997613668442
+                      },
+                      "new_top": {
+                        "photo": "photo/wrist-watch/n04607869_3241.JPEG",
+                        "leading_exact_word": "blood pressure monitor",
+                        "leading_translation_photo_word": "fertility monitor",
+                        "leading_translation_sketch_word": "baby monitor",
+                        "share_of_translated_evidence": 0.7390971183776855,
+                        "old_score": 0.09036693722009659,
+                        "new_score": 0.08585327863693237
+                      }
+                    }
+                  },
+                  {
+                    "sketch": "sketch/church/4204.png",
+                    "pairs": {
+                      "exact_top": {
+                        "photo": "photo/church/n03028079_29612.JPEG",
+                        "leading_exact_word": "hut",
+                        "leading_translation_photo_word": "outhouse",
+                        "leading_translation_sketch_word": "birdhouse",
+                        "share_of_translated_evidence": 0.11002148687839508,
+                        "old_score": 0.23675328493118286,
+                        "new_score": 0.12871816754341125
+                      },
+                      "best_old_positive": {
+                        "photo": "photo/church/n03028079_29612.JPEG",
+                        "leading_exact_word": "hut",
+                        "leading_translation_photo_word": "outhouse",
+                        "leading_translation_sketch_word": "birdhouse",
+                        "share_of_translated_evidence": 0.11002148687839508,
+                        "old_score": 0.23675328493118286,
+                        "new_score": 0.12871816754341125
+                      },
+                      "new_top": {
+                        "photo": "photo/house/n03545150_2421.JPEG",
+                        "leading_exact_word": "hut",
+                        "leading_translation_photo_word": "log cabin",
+                        "leading_translation_sketch_word": "barn",
+                        "share_of_translated_evidence": 0.2464742511510849,
+                        "old_score": 0.18619844317436218,
+                        "new_score": 0.12888143956661224
+                      }
+                    }
+                  },
+                  {
+                    "sketch": "sketch/pear/11852.png",
+                    "pairs": {
+                      "exact_top": {
+                        "photo": "photo/pear/n07767847_12278.JPEG",
+                        "leading_exact_word": "pear",
+                        "leading_translation_photo_word": "pear",
+                        "leading_translation_sketch_word": "european pear",
+                        "share_of_translated_evidence": 0.2621392011642456,
+                        "old_score": 0.2261357307434082,
+                        "new_score": 0.14789840579032898
+                      },
+                      "best_old_positive": {
+                        "photo": "photo/pear/n07767847_12278.JPEG",
+                        "leading_exact_word": "pear",
+                        "leading_translation_photo_word": "pear",
+                        "leading_translation_sketch_word": "european pear",
+                        "share_of_translated_evidence": 0.2621392011642456,
+                        "old_score": 0.2261357307434082,
+                        "new_score": 0.14789840579032898
+                      },
+                      "new_top": {
+                        "photo": "photo/floor lamp/n03367059_7010.JPEG",
+                        "leading_exact_word": "bulb",
+                        "leading_translation_photo_word": "incandescent light bulb",
+                        "leading_translation_sketch_word": "bulb",
+                        "share_of_translated_evidence": 0.25596386194229126,
+                        "old_score": 0.1910911649465561,
+                        "new_score": 0.1647091656923294
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "equal_translation_weights": {
+              "AP_P": [
+                0.7401070594787598,
+                0.7748749852180481
+              ],
+              "local_minus_equal": {
+                "mAP": {
+                  "delta_pp": 0.043693128649869725,
+                  "ci95_class": [
+                    -0.058033525730328016,
+                    0.13821628362509525
+                  ],
+                  "classes_up": 20,
+                  "classes": 30
+                },
+                "precision": {
+                  "delta_pp": -0.005555478855967522,
+                  "ci95_class": [
+                    -0.1236110328657863,
+                    0.10972221636782505
+                  ],
+                  "classes_up": 15,
+                  "classes": 30
+                }
+              }
+            }
+          },
+          "bare_prompts": {
+            "mAP": 0.7172018885612488,
+            "precision": 0.7559581995010376,
+            "words": 20931,
+            "versus_full": {
+              "mAP": {
+                "delta_pp": -2.334205412383502,
+                "ci95_class": [
+                  -4.269303954827289,
+                  -0.6218356036277126
+                ],
+                "classes_up": 12,
+                "classes": 30
+              },
+              "precision": {
+                "delta_pp": -1.8861112164126501,
+                "ci95_class": [
+                  -3.900312671819443,
+                  -0.030520945237691294
+                ],
+                "classes_up": 10,
+                "classes": 30
+              }
+            }
+          },
+          "half_0": {
+            "mAP": 0.7163482904434204,
+            "precision": 0.7577916383743286,
+            "words": 10466,
+            "versus_full": {
+              "mAP": {
+                "delta_pp": -2.419560329936859,
+                "ci95_class": [
+                  -4.115543872273217,
+                  -0.8555924072020898
+                ],
+                "classes_up": 9,
+                "classes": 30
+              },
+              "precision": {
+                "delta_pp": -1.7027779008882742,
+                "ci95_class": [
+                  -3.7139931765591934,
+                  0.14597224813445994
+                ],
+                "classes_up": 10,
+                "classes": 30
+              }
+            }
+          },
+          "half_1": {
+            "mAP": 0.7211417555809021,
+            "precision": 0.7599583268165588,
+            "words": 10465,
+            "versus_full": {
+              "mAP": {
+                "delta_pp": -1.940222359650458,
+                "ci95_class": [
+                  -3.6135397844837924,
+                  -0.46726472097927685
+                ],
+                "classes_up": 9,
+                "classes": 30
+              },
+              "precision": {
+                "delta_pp": -1.486111269073768,
+                "ci95_class": [
+                  -3.1014585039099782,
+                  -0.14579877747585013
+                ],
+                "classes_up": 8,
+                "classes": 30
+              }
+            }
+          }
+        },
+        "name_association_after_ranking": {
+          "classes": 22,
+          "queries": 528,
+          "present_AP_P": [
+            0.7274481058120728,
+            0.7706817984580994
+          ],
+          "absent_AP_P": [
+            0.6907168626785278,
+            0.7350188493728638
+          ],
+          "paired_delta": {
+            "mAP": {
+              "delta_pp": 3.6731103923750306,
+              "ci95_class": [
+                0.960429525999423,
+                6.52266513257707
+              ],
+              "classes_up": 13,
+              "classes": 22
+            },
+            "precision": {
+              "delta_pp": 3.5662878706881944,
+              "ci95_class": [
+                0.8750000077116331,
+                6.390246226034253
+              ],
+              "classes_up": 14,
+              "classes": 22
+            }
+          }
+        }
+      },
+      "distinct_names": {
+        "queries": 1700,
+        "classes": 24,
+        "all_gallery": 27262,
+        "AP_P": {
+          "shared-concept-likelihood": [
+            0.7487587332725525,
+            0.7883882522583008
+          ],
+          "winclip-concept-likelihood": [
+            0.7527549266815186,
+            0.7904411554336548
+          ],
+          "public-word-calibration": [
+            0.713220477104187,
+            0.7603117823600769
+          ],
+          "public-semantic-translation": [
+            0.7531189918518066,
+            0.7858059406280518
+          ],
+          "conditional-semantic-index": [
+            0.3124995827674866,
+            0.47860589623451233
+          ]
+        }
+      }
+    }
+  }
+}
