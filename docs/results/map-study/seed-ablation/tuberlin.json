@@ -1,0 +1,61 @@
+{
+  "joint_sha256": "90eee74f8730e3e76fe17ac93fef4b48648f91b04bcc8371e6c296cbcca7158d",
+  "config": {
+    "neighbors": 16,
+    "bandwidth": 0.36,
+    "iterations": 2,
+    "mode": "rgb",
+    "normalize_mass": true,
+    "shuffle_semantic": false
+  },
+  "audit_revision": "21d226a356e31ef7b3d8edc50ef9924e7cdcb5a0",
+  "selection": false,
+  "queries": 2130,
+  "gallery": 27262,
+  "scores": {
+    "rgb-initial": {
+      "mAP": 0.2906622588634491,
+      "precision": 0.4626760482788086,
+      "map_k": 0,
+      "p_k": 100
+    },
+    "rgb-smoothed": {
+      "mAP": 0.46684858202934265,
+      "precision": 0.4401971995830536,
+      "map_k": 0,
+      "p_k": 100
+    },
+    "bare-initial": {
+      "mAP": 0.7117116451263428,
+      "precision": 0.7576103210449219,
+      "map_k": 0,
+      "p_k": 100
+    },
+    "bare-smoothed": {
+      "mAP": 0.7902868986129761,
+      "precision": 0.7925164103507996,
+      "map_k": 0,
+      "p_k": 100
+    },
+    "domain-initial": {
+      "mAP": 0.7335332632064819,
+      "precision": 0.7722159624099731,
+      "map_k": 0,
+      "p_k": 100
+    },
+    "domain-smoothed": {
+      "mAP": 0.7916370034217834,
+      "precision": 0.8023896813392639,
+      "map_k": 0,
+      "p_k": 100
+    },
+    "recomputed_official_mean_abs_delta": [
+      1.0044292508837316e-08,
+      0.0
+    ],
+    "recomputed_official_max_abs_delta": [
+      1.2546777725219727e-05,
+      0.0
+    ]
+  }
+}

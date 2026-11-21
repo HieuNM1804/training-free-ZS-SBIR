@@ -1,0 +1,92 @@
+{
+  "utc": "2026-11-20T16:07:56.775694+00:00",
+  "families": {
+    "shared-concept-likelihood": {
+      "scores": [
+        {
+          "mAP": 0.8060232996940613,
+          "precision": 0.8127124905586243,
+          "split": "sketchy_1",
+          "sha256": "4741cb795f14bfb7a391475fc85349f8e5b2bbf95e18d36bf3766a4e121067a8"
+        },
+        {
+          "mAP": 0.7401893138885498,
+          "precision": 0.7285922765731812,
+          "split": "sketchy_2",
+          "sha256": "873c9c03586300442bf67f9c59c7552e5797e79b34d384ba8847019372804b15"
+        }
+      ],
+      "name": "named-likelihood",
+      "freeze": "d14ec39fced8dd97c1737618d64fe9c3bc61de7ca0e3657e673c1b95b1414e24",
+      "historical": true,
+      "tu_rows_prelock": null
+    },
+    "gallery-predictive-language": {
+      "scores": [
+        {
+          "mAP": 0.8188566565513611,
+          "precision": 0.8163770437240601,
+          "split": "sketchy_1",
+          "sha256": "b8cbfce410b031464432ec77f0ece69d8dbac82a3a3d5e3c3cdec964203b35e2"
+        },
+        {
+          "mAP": 0.7333682775497437,
+          "precision": 0.725911021232605,
+          "split": "sketchy_2",
+          "sha256": "5c4ca7f2829d10e2a1d533b96600ce51b682ec109b7ac4de929465d8655afd35"
+        }
+      ],
+      "name": "67bd40493643b646",
+      "freeze": "70eb608df917dc57f860ae80342763994abb9df55e2ca48420a1241f9390e931",
+      "historical": false,
+      "tu_rows_prelock": 0
+    },
+    "concept-translation-retrieval": {
+      "scores": [
+        {
+          "mAP": 0.8082025051116943,
+          "precision": 0.8104098439216614,
+          "split": "sketchy_1",
+          "sha256": "814bcaf8935fc94aec87bdb1f383bf5f22658e418ce576a1539170259598d7d5"
+        },
+        {
+          "mAP": 0.7327513098716736,
+          "precision": 0.7185099720954895,
+          "split": "sketchy_2",
+          "sha256": "b2ad583b9f042c5fc945fd28afa9f8fda4a5fb876bf7967fe999ab26c1d9a354"
+        }
+      ],
+      "name": "69f8144eb1252ecf",
+      "freeze": "debb23bc20bfdb29389824fdec7714d38a3523ab71e1647780a09b597a8c7364",
+      "historical": false,
+      "tu_rows_prelock": 0
+    },
+    "cross-diffusion-map": {
+      "scores": [
+        {
+          "mAP": 0.8185591697692871,
+          "precision": 0.8132555484771729,
+          "split": "sketchy_1",
+          "sha256": "7b0c89c16ba6a120c804ac67fbf812f7b75502f899567e0836c02349f633410d"
+        },
+        {
+          "mAP": 0.7419516444206238,
+          "precision": 0.7267866730690002,
+          "split": "sketchy_2",
+          "sha256": "0a4111a34a34c538b55af846974e0dbe9faf6545eeaf4668bad5047b67904d10"
+        }
+      ],
+      "name": "7bda495b2fb3eb35",
+      "freeze": "d9a77cfdb847a09f93ef334270ae7d05c52c188c4a15af3f090740d2112cc13c",
+      "historical": false,
+      "tu_rows_prelock": 0
+    }
+  },
+  "primary": "cross-diffusion-map",
+  "selection": "equal mean mAP@all Ext-1 and mAP@200 Ext-2, then mean P",
+  "selection_data": [
+    "sketchy_1",
+    "sketchy_2"
+  ],
+  "sha256": "90eee74f8730e3e76fe17ac93fef4b48648f91b04bcc8371e6c296cbcca7158d"
+}
