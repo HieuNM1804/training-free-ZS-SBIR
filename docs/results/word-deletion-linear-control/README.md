@@ -1,0 +1,3 @@
+# Độ ổn định của baseline tuyến tính khi bỏ từ
+
+Dùng công thức $s_i=\sum_w B_{iw}l_w$ của baseline. Bỏ một từ làm giảm chênh lệch của hai ảnh $i,j$ bởi $l_w(B_{iw}-B_{jw})$. Áp dụng cùng cận, ngưỡng sai số, mẫu 4 sketch mỗi lớp và hàm chấm lại toàn gallery như phương pháp xác nhận theo từ. Trong mẫu ghép cặp, lần lượt 8/100, 11/84 và 10/120 sketch giữ nguyên ảnh đầu sau mọi phép bỏ một từ. Các số tương ứng đối với lớp dự đoán là 79/100, 64/84 và 98/120. [So sánh đầy đủ giữa hai phương pháp](../word-deletion-certificates/README.md) · [Ext‑1](sketchy_1.json) · [Ext‑2](sketchy_2.json) · [TU](tuberlin.json) · [Khóa](freeze.json) · [Từng truy vấn](per-query.zip)

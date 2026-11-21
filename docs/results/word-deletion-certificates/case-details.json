@@ -1,0 +1,92 @@
+{
+  "revision": "6401a844b0793e22f868eac252570aba7e3f36e8",
+  "splits": {
+    "sketchy_1": {
+      "audit_sha256": "dd0058ee41163da67fe72949b8f07d638781b2c32919d11532d5b988e9cb9adc",
+      "examples": {
+        "first_same_class_change": {
+          "query_index": 101,
+          "query": "/content/sbir/datasets/datasets/b20dccn616nguynhutun/sketchy/versions/1/Sketchy/sketch/cup/n03063073_4147-6.png",
+          "original": "/content/sbir/datasets/datasets/b20dccn616nguynhutun/sketchy/versions/1/Sketchy/photo/cup/n03063073_82131.jpg",
+          "after_deletion": "/content/sbir/datasets/datasets/b20dccn616nguynhutun/sketchy/versions/1/Sketchy/photo/cup/n03063073_77631.jpg",
+          "term": "mug",
+          "term_rank_in_sketch": 2,
+          "original_correct": true,
+          "after_correct": true,
+          "old_normalized_margin": 0.09440766274929047,
+          "new_margin_on_same_scale": -0.08371390402317047
+        },
+        "first_class_change": {
+          "query_index": 572,
+          "query": "/content/sbir/datasets/datasets/b20dccn616nguynhutun/sketchy/versions/1/Sketchy/sketch/cup/n03147509_6382-1.png",
+          "original": "/content/sbir/datasets/datasets/b20dccn616nguynhutun/sketchy/versions/1/Sketchy/photo/snail/ext_486.jpg",
+          "after_deletion": "/content/sbir/datasets/datasets/b20dccn616nguynhutun/sketchy/versions/1/Sketchy/photo/teddy_bear/n04399382_270971.jpg",
+          "term": "snail",
+          "term_rank_in_sketch": 63,
+          "original_correct": false,
+          "after_correct": false,
+          "old_normalized_margin": 0.6073671579360962,
+          "new_margin_on_same_scale": -0.20740602910518646
+        }
+      }
+    },
+    "sketchy_2": {
+      "audit_sha256": "d01771f0d4e8a796a8019d329785e5e4c58830ce97ec37b3940290455b4a7443",
+      "examples": {
+        "first_same_class_change": {
+          "query_index": 149,
+          "query": "/content/sbir/datasets/datasets/b20dccn616nguynhutun/sketchy/versions/1/Sketchy/sketch/bat/n02139199_13566-2.png",
+          "original": "/content/sbir/datasets/datasets/b20dccn616nguynhutun/sketchy/versions/1/Sketchy/photo/mouse/n02330245_119721.jpg",
+          "after_deletion": "/content/sbir/datasets/datasets/b20dccn616nguynhutun/sketchy/versions/1/Sketchy/photo/mouse/ext_180.jpg",
+          "term": "rock pocket mouse",
+          "term_rank_in_sketch": 1,
+          "original_correct": false,
+          "after_correct": false,
+          "old_normalized_margin": 0.15453775227069855,
+          "new_margin_on_same_scale": -0.16165100038051605
+        },
+        "first_class_change": {
+          "query_index": 521,
+          "query": "/content/sbir/datasets/datasets/b20dccn616nguynhutun/sketchy/versions/1/Sketchy/sketch/bat/n02147947_3903-6.png",
+          "original": "/content/sbir/datasets/datasets/b20dccn616nguynhutun/sketchy/versions/1/Sketchy/photo/saw/n03474779_155701.jpg",
+          "after_deletion": "/content/sbir/datasets/datasets/b20dccn616nguynhutun/sketchy/versions/1/Sketchy/photo/sword/n04373894_33699.jpg",
+          "term": "balaclava",
+          "term_rank_in_sketch": 2,
+          "original_correct": false,
+          "after_correct": false,
+          "old_normalized_margin": 0.06634008139371872,
+          "new_margin_on_same_scale": -0.5672497153282166
+        }
+      }
+    },
+    "tuberlin": {
+      "audit_sha256": "1eaf67a094bf5b4bddc5eca3c6e29f0599eab17a050b044224f245b3fbd3c5af",
+      "examples": {
+        "first_class_change": {
+          "query_index": 19,
+          "query": "/content/sbir/datasets/datasets/b20dccn616nguynhutun/tuberlin/versions/1/sketch/helicopter/8346.png",
+          "original": "/content/sbir/datasets/datasets/b20dccn616nguynhutun/tuberlin/versions/1/photo/mosquito/n02200198_2549.JPEG",
+          "after_deletion": "/content/sbir/datasets/datasets/b20dccn616nguynhutun/tuberlin/versions/1/photo/helicopter/n03512147_1325.JPEG",
+          "term": "mosquito",
+          "term_rank_in_sketch": 8,
+          "original_correct": false,
+          "after_correct": true,
+          "old_normalized_margin": 0.6669954061508179,
+          "new_margin_on_same_scale": -0.23458503186702728
+        },
+        "first_same_class_change": {
+          "query_index": 40,
+          "query": "/content/sbir/datasets/datasets/b20dccn616nguynhutun/tuberlin/versions/1/sketch/helicopter/8368.png",
+          "original": "/content/sbir/datasets/datasets/b20dccn616nguynhutun/tuberlin/versions/1/photo/helicopter/n03512147_4946.JPEG",
+          "after_deletion": "/content/sbir/datasets/datasets/b20dccn616nguynhutun/tuberlin/versions/1/photo/helicopter/n03512147_3798.JPEG",
+          "term": "helicopter",
+          "term_rank_in_sketch": 1,
+          "original_correct": true,
+          "after_correct": true,
+          "old_normalized_margin": 0.06405574828386307,
+          "new_margin_on_same_scale": -0.003727169008925557
+        }
+      }
+    }
+  }
+}

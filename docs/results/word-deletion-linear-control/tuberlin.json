@@ -1,0 +1,2188 @@
+{
+  "protocol": {
+    "revision": "352b90be75d3aa384cccf47204deacfb601e133f",
+    "family": "word-deletion-linear-control",
+    "split": "tuberlin",
+    "queries": 2130,
+    "gallery": 27262,
+    "terms": 20931,
+    "vocabulary_sha256": "84a4373a0efb7fd6d93fe19b0e7ceb6c1b855c233d13b9b78a9a33655c9fdce3",
+    "classes": 30,
+    "checkpoint": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+    "gpu": "NVIDIA L4"
+  },
+  "pair": {
+    "certainly_stable": 717,
+    "certainly_flippable": 1081,
+    "near_numerical_tie": 332,
+    "top1_correct_among_stable": 595,
+    "top1_correct_among_flippable": 917,
+    "selection": {
+      "exact": {
+        "pair_flips": 1081,
+        "global_top1_changes": 1561,
+        "max_error_relative_to_original_winner": 8.887198532647744e-07
+      },
+      "highest_sketch": {
+        "pair_flips": 328,
+        "global_top1_changes": 895,
+        "max_error_relative_to_original_winner": 4.322675977164181e-07
+      },
+      "forward_only": {
+        "pair_flips": 1081,
+        "global_top1_changes": 1561,
+        "max_error_relative_to_original_winner": 8.887198532647744e-07
+      }
+    }
+  },
+  "full_gallery": {
+    "queries": 120,
+    "fully_enumerated_reference_queries": 1,
+    "robust_top1": 10,
+    "robust_predicted_class": 98,
+    "screened_words": 2087436,
+    "query_word_pairs": 2511720,
+    "words_recomputed": 445161,
+    "maximum_normalized_error": 2.074080157399294e-06
+  },
+  "sample_records": [
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 54,
+      "actually_evaluated": 20931,
+      "brute_force": true,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 1,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 2.1695547047784203e-07,
+      "example_word_ids": [
+        12458
+      ],
+      "query": 19,
+      "query_label": 0,
+      "original_correct": false
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 38,
+      "actually_evaluated": 38,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 1.4958219480831758e-06,
+      "example_word_ids": [
+        8801
+      ],
+      "query": 40,
+      "query_label": 0,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 19,
+      "actually_evaluated": 19,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 9.934219633578323e-07,
+      "example_word_ids": [
+        8801
+      ],
+      "query": 59,
+      "query_label": 0,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 144,
+      "actually_evaluated": 144,
+      "brute_force": false,
+      "deleted_words_changing_top1": 2,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 1,
+      "winner_max_scale_relative_error": 3.1929624810800306e-07,
+      "example_word_ids": [
+        870,
+        12458
+      ],
+      "query": 66,
+      "query_label": 0,
+      "original_correct": false
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 492,
+      "actually_evaluated": 492,
+      "brute_force": false,
+      "deleted_words_changing_top1": 5,
+      "deleted_words_changing_predicted_class": 2,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 1.7919141725997179e-07,
+      "example_word_ids": [
+        1359,
+        1393,
+        2590
+      ],
+      "query": 79,
+      "query_label": 1,
+      "original_correct": false
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 51,
+      "actually_evaluated": 51,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 1,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 1.5433630551342503e-07,
+      "example_word_ids": [
+        1359
+      ],
+      "query": 82,
+      "query_label": 1,
+      "original_correct": false
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 6,
+      "actually_evaluated": 6,
+      "brute_force": false,
+      "deleted_words_changing_top1": 3,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 1.1217166928645383e-07,
+      "example_word_ids": [
+        567,
+        20179,
+        20182
+      ],
+      "query": 105,
+      "query_label": 1,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 18,
+      "actually_evaluated": 18,
+      "brute_force": false,
+      "deleted_words_changing_top1": 2,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 2.074080157399294e-06,
+      "example_word_ids": [
+        20180,
+        20182
+      ],
+      "query": 122,
+      "query_label": 1,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 20931,
+      "actually_evaluated": 20931,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 20930,
+      "winner_max_scale_relative_error": 3.160216692776885e-07,
+      "example_word_ids": [
+        11988
+      ],
+      "query": 161,
+      "query_label": 2,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 20931,
+      "actually_evaluated": 20931,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 20930,
+      "winner_max_scale_relative_error": 1.0287091356531164e-07,
+      "example_word_ids": [
+        11988
+      ],
+      "query": 162,
+      "query_label": 2,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 20931,
+      "actually_evaluated": 20931,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 20930,
+      "winner_max_scale_relative_error": 1.0431703856284003e-07,
+      "example_word_ids": [
+        11988
+      ],
+      "query": 175,
+      "query_label": 2,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 20931,
+      "actually_evaluated": 20931,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 20930,
+      "winner_max_scale_relative_error": 2.2117754383543797e-07,
+      "example_word_ids": [
+        11988
+      ],
+      "query": 177,
+      "query_label": 2,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 214,
+      "actually_evaluated": 214,
+      "brute_force": false,
+      "deleted_words_changing_top1": 2,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 2.068363187390787e-07,
+      "example_word_ids": [
+        9595,
+        12458
+      ],
+      "query": 227,
+      "query_label": 3,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 209,
+      "actually_evaluated": 209,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 1.6709896044631023e-07,
+      "example_word_ids": [
+        12458
+      ],
+      "query": 250,
+      "query_label": 3,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 32,
+      "actually_evaluated": 32,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 1.0482331163075287e-06,
+      "example_word_ids": [
+        12458
+      ],
+      "query": 252,
+      "query_label": 3,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 103,
+      "actually_evaluated": 103,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 1.3171766966024734e-07,
+      "example_word_ids": [
+        12458
+      ],
+      "query": 257,
+      "query_label": 3,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 3,
+      "actually_evaluated": 3,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 3.4499029766266176e-07,
+      "example_word_ids": [
+        13919
+      ],
+      "query": 289,
+      "query_label": 4,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 6,
+      "actually_evaluated": 6,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 7.01438054306891e-08,
+      "example_word_ids": [
+        13919
+      ],
+      "query": 305,
+      "query_label": 4,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 5,
+      "actually_evaluated": 5,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 4.942002078678343e-07,
+      "example_word_ids": [
+        13919
+      ],
+      "query": 313,
+      "query_label": 4,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 5,
+      "actually_evaluated": 5,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 5.508959475264419e-07,
+      "example_word_ids": [
+        13919
+      ],
+      "query": 348,
+      "query_label": 4,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 77,
+      "actually_evaluated": 77,
+      "brute_force": false,
+      "deleted_words_changing_top1": 8,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 1,
+      "winner_max_scale_relative_error": 6.322904511080196e-08,
+      "example_word_ids": [
+        1675,
+        3599,
+        3600
+      ],
+      "query": 351,
+      "query_label": 5,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 30,
+      "actually_evaluated": 30,
+      "brute_force": false,
+      "deleted_words_changing_top1": 0,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 6.468762308031728e-07,
+      "example_word_ids": [],
+      "query": 378,
+      "query_label": 5,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 31,
+      "actually_evaluated": 31,
+      "brute_force": false,
+      "deleted_words_changing_top1": 3,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 5.771115638708579e-07,
+      "example_word_ids": [
+        3600,
+        7267,
+        9548
+      ],
+      "query": 405,
+      "query_label": 5,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 23,
+      "actually_evaluated": 23,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 7.334131169045577e-07,
+      "example_word_ids": [
+        17388
+      ],
+      "query": 407,
+      "query_label": 5,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 26,
+      "actually_evaluated": 26,
+      "brute_force": false,
+      "deleted_words_changing_top1": 0,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 6.233877911654417e-07,
+      "example_word_ids": [],
+      "query": 421,
+      "query_label": 6,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 98,
+      "actually_evaluated": 98,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 1,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 1.1572770830525769e-07,
+      "example_word_ids": [
+        17396
+      ],
+      "query": 442,
+      "query_label": 6,
+      "original_correct": false
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 29,
+      "actually_evaluated": 29,
+      "brute_force": false,
+      "deleted_words_changing_top1": 0,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 2.90871298602724e-07,
+      "example_word_ids": [],
+      "query": 461,
+      "query_label": 6,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 35,
+      "actually_evaluated": 35,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 2.7515986289472494e-07,
+      "example_word_ids": [
+        1359
+      ],
+      "query": 465,
+      "query_label": 6,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 29,
+      "actually_evaluated": 29,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 3.805459982686443e-07,
+      "example_word_ids": [
+        19106
+      ],
+      "query": 492,
+      "query_label": 7,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 16,
+      "actually_evaluated": 16,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 1.1023296053735976e-07,
+      "example_word_ids": [
+        259
+      ],
+      "query": 514,
+      "query_label": 7,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 115,
+      "actually_evaluated": 115,
+      "brute_force": false,
+      "deleted_words_changing_top1": 3,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 6.05611560899888e-08,
+      "example_word_ids": [
+        11083,
+        15163,
+        19106
+      ],
+      "query": 519,
+      "query_label": 7,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 17,
+      "actually_evaluated": 17,
+      "brute_force": false,
+      "deleted_words_changing_top1": 0,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 3.2515092129870027e-07,
+      "example_word_ids": [],
+      "query": 558,
+      "query_label": 7,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 20931,
+      "actually_evaluated": 20931,
+      "brute_force": false,
+      "deleted_words_changing_top1": 21,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 20931,
+      "winner_max_scale_relative_error": 1.8690974457058473e-07,
+      "example_word_ids": [
+        8960,
+        8964,
+        9006
+      ],
+      "query": 590,
+      "query_label": 8,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 20931,
+      "actually_evaluated": 20931,
+      "brute_force": false,
+      "deleted_words_changing_top1": 81,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 20929,
+      "winner_max_scale_relative_error": 6.965148457993564e-08,
+      "example_word_ids": [
+        6665,
+        8491,
+        8500
+      ],
+      "query": 604,
+      "query_label": 8,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 20931,
+      "actually_evaluated": 20931,
+      "brute_force": false,
+      "deleted_words_changing_top1": 170,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 20921,
+      "winner_max_scale_relative_error": 1.0409016226731183e-07,
+      "example_word_ids": [
+        152,
+        567,
+        689
+      ],
+      "query": 609,
+      "query_label": 8,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 20931,
+      "actually_evaluated": 20931,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1775,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 20930,
+      "winner_max_scale_relative_error": 1.1866554672224083e-07,
+      "example_word_ids": [
+        16,
+        17,
+        25
+      ],
+      "query": 618,
+      "query_label": 8,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 74,
+      "actually_evaluated": 74,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 7.657023814999775e-08,
+      "example_word_ids": [
+        17396
+      ],
+      "query": 641,
+      "query_label": 9,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 93,
+      "actually_evaluated": 93,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 1,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 7.151829350959815e-08,
+      "example_word_ids": [
+        17396
+      ],
+      "query": 657,
+      "query_label": 9,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 85,
+      "actually_evaluated": 85,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 1,
+      "winner_max_scale_relative_error": 1.1675282962642086e-07,
+      "example_word_ids": [
+        19626
+      ],
+      "query": 662,
+      "query_label": 9,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 14,
+      "actually_evaluated": 14,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 1,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 1,
+      "winner_max_scale_relative_error": 2.550371220877423e-07,
+      "example_word_ids": [
+        13919
+      ],
+      "query": 694,
+      "query_label": 9,
+      "original_correct": false
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 66,
+      "actually_evaluated": 66,
+      "brute_force": false,
+      "deleted_words_changing_top1": 3,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 3,
+      "winner_max_scale_relative_error": 4.2840852643166727e-07,
+      "example_word_ids": [
+        14494,
+        18971,
+        18974
+      ],
+      "query": 704,
+      "query_label": 10,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 19,
+      "actually_evaluated": 19,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 3.548774429873447e-07,
+      "example_word_ids": [
+        18975
+      ],
+      "query": 708,
+      "query_label": 10,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 17,
+      "actually_evaluated": 17,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 4.543343266050215e-07,
+      "example_word_ids": [
+        18971
+      ],
+      "query": 717,
+      "query_label": 10,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 27,
+      "actually_evaluated": 27,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 3.067089835440129e-07,
+      "example_word_ids": [
+        18971
+      ],
+      "query": 737,
+      "query_label": 10,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 22,
+      "actually_evaluated": 22,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 3.365460656823416e-07,
+      "example_word_ids": [
+        7203
+      ],
+      "query": 798,
+      "query_label": 11,
+      "original_correct": false
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 122,
+      "actually_evaluated": 122,
+      "brute_force": false,
+      "deleted_words_changing_top1": 2,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 2.3271847737760254e-07,
+      "example_word_ids": [
+        8811,
+        13664
+      ],
+      "query": 800,
+      "query_label": 11,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 20931,
+      "actually_evaluated": 20931,
+      "brute_force": false,
+      "deleted_words_changing_top1": 10,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 20919,
+      "winner_max_scale_relative_error": 2.764691089396365e-07,
+      "example_word_ids": [
+        618,
+        904,
+        1658
+      ],
+      "query": 802,
+      "query_label": 11,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 555,
+      "actually_evaluated": 555,
+      "brute_force": false,
+      "deleted_words_changing_top1": 3,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 4.477418542592204e-07,
+      "example_word_ids": [
+        8811,
+        13304,
+        13664
+      ],
+      "query": 833,
+      "query_label": 11,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 30,
+      "actually_evaluated": 30,
+      "brute_force": false,
+      "deleted_words_changing_top1": 2,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 5.00131648095703e-07,
+      "example_word_ids": [
+        4449,
+        6507
+      ],
+      "query": 854,
+      "query_label": 12,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 106,
+      "actually_evaluated": 106,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 1,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 7.9910797978755e-08,
+      "example_word_ids": [
+        12458
+      ],
+      "query": 858,
+      "query_label": 12,
+      "original_correct": false
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 130,
+      "actually_evaluated": 130,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 3.314150660571613e-07,
+      "example_word_ids": [
+        12458
+      ],
+      "query": 866,
+      "query_label": 12,
+      "original_correct": false
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 59,
+      "actually_evaluated": 59,
+      "brute_force": false,
+      "deleted_words_changing_top1": 3,
+      "deleted_words_changing_predicted_class": 2,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 7.26820076124568e-07,
+      "example_word_ids": [
+        909,
+        6530,
+        13919
+      ],
+      "query": 869,
+      "query_label": 12,
+      "original_correct": false
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 20931,
+      "actually_evaluated": 20931,
+      "brute_force": false,
+      "deleted_words_changing_top1": 283,
+      "deleted_words_changing_predicted_class": 283,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 20931,
+      "winner_max_scale_relative_error": 4.061133722643717e-07,
+      "example_word_ids": [
+        45,
+        102,
+        290
+      ],
+      "query": 937,
+      "query_label": 13,
+      "original_correct": false
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 20931,
+      "actually_evaluated": 20931,
+      "brute_force": false,
+      "deleted_words_changing_top1": 156,
+      "deleted_words_changing_predicted_class": 156,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 20931,
+      "winner_max_scale_relative_error": 9.328130090580089e-08,
+      "example_word_ids": [
+        73,
+        824,
+        1252
+      ],
+      "query": 961,
+      "query_label": 13,
+      "original_correct": false
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 20931,
+      "actually_evaluated": 20931,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 1,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 20931,
+      "winner_max_scale_relative_error": 1.3109148255807668e-07,
+      "example_word_ids": [
+        4420
+      ],
+      "query": 963,
+      "query_label": 13,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 20931,
+      "actually_evaluated": 20931,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 20931,
+      "winner_max_scale_relative_error": 1.1868009153204184e-07,
+      "example_word_ids": [
+        1718
+      ],
+      "query": 967,
+      "query_label": 13,
+      "original_correct": false
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 9,
+      "actually_evaluated": 9,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 2.311895741513581e-07,
+      "example_word_ids": [
+        20555
+      ],
+      "query": 990,
+      "query_label": 14,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 6,
+      "actually_evaluated": 6,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 1.8141113855563162e-07,
+      "example_word_ids": [
+        20555
+      ],
+      "query": 992,
+      "query_label": 14,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 7,
+      "actually_evaluated": 7,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 3.1304662684306095e-07,
+      "example_word_ids": [
+        20555
+      ],
+      "query": 1005,
+      "query_label": 14,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 9,
+      "actually_evaluated": 9,
+      "brute_force": false,
+      "deleted_words_changing_top1": 0,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 1.0763280045011925e-07,
+      "example_word_ids": [],
+      "query": 1033,
+      "query_label": 14,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 36,
+      "actually_evaluated": 36,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 1,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 5.430016472018906e-07,
+      "example_word_ids": [
+        13919
+      ],
+      "query": 1079,
+      "query_label": 15,
+      "original_correct": false
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 19,
+      "actually_evaluated": 19,
+      "brute_force": false,
+      "deleted_words_changing_top1": 6,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 1.2412992873578332e-06,
+      "example_word_ids": [
+        6383,
+        10223,
+        12288
+      ],
+      "query": 1088,
+      "query_label": 15,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 8,
+      "actually_evaluated": 8,
+      "brute_force": false,
+      "deleted_words_changing_top1": 3,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 3.144352263007022e-07,
+      "example_word_ids": [
+        12395,
+        12495,
+        16493
+      ],
+      "query": 1094,
+      "query_label": 15,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 7,
+      "actually_evaluated": 7,
+      "brute_force": false,
+      "deleted_words_changing_top1": 0,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 1.422336879386421e-07,
+      "example_word_ids": [],
+      "query": 1106,
+      "query_label": 15,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 31,
+      "actually_evaluated": 31,
+      "brute_force": false,
+      "deleted_words_changing_top1": 4,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 1.174440399154264e-06,
+      "example_word_ids": [
+        1199,
+        6599,
+        8024
+      ],
+      "query": 1139,
+      "query_label": 16,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 5,
+      "actually_evaluated": 5,
+      "brute_force": false,
+      "deleted_words_changing_top1": 2,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 2.1159469554277166e-07,
+      "example_word_ids": [
+        6599,
+        8024
+      ],
+      "query": 1150,
+      "query_label": 16,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 4,
+      "actually_evaluated": 4,
+      "brute_force": false,
+      "deleted_words_changing_top1": 2,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 3.6028345107297355e-07,
+      "example_word_ids": [
+        6599,
+        8024
+      ],
+      "query": 1154,
+      "query_label": 16,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 5,
+      "actually_evaluated": 5,
+      "brute_force": false,
+      "deleted_words_changing_top1": 2,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 4.379996312309231e-07,
+      "example_word_ids": [
+        6599,
+        8024
+      ],
+      "query": 1167,
+      "query_label": 16,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 15,
+      "actually_evaluated": 15,
+      "brute_force": false,
+      "deleted_words_changing_top1": 4,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 1,
+      "winner_max_scale_relative_error": 1.0238885295166256e-07,
+      "example_word_ids": [
+        1369,
+        9184,
+        9185
+      ],
+      "query": 1193,
+      "query_label": 17,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 14,
+      "actually_evaluated": 14,
+      "brute_force": false,
+      "deleted_words_changing_top1": 3,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 5.410778385339654e-07,
+      "example_word_ids": [
+        1369,
+        9184,
+        9185
+      ],
+      "query": 1194,
+      "query_label": 17,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 20931,
+      "actually_evaluated": 20931,
+      "brute_force": false,
+      "deleted_words_changing_top1": 8,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 20925,
+      "winner_max_scale_relative_error": 1.0825657881241568e-07,
+      "example_word_ids": [
+        1368,
+        1369,
+        8805
+      ],
+      "query": 1199,
+      "query_label": 17,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 20931,
+      "actually_evaluated": 20931,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 1,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 20930,
+      "winner_max_scale_relative_error": 7.439096094685738e-08,
+      "example_word_ids": [
+        1964
+      ],
+      "query": 1265,
+      "query_label": 17,
+      "original_correct": false
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 20931,
+      "actually_evaluated": 20931,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 1,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 20931,
+      "winner_max_scale_relative_error": 8.243734583857076e-08,
+      "example_word_ids": [
+        14326
+      ],
+      "query": 1297,
+      "query_label": 18,
+      "original_correct": false
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 20931,
+      "actually_evaluated": 20931,
+      "brute_force": false,
+      "deleted_words_changing_top1": 2,
+      "deleted_words_changing_predicted_class": 2,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 20931,
+      "winner_max_scale_relative_error": 6.593003831767419e-08,
+      "example_word_ids": [
+        5614,
+        5998
+      ],
+      "query": 1315,
+      "query_label": 18,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 20931,
+      "actually_evaluated": 20931,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 1,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 20931,
+      "winner_max_scale_relative_error": 7.501159871026175e-07,
+      "example_word_ids": [
+        12573
+      ],
+      "query": 1330,
+      "query_label": 18,
+      "original_correct": false
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 20931,
+      "actually_evaluated": 20931,
+      "brute_force": false,
+      "deleted_words_changing_top1": 3,
+      "deleted_words_changing_predicted_class": 2,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 20931,
+      "winner_max_scale_relative_error": 9.508971174909675e-07,
+      "example_word_ids": [
+        12573,
+        13947,
+        16911
+      ],
+      "query": 1337,
+      "query_label": 18,
+      "original_correct": false
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 15,
+      "actually_evaluated": 15,
+      "brute_force": false,
+      "deleted_words_changing_top1": 4,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 8.75481532602862e-07,
+      "example_word_ids": [
+        3104,
+        3105,
+        9281
+      ],
+      "query": 1370,
+      "query_label": 19,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 10,
+      "actually_evaluated": 10,
+      "brute_force": false,
+      "deleted_words_changing_top1": 3,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 8.309947929774353e-07,
+      "example_word_ids": [
+        3104,
+        3105,
+        17155
+      ],
+      "query": 1384,
+      "query_label": 19,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 6,
+      "actually_evaluated": 6,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 1,
+      "winner_max_scale_relative_error": 5.711761446036689e-07,
+      "example_word_ids": [
+        17155
+      ],
+      "query": 1401,
+      "query_label": 19,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 17,
+      "actually_evaluated": 17,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 7.652708973182598e-07,
+      "example_word_ids": [
+        17155
+      ],
+      "query": 1405,
+      "query_label": 19,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 68,
+      "actually_evaluated": 68,
+      "brute_force": false,
+      "deleted_words_changing_top1": 4,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 1.5696799948727858e-07,
+      "example_word_ids": [
+        5732,
+        14229,
+        18047
+      ],
+      "query": 1442,
+      "query_label": 20,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 71,
+      "actually_evaluated": 71,
+      "brute_force": false,
+      "deleted_words_changing_top1": 3,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 1,
+      "winner_max_scale_relative_error": 1.796623791960883e-07,
+      "example_word_ids": [
+        5732,
+        18047,
+        18055
+      ],
+      "query": 1444,
+      "query_label": 20,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 39,
+      "actually_evaluated": 39,
+      "brute_force": false,
+      "deleted_words_changing_top1": 2,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 6.838790795882232e-07,
+      "example_word_ids": [
+        18047,
+        18055
+      ],
+      "query": 1448,
+      "query_label": 20,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 249,
+      "actually_evaluated": 249,
+      "brute_force": false,
+      "deleted_words_changing_top1": 0,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 1.9020356489818369e-07,
+      "example_word_ids": [],
+      "query": 1467,
+      "query_label": 20,
+      "original_correct": false
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 70,
+      "actually_evaluated": 70,
+      "brute_force": false,
+      "deleted_words_changing_top1": 2,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 9.600399408782323e-08,
+      "example_word_ids": [
+        5513,
+        13643
+      ],
+      "query": 1485,
+      "query_label": 21,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 26,
+      "actually_evaluated": 26,
+      "brute_force": false,
+      "deleted_words_changing_top1": 6,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 1,
+      "winner_max_scale_relative_error": 1.2759206811097101e-06,
+      "example_word_ids": [
+        5396,
+        5513,
+        13643
+      ],
+      "query": 1501,
+      "query_label": 21,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 17,
+      "actually_evaluated": 17,
+      "brute_force": false,
+      "deleted_words_changing_top1": 3,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 3.0734753408978577e-07,
+      "example_word_ids": [
+        5396,
+        5513,
+        13643
+      ],
+      "query": 1542,
+      "query_label": 21,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 67,
+      "actually_evaluated": 67,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 1,
+      "winner_max_scale_relative_error": 9.105812637244526e-08,
+      "example_word_ids": [
+        12458
+      ],
+      "query": 1545,
+      "query_label": 21,
+      "original_correct": false
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 20931,
+      "actually_evaluated": 20931,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 1,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 20930,
+      "winner_max_scale_relative_error": 6.310514777396747e-08,
+      "example_word_ids": [
+        1718
+      ],
+      "query": 1566,
+      "query_label": 22,
+      "original_correct": false
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 32,
+      "actually_evaluated": 32,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 1,
+      "winner_max_scale_relative_error": 4.5540809878730215e-07,
+      "example_word_ids": [
+        4687
+      ],
+      "query": 1573,
+      "query_label": 22,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 33,
+      "actually_evaluated": 33,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 4.807254754268797e-07,
+      "example_word_ids": [
+        6703
+      ],
+      "query": 1591,
+      "query_label": 22,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 35,
+      "actually_evaluated": 35,
+      "brute_force": false,
+      "deleted_words_changing_top1": 2,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 4.6948994736339955e-07,
+      "example_word_ids": [
+        6703,
+        16348
+      ],
+      "query": 1618,
+      "query_label": 22,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 18,
+      "actually_evaluated": 18,
+      "brute_force": false,
+      "deleted_words_changing_top1": 2,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 7.036189231257595e-07,
+      "example_word_ids": [
+        7203,
+        12154
+      ],
+      "query": 1622,
+      "query_label": 23,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 24,
+      "actually_evaluated": 24,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 5.246535010883235e-07,
+      "example_word_ids": [
+        9155
+      ],
+      "query": 1635,
+      "query_label": 23,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 26,
+      "actually_evaluated": 26,
+      "brute_force": false,
+      "deleted_words_changing_top1": 0,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 2.9109440902175265e-07,
+      "example_word_ids": [],
+      "query": 1640,
+      "query_label": 23,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 194,
+      "actually_evaluated": 194,
+      "brute_force": false,
+      "deleted_words_changing_top1": 7,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 2,
+      "winner_max_scale_relative_error": 2.5281195803472656e-07,
+      "example_word_ids": [
+        746,
+        5927,
+        6446
+      ],
+      "query": 1695,
+      "query_label": 23,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 37,
+      "actually_evaluated": 37,
+      "brute_force": false,
+      "deleted_words_changing_top1": 2,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 7.810068609614973e-07,
+      "example_word_ids": [
+        16175,
+        16176
+      ],
+      "query": 1715,
+      "query_label": 24,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 37,
+      "actually_evaluated": 37,
+      "brute_force": false,
+      "deleted_words_changing_top1": 2,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 7.022104000498075e-07,
+      "example_word_ids": [
+        7599,
+        16172
+      ],
+      "query": 1732,
+      "query_label": 24,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 36,
+      "actually_evaluated": 36,
+      "brute_force": false,
+      "deleted_words_changing_top1": 0,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 9.591498155714362e-07,
+      "example_word_ids": [],
+      "query": 1736,
+      "query_label": 24,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 40,
+      "actually_evaluated": 40,
+      "brute_force": false,
+      "deleted_words_changing_top1": 2,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 9.359941373077163e-07,
+      "example_word_ids": [
+        7599,
+        17221
+      ],
+      "query": 1768,
+      "query_label": 24,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 158,
+      "actually_evaluated": 158,
+      "brute_force": false,
+      "deleted_words_changing_top1": 5,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 6.06168271133356e-07,
+      "example_word_ids": [
+        2818,
+        7315,
+        7356
+      ],
+      "query": 1781,
+      "query_label": 25,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 183,
+      "actually_evaluated": 183,
+      "brute_force": false,
+      "deleted_words_changing_top1": 10,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 4,
+      "winner_max_scale_relative_error": 3.6310993323240837e-07,
+      "example_word_ids": [
+        6,
+        7,
+        8
+      ],
+      "query": 1798,
+      "query_label": 25,
+      "original_correct": false
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 14,
+      "actually_evaluated": 14,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 1,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 1.8385944144938549e-07,
+      "example_word_ids": [
+        19106
+      ],
+      "query": 1801,
+      "query_label": 25,
+      "original_correct": false
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 45,
+      "actually_evaluated": 45,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 1,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 2.6503158778723446e-07,
+      "example_word_ids": [
+        2818
+      ],
+      "query": 1835,
+      "query_label": 25,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 45,
+      "actually_evaluated": 45,
+      "brute_force": false,
+      "deleted_words_changing_top1": 3,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 7.417486358463066e-07,
+      "example_word_ids": [
+        3641,
+        4111,
+        6170
+      ],
+      "query": 1845,
+      "query_label": 26,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 10,
+      "actually_evaluated": 10,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 3.1493109986513446e-07,
+      "example_word_ids": [
+        3641
+      ],
+      "query": 1854,
+      "query_label": 26,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 5,
+      "actually_evaluated": 5,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 7.384134619314864e-07,
+      "example_word_ids": [
+        6170
+      ],
+      "query": 1862,
+      "query_label": 26,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 61,
+      "actually_evaluated": 61,
+      "brute_force": false,
+      "deleted_words_changing_top1": 6,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 1,
+      "winner_max_scale_relative_error": 7.630968639205093e-07,
+      "example_word_ids": [
+        376,
+        1530,
+        3464
+      ],
+      "query": 1896,
+      "query_label": 26,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 8,
+      "actually_evaluated": 8,
+      "brute_force": false,
+      "deleted_words_changing_top1": 2,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 4.670091016123479e-07,
+      "example_word_ids": [
+        5521,
+        18440
+      ],
+      "query": 1923,
+      "query_label": 27,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 8,
+      "actually_evaluated": 8,
+      "brute_force": false,
+      "deleted_words_changing_top1": 2,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 4.75184634751713e-07,
+      "example_word_ids": [
+        5521,
+        18440
+      ],
+      "query": 1929,
+      "query_label": 27,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 12,
+      "actually_evaluated": 12,
+      "brute_force": false,
+      "deleted_words_changing_top1": 2,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 9.402151022186445e-07,
+      "example_word_ids": [
+        5521,
+        18440
+      ],
+      "query": 1931,
+      "query_label": 27,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 28,
+      "actually_evaluated": 28,
+      "brute_force": false,
+      "deleted_words_changing_top1": 6,
+      "deleted_words_changing_predicted_class": 2,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 4.6146521981427213e-07,
+      "example_word_ids": [
+        3230,
+        5521,
+        12066
+      ],
+      "query": 1942,
+      "query_label": 27,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 16,
+      "actually_evaluated": 16,
+      "brute_force": false,
+      "deleted_words_changing_top1": 2,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 2.1422101781354286e-07,
+      "example_word_ids": [
+        5492,
+        5881
+      ],
+      "query": 1988,
+      "query_label": 28,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 76,
+      "actually_evaluated": 76,
+      "brute_force": false,
+      "deleted_words_changing_top1": 2,
+      "deleted_words_changing_predicted_class": 2,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 1.160517157927643e-07,
+      "example_word_ids": [
+        5722,
+        5732
+      ],
+      "query": 1995,
+      "query_label": 28,
+      "original_correct": false
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 59,
+      "actually_evaluated": 59,
+      "brute_force": false,
+      "deleted_words_changing_top1": 0,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 4.778582933795406e-07,
+      "example_word_ids": [],
+      "query": 2023,
+      "query_label": 28,
+      "original_correct": false
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 48,
+      "actually_evaluated": 48,
+      "brute_force": false,
+      "deleted_words_changing_top1": 3,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 8.733268259675242e-07,
+      "example_word_ids": [
+        3770,
+        18047,
+        18055
+      ],
+      "query": 2026,
+      "query_label": 28,
+      "original_correct": false
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 24,
+      "actually_evaluated": 24,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 6.035364208401006e-07,
+      "example_word_ids": [
+        4642
+      ],
+      "query": 2094,
+      "query_label": 29,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 8,
+      "actually_evaluated": 8,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 9.947549273192635e-08,
+      "example_word_ids": [
+        10738
+      ],
+      "query": 2095,
+      "query_label": 29,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 9,
+      "actually_evaluated": 9,
+      "brute_force": false,
+      "deleted_words_changing_top1": 1,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 8.771095849624544e-08,
+      "example_word_ids": [
+        10738
+      ],
+      "query": 2104,
+      "query_label": 29,
+      "original_correct": true
+    },
+    {
+      "words_in_dictionary": 20931,
+      "survive_bound": 161,
+      "actually_evaluated": 161,
+      "brute_force": false,
+      "deleted_words_changing_top1": 6,
+      "deleted_words_changing_predicted_class": 0,
+      "unnecessary_words_seen_to_flip": 0,
+      "near_ties_evaluated": 0,
+      "winner_max_scale_relative_error": 3.2110162351273175e-07,
+      "example_word_ids": [
+        566,
+        3023,
+        10738
+      ],
+      "query": 2111,
+      "query_label": 29,
+      "original_correct": true
+    }
+  ],
+  "examples": {
+    "global_changes_class": {
+      "query": "/content/sbir/datasets/datasets/b20dccn616nguynhutun/tuberlin/versions/1/sketch/helicopter/8346.png",
+      "initial_photo": "/content/sbir/datasets/datasets/b20dccn616nguynhutun/tuberlin/versions/1/photo/mosquito/n02200198_2549.JPEG",
+      "runner": "/content/sbir/datasets/datasets/b20dccn616nguynhutun/tuberlin/versions/1/photo/mosquito/n02200198_1012.JPEG",
+      "max_pair_influence": "artificial fly",
+      "word_examples_changing_photo": [
+        "mosquito"
+      ],
+      "changes_of_first_photo": 1,
+      "changes_of_predicted_class": 1
+    },
+    "class_stable": {
+      "query": "/content/sbir/datasets/datasets/b20dccn616nguynhutun/tuberlin/versions/1/sketch/helicopter/8368.png",
+      "initial_photo": "/content/sbir/datasets/datasets/b20dccn616nguynhutun/tuberlin/versions/1/photo/helicopter/n03512147_4946.JPEG",
+      "runner": "/content/sbir/datasets/datasets/b20dccn616nguynhutun/tuberlin/versions/1/photo/helicopter/n03512147_4953.JPEG",
+      "max_pair_influence": "radio-controlled helicopter",
+      "word_examples_changing_photo": [
+        "helicopter"
+      ],
+      "changes_of_first_photo": 1,
+      "changes_of_predicted_class": 0
+    }
+  },
+  "per_query_sha256": "91bc2321afba2edd77f728ce41455a0ad8159b33e4db44fb92b1eb12c4012ae1"
+}
