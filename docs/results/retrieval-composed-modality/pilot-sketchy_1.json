@@ -1,0 +1,507 @@
+{
+  "revision": "69e7d71ad845fa4490ef319a1d05fd73b1f2ba94",
+  "family": "retrieval-composed-modality",
+  "queries": 1200,
+  "gallery": 17100,
+  "classes": 25,
+  "checkpoint_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+  "dataset_sha256": "8fafaf3aedf4751e28e2b33f073832e02fdf3ca1b36a9d7fda5ff328f26b0642",
+  "kd_sha256": "3433c60a3739e852c94e573832dd53d51446f433326a453392d316b402402fbe",
+  "gpu": "NVIDIA L4",
+  "external_vocabulary": 20931,
+  "exploratory_unseen": true,
+  "freeze_sha256": null,
+  "settings": {
+    "5f938722ad17ce3d": {
+      "parameters": {
+        "alpha": 0.1,
+        "beta": 0.2,
+        "modifier": "content",
+        "descriptions": "all",
+        "mode": "matched"
+      },
+      "mAP": 0.3368859887123108,
+      "precision": 0.4523583650588989
+    },
+    "7a48a31a4ceceaa2": {
+      "parameters": {
+        "alpha": 0.1,
+        "beta": 0.5,
+        "modifier": "content",
+        "descriptions": "all",
+        "mode": "matched"
+      },
+      "mAP": 0.41684219241142273,
+      "precision": 0.5387083292007446
+    },
+    "c0cef81c0dd6c8ec": {
+      "parameters": {
+        "alpha": 0.1,
+        "beta": 0.8,
+        "modifier": "content",
+        "descriptions": "all",
+        "mode": "matched"
+      },
+      "mAP": 0.5549877285957336,
+      "precision": 0.6795166730880737
+    },
+    "3ea2c6762ea8e431": {
+      "parameters": {
+        "alpha": 0.1,
+        "beta": 1.0,
+        "modifier": "content",
+        "descriptions": "all",
+        "mode": "matched"
+      },
+      "mAP": 0.6407103538513184,
+      "precision": 0.758483350276947
+    },
+    "22767f2ecf8a4e50": {
+      "parameters": {
+        "alpha": 0.5,
+        "beta": 0.2,
+        "modifier": "content",
+        "descriptions": "all",
+        "mode": "matched"
+      },
+      "mAP": 0.4216233193874359,
+      "precision": 0.5457000136375427
+    },
+    "b9566e689293cfc6": {
+      "parameters": {
+        "alpha": 0.5,
+        "beta": 0.5,
+        "modifier": "content",
+        "descriptions": "all",
+        "mode": "matched"
+      },
+      "mAP": 0.4846963584423065,
+      "precision": 0.5988667011260986
+    },
+    "e6ebee53456a37e4": {
+      "parameters": {
+        "alpha": 0.5,
+        "beta": 0.8,
+        "modifier": "content",
+        "descriptions": "all",
+        "mode": "matched"
+      },
+      "mAP": 0.5395197868347168,
+      "precision": 0.6570916771888733
+    },
+    "8fbd0d72f30ae66b": {
+      "parameters": {
+        "alpha": 0.5,
+        "beta": 1.0,
+        "modifier": "content",
+        "descriptions": "all",
+        "mode": "matched"
+      },
+      "mAP": 0.5320489406585693,
+      "precision": 0.6711249947547913
+    },
+    "6af37ddb21b13a54": {
+      "parameters": {
+        "alpha": 0.8,
+        "beta": 0.2,
+        "modifier": "content",
+        "descriptions": "all",
+        "mode": "matched"
+      },
+      "mAP": 0.48995208740234375,
+      "precision": 0.6162083148956299
+    },
+    "e0ba888bb639d666": {
+      "parameters": {
+        "alpha": 0.8,
+        "beta": 0.5,
+        "modifier": "content",
+        "descriptions": "all",
+        "mode": "matched"
+      },
+      "mAP": 0.5162906646728516,
+      "precision": 0.6314249634742737
+    },
+    "13965d0182cdadfb": {
+      "parameters": {
+        "alpha": 0.8,
+        "beta": 0.8,
+        "modifier": "content",
+        "descriptions": "all",
+        "mode": "matched"
+      },
+      "mAP": 0.5012096166610718,
+      "precision": 0.6262750625610352
+    },
+    "701f2d112def20cb": {
+      "parameters": {
+        "alpha": 0.8,
+        "beta": 1.0,
+        "modifier": "content",
+        "descriptions": "all",
+        "mode": "matched"
+      },
+      "mAP": 0.45031148195266724,
+      "precision": 0.5934750437736511
+    },
+    "7d7e7418b9d00c67": {
+      "parameters": {
+        "alpha": 1.0,
+        "beta": 0.2,
+        "modifier": "content",
+        "descriptions": "all",
+        "mode": "matched"
+      },
+      "mAP": 0.4872974157333374,
+      "precision": 0.6152999997138977
+    },
+    "973210a7dc1ed7a6": {
+      "parameters": {
+        "alpha": 1.0,
+        "beta": 0.5,
+        "modifier": "content",
+        "descriptions": "all",
+        "mode": "matched"
+      },
+      "mAP": 0.4982134699821472,
+      "precision": 0.616016685962677
+    },
+    "c935cacd88fb0a76": {
+      "parameters": {
+        "alpha": 1.0,
+        "beta": 0.8,
+        "modifier": "content",
+        "descriptions": "all",
+        "mode": "matched"
+      },
+      "mAP": 0.4564959704875946,
+      "precision": 0.586400032043457
+    },
+    "456cdeae635f155f": {
+      "parameters": {
+        "alpha": 1.0,
+        "beta": 1.0,
+        "modifier": "content",
+        "descriptions": "all",
+        "mode": "matched"
+      },
+      "mAP": 0.4016454517841339,
+      "precision": 0.5464000701904297
+    },
+    "f64b2e663a2b513a": {
+      "parameters": {
+        "alpha": 0.1,
+        "beta": 0.2,
+        "modifier": "content",
+        "descriptions": "three",
+        "mode": "matched"
+      },
+      "mAP": 0.34960898756980896,
+      "precision": 0.46291667222976685
+    },
+    "e71c47d2d76d9a8c": {
+      "parameters": {
+        "alpha": 0.1,
+        "beta": 0.5,
+        "modifier": "content",
+        "descriptions": "three",
+        "mode": "matched"
+      },
+      "mAP": 0.44770464301109314,
+      "precision": 0.5595249533653259
+    },
+    "41d1665ff4f87dd2": {
+      "parameters": {
+        "alpha": 0.1,
+        "beta": 0.8,
+        "modifier": "content",
+        "descriptions": "three",
+        "mode": "matched"
+      },
+      "mAP": 0.5741739273071289,
+      "precision": 0.6810583472251892
+    },
+    "3fe6d51120db4d93": {
+      "parameters": {
+        "alpha": 0.1,
+        "beta": 1.0,
+        "modifier": "content",
+        "descriptions": "three",
+        "mode": "matched"
+      },
+      "mAP": 0.6268224716186523,
+      "precision": 0.7460167407989502
+    },
+    "7731a29816ff7a97": {
+      "parameters": {
+        "alpha": 0.5,
+        "beta": 0.2,
+        "modifier": "content",
+        "descriptions": "three",
+        "mode": "matched"
+      },
+      "mAP": 0.43480509519577026,
+      "precision": 0.553566575050354
+    },
+    "4aaa2d3c49be69d3": {
+      "parameters": {
+        "alpha": 0.5,
+        "beta": 0.5,
+        "modifier": "content",
+        "descriptions": "three",
+        "mode": "matched"
+      },
+      "mAP": 0.49584001302719116,
+      "precision": 0.603475034236908
+    },
+    "312f4b53b7903753": {
+      "parameters": {
+        "alpha": 0.5,
+        "beta": 0.8,
+        "modifier": "content",
+        "descriptions": "three",
+        "mode": "matched"
+      },
+      "mAP": 0.5192047357559204,
+      "precision": 0.6435166597366333
+    },
+    "e1ac395a6354b02f": {
+      "parameters": {
+        "alpha": 0.5,
+        "beta": 1.0,
+        "modifier": "content",
+        "descriptions": "three",
+        "mode": "matched"
+      },
+      "mAP": 0.4936683177947998,
+      "precision": 0.6406583189964294
+    },
+    "bf26af5f4e124e5f": {
+      "parameters": {
+        "alpha": 0.8,
+        "beta": 0.2,
+        "modifier": "content",
+        "descriptions": "three",
+        "mode": "matched"
+      },
+      "mAP": 0.49760571122169495,
+      "precision": 0.6176750063896179
+    },
+    "2afeac8b6ff07857": {
+      "parameters": {
+        "alpha": 0.8,
+        "beta": 0.5,
+        "modifier": "content",
+        "descriptions": "three",
+        "mode": "matched"
+      },
+      "mAP": 0.4967448115348816,
+      "precision": 0.6138917207717896
+    },
+    "5fcd09ee073f39eb": {
+      "parameters": {
+        "alpha": 0.8,
+        "beta": 0.8,
+        "modifier": "content",
+        "descriptions": "three",
+        "mode": "matched"
+      },
+      "mAP": 0.44519543647766113,
+      "precision": 0.5859249830245972
+    },
+    "765aae2b52f951a6": {
+      "parameters": {
+        "alpha": 0.8,
+        "beta": 1.0,
+        "modifier": "content",
+        "descriptions": "three",
+        "mode": "matched"
+      },
+      "mAP": 0.39554131031036377,
+      "precision": 0.5524583458900452
+    },
+    "4b1c1a417e64cd9e": {
+      "parameters": {
+        "alpha": 1.0,
+        "beta": 0.2,
+        "modifier": "content",
+        "descriptions": "three",
+        "mode": "matched"
+      },
+      "mAP": 0.4928406774997711,
+      "precision": 0.6180999875068665
+    },
+    "ef85480c0d9dc4ff": {
+      "parameters": {
+        "alpha": 1.0,
+        "beta": 0.5,
+        "modifier": "content",
+        "descriptions": "three",
+        "mode": "matched"
+      },
+      "mAP": 0.46111583709716797,
+      "precision": 0.5884082913398743
+    },
+    "9641409002592871": {
+      "parameters": {
+        "alpha": 1.0,
+        "beta": 0.8,
+        "modifier": "content",
+        "descriptions": "three",
+        "mode": "matched"
+      },
+      "mAP": 0.39040616154670715,
+      "precision": 0.5404666662216187
+    },
+    "3ea7aa9aa0d7eff1": {
+      "parameters": {
+        "alpha": 1.0,
+        "beta": 1.0,
+        "modifier": "content",
+        "descriptions": "three",
+        "mode": "matched"
+      },
+      "mAP": 0.34493348002433777,
+      "precision": 0.5054417252540588
+    },
+    "7966a18465b60466": {
+      "parameters": {
+        "alpha": 0.1,
+        "beta": 0.2,
+        "modifier": "domain",
+        "descriptions": "three",
+        "mode": "matched"
+      },
+      "mAP": 0.33153048157691956,
+      "precision": 0.44275835156440735
+    },
+    "14f6372c04f5f188": {
+      "parameters": {
+        "alpha": 0.1,
+        "beta": 0.5,
+        "modifier": "domain",
+        "descriptions": "three",
+        "mode": "matched"
+      },
+      "mAP": 0.42258769273757935,
+      "precision": 0.532200038433075
+    },
+    "a878ffe91a45448a": {
+      "parameters": {
+        "alpha": 0.1,
+        "beta": 0.8,
+        "modifier": "domain",
+        "descriptions": "three",
+        "mode": "matched"
+      },
+      "mAP": 0.5459561347961426,
+      "precision": 0.656125009059906
+    },
+    "087603a26c3f0c81": {
+      "parameters": {
+        "alpha": 0.1,
+        "beta": 1.0,
+        "modifier": "domain",
+        "descriptions": "three",
+        "mode": "matched"
+      },
+      "mAP": 0.5967335104942322,
+      "precision": 0.7235832810401917
+    },
+    "c1b500fa5f403b9d": {
+      "parameters": {
+        "alpha": 0.5,
+        "beta": 0.2,
+        "modifier": "domain",
+        "descriptions": "three",
+        "mode": "matched"
+      },
+      "mAP": 0.3081585466861725,
+      "precision": 0.42012500762939453
+    },
+    "d9c69549f2aea37c": {
+      "parameters": {
+        "alpha": 0.5,
+        "beta": 0.5,
+        "modifier": "domain",
+        "descriptions": "three",
+        "mode": "matched"
+      },
+      "mAP": 0.31665247678756714,
+      "precision": 0.4266917109489441
+    },
+    "ce97052cbfa00db2": {
+      "parameters": {
+        "alpha": 0.5,
+        "beta": 0.8,
+        "modifier": "domain",
+        "descriptions": "three",
+        "mode": "matched"
+      },
+      "mAP": 0.2758661210536957,
+      "precision": 0.4049416780471802
+    },
+    "0a960f602f98b87e": {
+      "parameters": {
+        "alpha": 0.5,
+        "beta": 1.0,
+        "modifier": "domain",
+        "descriptions": "three",
+        "mode": "matched"
+      },
+      "mAP": 0.21425390243530273,
+      "precision": 0.3415333330631256
+    },
+    "6464140d602a0527": {
+      "parameters": {
+        "alpha": 0.8,
+        "beta": 0.2,
+        "modifier": "domain",
+        "descriptions": "three",
+        "mode": "matched"
+      },
+      "mAP": 0.1850339025259018,
+      "precision": 0.27429166436195374
+    },
+    "9229839c0d36e0c0": {
+      "parameters": {
+        "alpha": 0.8,
+        "beta": 0.5,
+        "modifier": "domain",
+        "descriptions": "three",
+        "mode": "matched"
+      },
+      "mAP": 0.1280735582113266,
+      "precision": 0.17141667008399963
+    },
+    "e52ef60372165663": {
+      "parameters": {
+        "alpha": 0.8,
+        "beta": 0.8,
+        "modifier": "domain",
+        "descriptions": "three",
+        "mode": "matched"
+      },
+      "mAP": 0.09339296072721481,
+      "precision": 0.13731667399406433
+    },
+    "f9bb837c10dfc469": {
+      "parameters": {
+        "alpha": 0.8,
+        "beta": 1.0,
+        "modifier": "domain",
+        "descriptions": "three",
+        "mode": "matched"
+      },
+      "mAP": 0.07912284880876541,
+      "precision": 0.1162666603922844
+    }
+  },
+  "seed": 4783,
+  "diagnostic": {
+    "target_domain_modifier": "a photo.",
+    "caption_model": null,
+    "descriptions": "normalized CLIP text directions for public photo concepts",
+    "mean_norm_of_full_description": 0.8864748477935791
+  }
+}

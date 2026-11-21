@@ -1,0 +1,114 @@
+{
+  "utc": "2026-11-21T04:16:18.859300+00:00",
+  "revision": "69e7d71ad845fa4490ef319a1d05fd73b1f2ba94",
+  "criterion": "equal mean Sketchy mAP, then precision",
+  "canonical": {
+    "alpha": 0.1,
+    "beta": 0.8,
+    "modifier": "domain",
+    "descriptions": "three",
+    "mode": "matched"
+  },
+  "winner": {
+    "alpha": 0.1,
+    "beta": 1.0,
+    "modifier": "content",
+    "descriptions": "all",
+    "mode": "matched"
+  },
+  "winner_id": "3ea2c6762ea8e431",
+  "controls": {
+    "primary": {
+      "alpha": 0.1,
+      "beta": 1.0,
+      "modifier": "content",
+      "descriptions": "all",
+      "mode": "matched"
+    },
+    "paper_coefficients_domain_modifier": {
+      "alpha": 0.1,
+      "beta": 0.8,
+      "modifier": "domain",
+      "descriptions": "three",
+      "mode": "matched"
+    },
+    "fixed_domain": {
+      "alpha": 0.1,
+      "beta": 1.0,
+      "modifier": "domain",
+      "descriptions": "all",
+      "mode": "matched"
+    },
+    "no_query_text": {
+      "alpha": 0.0,
+      "beta": 1.0,
+      "modifier": "content",
+      "descriptions": "all",
+      "mode": "matched"
+    },
+    "only_query_text": {
+      "alpha": 1.0,
+      "beta": 1.0,
+      "modifier": "content",
+      "descriptions": "all",
+      "mode": "matched"
+    },
+    "only_photo_similarity": {
+      "alpha": 0.1,
+      "beta": 0.0,
+      "modifier": "content",
+      "descriptions": "all",
+      "mode": "matched"
+    },
+    "only_description_similarity": {
+      "alpha": 0.1,
+      "beta": 1.0,
+      "modifier": "content",
+      "descriptions": "all",
+      "mode": "matched"
+    },
+    "alternative_descriptions": {
+      "alpha": 0.1,
+      "beta": 1.0,
+      "modifier": "content",
+      "descriptions": "three",
+      "mode": "matched"
+    },
+    "shuffled_photo_descriptions": {
+      "alpha": 0.1,
+      "beta": 1.0,
+      "modifier": "content",
+      "descriptions": "all",
+      "mode": "shuffle"
+    },
+    "exact_word_likelihood": {
+      "alpha": 0.1,
+      "beta": 1.0,
+      "modifier": "content",
+      "descriptions": "all",
+      "mode": "seed"
+    }
+  },
+  "sources": {
+    "sketchy_1-3ea2c6762ea8e431.json": "6da4345a0d6b48867f04b27366bd63258fe2a4a36784fe4658496990ae9e318c",
+    "sketchy_1-ed6affabb94e1bfb.json": "e31be69db71c54ee518235519278afd437ed046a3b4e7a041a2d5ab03d7397d8",
+    "sketchy_1-c17b1531622c9f05.json": "85cc73c407d215da1aa4411efb5412251e2bc224338a252c073562a404bca99e",
+    "sketchy_1-8d3f74a067ca6329.json": "41a0dc99d95617ecf6c3b40447ff1baff3af25bb6c7c4202f84d8fe70018cfb4",
+    "sketchy_1-7cb10762582610e3.json": "730d7d55f229ca1828b41ac1e12c752969412db6ae3dc04f43b030c761acc035",
+    "sketchy_1-a878ffe91a45448a.json": "e38936bb0be6be4878d9fe257d403e56eb7d809b100e912e89a2f3b33742f64f",
+    "sketchy_1-456cdeae635f155f.json": "fe3df8012f832493a6bab72dae10cf74e9b8910aaba1ce7dc046c0fd319c1797",
+    "sketchy_1-3fe6d51120db4d93.json": "5b288e7e6c143307183e934c7483d5349a8517071b960709c1a955e2bc374a33",
+    "sketchy_1-2e3dd2702c6b4a35.json": "a3511c77918e050a6b9d6cc2df9b968f944cb52baf60ab8a959406483750cad7",
+    "sketchy_2-3ea2c6762ea8e431.json": "1620fb0f3f978312a9e6f5ec3e1601e11db214c40bc2cd398dcc6ba6c734ddc7",
+    "sketchy_2-ed6affabb94e1bfb.json": "68e2eb124a11544952e91432eb874f7fa3be1de231662a2d77c4079af2661d59",
+    "sketchy_2-c17b1531622c9f05.json": "ce05593161d6aea4816b5a8b66f979d9b9f64dbfc94b50f35fa23253357e5735",
+    "sketchy_2-8d3f74a067ca6329.json": "ff550647be01d457cf6c4624121833202726254b038d4b7b764d7d84af897c53",
+    "sketchy_2-7cb10762582610e3.json": "665a840076c96821518a29d4dfb0d2fce01d442b038b288e1d09cb3c373607e8",
+    "sketchy_2-a878ffe91a45448a.json": "802108fc276517f03802814e047f6556a16dc1bc494d75fd8eed183e587886ae",
+    "sketchy_2-456cdeae635f155f.json": "ea62efd9d757677607132b36c287cc66cd36ccefd1771208a69b33475f7f8bc7",
+    "sketchy_2-3fe6d51120db4d93.json": "d8c056a10d2c6d03b9d8ae7d5d9b16aae62a3d6c1856f69f37f128b12ea7b7cb",
+    "sketchy_2-2e3dd2702c6b4a35.json": "a3842396e9a7e2eb82688d949c1be444b4c8932f3d63fa1ee3c4c239cb330714"
+  },
+  "tu_rows_before_freeze": 0,
+  "sha256": "b60a04e5fb81454009813ba143c1a74a124d42b27a9aaa184a3410f8313d438a"
+}
