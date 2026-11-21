@@ -16,18 +16,21 @@ WINDOW = "winclip-concept-likelihood"
 UNIFORM = "shared-concept-likelihood"
 
 
-def freeze(workspace):
+def freeze(workspace, include_translation=False):
     root = workspace / "results"
-    path = root / DECISION
+    translation = "public-semantic-translation"
+    names = (UNIFORM, WINDOW, FAMILY, translation) if include_translation else (UNIFORM, WINDOW, FAMILY)
+    path = root / (f"{translation}/strict-joint.json" if include_translation else DECISION)
     if path.exists():
         record = read(path)
         if record.pop("sha256") != digest(record):
             raise ValueError("Invalid strict selection signature")
         return record["primary"]
-    if any((root / FAMILY / "heldout").glob("tuberlin-*.json")):
-        raise ValueError("TU results already exist for the new method")
+    for family in names[2:]:
+        if any((root / family / "heldout").glob("tuberlin-*.json")):
+            raise ValueError(f"TU results already exist for {family}")
     families = {}
-    for name in (UNIFORM, WINDOW, FAMILY):
+    for name in names:
         folder = root / name
         lock = read(folder / ("protocol.json" if name == UNIFORM else "freeze.json"))
         signature = lock.pop("sha256")
@@ -56,4 +59,6 @@ def freeze(workspace):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--workspace", type=Path, default=Path("/content/sbir"))
-    print(freeze(parser.parse_args().workspace))
+    parser.add_argument("--include-translation", action="store_true")
+    args = parser.parse_args()
+    print(freeze(args.workspace, args.include_translation))

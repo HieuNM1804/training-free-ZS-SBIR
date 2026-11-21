@@ -166,7 +166,7 @@ def run(workspace,name,stage):
     else:
         configs=list(module.controls(selected(module,folder)).values())
     a,_,queries,_,galleries,raw,rgb=global_inputs(workspace,"tuberlin" if held else "sketchy")
-    words=read_words(a.vocabulary);_,scale=bare_words(a,words)
+    words=read_words(a.vocabulary);literal,scale=bare_words(a,words)
     src,tgt=(x.cuda() for x in load_words(a,words)); kd,kd_sha=load_kd(workspace)
     for s,(qi,ql) in queries.items():
         pi,pl=galleries[s]
@@ -175,6 +175,8 @@ def run(workspace,name,stage):
         if pilot:
             ids=stratified_sample(ql,48,4783);qi,ql=qi[ids],ql[ids]
         data=Data(raw[qi].cuda(),rgb[pi].cuda(),src,tgt,scale)
+        if getattr(module,"USES_LITERAL_BANK",False):
+            data.literal=literal.to(data.q.device)
         index=module.Index(data)
         out=folder/("heldout" if held else "sketchy")
         meta={"revision":revision(),"family":name,"queries":len(ql),"gallery":len(pl),"classes":len(pl.unique()),
