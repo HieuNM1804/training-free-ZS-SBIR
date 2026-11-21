@@ -3,6 +3,7 @@
 import argparse
 from datetime import datetime, timezone
 from pathlib import Path
+import time
 
 from .concept_benchmark import atomic_json, checksum, read
 from .crossdomain_benchmark import digest
@@ -12,7 +13,8 @@ from .map_study import score_key
 
 DECISION = "image-retrieval-round/joint-freeze.json"
 FAMILIES = {"retrieval-semantic-whitening":"pairwise","retrieval-vocabulary-tree":"pairwise",
-            "retrieval-democratic-regions":"pairwise","retrieval-reciprocal-encoding":"gallery"}
+            "retrieval-democratic-regions":"pairwise","retrieval-reciprocal-encoding":"gallery",
+            "retrieval-composed-modality":"pairwise"}
 HISTORY = {"public-semantic-translation":"pairwise","neighborhood-calibrated-likelihood":"gallery"}
 
 
@@ -60,6 +62,9 @@ def joint(w):
 if __name__=="__main__":
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--workspace",type=Path,default=Path("/content/sbir"))
+    parser.add_argument("--wait-for-sketchy",action="store_true")
     opts=parser.parse_args()
+    while opts.wait_for_sketchy and not all((opts.workspace/"results"/f/"freeze.json").is_file() for f in FAMILIES):
+        time.sleep(3)
     decision=joint(opts.workspace)
     print({k:decision[k] for k in ("primary","pairwise","gallery")})
