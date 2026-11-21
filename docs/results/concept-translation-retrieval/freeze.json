@@ -1,0 +1,121 @@
+{
+  "utc": "2026-11-20T16:01:09.685377+00:00",
+  "revision": "6abef3985d1f653ac3d616f587e785edf58a5b5b",
+  "criterion": "equal mean Sketchy mAP, then precision",
+  "canonical": {
+    "channel": "gallery",
+    "steps": 1,
+    "translated_mass": 0.5,
+    "keep_identity": false,
+    "shuffled": false
+  },
+  "winner": {
+    "channel": "gallery",
+    "steps": 2,
+    "translated_mass": 1.0,
+    "keep_identity": true,
+    "shuffled": false
+  },
+  "winner_id": "69f8144eb1252ecf",
+  "controls": {
+    "primary": {
+      "channel": "gallery",
+      "steps": 2,
+      "translated_mass": 1.0,
+      "keep_identity": true,
+      "shuffled": false
+    },
+    "exact_terms": {
+      "channel": "gallery",
+      "steps": 2,
+      "translated_mass": 0.0,
+      "keep_identity": true,
+      "shuffled": false
+    },
+    "translation_only": {
+      "channel": "gallery",
+      "steps": 2,
+      "translated_mass": 1.0,
+      "keep_identity": true,
+      "shuffled": false
+    },
+    "include_identical_word": {
+      "channel": "gallery",
+      "steps": 2,
+      "translated_mass": 1.0,
+      "keep_identity": true,
+      "shuffled": false
+    },
+    "exclude_identical_word": {
+      "channel": "gallery",
+      "steps": 2,
+      "translated_mass": 1.0,
+      "keep_identity": false,
+      "shuffled": false
+    },
+    "one_translation": {
+      "channel": "gallery",
+      "steps": 1,
+      "translated_mass": 1.0,
+      "keep_identity": true,
+      "shuffled": false
+    },
+    "two_translations": {
+      "channel": "gallery",
+      "steps": 2,
+      "translated_mass": 1.0,
+      "keep_identity": true,
+      "shuffled": false
+    },
+    "semantic_text_kernel": {
+      "channel": "text",
+      "steps": 2,
+      "translated_mass": 1.0,
+      "keep_identity": true,
+      "shuffled": false
+    },
+    "gallery_cooccurrence": {
+      "channel": "gallery",
+      "steps": 2,
+      "translated_mass": 1.0,
+      "keep_identity": true,
+      "shuffled": false
+    },
+    "shuffle_translation_destination": {
+      "channel": "gallery",
+      "steps": 2,
+      "translated_mass": 1.0,
+      "keep_identity": true,
+      "shuffled": true
+    },
+    "canonical": {
+      "channel": "gallery",
+      "steps": 1,
+      "translated_mass": 0.5,
+      "keep_identity": false,
+      "shuffled": false
+    }
+  },
+  "sources": {
+    "sketchy_1-1e468ea3fe5a4530.json": "31ee6eeb2cb6fe718cbb01502d438afee0cbac15c5aafce148e6e8f211237a9a",
+    "sketchy_1-69f8144eb1252ecf.json": "814bcaf8935fc94aec87bdb1f383bf5f22658e418ce576a1539170259598d7d5",
+    "sketchy_1-b1e6458d06c12c9e.json": "ab1140e80b3b5a13218cd3ad6ade6b8d656be70ca0ac151a6f083310b5408e2f",
+    "sketchy_1-7d1dd570845726a1.json": "66bd3e15591a488849a354568b78975b6a8a1358c9157acd526f9405769dc9bc",
+    "sketchy_1-7b53c0b6dd503fbd.json": "324bcb2666f1b620f8c24b2995337b15a4f51ca6e100f8b5414dc9aaa15d216c",
+    "sketchy_1-4bcf2cb573b84c0a.json": "3c1eda9480bdb0baab89e8f992b632c9200d3010e7f23e8b27f11457cd01ee20",
+    "sketchy_1-0cdfcafa6ab9a669.json": "c7bde5c34b82ba1a4dfb480aab91390a0b1696c5a0f55b79f59ae29ef48ea88c",
+    "sketchy_1-48faa61c4d107a5e.json": "12f9d7a93376b12a81a2ee7fec9b384971740031969b0840d0167227631acccd",
+    "sketchy_1-6e54078d379d0cfd.json": "46c7529e1a2564ef12455f79006758304347ce5602be1a0b24a43964def2f421",
+    "sketchy_2-1e468ea3fe5a4530.json": "6ae7d2643ddd2813a9612440499b9561841869a2afd52bd9483da54ebb9719ff",
+    "sketchy_2-69f8144eb1252ecf.json": "b2ad583b9f042c5fc945fd28afa9f8fda4a5fb876bf7967fe999ab26c1d9a354",
+    "sketchy_2-b1e6458d06c12c9e.json": "1e8ff15abd3e38a2b34de990c7c0e9ca7b5d1a07d77deb7d51738557de2812e9",
+    "sketchy_2-7d1dd570845726a1.json": "a70de4679b640d26f03ec69526fac27e4f6992d554e6d5922274466f59eb6606",
+    "sketchy_2-7b53c0b6dd503fbd.json": "fcd1731ce96975333844aa5e2bdc349261eacd567ff6bc943bfa21e65ae02272",
+    "sketchy_2-4bcf2cb573b84c0a.json": "e2a3127bd1c51444312d8bc5e7e0965844e35d59dfea7ebc8f5f70a6cf0b93a1",
+    "sketchy_2-0cdfcafa6ab9a669.json": "3495f98ab77cd3bf69ad128f81658761f2993273987cb65bc7bf8e403f10e58f",
+    "sketchy_2-48faa61c4d107a5e.json": "227f02e718b64c1ac336c333150111ab771f36d883fe2a1e035af32c1c1c35a6",
+    "sketchy_2-6e54078d379d0cfd.json": "ba6056c4cdd6e9a3355cdc6cec7d8bac50c7a19ef920a0e99670908a67036b53"
+  },
+  "tu_rows_before_freeze": 0,
+  "sha256": "debb23bc20bfdb29389824fdec7714d38a3523ab71e1647780a09b597a8c7364"
+}
