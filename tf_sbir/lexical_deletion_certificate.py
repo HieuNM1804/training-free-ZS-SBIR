@@ -1,11 +1,12 @@
 """Exact single-word interventions in the quadratic supporting-photo score."""
 
 import argparse
+import fcntl
 from pathlib import Path
 
 import torch
 
-from .concept_benchmark import atomic_json, checksum
+from .concept_benchmark import atomic_json, checksum, read
 from .conditional_semantic_index import SIZES, bare_words
 from .crossdomain_benchmark import digest, revision, SPLIT_HASHES
 from .crossdomain_inputs import CHECKPOINT
@@ -114,6 +115,11 @@ def run(w):
             pi,pl=galleries[split]
             if len(terms)!=20931 or (len(qi),len(pi),len(pl.unique()))!=SIZES[split] or digest(UNSEEN_CLASSES[split])!=SPLIT_HASHES[split]:
                 raise ValueError("Protocol changed")
+            path, details = root/(split+".json"), root/(split+".pt")
+            if path.is_file() and details.is_file():
+                old=read(path)
+                if old["protocol"]["revision"]==revision() and old["per_query_sha256"]==checksum(details):
+                    continue
             q,p=qraw[qi].cuda(),praw[pi].cuda()
             idx=LexicalFeedback(p,target,scale)
             audit=DeletionAudit(idx)
@@ -175,7 +181,6 @@ def run(w):
                 raise ValueError("Incomplete pair audit")
             positive=values["worst_margin"]>TOL
             negative=values["worst_margin"]<-TOL
-            details=root/(split+".pt")
             save_tensor({"query_labels":ql,"fields":values},details)
             result={"protocol":{"revision":revision(),"split":split,"queries":len(q),"gallery":len(p),"terms":len(terms),
                                 "vocabulary_sha256":checksum(cfg.vocabulary),"classes":len(pl.unique()),
@@ -190,7 +195,7 @@ def run(w):
                                          for name in ("exact","highest_sketch","forward_only")}},
                     "full_gallery":aggregate_flags(global_checks),"sample_records":global_checks,"examples":examples,
                     "per_query_sha256":checksum(details)}
-            atomic_json(root/(split+".json"),result)
+            atomic_json(path,result)
             print(split,result["pair"],result["full_gallery"],flush=True)
             del audit
 
@@ -198,4 +203,13 @@ def run(w):
 if __name__=="__main__":
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--workspace",type=Path,default=Path("/content/sbir"))
-    run(parser.parse_args().workspace)
+    workspace=parser.parse_args().workspace
+    output=workspace/"results"/FAMILY
+    output.mkdir(parents=True,exist_ok=True)
+    with (output/".audit.lock").open("a") as guard:
+        try:
+            fcntl.flock(guard.fileno(),fcntl.LOCK_EX|fcntl.LOCK_NB)
+        except BlockingIOError:
+            print("An audit is already running in this Colab workspace.",flush=True)
+        else:
+            run(workspace)
