@@ -1,0 +1,172 @@
+{
+  "revision": "eb4e87301f19158a00b14be4dba67cb0cb1e109c",
+  "family": "retrieval-semantic-whitening",
+  "queries": 1008,
+  "gallery": 12552,
+  "classes": 21,
+  "checkpoint_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+  "dataset_sha256": "30baecaac02eeff22cc54e533eb6bc1b757ba3a891a84f61a77ee837f073d8c6",
+  "kd_sha256": "3433c60a3739e852c94e573832dd53d51446f433326a453392d316b402402fbe",
+  "gpu": "NVIDIA L4",
+  "external_vocabulary": 20931,
+  "exploratory_unseen": true,
+  "freeze_sha256": null,
+  "settings": {
+    "e63edfc0a695ef46": {
+      "parameters": {
+        "dimensions": 32,
+        "power": 0.0,
+        "reference": "words",
+        "mode": "semantic"
+      },
+      "mAP": 0.5509858131408691,
+      "precision": 0.5047073364257812
+    },
+    "e61e1fd732afab27": {
+      "parameters": {
+        "dimensions": 32,
+        "power": 0.5,
+        "reference": "words",
+        "mode": "semantic"
+      },
+      "mAP": 0.5649244785308838,
+      "precision": 0.5323214530944824
+    },
+    "fd8e8ae66d4453c3": {
+      "parameters": {
+        "dimensions": 32,
+        "power": 1.0,
+        "reference": "words",
+        "mode": "semantic"
+      },
+      "mAP": 0.5767627358436584,
+      "precision": 0.5487351417541504
+    },
+    "70a3d4544898db20": {
+      "parameters": {
+        "dimensions": 64,
+        "power": 0.0,
+        "reference": "words",
+        "mode": "semantic"
+      },
+      "mAP": 0.5720785856246948,
+      "precision": 0.5313690900802612
+    },
+    "4d5015b99b5208d8": {
+      "parameters": {
+        "dimensions": 64,
+        "power": 0.5,
+        "reference": "words",
+        "mode": "semantic"
+      },
+      "mAP": 0.5900534391403198,
+      "precision": 0.5609672665596008
+    },
+    "c705199b62e29509": {
+      "parameters": {
+        "dimensions": 64,
+        "power": 1.0,
+        "reference": "words",
+        "mode": "semantic"
+      },
+      "mAP": 0.6038509011268616,
+      "precision": 0.5801934599876404
+    },
+    "d60975ab1d068230": {
+      "parameters": {
+        "dimensions": 128,
+        "power": 0.0,
+        "reference": "words",
+        "mode": "semantic"
+      },
+      "mAP": 0.5837370157241821,
+      "precision": 0.5440873503684998
+    },
+    "b47a820fd74ff555": {
+      "parameters": {
+        "dimensions": 128,
+        "power": 0.5,
+        "reference": "words",
+        "mode": "semantic"
+      },
+      "mAP": 0.6024454236030579,
+      "precision": 0.5771627426147461
+    },
+    "e1d1f0f51bf5ce35": {
+      "parameters": {
+        "dimensions": 128,
+        "power": 1.0,
+        "reference": "words",
+        "mode": "semantic"
+      },
+      "mAP": 0.6121761798858643,
+      "precision": 0.5923610925674438
+    },
+    "031da56b0ea31a13": {
+      "parameters": {
+        "dimensions": 256,
+        "power": 0.0,
+        "reference": "words",
+        "mode": "semantic"
+      },
+      "mAP": 0.5860365033149719,
+      "precision": 0.5474801659584045
+    },
+    "d303b28f0e7fc54f": {
+      "parameters": {
+        "dimensions": 256,
+        "power": 0.5,
+        "reference": "words",
+        "mode": "semantic"
+      },
+      "mAP": 0.6005526781082153,
+      "precision": 0.576577365398407
+    },
+    "92ee3e901d90671d": {
+      "parameters": {
+        "dimensions": 256,
+        "power": 1.0,
+        "reference": "words",
+        "mode": "semantic"
+      },
+      "mAP": 0.5984500050544739,
+      "precision": 0.5759177207946777
+    },
+    "99d9d6908e545852": {
+      "parameters": {
+        "dimensions": 512,
+        "power": 0.0,
+        "reference": "words",
+        "mode": "semantic"
+      },
+      "mAP": 0.5809971690177917,
+      "precision": 0.5417262315750122
+    },
+    "b5aa098549f4a87f": {
+      "parameters": {
+        "dimensions": 512,
+        "power": 0.5,
+        "reference": "words",
+        "mode": "semantic"
+      },
+      "mAP": 0.5545596480369568,
+      "precision": 0.5106151103973389
+    },
+    "a3c4dc4a5a1d6e6a": {
+      "parameters": {
+        "dimensions": 512,
+        "power": 1.0,
+        "reference": "words",
+        "mode": "semantic"
+      },
+      "mAP": 0.4813324809074402,
+      "precision": 0.37856149673461914
+    }
+  },
+  "seed": 4783,
+  "diagnostic": {
+    "public_words": 20931,
+    "variance_fraction_top_32": 0.38037240505218506,
+    "primary_reference": "unit raw public word embeddings only"
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "utc": "2026-11-21T04:05:01.746862+00:00",
+  "revision": "eb4e87301f19158a00b14be4dba67cb0cb1e109c",
+  "criterion": "equal mean Sketchy mAP, then precision",
+  "canonical": {
+    "dimensions": 256,
+    "power": 1.0,
+    "reference": "words",
+    "mode": "semantic"
+  },
+  "winner": {
+    "dimensions": 128,
+    "power": 1.0,
+    "reference": "words",
+    "mode": "semantic"
+  },
+  "winner_id": "e1d1f0f51bf5ce35",
+  "controls": {
+    "primary": {
+      "dimensions": 128,
+      "power": 1.0,
+      "reference": "words",
+      "mode": "semantic"
+    },
+    "paper_whitening": {
+      "dimensions": 256,
+      "power": 1.0,
+      "reference": "words",
+      "mode": "semantic"
+    },
+    "no_whitening": {
+      "dimensions": 128,
+      "power": 0.0,
+      "reference": "words",
+      "mode": "semantic"
+    },
+    "unprocessed_mean": {
+      "dimensions": 128,
+      "power": 1.0,
+      "reference": "words",
+      "mode": "plain"
+    },
+    "gallery_reference": {
+      "dimensions": 128,
+      "power": 1.0,
+      "reference": "gallery",
+      "mode": "semantic"
+    },
+    "visual_only_gallery_pca": {
+      "dimensions": 128,
+      "power": 1.0,
+      "reference": "gallery",
+      "mode": "visual"
+    },
+    "permuted_word_identity": {
+      "dimensions": 128,
+      "power": 1.0,
+      "reference": "words",
+      "mode": "shuffle"
+    },
+    "exact_word_likelihood": {
+      "dimensions": 128,
+      "power": 1.0,
+      "reference": "words",
+      "mode": "seed"
+    }
+  },
+  "sources": {
+    "sketchy_1-bce3a74c9f00ba9d.json": "07725685e400ddbde9f4b0429212147647fd4f0074a900e17d6199bdfa90ae11",
+    "sketchy_1-e1d1f0f51bf5ce35.json": "d48d9797d6fd02bb3961a4af5a3ef4db8c71141f68823694660769377ff9ecd0",
+    "sketchy_1-4c727882d5762a16.json": "c383e9c6e55e374c2ac0f5bd5aecb55c3111939877e4d86773bf6299b90517e4",
+    "sketchy_1-6e0262efac765f62.json": "c2381ad550e4987165ac703e42d0d29ef8897d39d9dc5e565852789b1b3da0f1",
+    "sketchy_1-92ee3e901d90671d.json": "badf5973f9dbecac590159d24510e6cdccbfb1911347ac0272758fc3c60fb94d",
+    "sketchy_1-c705199b62e29509.json": "368f2b6ec7d524ba485ae7cf76179d54f3fc00f41d7d1f23e940529be656d142",
+    "sketchy_1-7ce84477e6d3ed95.json": "4b56e2a5d944a01651cfc6bfe3b707285521f2744c74dcc78fb57ab5b5f1345a",
+    "sketchy_1-106c6f99e0cdf78f.json": "e2522593735d6f92259a05c6a48e4daa4a94e9fb029f9d4ac43597bb129ec26d",
+    "sketchy_1-d60975ab1d068230.json": "e67fe812ec8fe4b0a6ae241e0d9df670689973fa4107fa5ee1807634486243f4",
+    "sketchy_2-bce3a74c9f00ba9d.json": "a2e0dbbe1aa2300e3ef4b19071b9501b3590921b18a44fb35f0aaaab19e947ea",
+    "sketchy_2-e1d1f0f51bf5ce35.json": "188b0b1ea00bcbb7dd7a76ded5ba701558e752d5c62b47aac4229fdf3bffdd05",
+    "sketchy_2-4c727882d5762a16.json": "e3d6450c236dbec4b486b34a3e075bfe2eb779a6df007d52a08422499d8173a8",
+    "sketchy_2-6e0262efac765f62.json": "7a21c31cdbf9c0c26c7297c9bd6cd097ee6ce44eccec6407a2895398b8969fb4",
+    "sketchy_2-92ee3e901d90671d.json": "bf873b685e3bf23aaa197bf87bab260477f02611bb2a77fbea11fb5acae2cbfd",
+    "sketchy_2-c705199b62e29509.json": "21093c00025fd1abb3dcf9dd925dc7a95a2c192eb19c56d759b7fdbb0d0fef88",
+    "sketchy_2-7ce84477e6d3ed95.json": "d7ef9b5a6008c6a625b3a023dbd505b1ffbbbf318b89f9e70d9dc020a75cde74",
+    "sketchy_2-106c6f99e0cdf78f.json": "e1d74f06fe80931029ba75ba1efc52473c855da368f77708e10c496633525fc5",
+    "sketchy_2-d60975ab1d068230.json": "4636baa3ea16e2bfe2c5fc02f0c1525cb84d3ed76e8b79c0eaa7226b1d4a4bb9"
+  },
+  "tu_rows_before_freeze": 0,
+  "sha256": "7cadfefe1e7d4768397f7ff2f8753d17fe8d5f5479818c2683514a2d75c80f36"
+}

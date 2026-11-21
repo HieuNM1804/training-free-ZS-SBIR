@@ -1,0 +1,43 @@
+{
+  "revision": "eb4e87301f19158a00b14be4dba67cb0cb1e109c",
+  "family": "retrieval-semantic-whitening",
+  "queries": 14179,
+  "gallery": 17100,
+  "classes": 25,
+  "checkpoint_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+  "dataset_sha256": "8fafaf3aedf4751e28e2b33f073832e02fdf3ca1b36a9d7fda5ff328f26b0642",
+  "kd_sha256": "3433c60a3739e852c94e573832dd53d51446f433326a453392d316b402402fbe",
+  "gpu": "NVIDIA L4",
+  "external_vocabulary": 20931,
+  "exploratory_unseen": true,
+  "freeze_sha256": null,
+  "name": "e1d1f0f51bf5ce35",
+  "parameters": {
+    "dimensions": 128,
+    "power": 1.0,
+    "reference": "words",
+    "mode": "semantic"
+  },
+  "mAP": 0.6200953722000122,
+  "precision": 0.6830474138259888,
+  "map_k": 0,
+  "p_k": 100,
+  "kd_check": {
+    "queries": 14179,
+    "mAP": 0.6200953125953674,
+    "precision": 0.6830475330352783,
+    "kd_minus_pipeline_max_abs_same_order_AP_P": [
+      0.0,
+      0.0
+    ],
+    "max_per_query_abs_AP_P": [
+      0.0,
+      0.0
+    ],
+    "mean_per_query_abs_AP_P": [
+      0.0,
+      0.0
+    ],
+    "queries_within_1e-6_both": 14179
+  }
+}
