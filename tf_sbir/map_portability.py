@@ -16,6 +16,8 @@ from .encoding import save_tensor
 from .foundation import load_words
 from .map_diagnosis import map_values
 from .map_followup import signed
+from .map_study import Data
+from .map_transfer_audit import import_measured
 from .retrieval_diagnosis import global_inputs
 from .retrieval_evidence import paired_delta, tensor
 from .semantic import read_words
@@ -101,6 +103,22 @@ def means(values):
     return dict(zip(("mAP","precision"),values.mean(0).tolist(),strict=True))
 
 
+def reference_checks(method, config, q, p, source, target, scale, graph):
+    # Recreate the measured module separately on the same frozen features. All
+    # gallery neighbor IDs are compared and the query score test is independent
+    # of class labels and of any subsequently reported AP.
+    probe_ids=torch.linspace(0,len(q)-1,16,device=q.device).long()
+    original=Data(q[probe_ids],p,source,target,scale)
+    reference=method.Index(original)
+    k=config["k"]
+    published_ids=reference.neighbors[:,:k]
+    mismatches=int((published_ids!=graph.col_indices().reshape_as(published_ids)).sum())
+    if mismatches:
+        raise ValueError("Rebuilt graph disagrees with the frozen gallery neighborhoods")
+    probe_scores=reference.score(method.Config(**config))
+    return probe_ids,probe_scores,mismatches
+
+
 def name_effect(words, halves, classes, labels, half_details):
     def plain(term):
         return " ".join(term.casefold().replace("_"," ").replace("-"," ").split())
@@ -128,6 +146,7 @@ def run(w):
     if decision["families"][FAMILY]["freeze"]!=lock_sha:
         raise ValueError("The method lock does not match the selection")
     config=lock["winner"]
+    method=import_measured(w,FAMILY,lock)
     out=results/"map-portability"
     out.mkdir(exist_ok=True)
     report={"revision":revision(),"joint_sha256":signature,"configuration":config,"photo_seed":PHOTO_SEED,"word_seed":WORD_SEED,
@@ -152,6 +171,7 @@ def run(w):
             all_words=torch.arange(len(words),device=p.device)
             halves=[h.cuda() for h in partition(len(p),PHOTO_SEED)]
             full_graph=reference_graph(p,all_ids,config)
+            probe_ids,original_scores,graph_errors=reference_checks(method,config,q,p,source,target,scale,full_graph)
             variants=[("full",all_ids,all_words,None),
                       ("photos_a",halves[0],all_words,None),("photos_b",halves[1],all_words,None),
                       ("words_a",all_ids,word_halves[0].cuda(),None),("words_b",all_ids,word_halves[1].cuda(),None)]
@@ -173,7 +193,17 @@ def run(w):
                     error=(points-measured).abs()
                     record["mean_abs_AP_P_difference"]=error.mean(0).tolist()
                     record["max_abs_AP_P_difference"]=error.amax(0).tolist()
-                    if float(error.mean(0).max())>5e-5:
+                    record["absolute_aggregate_difference"]=(points.mean(0)-measured.mean(0)).abs().tolist()
+                    rebuilt=emission(q[probe_ids],source,scale)@index.T
+                    max_score_diff=float((rebuilt-original_scores).abs().max())
+                    record["frozen_code_check"]={"neighbor_ID_mismatches":graph_errors,"probe_sketches":len(probe_ids),
+                            "gallery_scores_per_probe":len(pl),"max_absolute_score_difference":max_score_diff}
+                    pk=200 if split=="sketchy_2" else 100
+                    record["queries_with_topK_relevant_count_difference"]=int((error[:,1]>1e-6).sum())
+                    # P@K changes in discrete units. A near-tie at the last
+                    # position can change P by one image on a small set of queries.
+                    if (max_score_diff>5e-6 or float(error[:,0].mean())>5e-5 or
+                            float(error[:,1].max())>1/pk+1e-6 or max(record["absolute_aggregate_difference"])>5e-5):
                         raise ValueError("Independent implementation did not reproduce the locked method")
                     partial_base=small
                 if mode.startswith("photos_"):
