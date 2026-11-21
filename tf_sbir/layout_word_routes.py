@@ -43,16 +43,35 @@ class RouteIndex:
         p=self.p
         self.route_table=None
         self.mean=None
+        self.photo=p
         if kind.startswith("route") or kind=="flat_query":
-            a=(self.delta*temperature).sigmoid()
+            order=None
             if kind=="route_shuffle":
                 gen=torch.Generator().manual_seed(seed)
-                a=a[torch.randperm(len(a),generator=gen).to(a.device)]
-            total=p.sum(0,dtype=torch.double)
-            self.mean=(torch.einsum("nv,nv->v",p,a).double()/total.clamp_min(1e-30)).float().clamp(2e-6,1-2e-6)
-            self.route_table=p*(a-self.mean)
-            self.mass_check=float((self.route_table.sum(0,dtype=torch.double).abs()/total.clamp_min(1e-30)).max())
-        self.photo=(self.logits+value*self.delta).softmax(1) if kind in ("contrast_both","contrast_target") else p
+                order=torch.randperm(len(p),generator=gen).to(p.device)
+            total=p.new_zeros(p.size(1),dtype=torch.double)
+            mass=torch.zeros_like(total)
+            self.route_table=torch.empty_like(p)
+            for start in range(0,len(p),256):
+                sl=slice(start,start+256)
+                d=self.delta[sl] if order is None else self.delta[order[sl]]
+                a=(d*temperature).sigmoid()
+                self.route_table[sl]=a
+                total+=p[sl].sum(0,dtype=torch.double)
+                mass+=(p[sl]*a).sum(0,dtype=torch.double)
+            self.mean=(mass/total.clamp_min(1e-30)).float().clamp(2e-6,1-2e-6)
+            residual=torch.zeros_like(total)
+            for start in range(0,len(p),256):
+                sl=slice(start,start+256)
+                block=self.route_table[sl]
+                block.sub_(self.mean).mul_(p[sl])
+                residual+=block.sum(0,dtype=torch.double)
+            self.mass_check=float((residual.abs()/total.clamp_min(1e-30)).max())
+        if kind in ("contrast_both","contrast_target"):
+            self.photo=torch.empty_like(p)
+            for start in range(0,len(p),256):
+                sl=slice(start,start+256)
+                self.photo[sl]=(self.logits[sl]+value*self.delta[sl]).softmax(1)
 
     def score(self,logits,delta):
         if self.kind in ("contrast_both","contrast_query"):

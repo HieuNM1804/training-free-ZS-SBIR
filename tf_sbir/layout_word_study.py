@@ -81,15 +81,16 @@ def measure(w,dataset,split,q,y,qi,p,g,pi,banks,scale,ids,variants,reference,wor
 
 
 @torch.inference_mode()
-def run(w,workers):
+def run(w,workers,resume_tuberlin=False):
     folder=w/"results"/FAMILY
     protocol={"revision":revision(),"grid":choices(),"primary":"matched visual evidence routes","challenger":"best one- or two-side contrast",
               "pilot":"24 sketches per class seed 48619","selection":"equal-weight mean Sketchy mAP then mean precision"}
-    atomic_json(folder/"protocol.json",protocol|{"sha256":digest(protocol)})
+    if not resume_tuberlin:
+        atomic_json(folder/"protocol.json",protocol|{"sha256":digest(protocol)})
     kd,_=load_kd(w)
     if hashlib.sha256(inspect.getsource(kd).strip().encode()).hexdigest()!=KD_FUNCTION_SHA:
         raise ValueError("Changed KD evaluator")
-    for stage in ("pilot","shortlist","final"):
+    for stage in (("final",) if resume_tuberlin else ("pilot","shortlist","final")):
         if stage=="pilot":variants=choices()
         elif stage=="shortlist":
             prev=read(folder/"pilot.json")["means"]
@@ -100,14 +101,21 @@ def run(w,workers):
             contrast=choose(prev,False,1)[0]
             lock={"primary":best,"best_contrast":contrast,"revision":revision(),
                   "full_sketchy_sha256":checksum(folder/"shortlist.json")}
-            atomic_json(folder/"freeze.json",lock|{"sha256":digest(lock)})
+            if resume_tuberlin:
+                frozen=read(folder/"freeze.json")
+                if (tuple(frozen["primary"])!=best or tuple(frozen["best_contrast"])!=contrast
+                        or frozen["full_sketchy_sha256"]!=lock["full_sketchy_sha256"]):
+                    raise ValueError("The original Sketchy selection is no longer intact")
+            else:
+                atomic_json(folder/"freeze.json",lock|{"sha256":digest(lock)})
             variants={best,contrast,(best[0],"original",0.,1.,"all"),("uniform","original",0.,1.,"all")}
             for m in ("route_opposite","route_shuffle","flat_query","contrast_both","contrast_target","contrast_query"):
                 variants.add((best[0],m,*best[2:]))
             variants.update((*best[:4],s) for s in ("first2","last2"))
             variants=sorted(variants)
         tables={}
-        for dataset in (("sketchy","tuberlin") if stage=="final" else ("sketchy",)):
+        datasets=("tuberlin",) if resume_tuberlin else (("sketchy","tuberlin") if stage=="final" else ("sketchy",))
+        for dataset in datasets:
             cfg,_,qs,_,gs,qraw,praw=global_inputs(w,dataset)
             terms=read_words(cfg.vocabulary)
             if len(terms)!=20931:raise ValueError("Changed word list")
@@ -148,5 +156,6 @@ if __name__=="__main__":
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--workspace",type=Path,default=Path("/content/sbir"))
     parser.add_argument("--workers",type=int,default=min(10,len(os.sched_getaffinity(0))))
+    parser.add_argument("--resume-tuberlin",action="store_true")
     args=parser.parse_args()
-    run(args.workspace,args.workers)
+    run(args.workspace,args.workers,args.resume_tuberlin)
