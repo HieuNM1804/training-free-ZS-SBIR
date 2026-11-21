@@ -23,6 +23,17 @@ FAMILY = "word-deletion-certificates"
 TOL = 2e-5
 
 
+def accurate_product(left, right):
+    # Long dot products with a different batch shape can accumulate enough FP32
+    # rounding error to exceed a near-tie margin. Use short GPU products and
+    # accumulate their partial sums in FP64 without changing the fixed index.
+    result = left.new_zeros((len(left),right.size(1)),dtype=torch.double)
+    for start in range(0,left.size(1),768):
+        sl=slice(start,start+768)
+        result.add_(left[:,sl] @ right[sl])
+    return result.float()
+
+
 class DeletionAudit:
     def __init__(self, index):
         self.b = index.index
@@ -34,16 +45,17 @@ class DeletionAudit:
         self.diagonal = (diag / self.count).float()
 
     def scores(self, l):
-        seed = l @ self.b.T
-        response = (seed @ self.b) / self.count
+        seed = accurate_product(l,self.b.T)
+        response = accurate_product(seed,self.b) / self.count
         joint = l * response
-        score = joint @ self.b.T + joint @ self.d.T - seed * (l @ self.d.T)
+        score = (accurate_product(joint,self.b.T) + accurate_product(joint,self.d.T)
+                 - seed * accurate_product(l,self.d.T))
         return score, response
 
     def drops(self, l, response, candidate):
         b, d = self.b[candidate], self.d[candidate]
         total = b + d
-        backwards = (((total * l) / self.count) @ self.b.T) @ self.b
+        backwards = accurate_product(accurate_product((total*l)/self.count,self.b.T),self.b)
         forward = total * response - b * (d*l).sum(1,keepdim=True)
         backwards -= d * (b*l).sum(1,keepdim=True)
         diagonal = total * self.diagonal - b*d
@@ -80,7 +92,7 @@ class DeletionAudit:
             if len(observed_words) < 3:
                 observed_words.extend(subset[flipped][:3-len(observed_words)].tolist())
         if pruned_violations or max_original_discrepancy > TOL:
-            raise ValueError("Exact deletion identity or candidate-pruning check failed")
+            raise ValueError(f"Deletion check failed: missed={pruned_violations}, error={max_original_discrepancy:.7g}")
         return {"words_in_dictionary":len(l),"survive_bound":int(risk.sum()),"actually_evaluated":len(ids),
                 "brute_force":brute,"deleted_words_changing_top1":changed,
                 "deleted_words_changing_predicted_class":class_changed,
