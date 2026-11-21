@@ -1,0 +1,974 @@
+{
+  "family": "freedom-gallery-transfer",
+  "measured_revision": "5f874b5570ec7fab5df380080cb4dd5d903b1167",
+  "selected_parameters": {
+    "proxies": 96,
+    "words_per_proxy": 7,
+    "retained_words": 7,
+    "search": "semantic",
+    "composition": "word-domain",
+    "shuffled": false
+  },
+  "freeze_sha256": "f0dad24f14169d04cbe259fca461dd91758c42ab326cb7139ca29dd7457a0d49",
+  "joint_sha256": "53e79e32a7a063021c5c45b2d54fc0d0f36007af80335fb546a5b29ed05fe418",
+  "new_TU_rows_before_lock": 0,
+  "measurements": {
+    "sketchy_1": {
+      "mAP": 0.7798838019371033,
+      "precision": 0.8076556324958801,
+      "map_k": 0,
+      "p_k": 100,
+      "revision": "5f874b5570ec7fab5df380080cb4dd5d903b1167",
+      "sha256": "0a434ca0ef651ad6401327e56e63f108877c38b13860564ed4bd497947dde8e7",
+      "queries": 14179,
+      "gallery": 17100,
+      "classes": 25,
+      "controls": {
+        "primary": {
+          "mAP": 0.7798838019371033,
+          "precision": 0.8076556324958801,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "5f874b5570ec7fab5df380080cb4dd5d903b1167",
+          "sha256": "0a434ca0ef651ad6401327e56e63f108877c38b13860564ed4bd497947dde8e7",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 25
+            },
+            "precision": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 25
+            }
+          },
+          "parameters": {
+            "proxies": 96,
+            "words_per_proxy": 7,
+            "retained_words": 7,
+            "search": "semantic",
+            "composition": "word-domain",
+            "shuffled": false
+          }
+        },
+        "original": {
+          "mAP": 0.451788991689682,
+          "precision": 0.44050779938697815,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "5f874b5570ec7fab5df380080cb4dd5d903b1167",
+          "sha256": "387c36083d9599926c384fa3096f0e0d9649f7f223882e78b778746e7718498f",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 32.80949392571091,
+              "ci95_class": [
+                24.087586925515776,
+                41.47275439584885
+              ],
+              "classes_up": 22,
+              "classes": 25
+            },
+            "precision": {
+              "delta_pp": 36.714789472437324,
+              "ci95_class": [
+                26.776946121297993,
+                46.563584253757476
+              ],
+              "classes_up": 22,
+              "classes": 25
+            }
+          },
+          "parameters": {
+            "proxies": 20,
+            "words_per_proxy": 7,
+            "retained_words": 7,
+            "search": "rgb",
+            "composition": "word-domain",
+            "shuffled": false
+          }
+        },
+        "query_only": {
+          "mAP": 0.6323304772377014,
+          "precision": 0.697685956954956,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "5f874b5570ec7fab5df380080cb4dd5d903b1167",
+          "sha256": "4dee8406a29148c9cfc2af83c749472f3d0f7871a7b1421176bd0f03ae709e12",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 14.755340760405726,
+              "ci95_class": [
+                11.322250489842123,
+                18.161155405019212
+              ],
+              "classes_up": 23,
+              "classes": 25
+            },
+            "precision": {
+              "delta_pp": 10.996967208099404,
+              "ci95_class": [
+                7.816725659634428,
+                14.574509999624222
+              ],
+              "classes_up": 23,
+              "classes": 25
+            }
+          },
+          "parameters": {
+            "proxies": 1,
+            "words_per_proxy": 7,
+            "retained_words": 7,
+            "search": "semantic",
+            "composition": "word-domain",
+            "shuffled": false
+          }
+        },
+        "rgb_search": {
+          "mAP": 0.5246398448944092,
+          "precision": 0.5205254554748535,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "5f874b5570ec7fab5df380080cb4dd5d903b1167",
+          "sha256": "9586a41bf919508a28d40104ebe5d9593457157e61086e8cb77a72a46d0d269b",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 25.524400226428703,
+              "ci95_class": [
+                17.33797496141952,
+                33.957550424499765
+              ],
+              "classes_up": 21,
+              "classes": 25
+            },
+            "precision": {
+              "delta_pp": 28.713026294651964,
+              "ci95_class": [
+                19.432444729545484,
+                38.11240200590945
+              ],
+              "classes_up": 21,
+              "classes": 25
+            }
+          },
+          "parameters": {
+            "proxies": 96,
+            "words_per_proxy": 7,
+            "retained_words": 7,
+            "search": "rgb",
+            "composition": "word-domain",
+            "shuffled": false
+          }
+        },
+        "semantic_search": {
+          "mAP": 0.7798838019371033,
+          "precision": 0.8076556324958801,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "5f874b5570ec7fab5df380080cb4dd5d903b1167",
+          "sha256": "0a434ca0ef651ad6401327e56e63f108877c38b13860564ed4bd497947dde8e7",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 25
+            },
+            "precision": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 25
+            }
+          },
+          "parameters": {
+            "proxies": 96,
+            "words_per_proxy": 7,
+            "retained_words": 7,
+            "search": "semantic",
+            "composition": "word-domain",
+            "shuffled": false
+          }
+        },
+        "prompt_ensemble": {
+          "mAP": 0.7669432163238525,
+          "precision": 0.8052316308021545,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "5f874b5570ec7fab5df380080cb4dd5d903b1167",
+          "sha256": "8a784430c07a39592b9d0b81fa63b2e2e928153d6b487a8de7b8c31961c8af02",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 1.2940619922165486,
+              "ci95_class": [
+                0.466090486845648,
+                2.2357518006934516
+              ],
+              "classes_up": 21,
+              "classes": 25
+            },
+            "precision": {
+              "delta_pp": 0.24240060473417008,
+              "ci95_class": [
+                -0.013568581585061027,
+                0.5422791848245851
+              ],
+              "classes_up": 13,
+              "classes": 25
+            }
+          },
+          "parameters": {
+            "proxies": 96,
+            "words_per_proxy": 7,
+            "retained_words": 7,
+            "search": "semantic",
+            "composition": "ensemble",
+            "shuffled": false
+          }
+        },
+        "bare_composition": {
+          "mAP": 0.7817362546920776,
+          "precision": 0.8072092533111572,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "5f874b5570ec7fab5df380080cb4dd5d903b1167",
+          "sha256": "a371355647ba79c3e9e19cff55b3bf7fa8411165e346aa89b836c31b5d6fe18a",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": -0.1852321505685293,
+              "ci95_class": [
+                -0.59389478321154,
+                0.275680258936986
+              ],
+              "classes_up": 8,
+              "classes": 25
+            },
+            "precision": {
+              "delta_pp": 0.04464348402289159,
+              "ci95_class": [
+                -0.0778040438832764,
+                0.20303965936561405
+              ],
+              "classes_up": 15,
+              "classes": 25
+            }
+          },
+          "parameters": {
+            "proxies": 96,
+            "words_per_proxy": 7,
+            "retained_words": 7,
+            "search": "semantic",
+            "composition": "bare",
+            "shuffled": false
+          }
+        },
+        "shuffle_composed_word_identity": {
+          "mAP": 0.053183551877737045,
+          "precision": 0.05644262209534645,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "5f874b5570ec7fab5df380080cb4dd5d903b1167",
+          "sha256": "e2a3e636dc57b1babbaea0ee56483fe009e6cbcc388e8e59bb943b72b620b221",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 72.67003450345639,
+              "ci95_class": [
+                67.32535824075438,
+                77.4555855321497
+              ],
+              "classes_up": 25,
+              "classes": 25
+            },
+            "precision": {
+              "delta_pp": 75.121306191261,
+              "ci95_class": [
+                69.42012005181762,
+                80.46437419057175
+              ],
+              "classes_up": 25,
+              "classes": 25
+            }
+          },
+          "parameters": {
+            "proxies": 96,
+            "words_per_proxy": 7,
+            "retained_words": 7,
+            "search": "semantic",
+            "composition": "word-domain",
+            "shuffled": true
+          }
+        }
+      },
+      "kd_replay": {
+        "queries": 14179,
+        "mAP": 0.779883861541748,
+        "precision": 0.8076556921005249,
+        "kd_minus_pipeline_max_abs_same_order_AP_P": [
+          0.0,
+          0.0
+        ],
+        "max_per_query_abs_AP_P": [
+          0.0,
+          0.0
+        ],
+        "mean_per_query_abs_AP_P": [
+          0.0,
+          0.0
+        ],
+        "queries_within_1e-6_both": 14179
+      }
+    },
+    "sketchy_2": {
+      "mAP": 0.7229596376419067,
+      "precision": 0.7099952697753906,
+      "map_k": 200,
+      "p_k": 200,
+      "revision": "5f874b5570ec7fab5df380080cb4dd5d903b1167",
+      "sha256": "d939a8017d1ac8ca6824048018925da9ac424a82d2cc6b2cc3c00979f41f1c03",
+      "queries": 12694,
+      "gallery": 12552,
+      "classes": 21,
+      "controls": {
+        "primary": {
+          "mAP": 0.7229596376419067,
+          "precision": 0.7099952697753906,
+          "map_k": 200,
+          "p_k": 200,
+          "revision": "5f874b5570ec7fab5df380080cb4dd5d903b1167",
+          "sha256": "d939a8017d1ac8ca6824048018925da9ac424a82d2cc6b2cc3c00979f41f1c03",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 21
+            },
+            "precision": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 21
+            }
+          },
+          "parameters": {
+            "proxies": 96,
+            "words_per_proxy": 7,
+            "retained_words": 7,
+            "search": "semantic",
+            "composition": "word-domain",
+            "shuffled": false
+          }
+        },
+        "original": {
+          "mAP": 0.4035990238189697,
+          "precision": 0.3974318504333496,
+          "map_k": 200,
+          "p_k": 200,
+          "revision": "5f874b5570ec7fab5df380080cb4dd5d903b1167",
+          "sha256": "fbb7ab849a1b906f104f0f3065952cf6d62496213c19b8ba1ee1973f245529a4",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 31.936066001610385,
+              "ci95_class": [
+                22.18959336574974,
+                41.76391872439332
+              ],
+              "classes_up": 18,
+              "classes": 21
+            },
+            "precision": {
+              "delta_pp": 31.256341740661565,
+              "ci95_class": [
+                21.771607765042546,
+                40.80492197456414
+              ],
+              "classes_up": 18,
+              "classes": 21
+            }
+          },
+          "parameters": {
+            "proxies": 20,
+            "words_per_proxy": 7,
+            "retained_words": 7,
+            "search": "rgb",
+            "composition": "word-domain",
+            "shuffled": false
+          }
+        },
+        "query_only": {
+          "mAP": 0.6159681677818298,
+          "precision": 0.588582456111908,
+          "map_k": 200,
+          "p_k": 200,
+          "revision": "5f874b5570ec7fab5df380080cb4dd5d903b1167",
+          "sha256": "8d8e8e12a100b58f0ab1b27bbb1c3ac636da302cb9cc0f5c7cd7bc196b954b66",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 10.699146851918222,
+              "ci95_class": [
+                7.45097265192465,
+                13.90319325672451
+              ],
+              "classes_up": 19,
+              "classes": 21
+            },
+            "precision": {
+              "delta_pp": 12.141287408573094,
+              "ci95_class": [
+                8.879914437450928,
+                15.536344301527008
+              ],
+              "classes_up": 19,
+              "classes": 21
+            }
+          },
+          "parameters": {
+            "proxies": 1,
+            "words_per_proxy": 7,
+            "retained_words": 7,
+            "search": "semantic",
+            "composition": "word-domain",
+            "shuffled": false
+          }
+        },
+        "rgb_search": {
+          "mAP": 0.47267964482307434,
+          "precision": 0.465032696723938,
+          "map_k": 200,
+          "p_k": 200,
+          "revision": "5f874b5570ec7fab5df380080cb4dd5d903b1167",
+          "sha256": "d4b1d14991fe8c2def2c9d5f687b622d4110f5b1aca89f7431921a65a3c475ce",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 25.028000087608593,
+              "ci95_class": [
+                14.267463365309712,
+                35.72100857743328
+              ],
+              "classes_up": 18,
+              "classes": 21
+            },
+            "precision": {
+              "delta_pp": 24.496258221207473,
+              "ci95_class": [
+                14.022763617487279,
+                34.97164860041049
+              ],
+              "classes_up": 18,
+              "classes": 21
+            }
+          },
+          "parameters": {
+            "proxies": 96,
+            "words_per_proxy": 7,
+            "retained_words": 7,
+            "search": "rgb",
+            "composition": "word-domain",
+            "shuffled": false
+          }
+        },
+        "semantic_search": {
+          "mAP": 0.7229596376419067,
+          "precision": 0.7099952697753906,
+          "map_k": 200,
+          "p_k": 200,
+          "revision": "5f874b5570ec7fab5df380080cb4dd5d903b1167",
+          "sha256": "d939a8017d1ac8ca6824048018925da9ac424a82d2cc6b2cc3c00979f41f1c03",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 21
+            },
+            "precision": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 21
+            }
+          },
+          "parameters": {
+            "proxies": 96,
+            "words_per_proxy": 7,
+            "retained_words": 7,
+            "search": "semantic",
+            "composition": "word-domain",
+            "shuffled": false
+          }
+        },
+        "prompt_ensemble": {
+          "mAP": 0.7209556102752686,
+          "precision": 0.7079951167106628,
+          "map_k": 200,
+          "p_k": 200,
+          "revision": "5f874b5570ec7fab5df380080cb4dd5d903b1167",
+          "sha256": "eb84b281229440afa9b54f7418a864b3a85a55b90994e3765e52b21a249aecc6",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 0.20040781057802326,
+              "ci95_class": [
+                -0.2186145579176244,
+                0.6571809162454201
+              ],
+              "classes_up": 10,
+              "classes": 21
+            },
+            "precision": {
+              "delta_pp": 0.20001587119438863,
+              "ci95_class": [
+                -0.1347568437034925,
+                0.5891969111070716
+              ],
+              "classes_up": 11,
+              "classes": 21
+            }
+          },
+          "parameters": {
+            "proxies": 96,
+            "words_per_proxy": 7,
+            "retained_words": 7,
+            "search": "semantic",
+            "composition": "ensemble",
+            "shuffled": false
+          }
+        },
+        "bare_composition": {
+          "mAP": 0.7225774526596069,
+          "precision": 0.7141661643981934,
+          "map_k": 200,
+          "p_k": 200,
+          "revision": "5f874b5570ec7fab5df380080cb4dd5d903b1167",
+          "sha256": "31337f2b82cd1cc8ec97c28628d96b01f9a3a894e0ab40de9eed55f96d8b7529",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 0.03822028481540754,
+              "ci95_class": [
+                -0.9089688828088033,
+                1.063138851385981
+              ],
+              "classes_up": 11,
+              "classes": 21
+            },
+            "precision": {
+              "delta_pp": -0.41708672084342746,
+              "ci95_class": [
+                -1.6576099114758673,
+                0.8156878678981814
+              ],
+              "classes_up": 7,
+              "classes": 21
+            }
+          },
+          "parameters": {
+            "proxies": 96,
+            "words_per_proxy": 7,
+            "retained_words": 7,
+            "search": "semantic",
+            "composition": "bare",
+            "shuffled": false
+          }
+        },
+        "shuffle_composed_word_identity": {
+          "mAP": 0.06473048776388168,
+          "precision": 0.04778359830379486,
+          "map_k": 200,
+          "p_k": 200,
+          "revision": "5f874b5570ec7fab5df380080cb4dd5d903b1167",
+          "sha256": "02abfd225dc19ad679a53bc55060afb2b4eccfc03fa2dc18d595e9a45f1f5b69",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 65.82291897607735,
+              "ci95_class": [
+                57.463185400219416,
+                73.7083063804522
+              ],
+              "classes_up": 21,
+              "classes": 21
+            },
+            "precision": {
+              "delta_pp": 66.22116779317199,
+              "ci95_class": [
+                57.87029289144881,
+                74.0092424749786
+              ],
+              "classes_up": 21,
+              "classes": 21
+            }
+          },
+          "parameters": {
+            "proxies": 96,
+            "words_per_proxy": 7,
+            "retained_words": 7,
+            "search": "semantic",
+            "composition": "word-domain",
+            "shuffled": true
+          }
+        }
+      },
+      "kd_replay": {
+        "queries": 12694,
+        "mAP": 0.7229596376419067,
+        "precision": 0.7099952697753906,
+        "kd_minus_pipeline_max_abs_same_order_AP_P": [
+          0.0,
+          0.0
+        ],
+        "max_per_query_abs_AP_P": [
+          0.0,
+          0.0
+        ],
+        "mean_per_query_abs_AP_P": [
+          0.0,
+          0.0
+        ],
+        "queries_within_1e-6_both": 12694
+      }
+    },
+    "tuberlin": {
+      "mAP": 0.7391043305397034,
+      "precision": 0.782652735710144,
+      "map_k": 0,
+      "p_k": 100,
+      "revision": "5f874b5570ec7fab5df380080cb4dd5d903b1167",
+      "sha256": "2fbb5a0c024f46dc441f6364b0cb6303912144d979f1431b018b4ed49bcf4f6c",
+      "queries": 2130,
+      "gallery": 27262,
+      "classes": 30,
+      "controls": {
+        "primary": {
+          "mAP": 0.7391043305397034,
+          "precision": 0.782652735710144,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "5f874b5570ec7fab5df380080cb4dd5d903b1167",
+          "sha256": "2fbb5a0c024f46dc441f6364b0cb6303912144d979f1431b018b4ed49bcf4f6c",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 30
+            },
+            "precision": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 30
+            }
+          },
+          "parameters": {
+            "proxies": 96,
+            "words_per_proxy": 7,
+            "retained_words": 7,
+            "search": "semantic",
+            "composition": "word-domain",
+            "shuffled": false
+          }
+        },
+        "original": {
+          "mAP": 0.5382868647575378,
+          "precision": 0.5593944191932678,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "5f874b5570ec7fab5df380080cb4dd5d903b1167",
+          "sha256": "14db29138ab27b221783dd848c573828571da764e05106e8ec8cfcc01377457d",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 20.08174857625327,
+              "ci95_class": [
+                14.201079988386322,
+                26.333770918796098
+              ],
+              "classes_up": 26,
+              "classes": 30
+            },
+            "precision": {
+              "delta_pp": 22.325821774071652,
+              "ci95_class": [
+                15.15156854174917,
+                30.27552736605711
+              ],
+              "classes_up": 27,
+              "classes": 30
+            }
+          },
+          "parameters": {
+            "proxies": 20,
+            "words_per_proxy": 7,
+            "retained_words": 7,
+            "search": "rgb",
+            "composition": "word-domain",
+            "shuffled": false
+          }
+        },
+        "query_only": {
+          "mAP": 0.5665649175643921,
+          "precision": 0.6548122763633728,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "5f874b5570ec7fab5df380080cb4dd5d903b1167",
+          "sha256": "1b8d940d52622c280a2d94b2d8654b4933d9e311eb87e09af433aae7e0af52d2",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 17.253940462051702,
+              "ci95_class": [
+                13.62320578243622,
+                21.039591796385288
+              ],
+              "classes_up": 29,
+              "classes": 30
+            },
+            "precision": {
+              "delta_pp": 12.784037734053925,
+              "ci95_class": [
+                9.141005838909756,
+                16.6968949081907
+              ],
+              "classes_up": 29,
+              "classes": 30
+            }
+          },
+          "parameters": {
+            "proxies": 1,
+            "words_per_proxy": 7,
+            "retained_words": 7,
+            "search": "semantic",
+            "composition": "word-domain",
+            "shuffled": false
+          }
+        },
+        "rgb_search": {
+          "mAP": 0.5292737483978271,
+          "precision": 0.5440188050270081,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "5f874b5570ec7fab5df380080cb4dd5d903b1167",
+          "sha256": "05359834f23674ea2f8191cd76c0b87741294d3492fb8c23f6e10ec1ae7ef825",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 20.983060700447243,
+              "ci95_class": [
+                14.57664824455987,
+                27.954278641702082
+              ],
+              "classes_up": 27,
+              "classes": 30
+            },
+            "precision": {
+              "delta_pp": 23.863380458118492,
+              "ci95_class": [
+                15.66996797327759,
+                32.902609148689606
+              ],
+              "classes_up": 27,
+              "classes": 30
+            }
+          },
+          "parameters": {
+            "proxies": 96,
+            "words_per_proxy": 7,
+            "retained_words": 7,
+            "search": "rgb",
+            "composition": "word-domain",
+            "shuffled": false
+          }
+        },
+        "semantic_search": {
+          "mAP": 0.7391043305397034,
+          "precision": 0.782652735710144,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "5f874b5570ec7fab5df380080cb4dd5d903b1167",
+          "sha256": "2fbb5a0c024f46dc441f6364b0cb6303912144d979f1431b018b4ed49bcf4f6c",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 30
+            },
+            "precision": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 30
+            }
+          },
+          "parameters": {
+            "proxies": 96,
+            "words_per_proxy": 7,
+            "retained_words": 7,
+            "search": "semantic",
+            "composition": "word-domain",
+            "shuffled": false
+          }
+        },
+        "prompt_ensemble": {
+          "mAP": 0.7120162844657898,
+          "precision": 0.7751220464706421,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "5f874b5570ec7fab5df380080cb4dd5d903b1167",
+          "sha256": "a69da1ea04e6ea755e2db227de0bfa2d75c448981a0791fb52fc3d57fe49a0d7",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 2.7088040180893467,
+              "ci95_class": [
+                1.0784231803771944,
+                4.412280586990688
+              ],
+              "classes_up": 26,
+              "classes": 30
+            },
+            "precision": {
+              "delta_pp": 0.7530517186182486,
+              "ci95_class": [
+                0.1448008291713343,
+                1.5535019781368435
+              ],
+              "classes_up": 16,
+              "classes": 30
+            }
+          },
+          "parameters": {
+            "proxies": 96,
+            "words_per_proxy": 7,
+            "retained_words": 7,
+            "search": "semantic",
+            "composition": "ensemble",
+            "shuffled": false
+          }
+        },
+        "bare_composition": {
+          "mAP": 0.7453060746192932,
+          "precision": 0.7841174006462097,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "5f874b5570ec7fab5df380080cb4dd5d903b1167",
+          "sha256": "7228a92c1fbf1344e6995c781bcea31d775b6697d5bfbf7d5ac53cb016842773",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": -0.620166603443016,
+              "ci95_class": [
+                -1.7995307102937603,
+                0.35002230838773285
+              ],
+              "classes_up": 13,
+              "classes": 30
+            },
+            "precision": {
+              "delta_pp": -0.14647879169930314,
+              "ci95_class": [
+                -0.4336882180977988,
+                0.12879729459835357
+              ],
+              "classes_up": 13,
+              "classes": 30
+            }
+          },
+          "parameters": {
+            "proxies": 96,
+            "words_per_proxy": 7,
+            "retained_words": 7,
+            "search": "semantic",
+            "composition": "bare",
+            "shuffled": false
+          }
+        },
+        "shuffle_composed_word_identity": {
+          "mAP": 0.03964622691273689,
+          "precision": 0.03866666555404663,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "5f874b5570ec7fab5df380080cb4dd5d903b1167",
+          "sha256": "1125e7e38101e26356bc82aca4205b3761473b6ec8df684f027e6cf374787e0d",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 69.94581139647563,
+              "ci95_class": [
+                63.97106495385626,
+                75.3924748492432
+              ],
+              "classes_up": 30,
+              "classes": 30
+            },
+            "precision": {
+              "delta_pp": 74.39859190055043,
+              "ci95_class": [
+                67.53717776306452,
+                80.526767061346
+              ],
+              "classes_up": 30,
+              "classes": 30
+            }
+          },
+          "parameters": {
+            "proxies": 96,
+            "words_per_proxy": 7,
+            "retained_words": 7,
+            "search": "semantic",
+            "composition": "word-domain",
+            "shuffled": true
+          }
+        }
+      },
+      "kd_replay": {
+        "queries": 2130,
+        "mAP": 0.7391043305397034,
+        "precision": 0.7826525568962097,
+        "kd_minus_pipeline_max_abs_same_order_AP_P": [
+          0.0,
+          0.0
+        ],
+        "max_per_query_abs_AP_P": [
+          0.0,
+          0.0
+        ],
+        "mean_per_query_abs_AP_P": [
+          0.0,
+          0.0
+        ],
+        "queries_within_1e-6_both": 2130
+      }
+    }
+  }
+}

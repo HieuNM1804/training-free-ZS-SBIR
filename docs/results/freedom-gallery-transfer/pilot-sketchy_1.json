@@ -1,0 +1,143 @@
+{
+  "revision": "5f874b5570ec7fab5df380080cb4dd5d903b1167",
+  "family": "freedom-gallery-transfer",
+  "queries": 1200,
+  "gallery": 17100,
+  "classes": 25,
+  "checkpoint_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+  "dataset_sha256": "8fafaf3aedf4751e28e2b33f073832e02fdf3ca1b36a9d7fda5ff328f26b0642",
+  "kd_sha256": "3433c60a3739e852c94e573832dd53d51446f433326a453392d316b402402fbe",
+  "gpu": "NVIDIA L4",
+  "external_vocabulary": 20931,
+  "exploratory_unseen": true,
+  "freeze_sha256": null,
+  "settings": {
+    "dcb7c68c168acc2b": {
+      "parameters": {
+        "proxies": 1,
+        "words_per_proxy": 7,
+        "retained_words": 7,
+        "search": "rgb",
+        "composition": "word-domain",
+        "shuffled": false
+      },
+      "mAP": 0.6181619167327881,
+      "precision": 0.6901500225067139
+    },
+    "e43a1134142b14ef": {
+      "parameters": {
+        "proxies": 1,
+        "words_per_proxy": 7,
+        "retained_words": 7,
+        "search": "semantic",
+        "composition": "word-domain",
+        "shuffled": false
+      },
+      "mAP": 0.6181619167327881,
+      "precision": 0.6901500225067139
+    },
+    "ad843180ca340195": {
+      "parameters": {
+        "proxies": 8,
+        "words_per_proxy": 7,
+        "retained_words": 7,
+        "search": "rgb",
+        "composition": "word-domain",
+        "shuffled": false
+      },
+      "mAP": 0.44934409856796265,
+      "precision": 0.4487999975681305
+    },
+    "49fae849196ff7db": {
+      "parameters": {
+        "proxies": 8,
+        "words_per_proxy": 7,
+        "retained_words": 7,
+        "search": "semantic",
+        "composition": "word-domain",
+        "shuffled": false
+      },
+      "mAP": 0.7327228784561157,
+      "precision": 0.7717666625976562
+    },
+    "928b0512c19baa2a": {
+      "parameters": {
+        "proxies": 20,
+        "words_per_proxy": 7,
+        "retained_words": 7,
+        "search": "rgb",
+        "composition": "word-domain",
+        "shuffled": false
+      },
+      "mAP": 0.42778244614601135,
+      "precision": 0.4162583649158478
+    },
+    "a4288ff0932a9d55": {
+      "parameters": {
+        "proxies": 20,
+        "words_per_proxy": 7,
+        "retained_words": 7,
+        "search": "semantic",
+        "composition": "word-domain",
+        "shuffled": false
+      },
+      "mAP": 0.7491253018379211,
+      "precision": 0.7830584049224854
+    },
+    "8b57e6bc354a4871": {
+      "parameters": {
+        "proxies": 48,
+        "words_per_proxy": 7,
+        "retained_words": 7,
+        "search": "rgb",
+        "composition": "word-domain",
+        "shuffled": false
+      },
+      "mAP": 0.4434255063533783,
+      "precision": 0.4335083067417145
+    },
+    "e7f90ae77e1916ad": {
+      "parameters": {
+        "proxies": 48,
+        "words_per_proxy": 7,
+        "retained_words": 7,
+        "search": "semantic",
+        "composition": "word-domain",
+        "shuffled": false
+      },
+      "mAP": 0.758581817150116,
+      "precision": 0.790191650390625
+    },
+    "1ce497c97211816a": {
+      "parameters": {
+        "proxies": 96,
+        "words_per_proxy": 7,
+        "retained_words": 7,
+        "search": "rgb",
+        "composition": "word-domain",
+        "shuffled": false
+      },
+      "mAP": 0.5026783347129822,
+      "precision": 0.4992166757583618
+    },
+    "b3464bf029a5ad9d": {
+      "parameters": {
+        "proxies": 96,
+        "words_per_proxy": 7,
+        "retained_words": 7,
+        "search": "semantic",
+        "composition": "word-domain",
+        "shuffled": false
+      },
+      "mAP": 0.7710707783699036,
+      "precision": 0.8004167079925537
+    }
+  },
+  "seed": 4783,
+  "diagnostic": {
+    "visual_memory": "unlabeled retrieval gallery",
+    "raw_vocabulary": 20931,
+    "composed_text": "<term> photo",
+    "query_is_always_present": true
+  }
+}

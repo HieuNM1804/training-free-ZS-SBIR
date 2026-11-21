@@ -1,0 +1,114 @@
+{
+  "utc": "2026-11-21T02:42:56.123500+00:00",
+  "revision": "5f874b5570ec7fab5df380080cb4dd5d903b1167",
+  "criterion": "equal mean Sketchy mAP, then precision",
+  "canonical": {
+    "proxies": 20,
+    "words_per_proxy": 7,
+    "retained_words": 7,
+    "search": "rgb",
+    "composition": "word-domain",
+    "shuffled": false
+  },
+  "winner": {
+    "proxies": 96,
+    "words_per_proxy": 7,
+    "retained_words": 7,
+    "search": "semantic",
+    "composition": "word-domain",
+    "shuffled": false
+  },
+  "winner_id": "b3464bf029a5ad9d",
+  "controls": {
+    "primary": {
+      "proxies": 96,
+      "words_per_proxy": 7,
+      "retained_words": 7,
+      "search": "semantic",
+      "composition": "word-domain",
+      "shuffled": false
+    },
+    "original": {
+      "proxies": 20,
+      "words_per_proxy": 7,
+      "retained_words": 7,
+      "search": "rgb",
+      "composition": "word-domain",
+      "shuffled": false
+    },
+    "query_only": {
+      "proxies": 1,
+      "words_per_proxy": 7,
+      "retained_words": 7,
+      "search": "semantic",
+      "composition": "word-domain",
+      "shuffled": false
+    },
+    "rgb_search": {
+      "proxies": 96,
+      "words_per_proxy": 7,
+      "retained_words": 7,
+      "search": "rgb",
+      "composition": "word-domain",
+      "shuffled": false
+    },
+    "semantic_search": {
+      "proxies": 96,
+      "words_per_proxy": 7,
+      "retained_words": 7,
+      "search": "semantic",
+      "composition": "word-domain",
+      "shuffled": false
+    },
+    "prompt_ensemble": {
+      "proxies": 96,
+      "words_per_proxy": 7,
+      "retained_words": 7,
+      "search": "semantic",
+      "composition": "ensemble",
+      "shuffled": false
+    },
+    "bare_composition": {
+      "proxies": 96,
+      "words_per_proxy": 7,
+      "retained_words": 7,
+      "search": "semantic",
+      "composition": "bare",
+      "shuffled": false
+    },
+    "shuffle_composed_word_identity": {
+      "proxies": 96,
+      "words_per_proxy": 7,
+      "retained_words": 7,
+      "search": "semantic",
+      "composition": "word-domain",
+      "shuffled": true
+    }
+  },
+  "sources": {
+    "sketchy_1-dcb7c68c168acc2b.json": "089777f44b805d0d1d8b1aff90994c89e78d0cc89a57cb370f9fb39792ccdb16",
+    "sketchy_1-1ce497c97211816a.json": "9586a41bf919508a28d40104ebe5d9593457157e61086e8cb77a72a46d0d269b",
+    "sketchy_1-5e339078444ec29f.json": "e2a3e636dc57b1babbaea0ee56483fe009e6cbcc388e8e59bb943b72b620b221",
+    "sketchy_1-a4288ff0932a9d55.json": "3d61df78f15fe4449474d215d9e8ad7adc6386b6556a1a5493efe92ed09ab12f",
+    "sketchy_1-49fae849196ff7db.json": "9151b51472671eb29a7c5abbf57ff40a83527c40140bb392a82b6a8b54c27a04",
+    "sketchy_1-b3464bf029a5ad9d.json": "0a434ca0ef651ad6401327e56e63f108877c38b13860564ed4bd497947dde8e7",
+    "sketchy_1-928b0512c19baa2a.json": "387c36083d9599926c384fa3096f0e0d9649f7f223882e78b778746e7718498f",
+    "sketchy_1-1123e17c40a561e0.json": "8a784430c07a39592b9d0b81fa63b2e2e928153d6b487a8de7b8c31961c8af02",
+    "sketchy_1-ac5b38ae3fcdeafa.json": "a371355647ba79c3e9e19cff55b3bf7fa8411165e346aa89b836c31b5d6fe18a",
+    "sketchy_1-e43a1134142b14ef.json": "4dee8406a29148c9cfc2af83c749472f3d0f7871a7b1421176bd0f03ae709e12",
+    "sketchy_1-e7f90ae77e1916ad.json": "627b6d654ffd1d490d7fb3e3ddd34478da8d518132a16e1a3b270344150ae183",
+    "sketchy_2-dcb7c68c168acc2b.json": "f991d2a7c3fea3ff8a0a5a4cf4bb5a53b1fdcfacbfbe720b2e620f731c42ccdd",
+    "sketchy_2-1ce497c97211816a.json": "d4b1d14991fe8c2def2c9d5f687b622d4110f5b1aca89f7431921a65a3c475ce",
+    "sketchy_2-5e339078444ec29f.json": "02abfd225dc19ad679a53bc55060afb2b4eccfc03fa2dc18d595e9a45f1f5b69",
+    "sketchy_2-a4288ff0932a9d55.json": "ca557ec790c0465a80cbd5525922cc31b7cd5d0deb3c42fdabbb50f665fcedd6",
+    "sketchy_2-49fae849196ff7db.json": "e4490b0cdd21f001d147619e00e74778dba02e53ff0c3d12cbc35df9d8b2da1e",
+    "sketchy_2-b3464bf029a5ad9d.json": "d939a8017d1ac8ca6824048018925da9ac424a82d2cc6b2cc3c00979f41f1c03",
+    "sketchy_2-928b0512c19baa2a.json": "fbb7ab849a1b906f104f0f3065952cf6d62496213c19b8ba1ee1973f245529a4",
+    "sketchy_2-1123e17c40a561e0.json": "eb84b281229440afa9b54f7418a864b3a85a55b90994e3765e52b21a249aecc6",
+    "sketchy_2-ac5b38ae3fcdeafa.json": "31337f2b82cd1cc8ec97c28628d96b01f9a3a894e0ab40de9eed55f96d8b7529",
+    "sketchy_2-e43a1134142b14ef.json": "8d8e8e12a100b58f0ab1b27bbb1c3ac636da302cb9cc0f5c7cd7bc196b954b66",
+    "sketchy_2-e7f90ae77e1916ad.json": "fa3c3269b07c082f21d0a6c4435aab361ce0f14fdb0c9091a8671d9cda609e43"
+  },
+  "tu_rows_before_freeze": 0,
+  "sha256": "f0dad24f14169d04cbe259fca461dd91758c42ab326cb7139ca29dd7457a0d49"
+}
