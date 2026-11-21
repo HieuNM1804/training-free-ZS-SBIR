@@ -1,0 +1,521 @@
+{
+  "protocol": {
+    "split": "sketchy_1",
+    "checkpoint": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+    "kd_function_sha256": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+    "vocabulary_sha256": "84a4373a0efb7fd6d93fe19b0e7ceb6c1b855c233d13b9b78a9a33655c9fdce3",
+    "revision": "38fe6855dded52ff5ac1526695c7fdf01d2116f3",
+    "gpu": "NVIDIA L4",
+    "queries": 14179,
+    "gallery": 17100,
+    "classes": 25,
+    "samples": 256,
+    "primary_seed": 793187,
+    "secondary_seed": 394733
+  },
+  "map_k": 0,
+  "p_k": 100,
+  "scores": {
+    "diffusion": {
+      "mAP": 0.8185577392578125,
+      "precision": 0.8132506012916565
+    },
+    "gallery_mle": {
+      "mAP": 0.8325345516204834,
+      "precision": 0.8197953701019287
+    },
+    "baseline_clones": {
+      "mAP": 0.8167630434036255,
+      "precision": 0.8123477697372437
+    },
+    "baseline_thin": {
+      "mAP": 0.8180965781211853,
+      "precision": 0.8127378225326538
+    },
+    "hard": {
+      "mAP": 0.8157224655151367,
+      "precision": 0.8086422085762024
+    },
+    "matched_temperature": {
+      "mAP": 0.8176255822181702,
+      "precision": 0.8103216290473938
+    },
+    "correlated": {
+      "mAP": 0.816719651222229,
+      "precision": 0.8094942569732666
+    },
+    "correlated_thin": {
+      "mAP": 0.8163774609565735,
+      "precision": 0.8092185854911804
+    },
+    "second_seed": {
+      "mAP": 0.8164473176002502,
+      "precision": 0.8089145421981812
+    },
+    "wrong_geometry": {
+      "mAP": 0.81780606508255,
+      "precision": 0.8105288743972778
+    },
+    "iid_sample": {
+      "mAP": 0.8184949159622192,
+      "precision": 0.8131503462791443
+    }
+  },
+  "paired_vs_diffusion": {
+    "diffusion": {
+      "mAP": {
+        "delta_pp": 0.0,
+        "ci95_class": [
+          0.0,
+          0.0
+        ],
+        "classes_up": 0,
+        "classes": 25
+      },
+      "precision": {
+        "delta_pp": 0.0,
+        "ci95_class": [
+          0.0,
+          0.0
+        ],
+        "classes_up": 0,
+        "classes": 25
+      }
+    },
+    "gallery_mle": {
+      "mAP": {
+        "delta_pp": 1.3976967138774818,
+        "ci95_class": [
+          0.21529278225786938,
+          2.5605593929143398
+        ],
+        "classes_up": 18,
+        "classes": 25
+      },
+      "precision": {
+        "delta_pp": 0.6544890225598864,
+        "ci95_class": [
+          -0.6777348186831266,
+          2.059518659250598
+        ],
+        "classes_up": 13,
+        "classes": 25
+      }
+    },
+    "baseline_clones": {
+      "mAP": {
+        "delta_pp": -0.179466139360967,
+        "ci95_class": [
+          -0.6715103461836666,
+          0.3145974735476177
+        ],
+        "classes_up": 10,
+        "classes": 25
+      },
+      "precision": {
+        "delta_pp": -0.09027435158901755,
+        "ci95_class": [
+          -0.5012105480669278,
+          0.35180014564017725
+        ],
+        "classes_up": 11,
+        "classes": 25
+      }
+    },
+    "baseline_thin": {
+      "mAP": {
+        "delta_pp": -0.04610931617051828,
+        "ci95_class": [
+          -0.15048286286874313,
+          0.03335337884451981
+        ],
+        "classes_up": 12,
+        "classes": 25
+      },
+      "precision": {
+        "delta_pp": -0.05127301836238273,
+        "ci95_class": [
+          -0.16432337071230982,
+          0.036282830647638195
+        ],
+        "classes_up": 14,
+        "classes": 25
+      }
+    },
+    "hard": {
+      "mAP": {
+        "delta_pp": -0.2835110205742114,
+        "ci95_class": [
+          -1.2770844619025148,
+          0.7141529719216295
+        ],
+        "classes_up": 11,
+        "classes": 25
+      },
+      "precision": {
+        "delta_pp": -0.46082233411200635,
+        "ci95_class": [
+          -1.7846797207375293,
+          0.8694130398066423
+        ],
+        "classes_up": 14,
+        "classes": 25
+      }
+    },
+    "matched_temperature": {
+      "mAP": {
+        "delta_pp": -0.09321395011679294,
+        "ci95_class": [
+          -0.9259608987618058,
+          0.7739160422355101
+        ],
+        "classes_up": 13,
+        "classes": 25
+      },
+      "precision": {
+        "delta_pp": -0.2928979354341407,
+        "ci95_class": [
+          -1.424006949462797,
+          0.8836428857813955
+        ],
+        "classes_up": 14,
+        "classes": 25
+      }
+    },
+    "correlated": {
+      "mAP": {
+        "delta_pp": -0.1838050412227072,
+        "ci95_class": [
+          -1.0317460766064486,
+          0.6912381100101197
+        ],
+        "classes_up": 12,
+        "classes": 25
+      },
+      "precision": {
+        "delta_pp": -0.375625918635033,
+        "ci95_class": [
+          -1.534783713704727,
+          0.8052319096186759
+        ],
+        "classes_up": 14,
+        "classes": 25
+      }
+    },
+    "correlated_thin": {
+      "mAP": {
+        "delta_pp": -0.21802097120473948,
+        "ci95_class": [
+          -1.0568558175345333,
+          0.6509829451913527
+        ],
+        "classes_up": 9,
+        "classes": 25
+      },
+      "precision": {
+        "delta_pp": -0.4032019226250826,
+        "ci95_class": [
+          -1.551400767835315,
+          0.7845388811787166
+        ],
+        "classes_up": 13,
+        "classes": 25
+      }
+    },
+    "second_seed": {
+      "mAP": {
+        "delta_pp": -0.21103738550123285,
+        "ci95_class": [
+          -1.0887592726681683,
+          0.6727748731737712
+        ],
+        "classes_up": 12,
+        "classes": 25
+      },
+      "precision": {
+        "delta_pp": -0.4335989706889263,
+        "ci95_class": [
+          -1.6359619216150518,
+          0.77131680679509
+        ],
+        "classes_up": 14,
+        "classes": 25
+      }
+    },
+    "wrong_geometry": {
+      "mAP": {
+        "delta_pp": -0.07516668567051546,
+        "ci95_class": [
+          -0.7510371792824951,
+          0.622781010933924
+        ],
+        "classes_up": 13,
+        "classes": 25
+      },
+      "precision": {
+        "delta_pp": -0.27216305893582665,
+        "ci95_class": [
+          -1.2060347337417912,
+          0.683879933708548
+        ],
+        "classes_up": 14,
+        "classes": 25
+      }
+    },
+    "iid_sample": {
+      "mAP": {
+        "delta_pp": -0.0062769504440159515,
+        "ci95_class": [
+          -0.023882235739061838,
+          0.011588837428014148
+        ],
+        "classes_up": 10,
+        "classes": 25
+      },
+      "precision": {
+        "delta_pp": -0.010014811318026956,
+        "ci95_class": [
+          -0.023914879230468717,
+          0.004295501803597099
+        ],
+        "classes_up": 9,
+        "classes": 25
+      }
+    }
+  },
+  "correlated_vs_controls": {
+    "matched_temperature": {
+      "mAP": {
+        "delta_pp": -0.09059109110591425,
+        "ci95_class": [
+          -0.1896911281837848,
+          -0.012597722812373865
+        ],
+        "classes_up": 8,
+        "classes": 25
+      },
+      "precision": {
+        "delta_pp": -0.08272798320089227,
+        "ci95_class": [
+          -0.19555660688569435,
+          0.0063037861792670695
+        ],
+        "classes_up": 10,
+        "classes": 25
+      }
+    },
+    "iid_sample": {
+      "mAP": {
+        "delta_pp": -0.17752809077869122,
+        "ci95_class": [
+          -1.022260719467739,
+          0.6925700024197866
+        ],
+        "classes_up": 12,
+        "classes": 25
+      },
+      "precision": {
+        "delta_pp": -0.365611107317006,
+        "ci95_class": [
+          -1.52607447894359,
+          0.8169734377290252
+        ],
+        "classes_up": 14,
+        "classes": 25
+      }
+    },
+    "wrong_geometry": {
+      "mAP": {
+        "delta_pp": -0.10863835555219173,
+        "ci95_class": [
+          -0.3490237582102938,
+          0.1141382423695083
+        ],
+        "classes_up": 12,
+        "classes": 25
+      },
+      "precision": {
+        "delta_pp": -0.10346285969920635,
+        "ci95_class": [
+          -0.3700983512786248,
+          0.14692768222822783
+        ],
+        "classes_up": 13,
+        "classes": 25
+      }
+    },
+    "gallery_mle": {
+      "mAP": {
+        "delta_pp": -1.5815017551001889,
+        "ci95_class": [
+          -2.382754535264039,
+          -0.8416495669722517
+        ],
+        "classes_up": 4,
+        "classes": 25
+      },
+      "precision": {
+        "delta_pp": -1.0301149411949193,
+        "ci95_class": [
+          -2.170005347152208,
+          -0.05839279793921006
+        ],
+        "classes_up": 7,
+        "classes": 25
+      }
+    },
+    "second_seed": {
+      "mAP": {
+        "delta_pp": 0.02723234427852568,
+        "ci95_class": [
+          -0.033560506315522085,
+          0.08916550893031126
+        ],
+        "classes_up": 16,
+        "classes": 25
+      },
+      "precision": {
+        "delta_pp": 0.05797305205389327,
+        "ci95_class": [
+          0.007538085750339147,
+          0.11602658826239927
+        ],
+        "classes_up": 15,
+        "classes": 25
+      }
+    }
+  },
+  "stability": {
+    "softmax_copies": {
+      "top1_changes": 4112,
+      "top100_retained": 0.8706008195877075
+    },
+    "softmax_thinning": {
+      "top1_changes": 729,
+      "top100_retained": 0.9751314520835876
+    },
+    "correlated_thinning": {
+      "top1_changes": 441,
+      "top100_retained": 0.9828851819038391
+    },
+    "two_mc_seeds": {
+      "top1_changes": 1311,
+      "top100_retained": 0.9804633855819702
+    }
+  },
+  "thinning": {
+    "pairs": 1024,
+    "min_cosine": 0.9579845666885376,
+    "examples_by_similarity": [
+      [
+        "nissan r382",
+        "nissan r383",
+        0.9993494749069214
+      ],
+      [
+        "volkswagen golf mk5",
+        "volkswagen golf mk6",
+        0.9934113025665283
+      ],
+      [
+        "chequered skipper",
+        "large chequered skipper",
+        0.9882742166519165
+      ],
+      [
+        "isuzu bellel",
+        "isuzu bellett",
+        0.9836331605911255
+      ],
+      [
+        "mock turtle soup",
+        "turtle soup",
+        0.9802263975143433
+      ],
+      [
+        "toyota mark ii",
+        "toyota mark x",
+        0.9770350456237793
+      ],
+      [
+        "door",
+        "home door",
+        0.9741863012313843
+      ],
+      [
+        "fiat bravo",
+        "fiat bravo/brava",
+        0.9717206954956055
+      ],
+      [
+        "basketball (ball)",
+        "basketball (sport)",
+        0.9694293737411499
+      ],
+      [
+        "food",
+        "local food",
+        0.967907190322876
+      ],
+      [
+        "republic f-84 thunderjet",
+        "republic f-84f thunderstreak",
+        0.9659428000450134
+      ],
+      [
+        "kokoretsi",
+        "konghou",
+        0.9642711877822876
+      ],
+      [
+        "common evening primrose",
+        "evening primrose",
+        0.9626017808914185
+      ],
+      [
+        "neighbourhood",
+        "suburb",
+        0.9610751867294312
+      ],
+      [
+        "bicycle wheel",
+        "bicycle wheel rim",
+        0.9595377445220947
+      ],
+      [
+        "motorcycle",
+        "motorcycling",
+        0.9580243229866028
+      ]
+    ]
+  },
+  "copy_insertion": {
+    "draws": 12288,
+    "photos": 48,
+    "different_semantic_winners": 0
+  },
+  "matched_beta": 2.4527979286747685,
+  "collision": {
+    "correlated": 0.5716781404082101,
+    "tempered": 0.5656973719596863,
+    "original": 0.12159021198749542
+  },
+  "index_seconds": 18.93461510399993,
+  "elapsed_seconds": 320.3624441239999,
+  "peak_allocated_mib": 8330.27783203125,
+  "original_kd_queries_per_method": 14179,
+  "kd_max_abs_error": {
+    "diffusion": 2.384185791015625e-07,
+    "gallery_mle": 2.384185791015625e-07,
+    "baseline_clones": 2.384185791015625e-07,
+    "baseline_thin": 2.384185791015625e-07,
+    "hard": 2.384185791015625e-07,
+    "matched_temperature": 2.384185791015625e-07,
+    "correlated": 7.152557373046875e-07,
+    "correlated_thin": 7.152557373046875e-07,
+    "second_seed": 7.152557373046875e-07,
+    "wrong_geometry": 6.556510925292969e-07,
+    "iid_sample": 7.152557373046875e-07
+  },
+  "per_query_sha256": "92da3a618bd2f9d699088353a9ea340a490a28cdfd7a6b5c83b554fb8dbdbd64"
+}
