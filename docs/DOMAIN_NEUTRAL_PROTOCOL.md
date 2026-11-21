@@ -15,6 +15,18 @@ The stationarity that matters is within the shared concept space. A source and t
 
 Holding the candidate and the distribution over its words fixed gives an exact comparator. Draw *independent* words for the direct query check and for selecting the second image. If $h_{iw}$ denotes the distinct-witness mean, the scores differ by $\operatorname{Cov}_{w\sim B_i}(l_w,h_{iw})$. This is an exact identity with the same leave-one-out convention on both sides. The experiment tests the sign and value of this dependence for ranking. Marginal co-occurrence, softmax diffusion and the covariance identity each have established precedents. The research proposal is the explicit shared latent cause for a candidate's match and for selecting its witnesses, with a deterministic counterfactual audit.
 
+## Calling the scorer
+
+Pass the frozen gallery embeddings, an embedding for each literal public word and the positive checkpoint scale. The scorer accepts one vector or a batch of independent queries. The witness score has one row per query and one column per gallery image.
+
+```python
+from tf_sbir.domain_neutral_witness import DomainNeutralIndex
+
+index = DomainNeutralIndex(gallery_vectors, word_vectors, clip_logit_scale)
+scores = index.score(query_vector)["witness"]
+ranking = scores.argsort(dim=1, descending=True)
+```
+
 ## Experimental evidence and interpretation
 
 Run the frozen primary, with independent-word and linear controls, on every permitted benchmark query. Four controls isolate which assumptions matter: literal words and no visual propagation, literal words and the historical gallery graph, historical domain-named words and native-scale propagation, or historical domain-named words and the historical graph. These controls do not select a new primary. The old graph has 16 neighbors, coefficient 0.36 and two updates chosen in earlier Sketchy experiments. The generic study uses none of those numbers to define its primary. Source/target names appear only in the historical ablations; the benchmark adapter alone knows image paths, split names and relevance labels.

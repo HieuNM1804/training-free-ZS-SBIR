@@ -1,5 +1,7 @@
 """A word-conditioned, training-free retrieval score for arbitrary image domains."""
 
+import math
+
 import torch
 import torch.nn.functional as F
 
@@ -74,8 +76,14 @@ class DomainNeutralIndex:
     """Build from gallery image vectors, isolated public-word vectors and CLIP scale."""
     @torch.inference_mode()
     def __init__(self, gallery_images, public_words, logit_scale):
+        if gallery_images.ndim!=2 or public_words.ndim!=2 or not len(gallery_images) or not len(public_words):
+            raise ValueError("Provide a nonempty matrix of gallery images and a nonempty matrix of words")
+        if gallery_images.size(1)!=public_words.size(1) or gallery_images.device!=public_words.device:
+            raise ValueError("Gallery and word embeddings must share a dimension and device")
         self.words = F.normalize(public_words.float())
         self.scale = float(logit_scale)
+        if not math.isfinite(self.scale) or self.scale<=0:
+            raise ValueError("The frozen logit scale must be positive and finite")
         gallery = F.normalize(gallery_images.float())
         profiles = ((gallery @ self.words.T)*self.scale).softmax(1)
         profiles,self.graph_statistics = native_diffusion(gallery,profiles,self.scale)
@@ -83,6 +91,10 @@ class DomainNeutralIndex:
 
     @torch.inference_mode()
     def score(self, query_images):
+        if query_images.ndim==1:
+            query_images=query_images.unsqueeze(0)
+        if query_images.ndim!=2 or query_images.size(1)!=self.words.size(1):
+            raise ValueError("Expected one query vector or a matrix of query vectors")
         logits = (F.normalize(query_images.float()) @ self.words.T)*self.scale
         likelihood = (logits-logits.amax(1,keepdim=True)).exp()
         return self.model.scores(likelihood)
