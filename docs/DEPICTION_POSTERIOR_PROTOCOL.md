@@ -1,0 +1,18 @@
+# Recovering semantic evidence that survives changes of depiction
+
+A gallery-only quantity predicts which CLIP word directions fluctuate across drawings of the same photographed object. Measure the within-photo covariance $W$ of public-word responses over thirteen zooms, and the between-photo covariance $B$ of their mean responses. Diagonalize $W$ after whitening $W+B$. Across the resulting 127 nonconstant directions, the correlation of the inferred noise fraction with the measured fraction of variance between real sibling sketches was 0.669 on Ext-1 and 0.485 on Ext-2. After normalizing each direction for its general variability, a sketch's own crop variances also predicted the directions on which its siblings differed, with mean correlations 0.115 and 0.116. An unrelated query gave 0.003 and −0.001. This diagnosis uses source IDs after retrieval. The new scorer sees one sketch, its windows, and the unlabelled photo gallery.
+
+Model a latent semantic word response $\theta$ and a noisy independent drawing $y=\theta+e$. In the gallery basis the prior variance along coordinate $j$ is its between-photo fraction $b_j$. Estimate the observation variance from its gallery within-photo fraction and from the current query's own variation under the same changes of view. Apply Gaussian conditioning to recover a posterior $N(m,V)$. The variance source, its orientation and its dependence on this individual query can then be ablated independently.
+
+A candidate word defines an exponential tilt of the latent Gaussian prior, $p(\theta\mid w)\propto e^{\theta_w}p(\theta)$. The likelihood ratio for drawing $y$ is exactly
+
+$$
+\log \frac{p(y\mid w)}{p(y)} =
+ m_w-\mu_w+\tfrac12(V_{ww}-\Sigma_{ww}).
+$$
+
+A word that is wholly unobserved in the Gaussian model has unit likelihood ratio. When attaching the intervention to the previous unnormalized word evidence, compare this ratio to its value for a perfectly observed sketch. The resulting predictive log word evidence is $m_w+V_{ww}/2$. Also test the direct likelihood ratio above and the posterior-mean-only readout. Match computed word evidence against the same compact target distributions and the same historical RGB operator.
+
+Tune on the two full Sketchy splits after a development screen on 36 sketches per class. The control with gallery-global variances is independently selected on Sketchy. Compare spherical uncertainty, native word coordinates, reversed mode reliabilities, one scalar variance per query, and the identity map. Removing per-query variability tests the incremental effect of the individual sketch. Removing mode-specific reliability tests transfer of the gallery nuisance model. A numerical identity or a correlation with observed drawing differences alone does not establish a retrieval gain.
+
+Probabilistic Face Embeddings uses sample-specific Gaussian uncertainty for matching. This experiment derives directions of depiction uncertainty from repeated observations of gallery photos, tests that surrogate on independent human drawings, and propagates the uncertainty back into the word likelihoods used by a frozen retriever. The direct precedents are the public word bridge, the RGB operator and probabilistic verification. [Shi and Jain at ICCV 2019](https://openaccess.thecvf.com/content_ICCV_2019/papers/Shi_Probabilistic_Face_Embeddings_ICCV_2019_paper.pdf) · [FreeDom at WACV 2025](https://openaccess.thecvf.com/content/WACV2025/html/Efthymiadis_Composed_Image_Retrieval_for_Training-Free_Domain_Conversion_WACV_2025_paper.html) · [Wang et al. at CVPR 2012](https://pages.ucsd.edu/~ztu/publication/cvpr12_CrDP.pdf)
