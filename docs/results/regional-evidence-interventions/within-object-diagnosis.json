@@ -1,0 +1,100 @@
+{
+  "sketchy_1": {
+    "queries": 14179,
+    "queries_with_verified_source_photo": 14179,
+    "unverified": 0,
+    "object_instances": 2500,
+    "objects_with_multiple_sketches": 2499,
+    "top1_mistakes_with_sibling": 2398,
+    "a_sibling_gets_category_top1_given_current_miss": 0.914512093411176,
+    "random_sibling_top1_given_current_miss": 0.60376017736318,
+    "other_photo_random_sketch_top1_given_current_miss_within_same_class": 0.7575711085308613,
+    "method_breakdown": {
+      "baseline": {
+        "descriptive_ap_variance_share": {
+          "within_object": 0.5776203290664663,
+          "between_objects_within_class": 0.3269453101365397,
+          "between_classes": 0.0954343607969939
+        },
+        "mean_squared_ap_distance_other_sketch_same_object": 0.13964518359078948,
+        "mean_squared_ap_distance_same_class_different_object": 0.1814915443477588
+      },
+      "matched_base": {
+        "descriptive_ap_variance_share": {
+          "within_object": 0.5724175519781903,
+          "between_objects_within_class": 0.3227628028716372,
+          "between_classes": 0.10481964515017266
+        },
+        "mean_squared_ap_distance_other_sketch_same_object": 0.13281707175624669,
+        "mean_squared_ap_distance_same_class_different_object": 0.17245615451860144
+      },
+      "best_contrast": {
+        "descriptive_ap_variance_share": {
+          "within_object": 0.5628098850749531,
+          "between_objects_within_class": 0.33488162474081523,
+          "between_classes": 0.10230849018423185
+        },
+        "mean_squared_ap_distance_other_sketch_same_object": 0.1199958705837403,
+        "mean_squared_ap_distance_same_class_different_object": 0.15903654414943294
+      },
+      "primary": {
+        "descriptive_ap_variance_share": {
+          "within_object": 0.5707913762617933,
+          "between_objects_within_class": 0.3271923894932542,
+          "between_classes": 0.10201623424495246
+        },
+        "mean_squared_ap_distance_other_sketch_same_object": 0.12313042280047744,
+        "mean_squared_ap_distance_same_class_different_object": 0.1608685733623888
+      }
+    }
+  },
+  "sketchy_2": {
+    "queries": 12694,
+    "queries_with_verified_source_photo": 12694,
+    "unverified": 0,
+    "object_instances": 2100,
+    "objects_with_multiple_sketches": 2100,
+    "top1_mistakes_with_sibling": 3224,
+    "a_sibling_gets_category_top1_given_current_miss": 0.908498759305211,
+    "random_sibling_top1_given_current_miss": 0.515209253112479,
+    "other_photo_random_sketch_top1_given_current_miss_within_same_class": 0.6174061344327673,
+    "method_breakdown": {
+      "baseline": {
+        "descriptive_ap_variance_share": {
+          "within_object": 0.5676436477224047,
+          "between_objects_within_class": 0.24061634725287281,
+          "between_classes": 0.19174000502472255
+        },
+        "mean_squared_ap_distance_other_sketch_same_object": 0.23118342348873658,
+        "mean_squared_ap_distance_same_class_different_object": 0.27678375832695956
+      },
+      "matched_base": {
+        "descriptive_ap_variance_share": {
+          "within_object": 0.5848461504342995,
+          "between_objects_within_class": 0.24669658616507212,
+          "between_classes": 0.16845726340062803
+        },
+        "mean_squared_ap_distance_other_sketch_same_object": 0.2325784880563684,
+        "mean_squared_ap_distance_same_class_different_object": 0.278114114074771
+      },
+      "best_contrast": {
+        "descriptive_ap_variance_share": {
+          "within_object": 0.5505634462904081,
+          "between_objects_within_class": 0.24172627011914694,
+          "between_classes": 0.20771028359044497
+        },
+        "mean_squared_ap_distance_other_sketch_same_object": 0.2131159396602385,
+        "mean_squared_ap_distance_same_class_different_object": 0.2580007814459056
+      },
+      "primary": {
+        "descriptive_ap_variance_share": {
+          "within_object": 0.565629357961862,
+          "between_objects_within_class": 0.2471581579605645,
+          "between_classes": 0.18721248407757343
+        },
+        "mean_squared_ap_distance_other_sketch_same_object": 0.21884837447564748,
+        "mean_squared_ap_distance_same_class_different_object": 0.2644459740737919
+      }
+    }
+  }
+}
