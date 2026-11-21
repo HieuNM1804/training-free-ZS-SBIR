@@ -25,7 +25,11 @@ from tf_sbir.domain_neutral_witness import DomainNeutralIndex
 index = DomainNeutralIndex(gallery_vectors, word_vectors, clip_logit_scale)
 scores = index.score(query_vector)["witness"]
 ranking = scores.argsort(dim=1, descending=True)
+first, second = ranking[0, :2].tolist()
+explanation = index.explain_pair(query_vector, first, second)
 ```
+
+The same public interface computes the score margin after every possible removal of one latent query word. It streams over the gallery twice per candidate in FP64. A separate check physically removes all 20,931 terms for two predetermined real queries and 72 gallery images per split and compares every predicted margin. These are implementation fixtures. Benchmark metrics use the full galleries.
 
 ## Experimental evidence and interpretation
 

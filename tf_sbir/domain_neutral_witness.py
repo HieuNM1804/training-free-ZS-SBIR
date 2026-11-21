@@ -71,6 +71,39 @@ class WordWitness:
             separate.scatter_add_(1,ids,response_change)
         return {"linear":e,"independent":e*separate,"witness":witnessed}
 
+    def deletion_effect(self, likelihood, candidate):
+        """Score and exact single-coordinate decreases, excluding the candidate at source."""
+        b = self.profile
+        if not 0<=candidate<len(b):
+            raise IndexError("Candidate outside the gallery")
+        l = likelihood.double()
+        own = b[candidate].double()
+        if len(b)==1:
+            return (own*l).sum(), own*l
+        def other_blocks():
+            # Splitting around the candidate avoids subtracting nearly equal values
+            # for a word supported mainly (or exclusively) by this one image.
+            for section in (b[:candidate],b[candidate+1:]):
+                for block in section.split(256):
+                    if len(block):
+                        yield block.double()
+        count = torch.zeros_like(l)
+        weighted = torch.zeros_like(l)
+        squares = torch.zeros_like(l)
+        for block in other_blocks():
+            count += block.sum(0)
+            weighted += (block @ l) @ block
+            squares += block.square().sum(0)
+        divisor = count.clamp_min(torch.finfo(l.dtype).tiny)
+        response = weighted / divisor
+        route = torch.where(count>0,own*l/divisor,0.)
+        reverse = torch.zeros_like(l)
+        for block in other_blocks():
+            reverse += (block @ route) @ block
+        forward = own * response
+        drops = l * (forward + reverse - l*own*(squares/divisor))
+        return (l*forward).sum(), drops
+
 
 class DomainNeutralIndex:
     """Build from gallery image vectors, isolated public-word vectors and CLIP scale."""
@@ -89,12 +122,28 @@ class DomainNeutralIndex:
         profiles,self.graph_statistics = native_diffusion(gallery,profiles,self.scale)
         self.model = WordWitness(profiles)
 
-    @torch.inference_mode()
-    def score(self, query_images):
+    def likelihood(self, query_images):
         if query_images.ndim==1:
             query_images=query_images.unsqueeze(0)
         if query_images.ndim!=2 or query_images.size(1)!=self.words.size(1):
             raise ValueError("Expected one query vector or a matrix of query vectors")
         logits = (F.normalize(query_images.float()) @ self.words.T)*self.scale
         likelihood = (logits-logits.amax(1,keepdim=True)).exp()
-        return self.model.scores(likelihood)
+        return likelihood
+
+    @torch.inference_mode()
+    def score(self, query_images):
+        return self.model.scores(self.likelihood(query_images))
+
+    @torch.inference_mode()
+    def explain_pair(self, query_image, first, second):
+        """Margin for two photos after each possible deletion in the query word space."""
+        likelihood = self.likelihood(query_image)
+        if len(likelihood)!=1:
+            raise ValueError("Pair explanations take exactly one query at a time")
+        high,drop_high = self.model.deletion_effect(likelihood[0],first)
+        low,drop_low = self.model.deletion_effect(likelihood[0],second)
+        margin = high-low
+        margins = margin - (drop_high-drop_low)
+        return {"original_margin":margin,"margin_after_each_deletion":margins,
+                "most_damaging_word":int(margins.argmin())}
