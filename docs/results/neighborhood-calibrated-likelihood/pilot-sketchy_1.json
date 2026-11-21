@@ -1,0 +1,465 @@
+{
+  "revision": "a8a73530a993133cb4f8058bfe61e7f70cb0f68f",
+  "family": "neighborhood-calibrated-likelihood",
+  "queries": 1200,
+  "gallery": 17100,
+  "classes": 25,
+  "checkpoint_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+  "dataset_sha256": "8fafaf3aedf4751e28e2b33f073832e02fdf3ca1b36a9d7fda5ff328f26b0642",
+  "kd_sha256": "3433c60a3739e852c94e573832dd53d51446f433326a453392d316b402402fbe",
+  "gpu": "NVIDIA L4",
+  "external_vocabulary": 20931,
+  "exploratory_unseen": true,
+  "freeze_sha256": null,
+  "settings": {
+    "e4b35e40b2d699a4": {
+      "parameters": {
+        "k": 16,
+        "calibration": "likelihood",
+        "estimator": "mle",
+        "weighting": "cosine",
+        "shuffled": false
+      },
+      "mAP": 0.8037275075912476,
+      "precision": 0.8051583170890808
+    },
+    "c30535fdc28c4fc3": {
+      "parameters": {
+        "k": 16,
+        "calibration": "likelihood",
+        "estimator": "one-update",
+        "weighting": "cosine",
+        "shuffled": false
+      },
+      "mAP": 0.7996087074279785,
+      "precision": 0.8069083094596863
+    },
+    "3ef38ed581a3927d": {
+      "parameters": {
+        "k": 16,
+        "calibration": "posterior",
+        "estimator": "mle",
+        "weighting": "cosine",
+        "shuffled": false
+      },
+      "mAP": 0.8058422803878784,
+      "precision": 0.8060916662216187
+    },
+    "8c24e55b230b0c5c": {
+      "parameters": {
+        "k": 16,
+        "calibration": "posterior",
+        "estimator": "one-update",
+        "weighting": "cosine",
+        "shuffled": false
+      },
+      "mAP": 0.8011162281036377,
+      "precision": 0.8077499866485596
+    },
+    "26c8c837f2590b5e": {
+      "parameters": {
+        "k": 16,
+        "calibration": "posterior",
+        "estimator": "uniform",
+        "weighting": "cosine",
+        "shuffled": false
+      },
+      "mAP": 0.7827675342559814,
+      "precision": 0.7959083914756775
+    },
+    "5399ea48f0a99677": {
+      "parameters": {
+        "k": 16,
+        "calibration": "likelihood",
+        "estimator": "mle",
+        "weighting": "uniform",
+        "shuffled": false
+      },
+      "mAP": 0.8026978969573975,
+      "precision": 0.804900050163269
+    },
+    "9f2f5cfecad35f5b": {
+      "parameters": {
+        "k": 16,
+        "calibration": "likelihood",
+        "estimator": "one-update",
+        "weighting": "uniform",
+        "shuffled": false
+      },
+      "mAP": 0.7995021343231201,
+      "precision": 0.8057833313941956
+    },
+    "4ee7da6e5b7993f1": {
+      "parameters": {
+        "k": 16,
+        "calibration": "posterior",
+        "estimator": "mle",
+        "weighting": "uniform",
+        "shuffled": false
+      },
+      "mAP": 0.8060743808746338,
+      "precision": 0.8063499927520752
+    },
+    "293d6cfe8157a2c7": {
+      "parameters": {
+        "k": 16,
+        "calibration": "posterior",
+        "estimator": "one-update",
+        "weighting": "uniform",
+        "shuffled": false
+      },
+      "mAP": 0.8028528094291687,
+      "precision": 0.808233380317688
+    },
+    "11715287bfe0c285": {
+      "parameters": {
+        "k": 16,
+        "calibration": "posterior",
+        "estimator": "uniform",
+        "weighting": "uniform",
+        "shuffled": false
+      },
+      "mAP": 0.7892276048660278,
+      "precision": 0.79913330078125
+    },
+    "37409e6faea533ad": {
+      "parameters": {
+        "k": 64,
+        "calibration": "likelihood",
+        "estimator": "mle",
+        "weighting": "cosine",
+        "shuffled": false
+      },
+      "mAP": 0.8050955533981323,
+      "precision": 0.8033333420753479
+    },
+    "22e26924bccd3598": {
+      "parameters": {
+        "k": 64,
+        "calibration": "likelihood",
+        "estimator": "one-update",
+        "weighting": "cosine",
+        "shuffled": false
+      },
+      "mAP": 0.8039334416389465,
+      "precision": 0.8076499700546265
+    },
+    "f262d5323568918a": {
+      "parameters": {
+        "k": 64,
+        "calibration": "posterior",
+        "estimator": "mle",
+        "weighting": "cosine",
+        "shuffled": false
+      },
+      "mAP": 0.8108537197113037,
+      "precision": 0.8075250387191772
+    },
+    "e6f2c55906a079c8": {
+      "parameters": {
+        "k": 64,
+        "calibration": "posterior",
+        "estimator": "one-update",
+        "weighting": "cosine",
+        "shuffled": false
+      },
+      "mAP": 0.8081398010253906,
+      "precision": 0.8100000023841858
+    },
+    "468908c63e3cb1f3": {
+      "parameters": {
+        "k": 64,
+        "calibration": "posterior",
+        "estimator": "uniform",
+        "weighting": "cosine",
+        "shuffled": false
+      },
+      "mAP": 0.7954347133636475,
+      "precision": 0.8022833466529846
+    },
+    "beffd4eaaf735050": {
+      "parameters": {
+        "k": 64,
+        "calibration": "likelihood",
+        "estimator": "mle",
+        "weighting": "uniform",
+        "shuffled": false
+      },
+      "mAP": 0.8035740256309509,
+      "precision": 0.801508367061615
+    },
+    "023375ef43f09ec0": {
+      "parameters": {
+        "k": 64,
+        "calibration": "likelihood",
+        "estimator": "one-update",
+        "weighting": "uniform",
+        "shuffled": false
+      },
+      "mAP": 0.8033395409584045,
+      "precision": 0.8075083494186401
+    },
+    "85fbc69d6ee7915a": {
+      "parameters": {
+        "k": 64,
+        "calibration": "posterior",
+        "estimator": "mle",
+        "weighting": "uniform",
+        "shuffled": false
+      },
+      "mAP": 0.8102394342422485,
+      "precision": 0.807075023651123
+    },
+    "9ca3214c5a7d5b06": {
+      "parameters": {
+        "k": 64,
+        "calibration": "posterior",
+        "estimator": "one-update",
+        "weighting": "uniform",
+        "shuffled": false
+      },
+      "mAP": 0.8087954521179199,
+      "precision": 0.8102999925613403
+    },
+    "8725e8a3925e89f9": {
+      "parameters": {
+        "k": 64,
+        "calibration": "posterior",
+        "estimator": "uniform",
+        "weighting": "uniform",
+        "shuffled": false
+      },
+      "mAP": 0.7994863390922546,
+      "precision": 0.8047666549682617
+    },
+    "0e773b5eb4864427": {
+      "parameters": {
+        "k": 128,
+        "calibration": "likelihood",
+        "estimator": "mle",
+        "weighting": "cosine",
+        "shuffled": false
+      },
+      "mAP": 0.805878221988678,
+      "precision": 0.8012999892234802
+    },
+    "c91bbee36ce4cf05": {
+      "parameters": {
+        "k": 128,
+        "calibration": "likelihood",
+        "estimator": "one-update",
+        "weighting": "cosine",
+        "shuffled": false
+      },
+      "mAP": 0.8061766624450684,
+      "precision": 0.8086082935333252
+    },
+    "74614f87f48340d8": {
+      "parameters": {
+        "k": 128,
+        "calibration": "posterior",
+        "estimator": "mle",
+        "weighting": "cosine",
+        "shuffled": false
+      },
+      "mAP": 0.8130908608436584,
+      "precision": 0.8093083500862122
+    },
+    "99cc391324aeb3d2": {
+      "parameters": {
+        "k": 128,
+        "calibration": "posterior",
+        "estimator": "one-update",
+        "weighting": "cosine",
+        "shuffled": false
+      },
+      "mAP": 0.8115087151527405,
+      "precision": 0.8115667104721069
+    },
+    "2bd6000bda029355": {
+      "parameters": {
+        "k": 128,
+        "calibration": "posterior",
+        "estimator": "uniform",
+        "weighting": "cosine",
+        "shuffled": false
+      },
+      "mAP": 0.800796389579773,
+      "precision": 0.8047000169754028
+    },
+    "942d27983050e320": {
+      "parameters": {
+        "k": 128,
+        "calibration": "likelihood",
+        "estimator": "mle",
+        "weighting": "uniform",
+        "shuffled": false
+      },
+      "mAP": 0.8053498268127441,
+      "precision": 0.8010750412940979
+    },
+    "10d124f95aa03d68": {
+      "parameters": {
+        "k": 128,
+        "calibration": "likelihood",
+        "estimator": "one-update",
+        "weighting": "uniform",
+        "shuffled": false
+      },
+      "mAP": 0.8062791228294373,
+      "precision": 0.8080083131790161
+    },
+    "3f832f4595b57cc8": {
+      "parameters": {
+        "k": 128,
+        "calibration": "posterior",
+        "estimator": "mle",
+        "weighting": "uniform",
+        "shuffled": false
+      },
+      "mAP": 0.8127090930938721,
+      "precision": 0.8098000288009644
+    },
+    "cdd5e348e4ecc2c2": {
+      "parameters": {
+        "k": 128,
+        "calibration": "posterior",
+        "estimator": "one-update",
+        "weighting": "uniform",
+        "shuffled": false
+      },
+      "mAP": 0.8128051161766052,
+      "precision": 0.8131499886512756
+    },
+    "3789bea4b38093db": {
+      "parameters": {
+        "k": 128,
+        "calibration": "posterior",
+        "estimator": "uniform",
+        "weighting": "uniform",
+        "shuffled": false
+      },
+      "mAP": 0.8043895959854126,
+      "precision": 0.8076916933059692
+    },
+    "98f763c1566870a6": {
+      "parameters": {
+        "k": 256,
+        "calibration": "likelihood",
+        "estimator": "mle",
+        "weighting": "cosine",
+        "shuffled": false
+      },
+      "mAP": 0.8077636957168579,
+      "precision": 0.8002666234970093
+    },
+    "fe6a85caa4809ac0": {
+      "parameters": {
+        "k": 256,
+        "calibration": "likelihood",
+        "estimator": "one-update",
+        "weighting": "cosine",
+        "shuffled": false
+      },
+      "mAP": 0.808416485786438,
+      "precision": 0.8057833909988403
+    },
+    "182e69d1e116fb5e": {
+      "parameters": {
+        "k": 256,
+        "calibration": "posterior",
+        "estimator": "mle",
+        "weighting": "cosine",
+        "shuffled": false
+      },
+      "mAP": 0.815660834312439,
+      "precision": 0.8100749850273132
+    },
+    "333081c40a0dafcd": {
+      "parameters": {
+        "k": 256,
+        "calibration": "posterior",
+        "estimator": "one-update",
+        "weighting": "cosine",
+        "shuffled": false
+      },
+      "mAP": 0.8156625628471375,
+      "precision": 0.814008355140686
+    },
+    "254d637a96619d9f": {
+      "parameters": {
+        "k": 256,
+        "calibration": "posterior",
+        "estimator": "uniform",
+        "weighting": "cosine",
+        "shuffled": false
+      },
+      "mAP": 0.8066990375518799,
+      "precision": 0.8075916767120361
+    },
+    "536d3d1be3786b8b": {
+      "parameters": {
+        "k": 256,
+        "calibration": "likelihood",
+        "estimator": "mle",
+        "weighting": "uniform",
+        "shuffled": false
+      },
+      "mAP": 0.807769238948822,
+      "precision": 0.8001000285148621
+    },
+    "5213d1fa0d8adcaa": {
+      "parameters": {
+        "k": 256,
+        "calibration": "likelihood",
+        "estimator": "one-update",
+        "weighting": "uniform",
+        "shuffled": false
+      },
+      "mAP": 0.8088763356208801,
+      "precision": 0.8052667379379272
+    },
+    "c08102a38920bc88": {
+      "parameters": {
+        "k": 256,
+        "calibration": "posterior",
+        "estimator": "mle",
+        "weighting": "uniform",
+        "shuffled": false
+      },
+      "mAP": 0.8165608644485474,
+      "precision": 0.8119416832923889
+    },
+    "6b1591f094ca69b6": {
+      "parameters": {
+        "k": 256,
+        "calibration": "posterior",
+        "estimator": "one-update",
+        "weighting": "uniform",
+        "shuffled": false
+      },
+      "mAP": 0.818226158618927,
+      "precision": 0.817341685295105
+    },
+    "82355fa4d8ffbe9f": {
+      "parameters": {
+        "k": 256,
+        "calibration": "posterior",
+        "estimator": "uniform",
+        "weighting": "uniform",
+        "shuffled": false
+      },
+      "mAP": 0.8111284375190735,
+      "precision": 0.810491681098938
+    }
+  },
+  "seed": 4783,
+  "diagnostic": {
+    "iterations": 16,
+    "relative_log_likelihood": -6.2082932947671905,
+    "last_increase": 0.0002765366905617128,
+    "tolerance_nats": 0.00034526698300124393,
+    "effective_number_of_concepts": 65.22610473632812,
+    "maximum_mass": 0.04185592755675316
+  }
+}

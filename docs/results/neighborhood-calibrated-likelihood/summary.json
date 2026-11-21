@@ -1,0 +1,1159 @@
+{
+  "family": "neighborhood-calibrated-likelihood",
+  "measured_revision": "a8a73530a993133cb4f8058bfe61e7f70cb0f68f",
+  "selected_parameters": {
+    "k": 256,
+    "calibration": "posterior",
+    "estimator": "mle",
+    "weighting": "cosine",
+    "shuffled": false
+  },
+  "freeze_sha256": "2be510938d30f89e574618b5fea1a1541c8a712409982e4a04015c77ef9eee53",
+  "joint_sha256": "53e79e32a7a063021c5c45b2d54fc0d0f36007af80335fb546a5b29ed05fe418",
+  "new_TU_rows_before_lock": 0,
+  "measurements": {
+    "sketchy_1": {
+      "mAP": 0.8265085816383362,
+      "precision": 0.8209894895553589,
+      "map_k": 0,
+      "p_k": 100,
+      "revision": "a8a73530a993133cb4f8058bfe61e7f70cb0f68f",
+      "sha256": "9a78ce441ac4eb9a9bcb3d6ce96d4becd50df3b0eec33f24833694afb3e1448a",
+      "queries": 14179,
+      "gallery": 17100,
+      "classes": 25,
+      "controls": {
+        "primary": {
+          "mAP": 0.8265085816383362,
+          "precision": 0.8209894895553589,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "a8a73530a993133cb4f8058bfe61e7f70cb0f68f",
+          "sha256": "9a78ce441ac4eb9a9bcb3d6ce96d4becd50df3b0eec33f24833694afb3e1448a",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 25
+            },
+            "precision": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 25
+            }
+          },
+          "parameters": {
+            "k": 256,
+            "calibration": "posterior",
+            "estimator": "mle",
+            "weighting": "cosine",
+            "shuffled": false
+          }
+        },
+        "no_neighborhood": {
+          "mAP": 0.8060232996940613,
+          "precision": 0.8127124905586243,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "a8a73530a993133cb4f8058bfe61e7f70cb0f68f",
+          "sha256": "a7831f52db6f4f85f601731be0ef3055de9c2bd20823be7c6c766ecc740fd0a7",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 2.0485303742044296,
+              "ci95_class": [
+                1.2621741706128295,
+                3.113745458237098
+              ],
+              "classes_up": 23,
+              "classes": 25
+            },
+            "precision": {
+              "delta_pp": 0.8277027813939863,
+              "ci95_class": [
+                0.02659810480228342,
+                1.6258590152604655
+              ],
+              "classes_up": 18,
+              "classes": 25
+            }
+          },
+          "parameters": {
+            "k": 0,
+            "calibration": "posterior",
+            "estimator": "mle",
+            "weighting": "cosine",
+            "shuffled": false
+          }
+        },
+        "uniform_prior": {
+          "mAP": 0.8153833150863647,
+          "precision": 0.8145066499710083,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "a8a73530a993133cb4f8058bfe61e7f70cb0f68f",
+          "sha256": "31990f8fa1ea13a286ac6474502cb3d56063188bc5f8bde02eee4f26efcdaf02",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 1.1125281136539442,
+              "ci95_class": [
+                -0.1968087501514373,
+                2.3517749112531425
+              ],
+              "classes_up": 18,
+              "classes": 25
+            },
+            "precision": {
+              "delta_pp": 0.6482826667217158,
+              "ci95_class": [
+                -0.6227110476591602,
+                1.9450873001195843
+              ],
+              "classes_up": 15,
+              "classes": 25
+            }
+          },
+          "parameters": {
+            "k": 256,
+            "calibration": "posterior",
+            "estimator": "uniform",
+            "weighting": "cosine",
+            "shuffled": false
+          }
+        },
+        "before_neighborhood": {
+          "mAP": 0.8265085816383362,
+          "precision": 0.8209894895553589,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "a8a73530a993133cb4f8058bfe61e7f70cb0f68f",
+          "sha256": "9a78ce441ac4eb9a9bcb3d6ce96d4becd50df3b0eec33f24833694afb3e1448a",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 25
+            },
+            "precision": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 25
+            }
+          },
+          "parameters": {
+            "k": 256,
+            "calibration": "posterior",
+            "estimator": "mle",
+            "weighting": "cosine",
+            "shuffled": false
+          }
+        },
+        "after_neighborhood": {
+          "mAP": 0.8192971348762512,
+          "precision": 0.8139135837554932,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "a8a73530a993133cb4f8058bfe61e7f70cb0f68f",
+          "sha256": "064f05671cc84fec861568372cc765e544d9799105ad32c814679928082f9750",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 0.7211445508323391,
+              "ci95_class": [
+                0.190579039597563,
+                1.331410800143778
+              ],
+              "classes_up": 17,
+              "classes": 25
+            },
+            "precision": {
+              "delta_pp": 0.707595698326307,
+              "ci95_class": [
+                -0.03791527846479518,
+                1.5601321733920361
+              ],
+              "classes_up": 12,
+              "classes": 25
+            }
+          },
+          "parameters": {
+            "k": 256,
+            "calibration": "likelihood",
+            "estimator": "mle",
+            "weighting": "cosine",
+            "shuffled": false
+          }
+        },
+        "one_update": {
+          "mAP": 0.8243774771690369,
+          "precision": 0.82086181640625,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "a8a73530a993133cb4f8058bfe61e7f70cb0f68f",
+          "sha256": "b4821707c759273a3204e848efcbb8e234c0eb0c2353f003866220e3a97d2ea2",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 0.2131027868198183,
+              "ci95_class": [
+                -0.4352666839783541,
+                0.8256375792561568
+              ],
+              "classes_up": 16,
+              "classes": 25
+            },
+            "precision": {
+              "delta_pp": 0.012765359573559646,
+              "ci95_class": [
+                -0.6962617287359792,
+                0.6956660291928328
+              ],
+              "classes_up": 15,
+              "classes": 25
+            }
+          },
+          "parameters": {
+            "k": 256,
+            "calibration": "posterior",
+            "estimator": "one-update",
+            "weighting": "cosine",
+            "shuffled": false
+          }
+        },
+        "mle": {
+          "mAP": 0.8265085816383362,
+          "precision": 0.8209894895553589,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "a8a73530a993133cb4f8058bfe61e7f70cb0f68f",
+          "sha256": "9a78ce441ac4eb9a9bcb3d6ce96d4becd50df3b0eec33f24833694afb3e1448a",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 25
+            },
+            "precision": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 25
+            }
+          },
+          "parameters": {
+            "k": 256,
+            "calibration": "posterior",
+            "estimator": "mle",
+            "weighting": "cosine",
+            "shuffled": false
+          }
+        },
+        "cosine_weighting": {
+          "mAP": 0.8265085816383362,
+          "precision": 0.8209894895553589,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "a8a73530a993133cb4f8058bfe61e7f70cb0f68f",
+          "sha256": "9a78ce441ac4eb9a9bcb3d6ce96d4becd50df3b0eec33f24833694afb3e1448a",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 25
+            },
+            "precision": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 25
+            }
+          },
+          "parameters": {
+            "k": 256,
+            "calibration": "posterior",
+            "estimator": "mle",
+            "weighting": "cosine",
+            "shuffled": false
+          }
+        },
+        "uniform_weights": {
+          "mAP": 0.827285647392273,
+          "precision": 0.8227152824401855,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "a8a73530a993133cb4f8058bfe61e7f70cb0f68f",
+          "sha256": "29c229e4314e9dcd6534ae57551947b6f204b94cdfb20a7c02cc932147784774",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": -0.07769579718221654,
+              "ci95_class": [
+                -0.23318254275057482,
+                0.09143022502917736
+              ],
+              "classes_up": 9,
+              "classes": 25
+            },
+            "precision": {
+              "delta_pp": -0.17257915988803052,
+              "ci95_class": [
+                -0.5018103435380324,
+                0.16218361280085805
+              ],
+              "classes_up": 10,
+              "classes": 25
+            }
+          },
+          "parameters": {
+            "k": 256,
+            "calibration": "posterior",
+            "estimator": "mle",
+            "weighting": "uniform",
+            "shuffled": false
+          }
+        },
+        "random_neighborhood": {
+          "mAP": 0.05087849125266075,
+          "precision": 0.04164186492562294,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "a8a73530a993133cb4f8058bfe61e7f70cb0f68f",
+          "sha256": "4b51ad78dcc19a6415c2b8de0e613b89c368ae2beb94f9eee190801b6344d468",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 77.56301186702554,
+              "ci95_class": [
+                72.85123627427019,
+                81.6723540124483
+              ],
+              "classes_up": 25,
+              "classes": 25
+            },
+            "precision": {
+              "delta_pp": 77.93476270889163,
+              "ci95_class": [
+                73.01262385930426,
+                82.16293613853229
+              ],
+              "classes_up": 25,
+              "classes": 25
+            }
+          },
+          "parameters": {
+            "k": 256,
+            "calibration": "posterior",
+            "estimator": "mle",
+            "weighting": "cosine",
+            "shuffled": true
+          }
+        }
+      },
+      "kd_replay": {
+        "queries": 14179,
+        "mAP": 0.826508641242981,
+        "precision": 0.8209894895553589,
+        "kd_minus_pipeline_max_abs_same_order_AP_P": [
+          0.0,
+          0.0
+        ],
+        "max_per_query_abs_AP_P": [
+          0.0,
+          0.0
+        ],
+        "mean_per_query_abs_AP_P": [
+          0.0,
+          0.0
+        ],
+        "queries_within_1e-6_both": 14179
+      }
+    },
+    "sketchy_2": {
+      "mAP": 0.7478904128074646,
+      "precision": 0.73594731092453,
+      "map_k": 200,
+      "p_k": 200,
+      "revision": "a8a73530a993133cb4f8058bfe61e7f70cb0f68f",
+      "sha256": "57d6ef79d194c5be6fef45b3053736a5358474d2543f38d5e866657b3454ad6a",
+      "queries": 12694,
+      "gallery": 12552,
+      "classes": 21,
+      "controls": {
+        "primary": {
+          "mAP": 0.7478904128074646,
+          "precision": 0.73594731092453,
+          "map_k": 200,
+          "p_k": 200,
+          "revision": "a8a73530a993133cb4f8058bfe61e7f70cb0f68f",
+          "sha256": "57d6ef79d194c5be6fef45b3053736a5358474d2543f38d5e866657b3454ad6a",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 21
+            },
+            "precision": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 21
+            }
+          },
+          "parameters": {
+            "k": 256,
+            "calibration": "posterior",
+            "estimator": "mle",
+            "weighting": "cosine",
+            "shuffled": false
+          }
+        },
+        "no_neighborhood": {
+          "mAP": 0.7401891350746155,
+          "precision": 0.7285922765731812,
+          "map_k": 200,
+          "p_k": 200,
+          "revision": "a8a73530a993133cb4f8058bfe61e7f70cb0f68f",
+          "sha256": "8b1d707a36717cd7804844f2aa7774ef1429a4911a476dc8c950490756d49654",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 0.7701264389786046,
+              "ci95_class": [
+                -0.09148257673617835,
+                1.6160166331798198
+              ],
+              "classes_up": 14,
+              "classes": 21
+            },
+            "precision": {
+              "delta_pp": 0.7355049260433723,
+              "ci95_class": [
+                -0.29402291615386716,
+                1.6735406309111902
+              ],
+              "classes_up": 15,
+              "classes": 21
+            }
+          },
+          "parameters": {
+            "k": 0,
+            "calibration": "posterior",
+            "estimator": "mle",
+            "weighting": "cosine",
+            "shuffled": false
+          }
+        },
+        "uniform_prior": {
+          "mAP": 0.7374024391174316,
+          "precision": 0.7262269258499146,
+          "map_k": 200,
+          "p_k": 200,
+          "revision": "a8a73530a993133cb4f8058bfe61e7f70cb0f68f",
+          "sha256": "02c3236bd145982a0d39ee0f580b189e5dd466c8de9f0cedcce1ec8199fce949",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 1.0487958109822129,
+              "ci95_class": [
+                -0.6399981104825028,
+                2.764718374495371
+              ],
+              "classes_up": 12,
+              "classes": 21
+            },
+            "precision": {
+              "delta_pp": 0.9720340611335939,
+              "ci95_class": [
+                -0.7270114622013347,
+                2.7353155247262224
+              ],
+              "classes_up": 12,
+              "classes": 21
+            }
+          },
+          "parameters": {
+            "k": 256,
+            "calibration": "posterior",
+            "estimator": "uniform",
+            "weighting": "cosine",
+            "shuffled": false
+          }
+        },
+        "before_neighborhood": {
+          "mAP": 0.7478904128074646,
+          "precision": 0.73594731092453,
+          "map_k": 200,
+          "p_k": 200,
+          "revision": "a8a73530a993133cb4f8058bfe61e7f70cb0f68f",
+          "sha256": "57d6ef79d194c5be6fef45b3053736a5358474d2543f38d5e866657b3454ad6a",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 21
+            },
+            "precision": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 21
+            }
+          },
+          "parameters": {
+            "k": 256,
+            "calibration": "posterior",
+            "estimator": "mle",
+            "weighting": "cosine",
+            "shuffled": false
+          }
+        },
+        "after_neighborhood": {
+          "mAP": 0.7493645548820496,
+          "precision": 0.7378025054931641,
+          "map_k": 200,
+          "p_k": 200,
+          "revision": "a8a73530a993133cb4f8058bfe61e7f70cb0f68f",
+          "sha256": "a89eeeea14225e441a84d4c313f60247a65297a18ffabf0818ae269159fcad0b",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": -0.14741155623022673,
+              "ci95_class": [
+                -1.292448511005935,
+                1.5283463038651321
+              ],
+              "classes_up": 5,
+              "classes": 21
+            },
+            "precision": {
+              "delta_pp": -0.18552064293138865,
+              "ci95_class": [
+                -1.1657794089057774,
+                0.8255301661393529
+              ],
+              "classes_up": 7,
+              "classes": 21
+            }
+          },
+          "parameters": {
+            "k": 256,
+            "calibration": "likelihood",
+            "estimator": "mle",
+            "weighting": "cosine",
+            "shuffled": false
+          }
+        },
+        "one_update": {
+          "mAP": 0.7412953972816467,
+          "precision": 0.729465126991272,
+          "map_k": 200,
+          "p_k": 200,
+          "revision": "a8a73530a993133cb4f8058bfe61e7f70cb0f68f",
+          "sha256": "c215f9c34722578b8459f81f89fdfaf80af042663074f2a739696d9598cd00bf",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 0.6595010003215869,
+              "ci95_class": [
+                -0.27677972152034364,
+                1.785691370460841
+              ],
+              "classes_up": 12,
+              "classes": 21
+            },
+            "precision": {
+              "delta_pp": 0.6482196485349911,
+              "ci95_class": [
+                -0.3032052456411905,
+                1.8438345720795852
+              ],
+              "classes_up": 12,
+              "classes": 21
+            }
+          },
+          "parameters": {
+            "k": 256,
+            "calibration": "posterior",
+            "estimator": "one-update",
+            "weighting": "cosine",
+            "shuffled": false
+          }
+        },
+        "mle": {
+          "mAP": 0.7478904128074646,
+          "precision": 0.73594731092453,
+          "map_k": 200,
+          "p_k": 200,
+          "revision": "a8a73530a993133cb4f8058bfe61e7f70cb0f68f",
+          "sha256": "57d6ef79d194c5be6fef45b3053736a5358474d2543f38d5e866657b3454ad6a",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 21
+            },
+            "precision": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 21
+            }
+          },
+          "parameters": {
+            "k": 256,
+            "calibration": "posterior",
+            "estimator": "mle",
+            "weighting": "cosine",
+            "shuffled": false
+          }
+        },
+        "cosine_weighting": {
+          "mAP": 0.7478904128074646,
+          "precision": 0.73594731092453,
+          "map_k": 200,
+          "p_k": 200,
+          "revision": "a8a73530a993133cb4f8058bfe61e7f70cb0f68f",
+          "sha256": "57d6ef79d194c5be6fef45b3053736a5358474d2543f38d5e866657b3454ad6a",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 21
+            },
+            "precision": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 21
+            }
+          },
+          "parameters": {
+            "k": 256,
+            "calibration": "posterior",
+            "estimator": "mle",
+            "weighting": "cosine",
+            "shuffled": false
+          }
+        },
+        "uniform_weights": {
+          "mAP": 0.7439365983009338,
+          "precision": 0.7345096468925476,
+          "map_k": 200,
+          "p_k": 200,
+          "revision": "a8a73530a993133cb4f8058bfe61e7f70cb0f68f",
+          "sha256": "3b253f3c205eda1f47806522bb34c430139737f72b980b5b56a605c1910b7983",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 0.3953839704807838,
+              "ci95_class": [
+                -0.5400819799752055,
+                1.8528681178908653
+              ],
+              "classes_up": 7,
+              "classes": 21
+            },
+            "precision": {
+              "delta_pp": 0.14376875469603415,
+              "ci95_class": [
+                -0.4646150774741142,
+                0.8498226175083818
+              ],
+              "classes_up": 8,
+              "classes": 21
+            }
+          },
+          "parameters": {
+            "k": 256,
+            "calibration": "posterior",
+            "estimator": "mle",
+            "weighting": "uniform",
+            "shuffled": false
+          }
+        },
+        "random_neighborhood": {
+          "mAP": 0.0857943445444107,
+          "precision": 0.037455882877111435,
+          "map_k": 200,
+          "p_k": 200,
+          "revision": "a8a73530a993133cb4f8058bfe61e7f70cb0f68f",
+          "sha256": "163bc160934be70429682c864fd2ce2dcd850c3c1fbf490270b102bb606c3a43",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 66.20960915652304,
+              "ci95_class": [
+                57.95445535323727,
+                73.48915954607759
+              ],
+              "classes_up": 21,
+              "classes": 21
+            },
+            "precision": {
+              "delta_pp": 69.84914149168267,
+              "ci95_class": [
+                61.32179589378811,
+                77.70118490503482
+              ],
+              "classes_up": 21,
+              "classes": 21
+            }
+          },
+          "parameters": {
+            "k": 256,
+            "calibration": "posterior",
+            "estimator": "mle",
+            "weighting": "cosine",
+            "shuffled": true
+          }
+        }
+      },
+      "kd_replay": {
+        "queries": 12694,
+        "mAP": 0.7478904724121094,
+        "precision": 0.73594731092453,
+        "kd_minus_pipeline_max_abs_same_order_AP_P": [
+          0.0,
+          0.0
+        ],
+        "max_per_query_abs_AP_P": [
+          0.0,
+          0.0
+        ],
+        "mean_per_query_abs_AP_P": [
+          0.0,
+          0.0
+        ],
+        "queries_within_1e-6_both": 12694
+      }
+    },
+    "tuberlin": {
+      "mAP": 0.7831517457962036,
+      "precision": 0.7759718894958496,
+      "map_k": 0,
+      "p_k": 100,
+      "revision": "a8a73530a993133cb4f8058bfe61e7f70cb0f68f",
+      "sha256": "30c057d0ec1e71ae6b4e1498b556b04c634e607a6c93e3d54625fd9cba0a7ce0",
+      "queries": 2130,
+      "gallery": 27262,
+      "classes": 30,
+      "controls": {
+        "primary": {
+          "mAP": 0.7831517457962036,
+          "precision": 0.7759718894958496,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "a8a73530a993133cb4f8058bfe61e7f70cb0f68f",
+          "sha256": "30c057d0ec1e71ae6b4e1498b556b04c634e607a6c93e3d54625fd9cba0a7ce0",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 30
+            },
+            "precision": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 30
+            }
+          },
+          "parameters": {
+            "k": 256,
+            "calibration": "posterior",
+            "estimator": "mle",
+            "weighting": "cosine",
+            "shuffled": false
+          }
+        },
+        "no_neighborhood": {
+          "mAP": 0.765921413898468,
+          "precision": 0.7707793712615967,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "a8a73530a993133cb4f8058bfe61e7f70cb0f68f",
+          "sha256": "23db2a2ee9aceb9e3fc9541e3554b2af7a145aea76e1f3edcaee0dcf14b56665",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 1.7230370334249008,
+              "ci95_class": [
+                0.9313529181661472,
+                2.726740134832679
+              ],
+              "classes_up": 25,
+              "classes": 30
+            },
+            "precision": {
+              "delta_pp": 0.5192487497110042,
+              "ci95_class": [
+                -0.9637699206291187,
+                1.9765868812170675
+              ],
+              "classes_up": 18,
+              "classes": 30
+            }
+          },
+          "parameters": {
+            "k": 0,
+            "calibration": "posterior",
+            "estimator": "mle",
+            "weighting": "cosine",
+            "shuffled": false
+          }
+        },
+        "uniform_prior": {
+          "mAP": 0.7894777655601501,
+          "precision": 0.7946150302886963,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "a8a73530a993133cb4f8058bfe61e7f70cb0f68f",
+          "sha256": "20cad864a8f585627debf604cd093db99f5137530197300d58336afbf481cd05",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": -0.6326010376389878,
+              "ci95_class": [
+                -2.1117698969102925,
+                0.7873785714922508
+              ],
+              "classes_up": 15,
+              "classes": 30
+            },
+            "precision": {
+              "delta_pp": -1.8643191964868369,
+              "ci95_class": [
+                -3.979057436121207,
+                -0.1764143997022591
+              ],
+              "classes_up": 14,
+              "classes": 30
+            }
+          },
+          "parameters": {
+            "k": 256,
+            "calibration": "posterior",
+            "estimator": "uniform",
+            "weighting": "cosine",
+            "shuffled": false
+          }
+        },
+        "before_neighborhood": {
+          "mAP": 0.7831517457962036,
+          "precision": 0.7759718894958496,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "a8a73530a993133cb4f8058bfe61e7f70cb0f68f",
+          "sha256": "30c057d0ec1e71ae6b4e1498b556b04c634e607a6c93e3d54625fd9cba0a7ce0",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 30
+            },
+            "precision": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 30
+            }
+          },
+          "parameters": {
+            "k": 256,
+            "calibration": "posterior",
+            "estimator": "mle",
+            "weighting": "cosine",
+            "shuffled": false
+          }
+        },
+        "after_neighborhood": {
+          "mAP": 0.7598915100097656,
+          "precision": 0.7686479091644287,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "a8a73530a993133cb4f8058bfe61e7f70cb0f68f",
+          "sha256": "c5581751148cdd2e89e6c9ca05ce3326eae78f2d2e2f92a97783dea2cf28f1d9",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 2.326019038096455,
+              "ci95_class": [
+                0.596779670333825,
+                4.789822519739389
+              ],
+              "classes_up": 24,
+              "classes": 30
+            },
+            "precision": {
+              "delta_pp": 0.732394388916207,
+              "ci95_class": [
+                -0.4737144825412732,
+                2.2207783097005884
+              ],
+              "classes_up": 11,
+              "classes": 30
+            }
+          },
+          "parameters": {
+            "k": 256,
+            "calibration": "likelihood",
+            "estimator": "mle",
+            "weighting": "cosine",
+            "shuffled": false
+          }
+        },
+        "one_update": {
+          "mAP": 0.790166974067688,
+          "precision": 0.7875164747238159,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "a8a73530a993133cb4f8058bfe61e7f70cb0f68f",
+          "sha256": "33751e634e3a622b06f34694340ebe01742364605a71f17207c8e904c2a0fc15",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": -0.7015231477988648,
+              "ci95_class": [
+                -1.5738766048221646,
+                0.18658838259600125
+              ],
+              "classes_up": 14,
+              "classes": 30
+            },
+            "precision": {
+              "delta_pp": -1.1544600774494695,
+              "ci95_class": [
+                -2.3657433680121147,
+                -0.028160525499392745
+              ],
+              "classes_up": 10,
+              "classes": 30
+            }
+          },
+          "parameters": {
+            "k": 256,
+            "calibration": "posterior",
+            "estimator": "one-update",
+            "weighting": "cosine",
+            "shuffled": false
+          }
+        },
+        "mle": {
+          "mAP": 0.7831517457962036,
+          "precision": 0.7759718894958496,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "a8a73530a993133cb4f8058bfe61e7f70cb0f68f",
+          "sha256": "30c057d0ec1e71ae6b4e1498b556b04c634e607a6c93e3d54625fd9cba0a7ce0",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 30
+            },
+            "precision": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 30
+            }
+          },
+          "parameters": {
+            "k": 256,
+            "calibration": "posterior",
+            "estimator": "mle",
+            "weighting": "cosine",
+            "shuffled": false
+          }
+        },
+        "cosine_weighting": {
+          "mAP": 0.7831517457962036,
+          "precision": 0.7759718894958496,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "a8a73530a993133cb4f8058bfe61e7f70cb0f68f",
+          "sha256": "30c057d0ec1e71ae6b4e1498b556b04c634e607a6c93e3d54625fd9cba0a7ce0",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 30
+            },
+            "precision": {
+              "delta_pp": 0.0,
+              "ci95_class": [
+                0.0,
+                0.0
+              ],
+              "classes_up": 0,
+              "classes": 30
+            }
+          },
+          "parameters": {
+            "k": 256,
+            "calibration": "posterior",
+            "estimator": "mle",
+            "weighting": "cosine",
+            "shuffled": false
+          }
+        },
+        "uniform_weights": {
+          "mAP": 0.7781838178634644,
+          "precision": 0.7721361517906189,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "a8a73530a993133cb4f8058bfe61e7f70cb0f68f",
+          "sha256": "40c57449359a903a8e98d21ef411c95ce7fc418cb64ed864269e9d8e7fe264c5",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 0.4967942589701551,
+              "ci95_class": [
+                0.16461769088599432,
+                0.9213008456412243
+              ],
+              "classes_up": 25,
+              "classes": 30
+            },
+            "precision": {
+              "delta_pp": 0.38356807590090614,
+              "ci95_class": [
+                -0.034449289132039665,
+                0.9114714740736167
+              ],
+              "classes_up": 10,
+              "classes": 30
+            }
+          },
+          "parameters": {
+            "k": 256,
+            "calibration": "posterior",
+            "estimator": "mle",
+            "weighting": "uniform",
+            "shuffled": false
+          }
+        },
+        "random_neighborhood": {
+          "mAP": 0.04233597591519356,
+          "precision": 0.03246478736400604,
+          "map_k": 0,
+          "p_k": 100,
+          "revision": "a8a73530a993133cb4f8058bfe61e7f70cb0f68f",
+          "sha256": "dcbbe5819518358895dd4d61a088dcfebd1043034286ecae023daaad008a3b17",
+          "gain_of_primary": {
+            "mAP": {
+              "delta_pp": 74.08157759784402,
+              "ci95_class": [
+                67.37162514405416,
+                80.29507559050754
+              ],
+              "classes_up": 30,
+              "classes": 30
+            },
+            "precision": {
+              "delta_pp": 74.35070427904176,
+              "ci95_class": [
+                65.59795899849973,
+                82.26902734878851
+              ],
+              "classes_up": 30,
+              "classes": 30
+            }
+          },
+          "parameters": {
+            "k": 256,
+            "calibration": "posterior",
+            "estimator": "mle",
+            "weighting": "cosine",
+            "shuffled": true
+          }
+        }
+      },
+      "kd_replay": {
+        "queries": 2130,
+        "mAP": 0.7831517457962036,
+        "precision": 0.7759718298912048,
+        "kd_minus_pipeline_max_abs_same_order_AP_P": [
+          0.0,
+          0.0
+        ],
+        "max_per_query_abs_AP_P": [
+          0.0,
+          0.0
+        ],
+        "mean_per_query_abs_AP_P": [
+          0.0,
+          0.0
+        ],
+        "queries_within_1e-6_both": 2130
+      }
+    }
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "utc": "2026-11-21T02:36:11.807506+00:00",
+  "revision": "a8a73530a993133cb4f8058bfe61e7f70cb0f68f",
+  "criterion": "equal mean Sketchy mAP, then precision",
+  "canonical": {
+    "k": 64,
+    "calibration": "posterior",
+    "estimator": "mle",
+    "weighting": "uniform",
+    "shuffled": false
+  },
+  "winner": {
+    "k": 256,
+    "calibration": "posterior",
+    "estimator": "mle",
+    "weighting": "cosine",
+    "shuffled": false
+  },
+  "winner_id": "182e69d1e116fb5e",
+  "controls": {
+    "primary": {
+      "k": 256,
+      "calibration": "posterior",
+      "estimator": "mle",
+      "weighting": "cosine",
+      "shuffled": false
+    },
+    "no_neighborhood": {
+      "k": 0,
+      "calibration": "posterior",
+      "estimator": "mle",
+      "weighting": "cosine",
+      "shuffled": false
+    },
+    "uniform_prior": {
+      "k": 256,
+      "calibration": "posterior",
+      "estimator": "uniform",
+      "weighting": "cosine",
+      "shuffled": false
+    },
+    "before_neighborhood": {
+      "k": 256,
+      "calibration": "posterior",
+      "estimator": "mle",
+      "weighting": "cosine",
+      "shuffled": false
+    },
+    "after_neighborhood": {
+      "k": 256,
+      "calibration": "likelihood",
+      "estimator": "mle",
+      "weighting": "cosine",
+      "shuffled": false
+    },
+    "one_update": {
+      "k": 256,
+      "calibration": "posterior",
+      "estimator": "one-update",
+      "weighting": "cosine",
+      "shuffled": false
+    },
+    "mle": {
+      "k": 256,
+      "calibration": "posterior",
+      "estimator": "mle",
+      "weighting": "cosine",
+      "shuffled": false
+    },
+    "cosine_weighting": {
+      "k": 256,
+      "calibration": "posterior",
+      "estimator": "mle",
+      "weighting": "cosine",
+      "shuffled": false
+    },
+    "uniform_weights": {
+      "k": 256,
+      "calibration": "posterior",
+      "estimator": "mle",
+      "weighting": "uniform",
+      "shuffled": false
+    },
+    "random_neighborhood": {
+      "k": 256,
+      "calibration": "posterior",
+      "estimator": "mle",
+      "weighting": "cosine",
+      "shuffled": true
+    }
+  },
+  "sources": {
+    "sketchy_1-45349c31b612cf38.json": "4b51ad78dcc19a6415c2b8de0e613b89c368ae2beb94f9eee190801b6344d468",
+    "sketchy_1-c08102a38920bc88.json": "29c229e4314e9dcd6534ae57551947b6f204b94cdfb20a7c02cc932147784774",
+    "sketchy_1-333081c40a0dafcd.json": "b4821707c759273a3204e848efcbb8e234c0eb0c2353f003866220e3a97d2ea2",
+    "sketchy_1-182e69d1e116fb5e.json": "9a78ce441ac4eb9a9bcb3d6ce96d4becd50df3b0eec33f24833694afb3e1448a",
+    "sketchy_1-99cc391324aeb3d2.json": "b76c3455ec4491ab9d2f82081da6ac6d9c32b76fd01c7a68ed042c4258257eb5",
+    "sketchy_1-74614f87f48340d8.json": "6c5453d3640f990ff05bf00adcd942cdd56612d427a1942e5f2e87aaa06154c4",
+    "sketchy_1-254d637a96619d9f.json": "31990f8fa1ea13a286ac6474502cb3d56063188bc5f8bde02eee4f26efcdaf02",
+    "sketchy_1-85fbc69d6ee7915a.json": "c9a9afe0b9f42aa06a967e2b795912b8e8d1ef9b153cc6db0a09185d0ced7875",
+    "sketchy_1-98f763c1566870a6.json": "064f05671cc84fec861568372cc765e544d9799105ad32c814679928082f9750",
+    "sketchy_1-8519384ee4bf8fea.json": "a7831f52db6f4f85f601731be0ef3055de9c2bd20823be7c6c766ecc740fd0a7",
+    "sketchy_2-45349c31b612cf38.json": "163bc160934be70429682c864fd2ce2dcd850c3c1fbf490270b102bb606c3a43",
+    "sketchy_2-c08102a38920bc88.json": "3b253f3c205eda1f47806522bb34c430139737f72b980b5b56a605c1910b7983",
+    "sketchy_2-333081c40a0dafcd.json": "c215f9c34722578b8459f81f89fdfaf80af042663074f2a739696d9598cd00bf",
+    "sketchy_2-182e69d1e116fb5e.json": "57d6ef79d194c5be6fef45b3053736a5358474d2543f38d5e866657b3454ad6a",
+    "sketchy_2-99cc391324aeb3d2.json": "e070d17f191b18e30859db67930597ce6df503278fc52d4d577c624e5e629650",
+    "sketchy_2-74614f87f48340d8.json": "faf4ddfc19a5adcf90455bf699647295aeb8a2bee75e6ad1db3638d551dc99b3",
+    "sketchy_2-254d637a96619d9f.json": "02c3236bd145982a0d39ee0f580b189e5dd466c8de9f0cedcce1ec8199fce949",
+    "sketchy_2-85fbc69d6ee7915a.json": "44f0a0b6f1199cfd411c9fa583ccf8ffc5288b8cca20994b7457fa353a096cb6",
+    "sketchy_2-98f763c1566870a6.json": "a89eeeea14225e441a84d4c313f60247a65297a18ffabf0818ae269159fcad0b",
+    "sketchy_2-8519384ee4bf8fea.json": "8b1d707a36717cd7804844f2aa7774ef1429a4911a476dc8c950490756d49654"
+  },
+  "tu_rows_before_freeze": 0,
+  "sha256": "2be510938d30f89e574618b5fea1a1541c8a712409982e4a04015c77ef9eee53"
+}
