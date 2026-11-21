@@ -1,0 +1,121 @@
+{
+  "utc": "2026-11-21T04:23:47.301016+00:00",
+  "revision": "fc90e09a6c93571b13fdfb3ed7070ad86e726f84",
+  "criterion": "equal mean Sketchy mAP, then precision",
+  "canonical": {
+    "query_scale": 1.0,
+    "photo_scale": 1.0,
+    "terms": 3,
+    "norm": "cosine",
+    "control": "uniform"
+  },
+  "winner": {
+    "query_scale": 1.0,
+    "photo_scale": 1.0,
+    "terms": 0,
+    "norm": "mass",
+    "control": "uniform"
+  },
+  "winner_id": "8dea9bcbf5956b7f",
+  "controls": {
+    "primary": {
+      "query_scale": 1.0,
+      "photo_scale": 1.0,
+      "terms": 0,
+      "norm": "mass",
+      "control": "uniform"
+    },
+    "paper_sparse": {
+      "query_scale": 1.0,
+      "photo_scale": 1.0,
+      "terms": 3,
+      "norm": "cosine",
+      "control": "uniform"
+    },
+    "hard_assignment": {
+      "query_scale": 1.0,
+      "photo_scale": 1.0,
+      "terms": 1,
+      "norm": "mass",
+      "control": "uniform"
+    },
+    "checkpoint_temperatures": {
+      "query_scale": 1.0,
+      "photo_scale": 1.0,
+      "terms": 0,
+      "norm": "mass",
+      "control": "uniform"
+    },
+    "same_as_query": {
+      "query_scale": 1.0,
+      "photo_scale": 1.0,
+      "terms": 0,
+      "norm": "mass",
+      "control": "uniform"
+    },
+    "same_as_photo": {
+      "query_scale": 1.0,
+      "photo_scale": 1.0,
+      "terms": 0,
+      "norm": "mass",
+      "control": "uniform"
+    },
+    "no_truncation": {
+      "query_scale": 1.0,
+      "photo_scale": 1.0,
+      "terms": 0,
+      "norm": "mass",
+      "control": "uniform"
+    },
+    "alternative_normalization": {
+      "query_scale": 1.0,
+      "photo_scale": 1.0,
+      "terms": 0,
+      "norm": "cosine",
+      "control": "uniform"
+    },
+    "original_gallery_idf_three": {
+      "query_scale": 1.0,
+      "photo_scale": 1.0,
+      "terms": 3,
+      "norm": "cosine",
+      "control": "idf"
+    },
+    "shuffled_identity": {
+      "query_scale": 1.0,
+      "photo_scale": 1.0,
+      "terms": 0,
+      "norm": "mass",
+      "control": "shuffle"
+    },
+    "exact_seed": {
+      "query_scale": 1.0,
+      "photo_scale": 1.0,
+      "terms": 0,
+      "norm": "mass",
+      "control": "seed"
+    }
+  },
+  "sources": {
+    "sketchy_1-87691c433125bb3b.json": "77a9861fdf76f31c55e7344f5abc11093c913f8cca0879f5db811c44576cf326",
+    "sketchy_1-9aba9f3f33cbf5a5.json": "6f133b5d2a7c960e9acdb4a977ced25c35550aa6afb83e18edefd548922f4080",
+    "sketchy_1-eb5e87b0d67b7b5f.json": "3754541cbfe1681af9695e16a13efbea0eee6d95307be19eea93ee19d4bfa7e7",
+    "sketchy_1-fc34dc45c693f76b.json": "6b0882ad36ad8f94ce007a4fef65681b0b195d900e8b9d3ae9aa3366964c42fd",
+    "sketchy_1-a0128d9bf1280a45.json": "e665bb32715fcb334a2c3989e4a27db9b9136e2323cfa8b3f2db11884f760b52",
+    "sketchy_1-b2ecefb073758e9e.json": "ec74a4e3aed445db6feffb75d504cebebe20dab3fab8eb496039e1dfaf229d1f",
+    "sketchy_1-90e134686ce377a0.json": "f4e193ac45eb1e3f5baf514da9c2f74d0e739584f582c6463e9af4e78fab2dce",
+    "sketchy_1-8dea9bcbf5956b7f.json": "9e93dda37668a1b82bbb72bc2e17b54fd9e1464556246520a8731c26851e5d39",
+    "sketchy_1-20f50755ef0d69ce.json": "1d40c986a344d48ff487d7b1bcc0b5214b870b1a5b5f83e9c09a1632640d8584",
+    "sketchy_2-87691c433125bb3b.json": "7d82e5806f13bc9d2b79a76d48c079f40609bb8622685fba9affff48ac99b5f4",
+    "sketchy_2-9aba9f3f33cbf5a5.json": "0bcc1ad9878686dd27247e9c8af63cd2aa2e84bdd1da7ff8e4388e1ef3b0065c",
+    "sketchy_2-eb5e87b0d67b7b5f.json": "4205631a3e31f70874669b933a089bb3f62bceae5d689d716b773e96dab17c3d",
+    "sketchy_2-fc34dc45c693f76b.json": "35f238215e3db67e7fecf7d861a7ad23d9ece3062172ed3263dbc4bc9fc37b79",
+    "sketchy_2-a0128d9bf1280a45.json": "1b9a8dce5bf61d0874d6756dc7268ad8f6e54594df4503eccd3c584f6bf29166",
+    "sketchy_2-b2ecefb073758e9e.json": "702ee49300c5109e9578b2c0847e0b8445f687ddd1deb9342ca4b097357b868a",
+    "sketchy_2-90e134686ce377a0.json": "eda6e2a54184df5e1c38082aa733c81a072967cbfb0dd971f133e14579c16f6c",
+    "sketchy_2-8dea9bcbf5956b7f.json": "696db01c715cf800ae808e8e09b33a0c950c489ea7fb554fd862a53cc7479917",
+    "sketchy_2-20f50755ef0d69ce.json": "b46ccc83f4dc840ec1a2441e72a9a040a8339cc63cf9e4c566ed5d729fd9fe0d"
+  },
+  "tu_rows_before_freeze": 0,
+  "sha256": "dee29fe574cb7ea09a3aba3841ba89f07e1f2852d7bfb589d6ab6d372de95407"
+}

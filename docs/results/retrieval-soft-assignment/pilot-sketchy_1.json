@@ -1,0 +1,902 @@
+{
+  "revision": "fc90e09a6c93571b13fdfb3ed7070ad86e726f84",
+  "family": "retrieval-soft-assignment",
+  "queries": 1200,
+  "gallery": 17100,
+  "classes": 25,
+  "checkpoint_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+  "dataset_sha256": "8fafaf3aedf4751e28e2b33f073832e02fdf3ca1b36a9d7fda5ff328f26b0642",
+  "kd_sha256": "3433c60a3739e852c94e573832dd53d51446f433326a453392d316b402402fbe",
+  "gpu": "NVIDIA L4",
+  "external_vocabulary": 20931,
+  "exploratory_unseen": true,
+  "freeze_sha256": null,
+  "settings": {
+    "071c06e654039f3a": {
+      "parameters": {
+        "query_scale": 0.25,
+        "photo_scale": 0.25,
+        "terms": 0,
+        "norm": "cosine",
+        "control": "uniform"
+      },
+      "mAP": 0.49344512820243835,
+      "precision": 0.61142498254776
+    },
+    "4ffb3447a294bb3f": {
+      "parameters": {
+        "query_scale": 0.5,
+        "photo_scale": 0.25,
+        "terms": 0,
+        "norm": "cosine",
+        "control": "uniform"
+      },
+      "mAP": 0.6348996162414551,
+      "precision": 0.7072499990463257
+    },
+    "f9568429beff03e9": {
+      "parameters": {
+        "query_scale": 1.0,
+        "photo_scale": 0.25,
+        "terms": 0,
+        "norm": "cosine",
+        "control": "uniform"
+      },
+      "mAP": 0.6937333941459656,
+      "precision": 0.7309083938598633
+    },
+    "f6df5fec85439c9b": {
+      "parameters": {
+        "query_scale": 2.0,
+        "photo_scale": 0.25,
+        "terms": 0,
+        "norm": "cosine",
+        "control": "uniform"
+      },
+      "mAP": 0.6751633286476135,
+      "precision": 0.7070416212081909
+    },
+    "b24d578be9099396": {
+      "parameters": {
+        "query_scale": 4.0,
+        "photo_scale": 0.25,
+        "terms": 0,
+        "norm": "cosine",
+        "control": "uniform"
+      },
+      "mAP": 0.6350124478340149,
+      "precision": 0.6742833852767944
+    },
+    "f16dd7e1383febf8": {
+      "parameters": {
+        "query_scale": 0.25,
+        "photo_scale": 0.5,
+        "terms": 0,
+        "norm": "cosine",
+        "control": "uniform"
+      },
+      "mAP": 0.22890497744083405,
+      "precision": 0.3627333343029022
+    },
+    "dd039b4e3f315f6f": {
+      "parameters": {
+        "query_scale": 0.5,
+        "photo_scale": 0.5,
+        "terms": 0,
+        "norm": "cosine",
+        "control": "uniform"
+      },
+      "mAP": 0.549675703048706,
+      "precision": 0.6549500226974487
+    },
+    "79c7368ca0ecaab1": {
+      "parameters": {
+        "query_scale": 1.0,
+        "photo_scale": 0.5,
+        "terms": 0,
+        "norm": "cosine",
+        "control": "uniform"
+      },
+      "mAP": 0.6854031682014465,
+      "precision": 0.7281916737556458
+    },
+    "f81b6d5f0391bec6": {
+      "parameters": {
+        "query_scale": 2.0,
+        "photo_scale": 0.5,
+        "terms": 0,
+        "norm": "cosine",
+        "control": "uniform"
+      },
+      "mAP": 0.6743466854095459,
+      "precision": 0.7070666551589966
+    },
+    "888a9778623d387f": {
+      "parameters": {
+        "query_scale": 4.0,
+        "photo_scale": 0.5,
+        "terms": 0,
+        "norm": "cosine",
+        "control": "uniform"
+      },
+      "mAP": 0.6272490620613098,
+      "precision": 0.6710916757583618
+    },
+    "7328bab0a370480c": {
+      "parameters": {
+        "query_scale": 0.25,
+        "photo_scale": 1.0,
+        "terms": 0,
+        "norm": "cosine",
+        "control": "uniform"
+      },
+      "mAP": 0.3151877820491791,
+      "precision": 0.3924083411693573
+    },
+    "422387c7f15ea427": {
+      "parameters": {
+        "query_scale": 0.5,
+        "photo_scale": 1.0,
+        "terms": 0,
+        "norm": "cosine",
+        "control": "uniform"
+      },
+      "mAP": 0.5979025363922119,
+      "precision": 0.6812250018119812
+    },
+    "eb5e87b0d67b7b5f": {
+      "parameters": {
+        "query_scale": 1.0,
+        "photo_scale": 1.0,
+        "terms": 0,
+        "norm": "cosine",
+        "control": "uniform"
+      },
+      "mAP": 0.6955033540725708,
+      "precision": 0.7398417592048645
+    },
+    "21cae65107db3952": {
+      "parameters": {
+        "query_scale": 2.0,
+        "photo_scale": 1.0,
+        "terms": 0,
+        "norm": "cosine",
+        "control": "uniform"
+      },
+      "mAP": 0.6860324144363403,
+      "precision": 0.7155666947364807
+    },
+    "7fe23d97d27b2c98": {
+      "parameters": {
+        "query_scale": 4.0,
+        "photo_scale": 1.0,
+        "terms": 0,
+        "norm": "cosine",
+        "control": "uniform"
+      },
+      "mAP": 0.6296220421791077,
+      "precision": 0.6737583875656128
+    },
+    "af44f66d71718c6f": {
+      "parameters": {
+        "query_scale": 0.25,
+        "photo_scale": 2.0,
+        "terms": 0,
+        "norm": "cosine",
+        "control": "uniform"
+      },
+      "mAP": 0.5776018500328064,
+      "precision": 0.6928333640098572
+    },
+    "c67842d581944df8": {
+      "parameters": {
+        "query_scale": 0.5,
+        "photo_scale": 2.0,
+        "terms": 0,
+        "norm": "cosine",
+        "control": "uniform"
+      },
+      "mAP": 0.6733186841011047,
+      "precision": 0.7574334144592285
+    },
+    "27d5af4de9a954fc": {
+      "parameters": {
+        "query_scale": 1.0,
+        "photo_scale": 2.0,
+        "terms": 0,
+        "norm": "cosine",
+        "control": "uniform"
+      },
+      "mAP": 0.7012503147125244,
+      "precision": 0.7605250477790833
+    },
+    "c328eae70ee57f3e": {
+      "parameters": {
+        "query_scale": 2.0,
+        "photo_scale": 2.0,
+        "terms": 0,
+        "norm": "cosine",
+        "control": "uniform"
+      },
+      "mAP": 0.7067683935165405,
+      "precision": 0.742816686630249
+    },
+    "939a7e8c68ca2deb": {
+      "parameters": {
+        "query_scale": 4.0,
+        "photo_scale": 2.0,
+        "terms": 0,
+        "norm": "cosine",
+        "control": "uniform"
+      },
+      "mAP": 0.6715418696403503,
+      "precision": 0.7036416530609131
+    },
+    "316384ff3eaee0ba": {
+      "parameters": {
+        "query_scale": 0.25,
+        "photo_scale": 4.0,
+        "terms": 0,
+        "norm": "cosine",
+        "control": "uniform"
+      },
+      "mAP": 0.6282638907432556,
+      "precision": 0.7510000467300415
+    },
+    "9bf2c8afa92f0de8": {
+      "parameters": {
+        "query_scale": 0.5,
+        "photo_scale": 4.0,
+        "terms": 0,
+        "norm": "cosine",
+        "control": "uniform"
+      },
+      "mAP": 0.6672296524047852,
+      "precision": 0.7663916945457458
+    },
+    "90bf4be95971ea31": {
+      "parameters": {
+        "query_scale": 1.0,
+        "photo_scale": 4.0,
+        "terms": 0,
+        "norm": "cosine",
+        "control": "uniform"
+      },
+      "mAP": 0.6812092065811157,
+      "precision": 0.76152503490448
+    },
+    "7c46529d12f643d7": {
+      "parameters": {
+        "query_scale": 2.0,
+        "photo_scale": 4.0,
+        "terms": 0,
+        "norm": "cosine",
+        "control": "uniform"
+      },
+      "mAP": 0.6940407752990723,
+      "precision": 0.7529916763305664
+    },
+    "e3dfffd089ba3a5b": {
+      "parameters": {
+        "query_scale": 4.0,
+        "photo_scale": 4.0,
+        "terms": 0,
+        "norm": "cosine",
+        "control": "uniform"
+      },
+      "mAP": 0.6996660232543945,
+      "precision": 0.7359083294868469
+    },
+    "95471afb96997ada": {
+      "parameters": {
+        "query_scale": 0.25,
+        "photo_scale": 0.25,
+        "terms": 0,
+        "norm": "mass",
+        "control": "uniform"
+      },
+      "mAP": 0.5054375529289246,
+      "precision": 0.6438166499137878
+    },
+    "8f919172469ce941": {
+      "parameters": {
+        "query_scale": 0.5,
+        "photo_scale": 0.25,
+        "terms": 0,
+        "norm": "mass",
+        "control": "uniform"
+      },
+      "mAP": 0.611081600189209,
+      "precision": 0.7040249705314636
+    },
+    "0eb9ae4b64113a93": {
+      "parameters": {
+        "query_scale": 1.0,
+        "photo_scale": 0.25,
+        "terms": 0,
+        "norm": "mass",
+        "control": "uniform"
+      },
+      "mAP": 0.6932642459869385,
+      "precision": 0.7319250106811523
+    },
+    "f034660fd61b8522": {
+      "parameters": {
+        "query_scale": 2.0,
+        "photo_scale": 0.25,
+        "terms": 0,
+        "norm": "mass",
+        "control": "uniform"
+      },
+      "mAP": 0.6777388453483582,
+      "precision": 0.7091333866119385
+    },
+    "752e45056d3a3310": {
+      "parameters": {
+        "query_scale": 4.0,
+        "photo_scale": 0.25,
+        "terms": 0,
+        "norm": "mass",
+        "control": "uniform"
+      },
+      "mAP": 0.6374059319496155,
+      "precision": 0.6756583452224731
+    },
+    "6ac152d42a27d07e": {
+      "parameters": {
+        "query_scale": 0.25,
+        "photo_scale": 0.5,
+        "terms": 0,
+        "norm": "mass",
+        "control": "uniform"
+      },
+      "mAP": 0.6297666430473328,
+      "precision": 0.738849937915802
+    },
+    "d05722d71b26f970": {
+      "parameters": {
+        "query_scale": 0.5,
+        "photo_scale": 0.5,
+        "terms": 0,
+        "norm": "mass",
+        "control": "uniform"
+      },
+      "mAP": 0.6881205439567566,
+      "precision": 0.7590333819389343
+    },
+    "235aa1773f0c9ab0": {
+      "parameters": {
+        "query_scale": 1.0,
+        "photo_scale": 0.5,
+        "terms": 0,
+        "norm": "mass",
+        "control": "uniform"
+      },
+      "mAP": 0.7246524691581726,
+      "precision": 0.7613083124160767
+    },
+    "08058d5527d90236": {
+      "parameters": {
+        "query_scale": 2.0,
+        "photo_scale": 0.5,
+        "terms": 0,
+        "norm": "mass",
+        "control": "uniform"
+      },
+      "mAP": 0.6968955993652344,
+      "precision": 0.7241000533103943
+    },
+    "0b4954e489a3fd23": {
+      "parameters": {
+        "query_scale": 4.0,
+        "photo_scale": 0.5,
+        "terms": 0,
+        "norm": "mass",
+        "control": "uniform"
+      },
+      "mAP": 0.6486688852310181,
+      "precision": 0.6836166977882385
+    },
+    "87691c433125bb3b": {
+      "parameters": {
+        "query_scale": 0.25,
+        "photo_scale": 1.0,
+        "terms": 0,
+        "norm": "mass",
+        "control": "uniform"
+      },
+      "mAP": 0.7107254862785339,
+      "precision": 0.7957833409309387
+    },
+    "9aba9f3f33cbf5a5": {
+      "parameters": {
+        "query_scale": 0.5,
+        "photo_scale": 1.0,
+        "terms": 0,
+        "norm": "mass",
+        "control": "uniform"
+      },
+      "mAP": 0.7273648381233215,
+      "precision": 0.792858362197876
+    },
+    "8dea9bcbf5956b7f": {
+      "parameters": {
+        "query_scale": 1.0,
+        "photo_scale": 1.0,
+        "terms": 0,
+        "norm": "mass",
+        "control": "uniform"
+      },
+      "mAP": 0.7401314377784729,
+      "precision": 0.7803500294685364
+    },
+    "afb281349a435179": {
+      "parameters": {
+        "query_scale": 2.0,
+        "photo_scale": 1.0,
+        "terms": 0,
+        "norm": "mass",
+        "control": "uniform"
+      },
+      "mAP": 0.7176212668418884,
+      "precision": 0.7448583245277405
+    },
+    "e94c5425dd6e893c": {
+      "parameters": {
+        "query_scale": 4.0,
+        "photo_scale": 1.0,
+        "terms": 0,
+        "norm": "mass",
+        "control": "uniform"
+      },
+      "mAP": 0.6583905220031738,
+      "precision": 0.6946000456809998
+    },
+    "644a0e3df00318e0": {
+      "parameters": {
+        "query_scale": 0.25,
+        "photo_scale": 2.0,
+        "terms": 0,
+        "norm": "mass",
+        "control": "uniform"
+      },
+      "mAP": 0.6977362036705017,
+      "precision": 0.7833083271980286
+    },
+    "a6db6e2c80c9785f": {
+      "parameters": {
+        "query_scale": 0.5,
+        "photo_scale": 2.0,
+        "terms": 0,
+        "norm": "mass",
+        "control": "uniform"
+      },
+      "mAP": 0.7050870656967163,
+      "precision": 0.7786999940872192
+    },
+    "cd6325c214cfa81f": {
+      "parameters": {
+        "query_scale": 1.0,
+        "photo_scale": 2.0,
+        "terms": 0,
+        "norm": "mass",
+        "control": "uniform"
+      },
+      "mAP": 0.7148420214653015,
+      "precision": 0.7710667252540588
+    },
+    "eb9d6484bfab6544": {
+      "parameters": {
+        "query_scale": 2.0,
+        "photo_scale": 2.0,
+        "terms": 0,
+        "norm": "mass",
+        "control": "uniform"
+      },
+      "mAP": 0.7172431349754333,
+      "precision": 0.7524750232696533
+    },
+    "9b910597f17b422a": {
+      "parameters": {
+        "query_scale": 4.0,
+        "photo_scale": 2.0,
+        "terms": 0,
+        "norm": "mass",
+        "control": "uniform"
+      },
+      "mAP": 0.6809579730033875,
+      "precision": 0.7103667259216309
+    },
+    "47afc24958f485c8": {
+      "parameters": {
+        "query_scale": 0.25,
+        "photo_scale": 4.0,
+        "terms": 0,
+        "norm": "mass",
+        "control": "uniform"
+      },
+      "mAP": 0.6750606298446655,
+      "precision": 0.7716166377067566
+    },
+    "092ff81082206c0c": {
+      "parameters": {
+        "query_scale": 0.5,
+        "photo_scale": 4.0,
+        "terms": 0,
+        "norm": "mass",
+        "control": "uniform"
+      },
+      "mAP": 0.6791633367538452,
+      "precision": 0.769058346748352
+    },
+    "330f0e40707f40ef": {
+      "parameters": {
+        "query_scale": 1.0,
+        "photo_scale": 4.0,
+        "terms": 0,
+        "norm": "mass",
+        "control": "uniform"
+      },
+      "mAP": 0.686792254447937,
+      "precision": 0.7650083303451538
+    },
+    "abea6ffcee7f45db": {
+      "parameters": {
+        "query_scale": 2.0,
+        "photo_scale": 4.0,
+        "terms": 0,
+        "norm": "mass",
+        "control": "uniform"
+      },
+      "mAP": 0.6981165409088135,
+      "precision": 0.756266713142395
+    },
+    "6d904ad5b0e476af": {
+      "parameters": {
+        "query_scale": 4.0,
+        "photo_scale": 4.0,
+        "terms": 0,
+        "norm": "mass",
+        "control": "uniform"
+      },
+      "mAP": 0.7027708292007446,
+      "precision": 0.7381333708763123
+    },
+    "406383b03b97a0a4": {
+      "parameters": {
+        "query_scale": 0.5,
+        "photo_scale": 0.5,
+        "terms": 3,
+        "norm": "cosine",
+        "control": "uniform"
+      },
+      "mAP": 0.3253712058067322,
+      "precision": 0.5217583179473877
+    },
+    "a67d5464e469d91a": {
+      "parameters": {
+        "query_scale": 2.0,
+        "photo_scale": 0.5,
+        "terms": 3,
+        "norm": "cosine",
+        "control": "uniform"
+      },
+      "mAP": 0.32527124881744385,
+      "precision": 0.5213500261306763
+    },
+    "20f50755ef0d69ce": {
+      "parameters": {
+        "query_scale": 1.0,
+        "photo_scale": 1.0,
+        "terms": 3,
+        "norm": "cosine",
+        "control": "uniform"
+      },
+      "mAP": 0.3252899944782257,
+      "precision": 0.5214583277702332
+    },
+    "e9343efe889acb72": {
+      "parameters": {
+        "query_scale": 0.5,
+        "photo_scale": 2.0,
+        "terms": 3,
+        "norm": "cosine",
+        "control": "uniform"
+      },
+      "mAP": 0.325298935174942,
+      "precision": 0.5214499831199646
+    },
+    "d95f1d9704dbfa48": {
+      "parameters": {
+        "query_scale": 2.0,
+        "photo_scale": 2.0,
+        "terms": 3,
+        "norm": "cosine",
+        "control": "uniform"
+      },
+      "mAP": 0.3252337574958801,
+      "precision": 0.5208583474159241
+    },
+    "efc46eefbb11d50b": {
+      "parameters": {
+        "query_scale": 0.5,
+        "photo_scale": 0.5,
+        "terms": 3,
+        "norm": "mass",
+        "control": "uniform"
+      },
+      "mAP": 0.32538652420043945,
+      "precision": 0.5218750238418579
+    },
+    "8aee4af13d9dd2f8": {
+      "parameters": {
+        "query_scale": 2.0,
+        "photo_scale": 0.5,
+        "terms": 3,
+        "norm": "mass",
+        "control": "uniform"
+      },
+      "mAP": 0.325246661901474,
+      "precision": 0.521316647529602
+    },
+    "ecc3db729cf53c33": {
+      "parameters": {
+        "query_scale": 1.0,
+        "photo_scale": 1.0,
+        "terms": 3,
+        "norm": "mass",
+        "control": "uniform"
+      },
+      "mAP": 0.3253028392791748,
+      "precision": 0.5214499831199646
+    },
+    "c839be84a01c9d32": {
+      "parameters": {
+        "query_scale": 0.5,
+        "photo_scale": 2.0,
+        "terms": 3,
+        "norm": "mass",
+        "control": "uniform"
+      },
+      "mAP": 0.3252885639667511,
+      "precision": 0.5214916467666626
+    },
+    "0c4e931cb7962f74": {
+      "parameters": {
+        "query_scale": 2.0,
+        "photo_scale": 2.0,
+        "terms": 3,
+        "norm": "mass",
+        "control": "uniform"
+      },
+      "mAP": 0.3252021074295044,
+      "precision": 0.5209749937057495
+    },
+    "28027d5bcc6a6765": {
+      "parameters": {
+        "query_scale": 0.5,
+        "photo_scale": 0.5,
+        "terms": 16,
+        "norm": "cosine",
+        "control": "uniform"
+      },
+      "mAP": 0.6106113195419312,
+      "precision": 0.7242250442504883
+    },
+    "b7b5be1d93bef708": {
+      "parameters": {
+        "query_scale": 2.0,
+        "photo_scale": 0.5,
+        "terms": 16,
+        "norm": "cosine",
+        "control": "uniform"
+      },
+      "mAP": 0.6059733033180237,
+      "precision": 0.7102000117301941
+    },
+    "4485ff86c7b72fdb": {
+      "parameters": {
+        "query_scale": 1.0,
+        "photo_scale": 1.0,
+        "terms": 16,
+        "norm": "cosine",
+        "control": "uniform"
+      },
+      "mAP": 0.6055622696876526,
+      "precision": 0.7186917066574097
+    },
+    "e112910a01eb51a4": {
+      "parameters": {
+        "query_scale": 0.5,
+        "photo_scale": 2.0,
+        "terms": 16,
+        "norm": "cosine",
+        "control": "uniform"
+      },
+      "mAP": 0.6023339033126831,
+      "precision": 0.7190166115760803
+    },
+    "86f53bae47af3cae": {
+      "parameters": {
+        "query_scale": 2.0,
+        "photo_scale": 2.0,
+        "terms": 16,
+        "norm": "cosine",
+        "control": "uniform"
+      },
+      "mAP": 0.6015437841415405,
+      "precision": 0.7132250070571899
+    },
+    "73a295e88ea1d6a2": {
+      "parameters": {
+        "query_scale": 0.5,
+        "photo_scale": 0.5,
+        "terms": 16,
+        "norm": "mass",
+        "control": "uniform"
+      },
+      "mAP": 0.6123334765434265,
+      "precision": 0.7258833646774292
+    },
+    "cc2e55662bb12848": {
+      "parameters": {
+        "query_scale": 2.0,
+        "photo_scale": 0.5,
+        "terms": 16,
+        "norm": "mass",
+        "control": "uniform"
+      },
+      "mAP": 0.6070783734321594,
+      "precision": 0.7111916542053223
+    },
+    "897add4e24b27b2e": {
+      "parameters": {
+        "query_scale": 1.0,
+        "photo_scale": 1.0,
+        "terms": 16,
+        "norm": "mass",
+        "control": "uniform"
+      },
+      "mAP": 0.6073089838027954,
+      "precision": 0.7203750014305115
+    },
+    "28aec1cb71f6d9ba": {
+      "parameters": {
+        "query_scale": 0.5,
+        "photo_scale": 2.0,
+        "terms": 16,
+        "norm": "mass",
+        "control": "uniform"
+      },
+      "mAP": 0.6031885743141174,
+      "precision": 0.7188583612442017
+    },
+    "e2b3ad8e8e855d68": {
+      "parameters": {
+        "query_scale": 2.0,
+        "photo_scale": 2.0,
+        "terms": 16,
+        "norm": "mass",
+        "control": "uniform"
+      },
+      "mAP": 0.602737545967102,
+      "precision": 0.7148833274841309
+    },
+    "5c41a1cf3cfa2490": {
+      "parameters": {
+        "query_scale": 0.5,
+        "photo_scale": 0.5,
+        "terms": 64,
+        "norm": "cosine",
+        "control": "uniform"
+      },
+      "mAP": 0.7118962407112122,
+      "precision": 0.7557416558265686
+    },
+    "375dda297f295bed": {
+      "parameters": {
+        "query_scale": 2.0,
+        "photo_scale": 0.5,
+        "terms": 64,
+        "norm": "cosine",
+        "control": "uniform"
+      },
+      "mAP": 0.691530704498291,
+      "precision": 0.7145083546638489
+    },
+    "f719b1dd585e84fb": {
+      "parameters": {
+        "query_scale": 1.0,
+        "photo_scale": 1.0,
+        "terms": 64,
+        "norm": "cosine",
+        "control": "uniform"
+      },
+      "mAP": 0.6981918811798096,
+      "precision": 0.7491000294685364
+    },
+    "9b80333fd9ee2c31": {
+      "parameters": {
+        "query_scale": 0.5,
+        "photo_scale": 2.0,
+        "terms": 64,
+        "norm": "cosine",
+        "control": "uniform"
+      },
+      "mAP": 0.6842273473739624,
+      "precision": 0.7549583911895752
+    },
+    "ffd77b5a3285aad8": {
+      "parameters": {
+        "query_scale": 2.0,
+        "photo_scale": 2.0,
+        "terms": 64,
+        "norm": "cosine",
+        "control": "uniform"
+      },
+      "mAP": 0.6857895255088806,
+      "precision": 0.7373166680335999
+    },
+    "902bcf747e5ee2c7": {
+      "parameters": {
+        "query_scale": 0.5,
+        "photo_scale": 0.5,
+        "terms": 64,
+        "norm": "mass",
+        "control": "uniform"
+      },
+      "mAP": 0.7170798778533936,
+      "precision": 0.7630000114440918
+    },
+    "44660f7440cba2a6": {
+      "parameters": {
+        "query_scale": 2.0,
+        "photo_scale": 0.5,
+        "terms": 64,
+        "norm": "mass",
+        "control": "uniform"
+      },
+      "mAP": 0.6955764889717102,
+      "precision": 0.7214249968528748
+    },
+    "d8dc0f841b4203c7": {
+      "parameters": {
+        "query_scale": 1.0,
+        "photo_scale": 1.0,
+        "terms": 64,
+        "norm": "mass",
+        "control": "uniform"
+      },
+      "mAP": 0.7071338891983032,
+      "precision": 0.7564333081245422
+    },
+    "d617ebce5f33ff74": {
+      "parameters": {
+        "query_scale": 0.5,
+        "photo_scale": 2.0,
+        "terms": 64,
+        "norm": "mass",
+        "control": "uniform"
+      },
+      "mAP": 0.6887434124946594,
+      "precision": 0.7549833655357361
+    },
+    "e65360d211d04eb5": {
+      "parameters": {
+        "query_scale": 2.0,
+        "photo_scale": 2.0,
+        "terms": 64,
+        "norm": "mass",
+        "control": "uniform"
+      },
+      "mAP": 0.6907868385314941,
+      "precision": 0.7422167062759399
+    }
+  },
+  "seed": 4783,
+  "diagnostic": {
+    "vocabulary": 20931,
+    "controls_gallery_idf_uses_top_three": true,
+    "primary_reference": "public words with constant IDF"
+  }
+}
