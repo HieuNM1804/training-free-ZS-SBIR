@@ -1,0 +1,313 @@
+{
+  "revision": "dbedfb43edb14e6d4f602685cfa2c50073ab5e03",
+  "family": "cross-language-relevance",
+  "queries": 1008,
+  "gallery": 12552,
+  "classes": 21,
+  "checkpoint_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+  "dataset_sha256": "30baecaac02eeff22cc54e533eb6bc1b757ba3a891a84f61a77ee837f073d8c6",
+  "kd_sha256": "3433c60a3739e852c94e573832dd53d51446f433326a453392d316b402402fbe",
+  "gpu": "NVIDIA L4",
+  "external_vocabulary": 20931,
+  "exploratory_unseen": true,
+  "freeze_sha256": null,
+  "settings": {
+    "26b8bc58bdb7a52c": {
+      "parameters": {
+        "proxies": 0,
+        "background": 0.0,
+        "prior": "mle",
+        "first_pass": "concept",
+        "scoring": "cross_entropy",
+        "shuffle": false
+      },
+      "mAP": 0.6864688396453857,
+      "precision": 0.6768949031829834
+    },
+    "86017d6d7e07b07a": {
+      "parameters": {
+        "proxies": 0,
+        "background": 0.1,
+        "prior": "mle",
+        "first_pass": "concept",
+        "scoring": "cross_entropy",
+        "shuffle": false
+      },
+      "mAP": 0.734944224357605,
+      "precision": 0.7279117107391357
+    },
+    "aa14daf0bc4bcca6": {
+      "parameters": {
+        "proxies": 0,
+        "background": 0.5,
+        "prior": "mle",
+        "first_pass": "concept",
+        "scoring": "cross_entropy",
+        "shuffle": false
+      },
+      "mAP": 0.7560690641403198,
+      "precision": 0.746344268321991
+    },
+    "c7727bf2ea0ed9a2": {
+      "parameters": {
+        "proxies": 20,
+        "background": 0.0,
+        "prior": "mle",
+        "first_pass": "concept",
+        "scoring": "cross_entropy",
+        "shuffle": false
+      },
+      "mAP": 0.724641740322113,
+      "precision": 0.7094693183898926
+    },
+    "f6ea2b9edcf4d88f": {
+      "parameters": {
+        "proxies": 20,
+        "background": 0.1,
+        "prior": "mle",
+        "first_pass": "concept",
+        "scoring": "cross_entropy",
+        "shuffle": false
+      },
+      "mAP": 0.7278767228126526,
+      "precision": 0.7129067778587341
+    },
+    "546968b5529f67c4": {
+      "parameters": {
+        "proxies": 20,
+        "background": 0.5,
+        "prior": "mle",
+        "first_pass": "concept",
+        "scoring": "cross_entropy",
+        "shuffle": false
+      },
+      "mAP": 0.7285774350166321,
+      "precision": 0.7127380967140198
+    },
+    "a3d1316251cba1eb": {
+      "parameters": {
+        "proxies": 96,
+        "background": 0.0,
+        "prior": "mle",
+        "first_pass": "concept",
+        "scoring": "cross_entropy",
+        "shuffle": false
+      },
+      "mAP": 0.7383957505226135,
+      "precision": 0.7250744700431824
+    },
+    "79cc6780136ffc95": {
+      "parameters": {
+        "proxies": 96,
+        "background": 0.1,
+        "prior": "mle",
+        "first_pass": "concept",
+        "scoring": "cross_entropy",
+        "shuffle": false
+      },
+      "mAP": 0.7387935519218445,
+      "precision": 0.7276785969734192
+    },
+    "76bd87ec835aeee6": {
+      "parameters": {
+        "proxies": 96,
+        "background": 0.5,
+        "prior": "mle",
+        "first_pass": "concept",
+        "scoring": "cross_entropy",
+        "shuffle": false
+      },
+      "mAP": 0.7355690598487854,
+      "precision": 0.7275694608688354
+    },
+    "ad5354e18213472a": {
+      "parameters": {
+        "proxies": 256,
+        "background": 0.0,
+        "prior": "mle",
+        "first_pass": "concept",
+        "scoring": "cross_entropy",
+        "shuffle": false
+      },
+      "mAP": 0.7442212700843811,
+      "precision": 0.7366121411323547
+    },
+    "5e24017abee99030": {
+      "parameters": {
+        "proxies": 256,
+        "background": 0.1,
+        "prior": "mle",
+        "first_pass": "concept",
+        "scoring": "cross_entropy",
+        "shuffle": false
+      },
+      "mAP": 0.7464225888252258,
+      "precision": 0.7396230697631836
+    },
+    "349f1ef2b7fc0c4b": {
+      "parameters": {
+        "proxies": 256,
+        "background": 0.5,
+        "prior": "mle",
+        "first_pass": "concept",
+        "scoring": "cross_entropy",
+        "shuffle": false
+      },
+      "mAP": 0.7441374063491821,
+      "precision": 0.7391369342803955
+    },
+    "0acb003555f08aaa": {
+      "parameters": {
+        "proxies": 0,
+        "background": 0.0,
+        "prior": "uniform",
+        "first_pass": "concept",
+        "scoring": "cross_entropy",
+        "shuffle": false
+      },
+      "mAP": 0.6833531856536865,
+      "precision": 0.6759275794029236
+    },
+    "f1f12cf6519c3f4c": {
+      "parameters": {
+        "proxies": 0,
+        "background": 0.1,
+        "prior": "uniform",
+        "first_pass": "concept",
+        "scoring": "cross_entropy",
+        "shuffle": false
+      },
+      "mAP": 0.7070059776306152,
+      "precision": 0.7002281546592712
+    },
+    "41b1a73e99ab738a": {
+      "parameters": {
+        "proxies": 0,
+        "background": 0.5,
+        "prior": "uniform",
+        "first_pass": "concept",
+        "scoring": "cross_entropy",
+        "shuffle": false
+      },
+      "mAP": 0.7194135785102844,
+      "precision": 0.7132143974304199
+    },
+    "bc07dcd02aa05e2c": {
+      "parameters": {
+        "proxies": 20,
+        "background": 0.0,
+        "prior": "uniform",
+        "first_pass": "concept",
+        "scoring": "cross_entropy",
+        "shuffle": false
+      },
+      "mAP": 0.7289180755615234,
+      "precision": 0.7194196581840515
+    },
+    "629cf61f9728961e": {
+      "parameters": {
+        "proxies": 20,
+        "background": 0.1,
+        "prior": "uniform",
+        "first_pass": "concept",
+        "scoring": "cross_entropy",
+        "shuffle": false
+      },
+      "mAP": 0.7312934994697571,
+      "precision": 0.7223958373069763
+    },
+    "7faff628a2f6d86e": {
+      "parameters": {
+        "proxies": 20,
+        "background": 0.5,
+        "prior": "uniform",
+        "first_pass": "concept",
+        "scoring": "cross_entropy",
+        "shuffle": false
+      },
+      "mAP": 0.732292115688324,
+      "precision": 0.7237599492073059
+    },
+    "8fb9d3b373d2e630": {
+      "parameters": {
+        "proxies": 96,
+        "background": 0.0,
+        "prior": "uniform",
+        "first_pass": "concept",
+        "scoring": "cross_entropy",
+        "shuffle": false
+      },
+      "mAP": 0.7379314303398132,
+      "precision": 0.7308581471443176
+    },
+    "12b0e68bcf5fa3ef": {
+      "parameters": {
+        "proxies": 96,
+        "background": 0.1,
+        "prior": "uniform",
+        "first_pass": "concept",
+        "scoring": "cross_entropy",
+        "shuffle": false
+      },
+      "mAP": 0.7405866980552673,
+      "precision": 0.7335516214370728
+    },
+    "3737a9e979d43d3f": {
+      "parameters": {
+        "proxies": 96,
+        "background": 0.5,
+        "prior": "uniform",
+        "first_pass": "concept",
+        "scoring": "cross_entropy",
+        "shuffle": false
+      },
+      "mAP": 0.743472695350647,
+      "precision": 0.7359474301338196
+    },
+    "f5a26e357ef472aa": {
+      "parameters": {
+        "proxies": 256,
+        "background": 0.0,
+        "prior": "uniform",
+        "first_pass": "concept",
+        "scoring": "cross_entropy",
+        "shuffle": false
+      },
+      "mAP": 0.73627769947052,
+      "precision": 0.7285913228988647
+    },
+    "db9fbac4f845fad6": {
+      "parameters": {
+        "proxies": 256,
+        "background": 0.1,
+        "prior": "uniform",
+        "first_pass": "concept",
+        "scoring": "cross_entropy",
+        "shuffle": false
+      },
+      "mAP": 0.7374622821807861,
+      "precision": 0.7321577668190002
+    },
+    "ba0194e0e04ca2eb": {
+      "parameters": {
+        "proxies": 256,
+        "background": 0.5,
+        "prior": "uniform",
+        "first_pass": "concept",
+        "scoring": "cross_entropy",
+        "shuffle": false
+      },
+      "mAP": 0.7408146262168884,
+      "precision": 0.7352281808853149
+    }
+  },
+  "seed": 4783,
+  "diagnostic": {
+    "iterations": 16,
+    "relative_log_likelihood": -5.868609549856399,
+    "last_increase": 0.0003115992739060047,
+    "tolerance_nats": 0.00034526698300124393,
+    "effective_number_of_concepts": 56.89138412475586,
+    "maximum_mass": 0.05655442923307419
+  }
+}

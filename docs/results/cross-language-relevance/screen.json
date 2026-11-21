@@ -1,0 +1,75 @@
+{
+  "utc": "2026-11-21T02:48:20.525465+00:00",
+  "revision": "dbedfb43edb14e6d4f602685cfa2c50073ab5e03",
+  "qualified": true,
+  "rule": "shared Sketchy pilot mean mAP, then mean P, relative to the frozen FreeDom variant",
+  "reference_id": "b3464bf029a5ad9d",
+  "pilot_winner": {
+    "proxies": 0,
+    "background": 0.5,
+    "prior": "mle",
+    "first_pass": "concept",
+    "scoring": "cross_entropy",
+    "shuffle": false
+  },
+  "reference": [
+    {
+      "parameters": {
+        "proxies": 96,
+        "words_per_proxy": 7,
+        "retained_words": 7,
+        "search": "semantic",
+        "composition": "word-domain",
+        "shuffled": false
+      },
+      "mAP": 0.7710707783699036,
+      "precision": 0.8004167079925537
+    },
+    {
+      "parameters": {
+        "proxies": 96,
+        "words_per_proxy": 7,
+        "retained_words": 7,
+        "search": "semantic",
+        "composition": "word-domain",
+        "shuffled": false
+      },
+      "mAP": 0.7354686260223389,
+      "precision": 0.7221131324768066
+    }
+  ],
+  "best": [
+    {
+      "parameters": {
+        "proxies": 0,
+        "background": 0.5,
+        "prior": "mle",
+        "first_pass": "concept",
+        "scoring": "cross_entropy",
+        "shuffle": false
+      },
+      "mAP": 0.8049935102462769,
+      "precision": 0.8077582716941833
+    },
+    {
+      "parameters": {
+        "proxies": 0,
+        "background": 0.5,
+        "prior": "mle",
+        "first_pass": "concept",
+        "scoring": "cross_entropy",
+        "shuffle": false
+      },
+      "mAP": 0.7560690641403198,
+      "precision": 0.746344268321991
+    }
+  ],
+  "threshold": [
+    0.7532697021961212,
+    0.7612649202346802
+  ],
+  "pilot_score": [
+    0.7805312871932983,
+    0.7770512700080872
+  ]
+}

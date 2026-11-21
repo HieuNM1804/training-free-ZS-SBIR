@@ -1,0 +1,57 @@
+{
+  "utc": "2026-11-21T02:55:08.780343+00:00",
+  "primary": "neighborhood-calibrated-likelihood",
+  "selection_data": [
+    "sketchy_1",
+    "sketchy_2"
+  ],
+  "families": {
+    "neighborhood-calibrated-likelihood": {
+      "scores": [
+        {
+          "mAP": 0.8265085816383362,
+          "precision": 0.8209894895553589,
+          "split": "sketchy_1",
+          "sha256": "9a78ce441ac4eb9a9bcb3d6ce96d4becd50df3b0eec33f24833694afb3e1448a"
+        },
+        {
+          "mAP": 0.7478904128074646,
+          "precision": 0.73594731092453,
+          "split": "sketchy_2",
+          "sha256": "57d6ef79d194c5be6fef45b3053736a5358474d2543f38d5e866657b3454ad6a"
+        }
+      ],
+      "name": "182e69d1e116fb5e",
+      "freeze": "2be510938d30f89e574618b5fea1a1541c8a712409982e4a04015c77ef9eee53",
+      "historical": false,
+      "tu_rows_prelock": 0,
+      "parameters": {
+        "k": 256,
+        "calibration": "posterior",
+        "estimator": "mle",
+        "weighting": "cosine",
+        "shuffled": false
+      }
+    },
+    "cross-language-relevance": {
+      "name": "aa14daf0bc4bcca6",
+      "freeze": "e4dc6253a850faf6ea6f3d1c8a1c43a4c863ec1015a4f933288500d0639a6831",
+      "scores": [
+        {
+          "mAP": 0.8155539631843567,
+          "precision": 0.815711259841919,
+          "split": "sketchy_1",
+          "sha256": "638bdffc05eccf840989f6882c394a9dd0f8cdfcc76a98227ec977bf5d69b313"
+        },
+        {
+          "mAP": 0.7462736964225769,
+          "precision": 0.7356064915657043,
+          "split": "sketchy_2",
+          "sha256": "47851fd5f7cc2684c15d9cea867d2ebbaf6796887ba49f25776117991fc24c07"
+        }
+      ],
+      "tu_rows_before_freeze": 0
+    }
+  },
+  "sha256": "bed8f8169b591ce2d1c955106937518a89092dc1b16a9eb2aee3aaeccbc502ea"
+}

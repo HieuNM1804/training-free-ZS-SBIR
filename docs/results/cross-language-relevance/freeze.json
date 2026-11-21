@@ -1,0 +1,134 @@
+{
+  "utc": "2026-11-21T02:55:08.777437+00:00",
+  "revision": "dbedfb43edb14e6d4f602685cfa2c50073ab5e03",
+  "criterion": "equal mean Sketchy mAP, then precision",
+  "canonical": {
+    "proxies": 96,
+    "background": 0.1,
+    "prior": "uniform",
+    "first_pass": "concept",
+    "scoring": "cross_entropy",
+    "shuffle": false
+  },
+  "winner": {
+    "proxies": 0,
+    "background": 0.5,
+    "prior": "mle",
+    "first_pass": "concept",
+    "scoring": "cross_entropy",
+    "shuffle": false
+  },
+  "winner_id": "aa14daf0bc4bcca6",
+  "controls": {
+    "primary": {
+      "proxies": 0,
+      "background": 0.5,
+      "prior": "mle",
+      "first_pass": "concept",
+      "scoring": "cross_entropy",
+      "shuffle": false
+    },
+    "initial_query_likelihood": {
+      "proxies": 0,
+      "background": 0.5,
+      "prior": "mle",
+      "first_pass": "concept",
+      "scoring": "initial",
+      "shuffle": false
+    },
+    "no_feedback": {
+      "proxies": 0,
+      "background": 0.5,
+      "prior": "mle",
+      "first_pass": "concept",
+      "scoring": "query_only",
+      "shuffle": false
+    },
+    "linear_word_score": {
+      "proxies": 0,
+      "background": 0.5,
+      "prior": "mle",
+      "first_pass": "concept",
+      "scoring": "linear",
+      "shuffle": false
+    },
+    "no_background": {
+      "proxies": 0,
+      "background": 0.0,
+      "prior": "mle",
+      "first_pass": "concept",
+      "scoring": "cross_entropy",
+      "shuffle": false
+    },
+    "uniform_prior": {
+      "proxies": 0,
+      "background": 0.5,
+      "prior": "uniform",
+      "first_pass": "concept",
+      "scoring": "cross_entropy",
+      "shuffle": false
+    },
+    "gallery_prior": {
+      "proxies": 0,
+      "background": 0.5,
+      "prior": "mle",
+      "first_pass": "concept",
+      "scoring": "cross_entropy",
+      "shuffle": false
+    },
+    "paper_canonical": {
+      "proxies": 96,
+      "background": 0.1,
+      "prior": "uniform",
+      "first_pass": "concept",
+      "scoring": "cross_entropy",
+      "shuffle": false
+    },
+    "rgb_first_pass": {
+      "proxies": 0,
+      "background": 0.5,
+      "prior": "mle",
+      "first_pass": "rgb",
+      "scoring": "cross_entropy",
+      "shuffle": false
+    },
+    "shuffled_proxy_identity": {
+      "proxies": 0,
+      "background": 0.5,
+      "prior": "mle",
+      "first_pass": "concept",
+      "scoring": "cross_entropy",
+      "shuffle": true
+    }
+  },
+  "sources": {
+    "sketchy_1-aa14daf0bc4bcca6.json": "638bdffc05eccf840989f6882c394a9dd0f8cdfcc76a98227ec977bf5d69b313",
+    "sketchy_1-41b1a73e99ab738a.json": "daaa6afde5b3bf7e263028fb4e1c53c1af63748e83646af0066a9713f9873dce",
+    "sketchy_1-faf592c561560787.json": "ab742426d0b332b45be9175b8ff32f3a646af7d36e230327c9407254588972bb",
+    "sketchy_1-1d9389ea419de3b0.json": "a4816d23ec8e8c51008cb209aa0176f231e80b15b44363b013381032267dfaff",
+    "sketchy_1-8837cc0c50f81889.json": "2c78049c8f1125245f118e587afa75f8b69a340a1c7ccd57b2d3e9ef72c4ef0a",
+    "sketchy_1-26b8bc58bdb7a52c.json": "c4f23deb27e4c0feb4e53439695f37c3f4c4521518dbfb4438b485a7eb343b44",
+    "sketchy_1-12b0e68bcf5fa3ef.json": "c48a16cea389c792aad319e0abffc5ddf830d6abc6f33d5414020d349e818255",
+    "sketchy_1-ba0194e0e04ca2eb.json": "10e0ab778ead3712e887dceb9e9eae8730fa51d96309c1c3a500b1918b76fe54",
+    "sketchy_1-a7023dd665b6db17.json": "7049005de9187cc61d6eff00aa766a9ca008b3bcf5f392f1b174b8a6826aa0ba",
+    "sketchy_1-349f1ef2b7fc0c4b.json": "8b8d7dc2e353f7ae3a7d1c4593b8291804b751e7cd8a7a80f066498557866e38",
+    "sketchy_1-c6f6628296e47f86.json": "51a2f8a21c7f164ea6fa54600cec0831a9d7ed70d0ec1fd7a3fbe5df15c0b0ca",
+    "sketchy_1-5e24017abee99030.json": "f710e7c8d23a8516754659421841a242ce7f3e80b0f74dcb06ca2ff5fdb59844",
+    "sketchy_1-db9fbac4f845fad6.json": "a9b04227ba57121cdf1ab54394729b989fbb2641d265f4dfd32c3a169909f158",
+    "sketchy_2-aa14daf0bc4bcca6.json": "47851fd5f7cc2684c15d9cea867d2ebbaf6796887ba49f25776117991fc24c07",
+    "sketchy_2-41b1a73e99ab738a.json": "65e6fb0d2b5bd0d3bfc9ae7bb86c341b598ebe2ce758ad80f71238b9132eb5ea",
+    "sketchy_2-faf592c561560787.json": "c5a58cbcad17fc00a1fc1f7fc23e2de984e87b54fd1037d47e6bde4217fba047",
+    "sketchy_2-1d9389ea419de3b0.json": "1605a4845fc0aa10eb1abbfa9e98600f5c0f8da56287e9d3cf5208a4b1d5a718",
+    "sketchy_2-8837cc0c50f81889.json": "b6d63a11c03c061dbf78c3afa2d55e356f58aaef494cd8f85a5c5eac12ed9ab0",
+    "sketchy_2-26b8bc58bdb7a52c.json": "69efc09a5f17bb2239907682b3534ea83f33cc5540d54de3fa87425924fa6c1e",
+    "sketchy_2-12b0e68bcf5fa3ef.json": "ff76aea2d1455722d658ebfb3f4cdae01e13b7aa6ee60ac920569eaf27447a5b",
+    "sketchy_2-ba0194e0e04ca2eb.json": "77ac387a033021f4b384e063410685d12c0f703be2eb9e84917039671f776198",
+    "sketchy_2-a7023dd665b6db17.json": "40b4057140e05defc91b62706897bd43c0aeffaa5476516a54b9a5e9fb585116",
+    "sketchy_2-349f1ef2b7fc0c4b.json": "8985d8de72e8a5e743f91eeb972f17694b8edb13b0c83b32f1f5597197d438a7",
+    "sketchy_2-c6f6628296e47f86.json": "64d5ee68455800e3c9f8e6628bbe779f3ef45e5b8bd2725e19bf4e05e3b1f47f",
+    "sketchy_2-5e24017abee99030.json": "d010193b69a4a32f02b275bd5d53e486a725c9233901aa6561d44654fd29cc9e",
+    "sketchy_2-db9fbac4f845fad6.json": "5e626d3443f0dba45600672e55237a2b437b6c4da610811f70a2019f8a3e1310"
+  },
+  "tu_rows_before_freeze": 0,
+  "sha256": "e4dc6253a850faf6ea6f3d1c8a1c43a4c863ec1015a4f933288500d0639a6831"
+}
