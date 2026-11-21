@@ -1,0 +1,35 @@
+{
+  "revision": "6acb59e90b6e4a6176654364a9cf93e8d564e999",
+  "config": {
+    "temperature_ratio": 0.5,
+    "include_identity": true,
+    "side": "both",
+    "shuffled": false
+  },
+  "splits": {
+    "sketchy_1": {
+      "queries": 50,
+      "full_photos": 17100,
+      "pruned_photos": 200,
+      "max_abs_pruned": 5.960464477539062e-07,
+      "max_abs_singleton": 5.634501576423645e-08,
+      "singletons": 5
+    },
+    "sketchy_2": {
+      "queries": 42,
+      "full_photos": 12552,
+      "pruned_photos": 168,
+      "max_abs_pruned": 5.513429641723633e-07,
+      "max_abs_singleton": 4.731118679046631e-07,
+      "singletons": 5
+    },
+    "tuberlin": {
+      "queries": 60,
+      "full_photos": 27262,
+      "pruned_photos": 240,
+      "max_abs_pruned": 5.662441253662109e-07,
+      "max_abs_singleton": 8.89413058757782e-08,
+      "singletons": 5
+    }
+  }
+}
