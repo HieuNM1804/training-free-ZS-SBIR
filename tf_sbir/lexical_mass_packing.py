@@ -4,7 +4,20 @@ from concurrent.futures import ThreadPoolExecutor
 
 import numpy as np
 from scipy.sparse import csc_matrix
+from scipy.optimize import linprog
 import torch
+
+
+def certify(matrix, bound, primal, dual):
+    allocation = np.maximum(primal, 0.)
+    dual = np.maximum(dual, 0.)
+    ratio = np.min(bound / np.maximum(matrix @ allocation, 1e-200))
+    allocation *= min(1., ratio)
+    lower_cost = np.min(matrix.T @ dual)
+    if lower_cost <= 0:
+        return allocation, np.inf
+    upper = (bound @ dual) / min(1., lower_cost)
+    return allocation, upper - allocation.sum()
 
 
 def solve_words(anchor, rhs, jobs):
@@ -26,7 +39,7 @@ def solve_words(anchor, rhs, jobs):
         if highspy:
             solver = highspy.Highs()
             for name, value in (("output_flag", False), ("threads", 1), ("solver", "simplex"), ("presolve", "off"),
-                                ("primal_feasibility_tolerance", 1e-8), ("dual_feasibility_tolerance", 1e-8)):
+                                ("primal_feasibility_tolerance", 1e-10), ("dual_feasibility_tolerance", 1e-10)):
                 solver.setOptionValue(name, value)
             sparse = csc_matrix(mat)
             lp = highspy.HighsLp()
@@ -39,8 +52,6 @@ def solve_words(anchor, rhs, jobs):
             lp.a_matrix_.start_, lp.a_matrix_.index_, lp.a_matrix_.value_ = sparse.indptr, sparse.indices, sparse.data
             solver.passModel(lp)
             lower = np.full(count, -highspy.kHighsInf)
-        else:
-            from scipy.optimize import linprog
         for i in indices:
             bound = np.ascontiguousarray(bounds[:, i])
             if highspy:
@@ -57,14 +68,16 @@ def solve_words(anchor, rhs, jobs):
                     raise ValueError(sol.message)
                 allocation = np.maximum(sol.x, 0.)
                 dual = np.maximum(-sol.ineqlin.marginals, 0.)
-            # Repair roundoff toward feasibility. Scale the dual upward to prove an upper bound.
-            ratio = np.min(bound / np.maximum(mat @ allocation, 1e-200))
-            allocation *= min(1., ratio)
-            lower_cost = np.min(mat.T @ dual)
-            if lower_cost <= 0:
-                raise ValueError("Invalid dual certificate")
-            upper = (bound @ dual) / min(1., lower_cost)
-            gap = upper - allocation.sum()
+            allocation, gap = certify(mat, bound, allocation, dual)
+            if not (-1e-7 <= gap <= 3e-5):
+                # Rare terms can have a much smaller capacity in some cells than the gallery anchors.
+                # Make each constraint unit capacity and solve the unchanged LP at this term's scale.
+                local = mat / bound[:, None]
+                precise = linprog(-np.ones(size), A_ub=local, b_ub=np.ones(count), method="highs-ds",
+                                  options={"primal_feasibility_tolerance": 1e-9, "dual_feasibility_tolerance": 1e-9})
+                if not precise.success:
+                    raise ValueError(f"Rescaled gallery allocation failed for word {i}: {precise.message}")
+                allocation, gap = certify(local, np.ones(count), precise.x, -precise.ineqlin.marginals)
             if gap < -1e-7 or gap > 3e-5 or allocation.sum() > 1 + 1e-7:
                 raise ValueError(f"Uncertified allocation for word {i}: {gap}")
             result[:, i] = allocation
