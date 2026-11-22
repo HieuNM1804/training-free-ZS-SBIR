@@ -1,0 +1,4680 @@
+{
+  "revision": "5ee3531d7a76dd5b1da809d633772bcc9a162167",
+  "checks": {
+    "permuting_shared_locations": 7.450580596923828e-08,
+    "adding_arbitrary_single_name_terms": 5.960464477539062e-07,
+    "residual_offdiag_row_sums": 1.6689300537109375e-06,
+    "permuted_marginal_distributions": 0.0,
+    "monotonic_recalibration": 0.0,
+    "isotropic_sign_MC": 0.0012266337871551514
+  },
+  "method_names": [
+    "interaction",
+    "cosine",
+    "without_reference",
+    "full_residual",
+    "additive",
+    "raw_tau",
+    "pearson",
+    "word_geometry",
+    "mean",
+    "dispersion",
+    "marginals",
+    "permuted",
+    "permuted_cosine",
+    "without_projection"
+  ],
+  "pair_order": [
+    "rank_one_and_best_opponent",
+    "first_wrong_above_right",
+    "first_right_above_wrong"
+  ],
+  "summary": {
+    "sketchy_1": {
+      "rank_one_and_best_opponent": {
+        "8/interaction": {
+          "queries": 900,
+          "select_relevant": 0.47555555555555556,
+          "ci95_class": [
+            0.43663888888888885,
+            0.5177777777777778
+          ],
+          "mean_relevant_minus_wrong": -0.0004639612161554396,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "8/cosine": {
+          "queries": 900,
+          "select_relevant": 0.48,
+          "ci95_class": [
+            0.43777777777777777,
+            0.5266666666666666
+          ],
+          "mean_relevant_minus_wrong": -0.012845037505030632,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "8/without_reference": {
+          "queries": 900,
+          "select_relevant": 0.49333333333333335,
+          "ci95_class": [
+            0.43777777777777777,
+            0.55
+          ],
+          "mean_relevant_minus_wrong": -0.0006348717724904418,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "8/full_residual": {
+          "queries": 900,
+          "select_relevant": 0.4777777777777778,
+          "ci95_class": [
+            0.4288888888888889,
+            0.5266666666666666
+          ],
+          "mean_relevant_minus_wrong": -0.028465475887060165,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "8/additive": {
+          "queries": 900,
+          "select_relevant": 0.48,
+          "ci95_class": [
+            0.43555555555555553,
+            0.5266666666666666
+          ],
+          "mean_relevant_minus_wrong": -0.03873371705412865,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "8/raw_tau": {
+          "queries": 900,
+          "select_relevant": 0.48777777777777775,
+          "ci95_class": [
+            0.39444444444444443,
+            0.5777777777777777
+          ],
+          "mean_relevant_minus_wrong": -0.004441446159034967,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "8/pearson": {
+          "queries": 900,
+          "select_relevant": 0.4955555555555556,
+          "ci95_class": [
+            0.40555555555555556,
+            0.5822222222222222
+          ],
+          "mean_relevant_minus_wrong": -0.007503243163228035,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "8/word_geometry": {
+          "queries": 900,
+          "select_relevant": 0.385,
+          "ci95_class": [
+            0.32666666666666666,
+            0.45
+          ],
+          "mean_relevant_minus_wrong": -1.789596353773959e-05,
+          "ties": 1,
+          "present_classes": 25
+        },
+        "8/mean": {
+          "queries": 900,
+          "select_relevant": 0.5566666666666666,
+          "ci95_class": [
+            0.49,
+            0.6211388888888885
+          ],
+          "mean_relevant_minus_wrong": 0.051271919161081314,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "8/dispersion": {
+          "queries": 900,
+          "select_relevant": 0.5022222222222222,
+          "ci95_class": [
+            0.44555555555555554,
+            0.56
+          ],
+          "mean_relevant_minus_wrong": 0.015407208353281021,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "8/marginals": {
+          "queries": 900,
+          "select_relevant": 0.55,
+          "ci95_class": [
+            0.47555555555555556,
+            0.6222222222222222
+          ],
+          "mean_relevant_minus_wrong": 0.04217712581157684,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "8/permuted": {
+          "queries": 900,
+          "select_relevant": 0.5044444444444445,
+          "ci95_class": [
+            0.4633333333333333,
+            0.5433333333333333
+          ],
+          "mean_relevant_minus_wrong": 2.044763823505491e-05,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "8/permuted_cosine": {
+          "queries": 900,
+          "select_relevant": 0.5155555555555555,
+          "ci95_class": [
+            0.47444444444444445,
+            0.5544722222222218
+          ],
+          "mean_relevant_minus_wrong": 0.0036285670939832926,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "8/without_projection": {
+          "queries": 900,
+          "select_relevant": 0.5077777777777778,
+          "ci95_class": [
+            0.4722222222222222,
+            0.5444722222222218
+          ],
+          "mean_relevant_minus_wrong": 0.00012860415154136717,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "16/interaction": {
+          "queries": 900,
+          "select_relevant": 0.4855555555555556,
+          "ci95_class": [
+            0.4488611111111111,
+            0.5255555555555556
+          ],
+          "mean_relevant_minus_wrong": -0.0004573109035845846,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "16/cosine": {
+          "queries": 900,
+          "select_relevant": 0.48777777777777775,
+          "ci95_class": [
+            0.4533333333333333,
+            0.5233333333333333
+          ],
+          "mean_relevant_minus_wrong": -0.008796310983598232,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "16/without_reference": {
+          "queries": 900,
+          "select_relevant": 0.49444444444444446,
+          "ci95_class": [
+            0.43222222222222223,
+            0.56
+          ],
+          "mean_relevant_minus_wrong": -0.0006740377866663039,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "16/full_residual": {
+          "queries": 900,
+          "select_relevant": 0.4622222222222222,
+          "ci95_class": [
+            0.4222222222222222,
+            0.5044444444444445
+          ],
+          "mean_relevant_minus_wrong": -0.031085459515452385,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "16/additive": {
+          "queries": 900,
+          "select_relevant": 0.47,
+          "ci95_class": [
+            0.4255555555555556,
+            0.515583333333333
+          ],
+          "mean_relevant_minus_wrong": -0.04800628125667572,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "16/raw_tau": {
+          "queries": 900,
+          "select_relevant": 0.53,
+          "ci95_class": [
+            0.43555555555555553,
+            0.6200277777777774
+          ],
+          "mean_relevant_minus_wrong": 0.0032463548704981804,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "16/pearson": {
+          "queries": 900,
+          "select_relevant": 0.5344444444444445,
+          "ci95_class": [
+            0.44333333333333336,
+            0.6233333333333333
+          ],
+          "mean_relevant_minus_wrong": -6.122787453932688e-05,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "16/word_geometry": {
+          "queries": 900,
+          "select_relevant": 0.3988888888888889,
+          "ci95_class": [
+            0.32222222222222224,
+            0.4822222222222222
+          ],
+          "mean_relevant_minus_wrong": -1.8751356037682854e-05,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "16/mean": {
+          "queries": 900,
+          "select_relevant": 0.5811111111111111,
+          "ci95_class": [
+            0.5155555555555555,
+            0.6455555555555555
+          ],
+          "mean_relevant_minus_wrong": 0.06976951658725739,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "16/dispersion": {
+          "queries": 900,
+          "select_relevant": 0.5255555555555556,
+          "ci95_class": [
+            0.4599722222222222,
+            0.5911111111111111
+          ],
+          "mean_relevant_minus_wrong": 0.014421108178794384,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "16/marginals": {
+          "queries": 900,
+          "select_relevant": 0.5788888888888889,
+          "ci95_class": [
+            0.5122222222222222,
+            0.6422222222222222
+          ],
+          "mean_relevant_minus_wrong": 0.05661068484187126,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "16/permuted": {
+          "queries": 900,
+          "select_relevant": 0.53,
+          "ci95_class": [
+            0.4988888888888889,
+            0.5611111111111111
+          ],
+          "mean_relevant_minus_wrong": 0.00027190655237063766,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "16/permuted_cosine": {
+          "queries": 900,
+          "select_relevant": 0.5377777777777778,
+          "ci95_class": [
+            0.5044444444444445,
+            0.5711111111111111
+          ],
+          "mean_relevant_minus_wrong": 0.004933641292154789,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "16/without_projection": {
+          "queries": 900,
+          "select_relevant": 0.5144444444444445,
+          "ci95_class": [
+            0.4688888888888889,
+            0.5544444444444444
+          ],
+          "mean_relevant_minus_wrong": 0.0002901316911447793,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "32/interaction": {
+          "queries": 900,
+          "select_relevant": 0.48,
+          "ci95_class": [
+            0.43222222222222223,
+            0.5288888888888889
+          ],
+          "mean_relevant_minus_wrong": -0.0005042941775172949,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "32/cosine": {
+          "queries": 900,
+          "select_relevant": 0.48,
+          "ci95_class": [
+            0.43,
+            0.53
+          ],
+          "mean_relevant_minus_wrong": -0.01016148179769516,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "32/without_reference": {
+          "queries": 900,
+          "select_relevant": 0.47,
+          "ci95_class": [
+            0.3977777777777778,
+            0.5466666666666666
+          ],
+          "mean_relevant_minus_wrong": -0.0007735825493000448,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "32/full_residual": {
+          "queries": 900,
+          "select_relevant": 0.4688888888888889,
+          "ci95_class": [
+            0.42444444444444446,
+            0.5144444444444445
+          ],
+          "mean_relevant_minus_wrong": -0.029821021482348442,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "32/additive": {
+          "queries": 900,
+          "select_relevant": 0.47555555555555556,
+          "ci95_class": [
+            0.43,
+            0.5233333333333333
+          ],
+          "mean_relevant_minus_wrong": -0.04520756006240845,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "32/raw_tau": {
+          "queries": 900,
+          "select_relevant": 0.5755555555555556,
+          "ci95_class": [
+            0.4822222222222222,
+            0.6655555555555556
+          ],
+          "mean_relevant_minus_wrong": 0.013488148339092731,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "32/pearson": {
+          "queries": 900,
+          "select_relevant": 0.5755555555555556,
+          "ci95_class": [
+            0.47888888888888886,
+            0.6688888888888889
+          ],
+          "mean_relevant_minus_wrong": 0.009698600508272648,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "32/word_geometry": {
+          "queries": 900,
+          "select_relevant": 0.42833333333333334,
+          "ci95_class": [
+            0.3422222222222222,
+            0.5188888888888888
+          ],
+          "mean_relevant_minus_wrong": -1.3168388250051066e-05,
+          "ties": 1,
+          "present_classes": 25
+        },
+        "32/mean": {
+          "queries": 900,
+          "select_relevant": 0.6111111111111112,
+          "ci95_class": [
+            0.5466666666666666,
+            0.6711111111111111
+          ],
+          "mean_relevant_minus_wrong": 0.07843238115310669,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "32/dispersion": {
+          "queries": 900,
+          "select_relevant": 0.49666666666666665,
+          "ci95_class": [
+            0.43222222222222223,
+            0.5600277777777775
+          ],
+          "mean_relevant_minus_wrong": 0.017698023468255997,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "32/marginals": {
+          "queries": 900,
+          "select_relevant": 0.6066666666666667,
+          "ci95_class": [
+            0.5422222222222223,
+            0.6666666666666666
+          ],
+          "mean_relevant_minus_wrong": 0.06464597582817078,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "32/permuted": {
+          "queries": 900,
+          "select_relevant": 0.49666666666666665,
+          "ci95_class": [
+            0.46,
+            0.5344444444444445
+          ],
+          "mean_relevant_minus_wrong": 7.697112778259907e-06,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "32/permuted_cosine": {
+          "queries": 900,
+          "select_relevant": 0.49,
+          "ci95_class": [
+            0.45555555555555555,
+            0.5255555555555556
+          ],
+          "mean_relevant_minus_wrong": -0.0001631038321647793,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "32/without_projection": {
+          "queries": 900,
+          "select_relevant": 0.5211111111111111,
+          "ci95_class": [
+            0.46444444444444444,
+            0.5722222222222222
+          ],
+          "mean_relevant_minus_wrong": 0.000279587839031592,
+          "ties": 0,
+          "present_classes": 25
+        }
+      },
+      "first_wrong_above_right": {
+        "8/interaction": {
+          "queries": 262,
+          "select_relevant": 0.5038167938931297,
+          "ci95_class": [
+            0.4420955763642234,
+            0.5527986846912678
+          ],
+          "mean_relevant_minus_wrong": 0.0004977574571967125,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "8/cosine": {
+          "queries": 262,
+          "select_relevant": 0.48854961832061067,
+          "ci95_class": [
+            0.42615447726207223,
+            0.540984852259704
+          ],
+          "mean_relevant_minus_wrong": -0.013670203275978565,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "8/without_reference": {
+          "queries": 262,
+          "select_relevant": 0.49236641221374045,
+          "ci95_class": [
+            0.4329004329004329,
+            0.5418071250718253
+          ],
+          "mean_relevant_minus_wrong": 0.0008333360310643911,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "8/full_residual": {
+          "queries": 262,
+          "select_relevant": 0.5763358778625954,
+          "ci95_class": [
+            0.49267645971914265,
+            0.6475429352068697
+          ],
+          "mean_relevant_minus_wrong": 0.07129798084497452,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "8/additive": {
+          "queries": 262,
+          "select_relevant": 0.5687022900763359,
+          "ci95_class": [
+            0.4847269069175691,
+            0.6518253353973168
+          ],
+          "mean_relevant_minus_wrong": 0.08692516386508942,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "8/raw_tau": {
+          "queries": 262,
+          "select_relevant": 0.5419847328244275,
+          "ci95_class": [
+            0.438196096120725,
+            0.6626506024096386
+          ],
+          "mean_relevant_minus_wrong": -0.0036745998077094555,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "8/pearson": {
+          "queries": 262,
+          "select_relevant": 0.5610687022900763,
+          "ci95_class": [
+            0.4381262939958592,
+            0.6931880391506303
+          ],
+          "mean_relevant_minus_wrong": -0.002464799676090479,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "8/word_geometry": {
+          "queries": 262,
+          "select_relevant": 0.3969465648854962,
+          "ci95_class": [
+            0.3333333333333333,
+            0.46808510638297873
+          ],
+          "mean_relevant_minus_wrong": -1.575564601807855e-05,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "8/mean": {
+          "queries": 262,
+          "select_relevant": 0.5877862595419847,
+          "ci95_class": [
+            0.48790076711250985,
+            0.6944466773847803
+          ],
+          "mean_relevant_minus_wrong": 0.07944222539663315,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "8/dispersion": {
+          "queries": 262,
+          "select_relevant": 0.5763358778625954,
+          "ci95_class": [
+            0.4623044017556135,
+            0.6759272191185599
+          ],
+          "mean_relevant_minus_wrong": 0.09498795866966248,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "8/marginals": {
+          "queries": 262,
+          "select_relevant": 0.5954198473282443,
+          "ci95_class": [
+            0.47674418604651164,
+            0.7193690107202775
+          ],
+          "mean_relevant_minus_wrong": 0.07722339034080505,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "8/permuted": {
+          "queries": 262,
+          "select_relevant": 0.5190839694656488,
+          "ci95_class": [
+            0.47282135518061863,
+            0.5619075304540421
+          ],
+          "mean_relevant_minus_wrong": 0.0008266320219263434,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "8/permuted_cosine": {
+          "queries": 262,
+          "select_relevant": 0.5190839694656488,
+          "ci95_class": [
+            0.474024283008658,
+            0.5549457741211669
+          ],
+          "mean_relevant_minus_wrong": 0.015648461878299713,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "8/without_projection": {
+          "queries": 262,
+          "select_relevant": 0.5267175572519084,
+          "ci95_class": [
+            0.47368421052631576,
+            0.5923963365539452
+          ],
+          "mean_relevant_minus_wrong": 0.0002739876799751073,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "16/interaction": {
+          "queries": 262,
+          "select_relevant": 0.49236641221374045,
+          "ci95_class": [
+            0.40924862504044,
+            0.5664747003046784
+          ],
+          "mean_relevant_minus_wrong": 0.00030534982215613127,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "16/cosine": {
+          "queries": 262,
+          "select_relevant": 0.49236641221374045,
+          "ci95_class": [
+            0.42857142857142855,
+            0.5504612926502422
+          ],
+          "mean_relevant_minus_wrong": 0.004175127949565649,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "16/without_reference": {
+          "queries": 262,
+          "select_relevant": 0.5267175572519084,
+          "ci95_class": [
+            0.43999656357388317,
+            0.6141604542568658
+          ],
+          "mean_relevant_minus_wrong": 0.000367765489500016,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "16/full_residual": {
+          "queries": 262,
+          "select_relevant": 0.5229007633587787,
+          "ci95_class": [
+            0.43084533747327697,
+            0.594167487684729
+          ],
+          "mean_relevant_minus_wrong": 0.04157854989171028,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "16/additive": {
+          "queries": 262,
+          "select_relevant": 0.5305343511450382,
+          "ci95_class": [
+            0.4444319880418535,
+            0.6030633061331928
+          ],
+          "mean_relevant_minus_wrong": 0.04045259580016136,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "16/raw_tau": {
+          "queries": 262,
+          "select_relevant": 0.5038167938931297,
+          "ci95_class": [
+            0.40077713721675445,
+            0.6111176935229068
+          ],
+          "mean_relevant_minus_wrong": -0.004383251070976257,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "16/pearson": {
+          "queries": 262,
+          "select_relevant": 0.4847328244274809,
+          "ci95_class": [
+            0.3779227053140097,
+            0.6009615384615384
+          ],
+          "mean_relevant_minus_wrong": -0.004952763672918081,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "16/word_geometry": {
+          "queries": 262,
+          "select_relevant": 0.3530534351145038,
+          "ci95_class": [
+            0.24703916510318952,
+            0.4829936100653853
+          ],
+          "mean_relevant_minus_wrong": -1.6028872778406367e-05,
+          "ties": 1,
+          "present_classes": 24
+        },
+        "16/mean": {
+          "queries": 262,
+          "select_relevant": 0.5725190839694656,
+          "ci95_class": [
+            0.4999603174603175,
+            0.6644956393821582
+          ],
+          "mean_relevant_minus_wrong": 0.05623524636030197,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "16/dispersion": {
+          "queries": 262,
+          "select_relevant": 0.583969465648855,
+          "ci95_class": [
+            0.477355175688509,
+            0.6666925465838505
+          ],
+          "mean_relevant_minus_wrong": 0.07153283804655075,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "16/marginals": {
+          "queries": 262,
+          "select_relevant": 0.6068702290076335,
+          "ci95_class": [
+            0.5148889236545682,
+            0.7063492063492064
+          ],
+          "mean_relevant_minus_wrong": 0.05429670959711075,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "16/permuted": {
+          "queries": 262,
+          "select_relevant": 0.5076335877862596,
+          "ci95_class": [
+            0.4465095514950166,
+            0.5638766519823789
+          ],
+          "mean_relevant_minus_wrong": 0.00029116004589013755,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "16/permuted_cosine": {
+          "queries": 262,
+          "select_relevant": 0.5152671755725191,
+          "ci95_class": [
+            0.4599973262032086,
+            0.5637583892617449
+          ],
+          "mean_relevant_minus_wrong": 0.005939099472016096,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "16/without_projection": {
+          "queries": 262,
+          "select_relevant": 0.5190839694656488,
+          "ci95_class": [
+            0.4708454233711422,
+            0.5701763717805151
+          ],
+          "mean_relevant_minus_wrong": 0.0003895519475918263,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "32/interaction": {
+          "queries": 262,
+          "select_relevant": 0.46946564885496184,
+          "ci95_class": [
+            0.40568414509287704,
+            0.5444165057915056
+          ],
+          "mean_relevant_minus_wrong": 8.742317004362121e-05,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "32/cosine": {
+          "queries": 262,
+          "select_relevant": 0.4770992366412214,
+          "ci95_class": [
+            0.4066662404092072,
+            0.555113378684807
+          ],
+          "mean_relevant_minus_wrong": -0.00036248110700398684,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "32/without_reference": {
+          "queries": 262,
+          "select_relevant": 0.48854961832061067,
+          "ci95_class": [
+            0.3676431615048847,
+            0.6123083700440529
+          ],
+          "mean_relevant_minus_wrong": -8.504321158397943e-05,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "32/full_residual": {
+          "queries": 262,
+          "select_relevant": 0.5190839694656488,
+          "ci95_class": [
+            0.4294469505593649,
+            0.594371907118386
+          ],
+          "mean_relevant_minus_wrong": 0.005747671239078045,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "32/additive": {
+          "queries": 262,
+          "select_relevant": 0.5114503816793893,
+          "ci95_class": [
+            0.427267065674539,
+            0.5787453377538333
+          ],
+          "mean_relevant_minus_wrong": -0.003578667528927326,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "32/raw_tau": {
+          "queries": 262,
+          "select_relevant": 0.5190839694656488,
+          "ci95_class": [
+            0.40879891344247854,
+            0.6353015952143568
+          ],
+          "mean_relevant_minus_wrong": -0.002762124640867114,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "32/pearson": {
+          "queries": 262,
+          "select_relevant": 0.5114503816793893,
+          "ci95_class": [
+            0.39490026818638957,
+            0.6376319244558905
+          ],
+          "mean_relevant_minus_wrong": -0.004087406676262617,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "32/word_geometry": {
+          "queries": 262,
+          "select_relevant": 0.33587786259541985,
+          "ci95_class": [
+            0.21917308269173083,
+            0.4863816538288467
+          ],
+          "mean_relevant_minus_wrong": -2.158871211577207e-05,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "32/mean": {
+          "queries": 262,
+          "select_relevant": 0.5877862595419847,
+          "ci95_class": [
+            0.5128158844765343,
+            0.6728716008547256
+          ],
+          "mean_relevant_minus_wrong": 0.03947141021490097,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "32/dispersion": {
+          "queries": 262,
+          "select_relevant": 0.5190839694656488,
+          "ci95_class": [
+            0.39582958633093523,
+            0.6238979639363895
+          ],
+          "mean_relevant_minus_wrong": 0.028139345347881317,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "32/marginals": {
+          "queries": 262,
+          "select_relevant": 0.5992366412213741,
+          "ci95_class": [
+            0.49803458722544813,
+            0.6949653890526855
+          ],
+          "mean_relevant_minus_wrong": 0.03651309385895729,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "32/permuted": {
+          "queries": 262,
+          "select_relevant": 0.48091603053435117,
+          "ci95_class": [
+            0.4309847482686172,
+            0.5458721136373709
+          ],
+          "mean_relevant_minus_wrong": -0.00018293502216693014,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "32/permuted_cosine": {
+          "queries": 262,
+          "select_relevant": 0.5,
+          "ci95_class": [
+            0.4518499717992104,
+            0.5598484848484846
+          ],
+          "mean_relevant_minus_wrong": -0.0021335682831704617,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "32/without_projection": {
+          "queries": 262,
+          "select_relevant": 0.48091603053435117,
+          "ci95_class": [
+            0.4124481346930496,
+            0.5660460844882282
+          ],
+          "mean_relevant_minus_wrong": 3.614927481976338e-05,
+          "ties": 0,
+          "present_classes": 24
+        }
+      },
+      "first_right_above_wrong": {
+        "8/interaction": {
+          "queries": 266,
+          "select_relevant": 0.4924812030075188,
+          "ci95_class": [
+            0.4371724172460161,
+            0.5515165103954341
+          ],
+          "mean_relevant_minus_wrong": 0.0008823414100334048,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "8/cosine": {
+          "queries": 266,
+          "select_relevant": 0.4849624060150376,
+          "ci95_class": [
+            0.43333333333333335,
+            0.549788961038961
+          ],
+          "mean_relevant_minus_wrong": -0.010413668118417263,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "8/without_reference": {
+          "queries": 266,
+          "select_relevant": 0.5225563909774437,
+          "ci95_class": [
+            0.47673964389534884,
+            0.5789553915275993
+          ],
+          "mean_relevant_minus_wrong": 0.0013259631814435124,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "8/full_residual": {
+          "queries": 266,
+          "select_relevant": 0.5338345864661654,
+          "ci95_class": [
+            0.4583333333333333,
+            0.6060658853341779
+          ],
+          "mean_relevant_minus_wrong": 0.03353901207447052,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "8/additive": {
+          "queries": 266,
+          "select_relevant": 0.5488721804511278,
+          "ci95_class": [
+            0.4581810172206648,
+            0.6334860999194197
+          ],
+          "mean_relevant_minus_wrong": 0.03472999855875969,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "8/raw_tau": {
+          "queries": 266,
+          "select_relevant": 0.47368421052631576,
+          "ci95_class": [
+            0.3783783783783784,
+            0.5939964494569756
+          ],
+          "mean_relevant_minus_wrong": -0.013114266097545624,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "8/pearson": {
+          "queries": 266,
+          "select_relevant": 0.47368421052631576,
+          "ci95_class": [
+            0.3742268941094319,
+            0.5880003745318352
+          ],
+          "mean_relevant_minus_wrong": -0.012900338508188725,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "8/word_geometry": {
+          "queries": 266,
+          "select_relevant": 0.3082706766917293,
+          "ci95_class": [
+            0.26168027130407345,
+            0.36097899728997285
+          ],
+          "mean_relevant_minus_wrong": -2.262085945403669e-05,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "8/mean": {
+          "queries": 266,
+          "select_relevant": 0.5827067669172933,
+          "ci95_class": [
+            0.4982456140350877,
+            0.6666666666666666
+          ],
+          "mean_relevant_minus_wrong": 0.06337696313858032,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "8/dispersion": {
+          "queries": 266,
+          "select_relevant": 0.5451127819548872,
+          "ci95_class": [
+            0.42011834319526625,
+            0.6524089979972333
+          ],
+          "mean_relevant_minus_wrong": 0.0619657039642334,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "8/marginals": {
+          "queries": 266,
+          "select_relevant": 0.5939849624060151,
+          "ci95_class": [
+            0.5063242603090783,
+            0.6831424944754287
+          ],
+          "mean_relevant_minus_wrong": 0.06182758882641792,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "8/permuted": {
+          "queries": 266,
+          "select_relevant": 0.5526315789473685,
+          "ci95_class": [
+            0.5018719681578838,
+            0.5974036347039542
+          ],
+          "mean_relevant_minus_wrong": 0.0006920606829226017,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "8/permuted_cosine": {
+          "queries": 266,
+          "select_relevant": 0.5375939849624061,
+          "ci95_class": [
+            0.46523243268599307,
+            0.5955573770491802
+          ],
+          "mean_relevant_minus_wrong": 0.019778262823820114,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "8/without_projection": {
+          "queries": 266,
+          "select_relevant": 0.5338345864661654,
+          "ci95_class": [
+            0.4730256086587012,
+            0.5961538461538461
+          ],
+          "mean_relevant_minus_wrong": 0.0006609476986341178,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "16/interaction": {
+          "queries": 266,
+          "select_relevant": 0.4849624060150376,
+          "ci95_class": [
+            0.41303654024051806,
+            0.5527163289791186
+          ],
+          "mean_relevant_minus_wrong": 0.00020321813644841313,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "16/cosine": {
+          "queries": 266,
+          "select_relevant": 0.47368421052631576,
+          "ci95_class": [
+            0.39922360991482436,
+            0.5447583481720853
+          ],
+          "mean_relevant_minus_wrong": -0.00877576507627964,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "16/without_reference": {
+          "queries": 266,
+          "select_relevant": 0.5300751879699248,
+          "ci95_class": [
+            0.41636595467270004,
+            0.6272057476528509
+          ],
+          "mean_relevant_minus_wrong": 0.0005463177803903818,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "16/full_residual": {
+          "queries": 266,
+          "select_relevant": 0.47368421052631576,
+          "ci95_class": [
+            0.37566070421400366,
+            0.5601503759398496
+          ],
+          "mean_relevant_minus_wrong": -0.004230309743434191,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "16/additive": {
+          "queries": 266,
+          "select_relevant": 0.5,
+          "ci95_class": [
+            0.41509433962264153,
+            0.5764774281805745
+          ],
+          "mean_relevant_minus_wrong": -0.01309110689908266,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "16/raw_tau": {
+          "queries": 266,
+          "select_relevant": 0.4473684210526316,
+          "ci95_class": [
+            0.346528874677351,
+            0.5615157495610014
+          ],
+          "mean_relevant_minus_wrong": -0.012767160311341286,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "16/pearson": {
+          "queries": 266,
+          "select_relevant": 0.42857142857142855,
+          "ci95_class": [
+            0.32300816248007475,
+            0.5394752141982864
+          ],
+          "mean_relevant_minus_wrong": -0.011667342856526375,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "16/word_geometry": {
+          "queries": 266,
+          "select_relevant": 0.31954887218045114,
+          "ci95_class": [
+            0.2413793103448276,
+            0.40625730140186905
+          ],
+          "mean_relevant_minus_wrong": -2.254579339933116e-05,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "16/mean": {
+          "queries": 266,
+          "select_relevant": 0.5526315789473685,
+          "ci95_class": [
+            0.4528301886792453,
+            0.6528520268210911
+          ],
+          "mean_relevant_minus_wrong": 0.0487145371735096,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "16/dispersion": {
+          "queries": 266,
+          "select_relevant": 0.5375939849624061,
+          "ci95_class": [
+            0.40462103007079303,
+            0.6528250469327196
+          ],
+          "mean_relevant_minus_wrong": 0.056297849863767624,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "16/marginals": {
+          "queries": 266,
+          "select_relevant": 0.5526315789473685,
+          "ci95_class": [
+            0.4615301724137931,
+            0.6426426426426426
+          ],
+          "mean_relevant_minus_wrong": 0.04656943678855896,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "16/permuted": {
+          "queries": 266,
+          "select_relevant": 0.48120300751879697,
+          "ci95_class": [
+            0.4245239504281835,
+            0.5414634146341464
+          ],
+          "mean_relevant_minus_wrong": -0.00018869873019866645,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "16/permuted_cosine": {
+          "queries": 266,
+          "select_relevant": 0.4699248120300752,
+          "ci95_class": [
+            0.4164009306707396,
+            0.5212137330754352
+          ],
+          "mean_relevant_minus_wrong": -0.0012937304563820362,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "16/without_projection": {
+          "queries": 266,
+          "select_relevant": 0.5112781954887218,
+          "ci95_class": [
+            0.47533563084758895,
+            0.5450819672131147
+          ],
+          "mean_relevant_minus_wrong": 0.0005006544524803758,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "32/interaction": {
+          "queries": 266,
+          "select_relevant": 0.5,
+          "ci95_class": [
+            0.40106882241532976,
+            0.6049600430305822
+          ],
+          "mean_relevant_minus_wrong": 0.00022869942768011242,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "32/cosine": {
+          "queries": 266,
+          "select_relevant": 0.49624060150375937,
+          "ci95_class": [
+            0.3991896712158809,
+            0.5979406711138063
+          ],
+          "mean_relevant_minus_wrong": 0.0006882328889332712,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "32/without_reference": {
+          "queries": 266,
+          "select_relevant": 0.5488721804511278,
+          "ci95_class": [
+            0.45544438246641566,
+            0.6472872237768986
+          ],
+          "mean_relevant_minus_wrong": 0.0003641280927695334,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "32/full_residual": {
+          "queries": 266,
+          "select_relevant": 0.4849624060150376,
+          "ci95_class": [
+            0.37623090797451836,
+            0.5777813852813852
+          ],
+          "mean_relevant_minus_wrong": -0.02183130383491516,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "32/additive": {
+          "queries": 266,
+          "select_relevant": 0.5,
+          "ci95_class": [
+            0.4,
+            0.5774319229157937
+          ],
+          "mean_relevant_minus_wrong": -0.034081339836120605,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "32/raw_tau": {
+          "queries": 266,
+          "select_relevant": 0.462406015037594,
+          "ci95_class": [
+            0.3421024151287309,
+            0.5955071742039901
+          ],
+          "mean_relevant_minus_wrong": -0.006635947152972221,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "32/pearson": {
+          "queries": 266,
+          "select_relevant": 0.4548872180451128,
+          "ci95_class": [
+            0.3342540132200189,
+            0.5895990810730695
+          ],
+          "mean_relevant_minus_wrong": -0.008969494141638279,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "32/word_geometry": {
+          "queries": 266,
+          "select_relevant": 0.3609022556390977,
+          "ci95_class": [
+            0.2540407308717168,
+            0.4730296668074639
+          ],
+          "mean_relevant_minus_wrong": -2.5819119400694035e-05,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "32/mean": {
+          "queries": 266,
+          "select_relevant": 0.5939849624060151,
+          "ci95_class": [
+            0.524189146358642,
+            0.6785714285714286
+          ],
+          "mean_relevant_minus_wrong": 0.03572463244199753,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "32/dispersion": {
+          "queries": 266,
+          "select_relevant": 0.5300751879699248,
+          "ci95_class": [
+            0.4,
+            0.6482013563855191
+          ],
+          "mean_relevant_minus_wrong": 0.03565285727381706,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "32/marginals": {
+          "queries": 266,
+          "select_relevant": 0.5827067669172933,
+          "ci95_class": [
+            0.5,
+            0.6815302468548974
+          ],
+          "mean_relevant_minus_wrong": 0.03283099830150604,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "32/permuted": {
+          "queries": 266,
+          "select_relevant": 0.4849624060150376,
+          "ci95_class": [
+            0.41836392734037314,
+            0.5561224489795918
+          ],
+          "mean_relevant_minus_wrong": -4.1743744077393785e-05,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "32/permuted_cosine": {
+          "queries": 266,
+          "select_relevant": 0.4849624060150376,
+          "ci95_class": [
+            0.42121763411744795,
+            0.5514018691588785
+          ],
+          "mean_relevant_minus_wrong": 0.0005889623425900936,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "32/without_projection": {
+          "queries": 266,
+          "select_relevant": 0.48872180451127817,
+          "ci95_class": [
+            0.4095206136145733,
+            0.5688622754491018
+          ],
+          "mean_relevant_minus_wrong": 0.0004246048629283905,
+          "ties": 0,
+          "present_classes": 24
+        }
+      },
+      "top1_wrong": {
+        "8/interaction": {
+          "queries": 145,
+          "select_relevant": 0.5172413793103449,
+          "ci95_class": [
+            0.4357142857142857,
+            0.5873065476190475
+          ],
+          "mean_relevant_minus_wrong": 0.0006792740314267576,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "8/cosine": {
+          "queries": 145,
+          "select_relevant": 0.5448275862068965,
+          "ci95_class": [
+            0.45068661971830987,
+            0.6337315655133294
+          ],
+          "mean_relevant_minus_wrong": 0.03870946913957596,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "8/without_reference": {
+          "queries": 145,
+          "select_relevant": 0.5379310344827586,
+          "ci95_class": [
+            0.4666666666666667,
+            0.6190476190476191
+          ],
+          "mean_relevant_minus_wrong": 0.0008264798671007156,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "8/full_residual": {
+          "queries": 145,
+          "select_relevant": 0.5103448275862069,
+          "ci95_class": [
+            0.40458015267175573,
+            0.5902798694779117
+          ],
+          "mean_relevant_minus_wrong": -0.019407978281378746,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "8/additive": {
+          "queries": 145,
+          "select_relevant": 0.496551724137931,
+          "ci95_class": [
+            0.39416058394160586,
+            0.5842733109587042
+          ],
+          "mean_relevant_minus_wrong": -0.034645937383174896,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "8/raw_tau": {
+          "queries": 145,
+          "select_relevant": 0.5517241379310345,
+          "ci95_class": [
+            0.44525213637172867,
+            0.6496815286624203
+          ],
+          "mean_relevant_minus_wrong": 0.0022610356099903584,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "8/pearson": {
+          "queries": 145,
+          "select_relevant": 0.5724137931034483,
+          "ci95_class": [
+            0.46608708357685563,
+            0.6686418269230768
+          ],
+          "mean_relevant_minus_wrong": 0.005628879182040691,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "8/word_geometry": {
+          "queries": 145,
+          "select_relevant": 0.503448275862069,
+          "ci95_class": [
+            0.42656898938624827,
+            0.5969138511042853
+          ],
+          "mean_relevant_minus_wrong": 8.541962415620219e-06,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "8/mean": {
+          "queries": 145,
+          "select_relevant": 0.4689655172413793,
+          "ci95_class": [
+            0.37606516290726816,
+            0.5575786713286713
+          ],
+          "mean_relevant_minus_wrong": -0.022599130868911743,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "8/dispersion": {
+          "queries": 145,
+          "select_relevant": 0.4413793103448276,
+          "ci95_class": [
+            0.3611111111111111,
+            0.5310398706896551
+          ],
+          "mean_relevant_minus_wrong": -0.04071960598230362,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "8/marginals": {
+          "queries": 145,
+          "select_relevant": 0.4827586206896552,
+          "ci95_class": [
+            0.3902439024390244,
+            0.567741935483871
+          ],
+          "mean_relevant_minus_wrong": -0.026215964928269386,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "8/permuted": {
+          "queries": 145,
+          "select_relevant": 0.5310344827586206,
+          "ci95_class": [
+            0.4436075066699005,
+            0.6101694915254238
+          ],
+          "mean_relevant_minus_wrong": 0.0003446798655204475,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "8/permuted_cosine": {
+          "queries": 145,
+          "select_relevant": 0.5379310344827586,
+          "ci95_class": [
+            0.453125,
+            0.6153963414634145
+          ],
+          "mean_relevant_minus_wrong": 0.018652189522981644,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "8/without_projection": {
+          "queries": 145,
+          "select_relevant": 0.503448275862069,
+          "ci95_class": [
+            0.42592592592592593,
+            0.5689749559526804
+          ],
+          "mean_relevant_minus_wrong": 0.0005168088246136904,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "16/interaction": {
+          "queries": 145,
+          "select_relevant": 0.496551724137931,
+          "ci95_class": [
+            0.43410140218878246,
+            0.5644196516920641
+          ],
+          "mean_relevant_minus_wrong": 0.0004995281342417002,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "16/cosine": {
+          "queries": 145,
+          "select_relevant": 0.5310344827586206,
+          "ci95_class": [
+            0.47058823529411764,
+            0.5891507475083056
+          ],
+          "mean_relevant_minus_wrong": 0.008604936301708221,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "16/without_reference": {
+          "queries": 145,
+          "select_relevant": 0.5586206896551724,
+          "ci95_class": [
+            0.4722222222222222,
+            0.6488587533491733
+          ],
+          "mean_relevant_minus_wrong": 0.0006413685623556376,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "16/full_residual": {
+          "queries": 145,
+          "select_relevant": 0.4827586206896552,
+          "ci95_class": [
+            0.39654784094439266,
+            0.563639414276998
+          ],
+          "mean_relevant_minus_wrong": -0.0461122989654541,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "16/additive": {
+          "queries": 145,
+          "select_relevant": 0.47586206896551725,
+          "ci95_class": [
+            0.3779527559055118,
+            0.5625
+          ],
+          "mean_relevant_minus_wrong": -0.08410835266113281,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "16/raw_tau": {
+          "queries": 145,
+          "select_relevant": 0.5379310344827586,
+          "ci95_class": [
+            0.4362251410219459,
+            0.6358033611646329
+          ],
+          "mean_relevant_minus_wrong": 0.0026509766466915607,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "16/pearson": {
+          "queries": 145,
+          "select_relevant": 0.5448275862068965,
+          "ci95_class": [
+            0.4491525423728814,
+            0.6349235314563781
+          ],
+          "mean_relevant_minus_wrong": 0.004373161122202873,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "16/word_geometry": {
+          "queries": 145,
+          "select_relevant": 0.4413793103448276,
+          "ci95_class": [
+            0.35657494216486063,
+            0.5384615384615384
+          ],
+          "mean_relevant_minus_wrong": -9.02743158803787e-06,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "16/mean": {
+          "queries": 145,
+          "select_relevant": 0.496551724137931,
+          "ci95_class": [
+            0.4318140941792021,
+            0.5555555555555556
+          ],
+          "mean_relevant_minus_wrong": -0.022758450359106064,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "16/dispersion": {
+          "queries": 145,
+          "select_relevant": 0.496551724137931,
+          "ci95_class": [
+            0.4087514135910353,
+            0.5833333333333334
+          ],
+          "mean_relevant_minus_wrong": -0.017404120415449142,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "16/marginals": {
+          "queries": 145,
+          "select_relevant": 0.4896551724137931,
+          "ci95_class": [
+            0.42735042735042733,
+            0.5394736842105263
+          ],
+          "mean_relevant_minus_wrong": -0.020537300035357475,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "16/permuted": {
+          "queries": 145,
+          "select_relevant": 0.5862068965517241,
+          "ci95_class": [
+            0.4653200141442716,
+            0.6978560009135547
+          ],
+          "mean_relevant_minus_wrong": 0.0006499013397842646,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "16/permuted_cosine": {
+          "queries": 145,
+          "select_relevant": 0.593103448275862,
+          "ci95_class": [
+            0.4714285714285714,
+            0.7067773023719518
+          ],
+          "mean_relevant_minus_wrong": 0.013553365133702755,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "16/without_projection": {
+          "queries": 145,
+          "select_relevant": 0.4827586206896552,
+          "ci95_class": [
+            0.4,
+            0.5562139423076923
+          ],
+          "mean_relevant_minus_wrong": 0.00021236161410342902,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "32/interaction": {
+          "queries": 145,
+          "select_relevant": 0.5103448275862069,
+          "ci95_class": [
+            0.42330698442661635,
+            0.5970149253731343
+          ],
+          "mean_relevant_minus_wrong": 0.0004473821900319308,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "32/cosine": {
+          "queries": 145,
+          "select_relevant": 0.5241379310344828,
+          "ci95_class": [
+            0.4444444444444444,
+            0.6083916083916084
+          ],
+          "mean_relevant_minus_wrong": 0.015735726803541183,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "32/without_reference": {
+          "queries": 145,
+          "select_relevant": 0.5448275862068965,
+          "ci95_class": [
+            0.4651080904028824,
+            0.6230769230769231
+          ],
+          "mean_relevant_minus_wrong": 0.00048107720795087516,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "32/full_residual": {
+          "queries": 145,
+          "select_relevant": 0.4689655172413793,
+          "ci95_class": [
+            0.4,
+            0.5393275451140619
+          ],
+          "mean_relevant_minus_wrong": -0.025440050289034843,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "32/additive": {
+          "queries": 145,
+          "select_relevant": 0.47586206896551725,
+          "ci95_class": [
+            0.39705882352941174,
+            0.5476190476190477
+          ],
+          "mean_relevant_minus_wrong": -0.0406893715262413,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "32/raw_tau": {
+          "queries": 145,
+          "select_relevant": 0.5379310344827586,
+          "ci95_class": [
+            0.4322033898305085,
+            0.6250174581005584
+          ],
+          "mean_relevant_minus_wrong": 0.004876276943832636,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "32/pearson": {
+          "queries": 145,
+          "select_relevant": 0.5724137931034483,
+          "ci95_class": [
+            0.47328073882224647,
+            0.6515235690235689
+          ],
+          "mean_relevant_minus_wrong": 0.007991820573806763,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "32/word_geometry": {
+          "queries": 145,
+          "select_relevant": 0.496551724137931,
+          "ci95_class": [
+            0.4090909090909091,
+            0.6048387096774194
+          ],
+          "mean_relevant_minus_wrong": -5.226710527495015e-06,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "32/mean": {
+          "queries": 145,
+          "select_relevant": 0.496551724137931,
+          "ci95_class": [
+            0.43548387096774194,
+            0.5548413683091101
+          ],
+          "mean_relevant_minus_wrong": -0.0027729724533855915,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "32/dispersion": {
+          "queries": 145,
+          "select_relevant": 0.4689655172413793,
+          "ci95_class": [
+            0.3923,
+            0.5416666666666666
+          ],
+          "mean_relevant_minus_wrong": -0.010579768568277359,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "32/marginals": {
+          "queries": 145,
+          "select_relevant": 0.5103448275862069,
+          "ci95_class": [
+            0.4468049645390071,
+            0.5647103726986977
+          ],
+          "mean_relevant_minus_wrong": -0.0012779063545167446,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "32/permuted": {
+          "queries": 145,
+          "select_relevant": 0.46206896551724136,
+          "ci95_class": [
+            0.3772406007656817,
+            0.55
+          ],
+          "mean_relevant_minus_wrong": -9.149809193331748e-05,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "32/permuted_cosine": {
+          "queries": 145,
+          "select_relevant": 0.4689655172413793,
+          "ci95_class": [
+            0.38461538461538464,
+            0.5563380281690141
+          ],
+          "mean_relevant_minus_wrong": -0.00013812708493787795,
+          "ties": 0,
+          "present_classes": 24
+        },
+        "32/without_projection": {
+          "queries": 145,
+          "select_relevant": 0.503448275862069,
+          "ci95_class": [
+            0.4277428125950715,
+            0.5766871165644172
+          ],
+          "mean_relevant_minus_wrong": -0.000247834250330925,
+          "ties": 0,
+          "present_classes": 24
+        }
+      },
+      "top1_correct": {
+        "8/interaction": {
+          "queries": 755,
+          "select_relevant": 0.4675496688741722,
+          "ci95_class": [
+            0.4156514412734834,
+            0.520462094137972
+          ],
+          "mean_relevant_minus_wrong": -0.000683523016050458,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "8/cosine": {
+          "queries": 755,
+          "select_relevant": 0.4675496688741722,
+          "ci95_class": [
+            0.41677150537634405,
+            0.5214007782101168
+          ],
+          "mean_relevant_minus_wrong": -0.022746233269572258,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "8/without_reference": {
+          "queries": 755,
+          "select_relevant": 0.4847682119205298,
+          "ci95_class": [
+            0.4203803235472304,
+            0.5519979341828969
+          ],
+          "mean_relevant_minus_wrong": -0.000915528682526201,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "8/full_residual": {
+          "queries": 755,
+          "select_relevant": 0.47152317880794703,
+          "ci95_class": [
+            0.4163518283739777,
+            0.5273462338939089
+          ],
+          "mean_relevant_minus_wrong": -0.030205000191926956,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "8/additive": {
+          "queries": 755,
+          "select_relevant": 0.4768211920529801,
+          "ci95_class": [
+            0.4266993263381667,
+            0.5268366097360093
+          ],
+          "mean_relevant_minus_wrong": -0.03951879218220711,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "8/raw_tau": {
+          "queries": 755,
+          "select_relevant": 0.47549668874172185,
+          "ci95_class": [
+            0.37397659425813007,
+            0.5765672419299387
+          ],
+          "mean_relevant_minus_wrong": -0.005728677846491337,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "8/pearson": {
+          "queries": 755,
+          "select_relevant": 0.48079470198675495,
+          "ci95_class": [
+            0.3838794489158439,
+            0.5773337016574586
+          ],
+          "mean_relevant_minus_wrong": -0.010025307536125183,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "8/word_geometry": {
+          "queries": 755,
+          "select_relevant": 0.3622516556291391,
+          "ci95_class": [
+            0.28939736500434343,
+            0.4391396346577918
+          ],
+          "mean_relevant_minus_wrong": -2.2973445084062405e-05,
+          "ties": 1,
+          "present_classes": 25
+        },
+        "8/mean": {
+          "queries": 755,
+          "select_relevant": 0.5735099337748344,
+          "ci95_class": [
+            0.4937323480019846,
+            0.6525860620959344
+          ],
+          "mean_relevant_minus_wrong": 0.06545907258987427,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "8/dispersion": {
+          "queries": 755,
+          "select_relevant": 0.5139072847682119,
+          "ci95_class": [
+            0.44381786269750134,
+            0.5843141160846809
+          ],
+          "mean_relevant_minus_wrong": 0.02618652954697609,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "8/marginals": {
+          "queries": 755,
+          "select_relevant": 0.5629139072847682,
+          "ci95_class": [
+            0.47790757269917367,
+            0.6476979964390672
+          ],
+          "mean_relevant_minus_wrong": 0.055312227457761765,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "8/permuted": {
+          "queries": 755,
+          "select_relevant": 0.49933774834437084,
+          "ci95_class": [
+            0.4535650814372387,
+            0.543448275862069
+          ],
+          "mean_relevant_minus_wrong": -4.182216071058065e-05,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "8/permuted_cosine": {
+          "queries": 755,
+          "select_relevant": 0.5112582781456954,
+          "ci95_class": [
+            0.4639670006362644,
+            0.5576178043810494
+          ],
+          "mean_relevant_minus_wrong": 0.0007432356360368431,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "8/without_projection": {
+          "queries": 755,
+          "select_relevant": 0.5086092715231788,
+          "ci95_class": [
+            0.4707373976898952,
+            0.5503270167127254
+          ],
+          "mean_relevant_minus_wrong": 5.404833791544661e-05,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "16/interaction": {
+          "queries": 755,
+          "select_relevant": 0.48344370860927155,
+          "ci95_class": [
+            0.4410521625888964,
+            0.5281501340482574
+          ],
+          "mean_relevant_minus_wrong": -0.0006410747882910073,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "16/cosine": {
+          "queries": 755,
+          "select_relevant": 0.4794701986754967,
+          "ci95_class": [
+            0.4409027312169957,
+            0.5195167946265914
+          ],
+          "mean_relevant_minus_wrong": -0.01213827170431614,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "16/without_reference": {
+          "queries": 755,
+          "select_relevant": 0.4821192052980132,
+          "ci95_class": [
+            0.41456868966869587,
+            0.5538296994935056
+          ],
+          "mean_relevant_minus_wrong": -0.0009266654960811138,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "16/full_residual": {
+          "queries": 755,
+          "select_relevant": 0.45827814569536424,
+          "ci95_class": [
+            0.41551175051380573,
+            0.5038662291217134
+          ],
+          "mean_relevant_minus_wrong": -0.028199510648846626,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "16/additive": {
+          "queries": 755,
+          "select_relevant": 0.4688741721854305,
+          "ci95_class": [
+            0.4213998487907414,
+            0.5176478908395041
+          ],
+          "mean_relevant_minus_wrong": -0.041072778403759,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "16/raw_tau": {
+          "queries": 755,
+          "select_relevant": 0.528476821192053,
+          "ci95_class": [
+            0.4241606667388956,
+            0.6316526610644257
+          ],
+          "mean_relevant_minus_wrong": 0.0033606996294111013,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "16/pearson": {
+          "queries": 755,
+          "select_relevant": 0.5324503311258278,
+          "ci95_class": [
+            0.4320299232628442,
+            0.6338270957871772
+          ],
+          "mean_relevant_minus_wrong": -0.0009128657402470708,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "16/word_geometry": {
+          "queries": 755,
+          "select_relevant": 0.39072847682119205,
+          "ci95_class": [
+            0.2997208075300745,
+            0.48465655706245775
+          ],
+          "mean_relevant_minus_wrong": -2.0618865164578892e-05,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "16/mean": {
+          "queries": 755,
+          "select_relevant": 0.5973509933774834,
+          "ci95_class": [
+            0.5205274554739521,
+            0.671905581478365
+          ],
+          "mean_relevant_minus_wrong": 0.08753979206085205,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "16/dispersion": {
+          "queries": 755,
+          "select_relevant": 0.5311258278145695,
+          "ci95_class": [
+            0.447675963661063,
+            0.6125523940323837
+          ],
+          "mean_relevant_minus_wrong": 0.020533237606287003,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "16/marginals": {
+          "queries": 755,
+          "select_relevant": 0.5960264900662252,
+          "ci95_class": [
+            0.5169701744723673,
+            0.6714495807789398
+          ],
+          "mean_relevant_minus_wrong": 0.07142718136310577,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "16/permuted": {
+          "queries": 755,
+          "select_relevant": 0.519205298013245,
+          "ci95_class": [
+            0.491297943451659,
+            0.5478147895494488
+          ],
+          "mean_relevant_minus_wrong": 0.000199311543838121,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "16/permuted_cosine": {
+          "queries": 755,
+          "select_relevant": 0.5271523178807948,
+          "ci95_class": [
+            0.49679772689809504,
+            0.5583571495502249
+          ],
+          "mean_relevant_minus_wrong": 0.003278197254985571,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "16/without_projection": {
+          "queries": 755,
+          "select_relevant": 0.5205298013245033,
+          "ci95_class": [
+            0.4724081338102996,
+            0.5639624484181568
+          ],
+          "mean_relevant_minus_wrong": 0.00030506771872751415,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "32/interaction": {
+          "queries": 755,
+          "select_relevant": 0.4741721854304636,
+          "ci95_class": [
+            0.41934842132283734,
+            0.5295716245427335
+          ],
+          "mean_relevant_minus_wrong": -0.0006870665238238871,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "32/cosine": {
+          "queries": 755,
+          "select_relevant": 0.47152317880794703,
+          "ci95_class": [
+            0.4161112882247504,
+            0.5288486842105263
+          ],
+          "mean_relevant_minus_wrong": -0.015135115943849087,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "32/without_reference": {
+          "queries": 755,
+          "select_relevant": 0.4556291390728477,
+          "ci95_class": [
+            0.37499590432503277,
+            0.543018161036322
+          ],
+          "mean_relevant_minus_wrong": -0.0010145438136532903,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "32/full_residual": {
+          "queries": 755,
+          "select_relevant": 0.4688741721854305,
+          "ci95_class": [
+            0.42050824175824175,
+            0.5187783740520114
+          ],
+          "mean_relevant_minus_wrong": -0.030662400647997856,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "32/additive": {
+          "queries": 755,
+          "select_relevant": 0.47549668874172185,
+          "ci95_class": [
+            0.4276315789473684,
+            0.525272063612679
+          ],
+          "mean_relevant_minus_wrong": -0.04607528820633888,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "32/raw_tau": {
+          "queries": 755,
+          "select_relevant": 0.5827814569536424,
+          "ci95_class": [
+            0.4744614202623546,
+            0.6907281440564411
+          ],
+          "mean_relevant_minus_wrong": 0.015142085030674934,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "32/pearson": {
+          "queries": 755,
+          "select_relevant": 0.5761589403973509,
+          "ci95_class": [
+            0.46648249095376054,
+            0.6840713197618058
+          ],
+          "mean_relevant_minus_wrong": 0.01002639438956976,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "32/word_geometry": {
+          "queries": 755,
+          "select_relevant": 0.4152317880794702,
+          "ci95_class": [
+            0.3109394048687791,
+            0.5217454581247538
+          ],
+          "mean_relevant_minus_wrong": -1.4693610864924267e-05,
+          "ties": 1,
+          "present_classes": 25
+        },
+        "32/mean": {
+          "queries": 755,
+          "select_relevant": 0.633112582781457,
+          "ci95_class": [
+            0.5589745639703471,
+            0.7021297346650803
+          ],
+          "mean_relevant_minus_wrong": 0.09402811527252197,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "32/dispersion": {
+          "queries": 755,
+          "select_relevant": 0.5019867549668874,
+          "ci95_class": [
+            0.41869758658216505,
+            0.5835678909722145
+          ],
+          "mean_relevant_minus_wrong": 0.023128855973482132,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "32/marginals": {
+          "queries": 755,
+          "select_relevant": 0.6251655629139072,
+          "ci95_class": [
+            0.5499351491569391,
+            0.6961181743548781
+          ],
+          "mean_relevant_minus_wrong": 0.07730687409639359,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "32/permuted": {
+          "queries": 755,
+          "select_relevant": 0.5033112582781457,
+          "ci95_class": [
+            0.4614378650396329,
+            0.5440996044107248
+          ],
+          "mean_relevant_minus_wrong": 2.674785537237767e-05,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "32/permuted_cosine": {
+          "queries": 755,
+          "select_relevant": 0.49403973509933774,
+          "ci95_class": [
+            0.4537798691836578,
+            0.5337001375515819
+          ],
+          "mean_relevant_minus_wrong": -0.00016790084191597998,
+          "ties": 0,
+          "present_classes": 25
+        },
+        "32/without_projection": {
+          "queries": 755,
+          "select_relevant": 0.5245033112582781,
+          "ci95_class": [
+            0.46174836809763775,
+            0.5848340981773301
+          ],
+          "mean_relevant_minus_wrong": 0.000380880810553208,
+          "ties": 0,
+          "present_classes": 25
+        }
+      }
+    },
+    "sketchy_2": {
+      "rank_one_and_best_opponent": {
+        "8/interaction": {
+          "queries": 756,
+          "select_relevant": 0.4880952380952381,
+          "ci95_class": [
+            0.4444444444444444,
+            0.5304232804232805
+          ],
+          "mean_relevant_minus_wrong": -0.00041144160786643624,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "8/cosine": {
+          "queries": 756,
+          "select_relevant": 0.49603174603174605,
+          "ci95_class": [
+            0.44576719576719576,
+            0.5462962962962963
+          ],
+          "mean_relevant_minus_wrong": -0.011469251476228237,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "8/without_reference": {
+          "queries": 756,
+          "select_relevant": 0.5079365079365079,
+          "ci95_class": [
+            0.4642857142857143,
+            0.5489748677248673
+          ],
+          "mean_relevant_minus_wrong": -0.00038822650094516575,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "8/full_residual": {
+          "queries": 756,
+          "select_relevant": 0.46296296296296297,
+          "ci95_class": [
+            0.4193121693121693,
+            0.5052910052910053
+          ],
+          "mean_relevant_minus_wrong": -0.028166046366095543,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "8/additive": {
+          "queries": 756,
+          "select_relevant": 0.47883597883597884,
+          "ci95_class": [
+            0.4365079365079365,
+            0.5171957671957672
+          ],
+          "mean_relevant_minus_wrong": -0.04052788019180298,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "8/raw_tau": {
+          "queries": 756,
+          "select_relevant": 0.4880952380952381,
+          "ci95_class": [
+            0.4193121693121693,
+            0.5595238095238095
+          ],
+          "mean_relevant_minus_wrong": -0.0038649397902190685,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "8/pearson": {
+          "queries": 756,
+          "select_relevant": 0.48544973544973546,
+          "ci95_class": [
+            0.414021164021164,
+            0.5621693121693122
+          ],
+          "mean_relevant_minus_wrong": -0.0017687998479232192,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "8/word_geometry": {
+          "queries": 756,
+          "select_relevant": 0.38955026455026454,
+          "ci95_class": [
+            0.330026455026455,
+            0.44841269841269843
+          ],
+          "mean_relevant_minus_wrong": -2.0952924387529492e-05,
+          "ties": 1,
+          "present_classes": 21
+        },
+        "8/mean": {
+          "queries": 756,
+          "select_relevant": 0.533068783068783,
+          "ci95_class": [
+            0.4748677248677249,
+            0.593915343915344
+          ],
+          "mean_relevant_minus_wrong": 0.03307608142495155,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "8/dispersion": {
+          "queries": 756,
+          "select_relevant": 0.5396825396825397,
+          "ci95_class": [
+            0.4947089947089947,
+            0.5806878306878307
+          ],
+          "mean_relevant_minus_wrong": 0.02771749533712864,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "8/marginals": {
+          "queries": 756,
+          "select_relevant": 0.533068783068783,
+          "ci95_class": [
+            0.4748677248677249,
+            0.5939484126984123
+          ],
+          "mean_relevant_minus_wrong": 0.02958413027226925,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "8/permuted": {
+          "queries": 756,
+          "select_relevant": 0.49206349206349204,
+          "ci95_class": [
+            0.44841269841269843,
+            0.5383597883597884
+          ],
+          "mean_relevant_minus_wrong": -0.0006536301225423813,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "8/permuted_cosine": {
+          "queries": 756,
+          "select_relevant": 0.4947089947089947,
+          "ci95_class": [
+            0.4497354497354497,
+            0.5423280423280423
+          ],
+          "mean_relevant_minus_wrong": -0.010450202040374279,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "8/without_projection": {
+          "queries": 756,
+          "select_relevant": 0.49603174603174605,
+          "ci95_class": [
+            0.46164021164021163,
+            0.5277777777777778
+          ],
+          "mean_relevant_minus_wrong": 0.0002853961195796728,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "16/interaction": {
+          "queries": 756,
+          "select_relevant": 0.49867724867724866,
+          "ci95_class": [
+            0.458994708994709,
+            0.5370370370370371
+          ],
+          "mean_relevant_minus_wrong": -0.000377533957362175,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "16/cosine": {
+          "queries": 756,
+          "select_relevant": 0.49074074074074076,
+          "ci95_class": [
+            0.45105820105820105,
+            0.533068783068783
+          ],
+          "mean_relevant_minus_wrong": -0.0040396214462816715,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "16/without_reference": {
+          "queries": 756,
+          "select_relevant": 0.49206349206349204,
+          "ci95_class": [
+            0.43783068783068785,
+            0.541005291005291
+          ],
+          "mean_relevant_minus_wrong": -0.0005732554127462208,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "16/full_residual": {
+          "queries": 756,
+          "select_relevant": 0.4523809523809524,
+          "ci95_class": [
+            0.40343915343915343,
+            0.5
+          ],
+          "mean_relevant_minus_wrong": -0.03084404580295086,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "16/additive": {
+          "queries": 756,
+          "select_relevant": 0.458994708994709,
+          "ci95_class": [
+            0.414021164021164,
+            0.5040013227513223
+          ],
+          "mean_relevant_minus_wrong": -0.04943583905696869,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "16/raw_tau": {
+          "queries": 756,
+          "select_relevant": 0.5119047619047619,
+          "ci95_class": [
+            0.43386243386243384,
+            0.5992063492063492
+          ],
+          "mean_relevant_minus_wrong": 0.004250601399689913,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "16/pearson": {
+          "queries": 756,
+          "select_relevant": 0.5092592592592593,
+          "ci95_class": [
+            0.43253968253968256,
+            0.5952380952380952
+          ],
+          "mean_relevant_minus_wrong": 0.0066069732420146465,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "16/word_geometry": {
+          "queries": 756,
+          "select_relevant": 0.3855820105820106,
+          "ci95_class": [
+            0.30158730158730157,
+            0.4695767195767196
+          ],
+          "mean_relevant_minus_wrong": -2.3192198568722233e-05,
+          "ties": 1,
+          "present_classes": 21
+        },
+        "16/mean": {
+          "queries": 756,
+          "select_relevant": 0.5370370370370371,
+          "ci95_class": [
+            0.4748677248677249,
+            0.6018518518518519
+          ],
+          "mean_relevant_minus_wrong": 0.051071181893348694,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "16/dispersion": {
+          "queries": 756,
+          "select_relevant": 0.5171957671957672,
+          "ci95_class": [
+            0.4708994708994709,
+            0.5621693121693122
+          ],
+          "mean_relevant_minus_wrong": 0.021118005737662315,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "16/marginals": {
+          "queries": 756,
+          "select_relevant": 0.541005291005291,
+          "ci95_class": [
+            0.48148148148148145,
+            0.6044973544973545
+          ],
+          "mean_relevant_minus_wrong": 0.04480358958244324,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "16/permuted": {
+          "queries": 756,
+          "select_relevant": 0.48544973544973546,
+          "ci95_class": [
+            0.42724867724867727,
+            0.5423280423280423
+          ],
+          "mean_relevant_minus_wrong": -0.00015952739340718836,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "16/permuted_cosine": {
+          "queries": 756,
+          "select_relevant": 0.4828042328042328,
+          "ci95_class": [
+            0.42724867724867727,
+            0.5383597883597884
+          ],
+          "mean_relevant_minus_wrong": -0.0025994761381298304,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "16/without_projection": {
+          "queries": 756,
+          "select_relevant": 0.5185185185185185,
+          "ci95_class": [
+            0.4775132275132275,
+            0.5555555555555556
+          ],
+          "mean_relevant_minus_wrong": 0.0002430400490993634,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "32/interaction": {
+          "queries": 756,
+          "select_relevant": 0.45634920634920634,
+          "ci95_class": [
+            0.39814814814814814,
+            0.5171957671957672
+          ],
+          "mean_relevant_minus_wrong": -0.0005583766032941639,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "32/cosine": {
+          "queries": 756,
+          "select_relevant": 0.4642857142857143,
+          "ci95_class": [
+            0.4113756613756614,
+            0.5198412698412699
+          ],
+          "mean_relevant_minus_wrong": -0.011582234874367714,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "32/without_reference": {
+          "queries": 756,
+          "select_relevant": 0.4470899470899471,
+          "ci95_class": [
+            0.39021164021164023,
+            0.5026455026455027
+          ],
+          "mean_relevant_minus_wrong": -0.0007775692502036691,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "32/full_residual": {
+          "queries": 756,
+          "select_relevant": 0.42857142857142855,
+          "ci95_class": [
+            0.37962962962962965,
+            0.4801587301587302
+          ],
+          "mean_relevant_minus_wrong": -0.04413013532757759,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "32/additive": {
+          "queries": 756,
+          "select_relevant": 0.43915343915343913,
+          "ci95_class": [
+            0.3954695767195768,
+            0.4828042328042328
+          ],
+          "mean_relevant_minus_wrong": -0.07179656624794006,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "32/raw_tau": {
+          "queries": 756,
+          "select_relevant": 0.5264550264550265,
+          "ci95_class": [
+            0.4365079365079365,
+            0.6203703703703703
+          ],
+          "mean_relevant_minus_wrong": 0.008029676973819733,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "32/pearson": {
+          "queries": 756,
+          "select_relevant": 0.548941798941799,
+          "ci95_class": [
+            0.46425264550264556,
+            0.6402116402116402
+          ],
+          "mean_relevant_minus_wrong": 0.01019334327429533,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "32/word_geometry": {
+          "queries": 756,
+          "select_relevant": 0.38227513227513227,
+          "ci95_class": [
+            0.294973544973545,
+            0.4695767195767196
+          ],
+          "mean_relevant_minus_wrong": -2.3250542653840967e-05,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "32/mean": {
+          "queries": 756,
+          "select_relevant": 0.5806878306878307,
+          "ci95_class": [
+            0.5,
+            0.6561177248677244
+          ],
+          "mean_relevant_minus_wrong": 0.05412941426038742,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "32/dispersion": {
+          "queries": 756,
+          "select_relevant": 0.5317460317460317,
+          "ci95_class": [
+            0.4894179894179894,
+            0.5727513227513228
+          ],
+          "mean_relevant_minus_wrong": 0.019593875855207443,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "32/marginals": {
+          "queries": 756,
+          "select_relevant": 0.582010582010582,
+          "ci95_class": [
+            0.5012896825396825,
+            0.6547619047619048
+          ],
+          "mean_relevant_minus_wrong": 0.04713141545653343,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "32/permuted": {
+          "queries": 756,
+          "select_relevant": 0.5238095238095238,
+          "ci95_class": [
+            0.47883597883597884,
+            0.5701058201058201
+          ],
+          "mean_relevant_minus_wrong": 0.00020612961088772863,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "32/permuted_cosine": {
+          "queries": 756,
+          "select_relevant": 0.5277777777777778,
+          "ci95_class": [
+            0.4828042328042328,
+            0.5727513227513228
+          ],
+          "mean_relevant_minus_wrong": 0.003427935065701604,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "32/without_projection": {
+          "queries": 756,
+          "select_relevant": 0.5132275132275133,
+          "ci95_class": [
+            0.4748677248677249,
+            0.5502645502645502
+          ],
+          "mean_relevant_minus_wrong": 0.0002016086655203253,
+          "ties": 0,
+          "present_classes": 21
+        }
+      },
+      "first_wrong_above_right": {
+        "8/interaction": {
+          "queries": 266,
+          "select_relevant": 0.4924812030075188,
+          "ci95_class": [
+            0.40293040293040294,
+            0.5864431225554106
+          ],
+          "mean_relevant_minus_wrong": -0.0009340621763840318,
+          "ties": 0,
+          "present_classes": 20
+        },
+        "8/cosine": {
+          "queries": 266,
+          "select_relevant": 0.48120300751879697,
+          "ci95_class": [
+            0.40243780973666315,
+            0.5688908045977011
+          ],
+          "mean_relevant_minus_wrong": -0.030160028487443924,
+          "ties": 0,
+          "present_classes": 20
+        },
+        "8/without_reference": {
+          "queries": 266,
+          "select_relevant": 0.4473684210526316,
+          "ci95_class": [
+            0.377356346483705,
+            0.5267903452874926
+          ],
+          "mean_relevant_minus_wrong": -0.0013178131775930524,
+          "ties": 0,
+          "present_classes": 20
+        },
+        "8/full_residual": {
+          "queries": 266,
+          "select_relevant": 0.4548872180451128,
+          "ci95_class": [
+            0.4022140221402214,
+            0.5135188129305776
+          ],
+          "mean_relevant_minus_wrong": -0.0923202708363533,
+          "ties": 0,
+          "present_classes": 20
+        },
+        "8/additive": {
+          "queries": 266,
+          "select_relevant": 0.45864661654135336,
+          "ci95_class": [
+            0.4025138057984354,
+            0.517136641959394
+          ],
+          "mean_relevant_minus_wrong": -0.12238206714391708,
+          "ties": 0,
+          "present_classes": 20
+        },
+        "8/raw_tau": {
+          "queries": 266,
+          "select_relevant": 0.42105263157894735,
+          "ci95_class": [
+            0.3474531948088788,
+            0.4948453608247423
+          ],
+          "mean_relevant_minus_wrong": -0.012387324124574661,
+          "ties": 0,
+          "present_classes": 20
+        },
+        "8/pearson": {
+          "queries": 266,
+          "select_relevant": 0.462406015037594,
+          "ci95_class": [
+            0.3907984312564748,
+            0.5306155471897497
+          ],
+          "mean_relevant_minus_wrong": -0.010298754088580608,
+          "ties": 0,
+          "present_classes": 20
+        },
+        "8/word_geometry": {
+          "queries": 266,
+          "select_relevant": 0.42857142857142855,
+          "ci95_class": [
+            0.34136173070661024,
+            0.5109505128782276
+          ],
+          "mean_relevant_minus_wrong": -7.363638360402547e-06,
+          "ties": 0,
+          "present_classes": 20
+        },
+        "8/mean": {
+          "queries": 266,
+          "select_relevant": 0.42105263157894735,
+          "ci95_class": [
+            0.3333333333333333,
+            0.5294117647058824
+          ],
+          "mean_relevant_minus_wrong": -0.059397123754024506,
+          "ties": 0,
+          "present_classes": 20
+        },
+        "8/dispersion": {
+          "queries": 266,
+          "select_relevant": 0.462406015037594,
+          "ci95_class": [
+            0.39170017824537,
+            0.52145411909612
+          ],
+          "mean_relevant_minus_wrong": -0.010030954144895077,
+          "ties": 0,
+          "present_classes": 20
+        },
+        "8/marginals": {
+          "queries": 266,
+          "select_relevant": 0.42857142857142855,
+          "ci95_class": [
+            0.3392857142857143,
+            0.5304265202702699
+          ],
+          "mean_relevant_minus_wrong": -0.0493495874106884,
+          "ties": 0,
+          "present_classes": 20
+        },
+        "8/permuted": {
+          "queries": 266,
+          "select_relevant": 0.5,
+          "ci95_class": [
+            0.4178567236753857,
+            0.5679640138566023
+          ],
+          "mean_relevant_minus_wrong": -0.0005320701166056097,
+          "ties": 0,
+          "present_classes": 20
+        },
+        "8/permuted_cosine": {
+          "queries": 266,
+          "select_relevant": 0.5037593984962406,
+          "ci95_class": [
+            0.4121178072863466,
+            0.5833333333333334
+          ],
+          "mean_relevant_minus_wrong": -0.01155577227473259,
+          "ties": 0,
+          "present_classes": 20
+        },
+        "8/without_projection": {
+          "queries": 266,
+          "select_relevant": 0.45864661654135336,
+          "ci95_class": [
+            0.3896698372050485,
+            0.5159420289855072
+          ],
+          "mean_relevant_minus_wrong": -7.596598152304068e-05,
+          "ties": 0,
+          "present_classes": 20
+        },
+        "16/interaction": {
+          "queries": 266,
+          "select_relevant": 0.5150375939849624,
+          "ci95_class": [
+            0.45559639456436607,
+            0.5851558004129853
+          ],
+          "mean_relevant_minus_wrong": -0.0009977621957659721,
+          "ties": 0,
+          "present_classes": 20
+        },
+        "16/cosine": {
+          "queries": 266,
+          "select_relevant": 0.4924812030075188,
+          "ci95_class": [
+            0.42857142857142855,
+            0.5697280876494023
+          ],
+          "mean_relevant_minus_wrong": -0.01252826303243637,
+          "ties": 0,
+          "present_classes": 20
+        },
+        "16/without_reference": {
+          "queries": 266,
+          "select_relevant": 0.5263157894736842,
+          "ci95_class": [
+            0.4311077441077441,
+            0.6163903883338703
+          ],
+          "mean_relevant_minus_wrong": -0.0012832330539822578,
+          "ties": 0,
+          "present_classes": 20
+        },
+        "16/full_residual": {
+          "queries": 266,
+          "select_relevant": 0.41353383458646614,
+          "ci95_class": [
+            0.360647441428287,
+            0.46360423618835744
+          ],
+          "mean_relevant_minus_wrong": -0.07723020762205124,
+          "ties": 0,
+          "present_classes": 20
+        },
+        "16/additive": {
+          "queries": 266,
+          "select_relevant": 0.43609022556390975,
+          "ci95_class": [
+            0.386860268127915,
+            0.48882314941861044
+          ],
+          "mean_relevant_minus_wrong": -0.11694897711277008,
+          "ties": 0,
+          "present_classes": 20
+        },
+        "16/raw_tau": {
+          "queries": 266,
+          "select_relevant": 0.462406015037594,
+          "ci95_class": [
+            0.372874390527049,
+            0.5503412261518739
+          ],
+          "mean_relevant_minus_wrong": -0.016118282452225685,
+          "ties": 0,
+          "present_classes": 20
+        },
+        "16/pearson": {
+          "queries": 266,
+          "select_relevant": 0.45864661654135336,
+          "ci95_class": [
+            0.35735714100267413,
+            0.5594405594405595
+          ],
+          "mean_relevant_minus_wrong": -0.013986438512802124,
+          "ties": 0,
+          "present_classes": 20
+        },
+        "16/word_geometry": {
+          "queries": 266,
+          "select_relevant": 0.4116541353383459,
+          "ci95_class": [
+            0.33193186757461607,
+            0.49707644838841286
+          ],
+          "mean_relevant_minus_wrong": -1.3820210369885899e-05,
+          "ties": 1,
+          "present_classes": 20
+        },
+        "16/mean": {
+          "queries": 266,
+          "select_relevant": 0.4323308270676692,
+          "ci95_class": [
+            0.32931415101399386,
+            0.5387339120932491
+          ],
+          "mean_relevant_minus_wrong": -0.03583063557744026,
+          "ties": 0,
+          "present_classes": 20
+        },
+        "16/dispersion": {
+          "queries": 266,
+          "select_relevant": 0.49624060150375937,
+          "ci95_class": [
+            0.40573361103247463,
+            0.575107296137339
+          ],
+          "mean_relevant_minus_wrong": 0.0027110541705042124,
+          "ties": 0,
+          "present_classes": 20
+        },
+        "16/marginals": {
+          "queries": 266,
+          "select_relevant": 0.42857142857142855,
+          "ci95_class": [
+            0.3212777034062175,
+            0.5375012351778655
+          ],
+          "mean_relevant_minus_wrong": -0.027958597987890244,
+          "ties": 0,
+          "present_classes": 20
+        },
+        "16/permuted": {
+          "queries": 266,
+          "select_relevant": 0.5,
+          "ci95_class": [
+            0.43914639000845895,
+            0.5659380131362889
+          ],
+          "mean_relevant_minus_wrong": -6.777903763577342e-05,
+          "ties": 0,
+          "present_classes": 20
+        },
+        "16/permuted_cosine": {
+          "queries": 266,
+          "select_relevant": 0.5037593984962406,
+          "ci95_class": [
+            0.4410480349344978,
+            0.5731361882177896
+          ],
+          "mean_relevant_minus_wrong": -0.0008215192938223481,
+          "ties": 0,
+          "present_classes": 20
+        },
+        "16/without_projection": {
+          "queries": 266,
+          "select_relevant": 0.5075187969924813,
+          "ci95_class": [
+            0.43858902575587905,
+            0.577514353259034
+          ],
+          "mean_relevant_minus_wrong": -0.0001629411126486957,
+          "ties": 0,
+          "present_classes": 20
+        },
+        "32/interaction": {
+          "queries": 266,
+          "select_relevant": 0.4548872180451128,
+          "ci95_class": [
+            0.3622438936204403,
+            0.5384698275862068
+          ],
+          "mean_relevant_minus_wrong": -0.000999429845251143,
+          "ties": 0,
+          "present_classes": 20
+        },
+        "32/cosine": {
+          "queries": 266,
+          "select_relevant": 0.4473684210526316,
+          "ci95_class": [
+            0.3527407636671662,
+            0.5309289754584435
+          ],
+          "mean_relevant_minus_wrong": -0.020049501210451126,
+          "ties": 0,
+          "present_classes": 20
+        },
+        "32/without_reference": {
+          "queries": 266,
+          "select_relevant": 0.48120300751879697,
+          "ci95_class": [
+            0.37442164000383177,
+            0.5730999930656681
+          ],
+          "mean_relevant_minus_wrong": -0.001112549565732479,
+          "ties": 0,
+          "present_classes": 20
+        },
+        "32/full_residual": {
+          "queries": 266,
+          "select_relevant": 0.43609022556390975,
+          "ci95_class": [
+            0.37560726729716276,
+            0.4963787388220783
+          ],
+          "mean_relevant_minus_wrong": -0.07123900949954987,
+          "ties": 0,
+          "present_classes": 20
+        },
+        "32/additive": {
+          "queries": 266,
+          "select_relevant": 0.4398496240601504,
+          "ci95_class": [
+            0.37192645074224023,
+            0.49843379291288314
+          ],
+          "mean_relevant_minus_wrong": -0.0964808464050293,
+          "ties": 0,
+          "present_classes": 20
+        },
+        "32/raw_tau": {
+          "queries": 266,
+          "select_relevant": 0.4398496240601504,
+          "ci95_class": [
+            0.3472699130756998,
+            0.5347851365015167
+          ],
+          "mean_relevant_minus_wrong": -0.02107694186270237,
+          "ties": 0,
+          "present_classes": 20
+        },
+        "32/pearson": {
+          "queries": 266,
+          "select_relevant": 0.4398496240601504,
+          "ci95_class": [
+            0.34145925247648384,
+            0.5461031961758365
+          ],
+          "mean_relevant_minus_wrong": -0.02085357904434204,
+          "ties": 0,
+          "present_classes": 20
+        },
+        "32/word_geometry": {
+          "queries": 266,
+          "select_relevant": 0.40601503759398494,
+          "ci95_class": [
+            0.32841301120111793,
+            0.4894796404591726
+          ],
+          "mean_relevant_minus_wrong": -1.8727061615209095e-05,
+          "ties": 0,
+          "present_classes": 20
+        },
+        "32/mean": {
+          "queries": 266,
+          "select_relevant": 0.4323308270676692,
+          "ci95_class": [
+            0.3344202898550725,
+            0.538470319634703
+          ],
+          "mean_relevant_minus_wrong": -0.03270872309803963,
+          "ties": 0,
+          "present_classes": 20
+        },
+        "32/dispersion": {
+          "queries": 266,
+          "select_relevant": 0.5150375939849624,
+          "ci95_class": [
+            0.4462809917355372,
+            0.5859877253904291
+          ],
+          "mean_relevant_minus_wrong": 0.013957664370536804,
+          "ties": 0,
+          "present_classes": 20
+        },
+        "32/marginals": {
+          "queries": 266,
+          "select_relevant": 0.41729323308270677,
+          "ci95_class": [
+            0.32592474263400784,
+            0.5236102595544655
+          ],
+          "mean_relevant_minus_wrong": -0.02518809400498867,
+          "ties": 0,
+          "present_classes": 20
+        },
+        "32/permuted": {
+          "queries": 266,
+          "select_relevant": 0.5150375939849624,
+          "ci95_class": [
+            0.45945671281037137,
+            0.5761372620568023
+          ],
+          "mean_relevant_minus_wrong": 8.241353498306125e-05,
+          "ties": 0,
+          "present_classes": 20
+        },
+        "32/permuted_cosine": {
+          "queries": 266,
+          "select_relevant": 0.5075187969924813,
+          "ci95_class": [
+            0.44888574793875147,
+            0.5701588452720721
+          ],
+          "mean_relevant_minus_wrong": 0.002080646576359868,
+          "ties": 0,
+          "present_classes": 20
+        },
+        "32/without_projection": {
+          "queries": 266,
+          "select_relevant": 0.5451127819548872,
+          "ci95_class": [
+            0.4689601293103448,
+            0.5980883091914094
+          ],
+          "mean_relevant_minus_wrong": -4.3550757254706696e-05,
+          "ties": 0,
+          "present_classes": 20
+        }
+      },
+      "first_right_above_wrong": {
+        "8/interaction": {
+          "queries": 263,
+          "select_relevant": 0.5361216730038023,
+          "ci95_class": [
+            0.48,
+            0.6086956521739131
+          ],
+          "mean_relevant_minus_wrong": -0.0008643587352707982,
+          "ties": 0,
+          "present_classes": 19
+        },
+        "8/cosine": {
+          "queries": 263,
+          "select_relevant": 0.5019011406844106,
+          "ci95_class": [
+            0.44185635631522724,
+            0.5750032383419689
+          ],
+          "mean_relevant_minus_wrong": -0.010151874274015427,
+          "ties": 0,
+          "present_classes": 19
+        },
+        "8/without_reference": {
+          "queries": 263,
+          "select_relevant": 0.4524714828897338,
+          "ci95_class": [
+            0.4191915732669157,
+            0.5042845911949684
+          ],
+          "mean_relevant_minus_wrong": -0.0008808189886622131,
+          "ties": 0,
+          "present_classes": 19
+        },
+        "8/full_residual": {
+          "queries": 263,
+          "select_relevant": 0.41825095057034223,
+          "ci95_class": [
+            0.36936750028036336,
+            0.45961046038858805
+          ],
+          "mean_relevant_minus_wrong": -0.08019588142633438,
+          "ties": 0,
+          "present_classes": 19
+        },
+        "8/additive": {
+          "queries": 263,
+          "select_relevant": 0.40304182509505704,
+          "ci95_class": [
+            0.35,
+            0.4444444444444444
+          ],
+          "mean_relevant_minus_wrong": -0.10657979547977448,
+          "ties": 0,
+          "present_classes": 19
+        },
+        "8/raw_tau": {
+          "queries": 263,
+          "select_relevant": 0.4752851711026616,
+          "ci95_class": [
+            0.3854599819539634,
+            0.5607166988416988
+          ],
+          "mean_relevant_minus_wrong": -0.006302830763161182,
+          "ties": 0,
+          "present_classes": 19
+        },
+        "8/pearson": {
+          "queries": 263,
+          "select_relevant": 0.44866920152091255,
+          "ci95_class": [
+            0.3607112984599044,
+            0.5335692342176046
+          ],
+          "mean_relevant_minus_wrong": -6.484475306933746e-05,
+          "ties": 0,
+          "present_classes": 19
+        },
+        "8/word_geometry": {
+          "queries": 263,
+          "select_relevant": 0.46387832699619774,
+          "ci95_class": [
+            0.3695542748759848,
+            0.5551436417405997
+          ],
+          "mean_relevant_minus_wrong": -9.104553100769408e-06,
+          "ties": 0,
+          "present_classes": 19
+        },
+        "8/mean": {
+          "queries": 263,
+          "select_relevant": 0.44106463878326996,
+          "ci95_class": [
+            0.36538461538461536,
+            0.5428571428571428
+          ],
+          "mean_relevant_minus_wrong": -0.02654506452381611,
+          "ties": 0,
+          "present_classes": 19
+        },
+        "8/dispersion": {
+          "queries": 263,
+          "select_relevant": 0.5057034220532319,
+          "ci95_class": [
+            0.4234654751471141,
+            0.5688437031484257
+          ],
+          "mean_relevant_minus_wrong": 0.008685572072863579,
+          "ties": 0,
+          "present_classes": 19
+        },
+        "8/marginals": {
+          "queries": 263,
+          "select_relevant": 0.4448669201520912,
+          "ci95_class": [
+            0.3769155844155844,
+            0.5365906451272304
+          ],
+          "mean_relevant_minus_wrong": -0.024494696408510208,
+          "ties": 0,
+          "present_classes": 19
+        },
+        "8/permuted": {
+          "queries": 263,
+          "select_relevant": 0.49429657794676807,
+          "ci95_class": [
+            0.4470549193128579,
+            0.532258064516129
+          ],
+          "mean_relevant_minus_wrong": -0.0002819229557644576,
+          "ties": 0,
+          "present_classes": 19
+        },
+        "8/permuted_cosine": {
+          "queries": 263,
+          "select_relevant": 0.4828897338403042,
+          "ci95_class": [
+            0.4388888888888889,
+            0.5187977789662441
+          ],
+          "mean_relevant_minus_wrong": -0.005993995349854231,
+          "ties": 0,
+          "present_classes": 19
+        },
+        "8/without_projection": {
+          "queries": 263,
+          "select_relevant": 0.4372623574144487,
+          "ci95_class": [
+            0.3639269746646796,
+            0.512397722133136
+          ],
+          "mean_relevant_minus_wrong": -0.0003937036090064794,
+          "ties": 0,
+          "present_classes": 19
+        },
+        "16/interaction": {
+          "queries": 263,
+          "select_relevant": 0.5209125475285171,
+          "ci95_class": [
+            0.4819165551093262,
+            0.556910569105691
+          ],
+          "mean_relevant_minus_wrong": -0.0004854750295635313,
+          "ties": 0,
+          "present_classes": 19
+        },
+        "16/cosine": {
+          "queries": 263,
+          "select_relevant": 0.4866920152091255,
+          "ci95_class": [
+            0.45104723707664884,
+            0.5340409521588908
+          ],
+          "mean_relevant_minus_wrong": -0.0022528008557856083,
+          "ties": 0,
+          "present_classes": 19
+        },
+        "16/without_reference": {
+          "queries": 263,
+          "select_relevant": 0.5437262357414449,
+          "ci95_class": [
+            0.48031366556154165,
+            0.6080701378612041
+          ],
+          "mean_relevant_minus_wrong": -0.0004895856254734099,
+          "ties": 0,
+          "present_classes": 19
+        },
+        "16/full_residual": {
+          "queries": 263,
+          "select_relevant": 0.4524714828897338,
+          "ci95_class": [
+            0.4171420932009167,
+            0.5024642919028641
+          ],
+          "mean_relevant_minus_wrong": -0.06125177443027496,
+          "ties": 0,
+          "present_classes": 19
+        },
+        "16/additive": {
+          "queries": 263,
+          "select_relevant": 0.44866920152091255,
+          "ci95_class": [
+            0.3974860760896672,
+            0.5
+          ],
+          "mean_relevant_minus_wrong": -0.0921938419342041,
+          "ties": 0,
+          "present_classes": 19
+        },
+        "16/raw_tau": {
+          "queries": 263,
+          "select_relevant": 0.4600760456273764,
+          "ci95_class": [
+            0.3649344889829454,
+            0.5684262125902992
+          ],
+          "mean_relevant_minus_wrong": -0.003594445064663887,
+          "ties": 0,
+          "present_classes": 19
+        },
+        "16/pearson": {
+          "queries": 263,
+          "select_relevant": 0.45627376425855515,
+          "ci95_class": [
+            0.37930471038990304,
+            0.5393706752565021
+          ],
+          "mean_relevant_minus_wrong": -0.00032742213807068765,
+          "ties": 0,
+          "present_classes": 19
+        },
+        "16/word_geometry": {
+          "queries": 263,
+          "select_relevant": 0.4068441064638783,
+          "ci95_class": [
+            0.32,
+            0.5058858965272856
+          ],
+          "mean_relevant_minus_wrong": -1.5824467482161708e-05,
+          "ties": 0,
+          "present_classes": 19
+        },
+        "16/mean": {
+          "queries": 263,
+          "select_relevant": 0.4448669201520912,
+          "ci95_class": [
+            0.37133046777930756,
+            0.5357142857142857
+          ],
+          "mean_relevant_minus_wrong": -0.015645643696188927,
+          "ties": 0,
+          "present_classes": 19
+        },
+        "16/dispersion": {
+          "queries": 263,
+          "select_relevant": 0.5551330798479087,
+          "ci95_class": [
+            0.4791666666666667,
+            0.6356283149734802
+          ],
+          "mean_relevant_minus_wrong": 0.02230866067111492,
+          "ties": 0,
+          "present_classes": 19
+        },
+        "16/marginals": {
+          "queries": 263,
+          "select_relevant": 0.4448669201520912,
+          "ci95_class": [
+            0.375,
+            0.5315806129247168
+          ],
+          "mean_relevant_minus_wrong": -0.012301229871809483,
+          "ties": 0,
+          "present_classes": 19
+        },
+        "16/permuted": {
+          "queries": 263,
+          "select_relevant": 0.4828897338403042,
+          "ci95_class": [
+            0.42741498551882556,
+            0.5512228081740277
+          ],
+          "mean_relevant_minus_wrong": -0.00022772430384065956,
+          "ties": 0,
+          "present_classes": 19
+        },
+        "16/permuted_cosine": {
+          "queries": 263,
+          "select_relevant": 0.49809885931558934,
+          "ci95_class": [
+            0.4416339943510636,
+            0.5643945203569437
+          ],
+          "mean_relevant_minus_wrong": -0.003886065911501646,
+          "ties": 0,
+          "present_classes": 19
+        },
+        "16/without_projection": {
+          "queries": 263,
+          "select_relevant": 0.4714828897338403,
+          "ci95_class": [
+            0.40908727853616034,
+            0.525215425153112
+          ],
+          "mean_relevant_minus_wrong": -0.0004582415276672691,
+          "ties": 0,
+          "present_classes": 19
+        },
+        "32/interaction": {
+          "queries": 263,
+          "select_relevant": 0.5171102661596958,
+          "ci95_class": [
+            0.4447513377400063,
+            0.5755406140204116
+          ],
+          "mean_relevant_minus_wrong": -0.0005725108785554767,
+          "ties": 0,
+          "present_classes": 19
+        },
+        "32/cosine": {
+          "queries": 263,
+          "select_relevant": 0.5133079847908745,
+          "ci95_class": [
+            0.47058823529411764,
+            0.5530732436841845
+          ],
+          "mean_relevant_minus_wrong": -0.007799123879522085,
+          "ties": 0,
+          "present_classes": 19
+        },
+        "32/without_reference": {
+          "queries": 263,
+          "select_relevant": 0.5057034220532319,
+          "ci95_class": [
+            0.4107142857142857,
+            0.5920398009950248
+          ],
+          "mean_relevant_minus_wrong": -0.0005676051951013505,
+          "ties": 0,
+          "present_classes": 19
+        },
+        "32/full_residual": {
+          "queries": 263,
+          "select_relevant": 0.5019011406844106,
+          "ci95_class": [
+            0.4617829711502435,
+            0.5473273201362281
+          ],
+          "mean_relevant_minus_wrong": -0.06536131352186203,
+          "ties": 0,
+          "present_classes": 19
+        },
+        "32/additive": {
+          "queries": 263,
+          "select_relevant": 0.49809885931558934,
+          "ci95_class": [
+            0.4589010408994943,
+            0.5416666666666666
+          ],
+          "mean_relevant_minus_wrong": -0.09399700164794922,
+          "ties": 0,
+          "present_classes": 19
+        },
+        "32/raw_tau": {
+          "queries": 263,
+          "select_relevant": 0.5019011406844106,
+          "ci95_class": [
+            0.39473684210526316,
+            0.6217154663381067
+          ],
+          "mean_relevant_minus_wrong": -0.0031632629688829184,
+          "ties": 0,
+          "present_classes": 19
+        },
+        "32/pearson": {
+          "queries": 263,
+          "select_relevant": 0.5057034220532319,
+          "ci95_class": [
+            0.39325747476671113,
+            0.6267733674775927
+          ],
+          "mean_relevant_minus_wrong": -0.0005042670527473092,
+          "ties": 0,
+          "present_classes": 19
+        },
+        "32/word_geometry": {
+          "queries": 263,
+          "select_relevant": 0.39923954372623577,
+          "ci95_class": [
+            0.308411214953271,
+            0.48695840120285677
+          ],
+          "mean_relevant_minus_wrong": -1.5640893252566457e-05,
+          "ties": 0,
+          "present_classes": 19
+        },
+        "32/mean": {
+          "queries": 263,
+          "select_relevant": 0.44866920152091255,
+          "ci95_class": [
+            0.3589721254355401,
+            0.5614759577452442
+          ],
+          "mean_relevant_minus_wrong": -0.027686769142746925,
+          "ties": 0,
+          "present_classes": 19
+        },
+        "32/dispersion": {
+          "queries": 263,
+          "select_relevant": 0.5247148288973384,
+          "ci95_class": [
+            0.4444444444444444,
+            0.6153846153846154
+          ],
+          "mean_relevant_minus_wrong": 0.02825802005827427,
+          "ties": 0,
+          "present_classes": 19
+        },
+        "32/marginals": {
+          "queries": 263,
+          "select_relevant": 0.4372623574144487,
+          "ci95_class": [
+            0.3617688369650827,
+            0.531758832565284
+          ],
+          "mean_relevant_minus_wrong": -0.020655764266848564,
+          "ties": 0,
+          "present_classes": 19
+        },
+        "32/permuted": {
+          "queries": 263,
+          "select_relevant": 0.49049429657794674,
+          "ci95_class": [
+            0.45701357466063347,
+            0.5329356515395605
+          ],
+          "mean_relevant_minus_wrong": -0.0002747387916315347,
+          "ties": 0,
+          "present_classes": 19
+        },
+        "32/permuted_cosine": {
+          "queries": 263,
+          "select_relevant": 0.4790874524714829,
+          "ci95_class": [
+            0.4433493431855501,
+            0.5208333333333334
+          ],
+          "mean_relevant_minus_wrong": -0.004794461186975241,
+          "ties": 0,
+          "present_classes": 19
+        },
+        "32/without_projection": {
+          "queries": 263,
+          "select_relevant": 0.4866920152091255,
+          "ci95_class": [
+            0.42857142857142855,
+            0.5298033033429197
+          ],
+          "mean_relevant_minus_wrong": -0.0004538829962257296,
+          "ties": 0,
+          "present_classes": 19
+        }
+      },
+      "top1_wrong": {
+        "8/interaction": {
+          "queries": 161,
+          "select_relevant": 0.5093167701863354,
+          "ci95_class": [
+            0.42240900383141766,
+            0.5796231868543594
+          ],
+          "mean_relevant_minus_wrong": 7.319544965866953e-05,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "8/cosine": {
+          "queries": 161,
+          "select_relevant": 0.5093167701863354,
+          "ci95_class": [
+            0.42445498146937,
+            0.5789545585274661
+          ],
+          "mean_relevant_minus_wrong": 0.011510718613862991,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "8/without_reference": {
+          "queries": 161,
+          "select_relevant": 0.5279503105590062,
+          "ci95_class": [
+            0.41095624933630664,
+            0.6111111111111112
+          ],
+          "mean_relevant_minus_wrong": -9.482043969910592e-05,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "8/full_residual": {
+          "queries": 161,
+          "select_relevant": 0.5217391304347826,
+          "ci95_class": [
+            0.44133667433453827,
+            0.5986394557823129
+          ],
+          "mean_relevant_minus_wrong": 0.031677789986133575,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "8/additive": {
+          "queries": 161,
+          "select_relevant": 0.484472049689441,
+          "ci95_class": [
+            0.4117647058823529,
+            0.5586633256654616
+          ],
+          "mean_relevant_minus_wrong": 0.020620757713913918,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "8/raw_tau": {
+          "queries": 161,
+          "select_relevant": 0.484472049689441,
+          "ci95_class": [
+            0.3910244360902256,
+            0.5705155367231638
+          ],
+          "mean_relevant_minus_wrong": 0.011682461015880108,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "8/pearson": {
+          "queries": 161,
+          "select_relevant": 0.4658385093167702,
+          "ci95_class": [
+            0.3711229114824032,
+            0.5563408677873694
+          ],
+          "mean_relevant_minus_wrong": 0.010446000844240189,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "8/word_geometry": {
+          "queries": 161,
+          "select_relevant": 0.5217391304347826,
+          "ci95_class": [
+            0.45549608625784044,
+            0.6083347902097901
+          ],
+          "mean_relevant_minus_wrong": -3.9320552787103225e-06,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "8/mean": {
+          "queries": 161,
+          "select_relevant": 0.453416149068323,
+          "ci95_class": [
+            0.3885199319130244,
+            0.5185243055555554
+          ],
+          "mean_relevant_minus_wrong": -0.019191330298781395,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "8/dispersion": {
+          "queries": 161,
+          "select_relevant": 0.546583850931677,
+          "ci95_class": [
+            0.44274809160305345,
+            0.6174505812887373
+          ],
+          "mean_relevant_minus_wrong": 0.04633517935872078,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "8/marginals": {
+          "queries": 161,
+          "select_relevant": 0.453416149068323,
+          "ci95_class": [
+            0.3837191019452977,
+            0.5246946414499606
+          ],
+          "mean_relevant_minus_wrong": -0.015048784203827381,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "8/permuted": {
+          "queries": 161,
+          "select_relevant": 0.4782608695652174,
+          "ci95_class": [
+            0.4090909090909091,
+            0.5596359125266862
+          ],
+          "mean_relevant_minus_wrong": -0.0006249771686270833,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "8/permuted_cosine": {
+          "queries": 161,
+          "select_relevant": 0.484472049689441,
+          "ci95_class": [
+            0.4068936294564582,
+            0.566267725770338
+          ],
+          "mean_relevant_minus_wrong": -0.01406162977218628,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "8/without_projection": {
+          "queries": 161,
+          "select_relevant": 0.5217391304347826,
+          "ci95_class": [
+            0.45454545454545453,
+            0.5859980734449947
+          ],
+          "mean_relevant_minus_wrong": 0.00033083997550420463,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "16/interaction": {
+          "queries": 161,
+          "select_relevant": 0.5590062111801242,
+          "ci95_class": [
+            0.48061445508435935,
+            0.6257715543483351
+          ],
+          "mean_relevant_minus_wrong": 0.0005221840692684054,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "16/cosine": {
+          "queries": 161,
+          "select_relevant": 0.5652173913043478,
+          "ci95_class": [
+            0.47019069656107876,
+            0.6540971056011062
+          ],
+          "mean_relevant_minus_wrong": 0.02235870249569416,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "16/without_reference": {
+          "queries": 161,
+          "select_relevant": 0.5590062111801242,
+          "ci95_class": [
+            0.4873936283374109,
+            0.6145289836502486
+          ],
+          "mean_relevant_minus_wrong": 0.0003495634300634265,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "16/full_residual": {
+          "queries": 161,
+          "select_relevant": 0.4906832298136646,
+          "ci95_class": [
+            0.40677277111754173,
+            0.565229813664596
+          ],
+          "mean_relevant_minus_wrong": 0.008680833503603935,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "16/additive": {
+          "queries": 161,
+          "select_relevant": 0.4968944099378882,
+          "ci95_class": [
+            0.41006604552423637,
+            0.5652173913043478
+          ],
+          "mean_relevant_minus_wrong": -0.0019530628342181444,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "16/raw_tau": {
+          "queries": 161,
+          "select_relevant": 0.4720496894409938,
+          "ci95_class": [
+            0.3906154725609756,
+            0.5668789808917197
+          ],
+          "mean_relevant_minus_wrong": 0.008752040565013885,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "16/pearson": {
+          "queries": 161,
+          "select_relevant": 0.5031055900621118,
+          "ci95_class": [
+            0.3940810127874627,
+            0.625
+          ],
+          "mean_relevant_minus_wrong": 0.010617713443934917,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "16/word_geometry": {
+          "queries": 161,
+          "select_relevant": 0.5186335403726708,
+          "ci95_class": [
+            0.3957201813531737,
+            0.6782617121671722
+          ],
+          "mean_relevant_minus_wrong": -2.0583594960044138e-05,
+          "ties": 1,
+          "present_classes": 21
+        },
+        "16/mean": {
+          "queries": 161,
+          "select_relevant": 0.4409937888198758,
+          "ci95_class": [
+            0.3945562628721213,
+            0.4958694483639051
+          ],
+          "mean_relevant_minus_wrong": -0.027271607890725136,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "16/dispersion": {
+          "queries": 161,
+          "select_relevant": 0.5217391304347826,
+          "ci95_class": [
+            0.43395879578246394,
+            0.5941258169934639
+          ],
+          "mean_relevant_minus_wrong": 0.04284842684864998,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "16/marginals": {
+          "queries": 161,
+          "select_relevant": 0.45962732919254656,
+          "ci95_class": [
+            0.4105960264900662,
+            0.5185185185185185
+          ],
+          "mean_relevant_minus_wrong": -0.018185021355748177,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "16/permuted": {
+          "queries": 161,
+          "select_relevant": 0.5279503105590062,
+          "ci95_class": [
+            0.4393063583815029,
+            0.6119435151827071
+          ],
+          "mean_relevant_minus_wrong": 0.00018231816648039967,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "16/permuted_cosine": {
+          "queries": 161,
+          "select_relevant": 0.5031055900621118,
+          "ci95_class": [
+            0.40706932153392333,
+            0.593139332003988
+          ],
+          "mean_relevant_minus_wrong": 0.0006549989338964224,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "16/without_projection": {
+          "queries": 161,
+          "select_relevant": 0.5031055900621118,
+          "ci95_class": [
+            0.4176470588235294,
+            0.5855433303085297
+          ],
+          "mean_relevant_minus_wrong": 0.00038247500197030604,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "32/interaction": {
+          "queries": 161,
+          "select_relevant": 0.5093167701863354,
+          "ci95_class": [
+            0.42105263157894735,
+            0.5777813852813852
+          ],
+          "mean_relevant_minus_wrong": 0.00011806680413428694,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "32/cosine": {
+          "queries": 161,
+          "select_relevant": 0.4968944099378882,
+          "ci95_class": [
+            0.42445498146937,
+            0.5568262987012985
+          ],
+          "mean_relevant_minus_wrong": 0.0013647597515955567,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "32/without_reference": {
+          "queries": 161,
+          "select_relevant": 0.4906832298136646,
+          "ci95_class": [
+            0.4,
+            0.5625
+          ],
+          "mean_relevant_minus_wrong": 0.00013171156751923263,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "32/full_residual": {
+          "queries": 161,
+          "select_relevant": 0.5527950310559007,
+          "ci95_class": [
+            0.4797608678438514,
+            0.626984126984127
+          ],
+          "mean_relevant_minus_wrong": 0.031278207898139954,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "32/additive": {
+          "queries": 161,
+          "select_relevant": 0.5527950310559007,
+          "ci95_class": [
+            0.4897959183673469,
+            0.6111190476190476
+          ],
+          "mean_relevant_minus_wrong": 0.05225543677806854,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "32/raw_tau": {
+          "queries": 161,
+          "select_relevant": 0.484472049689441,
+          "ci95_class": [
+            0.3757210141603205,
+            0.6148290598290597
+          ],
+          "mean_relevant_minus_wrong": 0.0061024934984743595,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "32/pearson": {
+          "queries": 161,
+          "select_relevant": 0.4968944099378882,
+          "ci95_class": [
+            0.36666666666666664,
+            0.6424680766161212
+          ],
+          "mean_relevant_minus_wrong": 0.008979883044958115,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "32/word_geometry": {
+          "queries": 161,
+          "select_relevant": 0.515527950310559,
+          "ci95_class": [
+            0.3689772353837421,
+            0.6747967479674797
+          ],
+          "mean_relevant_minus_wrong": -2.2056310626794584e-05,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "32/mean": {
+          "queries": 161,
+          "select_relevant": 0.4472049689440994,
+          "ci95_class": [
+            0.36024697536133765,
+            0.5401480828928601
+          ],
+          "mean_relevant_minus_wrong": -0.03449459373950958,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "32/dispersion": {
+          "queries": 161,
+          "select_relevant": 0.5527950310559007,
+          "ci95_class": [
+            0.46714111922141116,
+            0.630439678809244
+          ],
+          "mean_relevant_minus_wrong": 0.026151079684495926,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "32/marginals": {
+          "queries": 161,
+          "select_relevant": 0.43478260869565216,
+          "ci95_class": [
+            0.3246047293783156,
+            0.5402298850574713
+          ],
+          "mean_relevant_minus_wrong": -0.02759920433163643,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "32/permuted": {
+          "queries": 161,
+          "select_relevant": 0.5279503105590062,
+          "ci95_class": [
+            0.465511254789272,
+            0.6015625
+          ],
+          "mean_relevant_minus_wrong": 0.00033901454298757017,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "32/permuted_cosine": {
+          "queries": 161,
+          "select_relevant": 0.5279503105590062,
+          "ci95_class": [
+            0.46285714285714286,
+            0.6037735849056604
+          ],
+          "mean_relevant_minus_wrong": 0.005762580782175064,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "32/without_projection": {
+          "queries": 161,
+          "select_relevant": 0.515527950310559,
+          "ci95_class": [
+            0.4347716293368467,
+            0.6
+          ],
+          "mean_relevant_minus_wrong": 0.00035441311774775386,
+          "ties": 0,
+          "present_classes": 21
+        }
+      },
+      "top1_correct": {
+        "8/interaction": {
+          "queries": 595,
+          "select_relevant": 0.4823529411764706,
+          "ci95_class": [
+            0.433553597966479,
+            0.529103256422844
+          ],
+          "mean_relevant_minus_wrong": -0.0005425787530839443,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "8/cosine": {
+          "queries": 595,
+          "select_relevant": 0.492436974789916,
+          "ci95_class": [
+            0.43356471115091805,
+            0.5485957449177881
+          ],
+          "mean_relevant_minus_wrong": -0.017687367275357246,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "8/without_reference": {
+          "queries": 595,
+          "select_relevant": 0.5025210084033613,
+          "ci95_class": [
+            0.45714285714285713,
+            0.5500041806020066
+          ],
+          "mean_relevant_minus_wrong": -0.0004676187236327678,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "8/full_residual": {
+          "queries": 595,
+          "select_relevant": 0.4470588235294118,
+          "ci95_class": [
+            0.4034176891615542,
+            0.49209074023115024
+          ],
+          "mean_relevant_minus_wrong": -0.04435909166932106,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "8/additive": {
+          "queries": 595,
+          "select_relevant": 0.4773109243697479,
+          "ci95_class": [
+            0.4295529728878231,
+            0.5203915171288744
+          ],
+          "mean_relevant_minus_wrong": -0.057073988020420074,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "8/raw_tau": {
+          "queries": 595,
+          "select_relevant": 0.4890756302521008,
+          "ci95_class": [
+            0.4087942168123893,
+            0.5746034468675978
+          ],
+          "mean_relevant_minus_wrong": -0.008071881718933582,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "8/pearson": {
+          "queries": 595,
+          "select_relevant": 0.4907563025210084,
+          "ci95_class": [
+            0.40421220649580125,
+            0.5813598490243554
+          ],
+          "mean_relevant_minus_wrong": -0.0050739808939397335,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "8/word_geometry": {
+          "queries": 595,
+          "select_relevant": 0.35378151260504204,
+          "ci95_class": [
+            0.28361551862957407,
+            0.42822435517174506
+          ],
+          "mean_relevant_minus_wrong": -2.5558570996508934e-05,
+          "ties": 1,
+          "present_classes": 21
+        },
+        "8/mean": {
+          "queries": 595,
+          "select_relevant": 0.5546218487394958,
+          "ci95_class": [
+            0.48544861660079053,
+            0.627608697482293
+          ],
+          "mean_relevant_minus_wrong": 0.04721903055906296,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "8/dispersion": {
+          "queries": 595,
+          "select_relevant": 0.5378151260504201,
+          "ci95_class": [
+            0.4927976661264182,
+            0.5804467284013433
+          ],
+          "mean_relevant_minus_wrong": 0.0226797703653574,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "8/marginals": {
+          "queries": 595,
+          "select_relevant": 0.5546218487394958,
+          "ci95_class": [
+            0.48463993483768264,
+            0.626276350461133
+          ],
+          "mean_relevant_minus_wrong": 0.04166126996278763,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "8/permuted": {
+          "queries": 595,
+          "select_relevant": 0.4957983193277311,
+          "ci95_class": [
+            0.4493006993006993,
+            0.5482169117647059
+          ],
+          "mean_relevant_minus_wrong": -0.0006613832083530724,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "8/permuted_cosine": {
+          "queries": 595,
+          "select_relevant": 0.49747899159663866,
+          "ci95_class": [
+            0.44983097566049507,
+            0.5508482010110021
+          ],
+          "mean_relevant_minus_wrong": -0.009472993202507496,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "8/without_projection": {
+          "queries": 595,
+          "select_relevant": 0.4890756302521008,
+          "ci95_class": [
+            0.4548335974643423,
+            0.5219635703181056
+          ],
+          "mean_relevant_minus_wrong": 0.0002730995765887201,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "16/interaction": {
+          "queries": 595,
+          "select_relevant": 0.4823529411764706,
+          "ci95_class": [
+            0.437398306119956,
+            0.5275113431233838
+          ],
+          "mean_relevant_minus_wrong": -0.0006209871498867869,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "16/cosine": {
+          "queries": 595,
+          "select_relevant": 0.47058823529411764,
+          "ci95_class": [
+            0.42033775485138786,
+            0.5202719880897847
+          ],
+          "mean_relevant_minus_wrong": -0.011182695627212524,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "16/without_reference": {
+          "queries": 595,
+          "select_relevant": 0.47394957983193275,
+          "ci95_class": [
+            0.416376151623743,
+            0.5296833892769662
+          ],
+          "mean_relevant_minus_wrong": -0.0008229593513533473,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "16/full_residual": {
+          "queries": 595,
+          "select_relevant": 0.44201680672268906,
+          "ci95_class": [
+            0.3921860634331515,
+            0.4936097795126401
+          ],
+          "mean_relevant_minus_wrong": -0.04153900966048241,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "16/additive": {
+          "queries": 595,
+          "select_relevant": 0.44873949579831934,
+          "ci95_class": [
+            0.40468005838070364,
+            0.49559082892416223
+          ],
+          "mean_relevant_minus_wrong": -0.06228411942720413,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "16/raw_tau": {
+          "queries": 595,
+          "select_relevant": 0.5226890756302521,
+          "ci95_class": [
+            0.42573460312132905,
+            0.6258280923596604
+          ],
+          "mean_relevant_minus_wrong": 0.0030325648840516806,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "16/pearson": {
+          "queries": 595,
+          "select_relevant": 0.5109243697478991,
+          "ci95_class": [
+            0.4174732472172144,
+            0.6140079812941038
+          ],
+          "mean_relevant_minus_wrong": 0.005521714221686125,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "16/word_geometry": {
+          "queries": 595,
+          "select_relevant": 0.3495798319327731,
+          "ci95_class": [
+            0.25309573472799496,
+            0.4515711104806608
+          ],
+          "mean_relevant_minus_wrong": -2.3898057406768203e-05,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "16/mean": {
+          "queries": 595,
+          "select_relevant": 0.5630252100840336,
+          "ci95_class": [
+            0.4884073623758278,
+            0.6356187774474236
+          ],
+          "mean_relevant_minus_wrong": 0.07226981222629547,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "16/dispersion": {
+          "queries": 595,
+          "select_relevant": 0.5159663865546219,
+          "ci95_class": [
+            0.4642842947990007,
+            0.5673400673400674
+          ],
+          "mean_relevant_minus_wrong": 0.015238008461892605,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "16/marginals": {
+          "queries": 595,
+          "select_relevant": 0.5630252100840336,
+          "ci95_class": [
+            0.49041669218676626,
+            0.6351591101098282
+          ],
+          "mean_relevant_minus_wrong": 0.06184756010770798,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "16/permuted": {
+          "queries": 595,
+          "select_relevant": 0.47394957983193275,
+          "ci95_class": [
+            0.41232227488151657,
+            0.5369425675675674
+          ],
+          "mean_relevant_minus_wrong": -0.0002520267735235393,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "16/permuted_cosine": {
+          "queries": 595,
+          "select_relevant": 0.4773109243697479,
+          "ci95_class": [
+            0.4188470488208708,
+            0.5388431846102301
+          ],
+          "mean_relevant_minus_wrong": -0.0034800993744283915,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "16/without_projection": {
+          "queries": 595,
+          "select_relevant": 0.5226890756302521,
+          "ci95_class": [
+            0.47087713491132305,
+            0.5682548403976975
+          ],
+          "mean_relevant_minus_wrong": 0.00020531058544293046,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "32/interaction": {
+          "queries": 595,
+          "select_relevant": 0.44201680672268906,
+          "ci95_class": [
+            0.3723191748442089,
+            0.5132130614921457
+          ],
+          "mean_relevant_minus_wrong": -0.0007414141437038779,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "32/cosine": {
+          "queries": 595,
+          "select_relevant": 0.45546218487394957,
+          "ci95_class": [
+            0.3890907490396927,
+            0.5234782608695652
+          ],
+          "mean_relevant_minus_wrong": -0.015085538849234581,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "32/without_reference": {
+          "queries": 595,
+          "select_relevant": 0.43529411764705883,
+          "ci95_class": [
+            0.3667698938018141,
+            0.5026166292581752
+          ],
+          "mean_relevant_minus_wrong": -0.0010236097732558846,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "32/full_residual": {
+          "queries": 595,
+          "select_relevant": 0.3949579831932773,
+          "ci95_class": [
+            0.33774619420314783,
+            0.454824260238107
+          ],
+          "mean_relevant_minus_wrong": -0.0645347461104393,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "32/additive": {
+          "queries": 595,
+          "select_relevant": 0.4084033613445378,
+          "ci95_class": [
+            0.35521488469601675,
+            0.4612337757964
+          ],
+          "mean_relevant_minus_wrong": -0.10536357760429382,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "32/raw_tau": {
+          "queries": 595,
+          "select_relevant": 0.5378151260504201,
+          "ci95_class": [
+            0.43338550026752276,
+            0.6452732652865631
+          ],
+          "mean_relevant_minus_wrong": 0.008551150560379028,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "32/pearson": {
+          "queries": 595,
+          "select_relevant": 0.5630252100840336,
+          "ci95_class": [
+            0.46495540691192866,
+            0.6639760539483596
+          ],
+          "mean_relevant_minus_wrong": 0.010521690361201763,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "32/word_geometry": {
+          "queries": 595,
+          "select_relevant": 0.346218487394958,
+          "ci95_class": [
+            0.24959701891098002,
+            0.44933121621621613
+          ],
+          "mean_relevant_minus_wrong": -2.357368794037029e-05,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "32/mean": {
+          "queries": 595,
+          "select_relevant": 0.6168067226890757,
+          "ci95_class": [
+            0.5301613038675461,
+            0.696819999511333
+          ],
+          "mean_relevant_minus_wrong": 0.07811003178358078,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "32/dispersion": {
+          "queries": 595,
+          "select_relevant": 0.5260504201680672,
+          "ci95_class": [
+            0.478257472826087,
+            0.5761878821907127
+          ],
+          "mean_relevant_minus_wrong": 0.017819572240114212,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "32/marginals": {
+          "queries": 595,
+          "select_relevant": 0.6218487394957983,
+          "ci95_class": [
+            0.5405821291384671,
+            0.7001898423915054
+          ],
+          "mean_relevant_minus_wrong": 0.06735263764858246,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "32/permuted": {
+          "queries": 595,
+          "select_relevant": 0.5226890756302521,
+          "ci95_class": [
+            0.4703891708967851,
+            0.5752219788676118
+          ],
+          "mean_relevant_minus_wrong": 0.00017017249774653465,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "32/permuted_cosine": {
+          "queries": 595,
+          "select_relevant": 0.5277310924369748,
+          "ci95_class": [
+            0.4771211210208104,
+            0.5784469096671949
+          ],
+          "mean_relevant_minus_wrong": 0.0027962070889770985,
+          "ties": 0,
+          "present_classes": 21
+        },
+        "32/without_projection": {
+          "queries": 595,
+          "select_relevant": 0.5126050420168067,
+          "ci95_class": [
+            0.4594547753993162,
+            0.5616
+          ],
+          "mean_relevant_minus_wrong": 0.00016026162484195083,
+          "ties": 0,
+          "present_classes": 21
+        }
+      }
+    }
+  },
+  "per_query_sha256": "811acd7a2e2caaba56348ead3b92eb7db75d5fb9b6c151fdadde5448777271a1",
+  "note": "fixed relevant and irrelevant photos from the unchanged ranker; closures are descriptive measures, not official retrieval metrics"
+}
