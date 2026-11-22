@@ -1,0 +1,17 @@
+# Từ nào trở nên thuyết phục hơn khi cùng nhìn thấy toàn vật ở hai miền?
+
+Trên pilot Sketchy, việc giảm điểm các ảnh đã được một phần riêng lẻ của sketch ủng hộ cho kết quả tốt hơn cơ chế yêu cầu bằng chứng tồn tại qua tất cả tập mở rộng. Điều đó gợi ra một giả thuyết khác. Một từ chung cho cả hai ảnh có thể mô tả nét hoặc vật liệu cục bộ. Sự đồng thuận có giá trị hơn khi chính từ đó trở nên có sức giải thích ở cả sketch và ảnh đích sau khi các phần được đặt lại trong ngữ cảnh toàn cảnh.
+
+## Bốn quan sát trên cùng một cặp
+
+Đối với một sketch, dùng CLIP để tính phân phối từ công khai khi nhìn toàn bộ ảnh q₁ và khi chỉ còn một nhóm patch q₀. q₀ là trung bình các phân phối do sáu nhóm cung cấp, nên mỗi từ đều có một xác suất. Ảnh gallery cho hai phân phối p₁ và p₀ theo cùng cách. Mỗi điểm Lᵢⱼ bằng tổng theo từ của qᵢ(w)pⱼ(w). Chỉ số thử nghiệm là log[L₁₁L₀₀/(L₁₀L₀₁)].
+
+Cách viết này cho một đối chứng đại số. Lấy π(w) tỷ lệ với q₀(w)p₀(w), Rq = q₁/q₀ và Rp = p₁/p₀. Khi đó, số mũ của chỉ số bằng Eπ[Rq Rp] / (Eπ[Rq] Eπ[Rp]). Chỉ số bằng 0 nếu một trong hai ảnh giữ nguyên phân phối từ, hoặc hai mức thay đổi có hiệp phương sai bằng 0 dưới π. Tích vô hướng của các phân phối chỉ phản ánh chia sẻ từ giữa ảnh và sketch. Để giải thích chỉ số là đồng thuận về nội dung toàn vật, cần chứng tỏ lợi ích tăng hạng đến từ những từ cùng tăng lên ở hai miền. Đồng thời giảm xác suất của một từ cũng tạo đóng góp có cùng dấu. Phép chẩn đoán tách ba phần này theo từng từ trên các cặp đúng–sai thật và ảnh nguồn xác minh được.
+
+## Đo và bác bỏ
+
+Chọn 256 hoặc 2.048 từ theo tổng xác suất trên gallery chưa nhìn thấy truy vấn, từ từ điển Open Images đã duyệt. Giữ cố định trong split. Tính trên phân phối gốc của từng ảnh hoặc sau diffusion trên cùng đồ thị RGB. Tách các đối chứng chỉ thay sketch, chỉ thay ảnh, tổng hai thay đổi một phía, hiệu giữa toàn–toàn và phần–phần, điểm phần đơn, cosine giữa hai vector thay đổi cùng đối chứng tráo thông tin phần giữa những ảnh gần nhau trong 64 cụm thị giác. Mỗi đối chứng có cùng cơ hội dò tham số trên hai pilot unseen.
+
+Các nhóm patch có thể là lưới cố định hoặc nhóm theo token gốc. Kiểm tra riêng quan hệ không gian bằng cách giữ đúng **số patch của từng nhóm trên từng ảnh** rồi dời nhóm sang các vị trí tráo. Đo khi tráo ở một hoặc cả hai miền. Cách biểu diễn này dùng một sketch, gallery ảnh không nhãn và CLIP ViT-B/32. Kết quả thí nghiệm chỉ có thể chứng minh chuyển giao sketch → photo trong phạm vi đã duyệt.
+
+Đối chứng đọc ảnh đầy đủ trừ phiên bản quan sát thiếu lấy cảm hứng từ visual contrastive decoding, vốn đã được dùng để giảm ảo giác khi sinh văn bản. Đề xuất dùng hai trạng thái ở cả hai đầu và thử hiệp phương sai trên một từ vựng chung trong truy hồi. Tỷ số chéo và hiệp phương sai là phép biến đổi đã biết. Phần đóng góp cần chứng minh nằm ở lựa chọn phản thực của từng ảnh, khả năng tách hiệu ứng từng phía và kết quả trên ảnh bị truy hồi sai. Ba nguồn cơ chế trực tiếp là visual contrastive decoding, nền từ công khai và diffusion RGB. [Leng và cộng sự, CVPR 2024](https://openaccess.thecvf.com/content/CVPR2024/html/Leng_Mitigating_Object_Hallucinations_in_Large_Vision-Language_Models_through_Visual_Contrastive_CVPR_2024_paper.html) · [FreeDom, WACV 2025](https://openaccess.thecvf.com/content/WACV2025/html/Efthymiadis_Composed_Image_Retrieval_for_Training-Free_Domain_Conversion_WACV_2025_paper.html) · [Wang và cộng sự, CVPR 2012](https://pages.ucsd.edu/~ztu/publication/cvpr12_CrDP.pdf)
