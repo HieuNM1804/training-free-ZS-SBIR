@@ -63,11 +63,11 @@ def moments(values,visual,include_pearson=False):
     return tau,active,pearson
 
 
-def descriptors(views,native,text,names,side):
+def descriptors(views,native,text,names,side,scales=((0,9),(9,13))):
     # Broadcast-free path for either N image/name-set pairs or a query repeated against many photos.
     native=F.normalize(native.float(),dim=-1)
     views=views.float()
-    original=(views.flatten(-3,-2)@text.transpose(-1,-2)).unflatten(-2,(13,2))
+    original=(views.flatten(-3,-2)@text.transpose(-1,-2)).unflatten(-2,(13,views.shape[-2]))
     radial=(views*native[:,None,None,:]).sum(-1,keepdim=True)
     tangential=views-radial*native[:,None,None,:]
     projected=original-radial*(native[:,None,:]*text).sum(-1)[:,None,None,:]
@@ -75,7 +75,8 @@ def descriptors(views,native,text,names,side):
     sorted_marginals=[]
     means=[]
     spread=[]
-    for left,right in ((0,9),(9,13)):
+    mass=1/len(scales)
+    for left,right in scales:
         sl=slice(left,right)
         vals=projected[:,sl]
         subset=tangential[:,sl]
@@ -83,12 +84,12 @@ def descriptors(views,native,text,names,side):
         raw_tau,raw_prob,_=moments(original[:,sl],views[:,sl])
         perm=permute_views(vals,names,left,311 if side=="source" else 971)
         null,_,_=moments(perm,subset)
-        tau=tau+.5*estimate
-        active=active+.5*prob
-        shuffled=shuffled+.5*null
-        raw=raw+.5*raw_tau
-        rawactive=rawactive+.5*raw_prob
-        pearson=pearson+.5*pc
+        tau=tau+mass*estimate
+        active=active+mass*prob
+        shuffled=shuffled+mass*null
+        raw=raw+mass*raw_tau
+        rawactive=rawactive+mass*raw_prob
+        pearson=pearson+mass*pc
         ordered=original[:,sl].sort(dim=1).values.mean(2)
         sorted_marginals.append(ordered/(right-left)**.5)
         means.append(original[:,sl].mean((1,2)))
