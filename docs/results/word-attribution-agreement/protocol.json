@@ -1,0 +1,43 @@
+{
+  "revision": "351645c81af25e8f2b6cefcbdab29278ee479c80",
+  "checkpoint": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+  "weights": [
+    0.035,
+    0.1,
+    0.3,
+    0.8
+  ],
+  "query_words": [
+    4,
+    16,
+    64
+  ],
+  "temperatures": [
+    0.3,
+    1.0
+  ],
+  "pilot_seed": 63241,
+  "per_class": 36,
+  "hypothesis": "transport, 48 actual heads",
+  "index_checks": {
+    "sketch": {
+      "signature": "7fee2695cab64276e8345fa17d44a2e7ec6a88bab19b18de23021a452867b6ad",
+      "rows": 24642,
+      "slot_order": "4 blocks × 12 heads, 4 block MLPs, rest",
+      "max_native_1_minus_cos": 3.5762786865234375e-07,
+      "max_relative_remainder": 0.0030869098845869303,
+      "max_normalized_reconstruction_error": 0.0003543754282873124,
+      "max_fp16_reconstruction_error": 0.0004834781284444034
+    },
+    "photo": {
+      "signature": "c056b7ea1dd0661ad3dbdcebefb739254d42a50f2c150a11436623bf71f9606a",
+      "rows": 27447,
+      "slot_order": "4 blocks × 12 heads, 4 block MLPs, rest",
+      "max_native_1_minus_cos": 2.384185791015625e-07,
+      "max_relative_remainder": 0.0028788859490305185,
+      "max_normalized_reconstruction_error": 0.00034411894739605486,
+      "max_fp16_reconstruction_error": 0.000490172824356705
+    }
+  },
+  "sha256": "755a5d9f9f61c2265593cc239933246b6553d5f6ec0f4c020346fed882b7da74"
+}
