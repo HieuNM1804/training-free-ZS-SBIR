@@ -21,7 +21,12 @@ def algebra(device):
     loc=torch.randn(2,49,N,1,generator=gen).to(device)
     scale=torch.rand(2,49,N,1,generator=gen).to(device)+.5
     sample=loc+scale*torch.linspace(-1.,1.,K,device=device)[None,None,None]
-    u=torch.rand(2,49,N,generator=gen).to(device)*.58+.25
+    random_u=torch.rand(2,49,N,generator=gen).to(device)*.58+.25
+    random_a=cdf(sample,quantile(sample,random_u))
+    random_b=cdf(sample,quantile(sample,random_u.square()))
+    near_tie=(rank_among_patches(random_a)-rank_among_patches(random_b)).abs()
+    # Distinct ranks with an explicit separation check the exact invariant; track float32 near-ties separately.
+    u=.25+.58*(.5+random_u.argsort(1).float())/49
     transformed=u.square()
     v1,v2=quantile(sample,u),quantile(sample,transformed)
     a,b=cdf(sample,v1),cdf(sample,v2)
@@ -31,7 +36,8 @@ def algebra(device):
     tie_error=(rank_among_patches(tie)-.5).abs().max()
     if invfloat>1e-4 or rank_error>0 or tie_error!=0:
         raise ValueError("Conditional probability or order invariance failed")
-    return {"calibration_inverse_abs_error":float(invfloat),"monotone_rank_error":float(rank_error),
+    return {"calibration_inverse_abs_error":float(invfloat),"monotone_rank_error_separated_values":float(rank_error),
+            "near_tied_float32_max_rank_change":float(near_tie.max()),"near_tied_float32_fraction_changed":float((near_tie>0).float().mean()),
             "all_tied_rank_error":float(tie_error),"ties_share_their_midrank":True}
 
 
