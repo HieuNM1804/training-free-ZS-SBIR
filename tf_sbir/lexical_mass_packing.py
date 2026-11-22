@@ -57,18 +57,17 @@ def solve_words(anchor, rhs, jobs):
             if highspy:
                 solver.changeRowsBounds(count, rows, lower, bound)
                 solver.run()
-                if solver.getModelStatus() != highspy.HighsModelStatus.kOptimal:
-                    raise ValueError(f"Gallery allocation failed for word {i}")
-                sol = solver.getSolution()
-                allocation = np.maximum(sol.col_value, 0.)
-                dual = np.maximum(sol.row_dual, 0.)
+                if solver.getModelStatus() == highspy.HighsModelStatus.kOptimal:
+                    sol = solver.getSolution()
+                    allocation, gap = certify(mat, bound, sol.col_value, sol.row_dual)
+                else:
+                    gap = np.inf
             else:
                 sol = linprog(-np.ones(size), A_ub=mat, b_ub=bound, method="highs-ds")
-                if not sol.success:
-                    raise ValueError(sol.message)
-                allocation = np.maximum(sol.x, 0.)
-                dual = np.maximum(-sol.ineqlin.marginals, 0.)
-            allocation, gap = certify(mat, bound, allocation, dual)
+                if sol.success:
+                    allocation, gap = certify(mat, bound, sol.x, -sol.ineqlin.marginals)
+                else:
+                    gap = np.inf
             if not (-1e-7 <= gap <= 3e-5):
                 # Rare terms can have a much smaller capacity in some cells than the gallery anchors.
                 # Make each constraint unit capacity and solve the unchanged LP at this term's scale.
@@ -76,7 +75,10 @@ def solve_words(anchor, rhs, jobs):
                 precise = linprog(-np.ones(size), A_ub=local, b_ub=np.ones(count), method="highs-ds",
                                   options={"primal_feasibility_tolerance": 1e-9, "dual_feasibility_tolerance": 1e-9})
                 if not precise.success:
-                    raise ValueError(f"Rescaled gallery allocation failed for word {i}: {precise.message}")
+                    precise = linprog(-np.ones(size), A_ub=local, b_ub=np.ones(count), method="highs-ipm",
+                                      options={"ipm_optimality_tolerance": 1e-11})
+                if not precise.success:
+                    raise ValueError(f"Both solvers failed on rescaled word {i}: {precise.message}")
                 allocation, gap = certify(local, np.ones(count), precise.x, -precise.ineqlin.marginals)
             if gap < -1e-7 or gap > 3e-5 or allocation.sum() > 1 + 1e-7:
                 raise ValueError(f"Uncertified allocation for word {i}: {gap}")
