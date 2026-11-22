@@ -19,7 +19,8 @@ from .semantic_neuron_gallery import FAMILY as ORIGINAL
 def walsh(device):
     m=torch.arange(64,device=device)
     bits=torch.stack([(m>>i)&1 for i in range(6)],1)
-    signs=1-2*((bits@bits.T)%2)
+    overlaps=(bits[:,None,:]*bits[None,:,:]).sum(-1)
+    signs=1-2*(overlaps%2)
     h=signs.float()/8.
     if (h@h.T-torch.eye(64,device=device)).abs().amax()>1e-7:raise ValueError("Invalid orthogonal Boolean decomposition")
     return h,bits.sum(1)
