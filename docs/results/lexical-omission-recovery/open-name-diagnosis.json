@@ -1,0 +1,381 @@
+{
+  "scope": "diagnosis on Sketchy only. Public proposals are made before looking up any category. Oracle uses labels only after rankings exist.",
+  "vocabulary": 20931,
+  "vocabulary_sha256": "84a4373a0efb7fd6d93fe19b0e7ceb6c1b855c233d13b9b78a9a33655c9fdce3",
+  "splits": {
+    "sketchy_1": {
+      "queries": 14179,
+      "gallery": 17100,
+      "category_exact_coverage": 24,
+      "classes": 25,
+      "category_exact_in_heads": 13,
+      "distinct_proposed_names": 14135,
+      "category_diagnosis": {
+        "all": {
+          "n": 14179,
+          "both_class_names_in_public_vocabulary": 13640,
+          "own_name_in_heads_when_in_public_dictionary": 0.5251258113923127,
+          "whole": {
+            "true_name_over_rival": 0.2818858560794045,
+            "true_in_top16": 0.5999562395157173,
+            "true_in_top64": 0.756035300123988
+          },
+          "regions": {
+            "true_name_over_rival": 0.32903225806451614,
+            "true_in_top16": 0.4587557435635621,
+            "true_in_top64": 0.6580847494712274
+          }
+        },
+        "regional_hit": {
+          "n": 11859,
+          "both_class_names_in_public_vocabulary": 11625,
+          "own_name_in_heads_when_in_public_dictionary": 0.5383225806451613,
+          "whole": {
+            "true_name_over_rival": null,
+            "true_in_top16": 0.7004731182795698,
+            "true_in_top64": 0.8664086021505376
+          },
+          "regions": {
+            "true_name_over_rival": null,
+            "true_in_top16": 0.5358279569892472,
+            "true_in_top64": 0.7567311827956988
+          }
+        },
+        "regional_miss": {
+          "n": 2320,
+          "both_class_names_in_public_vocabulary": 2015,
+          "own_name_in_heads_when_in_public_dictionary": 0.45158197507190795,
+          "whole": {
+            "true_name_over_rival": 0.2818858560794045,
+            "true_in_top16": 0.03978906999041227,
+            "true_in_top64": 0.14093959731543623
+          },
+          "regions": {
+            "true_name_over_rival": 0.32903225806451614,
+            "true_in_top16": 0.029242569511025884,
+            "true_in_top64": 0.10834132310642378
+          }
+        },
+        "regional_miss_native_correct": {
+          "n": 103,
+          "both_class_names_in_public_vocabulary": 101,
+          "own_name_in_heads_when_in_public_dictionary": 0.5,
+          "whole": {
+            "true_name_over_rival": 0.39603960396039606,
+            "true_in_top16": 0.2549019607843137,
+            "true_in_top64": 0.4803921568627451
+          },
+          "regions": {
+            "true_name_over_rival": 0.4158415841584158,
+            "true_in_top16": 0.09803921568627451,
+            "true_in_top64": 0.3333333333333333
+          }
+        },
+        "both_rank1_wrong": {
+          "n": 2217,
+          "both_class_names_in_public_vocabulary": 1914,
+          "own_name_in_heads_when_in_public_dictionary": 0.4490927419354839,
+          "whole": {
+            "true_name_over_rival": 0.2758620689655173,
+            "true_in_top16": 0.028729838709677418,
+            "true_in_top64": 0.12348790322580645
+          },
+          "regions": {
+            "true_name_over_rival": 0.32445141065830724,
+            "true_in_top16": 0.02570564516129032,
+            "true_in_top64": 0.0967741935483871
+          }
+        }
+      },
+      "single_name_oracle": {
+        "whole": {
+          "1": {
+            "oracle_single_word_map_precision": [
+              0.5627073645591736,
+              0.64347904920578
+            ],
+            "improvement_vs_strong_on_its_rank1_misses_pp": [
+              -14.466796875,
+              2.5168099403381348
+            ],
+            "share_oracle_query_word_outside_64_heads": 0.7466675639152527,
+            "share_with_5pp_AP_advantage_over_strong": 0.015445375815033913
+          },
+          "4": {
+            "oracle_single_word_map_precision": [
+              0.6898905634880066,
+              0.7643725872039795
+            ],
+            "improvement_vs_strong_on_its_rank1_misses_pp": [
+              -5.541974067687988,
+              15.004308700561523
+            ],
+            "share_oracle_query_word_outside_64_heads": 0.7095704674720764,
+            "share_with_5pp_AP_advantage_over_strong": 0.04654771089553833
+          },
+          "16": {
+            "oracle_single_word_map_precision": [
+              0.7858872413635254,
+              0.8539156317710876
+            ],
+            "improvement_vs_strong_on_its_rank1_misses_pp": [
+              8.920644760131836,
+              34.11724090576172
+            ],
+            "share_oracle_query_word_outside_64_heads": 0.6791028380393982,
+            "share_with_5pp_AP_advantage_over_strong": 0.10219337791204453
+          },
+          "64": {
+            "oracle_single_word_map_precision": [
+              0.8618088364601135,
+              0.923710286617279
+            ],
+            "improvement_vs_strong_on_its_rank1_misses_pp": [
+              27.595256805419922,
+              56.298702239990234
+            ],
+            "share_oracle_query_word_outside_64_heads": 0.6147823929786682,
+            "share_with_5pp_AP_advantage_over_strong": 0.1668664813041687
+          }
+        },
+        "regions": {
+          "1": {
+            "oracle_single_word_map_precision": [
+              0.509655773639679,
+              0.5896084904670715
+            ],
+            "improvement_vs_strong_on_its_rank1_misses_pp": [
+              -13.409333229064941,
+              4.362499713897705
+            ],
+            "share_oracle_query_word_outside_64_heads": 0.7764298915863037,
+            "share_with_5pp_AP_advantage_over_strong": 0.019465405493974686
+          },
+          "4": {
+            "oracle_single_word_map_precision": [
+              0.6591933369636536,
+              0.7407659292221069
+            ],
+            "improvement_vs_strong_on_its_rank1_misses_pp": [
+              -2.972693920135498,
+              18.16034507751465
+            ],
+            "share_oracle_query_word_outside_64_heads": 0.7456096410751343,
+            "share_with_5pp_AP_advantage_over_strong": 0.05169616639614105
+          },
+          "16": {
+            "oracle_single_word_map_precision": [
+              0.7714297771453857,
+              0.8452034592628479
+            ],
+            "improvement_vs_strong_on_its_rank1_misses_pp": [
+              11.049503326416016,
+              36.499568939208984
+            ],
+            "share_oracle_query_word_outside_64_heads": 0.6968756318092346,
+            "share_with_5pp_AP_advantage_over_strong": 0.10875237733125687
+          },
+          "64": {
+            "oracle_single_word_map_precision": [
+              0.8534539937973022,
+              0.9191790223121643
+            ],
+            "improvement_vs_strong_on_its_rank1_misses_pp": [
+              29.494327545166016,
+              57.82456970214844
+            ],
+            "share_oracle_query_word_outside_64_heads": 0.6525142788887024,
+            "share_with_5pp_AP_advantage_over_strong": 0.1701812446117401
+          }
+        }
+      }
+    },
+    "sketchy_2": {
+      "queries": 12694,
+      "gallery": 12552,
+      "category_exact_coverage": 18,
+      "classes": 21,
+      "category_exact_in_heads": 13,
+      "distinct_proposed_names": 13636,
+      "category_diagnosis": {
+        "all": {
+          "n": 12694,
+          "both_class_names_in_public_vocabulary": 9489,
+          "own_name_in_heads_when_in_public_dictionary": 0.7335208626347867,
+          "whole": {
+            "true_name_over_rival": 0.35516372795969775,
+            "true_in_top16": 0.45578996718237225,
+            "true_in_top64": 0.6081575246132208
+          },
+          "regions": {
+            "true_name_over_rival": 0.37594458438287154,
+            "true_in_top16": 0.33839662447257385,
+            "true_in_top64": 0.5156118143459916
+          }
+        },
+        "regional_hit": {
+          "n": 9479,
+          "both_class_names_in_public_vocabulary": 7901,
+          "own_name_in_heads_when_in_public_dictionary": 0.7621820022781927,
+          "whole": {
+            "true_name_over_rival": null,
+            "true_in_top16": 0.5972661688393874,
+            "true_in_top64": 0.7696494114669029
+          },
+          "regions": {
+            "true_name_over_rival": null,
+            "true_in_top16": 0.4429819010251867,
+            "true_in_top64": 0.6589039362106063
+          }
+        },
+        "regional_miss": {
+          "n": 3215,
+          "both_class_names_in_public_vocabulary": 1588,
+          "own_name_in_heads_when_in_public_dictionary": 0.6515918958031838,
+          "whole": {
+            "true_name_over_rival": 0.35516372795969775,
+            "true_in_top16": 0.05137481910274964,
+            "true_in_top64": 0.14652677279305354
+          },
+          "regions": {
+            "true_name_over_rival": 0.37594458438287154,
+            "true_in_top16": 0.039435600578871195,
+            "true_in_top64": 0.10600578871201156
+          }
+        },
+        "regional_miss_native_correct": {
+          "n": 383,
+          "both_class_names_in_public_vocabulary": 120,
+          "own_name_in_heads_when_in_public_dictionary": 0.925531914893617,
+          "whole": {
+            "true_name_over_rival": 0.425,
+            "true_in_top16": 0.11702127659574468,
+            "true_in_top64": 0.4015957446808511
+          },
+          "regions": {
+            "true_name_over_rival": 0.425,
+            "true_in_top16": 0.08244680851063829,
+            "true_in_top64": 0.19946808510638298
+          }
+        },
+        "both_rank1_wrong": {
+          "n": 2832,
+          "both_class_names_in_public_vocabulary": 1468,
+          "own_name_in_heads_when_in_public_dictionary": 0.6084589614740369,
+          "whole": {
+            "true_name_over_rival": 0.3494550408719346,
+            "true_in_top16": 0.04103852596314908,
+            "true_in_top64": 0.10636515912897823
+          },
+          "regions": {
+            "true_name_over_rival": 0.37193460490463215,
+            "true_in_top16": 0.032663316582914576,
+            "true_in_top64": 0.09128978224455611
+          }
+        }
+      },
+      "single_name_oracle": {
+        "whole": {
+          "1": {
+            "oracle_single_word_map_precision": [
+              0.5583010911941528,
+              0.5279726386070251
+            ],
+            "improvement_vs_strong_on_its_rank1_misses_pp": [
+              0.2142188847064972,
+              -1.6004670858383179
+            ],
+            "share_oracle_query_word_outside_64_heads": 0.7622498869895935,
+            "share_with_5pp_AP_advantage_over_strong": 0.09555695950984955
+          },
+          "4": {
+            "oracle_single_word_map_precision": [
+              0.716139554977417,
+              0.681836724281311
+            ],
+            "improvement_vs_strong_on_its_rank1_misses_pp": [
+              17.76518440246582,
+              13.61384105682373
+            ],
+            "share_oracle_query_word_outside_64_heads": 0.6914290189743042,
+            "share_with_5pp_AP_advantage_over_strong": 0.1730738878250122
+          },
+          "16": {
+            "oracle_single_word_map_precision": [
+              0.8348204493522644,
+              0.8022439479827881
+            ],
+            "improvement_vs_strong_on_its_rank1_misses_pp": [
+              40.17624282836914,
+              34.3399658203125
+            ],
+            "share_oracle_query_word_outside_64_heads": 0.6155664324760437,
+            "share_with_5pp_AP_advantage_over_strong": 0.2259335070848465
+          },
+          "64": {
+            "oracle_single_word_map_precision": [
+              0.9138201475143433,
+              0.8787911534309387
+            ],
+            "improvement_vs_strong_on_its_rank1_misses_pp": [
+              59.96996307373047,
+              51.66889572143555
+            ],
+            "share_oracle_query_word_outside_64_heads": 0.5279659628868103,
+            "share_with_5pp_AP_advantage_over_strong": 0.25752323865890503
+          }
+        },
+        "regions": {
+          "1": {
+            "oracle_single_word_map_precision": [
+              0.5033709406852722,
+              0.4721308946609497
+            ],
+            "improvement_vs_strong_on_its_rank1_misses_pp": [
+              0.4136500358581543,
+              -1.6813377141952515
+            ],
+            "share_oracle_query_word_outside_64_heads": 0.8329131603240967,
+            "share_with_5pp_AP_advantage_over_strong": 0.08996376395225525
+          },
+          "4": {
+            "oracle_single_word_map_precision": [
+              0.6753146052360535,
+              0.6384059190750122
+            ],
+            "improvement_vs_strong_on_its_rank1_misses_pp": [
+              16.396411895751953,
+              11.886157989501953
+            ],
+            "share_oracle_query_word_outside_64_heads": 0.7656373381614685,
+            "share_with_5pp_AP_advantage_over_strong": 0.16818968951702118
+          },
+          "16": {
+            "oracle_single_word_map_precision": [
+              0.8168067336082458,
+              0.7801815867424011
+            ],
+            "improvement_vs_strong_on_its_rank1_misses_pp": [
+              40.70503616333008,
+              33.794246673583984
+            ],
+            "share_oracle_query_word_outside_64_heads": 0.6942650079727173,
+            "share_with_5pp_AP_advantage_over_strong": 0.22585473954677582
+          },
+          "64": {
+            "oracle_single_word_map_precision": [
+              0.9097936153411865,
+              0.8678878545761108
+            ],
+            "improvement_vs_strong_on_its_rank1_misses_pp": [
+              60.85091781616211,
+              50.99159622192383
+            ],
+            "share_oracle_query_word_outside_64_heads": 0.5968173742294312,
+            "share_with_5pp_AP_advantage_over_strong": 0.258311003446579
+          }
+        }
+      }
+    }
+  }
+}
