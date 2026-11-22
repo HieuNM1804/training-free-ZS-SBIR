@@ -29,21 +29,26 @@ def key(setting,rule,cap):
     return "/".join([*(f"{x:g}" for x in setting),rule,f"{cap:g}"])
 
 
-def action_table(codes,base,photos,text,groups,y,g,split):
+def action_table(codes,base,photos,text,groups,y,g,split,alphas=ALPHAS,retain_ranks=False):
     n_words=len(text)
     results=[[],[],[],[]]
+    if retain_ranks:
+        results.append([])
     for block in codes.split(40):
         local=block//n_words
         word=block%n_words
         native=zscore(text[word]@photos.T)
         base_row=base[local]
-        ranks=[]; margins=[]; outcomes=[]; hits=[]
-        for a in ALPHAS:
+        ranks=[]; margins=[]; outcomes=[]; hits=[]; retained=[]
+        for a in alphas:
             score=(1-a)*base_row+a*native
             actual,ranking,correct,_=map_values(score,y[local],g,split)
             pair,first=exposure(groups[ranking],int(groups.max())+1)
             ranks.append(pair);margins.append(first);outcomes.append(actual);hits.append(correct[:,0])
-        for pieces,tensor in zip(results,(ranks,margins,outcomes,hits)):
+            if retain_ranks:
+                retained.append(ranking.int())
+        tensors=(ranks,margins,outcomes,hits,retained) if retain_ranks else (ranks,margins,outcomes,hits)
+        for pieces,tensor in zip(results,tensors):
             pieces.append(torch.stack(tensor,1))
     return [torch.cat(parts) for parts in results]
 

@@ -37,16 +37,16 @@ def plan(base, library, group, query_words, settings):
     return models
 
 
-def action_values(model, which, complete, exposure_base, caps):
+def action_values(model, which, complete, exposure_base, caps, alphas=ALPHAS):
     """All rules see the same source and rule-nominated words, blend options, and incumbent."""
     pair,first=complete
     reference_pair,reference_first=exposure_base
     ids=which.flatten()
-    shape=(*which.shape,len(ALPHAS))
+    shape=(*which.shape,len(alphas))
     p=pair[ids].view(*shape,*pair.shape[-2:]).flatten(1,2)
     linear=first[ids].view(*shape,first.size(-1)).flatten(1,2)
     count=which.size(1)
-    mask=torch.tensor(ALPHAS,device=which.device).repeat(count)
+    mask=torch.tensor(alphas,device=which.device).repeat(count)
     decisions={}
     for rule,measure in model.items():
         candidate=utility(p,linear,rule,measure)
