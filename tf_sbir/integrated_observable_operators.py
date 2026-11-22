@@ -60,7 +60,27 @@ def measurements(photo,cal,probe,tgt,scale):
             "one":(z@basis[:,-1:],b@basis[:,-1:]),"visual16":(z@basis[:,-16:],b@basis[:,-16:])}
 
 
-def build(views,photo,tgt,settings,seed=59731,scale=100.):
+def association(ids,photo,kind,seed):
+    if kind=="actual":return None
+    gen=torch.Generator().manual_seed(seed)
+    if kind=="global":
+        # One cycle guarantees a different donor for each reference vector.
+        chosen=torch.randperm(len(ids),generator=gen)
+        perm=torch.empty_like(chosen)
+        perm[chosen]=chosen.roll(1)
+        return perm.to(photo.device)
+    if kind!="within_visual_group":raise ValueError("Unknown association control")
+    from .cluster_mine import cluster_assignments
+    group=cluster_assignments(F.normalize(photo[ids]-photo[ids].mean(0),dim=1),64).cpu()
+    perm=torch.arange(len(ids))
+    for g in group.unique():
+        subset=torch.where(group==g)[0]
+        order=subset[torch.randperm(len(subset),generator=gen)]
+        perm[order]=order.roll(1)
+    return perm.to(photo.device)
+
+
+def build(views,photo,tgt,settings,seed=59731,scale=100.,pairing="actual"):
     device=photo.device
     folds=[a.to(device) for a in torch.randperm(len(photo),generator=torch.Generator().manual_seed(seed)).tensor_split(3)]
     fits={key:[] for key in settings}
@@ -71,6 +91,7 @@ def build(views,photo,tgt,settings,seed=59731,scale=100.):
         vals=vals.flip(0).to(c.dtype)
         axes=axes.flip(1).to(c.dtype)
         measures=measurements(photo,cal,probe,tgt,scale)
+        perm=association(cal,photo,pairing,seed+97*idx)
         for d in sorted({k[0] for k in settings}):
             if vals[d-1]<=vals[0]*1e-6:raise ValueError("Requested dimension is numerically singular")
             z=views@(axes[:,:d]/vals[:d].sqrt())
@@ -84,6 +105,7 @@ def build(views,photo,tgt,settings,seed=59731,scale=100.):
             linear=(x@torch.linalg.pinv((x.T@x).double(),hermitian=True).to(x.dtype),(mid[test]-mid[probe].mean(0)).T)
             for refname in sorted(name for dim,name in settings if dim==d):
                 a,b=measures[refname]
+                if perm is not None:a=a[perm]
                 fitted=IntegratedOperators(bas.unpack(a.T@ref/len(a)),refname=="public")
                 # Compare exactly the same public measurement residuals for every basis.
                 checked=bas.unpack(measures["public"][1].T@train/len(probe))
@@ -91,7 +113,8 @@ def build(views,photo,tgt,settings,seed=59731,scale=100.):
                 rotated=fitted.energy(fitted.rot.T@checked@fitted.rot)
                 info={"held_public_energy":float(real.mean()),"rotated_energy":float(rotated.mean()),
                       "fraction_below_rotated":float((real<rotated).float().mean()),"probe_axes":a.size(1),
-                      "relative_smallest_moment":float(vals[d-1]/vals[0])}
+                      "relative_smallest_moment":float(vals[d-1]/vals[0]),"pairing":pairing,
+                      "fraction_of_moved_reference_images":0. if perm is None else float((perm!=torch.arange(len(cal),device=device)).float().mean())}
                 fits[d,refname].append(GalleryFold(probe,test,train,candidate,linear,fitted,info))
         print("measurement folds",idx,len(cal),"dimensions",sorted({k[0] for k in settings}),flush=True)
     return fits
