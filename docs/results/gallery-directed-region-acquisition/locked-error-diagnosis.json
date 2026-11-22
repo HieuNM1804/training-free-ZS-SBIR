@@ -1,0 +1,587 @@
+{
+  "unit": "percentage points for paired deltas; AP and shares as fractions",
+  "scope": "post-hoc diagnosis of the previously frozen system, no inference or selection feedback",
+  "case_rule": "three most frequent wrong rank-one category pairs, median oracle-minus-active AP sketch in each",
+  "window_ids": [
+    {
+      "side_patches": 3,
+      "top_row": 0,
+      "left_column": 0
+    },
+    {
+      "side_patches": 3,
+      "top_row": 0,
+      "left_column": 2
+    },
+    {
+      "side_patches": 3,
+      "top_row": 0,
+      "left_column": 4
+    },
+    {
+      "side_patches": 3,
+      "top_row": 2,
+      "left_column": 0
+    },
+    {
+      "side_patches": 3,
+      "top_row": 2,
+      "left_column": 2
+    },
+    {
+      "side_patches": 3,
+      "top_row": 2,
+      "left_column": 4
+    },
+    {
+      "side_patches": 3,
+      "top_row": 4,
+      "left_column": 0
+    },
+    {
+      "side_patches": 3,
+      "top_row": 4,
+      "left_column": 2
+    },
+    {
+      "side_patches": 3,
+      "top_row": 4,
+      "left_column": 4
+    },
+    {
+      "side_patches": 5,
+      "top_row": 0,
+      "left_column": 0
+    },
+    {
+      "side_patches": 5,
+      "top_row": 0,
+      "left_column": 2
+    },
+    {
+      "side_patches": 5,
+      "top_row": 2,
+      "left_column": 0
+    },
+    {
+      "side_patches": 5,
+      "top_row": 2,
+      "left_column": 2
+    }
+  ],
+  "splits": {
+    "sketchy_1": {
+      "primary": "heldout/2/12/photo/0.4",
+      "per_action_sha256": "42ad4978f9c1e3c2871cc4181e575dc3434de938bd394408aeaf9568e6fbe685",
+      "queries": 14179,
+      "rank_one_errors": 2556,
+      "deltas": {
+        "scale": {
+          "mAP": {
+            "delta_pp": 1.0607367887871249,
+            "ci95_class": [
+              0.6825107931170314,
+              1.397734528719602
+            ],
+            "classes_up": 23,
+            "classes": 25
+          },
+          "precision": {
+            "delta_pp": 1.0075281250286106,
+            "ci95_class": [
+              0.5634757440328279,
+              1.3859743301300793
+            ],
+            "classes_up": 22,
+            "classes": 25
+          }
+        },
+        "position_at_scale": {
+          "mAP": {
+            "delta_pp": 0.29362169198754373,
+            "ci95_class": [
+              0.09257834545396895,
+              0.4938565602808937
+            ],
+            "classes_up": 17,
+            "classes": 25
+          },
+          "precision": {
+            "delta_pp": 0.25466065407844996,
+            "ci95_class": [
+              -0.0009373628557495626,
+              0.5013384348607467
+            ],
+            "classes_up": 16,
+            "classes": 25
+          }
+        },
+        "total": {
+          "mAP": {
+            "delta_pp": 1.3543584807746685,
+            "ci95_class": [
+              0.889778909190795,
+              1.7891459109678363
+            ],
+            "classes_up": 23,
+            "classes": 25
+          },
+          "precision": {
+            "delta_pp": 1.2621887791070605,
+            "ci95_class": [
+              0.7014397710506298,
+              1.7843924046808217
+            ],
+            "classes_up": 23,
+            "classes": 25
+          }
+        },
+        "vs_fixed_at_scale": {
+          "mAP": {
+            "delta_pp": -0.16991653216180264,
+            "ci95_class": [
+              -0.5296179924232207,
+              0.16580053749519366
+            ],
+            "classes_up": 10,
+            "classes": 25
+          },
+          "precision": {
+            "delta_pp": -0.2412723061410637,
+            "ci95_class": [
+              -0.5379134562480355,
+              0.039946379637459124
+            ],
+            "classes_up": 8,
+            "classes": 25
+          }
+        },
+        "cost_of_one_action": {
+          "mAP": {
+            "delta_pp": -1.0269835286546019,
+            "ci95_class": [
+              -1.42781885857762,
+              -0.6820405429147492
+            ],
+            "classes_up": 1,
+            "classes": 25
+          },
+          "precision": {
+            "delta_pp": -0.9105014442342386,
+            "ci95_class": [
+              -1.3258231374445666,
+              -0.5508392500112393
+            ],
+            "classes_up": 3,
+            "classes": 25
+          }
+        },
+        "oracle_headroom": {
+          "mAP": {
+            "delta_pp": 5.710824429689345,
+            "ci95_class": [
+              4.513392687604566,
+              7.144267944371931
+            ],
+            "classes_up": 25,
+            "classes": 25
+          },
+          "precision": {
+            "delta_pp": 6.112208190531125,
+            "ci95_class": [
+              4.707122705327035,
+              7.815221361616307
+            ],
+            "classes_up": 25,
+            "classes": 25
+          }
+        }
+      },
+      "decomposition_identity_error": 0.0,
+      "fraction_of_random_improvement_from_scale": 0.7832023824153282,
+      "selected_oracle_frequency": 0.14091262221336365,
+      "within_one_ap_point_of_oracle": 0.7394738793373108,
+      "oracle_gain_among_rank1_errors_pp": 22.44379234313965,
+      "representative_errors": [
+        {
+          "true_class": "ray",
+          "top_photo_class": "snail",
+          "rank1_errors_for_pair": 91,
+          "query": "n01498041_11366-1.png",
+          "top_photo": "ext_279.jpg",
+          "split_query_index": 3262,
+          "actual_region": 11,
+          "oracle_region": 1,
+          "actual_ap": 0.7169398069381714,
+          "oracle_ap": 0.9793874621391296
+        },
+        {
+          "true_class": "butterfly",
+          "top_photo_class": "snail",
+          "rank1_errors_for_pair": 78,
+          "query": "n02274259_20053-4.png",
+          "top_photo": "n01944390_12211.jpg",
+          "split_query_index": 12053,
+          "actual_region": 9,
+          "oracle_region": 10,
+          "actual_ap": 0.043436381965875626,
+          "oracle_ap": 0.06783456355333328
+        },
+        {
+          "true_class": "tank",
+          "top_photo_class": "wheelchair",
+          "rank1_errors_for_pair": 70,
+          "query": "n04389033_4394-5.png",
+          "top_photo": "ext_7.jpg",
+          "split_query_index": 11159,
+          "actual_region": 12,
+          "oracle_region": 10,
+          "actual_ap": 0.0944550633430481,
+          "oracle_ap": 0.17437347769737244
+        }
+      ]
+    },
+    "sketchy_2": {
+      "primary": "heldout/2/12/photo/0.4",
+      "per_action_sha256": "390fad6f015213cabf0938c2d672e723f7dfeec0417cd9ff1f3cdbab320dd663",
+      "queries": 12694,
+      "rank_one_errors": 3488,
+      "deltas": {
+        "scale": {
+          "mAP": {
+            "delta_pp": 1.7101476145806165,
+            "ci95_class": [
+              0.7948089815872516,
+              2.684169976062904
+            ],
+            "classes_up": 20,
+            "classes": 21
+          },
+          "precision": {
+            "delta_pp": 1.5353783501269913,
+            "ci95_class": [
+              0.6896631994327945,
+              2.30752803300097
+            ],
+            "classes_up": 20,
+            "classes": 21
+          }
+        },
+        "position_at_scale": {
+          "mAP": {
+            "delta_pp": 0.19590309437313203,
+            "ci95_class": [
+              -0.1619612192148596,
+              0.5597303319736646
+            ],
+            "classes_up": 12,
+            "classes": 21
+          },
+          "precision": {
+            "delta_pp": 0.19931671230286202,
+            "ci95_class": [
+              -0.13858529939913597,
+              0.5587539553346239
+            ],
+            "classes_up": 11,
+            "classes": 21
+          }
+        },
+        "total": {
+          "mAP": {
+            "delta_pp": 1.9060507089537484,
+            "ci95_class": [
+              0.9506037836087589,
+              2.9207209284424285
+            ],
+            "classes_up": 19,
+            "classes": 21
+          },
+          "precision": {
+            "delta_pp": 1.7346950624298534,
+            "ci95_class": [
+              0.8979937051650767,
+              2.5743148971551144
+            ],
+            "classes_up": 19,
+            "classes": 21
+          }
+        },
+        "vs_fixed_at_scale": {
+          "mAP": {
+            "delta_pp": -0.09110798259643269,
+            "ci95_class": [
+              -0.848086084377602,
+              0.6964183628381614
+            ],
+            "classes_up": 11,
+            "classes": 21
+          },
+          "precision": {
+            "delta_pp": -0.14479280634628697,
+            "ci95_class": [
+              -0.8998734237339527,
+              0.6511126180290274
+            ],
+            "classes_up": 11,
+            "classes": 21
+          }
+        },
+        "cost_of_one_action": {
+          "mAP": {
+            "delta_pp": -1.222219887150389,
+            "ci95_class": [
+              -1.9695087577116575,
+              -0.4109934414461289
+            ],
+            "classes_up": 2,
+            "classes": 21
+          },
+          "precision": {
+            "delta_pp": -1.1624389344056572,
+            "ci95_class": [
+              -1.8727340962598882,
+              -0.3702199285387388
+            ],
+            "classes_up": 2,
+            "classes": 21
+          }
+        },
+        "oracle_headroom": {
+          "mAP": {
+            "delta_pp": 9.291548876167258,
+            "ci95_class": [
+              7.12541707937163,
+              11.5323327896987
+            ],
+            "classes_up": 21,
+            "classes": 21
+          },
+          "precision": {
+            "delta_pp": 7.971837082939383,
+            "ci95_class": [
+              6.070724672684871,
+              9.88757996787683
+            ],
+            "classes_up": 21,
+            "classes": 21
+          }
+        }
+      },
+      "decomposition_identity_error": 0.0,
+      "fraction_of_random_improvement_from_scale": 0.8972204184007962,
+      "selected_oracle_frequency": 0.04135812073945999,
+      "within_one_ap_point_of_oracle": 0.7750905752182007,
+      "oracle_gain_among_rank1_errors_pp": 31.00942039489746,
+      "representative_errors": [
+        {
+          "true_class": "songbird",
+          "top_photo_class": "seagull",
+          "rank1_errors_for_pair": 368,
+          "query": "n01537544_6387-3.png",
+          "top_photo": "n02041246_65331.jpg",
+          "split_query_index": 9652,
+          "actual_region": 9,
+          "oracle_region": 4,
+          "actual_ap": 0.23373429477214813,
+          "oracle_ap": 0.2806483209133148
+        },
+        {
+          "true_class": "giraffe",
+          "top_photo_class": "cow",
+          "rank1_errors_for_pair": 181,
+          "query": "n02439033_11215-4.png",
+          "top_photo": "n02404432_10392.jpg",
+          "split_query_index": 3184,
+          "actual_region": 10,
+          "oracle_region": 2,
+          "actual_ap": 0.9557774662971497,
+          "oracle_ap": 1.0
+        },
+        {
+          "true_class": "raccoon",
+          "top_photo_class": "cow",
+          "rank1_errors_for_pair": 166,
+          "query": "n02508021_10708-4.png",
+          "top_photo": "n01887787_10931.jpg",
+          "split_query_index": 5750,
+          "actual_region": 9,
+          "oracle_region": 4,
+          "actual_ap": 0.0,
+          "oracle_ap": 0.020272303372621536
+        }
+      ]
+    },
+    "tuberlin": {
+      "primary": "heldout/2/12/photo/0.4",
+      "per_action_sha256": "2beb7db5b1cc9ec0cb90927e7cd78139fb172b26a2e575e29c440653fc99c045",
+      "queries": 2130,
+      "rank_one_errors": 443,
+      "deltas": {
+        "scale": {
+          "mAP": {
+            "delta_pp": 0.7751869309055204,
+            "ci95_class": [
+              0.313187997929287,
+              1.2419309420236562
+            ],
+            "classes_up": 23,
+            "classes": 30
+          },
+          "precision": {
+            "delta_pp": 0.4828964780191913,
+            "ci95_class": [
+              -0.10514494454276213,
+              1.0691441669142907
+            ],
+            "classes_up": 19,
+            "classes": 30
+          }
+        },
+        "position_at_scale": {
+          "mAP": {
+            "delta_pp": -0.018076711736549515,
+            "ci95_class": [
+              -0.47950934908929177,
+              0.4869690968105052
+            ],
+            "classes_up": 16,
+            "classes": 30
+          },
+          "precision": {
+            "delta_pp": 0.19891755235656886,
+            "ci95_class": [
+              -0.4262187502024722,
+              0.9123831698047857
+            ],
+            "classes_up": 16,
+            "classes": 30
+          }
+        },
+        "total": {
+          "mAP": {
+            "delta_pp": 0.7571102191689708,
+            "ci95_class": [
+              0.0468066973435718,
+              1.5074602860951565
+            ],
+            "classes_up": 20,
+            "classes": 30
+          },
+          "precision": {
+            "delta_pp": 0.6818140303757602,
+            "ci95_class": [
+              -0.207944878741843,
+              1.6004767361913297
+            ],
+            "classes_up": 17,
+            "classes": 30
+          }
+        },
+        "vs_fixed_at_scale": {
+          "mAP": {
+            "delta_pp": -0.22353124789491366,
+            "ci95_class": [
+              -0.7874473074213652,
+              0.3156814190773024
+            ],
+            "classes_up": 15,
+            "classes": 30
+          },
+          "precision": {
+            "delta_pp": -0.007981210072555452,
+            "ci95_class": [
+              -0.8392615960314367,
+              0.7821166526915756
+            ],
+            "classes_up": 15,
+            "classes": 30
+          }
+        },
+        "cost_of_one_action": {
+          "mAP": {
+            "delta_pp": -0.7756221833083551,
+            "ci95_class": [
+              -1.3867375478881727,
+              -0.14576860116449677
+            ],
+            "classes_up": 10,
+            "classes": 30
+          },
+          "precision": {
+            "delta_pp": -0.6422534989009441,
+            "ci95_class": [
+              -1.4355483898944121,
+              0.12998834575056284
+            ],
+            "classes_up": 12,
+            "classes": 30
+          }
+        },
+        "oracle_headroom": {
+          "mAP": {
+            "delta_pp": 6.149633854732547,
+            "ci95_class": [
+              4.625617909620689,
+              7.865693624806296
+            ],
+            "classes_up": 30,
+            "classes": 30
+          },
+          "precision": {
+            "delta_pp": 6.964319237451038,
+            "ci95_class": [
+              4.983011124684734,
+              9.236144864394232
+            ],
+            "classes_up": 29,
+            "classes": 30
+          }
+        }
+      },
+      "decomposition_identity_error": 0.0,
+      "fraction_of_random_improvement_from_scale": 1.0238759315075567,
+      "selected_oracle_frequency": 0.11737088859081268,
+      "within_one_ap_point_of_oracle": 0.6901408433914185,
+      "oracle_gain_among_rank1_errors_pp": 22.943864822387695,
+      "representative_errors": [
+        {
+          "true_class": "cup",
+          "top_photo_class": "mug",
+          "rank1_errors_for_pair": 60,
+          "query": "5129.png",
+          "top_photo": "n03797390_5474.JPEG",
+          "split_query_index": 1278,
+          "actual_region": 10,
+          "oracle_region": 12,
+          "actual_ap": 0.47184687852859497,
+          "oracle_ap": 0.4732382297515869
+        },
+        {
+          "true_class": "baseball bat",
+          "top_photo_class": "hammer",
+          "rank1_errors_for_pair": 30,
+          "query": "966.png",
+          "top_photo": "n03481172_11093.JPEG",
+          "split_query_index": 669,
+          "actual_region": 9,
+          "oracle_region": 0,
+          "actual_ap": 0.3069383502006531,
+          "oracle_ap": 0.5121077299118042
+        },
+        {
+          "true_class": "suv",
+          "top_photo_class": "truck",
+          "rank1_errors_for_pair": 23,
+          "query": "16841.png",
+          "top_photo": "n03930630_1767.JPEG",
+          "split_query_index": 1806,
+          "actual_region": 9,
+          "oracle_region": 2,
+          "actual_ap": 0.3704005181789398,
+          "oracle_ap": 0.6286613345146179
+        }
+      ]
+    }
+  }
+}
