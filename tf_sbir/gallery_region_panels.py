@@ -49,7 +49,7 @@ def donors(photo, seed=72937, kinds=GROUPS):
     return {"iid":image_parts,"cluster":clusters}
 
 
-def compile_all(w,ds,seed=72937,capacities=SIZES,kinds=GROUPS):
+def compile_all(w,ds,seed=72937,capacities=SIZES,kinds=GROUPS,keep_splits=None):
     cfg,_,_,paths,galleries,_,raw=global_inputs(w,ds)
     vocab=read_words(cfg.vocabulary)
     if len(vocab)!=20931:
@@ -57,6 +57,8 @@ def compile_all(w,ds,seed=72937,capacities=SIZES,kinds=GROUPS):
     tgt=load_words(cfg,vocab)[1].cuda()
     _,scale=bare_words(cfg,vocab)
     for split,(pi,_) in galleries.items():
+        if keep_splits is not None and split not in keep_splits:
+            continue
         folder=w/"cache"/FAMILY
         settings={"checkpoint":CHECKPOINT,"vocab":checksum(cfg.vocabulary),"gallery":digest([str(paths[i]) for i in pi]),
                   "capacities":capacities,"folds":FOLDS,"types":kinds,"recipe":"v1 separate donor prior/prototypes, same frozen full-gallery RGB"}

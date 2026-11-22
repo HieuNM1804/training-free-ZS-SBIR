@@ -82,7 +82,11 @@ def evaluate(w, split, queries, gallery, src, scale, view, ids, rows, kd, worker
     if (len(qi), len(truth), len(truth.unique())) != SPLIT_SIZES[split]:
         raise ValueError("Changed original test split")
     hist = torch.load(w/"cache/pragmatic-gallery-competition"/(split+"-named-rgb16.pt"), mmap=True, weights_only=True)
-    locked = torch.load(w/"cache"/PRIOR_RUN/"full"/(split+".pt"), mmap=True, weights_only=True)["regional_score"]
+    full = w/"cache"/PRIOR_RUN/"full"/(split+".pt")
+    if full.is_file():
+        locked = torch.load(full, mmap=True, weights_only=True)["regional_score"]
+    else:
+        locked = torch.load(w/"cache"/FAMILY/(split+"-regional-reference.pt"), mmap=True, weights_only=True)
     cpu = torch.load(w/"cache"/FAMILY/(split+"-donor-indices.pt"), mmap=True, weights_only=True)["banks"]
     groups = defaultdict(list)
     for row in rows:
