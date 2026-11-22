@@ -108,8 +108,8 @@ def run(w,workers,source):
                 for pairing in PAIRING:
                     key=f"{seed}/{pairing}"
                     pack=build(views,raw[pi].cuda(),target,{(d,ref)},seed,scale,pairing)[d,ref]
-                    read,energy=read_folds(base,pack,t)
-                    diff=(read["shared"]-read["raw"] if m.endswith("_gain") else read["shared"]-base)
+                    observed,energy=read_folds(base,pack,t)
+                    diff=(observed["shared"]-observed["raw"] if m.endswith("_gain") else observed["shared"]-base)
                     # Equal averaging across predetermined seeds can be assessed without searching for a seed.
                     corrections[pairing].append((amount*diff).cpu())
                     score=base+amount*diff
