@@ -1,0 +1,2211 @@
+{
+  "revision": "ff0e3c647fac4e8936b455535a9b8d28fe8a77d5",
+  "gallery_held_out": 144,
+  "device": "Tesla T4",
+  "memory": "semantic-patch-neuron-replacement",
+  "neighbors": 64,
+  "checked_algebra": {
+    "calibration_inverse_abs_error": 8.940696716308594e-08,
+    "monotone_rank_error_separated_values": 0.0,
+    "near_tied_float32_max_rank_change": 0.010204076766967773,
+    "near_tied_float32_fraction_changed": 0.0025510203558951616,
+    "all_tied_rank_error": 0.0,
+    "ties_share_their_midrank": true
+  },
+  "results": {
+    "clean/2/sensor/conditional_scene": {
+      "images": 144,
+      "median_normalized_mse": 0.22663182020187378,
+      "mean_normalized_mse": 0.32987192273139954,
+      "median_original_embedding_distance": 0.030740562826395035,
+      "mean_original_embedding_distance": 0.03661460056900978,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.02806122414767742
+    },
+    "clean/2/sensor/conditional_shared": {
+      "images": 144,
+      "median_normalized_mse": 0.2196425497531891,
+      "mean_normalized_mse": 0.34554198384284973,
+      "median_original_embedding_distance": 0.03492514044046402,
+      "mean_original_embedding_distance": 0.03941866010427475,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.02806122414767742
+    },
+    "clean/2/sensor/conditional_uniform": {
+      "images": 144,
+      "median_normalized_mse": 0.24728956818580627,
+      "mean_normalized_mse": 0.36940810084342957,
+      "median_original_embedding_distance": 0.034128352999687195,
+      "mean_original_embedding_distance": 0.03945614770054817,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.02806122414767742
+    },
+    "clean/2/sensor/rotate_ranks": {
+      "images": 144,
+      "median_normalized_mse": 1.4221611022949219,
+      "mean_normalized_mse": 1.660091519355774,
+      "median_original_embedding_distance": 0.05509433522820473,
+      "mean_original_embedding_distance": 0.06132810562849045,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.02806122414767742
+    },
+    "clean/2/sensor/conditional_mean": {
+      "images": 144,
+      "median_normalized_mse": 0.7512101531028748,
+      "mean_normalized_mse": 0.9178265333175659,
+      "median_original_embedding_distance": 0.049331631511449814,
+      "mean_original_embedding_distance": 0.05458081513643265,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.02806122414767742
+    },
+    "clean/2/sensor/fixed_median": {
+      "images": 144,
+      "median_normalized_mse": 0.8334497809410095,
+      "mean_normalized_mse": 1.0287102460861206,
+      "median_original_embedding_distance": 0.07469740509986877,
+      "mean_original_embedding_distance": 0.0779457613825798,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.02806122414767742
+    },
+    "clean/2/sensor/ordinary_histogram": {
+      "images": 144,
+      "median_normalized_mse": 0.3001241087913513,
+      "mean_normalized_mse": 0.380398690700531,
+      "median_original_embedding_distance": 0.04500924423336983,
+      "mean_original_embedding_distance": 0.05886999890208244,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.02806122414767742
+    },
+    "clean/2/sensor/shuffled_donors": {
+      "images": 144,
+      "median_normalized_mse": 0.35392051935195923,
+      "mean_normalized_mse": 0.45310550928115845,
+      "median_original_embedding_distance": 0.04594483599066734,
+      "mean_original_embedding_distance": 0.06016244366765022,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.02806122414767742
+    },
+    "clean/2/sensor/identity": {
+      "images": 144,
+      "median_normalized_mse": 0.0,
+      "mean_normalized_mse": 0.0,
+      "median_original_embedding_distance": 0.00024724629474803805,
+      "mean_original_embedding_distance": 0.00027249319828115404,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.02806122414767742
+    },
+    "clean/2/curvature/conditional_scene": {
+      "images": 144,
+      "median_normalized_mse": 0.28719362616539,
+      "mean_normalized_mse": 0.3472083806991577,
+      "median_original_embedding_distance": 0.010733626782894135,
+      "mean_original_embedding_distance": 0.012945796363055706,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.03316326439380646
+    },
+    "clean/2/curvature/conditional_shared": {
+      "images": 144,
+      "median_normalized_mse": 0.26314496994018555,
+      "mean_normalized_mse": 0.3426131010055542,
+      "median_original_embedding_distance": 0.01070414762943983,
+      "mean_original_embedding_distance": 0.013097858987748623,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.03316326439380646
+    },
+    "clean/2/curvature/conditional_uniform": {
+      "images": 144,
+      "median_normalized_mse": 0.2728630602359772,
+      "mean_normalized_mse": 0.35964956879615784,
+      "median_original_embedding_distance": 0.011450608260929585,
+      "mean_original_embedding_distance": 0.013472848571836948,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.03316326439380646
+    },
+    "clean/2/curvature/rotate_ranks": {
+      "images": 144,
+      "median_normalized_mse": 1.826170563697815,
+      "mean_normalized_mse": 1.8369356393814087,
+      "median_original_embedding_distance": 0.024545704945921898,
+      "mean_original_embedding_distance": 0.02720515988767147,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.03316326439380646
+    },
+    "clean/2/curvature/conditional_mean": {
+      "images": 144,
+      "median_normalized_mse": 0.9030947089195251,
+      "mean_normalized_mse": 0.9936752319335938,
+      "median_original_embedding_distance": 0.018430108204483986,
+      "mean_original_embedding_distance": 0.01945888251066208,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.03316326439380646
+    },
+    "clean/2/curvature/fixed_median": {
+      "images": 144,
+      "median_normalized_mse": 1.0069977045059204,
+      "mean_normalized_mse": 1.1028516292572021,
+      "median_original_embedding_distance": 0.023950789123773575,
+      "mean_original_embedding_distance": 0.025363324210047722,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.03316326439380646
+    },
+    "clean/2/curvature/ordinary_histogram": {
+      "images": 144,
+      "median_normalized_mse": 0.2519618272781372,
+      "mean_normalized_mse": 0.31675660610198975,
+      "median_original_embedding_distance": 0.011897101067006588,
+      "mean_original_embedding_distance": 0.01627282053232193,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.03316326439380646
+    },
+    "clean/2/curvature/shuffled_donors": {
+      "images": 144,
+      "median_normalized_mse": 0.3944323658943176,
+      "mean_normalized_mse": 0.4595666527748108,
+      "median_original_embedding_distance": 0.014413936994969845,
+      "mean_original_embedding_distance": 0.018102683126926422,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.03316326439380646
+    },
+    "clean/2/curvature/identity": {
+      "images": 144,
+      "median_normalized_mse": 0.0,
+      "mean_normalized_mse": 0.0,
+      "median_original_embedding_distance": 0.00024724629474803805,
+      "mean_original_embedding_distance": 0.00027249319828115404,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.03316326439380646
+    },
+    "clean/2/sensor_matched/conditional_scene": {
+      "images": 144,
+      "median_normalized_mse": 0.2753159701824188,
+      "mean_normalized_mse": 0.38950666785240173,
+      "median_original_embedding_distance": 0.013015352189540863,
+      "mean_original_embedding_distance": 0.01668093353509903,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "clean/2/sensor_matched/conditional_shared": {
+      "images": 144,
+      "median_normalized_mse": 0.27847301959991455,
+      "mean_normalized_mse": 0.38873112201690674,
+      "median_original_embedding_distance": 0.01286287885159254,
+      "mean_original_embedding_distance": 0.01660832017660141,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "clean/2/sensor_matched/conditional_uniform": {
+      "images": 144,
+      "median_normalized_mse": 0.3306245505809784,
+      "mean_normalized_mse": 0.4223307967185974,
+      "median_original_embedding_distance": 0.014728391543030739,
+      "mean_original_embedding_distance": 0.018118051812052727,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "clean/2/sensor_matched/rotate_ranks": {
+      "images": 144,
+      "median_normalized_mse": 1.4443684816360474,
+      "mean_normalized_mse": 1.5477927923202515,
+      "median_original_embedding_distance": 0.029744436964392662,
+      "mean_original_embedding_distance": 0.032883163541555405,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "clean/2/sensor_matched/conditional_mean": {
+      "images": 144,
+      "median_normalized_mse": 0.7738452553749084,
+      "mean_normalized_mse": 0.8716310858726501,
+      "median_original_embedding_distance": 0.022422267124056816,
+      "mean_original_embedding_distance": 0.025836430490016937,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "clean/2/sensor_matched/fixed_median": {
+      "images": 144,
+      "median_normalized_mse": 0.8024262189865112,
+      "mean_normalized_mse": 0.9560061693191528,
+      "median_original_embedding_distance": 0.02376381866633892,
+      "mean_original_embedding_distance": 0.026598824188113213,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "clean/2/sensor_matched/ordinary_histogram": {
+      "images": 144,
+      "median_normalized_mse": 0.39440014958381653,
+      "mean_normalized_mse": 0.5040083527565002,
+      "median_original_embedding_distance": 0.019675740972161293,
+      "mean_original_embedding_distance": 0.024848518893122673,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "clean/2/sensor_matched/shuffled_donors": {
+      "images": 144,
+      "median_normalized_mse": 0.37177494168281555,
+      "mean_normalized_mse": 0.5463173389434814,
+      "median_original_embedding_distance": 0.01602872833609581,
+      "mean_original_embedding_distance": 0.022260112687945366,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "clean/2/sensor_matched/identity": {
+      "images": 144,
+      "median_normalized_mse": 0.0,
+      "mean_normalized_mse": 0.0,
+      "median_original_embedding_distance": 0.0,
+      "mean_original_embedding_distance": 0.0,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "clean/3/sensor/conditional_scene": {
+      "images": 144,
+      "median_normalized_mse": 0.23230135440826416,
+      "mean_normalized_mse": 0.3569340705871582,
+      "median_original_embedding_distance": 0.012089020572602749,
+      "mean_original_embedding_distance": 0.014973885379731655,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.02806122414767742
+    },
+    "clean/3/sensor/conditional_shared": {
+      "images": 144,
+      "median_normalized_mse": 0.2191442847251892,
+      "mean_normalized_mse": 0.36757516860961914,
+      "median_original_embedding_distance": 0.012624986469745636,
+      "mean_original_embedding_distance": 0.015625061467289925,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.02806122414767742
+    },
+    "clean/3/sensor/conditional_uniform": {
+      "images": 144,
+      "median_normalized_mse": 0.2628788352012634,
+      "mean_normalized_mse": 0.3875861167907715,
+      "median_original_embedding_distance": 0.015012489631772041,
+      "mean_original_embedding_distance": 0.017098020762205124,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.02806122414767742
+    },
+    "clean/3/sensor/rotate_ranks": {
+      "images": 144,
+      "median_normalized_mse": 1.5119562149047852,
+      "mean_normalized_mse": 1.6166455745697021,
+      "median_original_embedding_distance": 0.020063264295458794,
+      "mean_original_embedding_distance": 0.023412946611642838,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.02806122414767742
+    },
+    "clean/3/sensor/conditional_mean": {
+      "images": 144,
+      "median_normalized_mse": 0.7711472511291504,
+      "mean_normalized_mse": 0.937449038028717,
+      "median_original_embedding_distance": 0.01579136587679386,
+      "mean_original_embedding_distance": 0.01914626732468605,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.02806122414767742
+    },
+    "clean/3/sensor/fixed_median": {
+      "images": 144,
+      "median_normalized_mse": 0.8828766942024231,
+      "mean_normalized_mse": 1.0527522563934326,
+      "median_original_embedding_distance": 0.01909727230668068,
+      "mean_original_embedding_distance": 0.022356413304805756,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.02806122414767742
+    },
+    "clean/3/sensor/ordinary_histogram": {
+      "images": 144,
+      "median_normalized_mse": 0.28174087405204773,
+      "mean_normalized_mse": 0.3789309859275818,
+      "median_original_embedding_distance": 0.01710476353764534,
+      "mean_original_embedding_distance": 0.020792612805962563,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.02806122414767742
+    },
+    "clean/3/sensor/shuffled_donors": {
+      "images": 144,
+      "median_normalized_mse": 0.32105857133865356,
+      "mean_normalized_mse": 0.4173797070980072,
+      "median_original_embedding_distance": 0.014618316665291786,
+      "mean_original_embedding_distance": 0.01774010807275772,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.02806122414767742
+    },
+    "clean/3/sensor/identity": {
+      "images": 144,
+      "median_normalized_mse": 0.0,
+      "mean_normalized_mse": 0.0,
+      "median_original_embedding_distance": 0.00024724629474803805,
+      "mean_original_embedding_distance": 0.00027249319828115404,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.02806122414767742
+    },
+    "clean/3/curvature/conditional_scene": {
+      "images": 144,
+      "median_normalized_mse": 0.23269757628440857,
+      "mean_normalized_mse": 0.2532411813735962,
+      "median_original_embedding_distance": 0.02479228936135769,
+      "mean_original_embedding_distance": 0.028827331960201263,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "clean/3/curvature/conditional_shared": {
+      "images": 144,
+      "median_normalized_mse": 0.21831583976745605,
+      "mean_normalized_mse": 0.24841390550136566,
+      "median_original_embedding_distance": 0.02731049247086048,
+      "mean_original_embedding_distance": 0.029245175421237946,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "clean/3/curvature/conditional_uniform": {
+      "images": 144,
+      "median_normalized_mse": 0.21665191650390625,
+      "mean_normalized_mse": 0.25844696164131165,
+      "median_original_embedding_distance": 0.026735611259937286,
+      "mean_original_embedding_distance": 0.02949441224336624,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "clean/3/curvature/rotate_ranks": {
+      "images": 144,
+      "median_normalized_mse": 1.9785970449447632,
+      "mean_normalized_mse": 1.9462471008300781,
+      "median_original_embedding_distance": 0.047967590391635895,
+      "mean_original_embedding_distance": 0.055307626724243164,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "clean/3/curvature/conditional_mean": {
+      "images": 144,
+      "median_normalized_mse": 1.0021589994430542,
+      "mean_normalized_mse": 1.0261342525482178,
+      "median_original_embedding_distance": 0.04011154547333717,
+      "mean_original_embedding_distance": 0.04983224347233772,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "clean/3/curvature/fixed_median": {
+      "images": 144,
+      "median_normalized_mse": 1.1411539316177368,
+      "mean_normalized_mse": 1.16872239112854,
+      "median_original_embedding_distance": 0.05770248547196388,
+      "mean_original_embedding_distance": 0.06256917864084244,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "clean/3/curvature/ordinary_histogram": {
+      "images": 144,
+      "median_normalized_mse": 0.16536739468574524,
+      "mean_normalized_mse": 0.19727127254009247,
+      "median_original_embedding_distance": 0.021187663078308105,
+      "mean_original_embedding_distance": 0.02940821647644043,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "clean/3/curvature/shuffled_donors": {
+      "images": 144,
+      "median_normalized_mse": 0.24712124466896057,
+      "mean_normalized_mse": 0.272553414106369,
+      "median_original_embedding_distance": 0.023807914927601814,
+      "mean_original_embedding_distance": 0.030804183334112167,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "clean/3/curvature/identity": {
+      "images": 144,
+      "median_normalized_mse": 0.0,
+      "mean_normalized_mse": 0.0,
+      "median_original_embedding_distance": 0.00024724629474803805,
+      "mean_original_embedding_distance": 0.00027249319828115404,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "clean/3/sensor_matched/conditional_scene": {
+      "images": 144,
+      "median_normalized_mse": 0.19762782752513885,
+      "mean_normalized_mse": 0.22627493739128113,
+      "median_original_embedding_distance": 0.013285170309245586,
+      "mean_original_embedding_distance": 0.016142116859555244,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "clean/3/sensor_matched/conditional_shared": {
+      "images": 144,
+      "median_normalized_mse": 0.1922062486410141,
+      "mean_normalized_mse": 0.2275104820728302,
+      "median_original_embedding_distance": 0.013837517239153385,
+      "mean_original_embedding_distance": 0.016335822641849518,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "clean/3/sensor_matched/conditional_uniform": {
+      "images": 144,
+      "median_normalized_mse": 0.19703637063503265,
+      "mean_normalized_mse": 0.23720036447048187,
+      "median_original_embedding_distance": 0.014147764071822166,
+      "mean_original_embedding_distance": 0.016610417515039444,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "clean/3/sensor_matched/rotate_ranks": {
+      "images": 144,
+      "median_normalized_mse": 1.8309844732284546,
+      "mean_normalized_mse": 1.7919360399246216,
+      "median_original_embedding_distance": 0.027152540162205696,
+      "mean_original_embedding_distance": 0.030332423746585846,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "clean/3/sensor_matched/conditional_mean": {
+      "images": 144,
+      "median_normalized_mse": 0.980053722858429,
+      "mean_normalized_mse": 0.9707949757575989,
+      "median_original_embedding_distance": 0.021122245118021965,
+      "mean_original_embedding_distance": 0.022869722917675972,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "clean/3/sensor_matched/fixed_median": {
+      "images": 144,
+      "median_normalized_mse": 1.0701837539672852,
+      "mean_normalized_mse": 1.063616156578064,
+      "median_original_embedding_distance": 0.024087803438305855,
+      "mean_original_embedding_distance": 0.027434183284640312,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "clean/3/sensor_matched/ordinary_histogram": {
+      "images": 144,
+      "median_normalized_mse": 0.20652566850185394,
+      "mean_normalized_mse": 0.2419806569814682,
+      "median_original_embedding_distance": 0.0142431128770113,
+      "mean_original_embedding_distance": 0.016279496252536774,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "clean/3/sensor_matched/shuffled_donors": {
+      "images": 144,
+      "median_normalized_mse": 0.25099435448646545,
+      "mean_normalized_mse": 0.28504884243011475,
+      "median_original_embedding_distance": 0.015364558435976505,
+      "mean_original_embedding_distance": 0.017672443762421608,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "clean/3/sensor_matched/identity": {
+      "images": 144,
+      "median_normalized_mse": 0.0,
+      "mean_normalized_mse": 0.0,
+      "median_original_embedding_distance": 0.0,
+      "mean_original_embedding_distance": 0.0,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "contrast/2/sensor/conditional_scene": {
+      "images": 144,
+      "median_normalized_mse": 0.27213165163993835,
+      "mean_normalized_mse": 0.3551807701587677,
+      "median_original_embedding_distance": 0.35345906019210815,
+      "mean_original_embedding_distance": 0.3540599048137665,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.3541666567325592,
+      "median_fraction_PIT_tails": 0.04591836780309677
+    },
+    "contrast/2/sensor/conditional_shared": {
+      "images": 144,
+      "median_normalized_mse": 0.2702235281467438,
+      "mean_normalized_mse": 0.366129070520401,
+      "median_original_embedding_distance": 0.3533792197704315,
+      "mean_original_embedding_distance": 0.35463446378707886,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.3541666567325592,
+      "median_fraction_PIT_tails": 0.04591836780309677
+    },
+    "contrast/2/sensor/conditional_uniform": {
+      "images": 144,
+      "median_normalized_mse": 0.29210585355758667,
+      "mean_normalized_mse": 0.39499157667160034,
+      "median_original_embedding_distance": 0.35466358065605164,
+      "mean_original_embedding_distance": 0.35517579317092896,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.3263888955116272,
+      "median_fraction_PIT_tails": 0.04591836780309677
+    },
+    "contrast/2/sensor/rotate_ranks": {
+      "images": 144,
+      "median_normalized_mse": 1.422216773033142,
+      "mean_normalized_mse": 1.6112533807754517,
+      "median_original_embedding_distance": 0.3614242970943451,
+      "mean_original_embedding_distance": 0.3585243821144104,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.3263888955116272,
+      "median_fraction_PIT_tails": 0.04591836780309677
+    },
+    "contrast/2/sensor/conditional_mean": {
+      "images": 144,
+      "median_normalized_mse": 0.7540059089660645,
+      "mean_normalized_mse": 0.916894793510437,
+      "median_original_embedding_distance": 0.3538048267364502,
+      "mean_original_embedding_distance": 0.35541409254074097,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.3333333432674408,
+      "median_fraction_PIT_tails": 0.04591836780309677
+    },
+    "contrast/2/sensor/fixed_median": {
+      "images": 144,
+      "median_normalized_mse": 0.8321791291236877,
+      "mean_normalized_mse": 1.0300660133361816,
+      "median_original_embedding_distance": 0.3481248915195465,
+      "mean_original_embedding_distance": 0.3560822904109955,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.3333333432674408,
+      "median_fraction_PIT_tails": 0.04591836780309677
+    },
+    "contrast/2/sensor/ordinary_histogram": {
+      "images": 144,
+      "median_normalized_mse": 0.3150698244571686,
+      "mean_normalized_mse": 0.39778101444244385,
+      "median_original_embedding_distance": 0.3526029884815216,
+      "mean_original_embedding_distance": 0.35509082674980164,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.3611111044883728,
+      "median_fraction_PIT_tails": 0.04591836780309677
+    },
+    "contrast/2/sensor/shuffled_donors": {
+      "images": 144,
+      "median_normalized_mse": 0.352515310049057,
+      "mean_normalized_mse": 0.4616527557373047,
+      "median_original_embedding_distance": 0.35004451870918274,
+      "mean_original_embedding_distance": 0.3530961275100708,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.4027777910232544,
+      "median_fraction_PIT_tails": 0.04591836780309677
+    },
+    "contrast/2/sensor/identity": {
+      "images": 144,
+      "median_normalized_mse": 0.02371138148009777,
+      "mean_normalized_mse": 0.03294070437550545,
+      "median_original_embedding_distance": 0.34614741802215576,
+      "mean_original_embedding_distance": 0.35022222995758057,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.25,
+      "median_fraction_PIT_tails": 0.04591836780309677
+    },
+    "contrast/2/curvature/conditional_scene": {
+      "images": 144,
+      "median_normalized_mse": 0.29972749948501587,
+      "mean_normalized_mse": 0.3570001423358917,
+      "median_original_embedding_distance": 0.345443457365036,
+      "mean_original_embedding_distance": 0.35032039880752563,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.4236111044883728,
+      "median_fraction_PIT_tails": 0.04336734488606453
+    },
+    "contrast/2/curvature/conditional_shared": {
+      "images": 144,
+      "median_normalized_mse": 0.28553125262260437,
+      "mean_normalized_mse": 0.35632097721099854,
+      "median_original_embedding_distance": 0.3457493185997009,
+      "mean_original_embedding_distance": 0.3502628803253174,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.4305555522441864,
+      "median_fraction_PIT_tails": 0.04336734488606453
+    },
+    "contrast/2/curvature/conditional_uniform": {
+      "images": 144,
+      "median_normalized_mse": 0.3084069788455963,
+      "mean_normalized_mse": 0.38620078563690186,
+      "median_original_embedding_distance": 0.34602415561676025,
+      "mean_original_embedding_distance": 0.35018178820610046,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.4375,
+      "median_fraction_PIT_tails": 0.04336734488606453
+    },
+    "contrast/2/curvature/rotate_ranks": {
+      "images": 144,
+      "median_normalized_mse": 1.8295732736587524,
+      "mean_normalized_mse": 1.8069570064544678,
+      "median_original_embedding_distance": 0.34656667709350586,
+      "mean_original_embedding_distance": 0.351723313331604,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.3680555522441864,
+      "median_fraction_PIT_tails": 0.04336734488606453
+    },
+    "contrast/2/curvature/conditional_mean": {
+      "images": 144,
+      "median_normalized_mse": 0.9173231720924377,
+      "mean_normalized_mse": 0.9948437809944153,
+      "median_original_embedding_distance": 0.34525054693222046,
+      "mean_original_embedding_distance": 0.35043737292289734,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.4513888955116272,
+      "median_fraction_PIT_tails": 0.04336734488606453
+    },
+    "contrast/2/curvature/fixed_median": {
+      "images": 144,
+      "median_normalized_mse": 1.0095996856689453,
+      "mean_normalized_mse": 1.1049914360046387,
+      "median_original_embedding_distance": 0.34513354301452637,
+      "mean_original_embedding_distance": 0.3500326871871948,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.4305555522441864,
+      "median_fraction_PIT_tails": 0.04336734488606453
+    },
+    "contrast/2/curvature/ordinary_histogram": {
+      "images": 144,
+      "median_normalized_mse": 0.26097071170806885,
+      "mean_normalized_mse": 0.32459747791290283,
+      "median_original_embedding_distance": 0.34505942463874817,
+      "mean_original_embedding_distance": 0.3503502607345581,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.4583333432674408,
+      "median_fraction_PIT_tails": 0.04336734488606453
+    },
+    "contrast/2/curvature/shuffled_donors": {
+      "images": 144,
+      "median_normalized_mse": 0.40772706270217896,
+      "mean_normalized_mse": 0.46772873401641846,
+      "median_original_embedding_distance": 0.34470754861831665,
+      "mean_original_embedding_distance": 0.350757360458374,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.4097222089767456,
+      "median_fraction_PIT_tails": 0.04336734488606453
+    },
+    "contrast/2/curvature/identity": {
+      "images": 144,
+      "median_normalized_mse": 0.008508549071848392,
+      "mean_normalized_mse": 0.010444793850183487,
+      "median_original_embedding_distance": 0.34614741802215576,
+      "mean_original_embedding_distance": 0.35022222995758057,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.25,
+      "median_fraction_PIT_tails": 0.04336734488606453
+    },
+    "contrast/2/sensor_matched/conditional_scene": {
+      "images": 144,
+      "median_normalized_mse": 0.33233124017715454,
+      "mean_normalized_mse": 0.42270755767822266,
+      "median_original_embedding_distance": 0.34813714027404785,
+      "mean_original_embedding_distance": 0.35095757246017456,
+      "improves_activations_fraction": 0.0069444444961845875,
+      "improves_embedding_fraction": 0.4166666567325592,
+      "median_fraction_PIT_tails": 0.0357142835855484
+    },
+    "contrast/2/sensor_matched/conditional_shared": {
+      "images": 144,
+      "median_normalized_mse": 0.3406032919883728,
+      "mean_normalized_mse": 0.42327681183815,
+      "median_original_embedding_distance": 0.3478321433067322,
+      "mean_original_embedding_distance": 0.3511051833629608,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.3819444477558136,
+      "median_fraction_PIT_tails": 0.0357142835855484
+    },
+    "contrast/2/sensor_matched/conditional_uniform": {
+      "images": 144,
+      "median_normalized_mse": 0.39425498247146606,
+      "mean_normalized_mse": 0.45996925234794617,
+      "median_original_embedding_distance": 0.3475099205970764,
+      "mean_original_embedding_distance": 0.3512870967388153,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.3819444477558136,
+      "median_fraction_PIT_tails": 0.0357142835855484
+    },
+    "contrast/2/sensor_matched/rotate_ranks": {
+      "images": 144,
+      "median_normalized_mse": 1.4574484825134277,
+      "mean_normalized_mse": 1.5492939949035645,
+      "median_original_embedding_distance": 0.3482741415500641,
+      "mean_original_embedding_distance": 0.3525654971599579,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.3472222089767456,
+      "median_fraction_PIT_tails": 0.0357142835855484
+    },
+    "contrast/2/sensor_matched/conditional_mean": {
+      "images": 144,
+      "median_normalized_mse": 0.7692530155181885,
+      "mean_normalized_mse": 0.882243812084198,
+      "median_original_embedding_distance": 0.3458991050720215,
+      "mean_original_embedding_distance": 0.35090166330337524,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.4375,
+      "median_fraction_PIT_tails": 0.0357142835855484
+    },
+    "contrast/2/sensor_matched/fixed_median": {
+      "images": 144,
+      "median_normalized_mse": 0.8529384732246399,
+      "mean_normalized_mse": 0.9697080254554749,
+      "median_original_embedding_distance": 0.34849342703819275,
+      "mean_original_embedding_distance": 0.35276657342910767,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.2777777910232544,
+      "median_fraction_PIT_tails": 0.0357142835855484
+    },
+    "contrast/2/sensor_matched/ordinary_histogram": {
+      "images": 144,
+      "median_normalized_mse": 0.4221866726875305,
+      "mean_normalized_mse": 0.5339505076408386,
+      "median_original_embedding_distance": 0.34527942538261414,
+      "mean_original_embedding_distance": 0.35081756114959717,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.4513888955116272,
+      "median_fraction_PIT_tails": 0.0357142835855484
+    },
+    "contrast/2/sensor_matched/shuffled_donors": {
+      "images": 144,
+      "median_normalized_mse": 0.39827802777290344,
+      "mean_normalized_mse": 0.5621311664581299,
+      "median_original_embedding_distance": 0.3469870686531067,
+      "mean_original_embedding_distance": 0.35135138034820557,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.4097222089767456,
+      "median_fraction_PIT_tails": 0.0357142835855484
+    },
+    "contrast/2/sensor_matched/identity": {
+      "images": 144,
+      "median_normalized_mse": 0.044574372470378876,
+      "mean_normalized_mse": 0.06200958788394928,
+      "median_original_embedding_distance": 0.3461455702781677,
+      "mean_original_embedding_distance": 0.35022175312042236,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.0357142835855484
+    },
+    "contrast/3/sensor/conditional_scene": {
+      "images": 144,
+      "median_normalized_mse": 0.30189821124076843,
+      "mean_normalized_mse": 0.43981263041496277,
+      "median_original_embedding_distance": 0.347112774848938,
+      "mean_original_embedding_distance": 0.35197606682777405,
+      "improves_activations_fraction": 0.0902777761220932,
+      "improves_embedding_fraction": 0.4097222089767456,
+      "median_fraction_PIT_tails": 0.04336734488606453
+    },
+    "contrast/3/sensor/conditional_shared": {
+      "images": 144,
+      "median_normalized_mse": 0.2978685200214386,
+      "mean_normalized_mse": 0.4450934827327728,
+      "median_original_embedding_distance": 0.34682920575141907,
+      "mean_original_embedding_distance": 0.35186901688575745,
+      "improves_activations_fraction": 0.0902777761220932,
+      "improves_embedding_fraction": 0.4097222089767456,
+      "median_fraction_PIT_tails": 0.04336734488606453
+    },
+    "contrast/3/sensor/conditional_uniform": {
+      "images": 144,
+      "median_normalized_mse": 0.3292634189128876,
+      "mean_normalized_mse": 0.4722599387168884,
+      "median_original_embedding_distance": 0.3471866250038147,
+      "mean_original_embedding_distance": 0.35186266899108887,
+      "improves_activations_fraction": 0.0555555559694767,
+      "improves_embedding_fraction": 0.4236111044883728,
+      "median_fraction_PIT_tails": 0.04336734488606453
+    },
+    "contrast/3/sensor/rotate_ranks": {
+      "images": 144,
+      "median_normalized_mse": 1.438985824584961,
+      "mean_normalized_mse": 1.5810576677322388,
+      "median_original_embedding_distance": 0.3486813008785248,
+      "mean_original_embedding_distance": 0.35257506370544434,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.3958333432674408,
+      "median_fraction_PIT_tails": 0.04336734488606453
+    },
+    "contrast/3/sensor/conditional_mean": {
+      "images": 144,
+      "median_normalized_mse": 0.7890730500221252,
+      "mean_normalized_mse": 0.9431084394454956,
+      "median_original_embedding_distance": 0.3471823036670685,
+      "mean_original_embedding_distance": 0.35178816318511963,
+      "improves_activations_fraction": 0.013888888992369175,
+      "improves_embedding_fraction": 0.3819444477558136,
+      "median_fraction_PIT_tails": 0.04336734488606453
+    },
+    "contrast/3/sensor/fixed_median": {
+      "images": 144,
+      "median_normalized_mse": 0.8808382749557495,
+      "mean_normalized_mse": 1.060537576675415,
+      "median_original_embedding_distance": 0.3474798798561096,
+      "mean_original_embedding_distance": 0.35328108072280884,
+      "improves_activations_fraction": 0.0069444444961845875,
+      "improves_embedding_fraction": 0.2777777910232544,
+      "median_fraction_PIT_tails": 0.04336734488606453
+    },
+    "contrast/3/sensor/ordinary_histogram": {
+      "images": 144,
+      "median_normalized_mse": 0.381402850151062,
+      "mean_normalized_mse": 0.4770812392234802,
+      "median_original_embedding_distance": 0.34579864144325256,
+      "mean_original_embedding_distance": 0.35073962807655334,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.4861111044883728,
+      "median_fraction_PIT_tails": 0.04336734488606453
+    },
+    "contrast/3/sensor/shuffled_donors": {
+      "images": 144,
+      "median_normalized_mse": 0.40751349925994873,
+      "mean_normalized_mse": 0.5052585005760193,
+      "median_original_embedding_distance": 0.34624749422073364,
+      "mean_original_embedding_distance": 0.35136350989341736,
+      "improves_activations_fraction": 0.0069444444961845875,
+      "improves_embedding_fraction": 0.4236111044883728,
+      "median_fraction_PIT_tails": 0.04336734488606453
+    },
+    "contrast/3/sensor/identity": {
+      "images": 144,
+      "median_normalized_mse": 0.15218032896518707,
+      "mean_normalized_mse": 0.17192703485488892,
+      "median_original_embedding_distance": 0.34614741802215576,
+      "mean_original_embedding_distance": 0.35022222995758057,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.25,
+      "median_fraction_PIT_tails": 0.04336734488606453
+    },
+    "contrast/3/curvature/conditional_scene": {
+      "images": 144,
+      "median_normalized_mse": 0.2964140474796295,
+      "mean_normalized_mse": 0.322502076625824,
+      "median_original_embedding_distance": 0.34374845027923584,
+      "mean_original_embedding_distance": 0.35001829266548157,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.5208333134651184,
+      "median_fraction_PIT_tails": 0.0357142835855484
+    },
+    "contrast/3/curvature/conditional_shared": {
+      "images": 144,
+      "median_normalized_mse": 0.28628984093666077,
+      "mean_normalized_mse": 0.3218880295753479,
+      "median_original_embedding_distance": 0.3431619703769684,
+      "mean_original_embedding_distance": 0.3502997159957886,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.4861111044883728,
+      "median_fraction_PIT_tails": 0.0357142835855484
+    },
+    "contrast/3/curvature/conditional_uniform": {
+      "images": 144,
+      "median_normalized_mse": 0.3053671419620514,
+      "mean_normalized_mse": 0.33522486686706543,
+      "median_original_embedding_distance": 0.3443889617919922,
+      "mean_original_embedding_distance": 0.3510885536670685,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.4722222089767456,
+      "median_fraction_PIT_tails": 0.0357142835855484
+    },
+    "contrast/3/curvature/rotate_ranks": {
+      "images": 144,
+      "median_normalized_mse": 1.8943309783935547,
+      "mean_normalized_mse": 1.876952052116394,
+      "median_original_embedding_distance": 0.3434973955154419,
+      "mean_original_embedding_distance": 0.3483003079891205,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.5763888955116272,
+      "median_fraction_PIT_tails": 0.0357142835855484
+    },
+    "contrast/3/curvature/conditional_mean": {
+      "images": 144,
+      "median_normalized_mse": 1.0007896423339844,
+      "mean_normalized_mse": 1.0284472703933716,
+      "median_original_embedding_distance": 0.343868613243103,
+      "mean_original_embedding_distance": 0.3493649363517761,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.5416666865348816,
+      "median_fraction_PIT_tails": 0.0357142835855484
+    },
+    "contrast/3/curvature/fixed_median": {
+      "images": 144,
+      "median_normalized_mse": 1.1620022058486938,
+      "mean_normalized_mse": 1.1708436012268066,
+      "median_original_embedding_distance": 0.35717031359672546,
+      "mean_original_embedding_distance": 0.35868945717811584,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.2430555522441864,
+      "median_fraction_PIT_tails": 0.0357142835855484
+    },
+    "contrast/3/curvature/ordinary_histogram": {
+      "images": 144,
+      "median_normalized_mse": 0.2101123183965683,
+      "mean_normalized_mse": 0.23766189813613892,
+      "median_original_embedding_distance": 0.3446568548679352,
+      "mean_original_embedding_distance": 0.3492066562175751,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.5763888955116272,
+      "median_fraction_PIT_tails": 0.0357142835855484
+    },
+    "contrast/3/curvature/shuffled_donors": {
+      "images": 144,
+      "median_normalized_mse": 0.28342658281326294,
+      "mean_normalized_mse": 0.30982813239097595,
+      "median_original_embedding_distance": 0.34327569603919983,
+      "mean_original_embedding_distance": 0.3484431505203247,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.6111111044883728,
+      "median_fraction_PIT_tails": 0.0357142835855484
+    },
+    "contrast/3/curvature/identity": {
+      "images": 144,
+      "median_normalized_mse": 0.07167955487966537,
+      "mean_normalized_mse": 0.07065573334693909,
+      "median_original_embedding_distance": 0.34614741802215576,
+      "mean_original_embedding_distance": 0.35022222995758057,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.25,
+      "median_fraction_PIT_tails": 0.0357142835855484
+    },
+    "contrast/3/sensor_matched/conditional_scene": {
+      "images": 144,
+      "median_normalized_mse": 0.2675246298313141,
+      "mean_normalized_mse": 0.29707831144332886,
+      "median_original_embedding_distance": 0.3454352915287018,
+      "mean_original_embedding_distance": 0.3499293625354767,
+      "improves_activations_fraction": 0.0416666679084301,
+      "improves_embedding_fraction": 0.5,
+      "median_fraction_PIT_tails": 0.058673467487096786
+    },
+    "contrast/3/sensor_matched/conditional_shared": {
+      "images": 144,
+      "median_normalized_mse": 0.2631024718284607,
+      "mean_normalized_mse": 0.30082064867019653,
+      "median_original_embedding_distance": 0.34612202644348145,
+      "mean_original_embedding_distance": 0.3497849404811859,
+      "improves_activations_fraction": 0.02777777798473835,
+      "improves_embedding_fraction": 0.5416666865348816,
+      "median_fraction_PIT_tails": 0.058673467487096786
+    },
+    "contrast/3/sensor_matched/conditional_uniform": {
+      "images": 144,
+      "median_normalized_mse": 0.2687850892543793,
+      "mean_normalized_mse": 0.3041512370109558,
+      "median_original_embedding_distance": 0.34562844038009644,
+      "mean_original_embedding_distance": 0.34991171956062317,
+      "improves_activations_fraction": 0.02777777798473835,
+      "improves_embedding_fraction": 0.5208333134651184,
+      "median_fraction_PIT_tails": 0.058673467487096786
+    },
+    "contrast/3/sensor_matched/rotate_ranks": {
+      "images": 144,
+      "median_normalized_mse": 1.7832783460617065,
+      "mean_normalized_mse": 1.7785922288894653,
+      "median_original_embedding_distance": 0.3446688950061798,
+      "mean_original_embedding_distance": 0.3499038815498352,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.4861111044883728,
+      "median_fraction_PIT_tails": 0.058673467487096786
+    },
+    "contrast/3/sensor_matched/conditional_mean": {
+      "images": 144,
+      "median_normalized_mse": 0.9932765960693359,
+      "mean_normalized_mse": 0.9767574667930603,
+      "median_original_embedding_distance": 0.3428409695625305,
+      "mean_original_embedding_distance": 0.3505692481994629,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.4513888955116272,
+      "median_fraction_PIT_tails": 0.058673467487096786
+    },
+    "contrast/3/sensor_matched/fixed_median": {
+      "images": 144,
+      "median_normalized_mse": 1.0764644145965576,
+      "mean_normalized_mse": 1.069246530532837,
+      "median_original_embedding_distance": 0.34419646859169006,
+      "mean_original_embedding_distance": 0.3502470552921295,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.5138888955116272,
+      "median_fraction_PIT_tails": 0.058673467487096786
+    },
+    "contrast/3/sensor_matched/ordinary_histogram": {
+      "images": 144,
+      "median_normalized_mse": 0.27007630467414856,
+      "mean_normalized_mse": 0.3017187714576721,
+      "median_original_embedding_distance": 0.34404903650283813,
+      "mean_original_embedding_distance": 0.3498784601688385,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.5138888955116272,
+      "median_fraction_PIT_tails": 0.058673467487096786
+    },
+    "contrast/3/sensor_matched/shuffled_donors": {
+      "images": 144,
+      "median_normalized_mse": 0.3035648763179779,
+      "mean_normalized_mse": 0.33725982904434204,
+      "median_original_embedding_distance": 0.34513038396835327,
+      "mean_original_embedding_distance": 0.3501846492290497,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.4791666567325592,
+      "median_fraction_PIT_tails": 0.058673467487096786
+    },
+    "contrast/3/sensor_matched/identity": {
+      "images": 144,
+      "median_normalized_mse": 0.10428661108016968,
+      "mean_normalized_mse": 0.11206082254648209,
+      "median_original_embedding_distance": 0.3461455702781677,
+      "mean_original_embedding_distance": 0.35022175312042236,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.058673467487096786
+    },
+    "gamma/2/sensor/conditional_scene": {
+      "images": 144,
+      "median_normalized_mse": 0.32130974531173706,
+      "mean_normalized_mse": 0.3930985927581787,
+      "median_original_embedding_distance": 0.3194745182991028,
+      "mean_original_embedding_distance": 0.3152714967727661,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.4722222089767456,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "gamma/2/sensor/conditional_shared": {
+      "images": 144,
+      "median_normalized_mse": 0.3007100224494934,
+      "mean_normalized_mse": 0.40497887134552,
+      "median_original_embedding_distance": 0.31995177268981934,
+      "mean_original_embedding_distance": 0.3148805797100067,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.4583333432674408,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "gamma/2/sensor/conditional_uniform": {
+      "images": 144,
+      "median_normalized_mse": 0.31306877732276917,
+      "mean_normalized_mse": 0.4317655563354492,
+      "median_original_embedding_distance": 0.3209899365901947,
+      "mean_original_embedding_distance": 0.31418752670288086,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.4791666567325592,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "gamma/2/sensor/rotate_ranks": {
+      "images": 144,
+      "median_normalized_mse": 1.476440668106079,
+      "mean_normalized_mse": 1.6576768159866333,
+      "median_original_embedding_distance": 0.3288922607898712,
+      "mean_original_embedding_distance": 0.3242514431476593,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.2916666567325592,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "gamma/2/sensor/conditional_mean": {
+      "images": 144,
+      "median_normalized_mse": 0.752260148525238,
+      "mean_normalized_mse": 0.9187614917755127,
+      "median_original_embedding_distance": 0.32545751333236694,
+      "mean_original_embedding_distance": 0.32189077138900757,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.2638888955116272,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "gamma/2/sensor/fixed_median": {
+      "images": 144,
+      "median_normalized_mse": 0.823614776134491,
+      "mean_normalized_mse": 1.029879093170166,
+      "median_original_embedding_distance": 0.31262457370758057,
+      "mean_original_embedding_distance": 0.31271255016326904,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.4791666567325592,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "gamma/2/sensor/ordinary_histogram": {
+      "images": 144,
+      "median_normalized_mse": 0.38017311692237854,
+      "mean_normalized_mse": 0.46352991461753845,
+      "median_original_embedding_distance": 0.3201639950275421,
+      "mean_original_embedding_distance": 0.3218320906162262,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.2986111044883728,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "gamma/2/sensor/shuffled_donors": {
+      "images": 144,
+      "median_normalized_mse": 0.42905667424201965,
+      "mean_normalized_mse": 0.5150139331817627,
+      "median_original_embedding_distance": 0.3204069137573242,
+      "mean_original_embedding_distance": 0.32161304354667664,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.3472222089767456,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "gamma/2/sensor/identity": {
+      "images": 144,
+      "median_normalized_mse": 0.08056803792715073,
+      "mean_normalized_mse": 0.09754754602909088,
+      "median_original_embedding_distance": 0.3140852451324463,
+      "mean_original_embedding_distance": 0.3121696710586548,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.2291666716337204,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "gamma/2/curvature/conditional_scene": {
+      "images": 144,
+      "median_normalized_mse": 0.330841600894928,
+      "mean_normalized_mse": 0.3829430639743805,
+      "median_original_embedding_distance": 0.3139706552028656,
+      "mean_original_embedding_distance": 0.3124462068080902,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.4652777910232544,
+      "median_fraction_PIT_tails": 0.03826530650258064
+    },
+    "gamma/2/curvature/conditional_shared": {
+      "images": 144,
+      "median_normalized_mse": 0.30808594822883606,
+      "mean_normalized_mse": 0.380987286567688,
+      "median_original_embedding_distance": 0.3134988248348236,
+      "mean_original_embedding_distance": 0.31267252564430237,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.4375,
+      "median_fraction_PIT_tails": 0.03826530650258064
+    },
+    "gamma/2/curvature/conditional_uniform": {
+      "images": 144,
+      "median_normalized_mse": 0.3199930191040039,
+      "mean_normalized_mse": 0.4049905240535736,
+      "median_original_embedding_distance": 0.3132927715778351,
+      "mean_original_embedding_distance": 0.31197768449783325,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.5347222089767456,
+      "median_fraction_PIT_tails": 0.03826530650258064
+    },
+    "gamma/2/curvature/rotate_ranks": {
+      "images": 144,
+      "median_normalized_mse": 1.7879170179367065,
+      "mean_normalized_mse": 1.8285620212554932,
+      "median_original_embedding_distance": 0.3166735768318176,
+      "mean_original_embedding_distance": 0.3148868978023529,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.2638888955116272,
+      "median_fraction_PIT_tails": 0.03826530650258064
+    },
+    "gamma/2/curvature/conditional_mean": {
+      "images": 144,
+      "median_normalized_mse": 0.9043508768081665,
+      "mean_normalized_mse": 0.9943613409996033,
+      "median_original_embedding_distance": 0.3153494596481323,
+      "mean_original_embedding_distance": 0.3126491606235504,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.4097222089767456,
+      "median_fraction_PIT_tails": 0.03826530650258064
+    },
+    "gamma/2/curvature/fixed_median": {
+      "images": 144,
+      "median_normalized_mse": 1.0155401229858398,
+      "mean_normalized_mse": 1.1045678853988647,
+      "median_original_embedding_distance": 0.31094035506248474,
+      "mean_original_embedding_distance": 0.3093474805355072,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.6805555820465088,
+      "median_fraction_PIT_tails": 0.03826530650258064
+    },
+    "gamma/2/curvature/ordinary_histogram": {
+      "images": 144,
+      "median_normalized_mse": 0.2876756489276886,
+      "mean_normalized_mse": 0.3547016382217407,
+      "median_original_embedding_distance": 0.3162754476070404,
+      "mean_original_embedding_distance": 0.3136254847049713,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.4652777910232544,
+      "median_fraction_PIT_tails": 0.03826530650258064
+    },
+    "gamma/2/curvature/shuffled_donors": {
+      "images": 144,
+      "median_normalized_mse": 0.4322573244571686,
+      "mean_normalized_mse": 0.48717042803764343,
+      "median_original_embedding_distance": 0.3138279318809509,
+      "mean_original_embedding_distance": 0.3143717646598816,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.4444444477558136,
+      "median_fraction_PIT_tails": 0.03826530650258064
+    },
+    "gamma/2/curvature/identity": {
+      "images": 144,
+      "median_normalized_mse": 0.04685094952583313,
+      "mean_normalized_mse": 0.05570879951119423,
+      "median_original_embedding_distance": 0.3140852451324463,
+      "mean_original_embedding_distance": 0.3121696710586548,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.2291666716337204,
+      "median_fraction_PIT_tails": 0.03826530650258064
+    },
+    "gamma/2/sensor_matched/conditional_scene": {
+      "images": 144,
+      "median_normalized_mse": 0.3386622369289398,
+      "mean_normalized_mse": 0.4490300416946411,
+      "median_original_embedding_distance": 0.31432896852493286,
+      "mean_original_embedding_distance": 0.3119688034057617,
+      "improves_activations_fraction": 0.0347222238779068,
+      "improves_embedding_fraction": 0.4722222089767456,
+      "median_fraction_PIT_tails": 0.03826530650258064
+    },
+    "gamma/2/sensor_matched/conditional_shared": {
+      "images": 144,
+      "median_normalized_mse": 0.3296450674533844,
+      "mean_normalized_mse": 0.45090171694755554,
+      "median_original_embedding_distance": 0.31402647495269775,
+      "mean_original_embedding_distance": 0.3118150532245636,
+      "improves_activations_fraction": 0.02777777798473835,
+      "improves_embedding_fraction": 0.5347222089767456,
+      "median_fraction_PIT_tails": 0.03826530650258064
+    },
+    "gamma/2/sensor_matched/conditional_uniform": {
+      "images": 144,
+      "median_normalized_mse": 0.390846312046051,
+      "mean_normalized_mse": 0.48502546548843384,
+      "median_original_embedding_distance": 0.31420913338661194,
+      "mean_original_embedding_distance": 0.3122047185897827,
+      "improves_activations_fraction": 0.02083333395421505,
+      "improves_embedding_fraction": 0.4583333432674408,
+      "median_fraction_PIT_tails": 0.03826530650258064
+    },
+    "gamma/2/sensor_matched/rotate_ranks": {
+      "images": 144,
+      "median_normalized_mse": 1.4773107767105103,
+      "mean_normalized_mse": 1.5540728569030762,
+      "median_original_embedding_distance": 0.313999742269516,
+      "mean_original_embedding_distance": 0.31264832615852356,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.5069444179534912,
+      "median_fraction_PIT_tails": 0.03826530650258064
+    },
+    "gamma/2/sensor_matched/conditional_mean": {
+      "images": 144,
+      "median_normalized_mse": 0.7855886220932007,
+      "mean_normalized_mse": 0.8785324096679688,
+      "median_original_embedding_distance": 0.3131987750530243,
+      "mean_original_embedding_distance": 0.31063878536224365,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.6180555820465088,
+      "median_fraction_PIT_tails": 0.03826530650258064
+    },
+    "gamma/2/sensor_matched/fixed_median": {
+      "images": 144,
+      "median_normalized_mse": 0.841036319732666,
+      "mean_normalized_mse": 0.9615749716758728,
+      "median_original_embedding_distance": 0.3156449496746063,
+      "mean_original_embedding_distance": 0.311977356672287,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.5486111044883728,
+      "median_fraction_PIT_tails": 0.03826530650258064
+    },
+    "gamma/2/sensor_matched/ordinary_histogram": {
+      "images": 144,
+      "median_normalized_mse": 0.47787076234817505,
+      "mean_normalized_mse": 0.5782338380813599,
+      "median_original_embedding_distance": 0.3120645582675934,
+      "mean_original_embedding_distance": 0.3123931288719177,
+      "improves_activations_fraction": 0.0069444444961845875,
+      "improves_embedding_fraction": 0.4930555522441864,
+      "median_fraction_PIT_tails": 0.03826530650258064
+    },
+    "gamma/2/sensor_matched/shuffled_donors": {
+      "images": 144,
+      "median_normalized_mse": 0.4533849358558655,
+      "mean_normalized_mse": 0.6128209233283997,
+      "median_original_embedding_distance": 0.3118479251861572,
+      "mean_original_embedding_distance": 0.31147605180740356,
+      "improves_activations_fraction": 0.013888888992369175,
+      "improves_embedding_fraction": 0.4513888955116272,
+      "median_fraction_PIT_tails": 0.03826530650258064
+    },
+    "gamma/2/sensor_matched/identity": {
+      "images": 144,
+      "median_normalized_mse": 0.0950203388929367,
+      "mean_normalized_mse": 0.1268395185470581,
+      "median_original_embedding_distance": 0.3140941262245178,
+      "mean_original_embedding_distance": 0.3121684789657593,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.03826530650258064
+    },
+    "gamma/3/sensor/conditional_scene": {
+      "images": 144,
+      "median_normalized_mse": 0.34493598341941833,
+      "mean_normalized_mse": 0.4685933291912079,
+      "median_original_embedding_distance": 0.31572192907333374,
+      "mean_original_embedding_distance": 0.3126605749130249,
+      "improves_activations_fraction": 0.0416666679084301,
+      "improves_embedding_fraction": 0.4722222089767456,
+      "median_fraction_PIT_tails": 0.02806122414767742
+    },
+    "gamma/3/sensor/conditional_shared": {
+      "images": 144,
+      "median_normalized_mse": 0.35358887910842896,
+      "mean_normalized_mse": 0.48277902603149414,
+      "median_original_embedding_distance": 0.3144659996032715,
+      "mean_original_embedding_distance": 0.3127850890159607,
+      "improves_activations_fraction": 0.0486111119389534,
+      "improves_embedding_fraction": 0.4513888955116272,
+      "median_fraction_PIT_tails": 0.02806122414767742
+    },
+    "gamma/3/sensor/conditional_uniform": {
+      "images": 144,
+      "median_normalized_mse": 0.40378788113594055,
+      "mean_normalized_mse": 0.5206539034843445,
+      "median_original_embedding_distance": 0.31460365653038025,
+      "mean_original_embedding_distance": 0.3127373456954956,
+      "improves_activations_fraction": 0.02777777798473835,
+      "improves_embedding_fraction": 0.4236111044883728,
+      "median_fraction_PIT_tails": 0.02806122414767742
+    },
+    "gamma/3/sensor/rotate_ranks": {
+      "images": 144,
+      "median_normalized_mse": 1.4670369625091553,
+      "mean_normalized_mse": 1.5942797660827637,
+      "median_original_embedding_distance": 0.31952905654907227,
+      "mean_original_embedding_distance": 0.3155382573604584,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.3541666567325592,
+      "median_fraction_PIT_tails": 0.02806122414767742
+    },
+    "gamma/3/sensor/conditional_mean": {
+      "images": 144,
+      "median_normalized_mse": 0.7815892100334167,
+      "mean_normalized_mse": 0.9398742318153381,
+      "median_original_embedding_distance": 0.31630536913871765,
+      "mean_original_embedding_distance": 0.31384170055389404,
+      "improves_activations_fraction": 0.0069444444961845875,
+      "improves_embedding_fraction": 0.4027777910232544,
+      "median_fraction_PIT_tails": 0.02806122414767742
+    },
+    "gamma/3/sensor/fixed_median": {
+      "images": 144,
+      "median_normalized_mse": 0.8826160430908203,
+      "mean_normalized_mse": 1.0559886693954468,
+      "median_original_embedding_distance": 0.3141188621520996,
+      "mean_original_embedding_distance": 0.31418728828430176,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.3402777910232544,
+      "median_fraction_PIT_tails": 0.02806122414767742
+    },
+    "gamma/3/sensor/ordinary_histogram": {
+      "images": 144,
+      "median_normalized_mse": 0.43612733483314514,
+      "mean_normalized_mse": 0.5317934155464172,
+      "median_original_embedding_distance": 0.30993255972862244,
+      "mean_original_embedding_distance": 0.3111308813095093,
+      "improves_activations_fraction": 0.02777777798473835,
+      "improves_embedding_fraction": 0.5,
+      "median_fraction_PIT_tails": 0.02806122414767742
+    },
+    "gamma/3/sensor/shuffled_donors": {
+      "images": 144,
+      "median_normalized_mse": 0.4638599753379822,
+      "mean_normalized_mse": 0.5571157932281494,
+      "median_original_embedding_distance": 0.31006914377212524,
+      "mean_original_embedding_distance": 0.31153202056884766,
+      "improves_activations_fraction": 0.0347222238779068,
+      "improves_embedding_fraction": 0.5069444179534912,
+      "median_fraction_PIT_tails": 0.02806122414767742
+    },
+    "gamma/3/sensor/identity": {
+      "images": 144,
+      "median_normalized_mse": 0.16508693993091583,
+      "mean_normalized_mse": 0.2099851667881012,
+      "median_original_embedding_distance": 0.3140852451324463,
+      "mean_original_embedding_distance": 0.3121696710586548,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.2291666716337204,
+      "median_fraction_PIT_tails": 0.02806122414767742
+    },
+    "gamma/3/curvature/conditional_scene": {
+      "images": 144,
+      "median_normalized_mse": 0.5152496099472046,
+      "mean_normalized_mse": 0.5419180393218994,
+      "median_original_embedding_distance": 0.3145783245563507,
+      "mean_original_embedding_distance": 0.3117107152938843,
+      "improves_activations_fraction": 0.0555555559694767,
+      "improves_embedding_fraction": 0.6041666865348816,
+      "median_fraction_PIT_tails": 0.02806122414767742
+    },
+    "gamma/3/curvature/conditional_shared": {
+      "images": 144,
+      "median_normalized_mse": 0.5113075971603394,
+      "mean_normalized_mse": 0.5387516021728516,
+      "median_original_embedding_distance": 0.3133592903614044,
+      "mean_original_embedding_distance": 0.3117295801639557,
+      "improves_activations_fraction": 0.0347222238779068,
+      "improves_embedding_fraction": 0.5833333134651184,
+      "median_fraction_PIT_tails": 0.02806122414767742
+    },
+    "gamma/3/curvature/conditional_uniform": {
+      "images": 144,
+      "median_normalized_mse": 0.5261826515197754,
+      "mean_normalized_mse": 0.5487590432167053,
+      "median_original_embedding_distance": 0.31449636816978455,
+      "mean_original_embedding_distance": 0.31255030632019043,
+      "improves_activations_fraction": 0.0416666679084301,
+      "improves_embedding_fraction": 0.5486111044883728,
+      "median_fraction_PIT_tails": 0.02806122414767742
+    },
+    "gamma/3/curvature/rotate_ranks": {
+      "images": 144,
+      "median_normalized_mse": 1.9262315034866333,
+      "mean_normalized_mse": 1.896594524383545,
+      "median_original_embedding_distance": 0.3100811541080475,
+      "mean_original_embedding_distance": 0.3089594841003418,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.6319444179534912,
+      "median_fraction_PIT_tails": 0.02806122414767742
+    },
+    "gamma/3/curvature/conditional_mean": {
+      "images": 144,
+      "median_normalized_mse": 0.9987271428108215,
+      "mean_normalized_mse": 1.0266242027282715,
+      "median_original_embedding_distance": 0.30974066257476807,
+      "mean_original_embedding_distance": 0.3092998266220093,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.6111111044883728,
+      "median_fraction_PIT_tails": 0.02806122414767742
+    },
+    "gamma/3/curvature/fixed_median": {
+      "images": 144,
+      "median_normalized_mse": 1.1461243629455566,
+      "mean_normalized_mse": 1.1697918176651,
+      "median_original_embedding_distance": 0.3099668025970459,
+      "mean_original_embedding_distance": 0.3195914924144745,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.3125,
+      "median_fraction_PIT_tails": 0.02806122414767742
+    },
+    "gamma/3/curvature/ordinary_histogram": {
+      "images": 144,
+      "median_normalized_mse": 0.49484673142433167,
+      "mean_normalized_mse": 0.5279855728149414,
+      "median_original_embedding_distance": 0.3153296113014221,
+      "mean_original_embedding_distance": 0.31032469868659973,
+      "improves_activations_fraction": 0.0625,
+      "improves_embedding_fraction": 0.5416666865348816,
+      "median_fraction_PIT_tails": 0.02806122414767742
+    },
+    "gamma/3/curvature/shuffled_donors": {
+      "images": 144,
+      "median_normalized_mse": 0.5396305918693542,
+      "mean_normalized_mse": 0.5706419944763184,
+      "median_original_embedding_distance": 0.3143305480480194,
+      "mean_original_embedding_distance": 0.30970171093940735,
+      "improves_activations_fraction": 0.02777777798473835,
+      "improves_embedding_fraction": 0.6041666865348816,
+      "median_fraction_PIT_tails": 0.02806122414767742
+    },
+    "gamma/3/curvature/identity": {
+      "images": 144,
+      "median_normalized_mse": 0.33059224486351013,
+      "mean_normalized_mse": 0.385135293006897,
+      "median_original_embedding_distance": 0.3140852451324463,
+      "mean_original_embedding_distance": 0.3121696710586548,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.2291666716337204,
+      "median_fraction_PIT_tails": 0.02806122414767742
+    },
+    "gamma/3/sensor_matched/conditional_scene": {
+      "images": 144,
+      "median_normalized_mse": 0.35739943385124207,
+      "mean_normalized_mse": 0.40394824743270874,
+      "median_original_embedding_distance": 0.31473273038864136,
+      "mean_original_embedding_distance": 0.3129400610923767,
+      "improves_activations_fraction": 0.0555555559694767,
+      "improves_embedding_fraction": 0.4444444477558136,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "gamma/3/sensor_matched/conditional_shared": {
+      "images": 144,
+      "median_normalized_mse": 0.37157192826271057,
+      "mean_normalized_mse": 0.40605437755584717,
+      "median_original_embedding_distance": 0.3146808445453644,
+      "mean_original_embedding_distance": 0.3130640387535095,
+      "improves_activations_fraction": 0.0347222238779068,
+      "improves_embedding_fraction": 0.4444444477558136,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "gamma/3/sensor_matched/conditional_uniform": {
+      "images": 144,
+      "median_normalized_mse": 0.38961169123649597,
+      "mean_normalized_mse": 0.4186389744281769,
+      "median_original_embedding_distance": 0.31422051787376404,
+      "mean_original_embedding_distance": 0.31248944997787476,
+      "improves_activations_fraction": 0.02777777798473835,
+      "improves_embedding_fraction": 0.4583333432674408,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "gamma/3/sensor_matched/rotate_ranks": {
+      "images": 144,
+      "median_normalized_mse": 1.7816166877746582,
+      "mean_normalized_mse": 1.7684381008148193,
+      "median_original_embedding_distance": 0.31903937458992004,
+      "mean_original_embedding_distance": 0.31344833970069885,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.4305555522441864,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "gamma/3/sensor_matched/conditional_mean": {
+      "images": 144,
+      "median_normalized_mse": 1.0000929832458496,
+      "mean_normalized_mse": 0.9745659232139587,
+      "median_original_embedding_distance": 0.31608572602272034,
+      "mean_original_embedding_distance": 0.314156174659729,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.4027777910232544,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "gamma/3/sensor_matched/fixed_median": {
+      "images": 144,
+      "median_normalized_mse": 1.0741900205612183,
+      "mean_normalized_mse": 1.066434621810913,
+      "median_original_embedding_distance": 0.3115383982658386,
+      "mean_original_embedding_distance": 0.31256940960884094,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.5069444179534912,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "gamma/3/sensor_matched/ordinary_histogram": {
+      "images": 144,
+      "median_normalized_mse": 0.39857217669487,
+      "mean_normalized_mse": 0.4479450583457947,
+      "median_original_embedding_distance": 0.3126769959926605,
+      "mean_original_embedding_distance": 0.31289345026016235,
+      "improves_activations_fraction": 0.013888888992369175,
+      "improves_embedding_fraction": 0.4861111044883728,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "gamma/3/sensor_matched/shuffled_donors": {
+      "images": 144,
+      "median_normalized_mse": 0.42489999532699585,
+      "mean_normalized_mse": 0.47142377495765686,
+      "median_original_embedding_distance": 0.31309422850608826,
+      "mean_original_embedding_distance": 0.31369173526763916,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.3888888955116272,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "gamma/3/sensor_matched/identity": {
+      "images": 144,
+      "median_normalized_mse": 0.20962978899478912,
+      "mean_normalized_mse": 0.24796149134635925,
+      "median_original_embedding_distance": 0.3140941262245178,
+      "mean_original_embedding_distance": 0.3121684789657593,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "mirror/2/sensor/conditional_scene": {
+      "images": 144,
+      "median_normalized_mse": 0.8932238221168518,
+      "mean_normalized_mse": 1.0865633487701416,
+      "median_original_embedding_distance": 0.14935588836669922,
+      "mean_original_embedding_distance": 0.15343120694160461,
+      "improves_activations_fraction": 0.5,
+      "improves_embedding_fraction": 0.4027777910232544,
+      "median_fraction_PIT_tails": 0.03316326439380646
+    },
+    "mirror/2/sensor/conditional_shared": {
+      "images": 144,
+      "median_normalized_mse": 0.8834168910980225,
+      "mean_normalized_mse": 1.0616782903671265,
+      "median_original_embedding_distance": 0.14914172887802124,
+      "mean_original_embedding_distance": 0.1547728180885315,
+      "improves_activations_fraction": 0.4722222089767456,
+      "improves_embedding_fraction": 0.3819444477558136,
+      "median_fraction_PIT_tails": 0.03316326439380646
+    },
+    "mirror/2/sensor/conditional_uniform": {
+      "images": 144,
+      "median_normalized_mse": 0.899183452129364,
+      "mean_normalized_mse": 1.1052029132843018,
+      "median_original_embedding_distance": 0.1504925787448883,
+      "mean_original_embedding_distance": 0.15466463565826416,
+      "improves_activations_fraction": 0.4375,
+      "improves_embedding_fraction": 0.3611111044883728,
+      "median_fraction_PIT_tails": 0.03316326439380646
+    },
+    "mirror/2/sensor/rotate_ranks": {
+      "images": 144,
+      "median_normalized_mse": 1.4787893295288086,
+      "mean_normalized_mse": 1.646183729171753,
+      "median_original_embedding_distance": 0.1480889618396759,
+      "mean_original_embedding_distance": 0.16018597781658173,
+      "improves_activations_fraction": 0.1388888955116272,
+      "improves_embedding_fraction": 0.2708333432674408,
+      "median_fraction_PIT_tails": 0.03316326439380646
+    },
+    "mirror/2/sensor/conditional_mean": {
+      "images": 144,
+      "median_normalized_mse": 0.7539131045341492,
+      "mean_normalized_mse": 0.91883385181427,
+      "median_original_embedding_distance": 0.1509602963924408,
+      "mean_original_embedding_distance": 0.1584765911102295,
+      "improves_activations_fraction": 0.7013888955116272,
+      "improves_embedding_fraction": 0.2569444477558136,
+      "median_fraction_PIT_tails": 0.03316326439380646
+    },
+    "mirror/2/sensor/fixed_median": {
+      "images": 144,
+      "median_normalized_mse": 0.8260735869407654,
+      "mean_normalized_mse": 1.028559923171997,
+      "median_original_embedding_distance": 0.15636685490608215,
+      "mean_original_embedding_distance": 0.16695667803287506,
+      "improves_activations_fraction": 0.6388888955116272,
+      "improves_embedding_fraction": 0.1736111044883728,
+      "median_fraction_PIT_tails": 0.03316326439380646
+    },
+    "mirror/2/sensor/ordinary_histogram": {
+      "images": 144,
+      "median_normalized_mse": 1.0397897958755493,
+      "mean_normalized_mse": 1.2704389095306396,
+      "median_original_embedding_distance": 0.1535140722990036,
+      "mean_original_embedding_distance": 0.16655421257019043,
+      "improves_activations_fraction": 0.2847222089767456,
+      "improves_embedding_fraction": 0.2638888955116272,
+      "median_fraction_PIT_tails": 0.03316326439380646
+    },
+    "mirror/2/sensor/shuffled_donors": {
+      "images": 144,
+      "median_normalized_mse": 1.0177817344665527,
+      "mean_normalized_mse": 1.2026340961456299,
+      "median_original_embedding_distance": 0.15494903922080994,
+      "mean_original_embedding_distance": 0.16570046544075012,
+      "improves_activations_fraction": 0.3541666567325592,
+      "improves_embedding_fraction": 0.2361111044883728,
+      "median_fraction_PIT_tails": 0.03316326439380646
+    },
+    "mirror/2/sensor/identity": {
+      "images": 144,
+      "median_normalized_mse": 0.8527688384056091,
+      "mean_normalized_mse": 1.1557176113128662,
+      "median_original_embedding_distance": 0.13983464241027832,
+      "mean_original_embedding_distance": 0.1498652845621109,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.2361111044883728,
+      "median_fraction_PIT_tails": 0.03316326439380646
+    },
+    "mirror/2/curvature/conditional_scene": {
+      "images": 144,
+      "median_normalized_mse": 1.528565526008606,
+      "mean_normalized_mse": 1.587005853652954,
+      "median_original_embedding_distance": 0.13981159031391144,
+      "mean_original_embedding_distance": 0.14990083873271942,
+      "improves_activations_fraction": 0.6666666865348816,
+      "improves_embedding_fraction": 0.5069444179534912,
+      "median_fraction_PIT_tails": 0.0357142835855484
+    },
+    "mirror/2/curvature/conditional_shared": {
+      "images": 144,
+      "median_normalized_mse": 1.4961469173431396,
+      "mean_normalized_mse": 1.5552401542663574,
+      "median_original_embedding_distance": 0.13985778391361237,
+      "mean_original_embedding_distance": 0.1498211771249771,
+      "improves_activations_fraction": 0.7013888955116272,
+      "improves_embedding_fraction": 0.5,
+      "median_fraction_PIT_tails": 0.0357142835855484
+    },
+    "mirror/2/curvature/conditional_uniform": {
+      "images": 144,
+      "median_normalized_mse": 1.4400736093521118,
+      "mean_normalized_mse": 1.5295518636703491,
+      "median_original_embedding_distance": 0.1408083289861679,
+      "mean_original_embedding_distance": 0.14991390705108643,
+      "improves_activations_fraction": 0.7013888955116272,
+      "improves_embedding_fraction": 0.4861111044883728,
+      "median_fraction_PIT_tails": 0.0357142835855484
+    },
+    "mirror/2/curvature/rotate_ranks": {
+      "images": 144,
+      "median_normalized_mse": 1.7963950634002686,
+      "mean_normalized_mse": 1.8285452127456665,
+      "median_original_embedding_distance": 0.13791817426681519,
+      "mean_original_embedding_distance": 0.1513424664735794,
+      "improves_activations_fraction": 0.4513888955116272,
+      "improves_embedding_fraction": 0.4305555522441864,
+      "median_fraction_PIT_tails": 0.0357142835855484
+    },
+    "mirror/2/curvature/conditional_mean": {
+      "images": 144,
+      "median_normalized_mse": 0.8930171132087708,
+      "mean_normalized_mse": 0.9943093061447144,
+      "median_original_embedding_distance": 0.14116860926151276,
+      "mean_original_embedding_distance": 0.1506064385175705,
+      "improves_activations_fraction": 1.0,
+      "improves_embedding_fraction": 0.3958333432674408,
+      "median_fraction_PIT_tails": 0.0357142835855484
+    },
+    "mirror/2/curvature/fixed_median": {
+      "images": 144,
+      "median_normalized_mse": 1.0067301988601685,
+      "mean_normalized_mse": 1.1040693521499634,
+      "median_original_embedding_distance": 0.14071765542030334,
+      "mean_original_embedding_distance": 0.15174514055252075,
+      "improves_activations_fraction": 1.0,
+      "improves_embedding_fraction": 0.3402777910232544,
+      "median_fraction_PIT_tails": 0.0357142835855484
+    },
+    "mirror/2/curvature/ordinary_histogram": {
+      "images": 144,
+      "median_normalized_mse": 1.6106762886047363,
+      "mean_normalized_mse": 1.7041374444961548,
+      "median_original_embedding_distance": 0.1409958302974701,
+      "mean_original_embedding_distance": 0.15046542882919312,
+      "improves_activations_fraction": 0.5416666865348816,
+      "improves_embedding_fraction": 0.4097222089767456,
+      "median_fraction_PIT_tails": 0.0357142835855484
+    },
+    "mirror/2/curvature/shuffled_donors": {
+      "images": 144,
+      "median_normalized_mse": 1.6049178838729858,
+      "mean_normalized_mse": 1.765348196029663,
+      "median_original_embedding_distance": 0.14011763036251068,
+      "mean_original_embedding_distance": 0.1507405936717987,
+      "improves_activations_fraction": 0.5208333134651184,
+      "improves_embedding_fraction": 0.4027777910232544,
+      "median_fraction_PIT_tails": 0.0357142835855484
+    },
+    "mirror/2/curvature/identity": {
+      "images": 144,
+      "median_normalized_mse": 1.7866307497024536,
+      "mean_normalized_mse": 1.839282751083374,
+      "median_original_embedding_distance": 0.13983464241027832,
+      "mean_original_embedding_distance": 0.1498652845621109,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.2361111044883728,
+      "median_fraction_PIT_tails": 0.0357142835855484
+    },
+    "mirror/2/sensor_matched/conditional_scene": {
+      "images": 144,
+      "median_normalized_mse": 0.9857682585716248,
+      "mean_normalized_mse": 1.0423756837844849,
+      "median_original_embedding_distance": 0.14140155911445618,
+      "mean_original_embedding_distance": 0.15200765430927277,
+      "improves_activations_fraction": 0.4652777910232544,
+      "improves_embedding_fraction": 0.3611111044883728,
+      "median_fraction_PIT_tails": 0.0357142835855484
+    },
+    "mirror/2/sensor_matched/conditional_shared": {
+      "images": 144,
+      "median_normalized_mse": 0.9595387578010559,
+      "mean_normalized_mse": 1.0251740217208862,
+      "median_original_embedding_distance": 0.14163754880428314,
+      "mean_original_embedding_distance": 0.15200144052505493,
+      "improves_activations_fraction": 0.4791666567325592,
+      "improves_embedding_fraction": 0.3958333432674408,
+      "median_fraction_PIT_tails": 0.0357142835855484
+    },
+    "mirror/2/sensor_matched/conditional_uniform": {
+      "images": 144,
+      "median_normalized_mse": 1.0199264287948608,
+      "mean_normalized_mse": 1.0752451419830322,
+      "median_original_embedding_distance": 0.1417451649904251,
+      "mean_original_embedding_distance": 0.15184034407138824,
+      "improves_activations_fraction": 0.4027777910232544,
+      "improves_embedding_fraction": 0.3680555522441864,
+      "median_fraction_PIT_tails": 0.0357142835855484
+    },
+    "mirror/2/sensor_matched/rotate_ranks": {
+      "images": 144,
+      "median_normalized_mse": 1.4863349199295044,
+      "mean_normalized_mse": 1.5123867988586426,
+      "median_original_embedding_distance": 0.1427079737186432,
+      "mean_original_embedding_distance": 0.15383733808994293,
+      "improves_activations_fraction": 0.0833333358168602,
+      "improves_embedding_fraction": 0.3125,
+      "median_fraction_PIT_tails": 0.0357142835855484
+    },
+    "mirror/2/sensor_matched/conditional_mean": {
+      "images": 144,
+      "median_normalized_mse": 0.7905109524726868,
+      "mean_normalized_mse": 0.8726677894592285,
+      "median_original_embedding_distance": 0.14397992193698883,
+      "mean_original_embedding_distance": 0.15312212705612183,
+      "improves_activations_fraction": 0.6666666865348816,
+      "improves_embedding_fraction": 0.3611111044883728,
+      "median_fraction_PIT_tails": 0.0357142835855484
+    },
+    "mirror/2/sensor_matched/fixed_median": {
+      "images": 144,
+      "median_normalized_mse": 0.8025288581848145,
+      "mean_normalized_mse": 0.9567731022834778,
+      "median_original_embedding_distance": 0.1439717561006546,
+      "mean_original_embedding_distance": 0.15359139442443848,
+      "improves_activations_fraction": 0.6180555820465088,
+      "improves_embedding_fraction": 0.3263888955116272,
+      "median_fraction_PIT_tails": 0.0357142835855484
+    },
+    "mirror/2/sensor_matched/ordinary_histogram": {
+      "images": 144,
+      "median_normalized_mse": 1.197640061378479,
+      "mean_normalized_mse": 1.2977937459945679,
+      "median_original_embedding_distance": 0.14158982038497925,
+      "mean_original_embedding_distance": 0.15229953825473785,
+      "improves_activations_fraction": 0.1875,
+      "improves_embedding_fraction": 0.375,
+      "median_fraction_PIT_tails": 0.0357142835855484
+    },
+    "mirror/2/sensor_matched/shuffled_donors": {
+      "images": 144,
+      "median_normalized_mse": 1.1138590574264526,
+      "mean_normalized_mse": 1.2273821830749512,
+      "median_original_embedding_distance": 0.14212210476398468,
+      "mean_original_embedding_distance": 0.15306814014911652,
+      "improves_activations_fraction": 0.3125,
+      "improves_embedding_fraction": 0.3611111044883728,
+      "median_fraction_PIT_tails": 0.0357142835855484
+    },
+    "mirror/2/sensor_matched/identity": {
+      "images": 144,
+      "median_normalized_mse": 0.8693652749061584,
+      "mean_normalized_mse": 0.9656340479850769,
+      "median_original_embedding_distance": 0.13984403014183044,
+      "mean_original_embedding_distance": 0.14986668527126312,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.0357142835855484
+    },
+    "mirror/3/sensor/conditional_scene": {
+      "images": 144,
+      "median_normalized_mse": 1.2382802963256836,
+      "mean_normalized_mse": 1.3777073621749878,
+      "median_original_embedding_distance": 0.1392604261636734,
+      "mean_original_embedding_distance": 0.1507907509803772,
+      "improves_activations_fraction": 0.7569444179534912,
+      "improves_embedding_fraction": 0.4305555522441864,
+      "median_fraction_PIT_tails": 0.02551020309329033
+    },
+    "mirror/3/sensor/conditional_shared": {
+      "images": 144,
+      "median_normalized_mse": 1.2160671949386597,
+      "mean_normalized_mse": 1.3594588041305542,
+      "median_original_embedding_distance": 0.1402655988931656,
+      "mean_original_embedding_distance": 0.15108545124530792,
+      "improves_activations_fraction": 0.7847222089767456,
+      "improves_embedding_fraction": 0.4166666567325592,
+      "median_fraction_PIT_tails": 0.02551020309329033
+    },
+    "mirror/3/sensor/conditional_uniform": {
+      "images": 144,
+      "median_normalized_mse": 1.3402183055877686,
+      "mean_normalized_mse": 1.4951410293579102,
+      "median_original_embedding_distance": 0.1393526792526245,
+      "mean_original_embedding_distance": 0.15109477937221527,
+      "improves_activations_fraction": 0.5972222089767456,
+      "improves_embedding_fraction": 0.4444444477558136,
+      "median_fraction_PIT_tails": 0.02551020309329033
+    },
+    "mirror/3/sensor/rotate_ranks": {
+      "images": 144,
+      "median_normalized_mse": 1.4183070659637451,
+      "mean_normalized_mse": 1.5492384433746338,
+      "median_original_embedding_distance": 0.13947579264640808,
+      "mean_original_embedding_distance": 0.15166671574115753,
+      "improves_activations_fraction": 0.5069444179534912,
+      "improves_embedding_fraction": 0.3333333432674408,
+      "median_fraction_PIT_tails": 0.02551020309329033
+    },
+    "mirror/3/sensor/conditional_mean": {
+      "images": 144,
+      "median_normalized_mse": 0.7861669063568115,
+      "mean_normalized_mse": 0.938552975654602,
+      "median_original_embedding_distance": 0.13951505720615387,
+      "mean_original_embedding_distance": 0.15084335207939148,
+      "improves_activations_fraction": 0.9861111044883728,
+      "improves_embedding_fraction": 0.4652777910232544,
+      "median_fraction_PIT_tails": 0.02551020309329033
+    },
+    "mirror/3/sensor/fixed_median": {
+      "images": 144,
+      "median_normalized_mse": 0.8804666996002197,
+      "mean_normalized_mse": 1.0541809797286987,
+      "median_original_embedding_distance": 0.14183613657951355,
+      "mean_original_embedding_distance": 0.15136298537254333,
+      "improves_activations_fraction": 0.9652777910232544,
+      "improves_embedding_fraction": 0.4652777910232544,
+      "median_fraction_PIT_tails": 0.02551020309329033
+    },
+    "mirror/3/sensor/ordinary_histogram": {
+      "images": 144,
+      "median_normalized_mse": 1.4775848388671875,
+      "mean_normalized_mse": 1.650155782699585,
+      "median_original_embedding_distance": 0.1394394487142563,
+      "mean_original_embedding_distance": 0.15165865421295166,
+      "improves_activations_fraction": 0.3472222089767456,
+      "improves_embedding_fraction": 0.4236111044883728,
+      "median_fraction_PIT_tails": 0.02551020309329033
+    },
+    "mirror/3/sensor/shuffled_donors": {
+      "images": 144,
+      "median_normalized_mse": 1.3123584985733032,
+      "mean_normalized_mse": 1.4894137382507324,
+      "median_original_embedding_distance": 0.1375276893377304,
+      "mean_original_embedding_distance": 0.1512826830148697,
+      "improves_activations_fraction": 0.5833333134651184,
+      "improves_embedding_fraction": 0.4375,
+      "median_fraction_PIT_tails": 0.02551020309329033
+    },
+    "mirror/3/sensor/identity": {
+      "images": 144,
+      "median_normalized_mse": 1.4076008796691895,
+      "mean_normalized_mse": 1.6300184726715088,
+      "median_original_embedding_distance": 0.13983464241027832,
+      "mean_original_embedding_distance": 0.1498652845621109,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.2361111044883728,
+      "median_fraction_PIT_tails": 0.02551020309329033
+    },
+    "mirror/3/curvature/conditional_scene": {
+      "images": 144,
+      "median_normalized_mse": 1.2152798175811768,
+      "mean_normalized_mse": 1.1912481784820557,
+      "median_original_embedding_distance": 0.14297589659690857,
+      "mean_original_embedding_distance": 0.15327759087085724,
+      "improves_activations_fraction": 0.4722222089767456,
+      "improves_embedding_fraction": 0.3611111044883728,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "mirror/3/curvature/conditional_shared": {
+      "images": 144,
+      "median_normalized_mse": 1.2097067832946777,
+      "mean_normalized_mse": 1.180238127708435,
+      "median_original_embedding_distance": 0.14200922846794128,
+      "mean_original_embedding_distance": 0.15372030436992645,
+      "improves_activations_fraction": 0.4722222089767456,
+      "improves_embedding_fraction": 0.3333333432674408,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "mirror/3/curvature/conditional_uniform": {
+      "images": 144,
+      "median_normalized_mse": 1.202789545059204,
+      "mean_normalized_mse": 1.1734386682510376,
+      "median_original_embedding_distance": 0.1419694721698761,
+      "mean_original_embedding_distance": 0.153768390417099,
+      "improves_activations_fraction": 0.4861111044883728,
+      "improves_embedding_fraction": 0.3263888955116272,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "mirror/3/curvature/rotate_ranks": {
+      "images": 144,
+      "median_normalized_mse": 1.9623204469680786,
+      "mean_normalized_mse": 1.920870065689087,
+      "median_original_embedding_distance": 0.14657877385616302,
+      "mean_original_embedding_distance": 0.15893925726413727,
+      "improves_activations_fraction": 0.02083333395421505,
+      "improves_embedding_fraction": 0.3055555522441864,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "mirror/3/curvature/conditional_mean": {
+      "images": 144,
+      "median_normalized_mse": 1.0156276226043701,
+      "mean_normalized_mse": 1.0265220403671265,
+      "median_original_embedding_distance": 0.1455053836107254,
+      "mean_original_embedding_distance": 0.15810391306877136,
+      "improves_activations_fraction": 0.7083333134651184,
+      "improves_embedding_fraction": 0.2986111044883728,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "mirror/3/curvature/fixed_median": {
+      "images": 144,
+      "median_normalized_mse": 1.1373534202575684,
+      "mean_normalized_mse": 1.1689481735229492,
+      "median_original_embedding_distance": 0.15153130888938904,
+      "mean_original_embedding_distance": 0.16153907775878906,
+      "improves_activations_fraction": 0.4861111044883728,
+      "improves_embedding_fraction": 0.2777777910232544,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "mirror/3/curvature/ordinary_histogram": {
+      "images": 144,
+      "median_normalized_mse": 1.205535650253296,
+      "mean_normalized_mse": 1.2437578439712524,
+      "median_original_embedding_distance": 0.14292076230049133,
+      "mean_original_embedding_distance": 0.15464289486408234,
+      "improves_activations_fraction": 0.3958333432674408,
+      "improves_embedding_fraction": 0.3541666567325592,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "mirror/3/curvature/shuffled_donors": {
+      "images": 144,
+      "median_normalized_mse": 1.2644472122192383,
+      "mean_normalized_mse": 1.2597895860671997,
+      "median_original_embedding_distance": 0.1418195515871048,
+      "mean_original_embedding_distance": 0.15378503501415253,
+      "improves_activations_fraction": 0.3888888955116272,
+      "improves_embedding_fraction": 0.3402777910232544,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "mirror/3/curvature/identity": {
+      "images": 144,
+      "median_normalized_mse": 1.1486390829086304,
+      "mean_normalized_mse": 1.1709599494934082,
+      "median_original_embedding_distance": 0.13983464241027832,
+      "mean_original_embedding_distance": 0.1498652845621109,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.2361111044883728,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "mirror/3/sensor_matched/conditional_scene": {
+      "images": 144,
+      "median_normalized_mse": 1.0311261415481567,
+      "mean_normalized_mse": 1.0400272607803345,
+      "median_original_embedding_distance": 0.1407995969057083,
+      "mean_original_embedding_distance": 0.15075990557670593,
+      "improves_activations_fraction": 0.5763888955116272,
+      "improves_embedding_fraction": 0.4652777910232544,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "mirror/3/sensor_matched/conditional_shared": {
+      "images": 144,
+      "median_normalized_mse": 1.019096851348877,
+      "mean_normalized_mse": 1.026549220085144,
+      "median_original_embedding_distance": 0.13984496891498566,
+      "mean_original_embedding_distance": 0.15053917467594147,
+      "improves_activations_fraction": 0.5555555820465088,
+      "improves_embedding_fraction": 0.4861111044883728,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "mirror/3/sensor_matched/conditional_uniform": {
+      "images": 144,
+      "median_normalized_mse": 1.0306392908096313,
+      "mean_normalized_mse": 1.0507798194885254,
+      "median_original_embedding_distance": 0.14031527936458588,
+      "mean_original_embedding_distance": 0.15060113370418549,
+      "improves_activations_fraction": 0.5347222089767456,
+      "improves_embedding_fraction": 0.4791666567325592,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "mirror/3/sensor_matched/rotate_ranks": {
+      "images": 144,
+      "median_normalized_mse": 1.826673150062561,
+      "mean_normalized_mse": 1.7694611549377441,
+      "median_original_embedding_distance": 0.14402996003627777,
+      "mean_original_embedding_distance": 0.1531350463628769,
+      "improves_activations_fraction": 0.0416666679084301,
+      "improves_embedding_fraction": 0.3402777910232544,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "mirror/3/sensor_matched/conditional_mean": {
+      "images": 144,
+      "median_normalized_mse": 0.9903191924095154,
+      "mean_normalized_mse": 0.9726014733314514,
+      "median_original_embedding_distance": 0.14038388431072235,
+      "mean_original_embedding_distance": 0.1512858271598816,
+      "improves_activations_fraction": 0.625,
+      "improves_embedding_fraction": 0.4027777910232544,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "mirror/3/sensor_matched/fixed_median": {
+      "images": 144,
+      "median_normalized_mse": 1.072237253189087,
+      "mean_normalized_mse": 1.0665082931518555,
+      "median_original_embedding_distance": 0.13864828646183014,
+      "mean_original_embedding_distance": 0.15195174515247345,
+      "improves_activations_fraction": 0.4236111044883728,
+      "improves_embedding_fraction": 0.3888888955116272,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "mirror/3/sensor_matched/ordinary_histogram": {
+      "images": 144,
+      "median_normalized_mse": 1.1219879388809204,
+      "mean_normalized_mse": 1.1521486043930054,
+      "median_original_embedding_distance": 0.14216217398643494,
+      "mean_original_embedding_distance": 0.15122944116592407,
+      "improves_activations_fraction": 0.3680555522441864,
+      "improves_embedding_fraction": 0.4097222089767456,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "mirror/3/sensor_matched/shuffled_donors": {
+      "images": 144,
+      "median_normalized_mse": 1.1075420379638672,
+      "mean_normalized_mse": 1.12642240524292,
+      "median_original_embedding_distance": 0.1421099752187729,
+      "mean_original_embedding_distance": 0.15113048255443573,
+      "improves_activations_fraction": 0.4305555522441864,
+      "improves_embedding_fraction": 0.4305555522441864,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    },
+    "mirror/3/sensor_matched/identity": {
+      "images": 144,
+      "median_normalized_mse": 1.0465550422668457,
+      "mean_normalized_mse": 1.0946760177612305,
+      "median_original_embedding_distance": 0.13984403014183044,
+      "mean_original_embedding_distance": 0.14986668527126312,
+      "improves_activations_fraction": 0.0,
+      "improves_embedding_fraction": 0.0,
+      "median_fraction_PIT_tails": 0.030612245202064514
+    }
+  },
+  "known_warp_median_normalized_mse": {
+    "2/sensor/observed": 0.15534773468971252,
+    "2/sensor/conditional_uniform": 0.24725738167762756,
+    "2/sensor/conditional_scene": 0.22718995809555054,
+    "2/sensor/rotate_ranks": 1.4196990728378296,
+    "2/sensor/conditional_mean": 0.7512101531028748,
+    "2/curvature/observed": 0.19362495839595795,
+    "2/curvature/conditional_uniform": 0.27275052666664124,
+    "2/curvature/conditional_scene": 0.28728780150413513,
+    "2/curvature/rotate_ranks": 1.82830011844635,
+    "2/curvature/conditional_mean": 0.9030947089195251,
+    "2/sensor_matched/observed": 0.18538226187229156,
+    "2/sensor_matched/conditional_uniform": 0.3305714726448059,
+    "2/sensor_matched/conditional_scene": 0.27497267723083496,
+    "2/sensor_matched/rotate_ranks": 1.44121515750885,
+    "2/sensor_matched/conditional_mean": 0.7738452553749084,
+    "3/sensor/observed": 0.16094137728214264,
+    "3/sensor/conditional_uniform": 0.26256150007247925,
+    "3/sensor/conditional_scene": 0.23255597054958344,
+    "3/sensor/rotate_ranks": 1.5136475563049316,
+    "3/sensor/conditional_mean": 0.7711472511291504,
+    "3/curvature/observed": 0.19064193964004517,
+    "3/curvature/conditional_uniform": 0.21674098074436188,
+    "3/curvature/conditional_scene": 0.2327263057231903,
+    "3/curvature/rotate_ranks": 1.977858066558838,
+    "3/curvature/conditional_mean": 1.0021589994430542,
+    "3/sensor_matched/observed": 0.1989944726228714,
+    "3/sensor_matched/conditional_uniform": 0.19786645472049713,
+    "3/sensor_matched/conditional_scene": 0.1978977769613266,
+    "3/sensor_matched/rotate_ranks": 1.8305282592773438,
+    "3/sensor_matched/conditional_mean": 0.980053722858429
+  },
+  "per_query_sha256": "d700d5ce7f37d09797cecb3aeb243af7bb7b54f225c64a3d0b03c2ef43342035",
+  "scope": "camera perturbations of independent photos with their unclipped original values as reference; this is a mechanism check and does not estimate SBIR mAP"
+}
