@@ -20,7 +20,7 @@ FAMILY = "lexical-omission-recovery"
 
 
 def per_term_ap(scores, labels, classes, split):
-    order = scores.argsort(-1, descending=True, stable=True)
+    order = scores.argsort(dim=-1, descending=True, stable=True)
     k = 200 if split == "sketchy_2" else 100
     ranked = labels[order[:, :200] if split == "sketchy_2" else order]
     position = torch.arange(1, ranked.size(1) + 1, device=scores.device)
