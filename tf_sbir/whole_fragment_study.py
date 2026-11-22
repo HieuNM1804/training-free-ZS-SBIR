@@ -54,8 +54,11 @@ def evaluate(w,s,inputs,data,p,rows,kd):
     cat=catalog(w,s,inputs)
     qabs=qs[s][0][p["ids"]]
     full=raw[qabs].cuda()
-    singleton=2**torch.arange(6)
-    zz=data["subsets"][p["positions"]][:,:,singleton].cuda().float()
+    if "singletons" in data:
+        zz=data["singletons"][p["positions"]].cuda().float()
+    else:
+        singleton=2**torch.arange(6)
+        zz=data["subsets"][p["positions"]][:,:,singleton].cuda().float()
     group=cat["groups"].cuda()
     perm=cat["permutation"].cuda()
     detail=Replay(kd,p["g"],s) if kd else None
@@ -63,7 +66,8 @@ def evaluate(w,s,inputs,data,p,rows,kd):
     store,top,margin,worst=defaultdict(list),defaultdict(list),defaultdict(list),{}
     with (ThreadPoolExecutor(max_workers=2) if kd else nullcontext()) as pool:
         for j,configs in names.items():
-            readout=target_tables(w,s,"sketchy",inputs,cat,j)
+            dataset="tuberlin" if s=="tuberlin" else "sketchy"
+            readout=target_tables(w,s,dataset,inputs,cat,j)
             axes=src[cat["order"][:j]]
             source_full=prob(full,axes,scale)
             source_parts={}
