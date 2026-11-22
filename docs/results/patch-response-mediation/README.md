@@ -18,4 +18,10 @@ Trong một lượt kiểm tra độc lập, 240 ảnh gallery ngẫu nhiên dù
 
 Phương án đứng đầu theo trung bình mAP sử dụng phần thay đổi bắt đầu ở attention block 3, qua từ công khai, hệ số 1,5. Nó sửa/hỏng 5/7 top-1 ở Ext-1 và 10/12 ở Ext-2. Chênh mAP với trung bình hai đầu ra là −0,02 điểm ở Ext-1 và +0,62 điểm ở Ext-2. Khoảng tin cậy 95% theo lớp đều bao gồm 0. Kết quả cho thấy một nhóm neuron mang đáp ứng lặp lại ở cả hai miền. Điểm truy hồi chưa chứng minh sửa trực tiếp đáp ứng đó tạo được cải thiện ổn định. Chưa chấm TU-Berlin cho can thiệp này.
 
+## Đối chiếu với tiêu chí register của Jiang và cộng sự
+
+Áp tiêu chí đã công bố cho OpenCLIP B/16 lên đúng checkpoint OpenAI B/32 của thí nghiệm, giữ ngưỡng chuẩn token 75 và đọc sau block thứ 6. Trên 240 ảnh dùng xác định neuron lẫn 240 ảnh giữ lại, không có patch nào vượt ngưỡng. Ngay cả ngưỡng 30 trong mã công khai cũng không chọn được ảnh. Trong nhóm giữ lại, chuẩn lớn nhất ở từng ảnh có trung vị 4,54 và cực đại 5,89. Vì vậy không thể lấy nguyên ngưỡng hoặc danh sách neuron từ mô hình của tác giả để xác nhận register ở B/32.
+
+Khi thay ngưỡng bằng patch có chuẩn lớn nhất trong mỗi ảnh, không neuron nào trong tám neuron nhạy ở block 2 hoặc block 3 trùng với tám neuron đứng đầu theo tiêu chí hoạt hóa ở patch đó. Lấy ba patch có chuẩn lớn nhất cũng cho độ trùng 0/8 trên cả hai nhóm ảnh. Điều này cho thấy hai phép đo chọn những neuron khác nhau trong kiểm tra này. Việc gọi chúng là một loại neuron mới cần thêm bằng chứng về chức năng và hành vi truy hồi. [Thuật toán và tham số trong bài NeurIPS 2025](https://arxiv.org/html/2506.08010v1) · [Mã của nhóm tác giả](https://github.com/nickjiang2378/test-time-registers/blob/main/shared/algorithms.py)
+
 JSON và ZIP đi kèm lưu kết quả từng truy vấn, từng neuron và đối chứng phát lại. [Công thức và nguồn nghiên cứu](../../PATCH_RESPONSE_MEDIATION.md)

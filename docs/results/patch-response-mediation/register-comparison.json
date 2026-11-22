@@ -1,0 +1,341 @@
+{
+  "revision": "b7ca8db90435a7abea00afe6b83013d056274bb8",
+  "source": "Jiang et al., NeurIPS 2025, Section 3.2, top_layer 5 (zero based), strict threshold 75, top 10; criterion adapted to the original OpenAI B/32",
+  "public_code": "https://github.com/nickjiang2378/test-time-registers/blob/main/shared/algorithms.py",
+  "source_model_difference": "The authors' main demonstration uses OpenCLIP B/16. These are newly measured B/32 scores. Quantile and within-layer checks are diagnostic extensions.",
+  "design": "Published absolute activation averaged over selected positions first, and over qualifying images second. No sparsity filter. Top 10 globally within the first six blocks.",
+  "groups": {
+    "gallery_discovery": {
+      "images": 240,
+      "units_from_separate_curvature_criterion": {
+        "2": [
+          2892,
+          1029,
+          2307,
+          1540,
+          1341,
+          2579,
+          1697,
+          918
+        ],
+        "3": [
+          479,
+          839,
+          1504,
+          134,
+          2973,
+          1107,
+          1479,
+          877
+        ]
+      },
+      "outlier_detector_block_one_based": 6,
+      "image_patch_norm_max_quantiles": [
+        4.006899356842041,
+        4.580741882324219,
+        5.2825469970703125,
+        5.639671802520752
+      ],
+      "criteria": {
+        "paper_patches_75": {
+          "global_top10": null,
+          "qualifying_images": 0,
+          "median_positions_per_qualifying_image": null
+        },
+        "code_with_cls_75": {
+          "global_top10": null,
+          "qualifying_images": 0,
+          "median_positions_per_qualifying_image": null
+        },
+        "code_default_threshold30": {
+          "global_top10": null,
+          "qualifying_images": 0,
+          "median_positions_per_qualifying_image": null
+        },
+        "maximum_patch": {
+          "global_top10": [
+            [
+              4,
+              1152
+            ],
+            [
+              6,
+              478
+            ],
+            [
+              1,
+              1645
+            ],
+            [
+              2,
+              377
+            ],
+            [
+              5,
+              1215
+            ],
+            [
+              6,
+              2735
+            ],
+            [
+              1,
+              1633
+            ],
+            [
+              1,
+              211
+            ],
+            [
+              1,
+              311
+            ],
+            [
+              5,
+              1763
+            ]
+          ],
+          "global_top10_overlaps_sensitive_units": {
+            "2": [],
+            "3": []
+          },
+          "within_layer_top8_overlap": {
+            "2": 0,
+            "3": 0
+          },
+          "within_layer_sensitive_median_rank": {
+            "2": 1704.5,
+            "3": 856.0
+          },
+          "qualifying_images": 240,
+          "median_positions_per_qualifying_image": 1.0
+        },
+        "top_three_patches": {
+          "global_top10": [
+            [
+              4,
+              1152
+            ],
+            [
+              6,
+              478
+            ],
+            [
+              1,
+              1645
+            ],
+            [
+              2,
+              377
+            ],
+            [
+              5,
+              1215
+            ],
+            [
+              6,
+              2735
+            ],
+            [
+              1,
+              1633
+            ],
+            [
+              1,
+              311
+            ],
+            [
+              5,
+              1763
+            ],
+            [
+              1,
+              211
+            ]
+          ],
+          "global_top10_overlaps_sensitive_units": {
+            "2": [],
+            "3": []
+          },
+          "within_layer_top8_overlap": {
+            "2": 0,
+            "3": 0
+          },
+          "within_layer_sensitive_median_rank": {
+            "2": 1691.0,
+            "3": 770.0
+          },
+          "qualifying_images": 240,
+          "median_positions_per_qualifying_image": 3.0
+        }
+      }
+    },
+    "gallery_holdout": {
+      "images": 240,
+      "units_from_separate_curvature_criterion": {
+        "2": [
+          2892,
+          1029,
+          2307,
+          1540,
+          1341,
+          2579,
+          1697,
+          918
+        ],
+        "3": [
+          479,
+          839,
+          1504,
+          134,
+          2973,
+          1107,
+          1479,
+          877
+        ]
+      },
+      "outlier_detector_block_one_based": 6,
+      "image_patch_norm_max_quantiles": [
+        3.8657658100128174,
+        4.544233322143555,
+        5.358092308044434,
+        5.890714168548584
+      ],
+      "criteria": {
+        "paper_patches_75": {
+          "global_top10": null,
+          "qualifying_images": 0,
+          "median_positions_per_qualifying_image": null
+        },
+        "code_with_cls_75": {
+          "global_top10": null,
+          "qualifying_images": 0,
+          "median_positions_per_qualifying_image": null
+        },
+        "code_default_threshold30": {
+          "global_top10": null,
+          "qualifying_images": 0,
+          "median_positions_per_qualifying_image": null
+        },
+        "maximum_patch": {
+          "global_top10": [
+            [
+              4,
+              1152
+            ],
+            [
+              6,
+              478
+            ],
+            [
+              1,
+              1645
+            ],
+            [
+              2,
+              377
+            ],
+            [
+              6,
+              2735
+            ],
+            [
+              5,
+              1215
+            ],
+            [
+              1,
+              1633
+            ],
+            [
+              5,
+              1763
+            ],
+            [
+              1,
+              311
+            ],
+            [
+              6,
+              258
+            ]
+          ],
+          "global_top10_overlaps_sensitive_units": {
+            "2": [],
+            "3": []
+          },
+          "within_layer_top8_overlap": {
+            "2": 0,
+            "3": 0
+          },
+          "within_layer_sensitive_median_rank": {
+            "2": 1050.5,
+            "3": 1029.5
+          },
+          "qualifying_images": 240,
+          "median_positions_per_qualifying_image": 1.0
+        },
+        "top_three_patches": {
+          "global_top10": [
+            [
+              4,
+              1152
+            ],
+            [
+              6,
+              478
+            ],
+            [
+              2,
+              377
+            ],
+            [
+              1,
+              1645
+            ],
+            [
+              1,
+              311
+            ],
+            [
+              6,
+              2735
+            ],
+            [
+              5,
+              1215
+            ],
+            [
+              1,
+              1633
+            ],
+            [
+              5,
+              1763
+            ],
+            [
+              1,
+              89
+            ]
+          ],
+          "global_top10_overlaps_sensitive_units": {
+            "2": [],
+            "3": []
+          },
+          "within_layer_top8_overlap": {
+            "2": 0,
+            "3": 0
+          },
+          "within_layer_sensitive_median_rank": {
+            "2": 1192.0,
+            "3": 910.0
+          },
+          "qualifying_images": 240,
+          "median_positions_per_qualifying_image": 3.0
+        }
+      }
+    }
+  },
+  "per_query_sha256": "1f831792edf99e8bd2b463fd55d178be57139ad9b71f113730d37db18b122a14",
+  "device": "Tesla T4"
+}
