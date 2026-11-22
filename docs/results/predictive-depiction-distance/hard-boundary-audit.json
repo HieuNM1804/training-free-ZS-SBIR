@@ -1,0 +1,981 @@
+{
+  "revision": "7cb6d57fa4a2b971626c06b86e5a8a717c83038d",
+  "nominee": "64/gain/3/0.2",
+  "public_shape": 64,
+  "original_pilot": "e1cda3ef0543e90d55784cc34b94c79e18a84d5bc814fd84ee66d64b52fcc24c",
+  "summary": {
+    "sketchy_1": {
+      "native/all/right_above": {
+        "queries": 266,
+        "pairs": 965,
+        "strictly_reordered_pairs": 470,
+        "correct_evidence_per_query": 0.3880684213635186,
+        "correct_evidence_per_pair": 0.47564766839378236,
+        "fraction_crossing_original_margin_per_query": 0.5666619424448031,
+        "mean_incumbent_margin_per_query": 0.006301719752146816,
+        "mean_relevant_minus_wrong_per_query": -0.06488697905500931
+      },
+      "native/all/right_below": {
+        "queries": 262,
+        "pairs": 967,
+        "strictly_reordered_pairs": 425,
+        "correct_evidence_per_query": 0.39037421690995683,
+        "correct_evidence_per_pair": 0.4622543950361944,
+        "fraction_crossing_original_margin_per_query": 0.37341104814420556,
+        "mean_incumbent_margin_per_query": 0.004052659440460873,
+        "mean_relevant_minus_wrong_per_query": -0.06347751427838591
+      },
+      "native/small_margin/right_above": {
+        "queries": 159,
+        "pairs": 518,
+        "strictly_reordered_pairs": 254,
+        "correct_evidence_per_query": 0.39036472398828403,
+        "correct_evidence_per_pair": 0.5019305019305019,
+        "fraction_crossing_original_margin_per_query": 0.599387661990517,
+        "mean_incumbent_margin_per_query": 0.00036935470926588855,
+        "mean_relevant_minus_wrong_per_query": -0.06436132883328238
+      },
+      "native/small_margin/right_below": {
+        "queries": 161,
+        "pairs": 508,
+        "strictly_reordered_pairs": 240,
+        "correct_evidence_per_query": 0.3872296612979843,
+        "correct_evidence_per_pair": 0.4744094488188976,
+        "fraction_crossing_original_margin_per_query": 0.3856768662669284,
+        "mean_incumbent_margin_per_query": 0.00031693623317310173,
+        "mean_relevant_minus_wrong_per_query": -0.06267032245432833
+      },
+      "native/first50/right_above": {
+        "queries": 32,
+        "pairs": 88,
+        "strictly_reordered_pairs": 33,
+        "correct_evidence_per_query": 0.5569711538461538,
+        "correct_evidence_per_pair": 0.5795454545454546,
+        "fraction_crossing_original_margin_per_query": 0.36959134615384615,
+        "mean_incumbent_margin_per_query": 0.028219012906536077,
+        "mean_relevant_minus_wrong_per_query": 0.017152039608002725
+      },
+      "native/first50/right_below": {
+        "queries": 31,
+        "pairs": 87,
+        "strictly_reordered_pairs": 49,
+        "correct_evidence_per_query": 0.6102150537634408,
+        "correct_evidence_per_pair": 0.6206896551724138,
+        "fraction_crossing_original_margin_per_query": 0.5215053763440859,
+        "mean_incumbent_margin_per_query": 0.012289906119984768,
+        "mean_relevant_minus_wrong_per_query": -0.0029991802693990917
+      },
+      "predict/all/right_above": {
+        "queries": 266,
+        "pairs": 965,
+        "strictly_reordered_pairs": 464,
+        "correct_evidence_per_query": 0.4246327211596652,
+        "correct_evidence_per_pair": 0.49119170984455957,
+        "fraction_crossing_original_margin_per_query": 0.5452609195837974,
+        "mean_incumbent_margin_per_query": 0.006301719752146816,
+        "mean_relevant_minus_wrong_per_query": -0.04896398587230692
+      },
+      "predict/all/right_below": {
+        "queries": 262,
+        "pairs": 967,
+        "strictly_reordered_pairs": 425,
+        "correct_evidence_per_query": 0.4109161343911261,
+        "correct_evidence_per_pair": 0.46639089968976216,
+        "fraction_crossing_original_margin_per_query": 0.3846281268107812,
+        "mean_incumbent_margin_per_query": 0.004052659440460873,
+        "mean_relevant_minus_wrong_per_query": -0.04874066513564529
+      },
+      "predict/small_margin/right_above": {
+        "queries": 159,
+        "pairs": 518,
+        "strictly_reordered_pairs": 251,
+        "correct_evidence_per_query": 0.4132471869765681,
+        "correct_evidence_per_pair": 0.5135135135135135,
+        "fraction_crossing_original_margin_per_query": 0.5859666495014192,
+        "mean_incumbent_margin_per_query": 0.00036935470926588855,
+        "mean_relevant_minus_wrong_per_query": -0.05096820729929158
+      },
+      "predict/small_margin/right_below": {
+        "queries": 161,
+        "pairs": 508,
+        "strictly_reordered_pairs": 243,
+        "correct_evidence_per_query": 0.3949852562896041,
+        "correct_evidence_per_pair": 0.4822834645669291,
+        "fraction_crossing_original_margin_per_query": 0.38773887947800995,
+        "mean_incumbent_margin_per_query": 0.00031693623317310173,
+        "mean_relevant_minus_wrong_per_query": -0.05036784732235329
+      },
+      "predict/first50/right_above": {
+        "queries": 32,
+        "pairs": 88,
+        "strictly_reordered_pairs": 32,
+        "correct_evidence_per_query": 0.5632211538461538,
+        "correct_evidence_per_pair": 0.6022727272727273,
+        "fraction_crossing_original_margin_per_query": 0.36646634615384616,
+        "mean_incumbent_margin_per_query": 0.028219012906536077,
+        "mean_relevant_minus_wrong_per_query": 0.026264039676986702
+      },
+      "predict/first50/right_below": {
+        "queries": 31,
+        "pairs": 87,
+        "strictly_reordered_pairs": 45,
+        "correct_evidence_per_query": 0.651157981803143,
+        "correct_evidence_per_pair": 0.6091954022988506,
+        "fraction_crossing_original_margin_per_query": 0.5108354011579818,
+        "mean_incumbent_margin_per_query": 0.012289906119984768,
+        "mean_relevant_minus_wrong_per_query": 0.007284610028894013
+      },
+      "gain/all/right_above": {
+        "queries": 266,
+        "pairs": 965,
+        "strictly_reordered_pairs": 257,
+        "correct_evidence_per_query": 0.7295982984513024,
+        "correct_evidence_per_pair": 0.6414507772020726,
+        "fraction_crossing_original_margin_per_query": 0.17139985468814345,
+        "mean_incumbent_margin_per_query": 0.006301719752146816,
+        "mean_relevant_minus_wrong_per_query": 0.01592299285689018
+      },
+      "gain/all/right_below": {
+        "queries": 262,
+        "pairs": 967,
+        "strictly_reordered_pairs": 515,
+        "correct_evidence_per_query": 0.7014416553169011,
+        "correct_evidence_per_pair": 0.6463288521199586,
+        "fraction_crossing_original_margin_per_query": 0.5916588558017106,
+        "mean_incumbent_margin_per_query": 0.004052659440460873,
+        "mean_relevant_minus_wrong_per_query": 0.014736849091334655
+      },
+      "gain/small_margin/right_above": {
+        "queries": 159,
+        "pairs": 518,
+        "strictly_reordered_pairs": 164,
+        "correct_evidence_per_query": 0.7269753882406491,
+        "correct_evidence_per_pair": 0.6621621621621622,
+        "fraction_crossing_original_margin_per_query": 0.26152182384146866,
+        "mean_incumbent_margin_per_query": 0.00036935470926588855,
+        "mean_relevant_minus_wrong_per_query": 0.013393120914168107
+      },
+      "gain/small_margin/right_below": {
+        "queries": 161,
+        "pairs": 508,
+        "strictly_reordered_pairs": 309,
+        "correct_evidence_per_query": 0.6575049277844309,
+        "correct_evidence_per_pair": 0.6299212598425197,
+        "fraction_crossing_original_margin_per_query": 0.6413533257632638,
+        "mean_incumbent_margin_per_query": 0.00031693623317310173,
+        "mean_relevant_minus_wrong_per_query": 0.012302475168974985
+      },
+      "gain/first50/right_above": {
+        "queries": 32,
+        "pairs": 88,
+        "strictly_reordered_pairs": 27,
+        "correct_evidence_per_query": 0.6086805555555556,
+        "correct_evidence_per_pair": 0.5454545454545454,
+        "fraction_crossing_original_margin_per_query": 0.16284722222222223,
+        "mean_incumbent_margin_per_query": 0.028219012906536077,
+        "mean_relevant_minus_wrong_per_query": 0.009111999427406196
+      },
+      "gain/first50/right_below": {
+        "queries": 31,
+        "pairs": 87,
+        "strictly_reordered_pairs": 40,
+        "correct_evidence_per_query": 0.707258064516129,
+        "correct_evidence_per_pair": 0.6091954022988506,
+        "fraction_crossing_original_margin_per_query": 0.5279569892473118,
+        "mean_incumbent_margin_per_query": 0.012289906119984768,
+        "mean_relevant_minus_wrong_per_query": 0.010283790778975727
+      },
+      "inside_gain/all/right_above": {
+        "queries": 266,
+        "pairs": 965,
+        "strictly_reordered_pairs": 257,
+        "correct_evidence_per_query": 0.7293683373740432,
+        "correct_evidence_per_pair": 0.6424870466321243,
+        "fraction_crossing_original_margin_per_query": 0.17202407911262982,
+        "mean_incumbent_margin_per_query": 0.006301719752146816,
+        "mean_relevant_minus_wrong_per_query": 0.016509712967711736
+      },
+      "inside_gain/all/right_below": {
+        "queries": 262,
+        "pairs": 967,
+        "strictly_reordered_pairs": 517,
+        "correct_evidence_per_query": 0.7025458500304566,
+        "correct_evidence_per_pair": 0.6473629782833505,
+        "fraction_crossing_original_margin_per_query": 0.5890850594546515,
+        "mean_incumbent_margin_per_query": 0.004052659440460873,
+        "mean_relevant_minus_wrong_per_query": 0.015112471706233022
+      },
+      "inside_gain/small_margin/right_above": {
+        "queries": 159,
+        "pairs": 518,
+        "strictly_reordered_pairs": 163,
+        "correct_evidence_per_query": 0.7260304038050986,
+        "correct_evidence_per_pair": 0.6621621621621622,
+        "fraction_crossing_original_margin_per_query": 0.2562644563476972,
+        "mean_incumbent_margin_per_query": 0.00036935470926588855,
+        "mean_relevant_minus_wrong_per_query": 0.013735562056429867
+      },
+      "inside_gain/small_margin/right_below": {
+        "queries": 161,
+        "pairs": 508,
+        "strictly_reordered_pairs": 311,
+        "correct_evidence_per_query": 0.6547713604545903,
+        "correct_evidence_per_pair": 0.6338582677165354,
+        "fraction_crossing_original_margin_per_query": 0.6440325823245079,
+        "mean_incumbent_margin_per_query": 0.00031693623317310173,
+        "mean_relevant_minus_wrong_per_query": 0.012664935230809122
+      },
+      "inside_gain/first50/right_above": {
+        "queries": 32,
+        "pairs": 88,
+        "strictly_reordered_pairs": 27,
+        "correct_evidence_per_query": 0.6086805555555556,
+        "correct_evidence_per_pair": 0.5454545454545454,
+        "fraction_crossing_original_margin_per_query": 0.1753472222222222,
+        "mean_incumbent_margin_per_query": 0.028219012906536077,
+        "mean_relevant_minus_wrong_per_query": 0.009044580101871338
+      },
+      "inside_gain/first50/right_below": {
+        "queries": 31,
+        "pairs": 87,
+        "strictly_reordered_pairs": 40,
+        "correct_evidence_per_query": 0.675,
+        "correct_evidence_per_pair": 0.5977011494252874,
+        "fraction_crossing_original_margin_per_query": 0.5064516129032258,
+        "mean_incumbent_margin_per_query": 0.012289906119984768,
+        "mean_relevant_minus_wrong_per_query": 0.010395638421609246
+      },
+      "source_gain/all/right_above": {
+        "queries": 266,
+        "pairs": 965,
+        "strictly_reordered_pairs": 304,
+        "correct_evidence_per_query": 0.5822221215812963,
+        "correct_evidence_per_pair": 0.5305699481865285,
+        "fraction_crossing_original_margin_per_query": 0.24382157094530107,
+        "mean_incumbent_margin_per_query": 0.006301719752146816,
+        "mean_relevant_minus_wrong_per_query": 0.0019716234789508217
+      },
+      "source_gain/all/right_below": {
+        "queries": 262,
+        "pairs": 967,
+        "strictly_reordered_pairs": 395,
+        "correct_evidence_per_query": 0.577572273039189,
+        "correct_evidence_per_pair": 0.5149948293691831,
+        "fraction_crossing_original_margin_per_query": 0.39301027437729785,
+        "mean_incumbent_margin_per_query": 0.004052659440460873,
+        "mean_relevant_minus_wrong_per_query": 0.0022593974791723336
+      },
+      "source_gain/small_margin/right_above": {
+        "queries": 159,
+        "pairs": 518,
+        "strictly_reordered_pairs": 214,
+        "correct_evidence_per_query": 0.5274460098353091,
+        "correct_evidence_per_pair": 0.528957528957529,
+        "fraction_crossing_original_margin_per_query": 0.3964511123654222,
+        "mean_incumbent_margin_per_query": 0.00036935470926588855,
+        "mean_relevant_minus_wrong_per_query": 0.0007370815051475903
+      },
+      "source_gain/small_margin/right_below": {
+        "queries": 161,
+        "pairs": 508,
+        "strictly_reordered_pairs": 243,
+        "correct_evidence_per_query": 0.5754201285257186,
+        "correct_evidence_per_pair": 0.5196850393700787,
+        "fraction_crossing_original_margin_per_query": 0.5219938963727783,
+        "mean_incumbent_margin_per_query": 0.00031693623317310173,
+        "mean_relevant_minus_wrong_per_query": 0.0013274849256700776
+      },
+      "source_gain/first50/right_above": {
+        "queries": 32,
+        "pairs": 88,
+        "strictly_reordered_pairs": 21,
+        "correct_evidence_per_query": 0.45865384615384613,
+        "correct_evidence_per_pair": 0.5113636363636364,
+        "fraction_crossing_original_margin_per_query": 0.198838141025641,
+        "mean_incumbent_margin_per_query": 0.028219012906536077,
+        "mean_relevant_minus_wrong_per_query": 0.0031951106686750027
+      },
+      "source_gain/first50/right_below": {
+        "queries": 31,
+        "pairs": 87,
+        "strictly_reordered_pairs": 32,
+        "correct_evidence_per_query": 0.5516129032258064,
+        "correct_evidence_per_pair": 0.4827586206896552,
+        "fraction_crossing_original_margin_per_query": 0.3596774193548387,
+        "mean_incumbent_margin_per_query": 0.012289906119984768,
+        "mean_relevant_minus_wrong_per_query": 0.004043637944510203
+      },
+      "target_gain/all/right_above": {
+        "queries": 266,
+        "pairs": 965,
+        "strictly_reordered_pairs": 250,
+        "correct_evidence_per_query": 0.7110918990068177,
+        "correct_evidence_per_pair": 0.6652849740932643,
+        "fraction_crossing_original_margin_per_query": 0.1974349743554808,
+        "mean_incumbent_margin_per_query": 0.006301719752146816,
+        "mean_relevant_minus_wrong_per_query": 0.01522724405714882
+      },
+      "target_gain/all/right_below": {
+        "queries": 262,
+        "pairs": 967,
+        "strictly_reordered_pairs": 513,
+        "correct_evidence_per_query": 0.6911146161141656,
+        "correct_evidence_per_pair": 0.6504653567735263,
+        "fraction_crossing_original_margin_per_query": 0.5713931591332616,
+        "mean_incumbent_margin_per_query": 0.004052659440460873,
+        "mean_relevant_minus_wrong_per_query": 0.01363955653522417
+      },
+      "target_gain/small_margin/right_above": {
+        "queries": 159,
+        "pairs": 518,
+        "strictly_reordered_pairs": 159,
+        "correct_evidence_per_query": 0.6892375536659665,
+        "correct_evidence_per_pair": 0.6718146718146718,
+        "fraction_crossing_original_margin_per_query": 0.2776258825648393,
+        "mean_incumbent_margin_per_query": 0.00036935470926588855,
+        "mean_relevant_minus_wrong_per_query": 0.01345328652044727
+      },
+      "target_gain/small_margin/right_below": {
+        "queries": 161,
+        "pairs": 508,
+        "strictly_reordered_pairs": 305,
+        "correct_evidence_per_query": 0.6493181352808682,
+        "correct_evidence_per_pair": 0.6299212598425197,
+        "fraction_crossing_original_margin_per_query": 0.6051550519873501,
+        "mean_incumbent_margin_per_query": 0.00031693623317310173,
+        "mean_relevant_minus_wrong_per_query": 0.011697232659541935
+      },
+      "target_gain/first50/right_above": {
+        "queries": 32,
+        "pairs": 88,
+        "strictly_reordered_pairs": 31,
+        "correct_evidence_per_query": 0.6048611111111111,
+        "correct_evidence_per_pair": 0.5340909090909091,
+        "fraction_crossing_original_margin_per_query": 0.23229166666666667,
+        "mean_incumbent_margin_per_query": 0.028219012906536077,
+        "mean_relevant_minus_wrong_per_query": 0.006455068142177202
+      },
+      "target_gain/first50/right_below": {
+        "queries": 31,
+        "pairs": 87,
+        "strictly_reordered_pairs": 36,
+        "correct_evidence_per_query": 0.6499999999999999,
+        "correct_evidence_per_pair": 0.5517241379310345,
+        "fraction_crossing_original_margin_per_query": 0.5091397849462366,
+        "mean_incumbent_margin_per_query": 0.012289906119984768,
+        "mean_relevant_minus_wrong_per_query": 0.006506668066958735
+      },
+      "permuted_gain/all/right_above": {
+        "queries": 266,
+        "pairs": 965,
+        "strictly_reordered_pairs": 333,
+        "correct_evidence_per_query": 0.5668107915175639,
+        "correct_evidence_per_pair": 0.49430051813471504,
+        "fraction_crossing_original_margin_per_query": 0.2687892053495478,
+        "mean_incumbent_margin_per_query": 0.006301719752146816,
+        "mean_relevant_minus_wrong_per_query": 0.0022849885663473427
+      },
+      "permuted_gain/all/right_below": {
+        "queries": 262,
+        "pairs": 967,
+        "strictly_reordered_pairs": 374,
+        "correct_evidence_per_query": 0.5464640971803958,
+        "correct_evidence_per_pair": 0.49120992761116855,
+        "fraction_crossing_original_margin_per_query": 0.3856028918222589,
+        "mean_incumbent_margin_per_query": 0.004052659440460873,
+        "mean_relevant_minus_wrong_per_query": 0.0022183198279687277
+      },
+      "permuted_gain/small_margin/right_above": {
+        "queries": 159,
+        "pairs": 518,
+        "strictly_reordered_pairs": 227,
+        "correct_evidence_per_query": 0.5153276495023213,
+        "correct_evidence_per_pair": 0.5057915057915058,
+        "fraction_crossing_original_margin_per_query": 0.41876399260818875,
+        "mean_incumbent_margin_per_query": 0.00036935470926588855,
+        "mean_relevant_minus_wrong_per_query": 0.0009988953487284622
+      },
+      "permuted_gain/small_margin/right_below": {
+        "queries": 161,
+        "pairs": 508,
+        "strictly_reordered_pairs": 236,
+        "correct_evidence_per_query": 0.5435336058006864,
+        "correct_evidence_per_pair": 0.5,
+        "fraction_crossing_original_margin_per_query": 0.4871916144586952,
+        "mean_incumbent_margin_per_query": 0.00031693623317310173,
+        "mean_relevant_minus_wrong_per_query": 0.0011902365297630914
+      },
+      "permuted_gain/first50/right_above": {
+        "queries": 32,
+        "pairs": 88,
+        "strictly_reordered_pairs": 26,
+        "correct_evidence_per_query": 0.5051816239316239,
+        "correct_evidence_per_pair": 0.4318181818181818,
+        "fraction_crossing_original_margin_per_query": 0.17346420940170942,
+        "mean_incumbent_margin_per_query": 0.028219012906536077,
+        "mean_relevant_minus_wrong_per_query": 0.003882485628128052
+      },
+      "permuted_gain/first50/right_below": {
+        "queries": 31,
+        "pairs": 87,
+        "strictly_reordered_pairs": 22,
+        "correct_evidence_per_query": 0.46296526054590575,
+        "correct_evidence_per_pair": 0.39080459770114945,
+        "fraction_crossing_original_margin_per_query": 0.2967741935483871,
+        "mean_incumbent_margin_per_query": 0.012289906119984768,
+        "mean_relevant_minus_wrong_per_query": 0.003679447235944747
+      },
+      "predict_specificity/all/right_above": {
+        "queries": 266,
+        "pairs": 965,
+        "strictly_reordered_pairs": 270,
+        "correct_evidence_per_query": 0.7001737105896731,
+        "correct_evidence_per_pair": 0.655958549222798,
+        "fraction_crossing_original_margin_per_query": 0.21622064004575478,
+        "mean_incumbent_margin_per_query": 0.006301719752146816,
+        "mean_relevant_minus_wrong_per_query": 0.013638004293955786
+      },
+      "predict_specificity/all/right_below": {
+        "queries": 262,
+        "pairs": 967,
+        "strictly_reordered_pairs": 511,
+        "correct_evidence_per_query": 0.7022857122519067,
+        "correct_evidence_per_pair": 0.6463288521199586,
+        "fraction_crossing_original_margin_per_query": 0.5733045070994877,
+        "mean_incumbent_margin_per_query": 0.004052659440460873,
+        "mean_relevant_minus_wrong_per_query": 0.01251852927021532
+      },
+      "predict_specificity/small_margin/right_above": {
+        "queries": 159,
+        "pairs": 518,
+        "strictly_reordered_pairs": 168,
+        "correct_evidence_per_query": 0.697362169420993,
+        "correct_evidence_per_pair": 0.6583011583011583,
+        "fraction_crossing_original_margin_per_query": 0.2849982025620205,
+        "mean_incumbent_margin_per_query": 0.00036935470926588855,
+        "mean_relevant_minus_wrong_per_query": 0.012394225552513025
+      },
+      "predict_specificity/small_margin/right_below": {
+        "queries": 161,
+        "pairs": 508,
+        "strictly_reordered_pairs": 306,
+        "correct_evidence_per_query": 0.6771689766410263,
+        "correct_evidence_per_pair": 0.6318897637795275,
+        "fraction_crossing_original_margin_per_query": 0.628083400381537,
+        "mean_incumbent_margin_per_query": 0.00031693623317310173,
+        "mean_relevant_minus_wrong_per_query": 0.011112238644148092
+      },
+      "predict_specificity/first50/right_above": {
+        "queries": 32,
+        "pairs": 88,
+        "strictly_reordered_pairs": 33,
+        "correct_evidence_per_query": 0.6282986111111111,
+        "correct_evidence_per_pair": 0.5340909090909091,
+        "fraction_crossing_original_margin_per_query": 0.26041666666666663,
+        "mean_incumbent_margin_per_query": 0.028219012906536077,
+        "mean_relevant_minus_wrong_per_query": 0.005229513799278145
+      },
+      "predict_specificity/first50/right_below": {
+        "queries": 31,
+        "pairs": 87,
+        "strictly_reordered_pairs": 37,
+        "correct_evidence_per_query": 0.6701612903225806,
+        "correct_evidence_per_pair": 0.5632183908045977,
+        "fraction_crossing_original_margin_per_query": 0.500268817204301,
+        "mean_incumbent_margin_per_query": 0.012289906119984768,
+        "mean_relevant_minus_wrong_per_query": 0.006604343543030981
+      }
+    },
+    "sketchy_2": {
+      "native/all/right_above": {
+        "queries": 263,
+        "pairs": 2711,
+        "strictly_reordered_pairs": 1290,
+        "correct_evidence_per_query": 0.3725311006639304,
+        "correct_evidence_per_pair": 0.49206934710438954,
+        "fraction_crossing_original_margin_per_query": 0.5674632499595264,
+        "mean_incumbent_margin_per_query": 0.0074717493017664935,
+        "mean_relevant_minus_wrong_per_query": -0.051364307499744424
+      },
+      "native/all/right_below": {
+        "queries": 266,
+        "pairs": 2688,
+        "strictly_reordered_pairs": 1311,
+        "correct_evidence_per_query": 0.41310406105254577,
+        "correct_evidence_per_pair": 0.5159970238095238,
+        "fraction_crossing_original_margin_per_query": 0.36591766185520475,
+        "mean_incumbent_margin_per_query": 0.012597074140681699,
+        "mean_relevant_minus_wrong_per_query": -0.047011725116761854
+      },
+      "native/small_margin/right_above": {
+        "queries": 183,
+        "pairs": 1289,
+        "strictly_reordered_pairs": 642,
+        "correct_evidence_per_query": 0.43536886687668835,
+        "correct_evidence_per_pair": 0.49883630721489525,
+        "fraction_crossing_original_margin_per_query": 0.561857495103772,
+        "mean_incumbent_margin_per_query": 0.0004745089960015792,
+        "mean_relevant_minus_wrong_per_query": -0.02465346334659832
+      },
+      "native/small_margin/right_below": {
+        "queries": 180,
+        "pairs": 1309,
+        "strictly_reordered_pairs": 665,
+        "correct_evidence_per_query": 0.44204584471379094,
+        "correct_evidence_per_pair": 0.5133689839572193,
+        "fraction_crossing_original_margin_per_query": 0.43815974397720003,
+        "mean_incumbent_margin_per_query": 0.0005252677848039219,
+        "mean_relevant_minus_wrong_per_query": -0.027742130273720047
+      },
+      "native/first50/right_above": {
+        "queries": 113,
+        "pairs": 348,
+        "strictly_reordered_pairs": 166,
+        "correct_evidence_per_query": 0.4078362640309543,
+        "correct_evidence_per_pair": 0.45977011494252873,
+        "fraction_crossing_original_margin_per_query": 0.5014452361797495,
+        "mean_incumbent_margin_per_query": 0.017062395441544163,
+        "mean_relevant_minus_wrong_per_query": -0.04255018660938506
+      },
+      "native/first50/right_below": {
+        "queries": 122,
+        "pairs": 362,
+        "strictly_reordered_pairs": 156,
+        "correct_evidence_per_query": 0.48272833723653397,
+        "correct_evidence_per_pair": 0.5165745856353591,
+        "fraction_crossing_original_margin_per_query": 0.33481329690346084,
+        "mean_incumbent_margin_per_query": 0.03353854796243092,
+        "mean_relevant_minus_wrong_per_query": -0.02029948036845327
+      },
+      "predict/all/right_above": {
+        "queries": 263,
+        "pairs": 2711,
+        "strictly_reordered_pairs": 1290,
+        "correct_evidence_per_query": 0.3673850425094092,
+        "correct_evidence_per_pair": 0.4913316119513095,
+        "fraction_crossing_original_margin_per_query": 0.5691663475669974,
+        "mean_incumbent_margin_per_query": 0.0074717493017664935,
+        "mean_relevant_minus_wrong_per_query": -0.05390756539725673
+      },
+      "predict/all/right_below": {
+        "queries": 266,
+        "pairs": 2688,
+        "strictly_reordered_pairs": 1301,
+        "correct_evidence_per_query": 0.4034835068594183,
+        "correct_evidence_per_pair": 0.5100446428571429,
+        "fraction_crossing_original_margin_per_query": 0.35874893279431963,
+        "mean_incumbent_margin_per_query": 0.012597074140681699,
+        "mean_relevant_minus_wrong_per_query": -0.052226591541813014
+      },
+      "predict/small_margin/right_above": {
+        "queries": 183,
+        "pairs": 1289,
+        "strictly_reordered_pairs": 638,
+        "correct_evidence_per_query": 0.43606807502255124,
+        "correct_evidence_per_pair": 0.5003878975950349,
+        "fraction_crossing_original_margin_per_query": 0.5554542974608161,
+        "mean_incumbent_margin_per_query": 0.0004745089960015792,
+        "mean_relevant_minus_wrong_per_query": -0.029136453549495595
+      },
+      "predict/small_margin/right_below": {
+        "queries": 180,
+        "pairs": 1309,
+        "strictly_reordered_pairs": 667,
+        "correct_evidence_per_query": 0.4320087672521527,
+        "correct_evidence_per_pair": 0.5118411000763942,
+        "fraction_crossing_original_margin_per_query": 0.4258800194567382,
+        "mean_incumbent_margin_per_query": 0.0005252677848039219,
+        "mean_relevant_minus_wrong_per_query": -0.03665783068818068
+      },
+      "predict/first50/right_above": {
+        "queries": 113,
+        "pairs": 348,
+        "strictly_reordered_pairs": 165,
+        "correct_evidence_per_query": 0.4161616161616161,
+        "correct_evidence_per_pair": 0.46839080459770116,
+        "fraction_crossing_original_margin_per_query": 0.4956444980781263,
+        "mean_incumbent_margin_per_query": 0.017062395441544163,
+        "mean_relevant_minus_wrong_per_query": -0.04305401835398173
+      },
+      "predict/first50/right_below": {
+        "queries": 122,
+        "pairs": 362,
+        "strictly_reordered_pairs": 154,
+        "correct_evidence_per_query": 0.4628285193858964,
+        "correct_evidence_per_pair": 0.5082872928176796,
+        "fraction_crossing_original_margin_per_query": 0.3136937288576633,
+        "mean_incumbent_margin_per_query": 0.03353854796243092,
+        "mean_relevant_minus_wrong_per_query": -0.023374587803450902
+      },
+      "gain/all/right_above": {
+        "queries": 263,
+        "pairs": 2711,
+        "strictly_reordered_pairs": 1093,
+        "correct_evidence_per_query": 0.46922327102044736,
+        "correct_evidence_per_pair": 0.46956842493544815,
+        "fraction_crossing_original_margin_per_query": 0.3715441410933979,
+        "mean_incumbent_margin_per_query": 0.0074717493017664935,
+        "mean_relevant_minus_wrong_per_query": -0.002543258385816512
+      },
+      "gain/all/right_below": {
+        "queries": 266,
+        "pairs": 2688,
+        "strictly_reordered_pairs": 971,
+        "correct_evidence_per_query": 0.47810007589818015,
+        "correct_evidence_per_pair": 0.45944940476190477,
+        "fraction_crossing_original_margin_per_query": 0.33781060568691523,
+        "mean_incumbent_margin_per_query": 0.012597074140681699,
+        "mean_relevant_minus_wrong_per_query": -0.005214866702664912
+      },
+      "gain/small_margin/right_above": {
+        "queries": 183,
+        "pairs": 1289,
+        "strictly_reordered_pairs": 664,
+        "correct_evidence_per_query": 0.46675609976422766,
+        "correct_evidence_per_pair": 0.46314972847168345,
+        "fraction_crossing_original_margin_per_query": 0.5112404946991539,
+        "mean_incumbent_margin_per_query": 0.0004745089960015792,
+        "mean_relevant_minus_wrong_per_query": -0.004482990110591681
+      },
+      "gain/small_margin/right_below": {
+        "queries": 180,
+        "pairs": 1309,
+        "strictly_reordered_pairs": 553,
+        "correct_evidence_per_query": 0.4247036354935531,
+        "correct_evidence_per_pair": 0.452253628724217,
+        "fraction_crossing_original_margin_per_query": 0.3892950811600494,
+        "mean_incumbent_margin_per_query": 0.0005252677848039219,
+        "mean_relevant_minus_wrong_per_query": -0.008915700703930394
+      },
+      "gain/first50/right_above": {
+        "queries": 113,
+        "pairs": 348,
+        "strictly_reordered_pairs": 132,
+        "correct_evidence_per_query": 0.4167627603468312,
+        "correct_evidence_per_pair": 0.4511494252873563,
+        "fraction_crossing_original_margin_per_query": 0.3358317690176097,
+        "mean_incumbent_margin_per_query": 0.017062395441544163,
+        "mean_relevant_minus_wrong_per_query": -0.000503832200409439
+      },
+      "gain/first50/right_below": {
+        "queries": 122,
+        "pairs": 362,
+        "strictly_reordered_pairs": 121,
+        "correct_evidence_per_query": 0.4648126463700234,
+        "correct_evidence_per_pair": 0.47790055248618785,
+        "fraction_crossing_original_margin_per_query": 0.24594067135050743,
+        "mean_incumbent_margin_per_query": 0.03353854796243092,
+        "mean_relevant_minus_wrong_per_query": -0.003075107173073766
+      },
+      "inside_gain/all/right_above": {
+        "queries": 263,
+        "pairs": 2711,
+        "strictly_reordered_pairs": 1104,
+        "correct_evidence_per_query": 0.4656027271916261,
+        "correct_evidence_per_pair": 0.4714127628181483,
+        "fraction_crossing_original_margin_per_query": 0.371325797253238,
+        "mean_incumbent_margin_per_query": 0.0074717493017664935,
+        "mean_relevant_minus_wrong_per_query": -0.0025352412186417967
+      },
+      "inside_gain/all/right_below": {
+        "queries": 266,
+        "pairs": 2688,
+        "strictly_reordered_pairs": 978,
+        "correct_evidence_per_query": 0.479778640465953,
+        "correct_evidence_per_pair": 0.45907738095238093,
+        "fraction_crossing_original_margin_per_query": 0.34924943482699766,
+        "mean_incumbent_margin_per_query": 0.012597074140681699,
+        "mean_relevant_minus_wrong_per_query": -0.005239825614977106
+      },
+      "inside_gain/small_margin/right_above": {
+        "queries": 183,
+        "pairs": 1289,
+        "strictly_reordered_pairs": 668,
+        "correct_evidence_per_query": 0.46159720599099247,
+        "correct_evidence_per_pair": 0.45927075252133437,
+        "fraction_crossing_original_margin_per_query": 0.5182531283921155,
+        "mean_incumbent_margin_per_query": 0.0004745089960015792,
+        "mean_relevant_minus_wrong_per_query": -0.004759859895985517
+      },
+      "inside_gain/small_margin/right_below": {
+        "queries": 180,
+        "pairs": 1309,
+        "strictly_reordered_pairs": 553,
+        "correct_evidence_per_query": 0.42391195124936715,
+        "correct_evidence_per_pair": 0.4507257448433919,
+        "fraction_crossing_original_margin_per_query": 0.39517270119546183,
+        "mean_incumbent_margin_per_query": 0.0005252677848039219,
+        "mean_relevant_minus_wrong_per_query": -0.009253489199211892
+      },
+      "inside_gain/first50/right_above": {
+        "queries": 113,
+        "pairs": 348,
+        "strictly_reordered_pairs": 132,
+        "correct_evidence_per_query": 0.40680700813444176,
+        "correct_evidence_per_pair": 0.4454022988505747,
+        "fraction_crossing_original_margin_per_query": 0.3320774112809511,
+        "mean_incumbent_margin_per_query": 0.017062395441544163,
+        "mean_relevant_minus_wrong_per_query": -0.0008085934631861849
+      },
+      "inside_gain/first50/right_below": {
+        "queries": 122,
+        "pairs": 362,
+        "strictly_reordered_pairs": 120,
+        "correct_evidence_per_query": 0.462080405932865,
+        "correct_evidence_per_pair": 0.47513812154696133,
+        "fraction_crossing_original_margin_per_query": 0.24430132708821234,
+        "mean_incumbent_margin_per_query": 0.03353854796243092,
+        "mean_relevant_minus_wrong_per_query": -0.003421864947660373
+      },
+      "source_gain/all/right_above": {
+        "queries": 263,
+        "pairs": 2711,
+        "strictly_reordered_pairs": 823,
+        "correct_evidence_per_query": 0.46404585371825313,
+        "correct_evidence_per_pair": 0.44596090003688676,
+        "fraction_crossing_original_margin_per_query": 0.275104141073836,
+        "mean_incumbent_margin_per_query": 0.0074717493017664935,
+        "mean_relevant_minus_wrong_per_query": -0.002001200123391093
+      },
+      "source_gain/all/right_below": {
+        "queries": 266,
+        "pairs": 2688,
+        "strictly_reordered_pairs": 631,
+        "correct_evidence_per_query": 0.4529218923476444,
+        "correct_evidence_per_pair": 0.44233630952380953,
+        "fraction_crossing_original_margin_per_query": 0.21626033300628641,
+        "mean_incumbent_margin_per_query": 0.012597074140681699,
+        "mean_relevant_minus_wrong_per_query": -0.001719997879443013
+      },
+      "source_gain/small_margin/right_above": {
+        "queries": 183,
+        "pairs": 1289,
+        "strictly_reordered_pairs": 568,
+        "correct_evidence_per_query": 0.4413792239933278,
+        "correct_evidence_per_pair": 0.44685802948021724,
+        "fraction_crossing_original_margin_per_query": 0.4396828955829936,
+        "mean_incumbent_margin_per_query": 0.0004745089960015792,
+        "mean_relevant_minus_wrong_per_query": -0.0021415556835421203
+      },
+      "source_gain/small_margin/right_below": {
+        "queries": 180,
+        "pairs": 1309,
+        "strictly_reordered_pairs": 426,
+        "correct_evidence_per_query": 0.4094643480377085,
+        "correct_evidence_per_pair": 0.43315508021390375,
+        "fraction_crossing_original_margin_per_query": 0.3028430823413847,
+        "mean_incumbent_margin_per_query": 0.0005252677848039219,
+        "mean_relevant_minus_wrong_per_query": -0.0031124138025819936
+      },
+      "source_gain/first50/right_above": {
+        "queries": 113,
+        "pairs": 348,
+        "strictly_reordered_pairs": 100,
+        "correct_evidence_per_query": 0.4395874037466958,
+        "correct_evidence_per_pair": 0.41379310344827586,
+        "fraction_crossing_original_margin_per_query": 0.20355386992555133,
+        "mean_incumbent_margin_per_query": 0.017062395441544163,
+        "mean_relevant_minus_wrong_per_query": -0.0010657973793498322
+      },
+      "source_gain/first50/right_below": {
+        "queries": 122,
+        "pairs": 362,
+        "strictly_reordered_pairs": 56,
+        "correct_evidence_per_query": 0.4677172781680978,
+        "correct_evidence_per_pair": 0.44751381215469616,
+        "fraction_crossing_original_margin_per_query": 0.13817330210772832,
+        "mean_incumbent_margin_per_query": 0.03353854796243092,
+        "mean_relevant_minus_wrong_per_query": -0.001027419047409316
+      },
+      "target_gain/all/right_above": {
+        "queries": 263,
+        "pairs": 2711,
+        "strictly_reordered_pairs": 1069,
+        "correct_evidence_per_query": 0.49248943336830686,
+        "correct_evidence_per_pair": 0.4843231279970491,
+        "fraction_crossing_original_margin_per_query": 0.35678385133187235,
+        "mean_incumbent_margin_per_query": 0.0074717493017664935,
+        "mean_relevant_minus_wrong_per_query": -0.0009595301966926471
+      },
+      "target_gain/all/right_below": {
+        "queries": 266,
+        "pairs": 2688,
+        "strictly_reordered_pairs": 944,
+        "correct_evidence_per_query": 0.4765762644101399,
+        "correct_evidence_per_pair": 0.46130952380952384,
+        "fraction_crossing_original_margin_per_query": 0.3223814457263029,
+        "mean_incumbent_margin_per_query": 0.012597074140681699,
+        "mean_relevant_minus_wrong_per_query": -0.0039300211937696285
+      },
+      "target_gain/small_margin/right_above": {
+        "queries": 183,
+        "pairs": 1289,
+        "strictly_reordered_pairs": 655,
+        "correct_evidence_per_query": 0.4921382383135291,
+        "correct_evidence_per_pair": 0.4685802948021722,
+        "fraction_crossing_original_margin_per_query": 0.4874407517922457,
+        "mean_incumbent_margin_per_query": 0.0004745089960015792,
+        "mean_relevant_minus_wrong_per_query": -0.002826932997273709
+      },
+      "target_gain/small_margin/right_below": {
+        "queries": 180,
+        "pairs": 1309,
+        "strictly_reordered_pairs": 554,
+        "correct_evidence_per_query": 0.4382555691453177,
+        "correct_evidence_per_pair": 0.4514896867838044,
+        "fraction_crossing_original_margin_per_query": 0.40505221108297373,
+        "mean_incumbent_margin_per_query": 0.0005252677848039219,
+        "mean_relevant_minus_wrong_per_query": -0.006463885396022674
+      },
+      "target_gain/first50/right_above": {
+        "queries": 113,
+        "pairs": 348,
+        "strictly_reordered_pairs": 125,
+        "correct_evidence_per_query": 0.4228635916689014,
+        "correct_evidence_per_pair": 0.47413793103448276,
+        "fraction_crossing_original_margin_per_query": 0.3253061589344775,
+        "mean_incumbent_margin_per_query": 0.017062395441544163,
+        "mean_relevant_minus_wrong_per_query": 0.0003048879473651367
+      },
+      "target_gain/first50/right_below": {
+        "queries": 122,
+        "pairs": 362,
+        "strictly_reordered_pairs": 116,
+        "correct_evidence_per_query": 0.46774004683840753,
+        "correct_evidence_per_pair": 0.4861878453038674,
+        "fraction_crossing_original_margin_per_query": 0.2532591725214676,
+        "mean_incumbent_margin_per_query": 0.03353854796243092,
+        "mean_relevant_minus_wrong_per_query": -0.0021447061100354774
+      },
+      "permuted_gain/all/right_above": {
+        "queries": 263,
+        "pairs": 2711,
+        "strictly_reordered_pairs": 914,
+        "correct_evidence_per_query": 0.4761007919698685,
+        "correct_evidence_per_pair": 0.4345260051641461,
+        "fraction_crossing_original_margin_per_query": 0.29492630058999814,
+        "mean_incumbent_margin_per_query": 0.0074717493017664935,
+        "mean_relevant_minus_wrong_per_query": -0.001692748546756769
+      },
+      "permuted_gain/all/right_below": {
+        "queries": 266,
+        "pairs": 2688,
+        "strictly_reordered_pairs": 675,
+        "correct_evidence_per_query": 0.45294068368238966,
+        "correct_evidence_per_pair": 0.42745535714285715,
+        "fraction_crossing_original_margin_per_query": 0.24124554504132398,
+        "mean_incumbent_margin_per_query": 0.012597074140681699,
+        "mean_relevant_minus_wrong_per_query": -0.00164586883034989
+      },
+      "permuted_gain/small_margin/right_above": {
+        "queries": 183,
+        "pairs": 1289,
+        "strictly_reordered_pairs": 613,
+        "correct_evidence_per_query": 0.4516007033754158,
+        "correct_evidence_per_pair": 0.439100077579519,
+        "fraction_crossing_original_margin_per_query": 0.46473194431069337,
+        "mean_incumbent_margin_per_query": 0.0004745089960015792,
+        "mean_relevant_minus_wrong_per_query": -0.00184690126412071
+      },
+      "permuted_gain/small_margin/right_below": {
+        "queries": 180,
+        "pairs": 1309,
+        "strictly_reordered_pairs": 453,
+        "correct_evidence_per_query": 0.43001502671711683,
+        "correct_evidence_per_pair": 0.43162719633307867,
+        "fraction_crossing_original_margin_per_query": 0.3462352052944992,
+        "mean_incumbent_margin_per_query": 0.0005252677848039219,
+        "mean_relevant_minus_wrong_per_query": -0.003019315024551445
+      },
+      "permuted_gain/first50/right_above": {
+        "queries": 113,
+        "pairs": 348,
+        "strictly_reordered_pairs": 109,
+        "correct_evidence_per_query": 0.45608869989400963,
+        "correct_evidence_per_pair": 0.39655172413793105,
+        "fraction_crossing_original_margin_per_query": 0.20262038846109642,
+        "mean_incumbent_margin_per_query": 0.017062395441544163,
+        "mean_relevant_minus_wrong_per_query": -0.0010421742869039382
+      },
+      "permuted_gain/first50/right_below": {
+        "queries": 122,
+        "pairs": 362,
+        "strictly_reordered_pairs": 65,
+        "correct_evidence_per_query": 0.4903265677855842,
+        "correct_evidence_per_pair": 0.425414364640884,
+        "fraction_crossing_original_margin_per_query": 0.17601483216237312,
+        "mean_incumbent_margin_per_query": 0.03353854796243092,
+        "mean_relevant_minus_wrong_per_query": -0.0008694852430653579
+      },
+      "predict_specificity/all/right_above": {
+        "queries": 263,
+        "pairs": 2711,
+        "strictly_reordered_pairs": 1073,
+        "correct_evidence_per_query": 0.4748156115875511,
+        "correct_evidence_per_pair": 0.4754703061600885,
+        "fraction_crossing_original_margin_per_query": 0.36502935034986184,
+        "mean_incumbent_margin_per_query": 0.0074717493017664935,
+        "mean_relevant_minus_wrong_per_query": -0.0008505098885720085
+      },
+      "predict_specificity/all/right_below": {
+        "queries": 266,
+        "pairs": 2688,
+        "strictly_reordered_pairs": 946,
+        "correct_evidence_per_query": 0.4705440740338596,
+        "correct_evidence_per_pair": 0.46577380952380953,
+        "fraction_crossing_original_margin_per_query": 0.3158743320509898,
+        "mean_incumbent_margin_per_query": 0.012597074140681699,
+        "mean_relevant_minus_wrong_per_query": -0.003568997848441725
+      },
+      "predict_specificity/small_margin/right_above": {
+        "queries": 183,
+        "pairs": 1289,
+        "strictly_reordered_pairs": 665,
+        "correct_evidence_per_query": 0.4588792554306311,
+        "correct_evidence_per_pair": 0.45151280062063615,
+        "fraction_crossing_original_margin_per_query": 0.5029615371881949,
+        "mean_incumbent_margin_per_query": 0.0004745089960015792,
+        "mean_relevant_minus_wrong_per_query": -0.0026360889265236082
+      },
+      "predict_specificity/small_margin/right_below": {
+        "queries": 180,
+        "pairs": 1309,
+        "strictly_reordered_pairs": 568,
+        "correct_evidence_per_query": 0.4426743332801159,
+        "correct_evidence_per_pair": 0.4614209320091673,
+        "fraction_crossing_original_margin_per_query": 0.4149269525862306,
+        "mean_incumbent_margin_per_query": 0.0005252677848039219,
+        "mean_relevant_minus_wrong_per_query": -0.005896385743226171
+      },
+      "predict_specificity/first50/right_above": {
+        "queries": 113,
+        "pairs": 348,
+        "strictly_reordered_pairs": 127,
+        "correct_evidence_per_query": 0.426016805220345,
+        "correct_evidence_per_pair": 0.47413793103448276,
+        "fraction_crossing_original_margin_per_query": 0.3349005222899028,
+        "mean_incumbent_margin_per_query": 0.017062395441544163,
+        "mean_relevant_minus_wrong_per_query": 0.0005383420864944996
+      },
+      "predict_specificity/first50/right_below": {
+        "queries": 122,
+        "pairs": 362,
+        "strictly_reordered_pairs": 118,
+        "correct_evidence_per_query": 0.46470205568566225,
+        "correct_evidence_per_pair": 0.48066298342541436,
+        "fraction_crossing_original_margin_per_query": 0.24152354931043454,
+        "mean_incumbent_margin_per_query": 0.03353854796243092,
+        "mean_relevant_minus_wrong_per_query": -0.002205621930008408
+      }
+    }
+  },
+  "per_query_sha256": "a50e781ce0de7e9e5bc6113fc07664fdc9c31cfbcb49bb7856655b77e350b19c",
+  "row_fields": [
+    "pairs",
+    "favorable",
+    "ties",
+    "strictly reordered",
+    "original gap sum",
+    "signed evidence sum"
+  ]
+}
