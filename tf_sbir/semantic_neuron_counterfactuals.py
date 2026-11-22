@@ -106,25 +106,28 @@ def extract(w,ds,stage):
             if (root/"done").is_file():continue
         atomic_json(root/"manifest.json",spec|{"signature":sig})
         save_tensor({"ids":imageids},root/"ids.pt")
-        shard=128
+        shard=512 if stage=="all-query" else 128
         for first in range(0,len(imageids),shard):
             path=root/f"{first:06}.pt"
             if path.is_file():continue
             chosen=imageids[first:first+shard]
-            loader=batches(paths,chosen,cfg.workers,12 if stage!="photo-holdout" else 24)
+            batch_size={"all-query":64,"photo-holdout":24,"pilot-query":12}[stage]
+            loader=batches(paths,chosen,cfg.workers,batch_size)
             zs,delta,err,loss=[],[],[],[]
             for j,px in enumerate(loader):
                 src=native(v,px.cuda(non_blocking=True),units)
                 est=read_donors(src,bank,perm)
                 zs.append(src["scene"].cpu())
-                loss.append(original_scores(src,scales,est).cpu())
+                if stage!="all-query":
+                    loss.append(original_scores(src,scales,est).cpu())
                 if j==0:err.append(original_tail(v,src).amax(0).cpu())
                 if stage!="photo-holdout":delta.append(embeddings(v,src,units,est,arms).half().cpu())
             arr=torch.cat(zs)
             numerical=torch.stack(err).amax(0)
             if numerical.max()>.002 or (1-(arr*reference[chosen]).sum(1)).abs().max()>.002:
                 raise ValueError("The untouched network and its replay disagree")
-            obj={"ids":chosen,"native":arr,"reconstruction_error":torch.cat(loss),"tail_check":numerical}
+            obj={"ids":chosen,"native":arr,"tail_check":numerical}
+            if loss:obj["reconstruction_error"]=torch.cat(loss)
             if delta:obj["change"]=torch.cat(delta)
             save_tensor(obj,path)
             print(s,stage,first+len(arr),len(imageids),flush=True)
@@ -139,7 +142,8 @@ def restore(w,s,stage):
     files=[torch.load(f,mmap=True,weights_only=True) for f in sorted(root.glob("[0-9]*.pt"))]
     data={k:(torch.stack([p[k] for p in files]) if k=="tail_check" else torch.cat([p[k] for p in files])) for k in files[0]}
     ids=torch.load(root/"ids.pt",weights_only=True)["ids"]
-    if not torch.equal(data["ids"],ids) or len(files)!=((len(ids)+127)//128):raise ValueError("Image or shard order changed")
+    size=512 if stage=="all-query" else 128
+    if not torch.equal(data["ids"],ids) or len(files)!=((len(ids)+size-1)//size):raise ValueError("Image or shard order changed")
     return data,desc
 
 
