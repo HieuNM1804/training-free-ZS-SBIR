@@ -74,7 +74,7 @@ def prepare(table):
                 pts=table["values"][tag][...,:N]
                 sorted_donors=hold(pts[pool],idx)
                 normalized=cdf(sorted_donors,pts[batch].float())
-                layout[tag][batch]=normalized.sort(1).values
+                layout[tag][batch]=normalized.sort(1).values.to(layout[tag].dtype)
     rng=torch.Generator().manual_seed(22469)
     return {"templates":layout,"unconditional":global_values,
             "shuffled_keys":torch.randperm(n*49,generator=rng).to(photo.device)}
