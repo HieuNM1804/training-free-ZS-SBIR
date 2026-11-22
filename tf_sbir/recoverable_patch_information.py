@@ -119,13 +119,16 @@ class PatchInformation:
 
     def measure(self,px,rows=None,check=False):
         rows=rows if rows is not None else [(m,a) for m in MODES for a in AMOUNTS]
-        native,delta,diag,blind,hidden=self.parts(px)
+        linear_native,delta,diag,blind,hidden=self.parts(px)
+        # Anchor all variants to the exact convolution used by the frozen encoder, including its rounding.
+        native=self.v.conv1(px.to(self.v.conv1.weight.dtype)).float()
         z=to_tokens(self.v,native)
         if check:
             mirror=self.conv(px-2*hidden)
-            err=float((native-mirror).abs().max()/native.abs().max().clamp_min(1))
-            refl=to_tokens(self.v,mirror)
+            err=float((linear_native-mirror).abs().max()/linear_native.abs().max().clamp_min(1))
+            refl=to_tokens(self.v,native+(mirror-linear_native))
             ref=F.normalize(self.v(px.to(self.v.conv1.weight.dtype)).float())
+            half_refl=F.normalize(self.v((px-2*hidden).to(self.v.conv1.weight.dtype)).float())
             # Direct test of the geometric remapping against exact integration of the shifted token field.
             tiny=native[:1,:4]
             shifts=[(dy,dx) for dy,dx in OFFSETS]
@@ -134,7 +137,8 @@ class PatchInformation:
                 dense=torch.roll(F.interpolate(tiny,scale_factor=32,mode="nearest"),(-dy,-dx),(-2,-1))
                 es.append((F.avg_pool2d(dense,32)-back_to_native(tiny,dy,dx)).abs().max())
             checkvals=[err,float((1-(refl*z).sum(1)).abs().max()),float((1-(ref*z).sum(1)).abs().max()),
-                       float(torch.stack(es).max()/tiny.abs().max().clamp_min(1))]
+                       float(torch.stack(es).max()/tiny.abs().max().clamp_min(1)),
+                       float((1-(half_refl*ref).sum(1)).abs().max())]
             if checkvals[0]>2e-4 or max(checkvals[1:3])>.002 or checkvals[3]>.001:
                 raise ValueError(f"Token null, native readout or phase adjoint invalid {checkvals}")
         else:checkvals=[]

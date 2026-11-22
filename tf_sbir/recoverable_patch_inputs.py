@@ -61,10 +61,10 @@ def run(w,dataset,stage):
     previous=q if is_query else p
     selected=[paths[i] for i in ids.tolist()]
     rows=[(m,a) for m in MODES for a in AMOUNTS]
-    folder=w/"cache"/FAMILY/dataset/stage
+    folder=w/"cache"/FAMILY/dataset/"native-anchor-v2"/stage
     folder.mkdir(parents=True,exist_ok=True)
     stamp={"checkpoint":CHECKPOINT,"paths":digest(list(map(str,selected))),"readouts":names(rows),"offsets":list(map(list,OFFSETS)),
-           "operation":"rank-aware achromatic native-null intervention, circular grids and spatial adjoint v1"}
+           "operation":"achromatic native-null intervention and exact native CLIP convolution anchor v2"}
     sig=digest(stamp)
     if (folder/"manifest.json").exists():
         if read(folder/"manifest.json")["signature"]!=sig:raise ValueError("Feature manifest changed")
@@ -88,7 +88,7 @@ def run(w,dataset,stage):
             z,variants,fields,info=reader.measure(pixels.cuda(non_blocking=True),rows,check=(offset==0))
             ref=previous[pick[offset:offset+len(z)]].cuda()
             err=float((1-(ref*z).sum(1)).abs().max())
-            if err>.002:raise ValueError("Input order or native CLIP changed")
+            if err>.002:raise ValueError(f"Source or native feature changed at row {first+offset}, cosine error {err:g}")
             if info:tests.append(info+[err])
             embeds.append(z.cpu())
             changes.append(torch.stack([variants[x]-z for x in rows],1).half().cpu())
@@ -102,7 +102,7 @@ def run(w,dataset,stage):
 
 
 def restore(w,dataset,stage):
-    base=w/"cache"/FAMILY/dataset/stage
+    base=w/"cache"/FAMILY/dataset/"native-anchor-v2"/stage
     desc=read(base/"manifest.json")
     ids=torch.load(base/"ids.pt",mmap=True,weights_only=True)["ids"]
     if not (base/"done").exists() or len(ids)!=desc["count"]:raise ValueError("Incomplete feature bank")
