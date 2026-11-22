@@ -73,7 +73,7 @@ def include_fixed(rows,nominees):
     for k in nominees:
         d,r,m,s,a=parse(k)
         suffix="_gain" if m.endswith("_gain") else ""
-        out.update(key(d,r,c+suffix,s,a) for c in CONDITIONS)
+        out.update(key(d,ref,c+suffix,s,a) for ref in DIRECT for c in CONDITIONS)
         out.update(key(d,v,"real"+suffix,s,a) for v in REFS)
         if not suffix:out.update(key(d,"visual",c,0,a) for c in ("raw","linear"))
     return sorted(out)
