@@ -107,8 +107,8 @@ def run(w):
         pos=desc["arms"].index(arm)
         pred=defaultdict(list)
         gl=gs[s][1]
-        for off in range(0,len(labels),128):
-            sl=slice(off,off+128)
+        for off in range(0,len(labels),48):
+            sl=slice(off,off+48)
             init=context["base"][sl].cuda()
             z=features["native"][sl].cuda()
             d=features["change"][sl,pos].cuda().float()
