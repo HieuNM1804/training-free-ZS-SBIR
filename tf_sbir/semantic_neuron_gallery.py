@@ -10,7 +10,7 @@ from torch.utils.data import DataLoader
 from .concept_benchmark import atomic_json, read
 from .crossdomain_benchmark import digest
 from .crossdomain_inputs import CHECKPOINT
-from .data import Images, normal_transform, configure_image_worker
+from .data import CLIP_STD, Images, normal_transform, configure_image_worker
 from .encoding import load_frozen_clip, save_tensor
 from .gallery_panel_resume import semantic_inputs
 from .patch_activation_source import allocate
@@ -20,7 +20,7 @@ from .patch_response_mediation import read_block
 
 FAMILY="semantic-patch-neuron-replacement"
 LAYERS=(2,3)
-GROUPS=("curvature","native","matched","random")
+GROUPS=("curvature","sensor","native","matched","sensor_matched","random")
 DISCOVERY,BANK,HOLDOUT=192,768,144
 SEED=40483
 MAX_UNITS=32
@@ -47,40 +47,52 @@ def batches(files,ids,workers,bsize=32):
 
 def discover(v,loader):
     raw={l:[] for l in LAYERS}
+    noisy={l:[] for l in LAYERS}
     mag={l:[] for l in LAYERS}
     axes=((0,2),(2,0))
+    noise_generator=torch.Generator().manual_seed(73163)
     for px in loader:
         px=px.cuda(non_blocking=True)
         b=len(px)
-        views=torch.cat([move_pixels(px,sign*y,sign*x) for y,x in axes for sign in (1,-1)])
+        # Two independent realizations of a tiny achromatic sensor perturbation in physical RGB units.
+        noise=torch.randn((2,b,1,224,224),generator=noise_generator).to(px)*(2/255)
+        noise=noise/px.new_tensor(CLIP_STD)[None,None,:,None,None]
+        views=torch.cat([*[move_pixels(px,sign*y,sign*x) for y,x in axes for sign in (1,-1)],
+                         *[px+sign*n for n in noise for sign in (1,-1)]])
         h=v._embeds(views.to(v.conv1.weight.dtype))
         for l,block in enumerate(v.transformer.resblocks[:max(LAYERS)],1):
             y=attention(v,block,h)
             if l in LAYERS:
-                p=y.reshape(4,b,50,768)[:,:,1:]
-                measures=[allocate(block,p[2*j],p[2*j+1]) for j in range(len(axes))]
+                p=y.reshape(8,b,50,768)[:,:,1:]
+                measures=[allocate(block,p[2*j],p[2*j+1]) for j in range(4)]
                 # Normalize each sample and direction before combining the two spatial axes.
                 mass=[a.abs()/a.abs().sum(1,keepdim=True).clamp_min(1e-12) for a,_,_ in measures]
-                raw[l].append(torch.stack(mass).cpu())
-                mag[l].append(torch.stack([m for _,_,m in measures]).cpu())
+                raw[l].append(torch.stack(mass[:2]).cpu())
+                noisy[l].append(torch.stack(mass[2:]).cpu())
+                mag[l].append(torch.stack([m for _,_,m in measures[:2]]).cpu())
             h=mlp(block,y)
     selected,audit={},{}
     rng=torch.Generator().manual_seed(52671)
     for l in LAYERS:
         faces=torch.cat(raw[l],1)
+        sensor=torch.cat(noisy[l],1)
         strength=faces.mean((0,1))
+        sensor_strength=sensor.mean((0,1))
         activities=torch.cat(mag[l],1).mean((0,1))
         order=strength.argsort(descending=True,stable=True)
         large=activities.argsort(descending=True,stable=True)
-        blocked=torch.zeros_like(activities,dtype=torch.bool)
-        blocked[order[:MAX_UNITS]]=True
-        # Pair against a different unit with the closest native activity in the discovery gallery.
-        matches=[]
-        for j in order[:MAX_UNITS]:
-            distances=(activities.clamp_min(1e-24).log()-activities[j].clamp_min(1e-24).log()).abs()
-            k=distances.masked_fill(blocked,torch.inf).argmin()
-            blocked[k]=True;matches.append(k)
-        choices={"curvature":order[:MAX_UNITS],"native":large[:MAX_UNITS],"matched":torch.stack(matches),
+        sensor_order=sensor_strength.argsort(descending=True,stable=True)
+        def matched_units(ranking):
+            blocked=torch.zeros_like(activities,dtype=torch.bool)
+            blocked[ranking[:MAX_UNITS]]=True
+            matches=[]
+            for j in ranking[:MAX_UNITS]:
+                distances=(activities.clamp_min(1e-24).log()-activities[j].clamp_min(1e-24).log()).abs()
+                k=distances.masked_fill(blocked,torch.inf).argmin()
+                blocked[k]=True;matches.append(k)
+            return torch.stack(matches)
+        choices={"curvature":order[:MAX_UNITS],"sensor":sensor_order[:MAX_UNITS],"native":large[:MAX_UNITS],
+                 "matched":matched_units(order),"sensor_matched":matched_units(sensor_order),
                  "random":torch.randperm(len(order),generator=rng)[:MAX_UNITS]}
         selected[l]=choices
         audit[l]={"units":{k:z.tolist() for k,z in choices.items()},"split_and_axis_recurrence":{}}
@@ -90,6 +102,9 @@ def discover(v,loader):
             ax=faces.mean(1).topk(k).indices
             audit[l]["split_and_axis_recurrence"][k]={"alternating_photos_overlap":int(torch.isin(a,z).sum()),
                 "horizontal_vertical_overlap":int(torch.isin(ax[0],ax[1]).sum()),
+                "sensor_independent_noise_overlap":int(torch.isin(sensor[0].mean(0).topk(k).indices,sensor[1].mean(0).topk(k).indices).sum()),
+                "sensor_translation_overlap":int(torch.isin(sensor_order[:k],order[:k]).sum()),
+                "sensor_discovery_share":float(sensor_strength[sensor_order[:k]].sum()),
                 "fraction_native_activity_matched":float(activities[choices["matched"][:k]].sum()/activities[order[:k]].sum()),
                 "discovery_share":float(strength[order[:k]].sum())}
     return selected,audit
@@ -162,8 +177,8 @@ def index(w,ds):
         pi=gs[s][0]
         start,donor,test=select_ids(pi)
         sign=digest({"model":CHECKPOINT,"gallery":list(map(str,[pp[int(i)] for i in pi])),"sampling":[SEED,DISCOVERY,BANK,HOLDOUT],
-                     "probe":"two-pixel opposite horizontal and vertical translations with reflected boundary, activations normalized per image and direction v1"})
-        file=folder/(s+"-memory.pt")
+                     "probe":"opposite translations and independent small achromatic sensor observations; normalized per image/direction v2"})
+        file=folder/(s+"-memory-v2.pt")
         record=file.with_suffix(".json")
         if file.is_file() and record.is_file():
             if read(record)["signature"]!=sign:raise ValueError("Mismatch in target gallery")
