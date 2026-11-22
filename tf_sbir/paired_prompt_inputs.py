@@ -63,7 +63,7 @@ def prepare(w, family, ds, cfg, inputs, source, target, scale, samples):
     for s, ids in samples.items():
         qi, labels = queries[s]
         pi, gallery_labels = galleries[s]
-        use = selected.searchsorted(qi[ids])
+        use = torch.searchsorted(selected, qi[ids])
         if not torch.equal(selected[use], qi[ids]):
             raise ValueError("Pilot query mismatched its embedding")
         gallery = photo[pi].cuda()
