@@ -1,0 +1,448 @@
+{
+  "description": "Exploratory post-hoc attribution of previously fixed Sketchy actions",
+  "primary": "16/0.3/0.35/0.85/joint/0.12",
+  "splits": {
+    "sketchy_1": {
+      "groups": {
+        "unmodified": {
+          "queries": 6799,
+          "mean_delta_pp": [
+            0.0,
+            0.0
+          ],
+          "contribution_to_all_query_mean_pp": [
+            0.0,
+            0.0
+          ],
+          "native_expected_gain": 0.0,
+          "AP_up": 0,
+          "AP_down": 0,
+          "mean_base_AP": 0.7944038720637919,
+          "median_delta_AP_pp": 0.0,
+          "delta_AP_q10_q90_pp": [
+            0.0,
+            0.0
+          ]
+        },
+        "fixed_first": {
+          "queries": 73,
+          "mean_delta_pp": [
+            11.171113322042439,
+            23.356164435613646
+          ],
+          "contribution_to_all_query_mean_pp": [
+            0.05751401879604331,
+            0.12024825472880994
+          ],
+          "native_expected_gain": 0.018322935659591467,
+          "AP_up": 73,
+          "AP_down": 0,
+          "mean_base_AP": 0.7706284782249634,
+          "median_delta_AP_pp": 10.121476650238037,
+          "delta_AP_q10_q90_pp": [
+            1.4873063564300537,
+            24.767450094223022
+          ]
+        },
+        "broke_first": {
+          "queries": 56,
+          "mean_delta_pp": [
+            -7.037899696401187,
+            -27.24999987320708
+          ],
+          "contribution_to_all_query_mean_pp": [
+            -0.027796204457187848,
+            -0.10762395041255353
+          ],
+          "native_expected_gain": 0.016309001616069248,
+          "AP_up": 0,
+          "AP_down": 56,
+          "mean_base_AP": 0.47175998533410685,
+          "median_delta_AP_pp": -4.307308793067932,
+          "delta_AP_q10_q90_pp": [
+            -17.307409644126892,
+            -0.937468558549881
+          ]
+        },
+        "kept_right_but_modified": {
+          "queries": 6490,
+          "mean_delta_pp": [
+            0.3312549833064821,
+            0.219568459055916
+          ],
+          "contribution_to_all_query_mean_pp": [
+            0.15162175341413844,
+            0.10050069111170709
+          ],
+          "native_expected_gain": 0.0047774096391234085,
+          "AP_up": 4938,
+          "AP_down": 1525,
+          "mean_base_AP": 0.9695455750809245,
+          "median_delta_AP_pp": 0.03823041915893555,
+          "delta_AP_q10_q90_pp": [
+            -0.08629500865936278,
+            0.5389469861984256
+          ]
+        },
+        "kept_wrong_but_modified": {
+          "queries": 761,
+          "mean_delta_pp": [
+            -0.8516341817422076,
+            -0.3403416664661465
+          ],
+          "contribution_to_all_query_mean_pp": [
+            -0.04570799155834826,
+            -0.01826645096133278
+          ],
+          "native_expected_gain": 0.006351330042198672,
+          "AP_up": 231,
+          "AP_down": 530,
+          "mean_base_AP": 0.24489348242732448,
+          "median_delta_AP_pp": -0.18200650811195374,
+          "delta_AP_q10_q90_pp": [
+            -3.1651124358177185,
+            0.4870891571044922
+          ]
+        }
+      },
+      "predicted_gain_AP_pearson_on_adopted": 0.11400223645774075,
+      "predicted_gain_quartiles": [
+        {
+          "queries": 1845,
+          "mean_delta_pp": [
+            0.08557162876051616,
+            0.1604334730402564
+          ],
+          "contribution_to_all_query_mean_pp": [
+            0.011134752455261465,
+            0.0208759262119524
+          ],
+          "native_expected_gain": 0.0003529919195304395,
+          "AP_up": 1446,
+          "AP_down": 398,
+          "mean_base_AP": 0.9245216855289652,
+          "median_delta_AP_pp": 0.03555417060852051,
+          "delta_AP_q10_q90_pp": [
+            -0.1113799214363098,
+            0.37767291069030773
+          ]
+        },
+        {
+          "queries": 1845,
+          "mean_delta_pp": [
+            0.039459892869157194,
+            0.08130070407619967
+          ],
+          "contribution_to_all_query_mean_pp": [
+            0.005134600630763455,
+            0.010579011144692037
+          ],
+          "native_expected_gain": 0.0011942494852433037,
+          "AP_up": 1250,
+          "AP_down": 591,
+          "mean_base_AP": 0.9069189305429859,
+          "median_delta_AP_pp": 0.039076805114746094,
+          "delta_AP_q10_q90_pp": [
+            -0.629425048828125,
+            0.4901409149169925
+          ]
+        },
+        {
+          "queries": 1845,
+          "mean_delta_pp": [
+            0.2395237125153464,
+            0.12574513591725006
+          ],
+          "contribution_to_all_query_mean_pp": [
+            0.03116730725656352,
+            0.016362210012506265
+          ],
+          "native_expected_gain": 0.0035835574312907893,
+          "AP_up": 1172,
+          "AP_down": 668,
+          "mean_base_AP": 0.876350327655875,
+          "median_delta_AP_pp": 0.016629695892333984,
+          "delta_AP_q10_q90_pp": [
+            -0.356481671333313,
+            0.4853463172912602
+          ]
+        },
+        {
+          "queries": 1845,
+          "mean_delta_pp": [
+            0.677786293694482,
+            0.3615175986152677
+          ],
+          "contribution_to_all_query_mean_pp": [
+            0.08819491585205722,
+            0.04704139709748
+          ],
+          "native_expected_gain": 0.015513986591401139,
+          "AP_up": 1374,
+          "AP_down": 454,
+          "mean_base_AP": 0.8485175443434618,
+          "median_delta_AP_pp": 0.06650090217590332,
+          "delta_AP_q10_q90_pp": [
+            -0.30475944280624384,
+            1.5046560764312964
+          ]
+        }
+      ],
+      "cutoff_count_change": null
+    },
+    "sketchy_2": {
+      "groups": {
+        "unmodified": {
+          "queries": 7391,
+          "mean_delta_pp": [
+            0.0,
+            0.0
+          ],
+          "contribution_to_all_query_mean_pp": [
+            0.0,
+            0.0
+          ],
+          "native_expected_gain": 0.0,
+          "AP_up": 0,
+          "AP_down": 0,
+          "mean_base_AP": 0.7374301706228424,
+          "median_delta_AP_pp": 0.0,
+          "delta_AP_q10_q90_pp": [
+            0.0,
+            0.0
+          ]
+        },
+        "fixed_first": {
+          "queries": 153,
+          "mean_delta_pp": [
+            12.601637582178988,
+            8.003267871666383
+          ],
+          "contribution_to_all_query_mean_pp": [
+            0.15188676146788918,
+            0.09646289462462239
+          ],
+          "native_expected_gain": 0.011495265306210985,
+          "AP_up": 142,
+          "AP_down": 11,
+          "mean_base_AP": 0.7976233095807188,
+          "median_delta_AP_pp": 6.045424938201904,
+          "delta_AP_q10_q90_pp": [
+            0.8919715881347658,
+            36.841536760330214
+          ]
+        },
+        "broke_first": {
+          "queries": 72,
+          "mean_delta_pp": [
+            -38.631088560214266,
+            -10.187500192680293
+          ],
+          "contribution_to_all_query_mean_pp": [
+            -0.2191144143954173,
+            -0.05778320575649764
+          ],
+          "native_expected_gain": 0.012873218291335635,
+          "AP_up": 3,
+          "AP_down": 69,
+          "mean_base_AP": 0.5552624273631308,
+          "median_delta_AP_pp": -29.09141778945923,
+          "delta_AP_q10_q90_pp": [
+            -89.99526280909777,
+            -7.639309465885166
+          ]
+        },
+        "kept_right_but_modified": {
+          "queries": 4098,
+          "mean_delta_pp": [
+            0.1545711799096107,
+            0.5656417403797396
+          ],
+          "contribution_to_all_query_mean_pp": [
+            0.04990016505983808,
+            0.1826059439165096
+          ],
+          "native_expected_gain": 0.005421484051942244,
+          "AP_up": 954,
+          "AP_down": 292,
+          "mean_base_AP": 0.9872710562882452,
+          "median_delta_AP_pp": 0.0,
+          "delta_AP_q10_q90_pp": [
+            0.0,
+            0.38828313350677496
+          ]
+        },
+        "kept_wrong_but_modified": {
+          "queries": 980,
+          "mean_delta_pp": [
+            -2.241153886247122,
+            -2.2454081358844227
+          ],
+          "contribution_to_all_query_mean_pp": [
+            -0.173021176029792,
+            -0.1733496118770076
+          ],
+          "native_expected_gain": 0.006619372234052541,
+          "AP_up": 114,
+          "AP_down": 268,
+          "mean_base_AP": 0.12032345660382464,
+          "median_delta_AP_pp": 0.0,
+          "delta_AP_q10_q90_pp": [
+            -10.773156881332397,
+            0.18279427662491812
+          ]
+        }
+      },
+      "predicted_gain_AP_pearson_on_adopted": -0.061417585093042855,
+      "predicted_gain_quartiles": [
+        {
+          "queries": 1326,
+          "mean_delta_pp": [
+            -0.17529380705128922,
+            0.08672696382346735
+          ],
+          "contribution_to_all_query_mean_pp": [
+            -0.01831098063258307,
+            0.009059394519451529
+          ],
+          "native_expected_gain": 0.00034565223468015276,
+          "AP_up": 269,
+          "AP_down": 57,
+          "mean_base_AP": 0.9021038227696337,
+          "median_delta_AP_pp": 0.0,
+          "delta_AP_q10_q90_pp": [
+            0.0,
+            0.0964045524597168
+          ]
+        },
+        {
+          "queries": 1326,
+          "mean_delta_pp": [
+            -0.657885354665441,
+            -0.04374057126159851
+          ],
+          "contribution_to_all_query_mean_pp": [
+            -0.0687219143127757,
+            -0.0045690875604915415
+          ],
+          "native_expected_gain": 0.001627865195454156,
+          "AP_up": 266,
+          "AP_down": 149,
+          "mean_base_AP": 0.811224164013845,
+          "median_delta_AP_pp": 0.0,
+          "delta_AP_q10_q90_pp": [
+            -0.13653934001922607,
+            0.3288537263870239
+          ]
+        },
+        {
+          "queries": 1325,
+          "mean_delta_pp": [
+            -0.24467595698276784,
+            0.45886790464228056
+          ],
+          "contribution_to_all_query_mean_pp": [
+            -0.02553928178684161,
+            0.04789664200811578
+          ],
+          "native_expected_gain": 0.005012560340593446,
+          "AP_up": 332,
+          "AP_down": 204,
+          "mean_base_AP": 0.7708333726009389,
+          "median_delta_AP_pp": 0.0,
+          "delta_AP_q10_q90_pp": [
+            -1.1015474796295166,
+            1.155408620834366
+          ]
+        },
+        {
+          "queries": 1326,
+          "mean_delta_pp": [
+            -0.744566159936716,
+            -0.0426094123579528
+          ],
+          "contribution_to_all_query_mean_pp": [
+            -0.07777648716528167,
+            -0.004450928059448985
+          ],
+          "native_expected_gain": 0.01669030707346368,
+          "AP_up": 346,
+          "AP_down": 230,
+          "mean_base_AP": 0.7786892217992725,
+          "median_delta_AP_pp": 0.0,
+          "delta_AP_q10_q90_pp": [
+            -3.0792593955993652,
+            2.7296513319015503
+          ]
+        }
+      ],
+      "cutoff_count_change": {
+        "more": {
+          "queries": 1115,
+          "mean_delta_pp": [
+            2.542791093737221,
+            4.120179144373255
+          ],
+          "contribution_to_all_query_mean_pp": [
+            0.22335056479573037,
+            0.36190324137200086
+          ],
+          "native_expected_gain": 0.006888139087523046,
+          "AP_up": 916,
+          "AP_down": 192,
+          "mean_base_AP": 0.8739439163244258,
+          "median_delta_AP_pp": 0.34682750701904297,
+          "delta_AP_q10_q90_pp": [
+            -1.3021981716156006,
+            8.595724105834964
+          ],
+          "mean_change_count": 8.24035874439462
+        },
+        "same": {
+          "queries": 3724,
+          "mean_delta_pp": [
+            -0.10275963596823585,
+            0.0
+          ],
+          "contribution_to_all_query_mean_pp": [
+            -0.030146280474689643,
+            0.0
+          ],
+          "native_expected_gain": 0.005231272697320686,
+          "AP_up": 234,
+          "AP_down": 48,
+          "mean_base_AP": 0.8322412639070567,
+          "median_delta_AP_pp": 0.0,
+          "delta_AP_q10_q90_pp": [
+            0.0,
+            0.0
+          ],
+          "mean_change_count": 0.0
+        },
+        "fewer": {
+          "queries": 464,
+          "mean_delta_pp": [
+            -10.493148975616224,
+            -8.589439432273203
+          ],
+          "contribution_to_all_query_mean_pp": [
+            -0.38355294821852276,
+            -0.3139672204643742
+          ],
+          "native_expected_gain": 0.009112799861307802,
+          "AP_up": 63,
+          "AP_down": 400,
+          "mean_base_AP": 0.543222206433962,
+          "median_delta_AP_pp": -3.0764877796173096,
+          "delta_AP_q10_q90_pp": [
+            -29.587897360324856,
+            0.3545135259628293
+          ],
+          "mean_change_count": -17.17887931034483
+        },
+        "positive_from_no_hits": 16,
+        "lost_all_hits": 41
+      }
+    }
+  }
+}
