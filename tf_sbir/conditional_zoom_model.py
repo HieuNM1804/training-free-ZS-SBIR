@@ -68,6 +68,8 @@ def predict_observation(q, groups, bank, temperatures):
                 weights = logit.softmax(-1)
                 observed = (weights[..., None] * zoom).sum(-2)
                 output.setdefault((kind, temperature), []).append(observed)
+                if kind == "wrong_preview":
+                    output.setdefault(("ess_wrong", temperature), []).append(weights.square().sum(-1).reciprocal() / counts)
                 if kind == "aligned":
                     output.setdefault(("broken_pair", temperature), []).append((weights[..., None] * placebo).sum(-2))
                     log_response = logit.logsumexp(-1) - counts.log()
