@@ -76,7 +76,7 @@ def audited_rows(lock):
     return sorted({"regional", *lock["matched"], *(v for k, v in lock.items() if k != "matched")})
 
 
-def evaluate(w, split, queries, gallery, src, scale, view, ids, rows, kd, workers):
+def evaluate(w, split, queries, gallery, src, scale, view, ids, rows, kd, workers, batch_size=32):
     qi, labels = queries
     _, truth = gallery
     if (len(qi), len(truth), len(truth.unique())) != SPLIT_SIZES[split]:
@@ -95,7 +95,7 @@ def evaluate(w, split, queries, gallery, src, scale, view, ids, rows, kd, worker
     truth_gpu = truth.cuda()
     evaluator = Replay(kd, truth, split) if kd else None
     with (ThreadPoolExecutor(max_workers=workers) if kd else nullcontext()) as pool:
-        for step, ix in enumerate(ids.split(32)):
+        for step, ix in enumerate(ids.split(batch_size)):
             crop = view(qi[ix]).float().contiguous()
             base = locked[ix].cuda()
             global_log = hist[ix].cuda().clamp_min(1e-30).log()
@@ -138,7 +138,7 @@ def evaluate(w, split, queries, gallery, src, scale, view, ids, rows, kd, worker
                         score = base + .35*weight*(region-native_region)
                     record(name, score)
             if step%8 == 0:
-                print("KD" if kd else "scan", split, step*32, len(ids), flush=True)
+                print("KD" if kd else "scan", split, step*batch_size, len(ids), flush=True)
 
     if set(metrics) != set(rows):
         raise ValueError("Missing pilot condition")
