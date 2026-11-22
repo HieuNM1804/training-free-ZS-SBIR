@@ -115,6 +115,8 @@ class Readout:
         cls=labels[:,None]==self.g
         count=cls.sum(0)
         self.positive=(local*cls).sum(0)/count.clamp_min(1)
+        output_local = (heldout @ self.output_target.T) * scale - hard
+        self.output_positive = (output_local * cls).sum(0) / count.clamp_min(1)
         self.verified=self.positive-(fused.logsumexp(0)-hard.logsumexp(0))
         self.verified=torch.where(count>0,self.verified,0.)
         single=torch.tensor([len(b.words)==1 for b in self.buckets],device=source.device)
@@ -150,11 +152,13 @@ class Readout:
         if kind=="hard":weight=0.
         elif kind in ("always","output"):weight=1.
         elif kind=="shared":weight=.5
-        elif kind=="local":weight=(temp*self.positive).sigmoid()
+        elif kind in ("local", "local_output"):weight=(temp*self.positive).sigmoid()
+        elif kind=="output_own_gate":weight=(temp*self.output_positive).sigmoid()
+        elif kind=="local_reverse":weight=(-temp*self.positive).sigmoid()
         elif kind=="reverse":weight=(-temp*self.verified).sigmoid()
         elif kind in ("verified","verified_output"):weight=(temp*self.verified).sigmoid()
         else:raise ValueError(kind)
-        target=avg if kind in ("output","verified_output") else soft
+        target=avg if kind in ("output","verified_output","local_output","output_own_gate") else soft
         parts=((1-weight)*h+weight*target)*self.mass
         group=h.new_zeros((len(h),self.count)).index_add_(1,self.g,parts)
         return group.clamp_min(1e-30).log()+shift
