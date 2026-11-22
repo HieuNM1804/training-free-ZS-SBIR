@@ -82,6 +82,8 @@ def run(w):
             out = dict(zip(("queries","gallery"), (len(qi),len(pi))))
             out.update({"strong": anchor["best_contrast"], "strong_sha256": anchor["per_query_sha256"],
                         "one_action_sha256": primary["per_query_sha256"], "oracle_vs_strong": paired_delta(oracle, strong, y),
+                        "strong_vs_equal_compute_uniform": paired_delta(strong, older["metrics"][anchor["matched_base"]], y),
+                        "strong_vs_global_words": paired_delta(strong, recent["global"], y),
                         "share_oracle_at_least_5pp_better": float((difference >= 5).float().mean()),
                         "share_strong_at_least_5pp_better": float((difference <= -5).float().mean()),
                         "lower_quartile_strong_AP_cutoff": float(strong[difficult,0].max()),
