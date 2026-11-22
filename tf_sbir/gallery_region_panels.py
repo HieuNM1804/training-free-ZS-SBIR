@@ -27,10 +27,12 @@ GROUPS = ("iid","cluster")
 CONFIG = Config(neighbors=16,bandwidth=.36,iterations=2,mode="rgb")
 
 
-def donors(photo):
+def donors(photo, seed=72937, kinds=GROUPS):
     n=len(photo)
-    random=torch.randperm(n,generator=torch.Generator().manual_seed(72937))
+    random=torch.randperm(n,generator=torch.Generator().manual_seed(seed))
     image_parts=list(random.tensor_split(FOLDS))
+    if tuple(kinds)==("iid",):
+        return {"iid":image_parts}
     groups=cluster_assignments(F.normalize(photo-photo.mean(0)),48).cpu()
     counts=groups.bincount(minlength=48)
     batches=[[] for _ in range(FOLDS)]
@@ -47,7 +49,7 @@ def donors(photo):
     return {"iid":image_parts,"cluster":clusters}
 
 
-def compile_all(w,ds):
+def compile_all(w,ds,seed=72937,capacities=SIZES,kinds=GROUPS):
     cfg,_,_,paths,galleries,_,raw=global_inputs(w,ds)
     vocab=read_words(cfg.vocabulary)
     if len(vocab)!=20931:
@@ -56,13 +58,17 @@ def compile_all(w,ds):
     _,scale=bare_words(cfg,vocab)
     for split,(pi,_) in galleries.items():
         folder=w/"cache"/FAMILY
-        path=folder/(split+"-donor-indices.pt")
-        signature=digest({"checkpoint":CHECKPOINT,"vocab":checksum(cfg.vocabulary),"gallery":digest([str(paths[i]) for i in pi]),
-                          "capacities":SIZES,"folds":FOLDS,"types":GROUPS,"recipe":"v1 separate donor prior/prototypes, same frozen full-gallery RGB"})
+        settings={"checkpoint":CHECKPOINT,"vocab":checksum(cfg.vocabulary),"gallery":digest([str(paths[i]) for i in pi]),
+                  "capacities":capacities,"folds":FOLDS,"types":kinds,"recipe":"v1 separate donor prior/prototypes, same frozen full-gallery RGB"}
+        default=seed==72937 and tuple(capacities)==SIZES and tuple(kinds)==GROUPS
+        if not default:
+            settings["seed"]=seed
+        signature=digest(settings)
+        path=folder/(split+("-donor-indices.pt" if default else f"-donor-{signature[:16]}.pt"))
         if path.exists() and path.with_suffix(".json").exists() and read(path.with_suffix(".json"))["signature"]==signature:
             continue
         p=raw[pi].cuda()
-        groups=donors(p)
+        groups=donors(p,seed,kinds)
         graph=Index(SimpleNamespace(p=p),rgb_only=True)
         probs=torch.empty((len(p),len(vocab)),device=p.device)
         for start in range(0,len(p),128):
@@ -75,7 +81,7 @@ def compile_all(w,ds):
                 prior,info=fit_prior(probs[subset])
                 prior=prior["mle"]
                 centered=F.normalize(p-p[subset].mean(0))
-                for capacity in SIZES:
+                for capacity in capacities:
                     terms=prior.topk(capacity).indices
                     logw=prior[terms].clamp_min(1e-30).log()
                     prompt=scale*(p@tgt[terms].T)+logw
@@ -90,12 +96,15 @@ def compile_all(w,ds):
                 meta[kind+str(j)]={"photos":len(ids),"iterations":info["iterations"]}
             print("references",split,kind,flush=True)
         overlap={}
-        for k in GROUPS:
-            for c in SIZES:
+        for k in kinds:
+            for c in capacities:
                 ss=[set(stores[k,c,j][0].tolist()) for j in range(FOLDS)]
                 overlap[k+"/"+str(c)]=sum(len(a&b)/len(a|b) for i,a in enumerate(ss) for b in ss[i+1:])/(FOLDS*(FOLDS-1)/2)
         save_tensor({"banks":stores,"partitions":groups},path)
-        atomic_json(path.with_suffix(".json"),{"signature":signature,"gallery":len(p),"overlap_Jaccard":overlap,"donors":meta})
+        record={"signature":signature,"gallery":len(p),"overlap_Jaccard":overlap,"donors":meta}
+        if not default:
+            record["seed_settings"]=settings
+        atomic_json(path.with_suffix(".json"),record)
         print("stored",split,path.stat().st_size,overlap,flush=True)
 
 
