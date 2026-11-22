@@ -108,11 +108,12 @@ def statistics(a,n,d,mass):
                         ((x-cross.square()/y).clamp_min(0)/y).sqrt()),1)
 
 
-def evaluate(w,ds,s,cfg,inputs,source,target,scale,read_views,ids,lookup,text_banks,kd,workers):
+def evaluate(w,ds,s,cfg,inputs,source,target,scale,read_views,ids,lookup,text_banks,kd,workers,
+             reference_direction=None):
     qi,y,g,q,words,small,large,historical,locked=get_split(w,ds,source,target,scale,inputs,s)
     bank_g=large.sum(0,dtype=torch.float64).float().clamp_min(1e-30).log()
     bank_l=small.sum(0,dtype=torch.float64).float().clamp_min(1e-30).log()
-    delta=source-target
+    delta=source-target if reference_direction is None else reference_direction
     keys={parse(k) for k in lookup if k!="regional"}
     structure=defaultdict(set)
     for kind,l,a,b,support in keys:
@@ -160,7 +161,7 @@ def evaluate(w,ds,s,cfg,inputs,source,target,scale,read_views,ids,lookup,text_ba
                     vectors=text_banks[kind,l]
                     noun=native@vectors.T*scale
                     local=crop@vectors[words].T*scale
-                if kind=="noun":
+                if kind in ("noun","mass"):
                     diag=torch.cat((statistics(global_log,noun,gd,bank_g),
                                     statistics(regional_log,local,ld,bank_l).reshape(n,26,-1).mean(1)),1)
                     measure[str(l)].append(diag.cpu())
