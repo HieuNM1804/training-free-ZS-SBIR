@@ -18,6 +18,21 @@ from .retrieval_diagnosis import global_inputs
 FAMILY="cross-view-region-verification"
 
 
+def two_pose_regions(vision, pixels):
+    full = F.normalize(vision(pixels.flip((-1,)).to(vision.conv1.weight.dtype)).float())
+    outputs = []
+    for side in SIDES:
+        positions = windows(side)
+        for start in range(0, len(positions), 3):
+            take = positions[start:start + 3]
+            patches = torch.stack([pixels[:, :, 32*y:32*(y+side), 32*x:32*(x+side)] for y, x in take], 1)
+            zoom = F.interpolate(patches.flatten(0, 1), size=(224, 224), mode="bicubic", align_corners=False, antialias=True)
+            both = torch.stack((zoom, zoom.flip((-1,))), 1).flatten(0, 1)
+            projected = F.normalize(vision(both.to(vision.conv1.weight.dtype)).float())
+            outputs.append(projected.reshape(len(pixels), len(take), 2, -1))
+    return full.half(), torch.cat(outputs, 1).half()
+
+
 @torch.inference_mode()
 def run(w,ds):
     cfg,paths,_,_,_,raw,_=global_inputs(w,ds)
@@ -40,18 +55,9 @@ def run(w,ds):
             direct=F.normalize(v(p.to(v.conv1.weight.dtype)).float())
             err=max(err,float((1-(direct*raw[offset:offset+len(p)].cuda()).sum(1)).abs().max()))
             if err>.002:raise ValueError("Native sketch mismatch")
-        full[offset:offset+len(p)]=F.normalize(v(p.flip((-1,)).to(v.conv1.weight.dtype)).float()).half().cpu()
-        outs=[]
-        for side in SIDES:
-            loc=windows(side)
-            for start in range(0,len(loc),3):
-                use=loc[start:start+3]
-                patches=torch.stack([p[:,:,32*y:32*(y+side),32*x:32*(x+side)] for y,x in use],1)
-                zoom=F.interpolate(patches.flatten(0,1),size=(224,224),mode="bicubic",align_corners=False,antialias=True)
-                both=torch.stack((zoom,zoom.flip((-1,))),dim=1).flatten(0,1)
-                z=F.normalize(v(both.to(v.conv1.weight.dtype)).float()).reshape(len(p),len(use),2,-1)
-                outs.append(z)
-        pair=torch.cat(outs,1).half().cpu()
+        reflected,pair=two_pose_regions(v,p)
+        full[offset:offset+len(p)]=reflected.cpu()
+        pair=pair.cpu()
         original[offset:offset+len(p)]=pair[:,:,0]
         data[offset:offset+len(p)]=pair[:,:,1]
         offset+=len(p)
