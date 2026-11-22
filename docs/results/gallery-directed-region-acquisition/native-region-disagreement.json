@@ -1,0 +1,244 @@
+{
+  "kd_sha256": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+  "per_query_sha256": "b49c4e38af9a9e826fdc872336054c5699e1555e0d267237bd80785d6d1aaca8",
+  "scope": "post-hoc oracle bound on selecting between the two existing rank lists, labels only used after scoring",
+  "splits": {
+    "sketchy_1": {
+      "queries": 14179,
+      "gallery": 17100,
+      "native_map_precision": [
+        0.30289527773857117,
+        0.41636922955513
+      ],
+      "regional_map_precision": [
+        0.8436801433563232,
+        0.8384836316108704
+      ],
+      "both_correct": 5097,
+      "both_wrong": 2217,
+      "only_regional_correct": 6762,
+      "only_native_correct": 103,
+      "regional_misses": 2320,
+      "native_recovers_share_of_regional_misses": 0.04439655318856239,
+      "native_wins_by_at_least_5pp_AP_share": 0.002750546671450138,
+      "oracle_native_or_regional": [
+        0.8441808819770813,
+        0.8413689732551575
+      ],
+      "oracle_gain": {
+        "mAP": {
+          "delta_pp": 0.050067955616083105,
+          "ci95_class": [
+            0.019601524535444916,
+            0.08624308018643534
+          ],
+          "classes_up": 19,
+          "classes": 25
+        },
+        "precision": {
+          "delta_pp": 0.28852528345119094,
+          "ci95_class": [
+            0.07207797543018946,
+            0.5699526059199891
+          ],
+          "classes_up": 14,
+          "classes": 25
+        }
+      },
+      "top_confusions_when_native_was_correct": [
+        {
+          "true": "horse",
+          "regional_top": "camel",
+          "count": 20
+        },
+        {
+          "true": "scissors",
+          "regional_top": "wheelchair",
+          "count": 17
+        },
+        {
+          "true": "chicken",
+          "regional_top": "parrot",
+          "count": 13
+        },
+        {
+          "true": "scissors",
+          "regional_top": "bell",
+          "count": 6
+        },
+        {
+          "true": "scissors",
+          "regional_top": "airplane",
+          "count": 4
+        },
+        {
+          "true": "deer",
+          "regional_top": "camel",
+          "count": 4
+        }
+      ],
+      "native_kd_max_difference": 1.7881393432617188e-07,
+      "regional_original_mean_abs_difference": 2.3748430078141787e-08,
+      "regional_original_max_abs_difference": 2.384185791015625e-07,
+      "regional_reference_sha256": "a73f82a256667793669fa70f2ecf456bf70abd034c7677a998cbfcd315447547"
+    },
+    "sketchy_2": {
+      "queries": 12694,
+      "gallery": 12552,
+      "native_map_precision": [
+        0.3634491264820099,
+        0.3384602963924408
+      ],
+      "regional_map_precision": [
+        0.7701367139816284,
+        0.7483779191970825
+      ],
+      "both_correct": 4303,
+      "both_wrong": 2832,
+      "only_regional_correct": 5176,
+      "only_native_correct": 383,
+      "regional_misses": 3215,
+      "native_recovers_share_of_regional_misses": 0.11912908405065536,
+      "native_wins_by_at_least_5pp_AP_share": 0.12060815840959549,
+      "oracle_native_or_regional": [
+        0.8004912734031677,
+        0.7759882211685181
+      ],
+      "oracle_gain": {
+        "mAP": {
+          "delta_pp": 3.035462703402485,
+          "ci95_class": [
+            1.3197752610993414,
+            5.183495670163047
+          ],
+          "classes_up": 21,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 2.7610288297560004,
+          "ci95_class": [
+            1.127032201541179,
+            4.896082249200114
+          ],
+          "classes_up": 21,
+          "classes": 21
+        }
+      },
+      "top_confusions_when_native_was_correct": [
+        {
+          "true": "giraffe",
+          "regional_top": "cow",
+          "count": 155
+        },
+        {
+          "true": "dolphin",
+          "regional_top": "seagull",
+          "count": 29
+        },
+        {
+          "true": "rhinoceros",
+          "regional_top": "cow",
+          "count": 23
+        },
+        {
+          "true": "scissors",
+          "regional_top": "sword",
+          "count": 22
+        },
+        {
+          "true": "window",
+          "regional_top": "door",
+          "count": 19
+        },
+        {
+          "true": "giraffe",
+          "regional_top": "rhinoceros",
+          "count": 13
+        }
+      ],
+      "native_kd_max_difference": 1.7881393432617188e-07,
+      "regional_original_mean_abs_difference": 8.636707275969711e-09,
+      "regional_original_max_abs_difference": 1.7881393432617188e-07,
+      "regional_reference_sha256": "10e1d4bf4c5a02da22b80232cdc2e3cddaaddfa6043546980e4f41e659661a08"
+    },
+    "tuberlin": {
+      "queries": 2130,
+      "gallery": 27262,
+      "native_map_precision": [
+        0.2906622588634491,
+        0.4626760482788086
+      ],
+      "regional_map_precision": [
+        0.800732433795929,
+        0.8091737031936646
+      ],
+      "both_correct": 1186,
+      "both_wrong": 344,
+      "only_regional_correct": 537,
+      "only_native_correct": 63,
+      "regional_misses": 407,
+      "native_recovers_share_of_regional_misses": 0.15479116141796112,
+      "native_wins_by_at_least_5pp_AP_share": 0.004694835748523474,
+      "oracle_native_or_regional": [
+        0.8020718693733215,
+        0.8117606043815613
+      ],
+      "oracle_gain": {
+        "mAP": {
+          "delta_pp": 0.1339422323098275,
+          "ci95_class": [
+            0.010637711674848411,
+            0.3644927960938563
+          ],
+          "classes_up": 11,
+          "classes": 30
+        },
+        "precision": {
+          "delta_pp": 0.2586854445122777,
+          "ci95_class": [
+            0.04037086996052484,
+            0.5939273276976442
+          ],
+          "classes_up": 8,
+          "classes": 30
+        }
+      },
+      "top_confusions_when_native_was_correct": [
+        {
+          "true": "baseball bat",
+          "regional_top": "hammer",
+          "count": 25
+        },
+        {
+          "true": "mug",
+          "regional_top": "cup",
+          "count": 11
+        },
+        {
+          "true": "truck",
+          "regional_top": "suv",
+          "count": 4
+        },
+        {
+          "true": "truck",
+          "regional_top": "bus",
+          "count": 3
+        },
+        {
+          "true": "baseball bat",
+          "regional_top": "pear",
+          "count": 2
+        },
+        {
+          "true": "eyeglasses",
+          "regional_top": "hammer",
+          "count": 2
+        }
+      ],
+      "native_kd_max_difference": 1.1920928955078125e-07,
+      "regional_original_mean_abs_difference": 2.0103122461849536e-08,
+      "regional_original_max_abs_difference": 1.7881393432617188e-07,
+      "regional_reference_sha256": "1a5d5d339d970752daa3e4743a27e039221452873017e30ab4e6988750ca634d"
+    }
+  }
+}

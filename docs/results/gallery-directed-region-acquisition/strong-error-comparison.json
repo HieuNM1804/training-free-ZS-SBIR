@@ -1,0 +1,416 @@
+{
+  "unit": "metrics are fractions; differences are percentage points",
+  "splits": {
+    "sketchy_1": {
+      "queries": 14179,
+      "gallery": 17100,
+      "strong": "[\"self\",1.0,\"gallery\",\"first\",0.35]",
+      "strong_sha256": "a73f82a256667793669fa70f2ecf456bf70abd034c7677a998cbfcd315447547",
+      "one_action_sha256": "42ad4978f9c1e3c2871cc4181e575dc3434de938bd394408aeaf9568e6fbe685",
+      "oracle_vs_strong": {
+        "mAP": {
+          "delta_pp": 4.311710046762572,
+          "ci95_class": [
+            3.3343289441943833,
+            5.455462389157186
+          ],
+          "classes_up": 25,
+          "classes": 25
+        },
+        "precision": {
+          "delta_pp": 4.799774313499644,
+          "ci95_class": [
+            3.561122086787177,
+            6.297179738785054
+          ],
+          "classes_up": 25,
+          "classes": 25
+        }
+      },
+      "strong_vs_equal_compute_uniform": {
+        "mAP": {
+          "delta_pp": 0.27948711585022007,
+          "ci95_class": [
+            0.07949385147927528,
+            0.4580989144452437
+          ],
+          "classes_up": 19,
+          "classes": 25
+        },
+        "precision": {
+          "delta_pp": 0.1510684762100918,
+          "ci95_class": [
+            -0.17748207677202857,
+            0.4154208301684735
+          ],
+          "classes_up": 18,
+          "classes": 25
+        }
+      },
+      "strong_vs_global_words": {
+        "mAP": {
+          "delta_pp": 2.512113508778955,
+          "ci95_class": [
+            1.6786147865464287,
+            3.36575881693745
+          ],
+          "classes_up": 23,
+          "classes": 25
+        },
+        "precision": {
+          "delta_pp": 2.5228859437797073,
+          "ci95_class": [
+            1.6680485650659351,
+            3.44657242253126
+          ],
+          "classes_up": 22,
+          "classes": 25
+        }
+      },
+      "share_oracle_at_least_5pp_better": 0.15050426125526428,
+      "share_strong_at_least_5pp_better": 0.0033852881751954556,
+      "lower_quartile_strong_AP_cutoff": 0.923669695854187,
+      "lower_quartile_mean_oracle_gain_pp": 16.680038452148438,
+      "case_stored_vs_replayed_strong_max_abs_error": 8.195638656616211e-08,
+      "cases": [
+        {
+          "query": "n01498041_11366-1.png",
+          "truth": "ray",
+          "single_zoom_wrong": "snail",
+          "single_zoom_ap": 0.7169398069381714,
+          "oracle_ap": 0.9793874621391296,
+          "native_cosine": {
+            "top_class": "scissors",
+            "top_photo": "ext_525.jpg",
+            "rank_of_first_correct": 12,
+            "AP": 0.05588119477033615,
+            "precision": 0.05999999865889549
+          },
+          "strong_regional": {
+            "top_class": "ray",
+            "top_photo": "ext_28.jpg",
+            "rank_of_first_correct": 1,
+            "AP": 0.9191856980323792,
+            "precision": 1.0
+          }
+        },
+        {
+          "query": "n02274259_20053-4.png",
+          "truth": "butterfly",
+          "single_zoom_wrong": "snail",
+          "single_zoom_ap": 0.043436381965875626,
+          "oracle_ap": 0.06783456355333328,
+          "native_cosine": {
+            "top_class": "scissors",
+            "top_photo": "ext_193.jpg",
+            "rank_of_first_correct": 540,
+            "AP": 0.033444713801145554,
+            "precision": 0.0
+          },
+          "strong_regional": {
+            "top_class": "bell",
+            "top_photo": "n02824448_193291.jpg",
+            "rank_of_first_correct": 1601,
+            "AP": 0.13137368857860565,
+            "precision": 0.0
+          }
+        },
+        {
+          "query": "n04389033_4394-5.png",
+          "truth": "tank",
+          "single_zoom_wrong": "wheelchair",
+          "single_zoom_ap": 0.0944550633430481,
+          "oracle_ap": 0.17437347769737244,
+          "native_cosine": {
+            "top_class": "scissors",
+            "top_photo": "ext_515.jpg",
+            "rank_of_first_correct": 932,
+            "AP": 0.024335507303476334,
+            "precision": 0.0
+          },
+          "strong_regional": {
+            "top_class": "wheelchair",
+            "top_photo": "ext_7.jpg",
+            "rank_of_first_correct": 1318,
+            "AP": 0.0943208560347557,
+            "precision": 0.0
+          }
+        }
+      ]
+    },
+    "sketchy_2": {
+      "queries": 12694,
+      "gallery": 12552,
+      "strong": "[\"self\",1.0,\"gallery\",\"first\",0.35]",
+      "strong_sha256": "10e1d4bf4c5a02da22b80232cdc2e3cddaaddfa6043546980e4f41e659661a08",
+      "one_action_sha256": "390fad6f015213cabf0938c2d672e723f7dfeec0417cd9ff1f3cdbab320dd663",
+      "oracle_vs_strong": {
+        "mAP": {
+          "delta_pp": 7.48073631783923,
+          "ci95_class": [
+            5.308233587381908,
+            10.015011977707633
+          ],
+          "classes_up": 21,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 6.138175527845591,
+          "ci95_class": [
+            4.203003841850792,
+            8.24795382491002
+          ],
+          "classes_up": 21,
+          "classes": 21
+        }
+      },
+      "strong_vs_equal_compute_uniform": {
+        "mAP": {
+          "delta_pp": 0.5402471246159669,
+          "ci95_class": [
+            0.15063162325273627,
+            0.935785572933299
+          ],
+          "classes_up": 16,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 0.567945480199652,
+          "ci95_class": [
+            0.1881509681434741,
+            0.9456786427982977
+          ],
+          "classes_up": 16,
+          "classes": 21
+        }
+      },
+      "strong_vs_global_words": {
+        "mAP": {
+          "delta_pp": 2.8188288323267208,
+          "ci95_class": [
+            0.0888598675406519,
+            6.02313521395786
+          ],
+          "classes_up": 16,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 2.159366596693225,
+          "ci95_class": [
+            -0.023911830062250845,
+            4.286403264651441
+          ],
+          "classes_up": 15,
+          "classes": 21
+        }
+      },
+      "share_oracle_at_least_5pp_better": 0.14786513149738312,
+      "share_strong_at_least_5pp_better": 0.0038600913248956203,
+      "lower_quartile_strong_AP_cutoff": 0.8305206298828125,
+      "lower_quartile_mean_oracle_gain_pp": 29.11182403564453,
+      "case_stored_vs_replayed_strong_max_abs_error": 0.0,
+      "cases": [
+        {
+          "query": "n01537544_6387-3.png",
+          "truth": "songbird",
+          "single_zoom_wrong": "seagull",
+          "single_zoom_ap": 0.23373429477214813,
+          "oracle_ap": 0.2806483209133148,
+          "native_cosine": {
+            "top_class": "scissors",
+            "top_photo": "ext_515.jpg",
+            "rank_of_first_correct": 60,
+            "AP": 0.015044743195176125,
+            "precision": 0.009999999776482582
+          },
+          "strong_regional": {
+            "top_class": "seagull",
+            "top_photo": "n02041246_65331.jpg",
+            "rank_of_first_correct": 122,
+            "AP": 0.2267812192440033,
+            "precision": 0.38499999046325684
+          }
+        },
+        {
+          "query": "n02439033_11215-4.png",
+          "truth": "giraffe",
+          "single_zoom_wrong": "cow",
+          "single_zoom_ap": 0.9557774662971497,
+          "oracle_ap": 1.0,
+          "native_cosine": {
+            "top_class": "giraffe",
+            "top_photo": "ext_126.jpg",
+            "rank_of_first_correct": 1,
+            "AP": 0.7573656439781189,
+            "precision": 0.7149999737739563
+          },
+          "strong_regional": {
+            "top_class": "cow",
+            "top_photo": "n02404432_10392.jpg",
+            "rank_of_first_correct": 3,
+            "AP": 0.9557774662971497,
+            "precision": 0.9900000095367432
+          }
+        },
+        {
+          "query": "n02508021_10708-4.png",
+          "truth": "raccoon",
+          "single_zoom_wrong": "cow",
+          "single_zoom_ap": 0.0,
+          "oracle_ap": 0.020272303372621536,
+          "native_cosine": {
+            "top_class": "giraffe",
+            "top_photo": "ext_126.jpg",
+            "rank_of_first_correct": 2,
+            "AP": 0.6200359463691711,
+            "precision": 0.44999998807907104
+          },
+          "strong_regional": {
+            "top_class": "cow",
+            "top_photo": "n01887787_10931.jpg",
+            "rank_of_first_correct": 1462,
+            "AP": 0.0,
+            "precision": 0.0
+          }
+        }
+      ]
+    },
+    "tuberlin": {
+      "queries": 2130,
+      "gallery": 27262,
+      "strong": "[\"self\",1.0,\"gallery\",\"first\",0.35]",
+      "strong_sha256": "1a5d5d339d970752daa3e4743a27e039221452873017e30ab4e6988750ca634d",
+      "one_action_sha256": "2beb7db5b1cc9ec0cb90927e7cd78139fb172b26a2e575e29c440653fc99c045",
+      "oracle_vs_strong": {
+        "mAP": {
+          "delta_pp": 4.802487454171612,
+          "ci95_class": [
+            3.422216460054995,
+            6.452500648442569
+          ],
+          "classes_up": 30,
+          "classes": 30
+        },
+        "precision": {
+          "delta_pp": 5.5291080083960376,
+          "ci95_class": [
+            3.751610576129002,
+            7.557855509278933
+          ],
+          "classes_up": 28,
+          "classes": 30
+        }
+      },
+      "strong_vs_equal_compute_uniform": {
+        "mAP": {
+          "delta_pp": 0.24367665710198766,
+          "ci95_class": [
+            -0.003016432480202651,
+            0.48044635731866747
+          ],
+          "classes_up": 18,
+          "classes": 30
+        },
+        "precision": {
+          "delta_pp": 0.1760563208008876,
+          "ci95_class": [
+            -0.26057516770577277,
+            0.5669929035192459
+          ],
+          "classes_up": 15,
+          "classes": 30
+        }
+      },
+      "strong_vs_global_words": {
+        "mAP": {
+          "delta_pp": 0.9099682989779493,
+          "ci95_class": [
+            -0.25455290631406063,
+            2.0333769221874056
+          ],
+          "classes_up": 20,
+          "classes": 30
+        },
+        "precision": {
+          "delta_pp": 0.6788731472208186,
+          "ci95_class": [
+            -0.4202322367067786,
+            1.7950229183028301
+          ],
+          "classes_up": 20,
+          "classes": 30
+        }
+      },
+      "share_oracle_at_least_5pp_better": 0.16854460537433624,
+      "share_strong_at_least_5pp_better": 0.0037558686453849077,
+      "lower_quartile_strong_AP_cutoff": 0.6853538155555725,
+      "lower_quartile_mean_oracle_gain_pp": 16.749364852905273,
+      "case_stored_vs_replayed_strong_max_abs_error": 3.2901763916015625e-05,
+      "cases": [
+        {
+          "query": "5129.png",
+          "truth": "cup",
+          "single_zoom_wrong": "mug",
+          "single_zoom_ap": 0.47184687852859497,
+          "oracle_ap": 0.4732382297515869,
+          "native_cosine": {
+            "top_class": "mug",
+            "top_photo": "n03797390_1528.JPEG",
+            "rank_of_first_correct": 2,
+            "AP": 0.24484552443027496,
+            "precision": 0.4699999988079071
+          },
+          "strong_regional": {
+            "top_class": "mug",
+            "top_photo": "n03797390_5474.JPEG",
+            "rank_of_first_correct": 2,
+            "AP": 0.470072478055954,
+            "precision": 0.5
+          }
+        },
+        {
+          "query": "966.png",
+          "truth": "baseball bat",
+          "single_zoom_wrong": "hammer",
+          "single_zoom_ap": 0.3069383502006531,
+          "oracle_ap": 0.5121077299118042,
+          "native_cosine": {
+            "top_class": "baseball bat",
+            "top_photo": "n02799175_6112.JPEG",
+            "rank_of_first_correct": 1,
+            "AP": 0.061880577355623245,
+            "precision": 0.3499999940395355
+          },
+          "strong_regional": {
+            "top_class": "hammer",
+            "top_photo": "n03481172_11093.JPEG",
+            "rank_of_first_correct": 95,
+            "AP": 0.3062150776386261,
+            "precision": 0.019999999552965164
+          }
+        },
+        {
+          "query": "16841.png",
+          "truth": "suv",
+          "single_zoom_wrong": "truck",
+          "single_zoom_ap": 0.3704005181789398,
+          "oracle_ap": 0.6286613345146179,
+          "native_cosine": {
+            "top_class": "cell phone",
+            "top_photo": "n02992529_19116.JPEG",
+            "rank_of_first_correct": 498,
+            "AP": 0.04872455820441246,
+            "precision": 0.0
+          },
+          "strong_regional": {
+            "top_class": "suv",
+            "top_photo": "n04285965_8104.JPEG",
+            "rank_of_first_correct": 1,
+            "AP": 0.5684951543807983,
+            "precision": 0.9599999785423279
+          }
+        }
+      ]
+    }
+  }
+}
