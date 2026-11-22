@@ -13,10 +13,13 @@ from .crossdomain_inputs import CHECKPOINT
 from .encoding import save_tensor
 from .gallery_region_panels import CONFIG,Index
 from .paired_fragment_inputs import FAMILY,PARTS,read_features
+from .paired_fragment_area_control import read_area
 
 
 SIZES=(256,2048)
-PAIRS=(("grid","grid"),("appearance","appearance"),("appearance","shuffled"),("shuffled","appearance"),("shuffled","shuffled"))
+ALL_PARTS=(*PARTS,"area_shuffle")
+PAIRS=(("grid","grid"),("appearance","appearance"),("appearance","shuffled"),("shuffled","appearance"),("shuffled","shuffled"),
+       ("appearance","area_shuffle"),("area_shuffle","appearance"),("area_shuffle","area_shuffle"))
 METHODS=("interaction","source","target","additive","whole_minus_parts","parts","whole","cluster_shuffled","cluster_mean","logratio_cos","excess")
 GAINS=(-.18,.06,.18,.5)
 GRAPH=("native","diffused")
@@ -63,20 +66,22 @@ def target_tables(w,s,ds,inputs,cat,n):
     pi=gs[s][0]
     # Save probabilities after their operations; returning float32 on CUDA keeps subsequent ratio calculations reliable.
     folder=w/"cache"/FAMILY/"word-readout"
-    key=digest({"catalog":cat["order"][:n].tolist(),"parts":PARTS,"graph_config":str(CONFIG),"gallery":s,"model":CHECKPOINT})
+    key=digest({"catalog":cat["order"][:n].tolist(),"parts":ALL_PARTS,"graph_config":str(CONFIG),"gallery":s,"model":CHECKPOINT})
     file=folder/f"{s}-{n}-{key[:12]}.pt"
     if file.is_file():
         cached=torch.load(file,mmap=True,weights_only=True)
         return {k:v.cuda() for k,v in cached.items()}
     fragments,_=read_features(w,ds,"photo",pi)
+    matched_areas=read_area(w,ds,"photo",pi)
     rgb=p[pi].cuda();axes=tgt[cat["order"][:n]]
     g=Index(SimpleNamespace(p=rgb),rgb_only=True)
     data={}
-    for part in ("whole",*PARTS):
+    for part in ("whole",*ALL_PARTS):
         blocks=[]
         for start in range(0,len(pi),160):
             sl=slice(start,start+160)
             if part=="whole":b=prob(rgb[sl],axes,scale)
+            elif part=="area_shuffle":b=prob(matched_areas[sl].cuda(),axes,scale).mean(1)
             else:b=prob(fragments[sl,PARTS.index(part)].cuda(),axes,scale).mean(1)
             blocks.append(b)
         b=torch.cat(blocks)

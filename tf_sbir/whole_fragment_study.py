@@ -19,6 +19,7 @@ from .encoding import save_tensor
 from .gallery_panel_resume import semantic_inputs
 from .map_diagnosis import map_values
 from .paired_fragment_inputs import FAMILY
+from .paired_fragment_area_control import read_area
 from .quickdraw_locked import KD_FUNCTION_SHA
 from .recoverable_patch_study import prepare
 from .retrieval_evidence import load_kd,paired_delta
@@ -65,7 +66,10 @@ def evaluate(w,s,inputs,data,p,rows,kd):
             readout=target_tables(w,s,"sketchy",inputs,cat,j)
             axes=src[cat["order"][:j]]
             source_full=prob(full,axes,scale)
-            source_parts={k:prob(zz[:,PARTITIONS.index(k)],axes,scale).mean(1) for k in {v[0] for v in configs}}
+            source_parts={}
+            for k in {v[0] for v in configs}:
+                views=data["area"][p["positions"]].cuda().float() if k=="area_shuffle" else zz[:,PARTITIONS.index(k)]
+                source_parts[k]=prob(views,axes,scale).mean(1)
             fixed={}
             for _,part,g in configs:
                 if (part,g) not in fixed:
@@ -114,6 +118,7 @@ def run(w):
     torch.backends.cuda.matmul.allow_tf32=False
     torch.backends.cudnn.allow_tf32=False
     data=subset_bank(w,"sketchy","pilot-query")
+    data["area"]=read_area(w,"sketchy","pilot-query",data["ids"])
     kd,_=load_kd(w)
     if hashlib.sha256(inspect.getsource(kd).strip().encode()).hexdigest()!=KD_FUNCTION_SHA:raise ValueError("Unexpected evaluator")
     rows=grid()
