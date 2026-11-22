@@ -77,7 +77,7 @@ def prepare(w,s,inputs,embeds):
     sig=digest({"gallery":[str(pp[int(j)]) for j in pi],"model":CHECKPOINT,"source":"regional-64/RGB16"})
     heads,weights=load_index(w,s,rgb,tgt,scale,sig[:16])
     return {"ids":ids,"positions":locate(embeds["ids"],qi[ids]),"y":y[ids],"g":g,"rgb":rgb,
-            "axes":src[heads],"bank":weights,"scale":scale,"base":study_base(w,s,inputs,ids)}
+            "heads":heads,"axes":src[heads],"bank":weights,"scale":scale,"base":study_base(w,s,inputs,ids)}
 
 
 def evaluate(s,prepared,data,readouts,rows,kd,workers):
