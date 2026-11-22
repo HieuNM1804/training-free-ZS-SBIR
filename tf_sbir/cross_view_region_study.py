@@ -104,9 +104,11 @@ def run(w,phase,workers):
             words=read_words(cfg.vocabulary)
             if len(words)!=20931:raise ValueError("Different vocabulary")
             src,tgt=(a.cuda() for a in load_words(cfg,words));_,scale=bare_words(cfg,words)
-            prior_views=torch.load(w/"cache/regional-evidence-interventions"/ds/"regions.pt",mmap=True,weights_only=True)
             second=torch.load(w/"cache"/FAMILY/ds/"views.pt",mmap=True,weights_only=True)
             if len(second["regions"])!=len(qp):raise ValueError("Missing reflected views")
+            prior_views=None
+            if "original_regions" not in second:
+                prior_views=torch.load(w/"cache/regional-evidence-interventions"/ds/"regions.pt",mmap=True,weights_only=True)
             for s,(qi,y) in qs.items():
                 pi,g=gs[s]
                 if (len(qi),len(pi),len(g.unique()))!=SIZES[s] or digest(UNSEEN_CLASSES[s])!=SPLIT_HASHES[s]:raise ValueError("Wrong evaluation split")
@@ -117,9 +119,12 @@ def run(w,phase,workers):
                     table[s]=old["values"];continue
                 ids=stratified_sample(y,36,63241) if stage=="pilot" else torch.arange(len(qi))
                 ix=qi[ids]
-                loc=torch.searchsorted(prior_views["ids"],ix)
-                if not torch.equal(prior_views["ids"][loc],ix):raise ValueError("Wrong region rows")
-                v=prior_views["features"][loc,:,2]
+                if prior_views is None:
+                    v=second["original_regions"][ix]
+                else:
+                    loc=torch.searchsorted(prior_views["ids"],ix)
+                    if not torch.equal(prior_views["ids"][loc],ix):raise ValueError("Wrong region rows")
+                    v=prior_views["features"][loc,:,2]
                 revviews=second["regions"][ix]
                 flipped=second["global"][ix]
                 ident=digest({"signature":sig,"gallery":digest([str(pp[i]) for i in pi.tolist()]),"vocabulary":checksum(cfg.vocabulary)})[:16]
