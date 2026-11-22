@@ -133,7 +133,7 @@ def native(v,pixels,units):
 
 def nearest(rows,table,n=32):
     keys=rows.reshape(-1,rows.size(-1)).half()
-    table=table.reshape(-1,table.size(-1))
+    table=table.reshape(-1,table.size(-1)).to(keys.dtype)
     out=[]
     for q in keys.split(384):
         out.append((q@table.T).topk(n,dim=1).indices)
