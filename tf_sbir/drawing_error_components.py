@@ -68,6 +68,34 @@ def ratios(vec):
     return (vec[1]/max(vec[0],1),vec[2]/max(vec[3],1),vec[4]/max(vec[5],1))
 
 
+def example_pairs(groups,source_ids,ap,pred,labels,qp,pp,qi,pi,gallery_top):
+    classes=[]
+    for category,clusters in groups.items():
+        eligible=[]
+        for ix in clusters:
+            good=ix[pred[ix]==category]
+            bad=ix[pred[ix]!=category]
+            if not len(good) or not len(bad):continue
+            correct=int(good[np.abs(ap[good]-np.median(ap[good])).argmin()])
+            wrong=int(bad[np.abs(ap[bad]-np.median(ap[bad])).argmin()])
+            eligible.append((correct,wrong,float(ap[correct]-ap[wrong])))
+        if eligible:
+            gaps=np.asarray([t[2] for t in eligible])
+            j=int(np.abs(gaps-np.median(gaps)).argmin())
+            classes.append((len(eligible),category,eligible[j]))
+    result=[]
+    def short(path):
+        p=Path(path)
+        return str(Path(p.parent.name)/p.name)
+    for count,category,(first,second,gap) in sorted(classes,key=lambda t:(-t[0],t[1]))[:3]:
+        def describe(ix):
+            return {"drawing":short(qp[int(qi[ix])]),"top_gallery_photo":short(pp[int(pi[gallery_top[ix]])]),
+                    "AP":float(ap[ix]),"top1_is_relevant":bool(pred[ix]==labels[ix])}
+        result.append({"number_of_mixed_source_objects_in_category":count,"source":source_ids[first],
+                       "correct_drawing":describe(first),"wrong_drawing":describe(second),"AP_gap":gap})
+    return result
+
+
 def report(pred,labels,ap,groups,perms):
     items=[ix for clusters in groups.values() for ix in clusters]
     indices=np.concatenate(items)
@@ -106,6 +134,7 @@ def run(w):
         context=setup(w,s,inputs,features,"all-query")
         pos=desc["arms"].index(arm)
         pred=defaultdict(list)
+        gallery_top=[]
         gl=gs[s][1]
         for off in range(0,len(labels),48):
             sl=slice(off,off+48)
@@ -118,7 +147,9 @@ def run(w):
             rd=context["scale"]*(d@context["rgb"].T)
             change={"words":wd,"rgb":rd,"both":.5*(rd+wd)}[channel]
             for name,table in (("regional",init),("native_rgb",rgb),(main,init+gain*change)):
-                pred[name].append(gl[table.argmax(1).cpu()])
+                chosen=table.argmax(1).cpu()
+                pred[name].append(gl[chosen])
+                if name=="regional":gallery_top.append(chosen)
         src=verified_sources(qp,pp,qi,gs[s][0])
         groups=grouped(labels,src)
         stats,bins={},{}
@@ -129,6 +160,8 @@ def run(w):
             stats[k],var=report(out.numpy(),labels.numpy(),saved["metrics"][k][:,0].numpy(),groups,64)
             bins[k]={"predicted_class":out,"observed_variance_by_class":var}
         data[s]={"labels":labels,"source_groups":{k:[torch.tensor(x) for x in xs] for k,xs in groups.items()},"conditions":bins}
+        stats["regional"]["example_subjects"]=example_pairs(groups,src,saved["metrics"]["regional"][:,0].numpy(),
+                    bins["regional"]["predicted_class"].numpy(),labels.numpy(),qp,pp,qi,gs[s][0],torch.cat(gallery_top))
         summary[s]=stats
         print(s,stats["regional"]["actual"],stats["regional"]["ap_variance"],flush=True)
         del context,features
