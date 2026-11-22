@@ -33,11 +33,16 @@ def photo_channels(photos, crops, target_text, scale):
 
 def utilities(prior, groups, channels):
     """All action values depend only on the global query and indexed photo data."""
+    return conditional_utilities(prior, channels[0][groups], channels[1][groups])
+
+
+def conditional_utilities(prior, first_channel, second_channel):
+    """The two observation models may be different for each independent query."""
     probability = prior / prior.sum(-1, keepdim=True)
-    first, second = (bank[groups] * probability[:, :, None, None] for bank in channels)
-    i, j = torch.triu_indices(groups.shape[1], groups.shape[1], 1, device=groups.device)
+    first, second = (bank * probability[:, :, None, None] for bank in (first_channel, second_channel))
+    i, j = torch.triu_indices(prior.size(1), prior.size(1), 1, device=prior.device)
     before = torch.minimum(probability[:, i], probability[:, j]).sum(1, keepdim=True)
-    within = before.new_zeros((len(prior), channels.size(2)))
+    within = before.new_zeros((len(prior), first_channel.size(2)))
     across = torch.zeros_like(within)
     for left, right in zip(i.split(8), j.split(8)):
         a, b = first[:, left], first[:, right]
