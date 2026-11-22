@@ -1,0 +1,376 @@
+{
+  "revision": "2f35f10eacdd2078d201bc7da3d4191032da917c",
+  "freeze": "6a17aa43f3ff0d1f667c32716c682049e34a239da691b2b3fab1b0481953c314",
+  "per_query_sha256": "6920bf384339df2a7a6cc9134261e1651f8a2459a8f0ff386a07963989d32595",
+  "results": {
+    "sketchy_1": {
+      "regional": {
+        "verified_queries": 14178,
+        "eligible_source_objects": 2499,
+        "errors_among_verified": 2320,
+        "errors_with_another_correct_drawing": 2136,
+        "two_wrong_ordered_pairs": 4674,
+        "actual": {
+          "wrong_query_has_correct_sibling": 0.9206896551724137,
+          "two_wrong_drawings_same_distractor_class": 0.30594779632006847,
+          "two_drawings_same_top1_class": 0.7487169474506303
+        },
+        "class_permuted_mean": {
+          "wrong_query_has_correct_sibling": 0.987264278017241,
+          "two_wrong_drawings_same_distractor_class": 0.20927239612684254,
+          "two_drawings_same_top1_class": 0.719613358390048
+        },
+        "class_permuted95": {
+          "wrong_query_has_correct_sibling": [
+            0.9774030172413793,
+            0.9953771551724138
+          ],
+          "two_wrong_drawings_same_distractor_class": [
+            0.18570095655689797,
+            0.2284718259984129
+          ],
+          "two_drawings_same_top1_class": [
+            0.7164335322994533,
+            0.7228725036260181
+          ]
+        },
+        "ap_variance": {
+          "within_drawing_variance": 0.05925065013814145,
+          "between_object_variance_within_category": 0.01901883090323323,
+          "share_within_drawings": 0.7570083428408126,
+          "share_class_bootstrap95": [
+            0.6965183893293523,
+            0.813626504760732
+          ]
+        },
+        "example_subjects": [
+          {
+            "number_of_mixed_source_objects_in_category": 75,
+            "source": [
+              "tank",
+              "n04389033_7763"
+            ],
+            "correct_drawing": {
+              "drawing": "tank/n04389033_7763-2.png",
+              "top_gallery_photo": "tank/ext_147.jpg",
+              "AP": 0.9961130023002625,
+              "top1_is_relevant": true
+            },
+            "wrong_drawing": {
+              "drawing": "tank/n04389033_7763-3.png",
+              "top_gallery_photo": "wheelchair/n04576002_9637.jpg",
+              "AP": 0.151898592710495,
+              "top1_is_relevant": false
+            },
+            "AP_gap": 0.8442144393920898
+          },
+          {
+            "number_of_mixed_source_objects_in_category": 74,
+            "source": [
+              "ray",
+              "n01496331_30274"
+            ],
+            "correct_drawing": {
+              "drawing": "ray/n01496331_30274-1.png",
+              "top_gallery_photo": "ray/n01496331_30068.jpg",
+              "AP": 0.9896908402442932,
+              "top1_is_relevant": true
+            },
+            "wrong_drawing": {
+              "drawing": "ray/n01496331_30274-4.png",
+              "top_gallery_photo": "airplane/n02691156_149121.jpg",
+              "AP": 0.27119287848472595,
+              "top1_is_relevant": false
+            },
+            "AP_gap": 0.7184979915618896
+          },
+          {
+            "number_of_mixed_source_objects_in_category": 74,
+            "source": [
+              "windmill",
+              "n04587559_11407"
+            ],
+            "correct_drawing": {
+              "drawing": "windmill/n04587559_11407-4.png",
+              "top_gallery_photo": "windmill/ext_162.jpg",
+              "AP": 0.8739110231399536,
+              "top1_is_relevant": true
+            },
+            "wrong_drawing": {
+              "drawing": "windmill/n04587559_11407-1.png",
+              "top_gallery_photo": "scissors/n04148054_142871.jpg",
+              "AP": 0.0852266326546669,
+              "top1_is_relevant": false
+            },
+            "AP_gap": 0.7886843681335449
+          }
+        ]
+      },
+      "native_rgb": {
+        "verified_queries": 14178,
+        "eligible_source_objects": 2499,
+        "errors_among_verified": 8984,
+        "errors_with_another_correct_drawing": 3554,
+        "two_wrong_ordered_pairs": 37052,
+        "actual": {
+          "wrong_query_has_correct_sibling": 0.3955921638468388,
+          "two_wrong_drawings_same_distractor_class": 0.9115297419842384,
+          "two_drawings_same_top1_class": 0.732483543456432
+        },
+        "class_permuted_mean": {
+          "wrong_query_has_correct_sibling": 0.5243471031834374,
+          "two_wrong_drawings_same_distractor_class": 0.9021500545915757,
+          "two_drawings_same_top1_class": 0.6691759699598347
+        },
+        "class_permuted95": {
+          "wrong_query_has_correct_sibling": [
+            0.513281945681211,
+            0.5337739314336598
+          ],
+          "two_wrong_drawings_same_distractor_class": [
+            0.8993276856756403,
+            0.9058057151734216
+          ],
+          "two_drawings_same_top1_class": [
+            0.6655925750306817,
+            0.6729687325672208
+          ]
+        },
+        "ap_variance": {
+          "within_drawing_variance": 0.024291018433513695,
+          "between_object_variance_within_category": 0.00996075242131513,
+          "share_within_drawings": 0.7091901477581308,
+          "share_class_bootstrap95": [
+            0.6416424210500006,
+            0.7743386699123995
+          ]
+        }
+      },
+      "2/curvature/8/late32/words/1": {
+        "verified_queries": 14178,
+        "eligible_source_objects": 2499,
+        "errors_among_verified": 2334,
+        "errors_with_another_correct_drawing": 2162,
+        "two_wrong_ordered_pairs": 4634,
+        "actual": {
+          "wrong_query_has_correct_sibling": 0.9263067694944301,
+          "two_wrong_drawings_same_distractor_class": 0.3116098403107467,
+          "two_drawings_same_top1_class": 0.7465134441593216
+        },
+        "class_permuted_mean": {
+          "wrong_query_has_correct_sibling": 0.9880569837189374,
+          "two_wrong_drawings_same_distractor_class": 0.212125696281749,
+          "two_drawings_same_top1_class": 0.7177367197088029
+        },
+        "class_permuted95": {
+          "wrong_query_has_correct_sibling": [
+            0.9763817480719794,
+            0.9954048843187661
+          ],
+          "two_wrong_drawings_same_distractor_class": [
+            0.1883859769046335,
+            0.23270833241444405
+          ],
+          "two_drawings_same_top1_class": [
+            0.7149405890884748,
+            0.7205016456543568
+          ]
+        },
+        "ap_variance": {
+          "within_drawing_variance": 0.05987279267717092,
+          "between_object_variance_within_category": 0.019163910265163203,
+          "share_within_drawings": 0.7575315068602323,
+          "share_class_bootstrap95": [
+            0.6984761686316016,
+            0.8133863286707247
+          ]
+        }
+      }
+    },
+    "sketchy_2": {
+      "regional": {
+        "verified_queries": 12694,
+        "eligible_source_objects": 2100,
+        "errors_among_verified": 3212,
+        "errors_with_another_correct_drawing": 2893,
+        "two_wrong_ordered_pairs": 8860,
+        "actual": {
+          "wrong_query_has_correct_sibling": 0.9006849315068494,
+          "two_wrong_drawings_same_distractor_class": 0.4422121896162528,
+          "two_drawings_same_top1_class": 0.6681164463001624
+        },
+        "class_permuted_mean": {
+          "wrong_query_has_correct_sibling": 0.9565204701120795,
+          "two_wrong_drawings_same_distractor_class": 0.3807566362317341,
+          "two_drawings_same_top1_class": 0.6279983255045232
+        },
+        "class_permuted95": {
+          "wrong_query_has_correct_sibling": [
+            0.940675591531756,
+            0.9694427148194271
+          ],
+          "two_wrong_drawings_same_distractor_class": [
+            0.3691035029838205,
+            0.3956436480627787
+          ],
+          "two_drawings_same_top1_class": [
+            0.624675249362097,
+            0.6327034040825795
+          ]
+        },
+        "ap_variance": {
+          "within_drawing_variance": 0.10388134418042029,
+          "between_object_variance_within_category": 0.02110607506988715,
+          "share_within_drawings": 0.8311344037945224,
+          "share_class_bootstrap95": [
+            0.7834740470980447,
+            0.8765397378137084
+          ]
+        },
+        "example_subjects": [
+          {
+            "number_of_mixed_source_objects_in_category": 87,
+            "source": [
+              "raccoon",
+              "n02508021_12996"
+            ],
+            "correct_drawing": {
+              "drawing": "raccoon/n02508021_12996-3.png",
+              "top_gallery_photo": "raccoon/n02508021_11436.jpg",
+              "AP": 0.9920849204063416,
+              "top1_is_relevant": true
+            },
+            "wrong_drawing": {
+              "drawing": "raccoon/n02508021_12996-1.png",
+              "top_gallery_photo": "mouse/n02330245_33191.jpg",
+              "AP": 0.0,
+              "top1_is_relevant": false
+            },
+            "AP_gap": 0.9920849204063416
+          },
+          {
+            "number_of_mixed_source_objects_in_category": 86,
+            "source": [
+              "saw",
+              "n03474779_24156"
+            ],
+            "correct_drawing": {
+              "drawing": "saw/n03474779_24156-6.png",
+              "top_gallery_photo": "saw/n02770585_8967.jpg",
+              "AP": 0.9103644490242004,
+              "top1_is_relevant": true
+            },
+            "wrong_drawing": {
+              "drawing": "saw/n03474779_24156-2.png",
+              "top_gallery_photo": "window/n04589593_10760.jpg",
+              "AP": 0.5355874300003052,
+              "top1_is_relevant": false
+            },
+            "AP_gap": 0.37477701902389526
+          },
+          {
+            "number_of_mixed_source_objects_in_category": 84,
+            "source": [
+              "songbird",
+              "n01531178_11416"
+            ],
+            "correct_drawing": {
+              "drawing": "songbird/n01531178_11416-4.png",
+              "top_gallery_photo": "songbird/n01534433_17251.jpg",
+              "AP": 0.9992454051971436,
+              "top1_is_relevant": true
+            },
+            "wrong_drawing": {
+              "drawing": "songbird/n01531178_11416-1.png",
+              "top_gallery_photo": "seagull/n02041246_182351.jpg",
+              "AP": 0.0,
+              "top1_is_relevant": false
+            },
+            "AP_gap": 0.9992454051971436
+          }
+        ]
+      },
+      "native_rgb": {
+        "verified_queries": 12694,
+        "eligible_source_objects": 2100,
+        "errors_among_verified": 8012,
+        "errors_with_another_correct_drawing": 3858,
+        "two_wrong_ordered_pairs": 34508,
+        "actual": {
+          "wrong_query_has_correct_sibling": 0.481527708437344,
+          "two_wrong_drawings_same_distractor_class": 0.7956415903558595,
+          "two_drawings_same_top1_class": 0.639526791927627
+        },
+        "class_permuted_mean": {
+          "wrong_query_has_correct_sibling": 0.6115124188716927,
+          "two_wrong_drawings_same_distractor_class": 0.7634678391356986,
+          "two_drawings_same_top1_class": 0.5659572713697518
+        },
+        "class_permuted95": {
+          "wrong_query_has_correct_sibling": [
+            0.6010359460808786,
+            0.6260234648027958
+          ],
+          "two_wrong_drawings_same_distractor_class": [
+            0.7586014616806652,
+            0.7686250425186283
+          ],
+          "two_drawings_same_top1_class": [
+            0.5612647877522616,
+            0.5692248028299698
+          ]
+        },
+        "ap_variance": {
+          "within_drawing_variance": 0.0422566637182341,
+          "between_object_variance_within_category": 0.01814541675907319,
+          "share_within_drawings": 0.6995895403654131,
+          "share_class_bootstrap95": [
+            0.6309638340806742,
+            0.7709269340450057
+          ]
+        }
+      },
+      "2/curvature/8/late32/words/1": {
+        "verified_queries": 12694,
+        "eligible_source_objects": 2100,
+        "errors_among_verified": 3218,
+        "errors_with_another_correct_drawing": 2907,
+        "two_wrong_ordered_pairs": 8814,
+        "actual": {
+          "wrong_query_has_correct_sibling": 0.9033561218147917,
+          "two_wrong_drawings_same_distractor_class": 0.4470161107329249,
+          "two_drawings_same_top1_class": 0.6671885873347251
+        },
+        "class_permuted_mean": {
+          "wrong_query_has_correct_sibling": 0.9573201522684899,
+          "two_wrong_drawings_same_distractor_class": 0.3859052966220023,
+          "two_drawings_same_top1_class": 0.6270482667884483
+        },
+        "class_permuted95": {
+          "wrong_query_has_correct_sibling": [
+            0.9406541330018645,
+            0.9705174021131137
+          ],
+          "two_wrong_drawings_same_distractor_class": [
+            0.3729123515802855,
+            0.4022244672097162
+          ],
+          "two_drawings_same_top1_class": [
+            0.6234146659707724,
+            0.6316022964509395
+          ]
+        },
+        "ap_variance": {
+          "within_drawing_variance": 0.10435360585291437,
+          "between_object_variance_within_category": 0.020898704974825714,
+          "share_within_drawings": 0.8331471504460483,
+          "share_class_bootstrap95": [
+            0.7850867268025822,
+            0.878357825208948
+          ]
+        }
+      }
+    }
+  },
+  "scope": "post-hoc variance and error agreement. Predictions and AP come from independent single-query scores. Only drawings with verified camera-source IDs and at least two observed depictions are included. Variance is equal-category after conditioning on category."
+}

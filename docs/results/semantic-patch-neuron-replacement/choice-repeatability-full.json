@@ -1,0 +1,726 @@
+{
+  "revision": "2f35f10eacdd2078d201bc7da3d4191032da917c",
+  "scope": "retrospective audit. Every retrieval score had already been computed for its query in isolation; selectors use AP of other labeled queries solely to estimate transfer ceilings, never as a deployable retrieval method.",
+  "splits": {
+    "sketchy_1": {
+      "sample": 14179,
+      "verified_filenames": 14179,
+      "used": 14100,
+      "mean_number_other_drawings": 5.027092198581561,
+      "median_difference_in_donor_baseline_AP_for_same_class_control": 0.0001640915870666504,
+      "families": {
+        "binary": {
+          "queries_with_verified_independent_drawings": 14100,
+          "classes": 25,
+          "number_of_available_scorers": 2,
+          "mean_metrics": {
+            "self": [
+              0.8487797763140489,
+              0.8440985826105672
+            ],
+            "siblings": [
+              0.8442449171960037,
+              0.8384241145137196
+            ],
+            "other_object_same_class": [
+              0.8438500007387277,
+              0.8381234053251538
+            ],
+            "other_class": [
+              0.8435864459416756,
+              0.8376702138086688
+            ],
+            "native": [
+              0.8441128775258119,
+              0.8387815613299608
+            ],
+            "fixed": [
+              0.8431446795197244,
+              0.8373546110010369
+            ]
+          },
+          "versus_untouched": {
+            "self": {
+              "mAP": {
+                "delta_pp": 0.466689878823698,
+                "ci95_class": [
+                  0.36324363446558494,
+                  0.5809237008416578
+                ],
+                "classes_up": 25,
+                "classes": 25
+              },
+              "precision": {
+                "delta_pp": 0.5317021280606377,
+                "ci95_class": [
+                  0.40108289088287014,
+                  0.6839975349141424
+                ],
+                "classes_up": 25,
+                "classes": 25
+              }
+            },
+            "siblings": {
+              "mAP": {
+                "delta_pp": 0.013203967019175807,
+                "ci95_class": [
+                  -0.06591403454634684,
+                  0.09447714939660486
+                ],
+                "classes_up": 13,
+                "classes": 25
+              },
+              "precision": {
+                "delta_pp": -0.03574468162412762,
+                "ci95_class": [
+                  -0.1404574689726214,
+                  0.06924854744774153
+                ],
+                "classes_up": 12,
+                "classes": 25
+              }
+            },
+            "other_object_same_class": {
+              "mAP": {
+                "delta_pp": -0.026287678708421424,
+                "ci95_class": [
+                  -0.10752009948428869,
+                  0.05734765370121699
+                ],
+                "classes_up": 9,
+                "classes": 25
+              },
+              "precision": {
+                "delta_pp": -0.06581560048069937,
+                "ci95_class": [
+                  -0.21586149827005172,
+                  0.09454930897992397
+                ],
+                "classes_up": 12,
+                "classes": 25
+              }
+            },
+            "other_class": {
+              "mAP": {
+                "delta_pp": -0.052643158413628315,
+                "ci95_class": [
+                  -0.12948773089021812,
+                  0.01639979813354862
+                ],
+                "classes_up": 8,
+                "classes": 25
+              },
+              "precision": {
+                "delta_pp": -0.11113475212919796,
+                "ci95_class": [
+                  -0.21938057248759002,
+                  -0.0018411386343943528
+                ],
+                "classes_up": 9,
+                "classes": 25
+              }
+            },
+            "native": {
+              "mAP": {
+                "delta_pp": 0.0,
+                "ci95_class": [
+                  0.0,
+                  0.0
+                ],
+                "classes_up": 0,
+                "classes": 25
+              },
+              "precision": {
+                "delta_pp": 0.0,
+                "ci95_class": [
+                  0.0,
+                  0.0
+                ],
+                "classes_up": 0,
+                "classes": 25
+              }
+            },
+            "fixed": {
+              "mAP": {
+                "delta_pp": -0.09681980060875839,
+                "ci95_class": [
+                  -0.26088686658189053,
+                  0.053887867906991856
+                ],
+                "classes_up": 11,
+                "classes": 25
+              },
+              "precision": {
+                "delta_pp": -0.14269503289239205,
+                "ci95_class": [
+                  -0.3664999066584737,
+                  0.07116625747689248
+                ],
+                "classes_up": 10,
+                "classes": 25
+              }
+            }
+          },
+          "sibling_minus_different_subject_same_class": {
+            "mAP": {
+              "delta_pp": 0.03949164572759723,
+              "ci95_class": [
+                -0.005485682083978255,
+                0.08425755117606468
+              ],
+              "classes_up": 17,
+              "classes": 25
+            },
+            "precision": {
+              "delta_pp": 0.030070918856571753,
+              "ci95_class": [
+                -0.077362673921876,
+                0.13284495545475156
+              ],
+              "classes_up": 14,
+              "classes": 25
+            }
+          },
+          "sibling_selects_exact_same_arm_as_self": 0.5297872424125671,
+          "alternative_same_class_selects_same_arm_as_self": 0.5203546285629272
+        },
+        "frozen": {
+          "queries_with_verified_independent_drawings": 14100,
+          "classes": 25,
+          "number_of_available_scorers": 10,
+          "mean_metrics": {
+            "self": [
+              0.8541972332216587,
+              0.850771632001253
+            ],
+            "siblings": [
+              0.8460034854628199,
+              0.8413014193094527
+            ],
+            "other_object_same_class": [
+              0.8454780114605918,
+              0.8402673767944335
+            ],
+            "other_class": [
+              0.8440076654593308,
+              0.83844113571926
+            ],
+            "native": [
+              0.8441128775258119,
+              0.8387815613299608
+            ],
+            "fixed": [
+              0.8431446795197244,
+              0.8373546110010369
+            ]
+          },
+          "versus_untouched": {
+            "self": {
+              "mAP": {
+                "delta_pp": 1.0084355695846867,
+                "ci95_class": [
+                  0.7919415269218406,
+                  1.269861988461181
+                ],
+                "classes_up": 25,
+                "classes": 25
+              },
+              "precision": {
+                "delta_pp": 1.1990070671292272,
+                "ci95_class": [
+                  0.908124426400212,
+                  1.527549727929163
+                ],
+                "classes_up": 25,
+                "classes": 25
+              }
+            },
+            "siblings": {
+              "mAP": {
+                "delta_pp": 0.18906079370079312,
+                "ci95_class": [
+                  0.06902485038547826,
+                  0.35696061800893664
+                ],
+                "classes_up": 19,
+                "classes": 25
+              },
+              "precision": {
+                "delta_pp": 0.25198579794918813,
+                "ci95_class": [
+                  0.088629709430309,
+                  0.4761901660383187
+                ],
+                "classes_up": 17,
+                "classes": 25
+              }
+            },
+            "other_object_same_class": {
+              "mAP": {
+                "delta_pp": 0.13651339347797928,
+                "ci95_class": [
+                  0.008679120178270697,
+                  0.3084691877927841
+                ],
+                "classes_up": 15,
+                "classes": 25
+              },
+              "precision": {
+                "delta_pp": 0.14858154644727284,
+                "ci95_class": [
+                  -0.014754342453273669,
+                  0.35578359685818095
+                ],
+                "classes_up": 16,
+                "classes": 25
+              }
+            },
+            "other_class": {
+              "mAP": {
+                "delta_pp": -0.010521206648108806,
+                "ci95_class": [
+                  -0.0828566909012852,
+                  0.06589661822451952
+                ],
+                "classes_up": 12,
+                "classes": 25
+              },
+              "precision": {
+                "delta_pp": -0.034042561070082036,
+                "ci95_class": [
+                  -0.13830369817246438,
+                  0.06810023252875572
+                ],
+                "classes_up": 9,
+                "classes": 25
+              }
+            },
+            "native": {
+              "mAP": {
+                "delta_pp": 0.0,
+                "ci95_class": [
+                  0.0,
+                  0.0
+                ],
+                "classes_up": 0,
+                "classes": 25
+              },
+              "precision": {
+                "delta_pp": 0.0,
+                "ci95_class": [
+                  0.0,
+                  0.0
+                ],
+                "classes_up": 0,
+                "classes": 25
+              }
+            },
+            "fixed": {
+              "mAP": {
+                "delta_pp": -0.09681980060875839,
+                "ci95_class": [
+                  -0.26088686658189053,
+                  0.053887867906991856
+                ],
+                "classes_up": 11,
+                "classes": 25
+              },
+              "precision": {
+                "delta_pp": -0.14269503289239205,
+                "ci95_class": [
+                  -0.3664999066584737,
+                  0.07116625747689248
+                ],
+                "classes_up": 10,
+                "classes": 25
+              }
+            }
+          },
+          "sibling_minus_different_subject_same_class": {
+            "mAP": {
+              "delta_pp": 0.05254740022281383,
+              "ci95_class": [
+                -0.014441987341018918,
+                0.11671113542305306
+              ],
+              "classes_up": 17,
+              "classes": 25
+            },
+            "precision": {
+              "delta_pp": 0.1034042515019153,
+              "ci95_class": [
+                -0.01442746002584431,
+                0.23538192502887256
+              ],
+              "classes_up": 16,
+              "classes": 25
+            }
+          },
+          "sibling_selects_exact_same_arm_as_self": 0.2350354641675949,
+          "alternative_same_class_selects_same_arm_as_self": 0.2488652467727661
+        }
+      }
+    },
+    "sketchy_2": {
+      "sample": 12694,
+      "verified_filenames": 12694,
+      "used": 12582,
+      "mean_number_other_drawings": 5.372436814496901,
+      "median_difference_in_donor_baseline_AP_for_same_class_control": 0.0,
+      "families": {
+        "binary": {
+          "queries_with_verified_independent_drawings": 12582,
+          "classes": 21,
+          "number_of_available_scorers": 2,
+          "mean_metrics": {
+            "self": [
+              0.7778724589659856,
+              0.7542111754769459
+            ],
+            "siblings": [
+              0.7698102219966173,
+              0.7481135758130166
+            ],
+            "other_object_same_class": [
+              0.7699594613399455,
+              0.747999523997282
+            ],
+            "other_class": [
+              0.7696785020237537,
+              0.7476017335172938
+            ],
+            "native": [
+              0.7696830327260263,
+              0.7477328732148306
+            ],
+            "fixed": [
+              0.7699134898339943,
+              0.7470215395352924
+            ]
+          },
+          "versus_untouched": {
+            "self": {
+              "mAP": {
+                "delta_pp": 0.8189426239959195,
+                "ci95_class": [
+                  0.6101020851109192,
+                  1.0784067044573478
+                ],
+                "classes_up": 21,
+                "classes": 21
+              },
+              "precision": {
+                "delta_pp": 0.6478302262115295,
+                "ci95_class": [
+                  0.4591823965167633,
+                  0.878439829349401
+                ],
+                "classes_up": 21,
+                "classes": 21
+              }
+            },
+            "siblings": {
+              "mAP": {
+                "delta_pp": 0.012718927059094613,
+                "ci95_class": [
+                  -0.10100898789074213,
+                  0.12677753305436754
+                ],
+                "classes_up": 12,
+                "classes": 21
+              },
+              "precision": {
+                "delta_pp": 0.03807025981859436,
+                "ci95_class": [
+                  -0.05372795340892265,
+                  0.14899729818518587
+                ],
+                "classes_up": 12,
+                "classes": 21
+              }
+            },
+            "other_object_same_class": {
+              "mAP": {
+                "delta_pp": 0.027642861391920872,
+                "ci95_class": [
+                  -0.05979418497404882,
+                  0.12377672617302242
+                ],
+                "classes_up": 10,
+                "classes": 21
+              },
+              "precision": {
+                "delta_pp": 0.02666507824512823,
+                "ci95_class": [
+                  -0.04488049117613215,
+                  0.1035946632849025
+                ],
+                "classes_up": 10,
+                "classes": 21
+              }
+            },
+            "other_class": {
+              "mAP": {
+                "delta_pp": -0.0004530702272740651,
+                "ci95_class": [
+                  -0.1262907403075217,
+                  0.15673266403112066
+                ],
+                "classes_up": 10,
+                "classes": 21
+              },
+              "precision": {
+                "delta_pp": -0.013113969753692799,
+                "ci95_class": [
+                  -0.1308086720132309,
+                  0.133343746798259
+                ],
+                "classes_up": 7,
+                "classes": 21
+              }
+            },
+            "native": {
+              "mAP": {
+                "delta_pp": 0.0,
+                "ci95_class": [
+                  0.0,
+                  0.0
+                ],
+                "classes_up": 0,
+                "classes": 21
+              },
+              "precision": {
+                "delta_pp": 0.0,
+                "ci95_class": [
+                  0.0,
+                  0.0
+                ],
+                "classes_up": 0,
+                "classes": 21
+              }
+            },
+            "fixed": {
+              "mAP": {
+                "delta_pp": 0.02304571079680327,
+                "ci95_class": [
+                  -0.18352038411791796,
+                  0.2628986394393366
+                ],
+                "classes_up": 13,
+                "classes": 21
+              },
+              "precision": {
+                "delta_pp": -0.07113336795383475,
+                "ci95_class": [
+                  -0.26262879845419285,
+                  0.1634074660974295
+                ],
+                "classes_up": 8,
+                "classes": 21
+              }
+            }
+          },
+          "sibling_minus_different_subject_same_class": {
+            "mAP": {
+              "delta_pp": -0.014923934332826258,
+              "ci95_class": [
+                -0.09592304567847136,
+                0.0669707797762009
+              ],
+              "classes_up": 9,
+              "classes": 21
+            },
+            "precision": {
+              "delta_pp": 0.011405181573466133,
+              "ci95_class": [
+                -0.07043231258866559,
+                0.09661975930671836
+              ],
+              "classes_up": 9,
+              "classes": 21
+            }
+          },
+          "sibling_selects_exact_same_arm_as_self": 0.6864568591117859,
+          "alternative_same_class_selects_same_arm_as_self": 0.6745350360870361
+        },
+        "frozen": {
+          "queries_with_verified_independent_drawings": 12582,
+          "classes": 21,
+          "number_of_available_scorers": 10,
+          "mean_metrics": {
+            "self": [
+              0.7854987829605713,
+              0.7598382618472642
+            ],
+            "siblings": [
+              0.7707059229549421,
+              0.7485956136295502
+            ],
+            "other_object_same_class": [
+              0.7705209340555692,
+              0.7485117636856531
+            ],
+            "other_class": [
+              0.7691292417557809,
+              0.7469432531752964
+            ],
+            "native": [
+              0.7696830327260263,
+              0.7477328732148306
+            ],
+            "fixed": [
+              0.7699134898339943,
+              0.7470215395352924
+            ]
+          },
+          "versus_untouched": {
+            "self": {
+              "mAP": {
+                "delta_pp": 1.5815750234544945,
+                "ci95_class": [
+                  1.2406418965238848,
+                  1.9595060237536417
+                ],
+                "classes_up": 21,
+                "classes": 21
+              },
+              "precision": {
+                "delta_pp": 1.2105388632433542,
+                "ci95_class": [
+                  0.9268351317895716,
+                  1.5292613801305477
+                ],
+                "classes_up": 21,
+                "classes": 21
+              }
+            },
+            "siblings": {
+              "mAP": {
+                "delta_pp": 0.10228902289158015,
+                "ci95_class": [
+                  -0.023992905516453375,
+                  0.23305796656350528
+                ],
+                "classes_up": 12,
+                "classes": 21
+              },
+              "precision": {
+                "delta_pp": 0.08627404147195637,
+                "ci95_class": [
+                  -0.03682061885914303,
+                  0.21476232212756857
+                ],
+                "classes_up": 11,
+                "classes": 21
+              }
+            },
+            "other_object_same_class": {
+              "mAP": {
+                "delta_pp": 0.08379013295429151,
+                "ci95_class": [
+                  0.006779492852290567,
+                  0.1695241065839469
+                ],
+                "classes_up": 11,
+                "classes": 21
+              },
+              "precision": {
+                "delta_pp": 0.07788904708224058,
+                "ci95_class": [
+                  0.006505575099709055,
+                  0.15729004192583695
+                ],
+                "classes_up": 12,
+                "classes": 21
+              }
+            },
+            "other_class": {
+              "mAP": {
+                "delta_pp": -0.05537909702454878,
+                "ci95_class": [
+                  -0.17201262713900237,
+                  0.056179030536996306
+                ],
+                "classes_up": 8,
+                "classes": 21
+              },
+              "precision": {
+                "delta_pp": -0.07896200395342448,
+                "ci95_class": [
+                  -0.18843833981683109,
+                  0.030808231331237397
+                ],
+                "classes_up": 8,
+                "classes": 21
+              }
+            },
+            "native": {
+              "mAP": {
+                "delta_pp": 0.0,
+                "ci95_class": [
+                  0.0,
+                  0.0
+                ],
+                "classes_up": 0,
+                "classes": 21
+              },
+              "precision": {
+                "delta_pp": 0.0,
+                "ci95_class": [
+                  0.0,
+                  0.0
+                ],
+                "classes_up": 0,
+                "classes": 21
+              }
+            },
+            "fixed": {
+              "mAP": {
+                "delta_pp": 0.02304571079680327,
+                "ci95_class": [
+                  -0.18352038411791796,
+                  0.2628986394393366
+                ],
+                "classes_up": 13,
+                "classes": 21
+              },
+              "precision": {
+                "delta_pp": -0.07113336795383475,
+                "ci95_class": [
+                  -0.26262879845419285,
+                  0.1634074660974295
+                ],
+                "classes_up": 8,
+                "classes": 21
+              }
+            }
+          },
+          "sibling_minus_different_subject_same_class": {
+            "mAP": {
+              "delta_pp": 0.01849888993728864,
+              "ci95_class": [
+                -0.088919738704302,
+                0.13969663000925217
+              ],
+              "classes_up": 9,
+              "classes": 21
+            },
+            "precision": {
+              "delta_pp": 0.008384994389715796,
+              "ci95_class": [
+                -0.08394253036446263,
+                0.11444846880148582
+              ],
+              "classes_up": 9,
+              "classes": 21
+            }
+          },
+          "sibling_selects_exact_same_arm_as_self": 0.411222368478775,
+          "alternative_same_class_selects_same_arm_as_self": 0.4159910976886749
+        }
+      }
+    }
+  },
+  "per_query_sha256": "db9ad89d8d2aa48a66189c1541944fddd9502a14f65158a6fac518a6e0101603",
+  "controls": "same number of drawings of a single other object of the same or different class, matched to the reference drawings by original AP; exact photo identity verified by unique filename"
+}

@@ -1,0 +1,274 @@
+{
+  "revision": "7f29baf4c57391b93d0a6a48e7d54e4c59a78f53",
+  "freeze": "6a17aa43f3ff0d1f667c32716c682049e34a239da691b2b3fab1b0481953c314",
+  "per_query_sha256": "1af15cfef5a32c98dbc888fe8d12919dbf0c7e3c21a5397e93e1b6f0d1e57dfe",
+  "splits": {
+    "sketchy_1": {
+      "queries": 900,
+      "native": [
+        0.8463577802541355,
+        0.8394444386102259
+      ],
+      "oracles": {
+        "native_or_frozen_primary": {
+          "configurations": 2,
+          "mean_metrics": [
+            0.8522259686080118,
+            0.8466888831245403
+          ],
+          "paired": {
+            "mAP": {
+              "delta_pp": 0.5868188353876272,
+              "ci95_class": [
+                0.3784219440797137,
+                0.8146551925171579
+              ],
+              "classes_up": 25,
+              "classes": 25
+            },
+            "precision": {
+              "delta_pp": 0.7244444514314333,
+              "ci95_class": [
+                0.39888889577964115,
+                1.0666666727926997
+              ],
+              "classes_up": 15,
+              "classes": 25
+            }
+          },
+          "gain_AP_pp_median": 0.0,
+          "gain_AP_pp_p90": 0.18915288150310516,
+          "fraction_strictly_improved": 0.4577777683734894,
+          "fraction_gain_above_3pp": 0.035555556416511536
+        },
+        "all_frozen_regional_controls": {
+          "configurations": 10,
+          "mean_metrics": [
+            0.8584308765518168,
+            0.8544888845893244
+          ],
+          "paired": {
+            "mAP": {
+              "delta_pp": 1.2073096297681332,
+              "ci95_class": [
+                0.8371713904663921,
+                1.619523936189297
+              ],
+              "classes_up": 25,
+              "classes": 25
+            },
+            "precision": {
+              "delta_pp": 1.504444597909848,
+              "ci95_class": [
+                0.9699444786800693,
+                2.07122232401226
+              ],
+              "classes_up": 20,
+              "classes": 25
+            }
+          },
+          "gain_AP_pp_median": 0.02624988555908203,
+          "gain_AP_pp_p90": 1.6635276079177856,
+          "fraction_strictly_improved": 0.9544444680213928,
+          "fraction_gain_above_3pp": 0.07555555552244186
+        },
+        "all_candidates_of_full_semantic_donor_family": {
+          "configurations": 145,
+          "mean_metrics": [
+            0.874015621571905,
+            0.874566664006561
+          ],
+          "paired": {
+            "mAP": {
+              "delta_pp": 2.7657841317769556,
+              "ci95_class": [
+                2.0288546943416197,
+                3.6195365751834787
+              ],
+              "classes_up": 25,
+              "classes": 25
+            },
+            "precision": {
+              "delta_pp": 3.5122225396335125,
+              "ci95_class": [
+                2.4288615103914504,
+                4.787861601092541
+              ],
+              "classes_up": 22,
+              "classes": 25
+            }
+          },
+          "gain_AP_pp_median": 0.14764070510864258,
+          "gain_AP_pp_p90": 6.006278991699219,
+          "fraction_strictly_improved": 0.9977777600288391,
+          "fraction_gain_above_3pp": 0.1433333307504654
+        },
+        "all_scanned_interventions": {
+          "configurations": 1513,
+          "mean_metrics": [
+            0.8962551937210891,
+            0.9008333314106696
+          ],
+          "paired": {
+            "mAP": {
+              "delta_pp": 4.989741346695357,
+              "ci95_class": [
+                3.7320677587452034,
+                6.314839162253256
+              ],
+              "classes_up": 25,
+              "classes": 25
+            },
+            "precision": {
+              "delta_pp": 6.138889280044371,
+              "ci95_class": [
+                4.382139514365957,
+                8.062277942828626
+              ],
+              "classes_up": 24,
+              "classes": 25
+            }
+          },
+          "gain_AP_pp_median": 0.2514302730560303,
+          "gain_AP_pp_p90": 14.964534759521484,
+          "fraction_strictly_improved": 1.0,
+          "fraction_gain_above_3pp": 0.20555555820465088
+        }
+      }
+    },
+    "sketchy_2": {
+      "queries": 756,
+      "native": [
+        0.8064414387305203,
+        0.7837499953367841
+      ],
+      "oracles": {
+        "native_or_frozen_primary": {
+          "configurations": 2,
+          "mean_metrics": [
+            0.8128834481008607,
+            0.7889219532553206
+          ],
+          "paired": {
+            "mAP": {
+              "delta_pp": 0.6442009370340399,
+              "ci95_class": [
+                0.39408389952590583,
+                0.9111168453464944
+              ],
+              "classes_up": 20,
+              "classes": 21
+            },
+            "precision": {
+              "delta_pp": 0.5171957918536411,
+              "ci95_class": [
+                0.26785719880733205,
+                0.7989418171081327
+              ],
+              "classes_up": 19,
+              "classes": 21
+            }
+          },
+          "gain_AP_pp_median": 0.0,
+          "gain_AP_pp_p90": 0.021028518676757812,
+          "fraction_strictly_improved": 0.14417989552021027,
+          "fraction_gain_above_3pp": 0.0317460335791111
+        },
+        "all_frozen_regional_controls": {
+          "configurations": 10,
+          "mean_metrics": [
+            0.820905854795547,
+            0.7957341225187062
+          ],
+          "paired": {
+            "mAP": {
+              "delta_pp": 1.4464416065026646,
+              "ci95_class": [
+                0.9682075051152241,
+                1.959050365518248
+              ],
+              "classes_up": 20,
+              "classes": 21
+            },
+            "precision": {
+              "delta_pp": 1.198412718192216,
+              "ci95_class": [
+                0.7989418410410286,
+                1.6289848183181934
+              ],
+              "classes_up": 19,
+              "classes": 21
+            }
+          },
+          "gain_AP_pp_median": 0.0,
+          "gain_AP_pp_p90": 1.5665708780288696,
+          "fraction_strictly_improved": 0.3253968358039856,
+          "fraction_gain_above_3pp": 0.0793650820851326
+        },
+        "all_candidates_of_full_semantic_donor_family": {
+          "configurations": 145,
+          "mean_metrics": [
+            0.8541398744915597,
+            0.8235515828710049
+          ],
+          "paired": {
+            "mAP": {
+              "delta_pp": 4.769843576103941,
+              "ci95_class": [
+                3.177062947219595,
+                6.661791850146883
+              ],
+              "classes_up": 21,
+              "classes": 21
+            },
+            "precision": {
+              "delta_pp": 3.980158753422084,
+              "ci95_class": [
+                2.6501323788632547,
+                5.527215627654671
+              ],
+              "classes_up": 20,
+              "classes": 21
+            }
+          },
+          "gain_AP_pp_median": 0.0,
+          "gain_AP_pp_p90": 11.89664363861084,
+          "fraction_strictly_improved": 0.44179895520210266,
+          "fraction_gain_above_3pp": 0.16931216418743134
+        },
+        "all_scanned_interventions": {
+          "configurations": 1513,
+          "mean_metrics": [
+            0.9014603193792657,
+            0.8621428532984167
+          ],
+          "paired": {
+            "mAP": {
+              "delta_pp": 9.501888064874542,
+              "ci95_class": [
+                6.657112950743078,
+                12.6186341078639
+              ],
+              "classes_up": 21,
+              "classes": 21
+            },
+            "precision": {
+              "delta_pp": 7.839285796163259,
+              "ci95_class": [
+                5.5309194412357146,
+                10.530439852816963
+              ],
+              "classes_up": 21,
+              "classes": 21
+            }
+          },
+          "gain_AP_pp_median": 0.0,
+          "gain_AP_pp_p90": 37.28216552734375,
+          "fraction_strictly_improved": 0.4722222089767456,
+          "fraction_gain_above_3pp": 0.24338623881340027
+        }
+      }
+    }
+  },
+  "scope": "retrospective ceiling of precisely the listed fixed scorers, choosing by each query's true AP after scoring. These choices cannot be used at inference or to claim a bound for untested methods."
+}

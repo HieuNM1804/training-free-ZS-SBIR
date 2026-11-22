@@ -1,0 +1,221 @@
+{
+  "revision": "2f35f10eacdd2078d201bc7da3d4191032da917c",
+  "freeze": "6a17aa43f3ff0d1f667c32716c682049e34a239da691b2b3fab1b0481953c314",
+  "per_query_sha256": "588f4ba12431753ff72d4bf831cd54006f1cacf124b3cec024cfcf88a9f8a703",
+  "splits": {
+    "sketchy_1": {
+      "queries": 14179,
+      "native": [
+        0.8436916662155857,
+        0.8384498212069023
+      ],
+      "oracles": {
+        "native_or_frozen_primary": {
+          "configurations": 2,
+          "mean_metrics": [
+            0.8483438005280616,
+            0.8437379233330757
+          ],
+          "paired": {
+            "mAP": {
+              "delta_pp": 0.465213431247586,
+              "ci95_class": [
+                0.3624576192475888,
+                0.5788040623943029
+              ],
+              "classes_up": 25,
+              "classes": 25
+            },
+            "precision": {
+              "delta_pp": 0.5288102126173437,
+              "ci95_class": [
+                0.3987031548209513,
+                0.6800844045140237
+              ],
+              "classes_up": 25,
+              "classes": 25
+            }
+          },
+          "gain_AP_pp_median": 0.0,
+          "gain_AP_pp_p90": 0.3059448003768921,
+          "fraction_strictly_improved": 0.46265605092048645,
+          "fraction_gain_above_3pp": 0.03364130109548569
+        },
+        "all_frozen_regional_controls": {
+          "configurations": 10,
+          "mean_metrics": [
+            0.8538252132109206,
+            0.8505183730426299
+          ],
+          "paired": {
+            "mAP": {
+              "delta_pp": 1.0133546995334954,
+              "ci95_class": [
+                0.7953996867201348,
+                1.2757440975952268
+              ],
+              "classes_up": 25,
+              "classes": 25
+            },
+            "precision": {
+              "delta_pp": 1.2068551835727561,
+              "ci95_class": [
+                0.9148402851381342,
+                1.5334084341076493
+              ],
+              "classes_up": 25,
+              "classes": 25
+            }
+          },
+          "gain_AP_pp_median": 0.027263164520263672,
+          "gain_AP_pp_p90": 1.6665143966674805,
+          "fraction_strictly_improved": 0.9526764750480652,
+          "fraction_gain_above_3pp": 0.0701742023229599
+        }
+      }
+    },
+    "sketchy_2": {
+      "queries": 12694,
+      "native": [
+        0.7701674614090497,
+        0.7483334654797769
+      ],
+      "oracles": {
+        "native_or_frozen_primary": {
+          "configurations": 2,
+          "mean_metrics": [
+            0.778307798034047,
+            0.7547880896349964
+          ],
+          "paired": {
+            "mAP": {
+              "delta_pp": 0.814033662499744,
+              "ci95_class": [
+                0.606727416735999,
+                1.0731854692430927
+              ],
+              "classes_up": 21,
+              "classes": 21
+            },
+            "precision": {
+              "delta_pp": 0.6454624155219642,
+              "ci95_class": [
+                0.45726463774160936,
+                0.8761100002445938
+              ],
+              "classes_up": 21,
+              "classes": 21
+            }
+          },
+          "gain_AP_pp_median": 0.0,
+          "gain_AP_pp_p90": 0.015323154628276825,
+          "fraction_strictly_improved": 0.12966756522655487,
+          "fraction_gain_above_3pp": 0.03340160846710205
+        },
+        "all_frozen_regional_controls": {
+          "configurations": 10,
+          "mean_metrics": [
+            0.7859080604543727,
+            0.7604001899003632
+          ],
+          "paired": {
+            "mAP": {
+              "delta_pp": 1.5740599045323067,
+              "ci95_class": [
+                1.2342047613061498,
+                1.9475866203403627
+              ],
+              "classes_up": 21,
+              "classes": 21
+            },
+            "precision": {
+              "delta_pp": 1.206672442058632,
+              "ci95_class": [
+                0.9217738967616484,
+                1.5273220846618139
+              ],
+              "classes_up": 21,
+              "classes": 21
+            }
+          },
+          "gain_AP_pp_median": 0.0,
+          "gain_AP_pp_p90": 1.2694729566574097,
+          "fraction_strictly_improved": 0.29998424649238586,
+          "fraction_gain_above_3pp": 0.07066330313682556
+        }
+      }
+    },
+    "tuberlin": {
+      "queries": 2130,
+      "native": [
+        0.80074164055642,
+        0.8092253523026134
+      ],
+      "oracles": {
+        "native_or_frozen_primary": {
+          "configurations": 2,
+          "mean_metrics": [
+            0.8058872212452526,
+            0.8176854463197956
+          ],
+          "paired": {
+            "mAP": {
+              "delta_pp": 0.5145580688832512,
+              "ci95_class": [
+                0.35568153545455916,
+                0.6873977661411846
+              ],
+              "classes_up": 30,
+              "classes": 30
+            },
+            "precision": {
+              "delta_pp": 0.8460094017182158,
+              "ci95_class": [
+                0.5060786209047229,
+                1.2528412261443196
+              ],
+              "classes_up": 19,
+              "classes": 30
+            }
+          },
+          "gain_AP_pp_median": 0.0,
+          "gain_AP_pp_p90": 0.32392436265945435,
+          "fraction_strictly_improved": 0.46431925892829895,
+          "fraction_gain_above_3pp": 0.03333333507180214
+        },
+        "all_frozen_regional_controls": {
+          "configurations": 10,
+          "mean_metrics": [
+            0.8098556460067192,
+            0.8207511740810994
+          ],
+          "paired": {
+            "mAP": {
+              "delta_pp": 0.9114005450299228,
+              "ci95_class": [
+                0.6636831668357538,
+                1.1829380477170404
+              ],
+              "classes_up": 30,
+              "classes": 30
+            },
+            "precision": {
+              "delta_pp": 1.1525821778486032,
+              "ci95_class": [
+                0.7103984493344376,
+                1.6500118128840444
+              ],
+              "classes_up": 22,
+              "classes": 30
+            }
+          },
+          "gain_AP_pp_median": 0.030428171157836914,
+          "gain_AP_pp_p90": 1.5317325592041016,
+          "fraction_strictly_improved": 0.8967136144638062,
+          "fraction_gain_above_3pp": 0.06244131550192833
+        }
+      }
+    }
+  },
+  "scope": "retrospective ceiling of precisely the listed fixed scorers, choosing by each query's true AP after scoring. These choices cannot be used at inference or to claim a bound for untested methods."
+}

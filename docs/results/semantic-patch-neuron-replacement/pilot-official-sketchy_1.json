@@ -1,0 +1,472 @@
+{
+  "protocol": {
+    "lock": "6a17aa43f3ff0d1f667c32716c682049e34a239da691b2b3fab1b0481953c314",
+    "feature_manifest": "467930974ba79fa922bb7967eb746853991f93c45c30abf8995741818fe6ec23",
+    "rows": [
+      "2/curvature/8/early/words/1",
+      "2/curvature/8/late32/words/1",
+      "2/curvature/8/mean/words/1",
+      "2/curvature/8/shuffled/words/1",
+      "2/curvature/8/zero/words/1",
+      "2/matched/8/late32/words/1",
+      "2/native/8/late32/words/1",
+      "2/random/32/late32/words/0.45",
+      "2/random/8/late32/words/1",
+      "3/curvature/32/zero/words/0.12",
+      "3/matched/32/late32/both/0.12",
+      "3/native/32/late32/words/0.12",
+      "3/sensor/32/mean/words/0.45",
+      "3/sensor/32/scene/words/0.45",
+      "3/sensor/32/shuffled/words/0.45",
+      "native_rgb",
+      "regional",
+      "standalone:2/curvature/8/late32"
+    ]
+  },
+  "queries": 900,
+  "gallery": 17100,
+  "classes": 25,
+  "values": {
+    "regional": [
+      0.8463577864650222,
+      0.8394444454978738
+    ],
+    "native_rgb": [
+      0.30740420694566434,
+      0.4220666675331692
+    ],
+    "2/curvature/8/late32/words/1": [
+      0.8476835730195873,
+      0.8420555565589004
+    ],
+    "standalone:2/curvature/8/late32": [
+      0.30616286573517654,
+      0.4205111120786104
+    ],
+    "2/curvature/8/early/words/1": [
+      0.8473358620827397,
+      0.8413222233744131
+    ],
+    "2/curvature/8/shuffled/words/1": [
+      0.8489365388163262,
+      0.8459666677750647
+    ],
+    "2/curvature/8/mean/words/1": [
+      0.8481599673049317,
+      0.8444777789070375
+    ],
+    "2/curvature/8/zero/words/1": [
+      0.8475537792738113,
+      0.8416444455397626
+    ],
+    "2/native/8/late32/words/1": [
+      0.8398435765422053,
+      0.832588890078995
+    ],
+    "2/matched/8/late32/words/1": [
+      0.8424788356572389,
+      0.8382888899784949
+    ],
+    "2/random/8/late32/words/1": [
+      0.8468841874144144,
+      0.8414555567296015
+    ],
+    "2/random/32/late32/words/0.45": [
+      0.8469387323533495,
+      0.8409777789252499
+    ],
+    "3/curvature/32/zero/words/0.12": [
+      0.8469872655326294,
+      0.8400777788418863
+    ],
+    "3/sensor/32/scene/words/0.45": [
+      0.8482423292390174,
+      0.8433333344881734
+    ],
+    "3/sensor/32/shuffled/words/0.45": [
+      0.8484094851712386,
+      0.8433222233773106
+    ],
+    "3/sensor/32/mean/words/0.45": [
+      0.8485299691206051,
+      0.8437111122202542
+    ],
+    "3/native/32/late32/words/0.12": [
+      0.846974886910369,
+      0.8410222233914667
+    ],
+    "3/matched/32/late32/both/0.12": [
+      0.8467884482795166,
+      0.8409555563744572
+    ]
+  },
+  "paired_main_minus_each": {
+    "regional": {
+      "mAP": {
+        "delta_pp": 0.13257865545650324,
+        "ci95_class": [
+          -0.17759966490686765,
+          0.4137601445635988
+        ],
+        "classes_up": 16,
+        "classes": 25
+      },
+      "precision": {
+        "delta_pp": 0.26111110610266525,
+        "ci95_class": [
+          -0.17780557780837017,
+          0.6589166733384542
+        ],
+        "classes_up": 13,
+        "classes": 25
+      }
+    },
+    "native_rgb": {
+      "mAP": {
+        "delta_pp": 54.0279366073923,
+        "ci95_class": [
+          48.329601215923,
+          59.475439332911954
+        ],
+        "classes_up": 25,
+        "classes": 25
+      },
+      "precision": {
+        "delta_pp": 41.99888890257312,
+        "ci95_class": [
+          33.49094440682481,
+          49.7757223962444
+        ],
+        "classes_up": 24,
+        "classes": 25
+      }
+    },
+    "2/curvature/8/late32/words/1": {
+      "mAP": {
+        "delta_pp": 0.0,
+        "ci95_class": [
+          0.0,
+          0.0
+        ],
+        "classes_up": 0,
+        "classes": 25
+      },
+      "precision": {
+        "delta_pp": 0.0,
+        "ci95_class": [
+          0.0,
+          0.0
+        ],
+        "classes_up": 0,
+        "classes": 25
+      }
+    },
+    "standalone:2/curvature/8/late32": {
+      "mAP": {
+        "delta_pp": 54.15207072844108,
+        "ci95_class": [
+          48.5024199375624,
+          59.59128339126085
+        ],
+        "classes_up": 25,
+        "classes": 25
+      },
+      "precision": {
+        "delta_pp": 42.154444448029004,
+        "ci95_class": [
+          33.726416556376755,
+          49.92074995948932
+        ],
+        "classes_up": 24,
+        "classes": 25
+      }
+    },
+    "2/curvature/8/early/words/1": {
+      "mAP": {
+        "delta_pp": 0.034771093684766025,
+        "ci95_class": [
+          -0.2090642854002201,
+          0.2681907653239451
+        ],
+        "classes_up": 16,
+        "classes": 25
+      },
+      "precision": {
+        "delta_pp": 0.07333331844872898,
+        "ci95_class": [
+          -0.364500018954277,
+          0.49555554905285437
+        ],
+        "classes_up": 8,
+        "classes": 25
+      }
+    },
+    "2/curvature/8/shuffled/words/1": {
+      "mAP": {
+        "delta_pp": -0.1252965796738863,
+        "ci95_class": [
+          -0.6748538376763462,
+          0.38675400529884624
+        ],
+        "classes_up": 14,
+        "classes": 25
+      },
+      "precision": {
+        "delta_pp": -0.39111112161642975,
+        "ci95_class": [
+          -1.2033889065858805,
+          0.3999999896985375
+        ],
+        "classes_up": 9,
+        "classes": 25
+      }
+    },
+    "2/curvature/8/mean/words/1": {
+      "mAP": {
+        "delta_pp": -0.04763942853444152,
+        "ci95_class": [
+          -0.45909244542320565,
+          0.3245623807940217
+        ],
+        "classes_up": 16,
+        "classes": 25
+      },
+      "precision": {
+        "delta_pp": -0.24222223481370342,
+        "ci95_class": [
+          -0.7733889162488696,
+          0.23669444472115034
+        ],
+        "classes_up": 7,
+        "classes": 25
+      }
+    },
+    "2/curvature/8/zero/words/1": {
+      "mAP": {
+        "delta_pp": 0.012979374577601751,
+        "ci95_class": [
+          -0.36092650566457046,
+          0.4181897002272301
+        ],
+        "classes_up": 14,
+        "classes": 25
+      },
+      "precision": {
+        "delta_pp": 0.04111110191378328,
+        "ci95_class": [
+          -0.48111111012080476,
+          0.6511111009089897
+        ],
+        "classes_up": 7,
+        "classes": 25
+      }
+    },
+    "2/native/8/late32/words/1": {
+      "mAP": {
+        "delta_pp": 0.7839996477382051,
+        "ci95_class": [
+          0.3539590132526226,
+          1.3041760922616554
+        ],
+        "classes_up": 21,
+        "classes": 25
+      },
+      "precision": {
+        "delta_pp": 0.9466666479905447,
+        "ci95_class": [
+          0.1799444144126028,
+          1.8378055400266824
+        ],
+        "classes_up": 13,
+        "classes": 25
+      }
+    },
+    "2/matched/8/late32/words/1": {
+      "mAP": {
+        "delta_pp": 0.5204737362348371,
+        "ci95_class": [
+          0.00482555378952788,
+          1.0506458287282534
+        ],
+        "classes_up": 16,
+        "classes": 25
+      },
+      "precision": {
+        "delta_pp": 0.37666665804055,
+        "ci95_class": [
+          -0.5589444690590931,
+          1.23669444532651
+        ],
+        "classes_up": 12,
+        "classes": 25
+      }
+    },
+    "2/random/8/late32/words/1": {
+      "mAP": {
+        "delta_pp": 0.07993856051729785,
+        "ci95_class": [
+          -0.24815081160308586,
+          0.385791298990241
+        ],
+        "classes_up": 14,
+        "classes": 25
+      },
+      "precision": {
+        "delta_pp": 0.05999998292989201,
+        "ci95_class": [
+          -0.5855833526597254,
+          0.5866666503250599
+        ],
+        "classes_up": 12,
+        "classes": 25
+      }
+    },
+    "2/random/32/late32/words/0.45": {
+      "mAP": {
+        "delta_pp": 0.07448406662378046,
+        "ci95_class": [
+          -0.2466359772202041,
+          0.3586910978890955
+        ],
+        "classes_up": 15,
+        "classes": 25
+      },
+      "precision": {
+        "delta_pp": 0.10777776336504354,
+        "ci95_class": [
+          -0.5555555759049539,
+          0.6855555205761145
+        ],
+        "classes_up": 9,
+        "classes": 25
+      }
+    },
+    "3/curvature/32/zero/words/0.12": {
+      "mAP": {
+        "delta_pp": 0.06963074869579738,
+        "ci95_class": [
+          -0.23401929310833414,
+          0.3465386143575111
+        ],
+        "classes_up": 15,
+        "classes": 25
+      },
+      "precision": {
+        "delta_pp": 0.1977777717014154,
+        "ci95_class": [
+          -0.19888889033140408,
+          0.586694450748877
+        ],
+        "classes_up": 12,
+        "classes": 25
+      }
+    },
+    "3/sensor/32/scene/words/0.45": {
+      "mAP": {
+        "delta_pp": -0.055875621943010226,
+        "ci95_class": [
+          -0.44695028484178084,
+          0.2966731975062026
+        ],
+        "classes_up": 12,
+        "classes": 25
+      },
+      "precision": {
+        "delta_pp": -0.12777779292729166,
+        "ci95_class": [
+          -0.7511944691547089,
+          0.41222220965557627
+        ],
+        "classes_up": 11,
+        "classes": 25
+      }
+    },
+    "3/sensor/32/shuffled/words/0.45": {
+      "mAP": {
+        "delta_pp": -0.072591215165125,
+        "ci95_class": [
+          -0.44703681680580803,
+          0.262322954999076
+        ],
+        "classes_up": 14,
+        "classes": 25
+      },
+      "precision": {
+        "delta_pp": -0.12666668184101582,
+        "ci95_class": [
+          -0.7678333616039406,
+          0.42999997486153413
+        ],
+        "classes_up": 10,
+        "classes": 25
+      }
+    },
+    "3/sensor/32/mean/words/0.45": {
+      "mAP": {
+        "delta_pp": -0.0846396101017793,
+        "ci95_class": [
+          -0.4540904669815467,
+          0.2491470632039831
+        ],
+        "classes_up": 14,
+        "classes": 25
+      },
+      "precision": {
+        "delta_pp": -0.16555556613538,
+        "ci95_class": [
+          -0.8066944571832816,
+          0.38444443807626766
+        ],
+        "classes_up": 9,
+        "classes": 25
+      }
+    },
+    "3/native/32/late32/words/0.12": {
+      "mAP": {
+        "delta_pp": 0.07086861092183325,
+        "ci95_class": [
+          -0.24265970630157324,
+          0.35328442166662866
+        ],
+        "classes_up": 14,
+        "classes": 25
+      },
+      "precision": {
+        "delta_pp": 0.10333331674337387,
+        "ci95_class": [
+          -0.30672227348097497,
+          0.4877777666836563
+        ],
+        "classes_up": 12,
+        "classes": 25
+      }
+    },
+    "3/matched/32/late32/both/0.12": {
+      "mAP": {
+        "delta_pp": 0.08951247400707668,
+        "ci95_class": [
+          -0.20882202136951186,
+          0.34970860517480296
+        ],
+        "classes_up": 15,
+        "classes": 25
+      },
+      "precision": {
+        "delta_pp": 0.11000001844432619,
+        "ci95_class": [
+          -0.2977777573176556,
+          0.4933611340872525
+        ],
+        "classes_up": 13,
+        "classes": 25
+      }
+    }
+  },
+  "top1": {
+    "fixed": 4,
+    "broken": 5
+  },
+  "KD_max_abs_error": 2.384185791015625e-07,
+  "shortlist_repeat": 2.384185791015625e-07,
+  "per_query_sha256": "e63b877bfe9441482a1a8a103b6db30f037a11c445bccc74744c2d8054c501e8"
+}

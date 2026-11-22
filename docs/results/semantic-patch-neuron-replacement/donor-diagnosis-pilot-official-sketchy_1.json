@@ -1,0 +1,106 @@
+{
+  "revision": "57c0cb9ceb21197bc8672cc7e03993ffd7fea63f",
+  "lock": "6a17aa43f3ff0d1f667c32716c682049e34a239da691b2b3fab1b0481953c314",
+  "main": "2/curvature/8/late32/words/1",
+  "control": "2/curvature/8/shuffled/words/1",
+  "split": "sketchy_1",
+  "queries": 900,
+  "percent_correct_class_donors": 19.583404541015625,
+  "percent_energyweighted_correct_class": 40.02378463745117,
+  "percent_chance": 3.999999523162842,
+  "associations": {
+    "against_matched_shuffled": {
+      "unweighted": {
+        "change_pp_per_10pp_more_correct_class_donors": -0.020443319488711666,
+        "class_bootstrap_95": [
+          -0.13643016134020367,
+          0.076704878864238
+        ],
+        "upper_half_minus_lower_half_gain_pp": -0.3339506480842829,
+        "upper_lower_CI95": [
+          -0.8940195166971534,
+          0.15960163995623594
+        ],
+        "groups": "class by original AP quintile",
+        "upper_lower_paired_queries": 800
+      },
+      "energy_weighted": {
+        "change_pp_per_10pp_more_correct_class_donors": -0.024808489874048927,
+        "class_bootstrap_95": [
+          -0.11839621742441658,
+          0.07406541632713418
+        ],
+        "upper_half_minus_lower_half_gain_pp": -0.28078459203243256,
+        "upper_lower_CI95": [
+          -0.7114420651691035,
+          0.13264043217059238
+        ],
+        "groups": "class by original AP quintile",
+        "upper_lower_paired_queries": 800
+      }
+    },
+    "against_separately_tuned_mean": {
+      "unweighted": {
+        "change_pp_per_10pp_more_correct_class_donors": 0.07460637639262827,
+        "class_bootstrap_95": [
+          -0.0471732141317354,
+          0.21592766796904983
+        ],
+        "upper_half_minus_lower_half_gain_pp": 0.15568929119035602,
+        "upper_lower_CI95": [
+          -0.39981293356977404,
+          0.7050157419755125
+        ],
+        "groups": "class by original AP quintile",
+        "upper_lower_paired_queries": 800
+      },
+      "energy_weighted": {
+        "change_pp_per_10pp_more_correct_class_donors": -0.0434545571916162,
+        "class_bootstrap_95": [
+          -0.15987955837958448,
+          0.071678217850094
+        ],
+        "upper_half_minus_lower_half_gain_pp": -0.6612386354245245,
+        "upper_lower_CI95": [
+          -1.4443500836612657,
+          0.017739530547987784
+        ],
+        "groups": "class by original AP quintile",
+        "upper_lower_paired_queries": 800
+      }
+    },
+    "against_regional": {
+      "unweighted": {
+        "change_pp_per_10pp_more_correct_class_donors": 0.09862053377189008,
+        "class_bootstrap_95": [
+          -0.03124847204918019,
+          0.29097271673751857
+        ],
+        "upper_half_minus_lower_half_gain_pp": 0.4045174401253462,
+        "upper_lower_CI95": [
+          -0.18095321329310537,
+          0.980985473515466
+        ],
+        "groups": "class by original AP quintile",
+        "upper_lower_paired_queries": 800
+      },
+      "energy_weighted": {
+        "change_pp_per_10pp_more_correct_class_donors": -0.040680739526411894,
+        "class_bootstrap_95": [
+          -0.12696125514257814,
+          0.04194809389354181
+        ],
+        "upper_half_minus_lower_half_gain_pp": -0.5468699354678392,
+        "upper_lower_CI95": [
+          -1.2095299050444737,
+          0.08037762395106264
+        ],
+        "groups": "class by original AP quintile",
+        "upper_lower_paired_queries": 800
+      }
+    }
+  },
+  "per_query_sha256": "3bd69f7b79e1a0a9342a3c37abfa7bc29a07d4549ddb9f5fdc789dfdb87980b4",
+  "labels": "used only here, after the official retrieval has finished",
+  "interpretation": "A shared image class is a proxy for patch relevance. Conditional slope measures an association, not causal harm from out-of-class texture."
+}
