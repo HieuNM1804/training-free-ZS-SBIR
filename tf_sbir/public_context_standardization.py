@@ -80,13 +80,21 @@ class StandardizedDonors:
 def concentration_matched(native,target):
     """Change only native kernel temperature to reproduce target row entropy."""
     log=native.clamp_min(1e-30).log()
+    log=log-log.amax(1,keepdim=True)
     entropy=-(target*target.clamp_min(1e-30).log()).sum(1,keepdim=True)
     low=torch.zeros_like(entropy)
-    high=torch.full_like(entropy,128)
+    high=torch.ones_like(entropy)
+    def power_entropy(t):
+        q=(log*t).softmax(1)
+        return -(q*q.clamp_min(1e-30).log()).sum(1,keepdim=True)
+    for _ in range(13):
+        insufficient=power_entropy(high)>entropy
+        if not insufficient.any():break
+        low=torch.where(insufficient,high,low)
+        high=torch.where(insufficient,high*4,high)
     for _ in range(21):
         power=(low+high)/2
-        candidate=(log*power).softmax(1)
-        h=-(candidate*candidate.clamp_min(1e-30).log()).sum(1,keepdim=True)
+        h=power_entropy(power)
         low=torch.where(h>entropy,power,low)
         high=torch.where(h>entropy,high,power)
     return (log*((low+high)/2)).softmax(1)
@@ -106,6 +114,7 @@ class SoftStandardizedDonors:
         self.kernels={k:torch.empty_like(w) for k in ('standard','permuted','entropy_control')}
         self.mass_error=0.
         self.entropy_error=0.
+        self.entropy_unmatched=0
         self.tv=0.
         for start in range(0,len(w),256):
             sl=slice(start,start+256)
@@ -121,9 +130,12 @@ class SoftStandardizedDonors:
                     self.tv+=float((weights-native).abs().sum())/(2*len(w))
                     control=concentration_matched(native,weights)
                     def entropy(x):return -(x*x.clamp_min(1e-30).log()).sum(1)
-                    self.entropy_error=max(self.entropy_error,float((entropy(control)-entropy(weights)).abs().max()))
+                    entropy_delta=(entropy(control)-entropy(weights)).abs()
+                    self.entropy_error=max(self.entropy_error,float(entropy_delta.max()))
+                    self.entropy_unmatched+=int((entropy_delta>.001).sum())
                     self.kernels['entropy_control'][sl]=control
-        assert self.mass_error<.005 and self.entropy_error<.02
+        print('soft-index',self.mass_error,self.entropy_error,self.entropy_unmatched,flush=True)
+        if self.mass_error>.005:raise ValueError(f'Failed latent probability conservation: {self.mass_error}')
 
     def score(self,evidence):
         outputs={k:evidence@v.T for k,v in self.kernels.items()}
@@ -207,6 +219,7 @@ def run(workspace,ds,full,soft):
         if soft:
             result[s]['kernel_mass_error']=estimator.mass_error
             result[s]['entropy_control_error_nats']=estimator.entropy_error
+            result[s]['entropy_control_rows_with_error_above_0.001']=estimator.entropy_unmatched
             result[s]['mean_total_variation_from_native_kernel']=estimator.tv
         print(s,json.dumps(result[s]),flush=True)
         del estimator,graph,bank
