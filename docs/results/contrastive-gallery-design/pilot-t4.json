@@ -1,0 +1,926 @@
+{
+  "sketchy_1": {
+    "queries": 768,
+    "gallery": 17100,
+    "integration_error": 2.9802322387695312e-8,
+    "previous_mean_replay_error_pp": 0.000020630977815017104,
+    "rows": {
+      "base": {
+        "metrics": [
+          85.9636908787555,
+          85.57942720920741
+        ],
+        "macro_map_delta": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": -0.11250091740479817,
+          "positive_classes": 6,
+          "bootstrap95": [
+            -0.7465648857612017,
+            0.47056764890706426
+          ]
+        }
+      },
+      "information/bayes": {
+        "metrics": [
+          85.38745832314211,
+          84.2304688594595
+        ],
+        "macro_map_delta": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": -0.7010729333389023,
+          "positive_classes": 8,
+          "bootstrap95": [
+            -1.311772110154011,
+            -0.14218576505044397
+          ]
+        }
+      },
+      "information/one": {
+        "metrics": [
+          86.0760067254887,
+          85.5638022054336
+        ],
+        "macro_map_delta": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": -0.0016665297629551957,
+          "positive_classes": 7,
+          "bootstrap95": [
+            -0.6005459396162043,
+            0.5461183220835953
+          ]
+        }
+      },
+      "information/reverse": {
+        "metrics": [
+          79.63725393856294,
+          78.10677105323217
+        ],
+        "macro_map_delta": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": -7.106463352542705,
+          "positive_classes": 4,
+          "bootstrap95": [
+            -9.857334117848756,
+            -4.489186336696313
+          ]
+        }
+      },
+      "information/frequency": {
+        "metrics": [
+          86.1972501707593,
+          85.67447930133008
+        ],
+        "macro_map_delta": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": 0.19266111659796528,
+          "positive_classes": 12,
+          "bootstrap95": [
+            -0.13790439695362736,
+            0.5819862787440969
+          ]
+        }
+      },
+      "uncertainty/bayes": {
+        "metrics": [
+          85.35537181693749,
+          84.83333344580993
+        ],
+        "macro_map_delta": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": -0.934284761559683,
+          "positive_classes": 7,
+          "bootstrap95": [
+            -2.298577174042083,
+            0.1552892434997466
+          ]
+        }
+      },
+      "uncertainty/one": {
+        "metrics": [
+          85.94898467345047,
+          85.50781262407932
+        ],
+        "macro_map_delta": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": -0.13880286337005565,
+          "positive_classes": 7,
+          "bootstrap95": [
+            -0.7917247787052218,
+            0.4471037001704565
+          ]
+        }
+      },
+      "uncertainty/frequency": {
+        "metrics": [
+          85.81924014603524,
+          85.0677084607014
+        ],
+        "macro_map_delta": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": -0.2738405846110918,
+          "positive_classes": 6,
+          "bootstrap95": [
+            -0.8046737757545862,
+            0.2057030528625196
+          ]
+        }
+      },
+      "background_information/bayes": {
+        "metrics": [
+          84.28029314430509,
+          83.71354178598267
+        ],
+        "macro_map_delta": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": -2.098084571877124,
+          "positive_classes": 10,
+          "bootstrap95": [
+            -4.5028816179560875,
+            0.062268558211531544
+          ]
+        }
+      },
+      "background_information/one": {
+        "metrics": [
+          85.96719978595502,
+          85.5963542877968
+        ],
+        "macro_map_delta": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": -0.1012574848512481,
+          "positive_classes": 6,
+          "bootstrap95": [
+            -0.7602217447793908,
+            0.4987851144585526
+          ]
+        }
+      },
+      "background_information/frequency": {
+        "metrics": [
+          85.61957730756453,
+          84.98958346317522
+        ],
+        "macro_map_delta": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": -0.4549841929772516,
+          "positive_classes": 10,
+          "bootstrap95": [
+            -1.2969352723699668,
+            0.28978704058652266
+          ]
+        }
+      },
+      "random/bayes": {
+        "metrics": [
+          85.58764181216247,
+          85.14583344973894
+        ],
+        "macro_map_delta": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": -0.5547244824955576,
+          "positive_classes": 11,
+          "bootstrap95": [
+            -1.5676671434216614,
+            0.4333610410193782
+          ]
+        }
+      },
+      "random/one": {
+        "metrics": [
+          85.98498767751153,
+          85.54427095781043
+        ],
+        "macro_map_delta": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": -0.09231783345363995,
+          "positive_classes": 6,
+          "bootstrap95": [
+            -0.7124795808161738,
+            0.4721183723776082
+          ]
+        }
+      },
+      "random/reverse": {
+        "metrics": [
+          84.17158384157423,
+          83.38281261336911
+        ],
+        "macro_map_delta": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": -2.095713951881074,
+          "positive_classes": 6,
+          "bootstrap95": [
+            -3.801309006146513,
+            -0.35971428386259974
+          ]
+        }
+      },
+      "random/frequency": {
+        "metrics": [
+          86.10720616319063,
+          85.64062511043934
+        ],
+        "macro_map_delta": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": 0.08282417885938444,
+          "positive_classes": 11,
+          "bootstrap95": [
+            -0.27782046313216535,
+            0.46055322514595276
+          ]
+        }
+      },
+      "closest/bayes": {
+        "metrics": [
+          85.42376141534382,
+          84.64322928242231
+        ],
+        "macro_map_delta": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": -0.7824843578047294,
+          "positive_classes": 9,
+          "bootstrap95": [
+            -1.6305987511862017,
+            0.05544161525447295
+          ]
+        }
+      },
+      "closest/one": {
+        "metrics": [
+          85.9976467419377,
+          85.53125012331293
+        ],
+        "macro_map_delta": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": -0.08532292633855955,
+          "positive_classes": 9,
+          "bootstrap95": [
+            -0.7048403597466151,
+            0.4779319396657904
+          ]
+        }
+      },
+      "closest/frequency": {
+        "metrics": [
+          86.14639627218517,
+          85.40494803310139
+        ],
+        "macro_map_delta": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": 0.12688927595240324,
+          "positive_classes": 14,
+          "bootstrap95": [
+            -0.19829822429057292,
+            0.5000340623109928
+          ]
+        }
+      },
+      "previous": {
+        "metrics": [
+          85.9985552543852,
+          85.15104179095943
+        ],
+        "macro_map_delta": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": 0,
+          "positive_classes": 0,
+          "bootstrap95": [
+            0,
+            0
+          ]
+        }
+      },
+      "word/information/bayes": {
+        "metrics": [
+          72.14593060780317,
+          77.00130220861561
+        ],
+        "macro_map_delta": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": -4.3680513994971975,
+          "positive_classes": 3,
+          "bootstrap95": [
+            -6.138551050225421,
+            -2.692343523648428
+          ]
+        }
+      },
+      "word/information/frequency": {
+        "metrics": [
+          76.52958338706716,
+          81.56380220995439
+        ],
+        "macro_map_delta": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": 0.07603082292989065,
+          "positive_classes": 12,
+          "bootstrap95": [
+            -0.7075104419454824,
+            0.922198971424216
+          ]
+        }
+      },
+      "word/random/bayes": {
+        "metrics": [
+          72.98845377178318,
+          78.31119811016833
+        ],
+        "macro_map_delta": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": -3.616708705047866,
+          "positive_classes": 3,
+          "bootstrap95": [
+            -5.046408906034745,
+            -2.306283500166811
+          ]
+        }
+      },
+      "word/previous": {
+        "metrics": [
+          76.59704653463754,
+          81.50520848867018
+        ],
+        "macro_map_delta": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": 0,
+          "positive_classes": 0,
+          "bootstrap95": [
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "design": {
+      "information": {
+        "base_misses": 96,
+        "contains_correct_on_base_miss": 80,
+        "mean_positives_on_base_miss": 17.90625,
+        "mean_design_MI_reliability_log_evidence": [
+          0.16726060211658478,
+          0.5680554509162903,
+          2.817831039428711
+        ],
+        "held_logscore_prior_bayes_frequency_previous": [
+          0.02389279566705227,
+          0.06835243850946426,
+          0.0395914725959301,
+          0.03793777897953987
+        ]
+      },
+      "uncertainty": {
+        "base_misses": 96,
+        "contains_correct_on_base_miss": 74,
+        "mean_positives_on_base_miss": 15.135416984558105,
+        "mean_design_MI_reliability_log_evidence": [
+          0.04717851057648659,
+          0.5337074398994446,
+          0.26681432127952576
+        ],
+        "held_logscore_prior_bayes_frequency_previous": [
+          0.00004999956217943691,
+          0.01005842536687851,
+          0.003492148360237479,
+          0.0030832805205136538
+        ]
+      },
+      "background_information": {
+        "base_misses": 96,
+        "contains_correct_on_base_miss": 82,
+        "mean_positives_on_base_miss": 13.28125,
+        "mean_design_MI_reliability_log_evidence": [
+          0.07650686055421829,
+          0.6328308582305908,
+          3.0127620697021484
+        ],
+        "held_logscore_prior_bayes_frequency_previous": [
+          0.028550170361995697,
+          0.07439764589071274,
+          0.03802233934402466,
+          0.035184670239686966
+        ]
+      },
+      "random": {
+        "base_misses": 96,
+        "contains_correct_on_base_miss": 81,
+        "mean_positives_on_base_miss": 14.34375,
+        "mean_design_MI_reliability_log_evidence": [
+          0.0760001689195633,
+          0.5964004397392273,
+          1.8744016885757446
+        ],
+        "held_logscore_prior_bayes_frequency_previous": [
+          0.023794228211045265,
+          0.044156450778245926,
+          0.030520262196660042,
+          0.02948828600347042
+        ]
+      },
+      "closest": {
+        "base_misses": 96,
+        "contains_correct_on_base_miss": 64,
+        "mean_positives_on_base_miss": 14.072916984558105,
+        "mean_design_MI_reliability_log_evidence": [
+          0.09160240739583969,
+          0.5957117676734924,
+          1.8930269479751587
+        ],
+        "held_logscore_prior_bayes_frequency_previous": [
+          0.018654875457286835,
+          0.04853963479399681,
+          0.02801092155277729,
+          0.02791208028793335
+        ]
+      }
+    },
+    "agreement_512_vs_2048_then_MI_regret": [
+      0.7967187166213989,
+      0.0009417727123945951
+    ]
+  },
+  "sketchy_2": {
+    "queries": 768,
+    "gallery": 12552,
+    "integration_error": 2.9802322387695312e-8,
+    "previous_mean_replay_error_pp": 0.000014297741775711378,
+    "rows": {
+      "base": {
+        "metrics": [
+          75.74428124238088,
+          74.59830735642754
+        ],
+        "macro_map_delta": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -1.8447106494493164,
+          "positive_classes": 6,
+          "bootstrap95": [
+            -2.7720684554525103,
+            -0.8992803054534839
+          ]
+        }
+      },
+      "information/bayes": {
+        "metrics": [
+          75.48072023813197,
+          74.16861987864345
+        ],
+        "macro_map_delta": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -2.0681566414939176,
+          "positive_classes": 9,
+          "bootstrap95": [
+            -4.163652647857176,
+            -0.07430774130420999
+          ]
+        }
+      },
+      "information/one": {
+        "metrics": [
+          75.69119298702086,
+          74.44010425739785
+        ],
+        "macro_map_delta": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -1.9290176344078762,
+          "positive_classes": 6,
+          "bootstrap95": [
+            -2.9406988010987654,
+            -0.926870549611348
+          ]
+        }
+      },
+      "information/reverse": {
+        "metrics": [
+          71.56529137306885,
+          70.1933594771011
+        ],
+        "macro_map_delta": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -6.132856700041523,
+          "positive_classes": 4,
+          "bootstrap95": [
+            -10.174376176274487,
+            -2.623276720739871
+          ]
+        }
+      },
+      "information/frequency": {
+        "metrics": [
+          76.19902020184477,
+          74.61523448776765
+        ],
+        "macro_map_delta": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -1.1885787861743213,
+          "positive_classes": 9,
+          "bootstrap95": [
+            -2.390766946442452,
+            -0.06453523417821613
+          ]
+        }
+      },
+      "uncertainty/bayes": {
+        "metrics": [
+          75.71574638483676,
+          74.23763028515773
+        ],
+        "macro_map_delta": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -1.8972058302325987,
+          "positive_classes": 9,
+          "bootstrap95": [
+            -3.522656043786086,
+            -0.39310411272536294
+          ]
+        }
+      },
+      "uncertainty/one": {
+        "metrics": [
+          75.86610415073665,
+          74.66927090135869
+        ],
+        "macro_map_delta": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -1.6746858703066398,
+          "positive_classes": 6,
+          "bootstrap95": [
+            -2.574480426042263,
+            -0.7780250672850719
+          ]
+        }
+      },
+      "uncertainty/frequency": {
+        "metrics": [
+          76.44024607761821,
+          75.24674486582322
+        ],
+        "macro_map_delta": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -1.0661468705581214,
+          "positive_classes": 7,
+          "bootstrap95": [
+            -2.4895202683889828,
+            0.3291250455310863
+          ]
+        }
+      },
+      "background_information/bayes": {
+        "metrics": [
+          77.15765188586374,
+          75.07617194799727
+        ],
+        "macro_map_delta": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -0.6160048842654983,
+          "positive_classes": 10,
+          "bootstrap95": [
+            -3.045248715948718,
+            1.7314889749498035
+          ]
+        }
+      },
+      "background_information/one": {
+        "metrics": [
+          76.12102587712192,
+          74.88281256676905
+        ],
+        "macro_map_delta": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -1.449186914255176,
+          "positive_classes": 7,
+          "bootstrap95": [
+            -2.2945827490472976,
+            -0.6071925606190952
+          ]
+        }
+      },
+      "background_information/frequency": {
+        "metrics": [
+          76.90735243049858,
+          75.50325532150359
+        ],
+        "macro_map_delta": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -0.6360639654532695,
+          "positive_classes": 9,
+          "bootstrap95": [
+            -1.6977002230798695,
+            0.5407082393430666
+          ]
+        }
+      },
+      "random/bayes": {
+        "metrics": [
+          76.30700122238827,
+          75.06184906317989
+        ],
+        "macro_map_delta": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -1.456350463352016,
+          "positive_classes": 8,
+          "bootstrap95": [
+            -3.475759122822779,
+            0.5776251177036947
+          ]
+        }
+      },
+      "random/one": {
+        "metrics": [
+          75.8499132251624,
+          74.61458338875673
+        ],
+        "macro_map_delta": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -1.745324506434559,
+          "positive_classes": 6,
+          "bootstrap95": [
+            -2.7151745830462537,
+            -0.7842068732588557
+          ]
+        }
+      },
+      "random/reverse": {
+        "metrics": [
+          73.74860332256503,
+          72.53776050917318
+        ],
+        "macro_map_delta": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -3.707596996413851,
+          "positive_classes": 6,
+          "bootstrap95": [
+            -5.593834466388107,
+            -1.9345545424253867
+          ]
+        }
+      },
+      "random/frequency": {
+        "metrics": [
+          76.94082813062172,
+          75.55989592280335
+        ],
+        "macro_map_delta": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -0.436290378454802,
+          "positive_classes": 10,
+          "bootstrap95": [
+            -1.6063447535498783,
+            0.7706426960111292
+          ]
+        }
+      },
+      "closest/bayes": {
+        "metrics": [
+          76.53264057007618,
+          75.15104175314869
+        ],
+        "macro_map_delta": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -1.2453255623072434,
+          "positive_classes": 5,
+          "bootstrap95": [
+            -3.0309613895462673,
+            0.45559451530723605
+          ]
+        }
+      },
+      "closest/one": {
+        "metrics": [
+          76.0718021571544,
+          74.86783863168966
+        ],
+        "macro_map_delta": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -1.5347583301207433,
+          "positive_classes": 6,
+          "bootstrap95": [
+            -2.437327632696741,
+            -0.6453152792951359
+          ]
+        }
+      },
+      "closest/frequency": {
+        "metrics": [
+          76.68814848942324,
+          74.95638028291674
+        ],
+        "macro_map_delta": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -0.7449992584037205,
+          "positive_classes": 4,
+          "bootstrap95": [
+            -1.1925897837847605,
+            -0.31330451640702256
+          ]
+        }
+      },
+      "previous": {
+        "metrics": [
+          77.43541270877662,
+          76.05924488113183
+        ],
+        "macro_map_delta": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": 0,
+          "positive_classes": 0,
+          "bootstrap95": [
+            0,
+            0
+          ]
+        }
+      },
+      "word/information/bayes": {
+        "metrics": [
+          68.50788769133942,
+          67.2220053699372
+        ],
+        "macro_map_delta": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -3.4490766313707026,
+          "positive_classes": 7,
+          "bootstrap95": [
+            -5.915479904420214,
+            -1.220050190975888
+          ]
+        }
+      },
+      "word/information/frequency": {
+        "metrics": [
+          71.24187497690096,
+          69.81835948063235
+        ],
+        "macro_map_delta": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -0.638150166539875,
+          "positive_classes": 10,
+          "bootstrap95": [
+            -2.175015226893645,
+            0.9887162691036098
+          ]
+        }
+      },
+      "word/random/bayes": {
+        "metrics": [
+          69.56360643495523,
+          68.45572930603035
+        ],
+        "macro_map_delta": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -2.658417978623979,
+          "positive_classes": 7,
+          "bootstrap95": [
+            -5.124550389575327,
+            -0.37742950961219895
+          ]
+        }
+      },
+      "word/previous": {
+        "metrics": [
+          72.18595341443384,
+          71.34895857076722
+        ],
+        "macro_map_delta": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": 0,
+          "positive_classes": 0,
+          "bootstrap95": [
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "design": {
+      "information": {
+        "base_misses": 137,
+        "contains_correct_on_base_miss": 133,
+        "mean_positives_on_base_miss": 31.65693473815918,
+        "mean_design_MI_reliability_log_evidence": [
+          0.1590651422739029,
+          0.5483368039131165,
+          2.090214490890503
+        ],
+        "held_logscore_prior_bayes_frequency_previous": [
+          0.01914050616323948,
+          0.05133851245045662,
+          0.03140459209680557,
+          0.030451394617557526
+        ]
+      },
+      "uncertainty": {
+        "base_misses": 137,
+        "contains_correct_on_base_miss": 127,
+        "mean_positives_on_base_miss": 22.59123992919922,
+        "mean_design_MI_reliability_log_evidence": [
+          0.043332625180482864,
+          0.5362809300422668,
+          0.2517428696155548
+        ],
+        "held_logscore_prior_bayes_frequency_previous": [
+          0.00004108352368348278,
+          0.009214484132826328,
+          0.0027955721598118544,
+          0.0024591940455138683
+        ]
+      },
+      "background_information": {
+        "base_misses": 137,
+        "contains_correct_on_base_miss": 114,
+        "mean_positives_on_base_miss": 23.554744720458984,
+        "mean_design_MI_reliability_log_evidence": [
+          0.06504350155591965,
+          0.621218740940094,
+          2.7296297550201416
+        ],
+        "held_logscore_prior_bayes_frequency_previous": [
+          0.022971780970692635,
+          0.06379687041044235,
+          0.031285300850868225,
+          0.0287784393876791
+        ]
+      },
+      "random": {
+        "base_misses": 137,
+        "contains_correct_on_base_miss": 134,
+        "mean_positives_on_base_miss": 25.2481746673584,
+        "mean_design_MI_reliability_log_evidence": [
+          0.06803055852651596,
+          0.5870373845100403,
+          1.456800103187561
+        ],
+        "held_logscore_prior_bayes_frequency_previous": [
+          0.01894865557551384,
+          0.03582341596484184,
+          0.024175187572836876,
+          0.023666812106966972
+        ]
+      },
+      "closest": {
+        "base_misses": 137,
+        "contains_correct_on_base_miss": 125,
+        "mean_positives_on_base_miss": 29.49635124206543,
+        "mean_design_MI_reliability_log_evidence": [
+          0.0863703265786171,
+          0.5960243344306946,
+          1.7786282300949097
+        ],
+        "held_logscore_prior_bayes_frequency_previous": [
+          0.01700960285961628,
+          0.04515722393989563,
+          0.024961665272712708,
+          0.024945110082626343
+        ]
+      }
+    },
+    "agreement_512_vs_2048_then_MI_regret": [
+      0.8173437118530273,
+      0.0007533237221650779
+    ]
+  }
+}
