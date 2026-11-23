@@ -64,6 +64,7 @@ def run():
         results=[]
         counterfactual=[]
         strata=[]
+        sign_audit=[]
         for start in range(0,len(qi),48):
             sl=slice(start,start+48)
             offset=start%192
@@ -121,6 +122,16 @@ def run():
                 records.append(torch.stack([actual[row,ix],gold[row,ix],switch,cls[winner]==qlabel,
                                             c2[row,ix],n2[row,ix],ix],1))
             results.append(torch.stack(records,1)[eligible].cpu())
+            selected=choices[-1]
+            row=torch.arange(len(pool),device=g.device)
+            old_correct=cls[winner]==qlabel
+            alt=pool[row,selected]
+            alt_correct=cls[alt]==qlabel
+            claim=(high[:,:,None]==terms[alt,None,:]).any(2).any(1)
+            positive=torch.minimum(c1,c2)[row,selected]>0
+            neighboring=torch.minimum(n1,n2)[row,selected]>0
+            sign_audit.append(torch.stack([positive,neighboring,actual[row,selected],
+                             omission,claim,old_correct,alt_correct],1)[eligible].cpu())
         v=torch.cat(results).double()
         options=torch.cat(counterfactual).double()
         stratum=torch.cat(strata)
@@ -148,6 +159,17 @@ def run():
             report[name]['ci95_macro_delta_pp']=(100*macro[ids].mean(1).quantile(torch.tensor([.025,.975],dtype=torch.double))).tolist()
         out[s]={'queries':len(y),'photos':len(pi),'reserved_panels':4096,'outcomes':report,
                 'errors_with_correct_rival_available':int(options[:,:,1].amax(1).sum())}
+        low,low_near,different,absent,mentioned,ok,alt_ok=torch.cat(sign_audit).T
+        restrictions={}
+        for name,mask in [('unrestricted',torch.ones_like(ok)),('below_chance_in_both',low),
+                          ('below_chance_in_both_and_neighbors',low&low_near)]:
+            switch=mask&absent&mentioned
+            restrictions[name]={
+                'eligible':int(mask.sum()),'bidirectional_class_difference':int((mask&different).sum()),
+                'wrong_winner':int((mask&~ok).sum()),'correct_alternate':int((mask&~ok&alt_ok).sum()),
+                'switches':int(switch.sum()),'fixed':int((switch&~ok&alt_ok).sum()),
+                'broken':int((switch&ok&~alt_ok).sum())}
+        out[s]['absolute_deficit']=restrictions
         print(s,json.dumps(out[s]),flush=True)
     dest=w/'results/gallery-concept-exclusion'
     dest.mkdir(exist_ok=True,parents=True)
