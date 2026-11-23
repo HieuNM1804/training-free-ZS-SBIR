@@ -64,7 +64,8 @@ def score_rows(queries, bank, regional):
 
 
 @torch.inference_mode()
-def run(workspace, dataset, official, decompose=False, internal=False, strong=False, primary=False):
+def run(workspace, dataset, official, decompose=False, internal=False, strong=False, primary=False,
+        witness_fn=witnesses, internal_methods=None, pairs=None):
     cfg, paths, qs, _, gs, q, p, src, tgt, scale = semantic_inputs(workspace, dataset)
     kd, _ = load_kd(workspace)
     assert hashlib.sha256(inspect.getsource(kd).strip().encode()).hexdigest() == KD_FUNCTION_SHA
@@ -95,7 +96,7 @@ def run(workspace, dataset, official, decompose=False, internal=False, strong=Fa
             sl = slice(start, start + 48)
             first = (scale * (q[qi[sl]].cuda() @ src.T)).softmax(1)
             flipped = (scale * (views["flipped"][sl].float().cuda() @ src.T)).softmax(1)
-            post = witnesses(first, flipped, views["regions"][sl].cuda().float(), src, scale, decompose)
+            post = witness_fn(first, flipped, views["regions"][sl].cuda().float(), src, scale, decompose)
             base = regional[sl].float().cuda()
             if internal:
                 old = graph.score(CONFIG, first @ bank.T).clamp_min(1e-30).log()
@@ -106,6 +107,8 @@ def run(workspace, dataset, official, decompose=False, internal=False, strong=Fa
                     raise ValueError("Could not reproduce the frozen pre-region branch")
                 scores_by_name = {"regional":base}
                 methods = ("mean",) if primary else ("mean","median","third_view","outside_only","third_view_sham")
+                if internal_methods is not None:
+                    methods = internal_methods
                 for name in methods:
                     alt = graph.score(CONFIG, post[name] @ bank.T).clamp_min(1e-30).log()
                     scores_by_name[name] = base + .65 * (alt-old)
@@ -142,12 +145,12 @@ def run(workspace, dataset, official, decompose=False, internal=False, strong=Fa
                          "metrics":{k:(v.mean(0)*100).tolist() for k,v in all_rows.items()}}
         comparisons = ([("third_view","regional"),("third_view","mean"),("outside_only","third_view")]
                        if internal else [("median","mean"),("median","sham"),("regional_median","regional")])
-        for left,right in ([("mean","regional")] if primary else comparisons):
+        for left,right in (pairs or ([("mean","regional")] if primary else comparisons)):
             delta = (all_rows[left][:,0]-all_rows[right][:,0])*100
             class_delta = torch.stack([delta[labels==c].mean() for c in labels.unique()])
             result[split][left+" minus "+right] = {"classes_improved":int((class_delta>0).sum()),
                                                    "macro_delta":class_delta.mean().item()}
-            if primary:
+            if primary or pairs:
                 rand = torch.Generator().manual_seed(11307)
                 samples = torch.randint(len(class_delta),(10000,len(class_delta)),generator=rand)
                 result[split][left+" minus "+right]["macro_ci95"] = (
