@@ -50,18 +50,26 @@ def cross(q,keys,stats):
             "linear":mu,"logz":logz}
 
 
+def cross_many(queries,keys,stats):
+    condition=torch.stack(queries,dim=2).float()
+    normal=(condition@keys.float().transpose(2,3)/8.).logsumexp(-1)
+    mu=(condition*stats["mean"][:,:,None]).sum(-1)/8.
+    shift=(condition*stats["shift"][:,:,None]).sum(-1)/8.
+    uniform=(condition*stats["uniform"][:,:,None]).sum(-1)/8.
+    measure={"real":mu+stats["entropy"][:,:,None]-normal,"shift":shift+stats["entropy"][:,:,None]-normal,
+             "uniform":uniform+3.8918202981106265-normal,"linear":mu,"logz":normal}
+    return [{k:v[:,:,j] for k,v in measure.items()} for j in range(len(queries))]
+
+
 def pair_values(g,q,global_query,sp,sq,wrongp,wrongq,pg,sx,qi,pi):
     x=q["q"][qi].float();y=g["q"][pi].float();f=q["part"][qi].float();blank=q["empty"][qi].float()
     photo=g["k"][pi];sketch=q["k"][qi];pst=indexed(sp,pi);sst=indexed(sq,qi)
-    into=cross(x,photo,pst);back=cross(y,sketch,sst)
     uf=x-f+global_query;ur=y-global_query+f
-    cf=cross(uf,photo,pst);cr=cross(ur,sketch,sst)
-    blf=cross(x-blank+global_query,photo,pst);blr=cross(y-global_query+blank,sketch,sst)
-    nf=cross(f,photo,pst);nb=cross(blank,photo,pst)
+    into,cf,blf,nf,nb=cross_many((x,uf,x-blank+global_query,f,blank),photo,pst)
+    back,cr,blr=cross_many((y,ur,y-global_query+blank),sketch,sst)
     wk=g["k"][pg[pi]];wr=q["k"][sx[qi]]
     # For a wrong receiver set the native observation still comes from the *same* native CLS query.
-    fw=cross(uf,wk,indexed(wrongp,pi));bw=cross(ur,wr,indexed(wrongq,qi))
-    fw0=cross(x,wk,indexed(wrongp,pi));fw1=cross(f,wk,indexed(wrongp,pi))
+    fw,fw0,fw1=cross_many((uf,x,f),wk,indexed(wrongp,pi));bw=cross(ur,wr,indexed(wrongq,qi))
     eu=-((x-y)**2).mean(-1);cal=-((uf-y)**2).mean(-1)
     qcos=torch.nn.functional.cosine_similarity(x-f,y-global_query,dim=-1)
     vals=(into["real"],back["real"],.5*(into["real"]+back["real"]),cf["real"],cr["real"],.5*(cf["real"]+cr["real"]),
@@ -128,11 +136,12 @@ def run(w,ds,stage):
             sqp["k"]=torch.cat((qq["k"],dummy),0)
             sx=torch.full((len(ids),),len(ids),device=device,dtype=torch.long)
             flat=selected.flatten()
-            for i in range(0,len(flat),192):
-                rr=torch.arange(i,min(len(flat),i+192),device=device)
-                val=pair_values(gg,sqp,global_q,summary,sq,wrongp,wrongs,pg,sx,rr//lenp,flat[i:i+192].long().cuda())
+            for i in range(0,len(flat),512):
+                rr=torch.arange(i,min(len(flat),i+512),device=device)
+                val=pair_values(gg,sqp,global_q,summary,sq,wrongp,wrongs,pg,sx,rr//lenp,flat[i:i+512].long().cuda())
                 if not torch.isfinite(val).all():raise ValueError("Invalid attention divergence")
                 values.view(-1,len(KINDS))[i:i+len(val)]=val.cpu()
+                if i%(512*512)==0:print(code,i,len(flat),flush=True)
             gap=float((values[:,:,KINDS.index("fragment_gain")]-(values[:,:,KINDS.index("gain_linear_part")]+values[:,:,KINDS.index("gain_log_normalizer")])).abs().amax())
             if gap>2e-5:raise ValueError("Conditional likelihood ratio does not decompose")
             sample=gg["q"][:12].float()
