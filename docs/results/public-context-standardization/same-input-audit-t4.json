@@ -1,0 +1,105 @@
+{
+  "baseline": {
+    "pairs": 15129,
+    "flips": 1488,
+    "ties": 0,
+    "pair_correct": [
+      11191,
+      10973
+    ],
+    "shared_top1_correct": [
+      2001,
+      1984
+    ],
+    "shared_queries": 2231,
+    "shared_top1_correctness_changed": 31,
+    "mean_shared_mass": [
+      0.8036921620368958,
+      0.8671454191207886
+    ],
+    "mean_abs_shared_mass_drift": 0.0762321725487709
+  },
+  "standard": {
+    "pairs": 15129,
+    "flips": 976,
+    "ties": 0,
+    "pair_correct": [
+      10902,
+      10554
+    ],
+    "shared_top1_correct": [
+      1942,
+      1949
+    ],
+    "shared_queries": 2231,
+    "shared_top1_correctness_changed": 17,
+    "mean_shared_mass": [
+      0.9341917634010315,
+      0.9475247263908386
+    ],
+    "mean_abs_shared_mass_drift": 0.03024628572165966
+  },
+  "permuted": {
+    "pairs": 15129,
+    "flips": 2118,
+    "ties": 0,
+    "pair_correct": [
+      10875,
+      10603
+    ],
+    "shared_top1_correct": [
+      1947,
+      1941
+    ],
+    "shared_queries": 2231,
+    "shared_top1_correctness_changed": 30,
+    "mean_shared_mass": [
+      0.9236822724342346,
+      0.939045250415802
+    ],
+    "mean_abs_shared_mass_drift": 0.05119342356920242
+  },
+  "entropy_control": {
+    "pairs": 15129,
+    "flips": 806,
+    "ties": 0,
+    "pair_correct": [
+      11047,
+      10767
+    ],
+    "shared_top1_correct": [
+      1964,
+      1951
+    ],
+    "shared_queries": 2231,
+    "shared_top1_correctness_changed": 25,
+    "mean_shared_mass": [
+      0.9422534704208374,
+      0.9526535272598267
+    ],
+    "mean_abs_shared_mass_drift": 0.02982350066304207
+  },
+  "direct": {
+    "pairs": 15129,
+    "flips": 4,
+    "ties": 5,
+    "pair_correct": [
+      7518,
+      7513
+    ],
+    "shared_top1_correct": [
+      1952,
+      1952
+    ],
+    "shared_queries": 2231,
+    "shared_top1_correctness_changed": 0,
+    "mean_shared_mass": null,
+    "mean_abs_shared_mass_drift": null
+  },
+  "protocol": {
+    "device": "Tesla T4",
+    "boundary_source": "reconstructed from direct two-view word scores",
+    "boundary_arrays_sha256": "db63cd7dd23966e6c3fa01cd5104dd49ce23c9324a2b436b01f7a3ccce91aecd",
+    "shared_photos": 2205
+  }
+}
