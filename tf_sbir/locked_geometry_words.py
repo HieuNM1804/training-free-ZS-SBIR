@@ -28,7 +28,8 @@ from .strong_pilot_scores import location
 
 
 LOCK = '803720d5c830b715326dea26971482164e2154ee'
-METHODS = ('excess','geometry','shuffled_excess','wrong_canvas','visual','words','base_nominees')
+ORDERS = ('excess','geometry','shuffled_excess','wrong_canvas','visual','words','base_nominees')
+METHODS = (*ORDERS,'expansion_10','expansion_50','expansion_100')
 SHARD = 384
 
 
@@ -163,13 +164,17 @@ def run(dataset,only):
                             if not eligible.any(1).all():raise ValueError('Empty reference fold')
                             reference = priors[1-fold_id]
                             normal = eligible.float()[:,None,:].bmm(photo_words).squeeze(1)+reference
-                            evidence = []
-                            for name in METHODS:
+                            evidence = {}
+                            for name in ORDERS:
                                 signal = appearance-mismatched_canvas(floor,eligible) if name=='wrong_canvas' else fixed[name]
                                 weight = rank_density(signal,eligible,8)
                                 observed = weight[:,None,:].bmm(photo_words).squeeze(1)+reference
-                                evidence.append(reweight(words,observed/normal.clamp_min(1e-30)))
-                            projected = torch.cat(evidence)@bank[targets].T
+                                evidence[name] = reweight(words,observed/normal.clamp_min(1e-30))
+                                if name=='excess':
+                                    feedback = F.normalize(observed,p=1,dim=1)
+                                    for percent in (10,50,100):
+                                        evidence[f'expansion_{percent}'] = torch.lerp(words,feedback,percent/100)
+                            projected = torch.cat([evidence[name] for name in METHODS])@bank[targets].T
                             for name,chunk in zip(METHODS,projected.split(len(words)),strict=True):
                                 holders[name][:,targets] = chunk
                         updated = graph.score(CONFIG,torch.cat(list(holders.values()))).clamp_min(1e-30).log()
