@@ -1,0 +1,518 @@
+{
+  "sketchy_1": {
+    "queries": 14179,
+    "gallery": 17100,
+    "budgets": {
+      "1": {
+        "native": {
+          "queries_with_positive": 11503,
+          "recover_native_miss": 0,
+          "lose_native_hit": 0,
+          "mean_correct_photos_in_budget": 0.8112701883066507
+        },
+        "direct_words": {
+          "queries_with_positive": 10659,
+          "recover_native_miss": 215,
+          "lose_native_hit": 1059,
+          "mean_correct_photos_in_budget": 0.7517455391776571
+        },
+        "visual": {
+          "queries_with_positive": 5172,
+          "recover_native_miss": 137,
+          "lose_native_hit": 6468,
+          "mean_correct_photos_in_budget": 0.36476479300373793
+        },
+        "native_and_direct_words": {
+          "queries_with_positive": 11503,
+          "recover_native_miss": 0,
+          "lose_native_hit": 0,
+          "mean_correct_photos_in_budget": 0.8112701883066507
+        },
+        "native_and_visual": {
+          "queries_with_positive": 11503,
+          "recover_native_miss": 0,
+          "lose_native_hit": 0,
+          "mean_correct_photos_in_budget": 0.8112701883066507
+        }
+      },
+      "16": {
+        "native": {
+          "queries_with_positive": 11872,
+          "recover_native_miss": 0,
+          "lose_native_hit": 0,
+          "mean_correct_photos_in_budget": 13.125326186614007
+        },
+        "direct_words": {
+          "queries_with_positive": 12262,
+          "recover_native_miss": 545,
+          "lose_native_hit": 155,
+          "mean_correct_photos_in_budget": 12.552295648494253
+        },
+        "visual": {
+          "queries_with_positive": 8042,
+          "recover_native_miss": 363,
+          "lose_native_hit": 4193,
+          "mean_correct_photos_in_budget": 5.985400945059595
+        },
+        "native_and_direct_words": {
+          "queries_with_positive": 12259,
+          "recover_native_miss": 399,
+          "lose_native_hit": 12,
+          "mean_correct_photos_in_budget": 12.763594047535086
+        },
+        "native_and_visual": {
+          "queries_with_positive": 12092,
+          "recover_native_miss": 256,
+          "lose_native_hit": 36,
+          "mean_correct_photos_in_budget": 9.50560688341914
+        }
+      },
+      "64": {
+        "native": {
+          "queries_with_positive": 11974,
+          "recover_native_miss": 0,
+          "lose_native_hit": 0,
+          "mean_correct_photos_in_budget": 52.62402144015798
+        },
+        "direct_words": {
+          "queries_with_positive": 12856,
+          "recover_native_miss": 894,
+          "lose_native_hit": 12,
+          "mean_correct_photos_in_budget": 51.07370054305663
+        },
+        "visual": {
+          "queries_with_positive": 11767,
+          "recover_native_miss": 951,
+          "lose_native_hit": 1158,
+          "mean_correct_photos_in_budget": 25.472882431765285
+        },
+        "native_and_direct_words": {
+          "queries_with_positive": 12662,
+          "recover_native_miss": 697,
+          "lose_native_hit": 9,
+          "mean_correct_photos_in_budget": 51.62782988927287
+        },
+        "native_and_visual": {
+          "queries_with_positive": 12463,
+          "recover_native_miss": 514,
+          "lose_native_hit": 25,
+          "mean_correct_photos_in_budget": 38.316171803371184
+        }
+      },
+      "200": {
+        "native": {
+          "queries_with_positive": 12186,
+          "recover_native_miss": 0,
+          "lose_native_hit": 0,
+          "mean_correct_photos_in_budget": 164.19846251498694
+        },
+        "direct_words": {
+          "queries_with_positive": 13281,
+          "recover_native_miss": 1099,
+          "lose_native_hit": 4,
+          "mean_correct_photos_in_budget": 159.91931730023273
+        },
+        "visual": {
+          "queries_with_positive": 13484,
+          "recover_native_miss": 1441,
+          "lose_native_hit": 143,
+          "mean_correct_photos_in_budget": 84.1974751392905
+        },
+        "native_and_direct_words": {
+          "queries_with_positive": 13110,
+          "recover_native_miss": 931,
+          "lose_native_hit": 7,
+          "mean_correct_photos_in_budget": 161.33429720008462
+        },
+        "native_and_visual": {
+          "queries_with_positive": 13322,
+          "recover_native_miss": 1167,
+          "lose_native_hit": 31,
+          "mean_correct_photos_in_budget": 121.7138021016997
+        }
+      }
+    },
+    "native_top200_misses": {
+      "total": 1993,
+      "visual_only": 501,
+      "direct_only": 159,
+      "both": 940,
+      "neither": 393
+    },
+    "examples": {
+      "native_miss_visual_hit": {
+        "count": 1441,
+        "mean_modal_class_fraction_in_native_head": 0.9405378699302673,
+        "median_example": {
+          "query": "sketch/squirrel/n02355227_13651-1.png",
+          "query_class": "squirrel",
+          "results": {
+            "native": {
+              "first": "photo/camel/ext_135.jpg",
+              "first_relevant_rank_or_201": 201
+            },
+            "direct_words": {
+              "first": "photo/teddy_bear/ext_320.jpg",
+              "first_relevant_rank_or_201": 117
+            },
+            "visual": {
+              "first": "photo/scissors/ext_525.jpg",
+              "first_relevant_rank_or_201": 22
+            },
+            "native_and_direct_words": {
+              "first": "photo/camel/ext_135.jpg",
+              "first_relevant_rank_or_201": 193
+            },
+            "native_and_visual": {
+              "first": "photo/camel/ext_135.jpg",
+              "first_relevant_rank_or_201": 44
+            }
+          }
+        }
+      },
+      "native_miss_all_miss": {
+        "count": 393,
+        "mean_modal_class_fraction_in_native_head": 0.9312467575073242,
+        "median_example": {
+          "query": "sketch/airplane/n02691156_43250-8.png",
+          "query_class": "airplane",
+          "results": {
+            "native": {
+              "first": "photo/ray/n01496331_33236.jpg",
+              "first_relevant_rank_or_201": 201
+            },
+            "direct_words": {
+              "first": "photo/ray/ext_309.jpg",
+              "first_relevant_rank_or_201": 201
+            },
+            "visual": {
+              "first": "photo/scissors/ext_525.jpg",
+              "first_relevant_rank_or_201": 201
+            },
+            "native_and_direct_words": {
+              "first": "photo/ray/n01496331_33236.jpg",
+              "first_relevant_rank_or_201": 201
+            },
+            "native_and_visual": {
+              "first": "photo/ray/n01496331_33236.jpg",
+              "first_relevant_rank_or_201": 201
+            }
+          }
+        }
+      },
+      "native_hit_visual_miss": {
+        "count": 143,
+        "mean_modal_class_fraction_in_native_head": 0.8790209889411926,
+        "median_example": {
+          "query": "sketch/airplane/n02691156_10381-4.png",
+          "query_class": "airplane",
+          "results": {
+            "native": {
+              "first": "photo/airplane/n02691156_149121.jpg",
+              "first_relevant_rank_or_201": 1
+            },
+            "direct_words": {
+              "first": "photo/scissors/ext_217.jpg",
+              "first_relevant_rank_or_201": 2
+            },
+            "visual": {
+              "first": "photo/scissors/ext_525.jpg",
+              "first_relevant_rank_or_201": 201
+            },
+            "native_and_direct_words": {
+              "first": "photo/airplane/n02691156_149121.jpg",
+              "first_relevant_rank_or_201": 1
+            },
+            "native_and_visual": {
+              "first": "photo/airplane/n02691156_149121.jpg",
+              "first_relevant_rank_or_201": 1
+            }
+          }
+        }
+      }
+    },
+    "native_misses_by_class": {
+      "cup": 36,
+      "swan": 67,
+      "harp": 45,
+      "squirrel": 136,
+      "snail": 96,
+      "ray": 217,
+      "pineapple": 41,
+      "volcano": 54,
+      "rifle": 83,
+      "scissors": 25,
+      "parrot": 56,
+      "windmill": 139,
+      "teddy_bear": 16,
+      "tree": 69,
+      "wine_bottle": 22,
+      "deer": 79,
+      "chicken": 94,
+      "airplane": 98,
+      "wheelchair": 23,
+      "tank": 122,
+      "umbrella": 75,
+      "butterfly": 218,
+      "camel": 121,
+      "horse": 40,
+      "bell": 21
+    }
+  },
+  "sketchy_2": {
+    "queries": 12694,
+    "gallery": 12552,
+    "budgets": {
+      "1": {
+        "native": {
+          "queries_with_positive": 8962,
+          "recover_native_miss": 0,
+          "lose_native_hit": 0,
+          "mean_correct_photos_in_budget": 0.706002835985505
+        },
+        "direct_words": {
+          "queries_with_positive": 8521,
+          "recover_native_miss": 482,
+          "lose_native_hit": 923,
+          "mean_correct_photos_in_budget": 0.6712620135497085
+        },
+        "visual": {
+          "queries_with_positive": 4712,
+          "recover_native_miss": 405,
+          "lose_native_hit": 4655,
+          "mean_correct_photos_in_budget": 0.37119899164959824
+        },
+        "native_and_direct_words": {
+          "queries_with_positive": 8962,
+          "recover_native_miss": 0,
+          "lose_native_hit": 0,
+          "mean_correct_photos_in_budget": 0.706002835985505
+        },
+        "native_and_visual": {
+          "queries_with_positive": 8962,
+          "recover_native_miss": 0,
+          "lose_native_hit": 0,
+          "mean_correct_photos_in_budget": 0.706002835985505
+        }
+      },
+      "16": {
+        "native": {
+          "queries_with_positive": 9878,
+          "recover_native_miss": 0,
+          "lose_native_hit": 0,
+          "mean_correct_photos_in_budget": 11.707105719237434
+        },
+        "direct_words": {
+          "queries_with_positive": 10785,
+          "recover_native_miss": 1013,
+          "lose_native_hit": 106,
+          "mean_correct_photos_in_budget": 11.265873641090279
+        },
+        "visual": {
+          "queries_with_positive": 7931,
+          "recover_native_miss": 848,
+          "lose_native_hit": 2795,
+          "mean_correct_photos_in_budget": 5.2693398455963445
+        },
+        "native_and_direct_words": {
+          "queries_with_positive": 10610,
+          "recover_native_miss": 791,
+          "lose_native_hit": 59,
+          "mean_correct_photos_in_budget": 11.405073262958878
+        },
+        "native_and_visual": {
+          "queries_with_positive": 10369,
+          "recover_native_miss": 612,
+          "lose_native_hit": 121,
+          "mean_correct_photos_in_budget": 8.458799432802898
+        }
+      },
+      "64": {
+        "native": {
+          "queries_with_positive": 10073,
+          "recover_native_miss": 0,
+          "lose_native_hit": 0,
+          "mean_correct_photos_in_budget": 47.4425712935245
+        },
+        "direct_words": {
+          "queries_with_positive": 11421,
+          "recover_native_miss": 1358,
+          "lose_native_hit": 10,
+          "mean_correct_photos_in_budget": 45.65763352765086
+        },
+        "visual": {
+          "queries_with_positive": 11413,
+          "recover_native_miss": 1986,
+          "lose_native_hit": 646,
+          "mean_correct_photos_in_budget": 21.842287694974004
+        },
+        "native_and_direct_words": {
+          "queries_with_positive": 11236,
+          "recover_native_miss": 1174,
+          "lose_native_hit": 11,
+          "mean_correct_photos_in_budget": 46.31014652591776
+        },
+        "native_and_visual": {
+          "queries_with_positive": 11259,
+          "recover_native_miss": 1225,
+          "lose_native_hit": 39,
+          "mean_correct_photos_in_budget": 34.016700803529226
+        }
+      },
+      "200": {
+        "native": {
+          "queries_with_positive": 10518,
+          "recover_native_miss": 0,
+          "lose_native_hit": 0,
+          "mean_correct_photos_in_budget": 147.1878840397038
+        },
+        "direct_words": {
+          "queries_with_positive": 11866,
+          "recover_native_miss": 1354,
+          "lose_native_hit": 6,
+          "mean_correct_photos_in_budget": 142.66259650228454
+        },
+        "visual": {
+          "queries_with_positive": 12357,
+          "recover_native_miss": 1983,
+          "lose_native_hit": 144,
+          "mean_correct_photos_in_budget": 67.73578068378761
+        },
+        "native_and_direct_words": {
+          "queries_with_positive": 11724,
+          "recover_native_miss": 1211,
+          "lose_native_hit": 5,
+          "mean_correct_photos_in_budget": 144.61280920119742
+        },
+        "native_and_visual": {
+          "queries_with_positive": 12326,
+          "recover_native_miss": 1829,
+          "lose_native_hit": 21,
+          "mean_correct_photos_in_budget": 105.32574444619506
+        }
+      }
+    },
+    "native_top200_misses": {
+      "total": 2176,
+      "visual_only": 686,
+      "direct_only": 57,
+      "both": 1297,
+      "neither": 136
+    },
+    "examples": {
+      "native_miss_visual_hit": {
+        "count": 1983,
+        "mean_modal_class_fraction_in_native_head": 0.9447024464607239,
+        "median_example": {
+          "query": "sketch/dolphin/n02068974_212-5.png",
+          "query_class": "dolphin",
+          "results": {
+            "native": {
+              "first": "photo/seagull/n02041246_30171.jpg",
+              "first_relevant_rank_or_201": 201
+            },
+            "direct_words": {
+              "first": "photo/seagull/ext_407.jpg",
+              "first_relevant_rank_or_201": 201
+            },
+            "visual": {
+              "first": "photo/dolphin/ext_353.jpg",
+              "first_relevant_rank_or_201": 1
+            },
+            "native_and_direct_words": {
+              "first": "photo/seagull/n02041246_30171.jpg",
+              "first_relevant_rank_or_201": 201
+            },
+            "native_and_visual": {
+              "first": "photo/seagull/n02041246_30171.jpg",
+              "first_relevant_rank_or_201": 2
+            }
+          }
+        }
+      },
+      "native_miss_all_miss": {
+        "count": 136,
+        "mean_modal_class_fraction_in_native_head": 0.9212867617607117,
+        "median_example": {
+          "query": "sketch/cow/n02403454_3113-4.png",
+          "query_class": "cow",
+          "results": {
+            "native": {
+              "first": "photo/seagull/n02041246_65331.jpg",
+              "first_relevant_rank_or_201": 201
+            },
+            "direct_words": {
+              "first": "photo/mouse/ext_35.jpg",
+              "first_relevant_rank_or_201": 201
+            },
+            "visual": {
+              "first": "photo/scissors/ext_525.jpg",
+              "first_relevant_rank_or_201": 201
+            },
+            "native_and_direct_words": {
+              "first": "photo/seagull/n02041246_65331.jpg",
+              "first_relevant_rank_or_201": 201
+            },
+            "native_and_visual": {
+              "first": "photo/seagull/n02041246_65331.jpg",
+              "first_relevant_rank_or_201": 201
+            }
+          }
+        }
+      },
+      "native_hit_visual_miss": {
+        "count": 144,
+        "mean_modal_class_fraction_in_native_head": 0.8872568607330322,
+        "median_example": {
+          "query": "sketch/cabin/n02932400_11264-3.png",
+          "query_class": "cabin",
+          "results": {
+            "native": {
+              "first": "photo/scissors/n04148054_184011.jpg",
+              "first_relevant_rank_or_201": 3
+            },
+            "direct_words": {
+              "first": "photo/door/ext_118.jpg",
+              "first_relevant_rank_or_201": 3
+            },
+            "visual": {
+              "first": "photo/scissors/ext_515.jpg",
+              "first_relevant_rank_or_201": 201
+            },
+            "native_and_direct_words": {
+              "first": "photo/scissors/n04148054_184011.jpg",
+              "first_relevant_rank_or_201": 4
+            },
+            "native_and_visual": {
+              "first": "photo/scissors/n04148054_184011.jpg",
+              "first_relevant_rank_or_201": 5
+            }
+          }
+        }
+      }
+    },
+    "native_misses_by_class": {
+      "bat": 317,
+      "cabin": 38,
+      "cow": 34,
+      "dolphin": 139,
+      "door": 51,
+      "giraffe": 124,
+      "helicopter": 190,
+      "mouse": 136,
+      "pear": 12,
+      "raccoon": 298,
+      "rhinoceros": 73,
+      "saw": 141,
+      "scissors": 25,
+      "seagull": 42,
+      "skyscraper": 76,
+      "songbird": 220,
+      "sword": 59,
+      "tree": 43,
+      "wheelchair": 7,
+      "windmill": 136,
+      "window": 15
+    }
+  }
+}
