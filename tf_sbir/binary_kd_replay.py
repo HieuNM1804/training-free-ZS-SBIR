@@ -82,13 +82,15 @@ class PackedReplay:
 
 
 def benchmark(w):
-    from .attention_exchange_inputs import FAMILY
     from .conditional_agreement_study import Replay
     from .quickdraw_locked import KD_FUNCTION_SHA
     from .retrieval_evidence import load_kd
     kd,_=load_kd(w)
     for s in ("sketchy_2","sketchy_1"):
-        d=torch.load(w/"cache"/FAMILY/"panel"/("pilot-"+s+".pt"),mmap=True,weights_only=True)
+        fixture=w/"cache/counterfactual-attention-compatibility/panel"/("pilot-"+s+".pt")
+        if not fixture.is_file():
+            raise FileNotFoundError("The benchmark replays the archived attention-pilot rankings: "+str(fixture))
+        d=torch.load(fixture,mmap=True,weights_only=True)
         labels=d["gl"];y=d["labels"];ranks=list(d["plans"].values())
         # Repeat the last ranking once to test exact deduplication. The other rankings are distinct.
         order=torch.cat([*ranks,ranks[-1]],0).cuda();yy=y.repeat(len(ranks)+1)
