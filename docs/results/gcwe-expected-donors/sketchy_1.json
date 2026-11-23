@@ -1,0 +1,114 @@
+{
+  "commit": "32b63d685f346ce4164ff82ded4cb8d299a9fcee",
+  "sample_rows": 1536,
+  "gallery": 17100,
+  "seed": 42,
+  "replay_mae_points": [
+    2.9314833227545023e-06,
+    0.0
+  ],
+  "metrics": {
+    "semantic_regional": [
+      84.23494050536343,
+      83.4772136528045
+    ],
+    "original": [
+      84.32477946359236,
+      83.46158865145603
+    ],
+    "expected": [
+      84.2568834045475,
+      83.40755219663455
+    ],
+    "inclusive": [
+      84.25578856658831,
+      83.41080741253487
+    ],
+    "all_donors": [
+      84.23294153957008,
+      83.37239595457504
+    ]
+  },
+  "contrasts": {
+    "original minus semantic_regional": {
+      "points": [
+        0.08983895822893828,
+        -0.01562500134847748
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": 0.11455896766289947,
+        "positive_classes": 13,
+        "bootstrap95": [
+          -0.5665700056749745,
+          0.7678823235736103
+        ]
+      }
+    },
+    "expected minus original": {
+      "points": [
+        -0.06789605904486962,
+        -0.054036454821471125
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": -0.053076839343205666,
+        "positive_classes": 10,
+        "bootstrap95": [
+          -0.27123743148836227,
+          0.18105916210252473
+        ]
+      }
+    },
+    "expected minus semantic_regional": {
+      "points": [
+        0.021942899184068665,
+        -0.06966145616994861
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": 0.06148212831969385,
+        "positive_classes": 13,
+        "bootstrap95": [
+          -0.6745580156215406,
+          0.7803896235133042
+        ]
+      }
+    },
+    "expected minus inclusive": {
+      "points": [
+        0.0010948379591961082,
+        -0.0032552159003292522
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": 0.0013626695755152923,
+        "positive_classes": 14,
+        "bootstrap95": [
+          -0.0020302340706461228,
+          0.00492148891202415
+        ]
+      }
+    },
+    "all_donors minus expected": {
+      "points": [
+        -0.023941864977435518,
+        -0.035156242059504926
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": -0.022386700902891028,
+        "positive_classes": 11,
+        "bootstrap95": [
+          -0.04899196629378205,
+          0.0016589688742244383
+        ]
+      }
+    }
+  }
+}
