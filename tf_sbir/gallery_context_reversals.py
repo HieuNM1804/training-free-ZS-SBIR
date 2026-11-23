@@ -131,6 +131,10 @@ def run():
                   qnames[ss[0]],pnames[ss[0]])
     out=w/'results/gallery-context-reversals'
     out.mkdir(exist_ok=True,parents=True)
+    ii,jj=boundary.nonzero(as_tuple=True)
+    torch.save({'queries':shared_queries,'photos':shared_photos,'rows':ii,'left':left[ii,jj],
+                'right':right[ii,jj],'orientation':polarity[ii,jj]},
+               out/'fixed-boundaries.pt')
     (out/'sketchy.json').write_text(json.dumps(result,indent=2))
     print(json.dumps({k:v for k,v in result.items() if k!='scores'}),flush=True)
 

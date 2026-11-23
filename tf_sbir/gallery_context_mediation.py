@@ -29,7 +29,9 @@ def native_scores(workspace):
         views,_=region_views(workspace,name,cfg,paths,qi,q)
         indicator=g.new_zeros(1,len(g))
         indicator[:,columns]=1
-        context_mass=graph.score(CONFIG,indicator)[:,columns].cpu().double()
+        graph.prepare(CONFIG)
+        torch.set_float32_matmul_precision('highest')
+        context_mass=graph.propagate(CONFIG,indicator)[:,columns].cpu().double()
         parts={k:[] for k in ('native','shared','private','direct')}
         maximum_residual=0.
         for ix in rows.split(48):
@@ -38,9 +40,9 @@ def native_scores(workspace):
             evidence=((original+flipped)/2)@bank.T
             # Linear decomposition of a completed native score. Every component
             # uses the exact same full native graph, including all intermediate nodes.
-            entire=graph.score(CONFIG,evidence)[:,columns]
-            shared=graph.score(CONFIG,evidence*indicator)[:,columns]
-            private=graph.score(CONFIG,evidence*(1-indicator))[:,columns]
+            entire=graph.propagate(CONFIG,evidence)[:,columns]
+            shared=graph.propagate(CONFIG,evidence*indicator)[:,columns]
+            private=graph.propagate(CONFIG,evidence*(1-indicator))[:,columns]
             maximum_residual=max(maximum_residual,float((entire-shared-private).abs().max()))
             for k,v in [('native',entire),('shared',shared),('private',private),('direct',evidence[:,columns])]:
                 parts[k].append(v.cpu().double())
@@ -52,7 +54,7 @@ def native_scores(workspace):
     qloc,ploc=coordinates(queries[names[0]][0],shared_q),coordinates(galleries[names[0]][0],shared_p)
     labels=queries[names[0]][1][qloc]
     truth=labels[:,None]==galleries[names[0]][1][ploc][None,:]
-    return [outputs[n] for n in names],truth,checks
+    return [outputs[n] for n in names],truth,checks,shared_q,shared_p
 
 
 def mechanism(row,native,flips):
@@ -64,12 +66,12 @@ def mechanism(row,native,flips):
 @torch.inference_mode()
 def run():
     w=Path('/content/sbir')
-    (a,b),truth,checks=native_scores(w)
-    top=a['direct'].topk(200).indices
-    hits=truth.gather(1,top)
-    i,j=(hits[:,:-1]^hits[:,1:]).nonzero(as_tuple=True)
-    left,right=top[i,j],top[i,j+1]
-    polarity=hits[i,j].double()*2-1
+    (a,b),truth,checks,shared_q,shared_p=native_scores(w)
+    fixed=torch.load(w/'results/gallery-context-reversals/fixed-boundaries.pt',weights_only=True)
+    assert torch.equal(fixed['queries'],shared_q) and torch.equal(fixed['photos'],shared_p)
+    i,left,right,polarity=[fixed[k] for k in ('rows','left','right','orientation')]
+    assert (truth[i,left]^truth[i,right]).all()
+    assert torch.equal(polarity,truth[i,left].float()*2-1)
     def margin(values):
         return (values[i,left]-values[i,right])*polarity
     d1,d2=margin(a['native']),margin(b['native'])
