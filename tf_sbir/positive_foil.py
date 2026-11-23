@@ -89,6 +89,7 @@ def run(w, ds):
         replayer = PrefixReplay(kd,gl,s)
         rows = {}
         diagnostic = []
+        contexts = {}
         largest_error = 0.
         for start in range(0,len(y),48):
             sl = slice(start,start+48)
@@ -123,6 +124,28 @@ def run(w, ds):
                 native_wrong = (q[qi[sl]].cuda()@images.T).masked_fill(
                     classes[None]==y[sl,None].cuda(),-torch.inf).argmax(1)
                 winner = strong.argmax(1)
+                winner_terms = photo_terms[winner]
+                # Is the wrong hypothesis intrinsic to a photo, or determined by the query?
+                # Evaluate top-one alternatives from two independent readouts of this sketch.
+                static = rivals[winner,0]
+                alternatives = {"static":(static,torch.ones_like(winner,dtype=torch.bool))}
+                for name, proposal in [("native",q[qi[sl]].cuda()@images.T),("words",lexical)]:
+                    shortlist = proposal.topk(200).indices
+                    valid = torch.ones_like(shortlist,dtype=torch.bool)
+                    for word in winner_terms.T:
+                        valid &= (photo_terms[shortlist]!=word[:,None,None]).all(2)
+                    has_alt = valid.any(1)
+                    best = shortlist.gather(1,valid.long().argmax(1,keepdim=True)).flatten()
+                    alternatives[name] = (best,has_alt)
+                winner_correct = classes[winner] == y[sl].cuda()
+                winner_absent = ~contains(winner_terms)
+                for name,(alt,eligible) in alternatives.items():
+                    alt_correct = classes[alt]==y[sl].cuda()
+                    switch = eligible & winner_absent & contains(photo_terms[alt])
+                    counts = torch.stack([eligible.sum(), (~winner_correct).sum(),
+                        (eligible&~winner_correct&alt_correct).sum(),switch.sum(),
+                        (switch&~winner_correct&alt_correct).sum(),(switch&winner_correct&~alt_correct).sum()])
+                    contexts.setdefault(name,[]).append(counts.cpu())
                 diagnostic.append(torch.stack([contains(photo_terms[own]),contains(photo_terms[rivals[own,0]]),
                     contains(photo_terms[best_wrong]),contains(photo_terms[rivals[best_wrong,0]]),
                     (classes[rivals[own,0]]==classes[own]),
@@ -143,6 +166,9 @@ def run(w, ds):
             'foil_with_same_label_percent':float((classes[rivals[:,0]]==classes).float().mean()*100),
             'median_difference_in_foil_cosine':float(((images*images[rivals[:,0]]).sum(1)-(images*images[rivals[:,1]]).sum(1)).median())}
         if diagnostic:
+            result[s]["alternative_audit"]={k:dict(zip(
+                ["eligible","wrong_top","wrong_top_with_correct_alternative","switches","repaired","broken"],
+                torch.stack(v).sum(0).tolist(),strict=True)) for k,v in contexts.items()}
             pos,fo,neg,fn,same,nneg,nfn,winner_ok,rival_ok,own_word,rival_word = torch.cat(diagnostic).T
             error = ~winner_ok
             result[s]['actual_winner'] = {
