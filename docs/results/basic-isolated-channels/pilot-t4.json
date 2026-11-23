@@ -1,0 +1,734 @@
+{
+  "sketchy_1": {
+    "queries": 768,
+    "photos": 17100,
+    "classes": 25,
+    "fit": "gallery only; fixed protocol",
+    "rows": {
+      "visual": {
+        "metrics": [
+          30.332282139958505,
+          41.869791767142786
+        ],
+        "class_macro_map_delta": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": -15.132202961041607,
+          "positive_classes": 2,
+          "bootstrap95": [
+            -20.64909353262202,
+            -9.290449804712395
+          ]
+        }
+      },
+      "inferred_text": {
+        "metrics": [
+          45.11357124283677,
+          59.483072982887585
+        ],
+        "class_macro_map_delta": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": 0,
+          "positive_classes": 0,
+          "bootstrap95": [
+            0,
+            0
+          ]
+        }
+      },
+      "word_overlap": {
+        "metrics": [
+          75.30365613080599,
+          79.91406265621967
+        ],
+        "class_macro_map_delta": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": 29.72877208334512,
+          "positive_classes": 25,
+          "bootstrap95": [
+            25.450842375841866,
+            34.17726303856187
+          ]
+        }
+      },
+      "mean_text": {
+        "metrics": [
+          45.40772697752497,
+          59.96223967643649
+        ],
+        "class_macro_map_delta": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": 0.17458709780958961,
+          "positive_classes": 11,
+          "bootstrap95": [
+            -2.636231058096134,
+            3.253173717875048
+          ]
+        }
+      },
+      "product_text": {
+        "metrics": [
+          45.68482142009695,
+          60.34114594416072
+        ],
+        "class_macro_map_delta": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": 0.4789201695857547,
+          "positive_classes": 11,
+          "bootstrap95": [
+            -2.271105620419527,
+            3.492564337907768
+          ]
+        }
+      },
+      "harris_text": {
+        "metrics": [
+          45.78980023846573,
+          60.51562505429805
+        ],
+        "class_macro_map_delta": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": 0.6003621166900406,
+          "positive_classes": 11,
+          "bootstrap95": [
+            -2.130648376310487,
+            3.5837451162883887
+          ]
+        }
+      },
+      "rank_mean_words": {
+        "metrics": [
+          52.39621308040417,
+          72.52604176004147
+        ],
+        "class_macro_map_delta": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": 7.036344170446787,
+          "positive_classes": 19,
+          "bootstrap95": [
+            1.9427431228154854,
+            12.437044184903968
+          ]
+        }
+      },
+      "rank_harris_words": {
+        "metrics": [
+          51.61576482544964,
+          72.54427094691587
+        ],
+        "class_macro_map_delta": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": 6.270767525756886,
+          "positive_classes": 19,
+          "bootstrap95": [
+            1.1248421834064593,
+            11.756041765163117
+          ]
+        }
+      },
+      "rank_mean_text": {
+        "metrics": [
+          43.285030842525885,
+          60.66796885982816
+        ],
+        "class_macro_map_delta": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": -1.9805267825356685,
+          "positive_classes": 10,
+          "bootstrap95": [
+            -5.567285023664109,
+            1.631124053011956
+          ]
+        }
+      },
+      "rank_harris_text": {
+        "metrics": [
+          43.00232571622473,
+          60.683593862631824
+        ],
+        "class_macro_map_delta": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": -2.258207691583122,
+          "positive_classes": 10,
+          "bootstrap95": [
+            -5.8842748291945375,
+            1.3882012592597408
+          ]
+        }
+      },
+      "visual_center": {
+        "metrics": [
+          39.094289416728614,
+          42.554687570130525
+        ],
+        "class_macro_map_delta": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": -6.6119554239651555,
+          "positive_classes": 5,
+          "bootstrap95": [
+            -12.962537452398157,
+            0.3379964722654241
+          ]
+        }
+      },
+      "visual_pca250": {
+        "metrics": [
+          65.00039267799971,
+          73.91796889181327
+        ],
+        "class_macro_map_delta": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": 19.634517131910666,
+          "positive_classes": 25,
+          "bootstrap95": [
+            15.205303749575393,
+            24.43915647432162
+          ]
+        }
+      },
+      "visual_cpca250": {
+        "metrics": [
+          65.35681099849171,
+          73.71354179291907
+        ],
+        "class_macro_map_delta": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": 19.746007062599958,
+          "positive_classes": 25,
+          "bootstrap95": [
+            15.007140450316705,
+            24.82649082124086
+          ]
+        }
+      },
+      "visual_qe5": {
+        "metrics": [
+          31.229035079741152,
+          38.82291663855237
+        ],
+        "class_macro_map_delta": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": -14.077966367059648,
+          "positive_classes": 3,
+          "bootstrap95": [
+            -20.366381894619803,
+            -7.540442635532799
+          ]
+        }
+      },
+      "text_center": {
+        "metrics": [
+          63.83136117389464,
+          70.4401042717412
+        ],
+        "class_macro_map_delta": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": 18.53332310371193,
+          "positive_classes": 25,
+          "bootstrap95": [
+            15.266373200565681,
+            21.89847047962805
+          ]
+        }
+      },
+      "text75_linear": {
+        "metrics": [
+          46.80868613698597,
+          61.40104177587394
+        ],
+        "class_macro_map_delta": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": 1.6687006317034558,
+          "positive_classes": 16,
+          "bootstrap95": [
+            0.4128422308647167,
+            3.0811644689169246
+          ]
+        }
+      },
+      "text90_linear": {
+        "metrics": [
+          46.02234025175373,
+          60.39453132713485
+        ],
+        "class_macro_map_delta": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": 0.9037321125698736,
+          "positive_classes": 19,
+          "bootstrap95": [
+            0.42882645041237916,
+            1.4373050982601108
+          ]
+        }
+      },
+      "word75_rank": {
+        "metrics": [
+          61.199275896069594,
+          76.46875009886571
+        ],
+        "class_macro_map_delta": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": 15.893149008025757,
+          "positive_classes": 22,
+          "bootstrap95": [
+            11.393698214068047,
+            20.694112713411545
+          ]
+        }
+      },
+      "word90_rank": {
+        "metrics": [
+          68.87003046043296,
+          78.49479177045092
+        ],
+        "class_macro_map_delta": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": 23.527186364735908,
+          "positive_classes": 25,
+          "bootstrap95": [
+            19.363412204561886,
+            27.89063008162971
+          ]
+        }
+      }
+    },
+    "complementarity": {
+      "inferred_text": {
+        "visual_only_correct_at_one": 16,
+        "semantic_only_correct_at_one": 207,
+        "both_correct": 281,
+        "neither_correct": 264,
+        "AP_wins_visual_semantic_ties": [
+          152,
+          616,
+          0
+        ],
+        "mean_top200_intersection": 46.095052083333336,
+        "retrospective_max_of_two_mean_AP": 47.33849800225774,
+        "oracle_uplift_over_semantic": 2.2249267594209714,
+        "semantic_orders_visual_matched_pairs": {
+          "pairs": 102657,
+          "fraction_correct": 0.841559757249871,
+          "queries_with_pairs": 761,
+          "mean_query_accuracy": 0.7986439244515381
+        },
+        "visual_orders_semantic_matched_pairs": {
+          "pairs": 106258,
+          "fraction_correct": 0.6395941952605921,
+          "queries_with_pairs": 768,
+          "mean_query_accuracy": 0.6078615177425983
+        }
+      },
+      "word_overlap": {
+        "visual_only_correct_at_one": 14,
+        "semantic_only_correct_at_one": 282,
+        "both_correct": 283,
+        "neither_correct": 189,
+        "AP_wins_visual_semantic_ties": [
+          21,
+          747,
+          0
+        ],
+        "mean_top200_intersection": 45.399739583333336,
+        "retrospective_max_of_two_mean_AP": 75.34663561576357,
+        "oracle_uplift_over_semantic": 0.04297948495756525,
+        "semantic_orders_visual_matched_pairs": {
+          "pairs": 102657,
+          "fraction_correct": 0.9524922801172838,
+          "queries_with_pairs": 761,
+          "mean_query_accuracy": 0.9169434290387538
+        },
+        "visual_orders_semantic_matched_pairs": {
+          "pairs": 63968,
+          "fraction_correct": 0.43476425712856426,
+          "queries_with_pairs": 755,
+          "mean_query_accuracy": 0.4320022227125345
+        }
+      }
+    }
+  },
+  "sketchy_2": {
+    "queries": 768,
+    "photos": 12552,
+    "classes": 21,
+    "fit": "gallery only; fixed protocol",
+    "rows": {
+      "visual": {
+        "metrics": [
+          36.16715688070447,
+          34.02669270787253
+        ],
+        "class_macro_map_delta": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -15.841718383638181,
+          "positive_classes": 3,
+          "bootstrap95": [
+            -26.371214260283576,
+            -4.680442972529378
+          ]
+        }
+      },
+      "inferred_text": {
+        "metrics": [
+          49.678911263011585,
+          44.69856778887333
+        ],
+        "class_macro_map_delta": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": 0,
+          "positive_classes": 0,
+          "bootstrap95": [
+            0,
+            0
+          ]
+        }
+      },
+      "word_overlap": {
+        "metrics": [
+          70.99961646702772,
+          69.98177102917302
+        ],
+        "class_macro_map_delta": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": 20.303365876134208,
+          "positive_classes": 20,
+          "bootstrap95": [
+            13.843295278867076,
+            26.402778158412758
+          ]
+        }
+      },
+      "mean_text": {
+        "metrics": [
+          51.39265592127534,
+          47.40429696782182
+        ],
+        "class_macro_map_delta": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": 0.48510290014373514,
+          "positive_classes": 8,
+          "bootstrap95": [
+            -5.154092280131383,
+            6.564125899056251
+          ]
+        }
+      },
+      "product_text": {
+        "metrics": [
+          51.7998646418467,
+          47.792317779506746
+        ],
+        "class_macro_map_delta": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": 0.894326317214866,
+          "positive_classes": 8,
+          "bootstrap95": [
+            -4.851553979056007,
+            7.051831537459496
+          ]
+        }
+      },
+      "harris_text": {
+        "metrics": [
+          52.01138520236176,
+          48.03125006243742
+        ],
+        "class_macro_map_delta": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": 1.1069413768844005,
+          "positive_classes": 8,
+          "bootstrap95": [
+            -4.704138252590826,
+            7.337179852374151
+          ]
+        }
+      },
+      "rank_mean_words": {
+        "metrics": [
+          67.23694826941937,
+          60.57877618865556
+        ],
+        "class_macro_map_delta": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": 15.68757898087828,
+          "positive_classes": 18,
+          "bootstrap95": [
+            7.973142070524031,
+            23.322773733770642
+          ]
+        }
+      },
+      "rank_harris_words": {
+        "metrics": [
+          67.27638375111079,
+          60.56054699292872
+        ],
+        "class_macro_map_delta": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": 15.723370119670065,
+          "positive_classes": 18,
+          "bootstrap95": [
+            8.013980032969508,
+            23.349841450049105
+          ]
+        }
+      },
+      "rank_mean_text": {
+        "metrics": [
+          52.347917750921624,
+          47.68033859387894
+        ],
+        "class_macro_map_delta": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": 1.3402313060863222,
+          "positive_classes": 9,
+          "bootstrap95": [
+            -5.258625200969701,
+            8.183096202346913
+          ]
+        }
+      },
+      "rank_harris_text": {
+        "metrics": [
+          52.35712980096044,
+          47.67447921452306
+        ],
+        "class_macro_map_delta": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": 1.348057733230544,
+          "positive_classes": 9,
+          "bootstrap95": [
+            -5.257750627203022,
+            8.190665556899217
+          ]
+        }
+      },
+      "visual_center": {
+        "metrics": [
+          35.98875250415101,
+          33.988932305752925
+        ],
+        "class_macro_map_delta": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -15.154734871369142,
+          "positive_classes": 4,
+          "bootstrap95": [
+            -25.20313030618527,
+            -4.769658152542267
+          ]
+        }
+      },
+      "visual_pca250": {
+        "metrics": [
+          65.06467953592315,
+          62.24283864927808
+        ],
+        "class_macro_map_delta": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": 14.173285091979071,
+          "positive_classes": 17,
+          "bootstrap95": [
+            7.541107878160129,
+            20.775433200474485
+          ]
+        }
+      },
+      "visual_cpca250": {
+        "metrics": [
+          64.71722357952481,
+          62.0136718882956
+        ],
+        "class_macro_map_delta": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": 13.881555942183297,
+          "positive_classes": 17,
+          "bootstrap95": [
+            7.242056330348306,
+            20.551474706785463
+          ]
+        }
+      },
+      "visual_qe5": {
+        "metrics": [
+          32.912424784566,
+          31.527343794126256
+        ],
+        "class_macro_map_delta": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -19.696883163412632,
+          "positive_classes": 4,
+          "bootstrap95": [
+            -31.58259611965583,
+            -6.840394686137881
+          ]
+        }
+      },
+      "text_center": {
+        "metrics": [
+          62.16056167941133,
+          59.48632822740668
+        ],
+        "class_macro_map_delta": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": 12.23799895810006,
+          "positive_classes": 20,
+          "bootstrap95": [
+            8.253588643102427,
+            16.561503639802453
+          ]
+        }
+      },
+      "text75_linear": {
+        "metrics": [
+          51.70022328899601,
+          47.00585946035669
+        ],
+        "class_macro_map_delta": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": 1.6302351721109782,
+          "positive_classes": 11,
+          "bootstrap95": [
+            -0.45510683419734144,
+            3.9751561523380876
+          ]
+        }
+      },
+      "text90_linear": {
+        "metrics": [
+          50.61931326727063,
+          45.66666669622161
+        ],
+        "class_macro_map_delta": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": 0.8045991207653943,
+          "positive_classes": 14,
+          "bootstrap95": [
+            0.08678524616528499,
+            1.5790434524120704
+          ]
+        }
+      },
+      "word75_rank": {
+        "metrics": [
+          69.67821526159241,
+          65.7473959052974
+        ],
+        "class_macro_map_delta": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": 18.500611233935178,
+          "positive_classes": 19,
+          "bootstrap95": [
+            11.480491572560096,
+            25.365316916905815
+          ]
+        }
+      },
+      "word90_rank": {
+        "metrics": [
+          70.71077210578855,
+          68.64518237283241
+        ],
+        "class_macro_map_delta": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": 19.74900708250058,
+          "positive_classes": 20,
+          "bootstrap95": [
+            13.04523666676392,
+            26.16073114084052
+          ]
+        }
+      }
+    },
+    "complementarity": {
+      "inferred_text": {
+        "visual_only_correct_at_one": 52,
+        "semantic_only_correct_at_one": 176,
+        "both_correct": 229,
+        "neither_correct": 311,
+        "AP_wins_visual_semantic_ties": [
+          229,
+          533,
+          6
+        ],
+        "mean_top200_intersection": 33.087239583333336,
+        "retrospective_max_of_two_mean_AP": 56.56052606245794,
+        "oracle_uplift_over_semantic": 6.881614799446349,
+        "semantic_orders_visual_matched_pairs": {
+          "pairs": 101896,
+          "fraction_correct": 0.7912577530030619,
+          "queries_with_pairs": 766,
+          "mean_query_accuracy": 0.7589722914448526
+        },
+        "visual_orders_semantic_matched_pairs": {
+          "pairs": 104401,
+          "fraction_correct": 0.6330063888276932,
+          "queries_with_pairs": 768,
+          "mean_query_accuracy": 0.5991795359710909
+        }
+      },
+      "word_overlap": {
+        "visual_only_correct_at_one": 42,
+        "semantic_only_correct_at_one": 256,
+        "both_correct": 239,
+        "neither_correct": 231,
+        "AP_wins_visual_semantic_ties": [
+          115,
+          634,
+          19
+        ],
+        "mean_top200_intersection": 42.1484375,
+        "retrospective_max_of_two_mean_AP": 73.07290983486988,
+        "oracle_uplift_over_semantic": 2.073293367842173,
+        "semantic_orders_visual_matched_pairs": {
+          "pairs": 101896,
+          "fraction_correct": 0.9293102771453247,
+          "queries_with_pairs": 766,
+          "mean_query_accuracy": 0.8972720390704709
+        },
+        "visual_orders_semantic_matched_pairs": {
+          "pairs": 72481,
+          "fraction_correct": 0.4630592845021454,
+          "queries_with_pairs": 762,
+          "mean_query_accuracy": 0.4584722796852803
+        }
+      }
+    }
+  }
+}

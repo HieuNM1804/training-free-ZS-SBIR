@@ -1,0 +1,224 @@
+{
+  "tuberlin": {
+    "queries": 2130,
+    "photos": 27262,
+    "classes": 30,
+    "fit": "gallery only; fixed protocol",
+    "rows": {
+      "visual": {
+        "metrics": [
+          29.066931055006112,
+          46.27277005210239
+        ],
+        "class_macro_map_delta": {
+          "classes": 30,
+          "queries": 2130,
+          "mean_across_classes": -10.703686484645697,
+          "positive_classes": 5,
+          "bootstrap95": [
+            -17.848284950563578,
+            -2.098725704945779
+          ]
+        }
+      },
+      "inferred_text": {
+        "metrics": [
+          39.932915220461226,
+          54.48403766824745
+        ],
+        "class_macro_map_delta": {
+          "classes": 30,
+          "queries": 2130,
+          "mean_across_classes": 0,
+          "positive_classes": 0,
+          "bootstrap95": [
+            0,
+            0
+          ]
+        }
+      },
+      "word_overlap": {
+        "metrics": [
+          73.35292020017945,
+          77.21737104166351
+        ],
+        "class_macro_map_delta": {
+          "classes": 30,
+          "queries": 2130,
+          "mean_across_classes": 33.43996923712326,
+          "positive_classes": 30,
+          "bootstrap95": [
+            27.40714739707598,
+            40.10775804970056
+          ]
+        }
+      },
+      "mean_text": {
+        "metrics": [
+          38.712219878869405,
+          55.89154938778057
+        ],
+        "class_macro_map_delta": {
+          "classes": 30,
+          "queries": 2130,
+          "mean_across_classes": -1.1962051351244252,
+          "positive_classes": 9,
+          "bootstrap95": [
+            -4.112144117775218,
+            2.3811282904292006
+          ]
+        }
+      },
+      "product_text": {
+        "metrics": [
+          38.93759802536943,
+          55.91784046105865
+        ],
+        "class_macro_map_delta": {
+          "classes": 30,
+          "queries": 2130,
+          "mean_across_classes": -0.969401729110229,
+          "positive_classes": 9,
+          "bootstrap95": [
+            -3.823911288921677,
+            2.5404011272344365
+          ]
+        }
+      },
+      "harris_text": {
+        "metrics": [
+          39.04722803392548,
+          55.921126858816606
+        ],
+        "class_macro_map_delta": {
+          "classes": 30,
+          "queries": 2130,
+          "mean_across_classes": -0.8587396114765267,
+          "positive_classes": 9,
+          "bootstrap95": [
+            -3.6837319748309842,
+            2.607945245520035
+          ]
+        }
+      },
+      "rank_mean_words": {
+        "metrics": [
+          51.67194314434372,
+          72.08075126921626
+        ],
+        "class_macro_map_delta": {
+          "classes": 30,
+          "queries": 2130,
+          "mean_across_classes": 11.822696697798426,
+          "positive_classes": 23,
+          "bootstrap95": [
+            5.59377703507004,
+            19.372275399259244
+          ]
+        }
+      },
+      "rank_harris_words": {
+        "metrics": [
+          50.93494573999371,
+          72.0812207361587
+        ],
+        "class_macro_map_delta": {
+          "classes": 30,
+          "queries": 2130,
+          "mean_across_classes": 11.086373084806837,
+          "positive_classes": 23,
+          "bootstrap95": [
+            4.773199473808442,
+            18.69019589622774
+          ]
+        }
+      },
+      "rank_mean_text": {
+        "metrics": [
+          35.36468975982703,
+          53.704694927683185
+        ],
+        "class_macro_map_delta": {
+          "classes": 30,
+          "queries": 2130,
+          "mean_across_classes": -4.539483868456001,
+          "positive_classes": 6,
+          "bootstrap95": [
+            -7.3725851531371935,
+            -1.7565278958706634
+          ]
+        }
+      },
+      "rank_harris_text": {
+        "metrics": [
+          35.123672430827654,
+          53.698122153941874
+        ],
+        "class_macro_map_delta": {
+          "classes": 30,
+          "queries": 2130,
+          "mean_across_classes": -4.780367883238275,
+          "positive_classes": 6,
+          "bootstrap95": [
+            -7.675120951659794,
+            -1.9484415241769364
+          ]
+        }
+      }
+    },
+    "complementarity": {
+      "inferred_text": {
+        "visual_only_correct_at_one": 246,
+        "semantic_only_correct_at_one": 317,
+        "both_correct": 1006,
+        "neither_correct": 561,
+        "AP_wins_visual_semantic_ties": [
+          542,
+          1588,
+          0
+        ],
+        "mean_top200_intersection": 62.18356807511737,
+        "retrospective_max_of_two_mean_AP": 44.79405090184401,
+        "oracle_uplift_over_semantic": 4.861135681382787,
+        "semantic_orders_visual_matched_pairs": {
+          "pairs": 265128,
+          "fraction_correct": 0.7771812105850759,
+          "queries_with_pairs": 2111,
+          "mean_query_accuracy": 0.7248289961053447
+        },
+        "visual_orders_semantic_matched_pairs": {
+          "pairs": 272201,
+          "fraction_correct": 0.5455564086832891,
+          "queries_with_pairs": 2092,
+          "mean_query_accuracy": 0.5608318498425017
+        }
+      },
+      "word_overlap": {
+        "visual_only_correct_at_one": 117,
+        "semantic_only_correct_at_one": 434,
+        "both_correct": 1135,
+        "neither_correct": 444,
+        "AP_wins_visual_semantic_ties": [
+          54,
+          2076,
+          0
+        ],
+        "mean_top200_intersection": 48.01455399061033,
+        "retrospective_max_of_two_mean_AP": 73.53810302841043,
+        "oracle_uplift_over_semantic": 0.18518282823098448,
+        "semantic_orders_visual_matched_pairs": {
+          "pairs": 265128,
+          "fraction_correct": 0.939598986150086,
+          "queries_with_pairs": 2111,
+          "mean_query_accuracy": 0.9171203844686092
+        },
+        "visual_orders_semantic_matched_pairs": {
+          "pairs": 182069,
+          "fraction_correct": 0.473875289038771,
+          "queries_with_pairs": 2054,
+          "mean_query_accuracy": 0.48656541030219086
+        }
+      }
+    }
+  }
+}

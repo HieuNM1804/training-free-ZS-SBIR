@@ -62,6 +62,9 @@ def run(ds,pilot):
                     'sum_text':(v+st)/2,'harris_text':harris(v,st),
                     'remaining_harris':harris(rescale(remaining),sn),
                     'rank_harris':harris(vr,sr),'rank_linear75':.25*vr+.75*sr}
+                if not pilot:
+                    scores={k:scores[k] for k in ('noun_overlap','center_text','projected','complement','harris_overlap','harris_text')}
+                    scores['linear90']=.1*v+.9*sn
                 if pilot:
                     scores.update({'random_subspace':(z@rnd)@(centered@rnd).T,'noun_pca':(z@pc)@(centered@pc).T,
                         'linear75':.25*v+.75*sn,'linear90':.1*v+.9*sn,'remaining_only_sum':(rescale(remaining)+sn)/2})
