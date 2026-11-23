@@ -46,3 +46,11 @@ Khớp hình học và dùng ảnh đã xác minh để mở rộng truy vấn �
 C-DisAmb báo cáo 81,2 mAP@200 và 78,9 P@200 trên Sketchy bằng prompt fine-tuning. Mốc training-free ở đây còn cách 3,06 điểm mAP và 2,90 điểm P trên Ext-2. Giao thức chọn tham số và cách dùng dữ liệu khác nhau. Kết quả hiện tại là bằng chứng thực nghiệm cho một cơ chế còn cần phát triển để nhắm hội nghị A/A*. [Zhou và cộng sự, CVPR 2026, bảng 1](https://openaccess.thecvf.com/content/CVPR2026/papers/Zhou_Modeling_the_Visual_Ambiguity_of_Human_Sketches_CVPR_2026_paper.pdf).
 
 [Số liệu ngoài cả hai pilot](replication-audit.json) · [Độ nhạy theo lớp trên TU](tuberlin-class-deltas.json) · [Tensor từng truy vấn Ext-1](full-sketchy_1-t4.zip) · [Ext-2](full-sketchy_2-t4.zip) · [TU](full-tuberlin-t4.zip).
+
+## Ba giả thuyết tiếp theo đã kiểm tra
+
+Ba nhánh dùng cùng hai pilot 768 truy vấn, hai gallery gốc và đối chứng đã khóa. Xét việc chọn và đẩy khái niệm lên bảng xếp hạng, biết chính xác ảnh nào bị thay khi đưa nội dung sketch vào giúp dự đoán tốt hơn lựa chọn trên ảnh khác, nhưng tỷ lệ đơn giản từ hai phân bố biên vẫn đạt mAP cao hơn phép ghép cặp ở cả hai pilot. [So sánh ghép cặp trên đủ 20.931 từ](https://github.com/HieuNM1804/training-free-ZS-SBIR/blob/2aeb13ba9853cd0fb1cb39d920507e16511939df/docs/results/paired-depiction-choices/README.md).
+
+Bỏ tín hiệu do dùng chung mã vị trí làm giảm khớp patch cùng tọa độ trên nền trống. Hiệu ứng đó đồng thời làm giảm tỷ lệ chọn đúng ảnh và mAP trên cả hai pilot. [Đối chứng thay mã vị trí](https://github.com/HieuNM1804/training-free-ZS-SBIR/blob/f9e76f43c12bdb67071159ef4e32949141c131d8/docs/results/independent-patch-frames/README.md).
+
+Điểm khớp bố cục của cả ảnh cũng có thể được phân rã chính xác về từng vị trí. Dùng phân rã này để tăng xác suất cho từ mà các patch đóng góp dương gợi ra đã làm giảm mAP; dấu ngược cho kết quả cao hơn trên Ext-2. Nhánh đã khóa ở bảng đầu tiếp tục là ứng viên có bằng chứng đầy đủ nhất trong đợt này. [Đối chứng khớp từ theo vùng](https://github.com/HieuNM1804/training-free-ZS-SBIR/blob/32671b8874e5e8c0aab65afcfe456f5302f209c6/docs/results/geometry-grounded-words/README.md).
