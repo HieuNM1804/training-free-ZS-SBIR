@@ -6,7 +6,7 @@ import torch
 
 
 STAT=("whole","mean","maximum","gain","mean_gain","single_pose")
-SPECS=("whole","whole-unconditional","mean","mean_gain","maximum","gain","gain-unconditional","gain-mixed","gain-pooled","gain-raw","whole-raw","single_pose")
+SPECS=("whole","mean","mean_gain","maximum","gain","gain-centered","gain-unconditional","gain-mixed","gain-pooled","gain-raw","whole-raw","single_pose")
 
 
 def margins(x,g):
@@ -96,7 +96,13 @@ class Calibration:
             for name in ("mean","mean_gain","maximum","gain","single_pose"):
                 logs[name][:,g]=conditioned(d[name],lo,limits,tables[name])
             logs["whole"][:,g]=tail(tables["whole/uncond"],d["whole"])
-            logs["whole-unconditional"][:,g]=logs["whole"][:,g]
+            # The expected log of a discrete exchangeable rank depends on how many donors the bin contains.
+            center=torch.zeros_like(d["gain"])
+            for begin,stop in limits:
+                size=stop-begin+1
+                expected=math.lgamma(size+1)/size-math.log(size)
+                center=torch.where((lo>=begin)&(lo<stop),expected,center)
+            logs["gain-centered"][:,g]=logs["gain"][:,g]-center
             logs["gain-unconditional"][:,g]=tail(tables["gain/uncond"],d["gain"])
             logs["gain-mixed"][:,g]=conditioned(d["gain"],lo,limits,tables["gain-mixed"])
             logs["gain-pooled"][:,g]=conditioned(d["gain"],flo,flimits,ftables["gain"])

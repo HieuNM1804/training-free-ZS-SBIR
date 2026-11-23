@@ -18,7 +18,7 @@ from .window_extreme_calibration import Calibration,assemble_level,SPECS
 def run(w,ds,stage):
     check_scope(w,ds)
     if ds=="tuberlin" and stage=="pilot":raise ValueError("No TU development")
-    _,_,qs,_,_,_,_=dataset(w,ds)
+    _,_,qs,_,gs,_,_=dataset(w,ds)
     get=lambda f:torch.load(f,mmap=True,weights_only=True)
     for s,(qi,y) in qs.items():
         root=w/"cache"/FAMILY/s;read(root/"ready.json");geo=get(root/"structure.pt")
@@ -26,6 +26,15 @@ def run(w,ds,stage):
         if (folder/"done.json").exists():continue
         ix=stratified_sample(y,36,63241) if stage=="pilot" else torch.arange(len(y))
         queries=get(root/"sketches.pt")[ix].cuda()
+        gl=gs[s][1].cuda();gold=y[ix].cuda()
+        regional=get(w/"cache/gallery-stable-region-evidence"/(s+"-regional-reference.pt"))
+        pos=[];neg=[];errors=[]
+        for first in range(0,len(ix),192):
+            ii=ix[first:first+192];yy=gold[first:first+len(ii)]
+            raw=regional[ii].cuda();ok=yy[:,None]==gl[None]
+            pos.append(raw.masked_fill(~ok,-torch.inf).argmax(1));neg.append(raw.masked_fill(ok,-torch.inf).argmax(1))
+            errors.append(gl[raw.argmax(1)]!=yy)
+        pos=torch.cat(pos);neg=torch.cat(neg);miss=torch.cat(errors)
         g=geo["groups"].cuda();up=geo["upper"].cuda();folds=[p.cuda() for p in geo["parts"]]
         for level in (2,3):
             qv,label=assemble_level(queries,g,up,level);k=qv.size(-1)
@@ -35,6 +44,7 @@ def run(w,ds,stage):
                 if file.exists():continue
                 configs={}
                 controls=[];corner=defaultdict(lambda:[0,0])
+                observed={k:torch.zeros(len(ix),2) for k in SPECS}
                 raw=get(root/("photos-"+domain+".pt")).cuda()
                 pv,_=assemble_level(raw,g,up,level);del raw
                 for hold in range(3):
@@ -43,7 +53,12 @@ def run(w,ds,stage):
                         model=Calibration(pv[:,:,:,bank],label,folds[donor])
                         controls.append({"held":hold,"null":donor,"index":bank,"min_null_sample":min(model.counts),"median":float(torch.tensor(model.counts).float().median())})
                         for j in range(0,len(ix),128):
-                            values,_=model.score(qv[j:j+128,:,:,bank],prior)
+                            values,logs=model.score(qv[j:j+128,:,:,bank],prior)
+                            # These diagnostic IDs are revealed after the complete rival matrices are computed.
+                            n=len(next(iter(values.values())));local=torch.arange(n,device=g.device)
+                            pnode=label[pos[j:j+n]];nnode=label[neg[j:j+n]]
+                            for name,z in logs.items():
+                                observed[name][j:j+n]+=torch.stack((z[local,pnode,nnode],z[local,nnode,pnode]),1).cpu()/6
                             for name,v in values.items():
                                 if name not in configs:configs[name]=torch.zeros(len(ix),3,k)
                                 configs[name][j:j+len(v),hold]+=.5*v.cpu()
@@ -56,8 +71,12 @@ def run(w,ds,stage):
                                 p=logs[name][torch.arange(len(ids),device=g.device),these].exp()
                                 corner[name][0]+=int(((p<=.05)&mask).sum());corner[name][1]+=int(mask.sum())
                     print(s,stage,level,domain,"held",hold,flush=True)
-                save_tensor({"ids":ix,"labels":label.cpu(),"parts":geo["parts"],"scores":configs},file)
+                valid=miss.cpu()&(label[pos]!=label[neg]).cpu()
+                save_tensor({"ids":ix,"labels":label.cpu(),"parts":geo["parts"],"scores":configs,
+                             "diagnostic_pair":observed,"eligible_original_errors":valid},file)
                 atomic_json(file.with_suffix(".json"),{"code":revision(),"group_count":k,"folds":controls,
+                            "original_errors_in_different_groups":int(valid.sum()),
+                            "favors_relevant_on_original_errors":{k:int(((z[:,0]>z[:,1])&valid).sum()) for k,z in observed.items()},
                             "held_photo_tail_at_005":{k:{"below":z[0],"comparisons":z[1],"fraction":z[0]/z[1]} for k,z in corner.items()}})
                 del configs,pv
         atomic_json(folder/"done.json",{"code":revision(),"queries":len(ix),"levels":[2,3],"domains":["photo","source"]})
