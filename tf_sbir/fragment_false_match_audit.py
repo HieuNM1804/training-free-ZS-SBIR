@@ -21,7 +21,7 @@ BANDS=((0,200),(200,1000),(0,1000),(1000,5000))
 
 
 def paired_boundaries(scores,b,g,y):
-    order=b.argsort(1,descending=True,stable=True)
+    order=b.argsort(dim=1,descending=True,stable=True)
     rel=g[order]==y[:,None]
     observed={}
     for name,raw in scores.items():
