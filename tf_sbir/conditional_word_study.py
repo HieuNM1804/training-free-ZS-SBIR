@@ -18,6 +18,7 @@ from .crossdomain_benchmark import digest,revision
 from .crossdomain_inputs import CHECKPOINT
 from .encoding import save_tensor
 from .gallery_panel_resume import semantic_inputs
+from .partition_rank_replay import PendingReplay
 from .query_partition_inputs import place
 from .query_partition_study import locked,save_lock,rank_metrics,mean_tables
 from .quickdraw_locked import KD_FUNCTION_SHA
@@ -107,7 +108,9 @@ def run(w,ds,stage):
         rng=torch.randperm(len(pi),generator=torch.Generator().manual_seed(77419)).to(gt.device)
         max_kd=0.;max_identity=0.;max_mass=0.;cover=defaultdict(list)
         one=None
-        with (ThreadPoolExecutor(max_workers=min(8,len(os.sched_getaffinity(0)))) if replay else nullcontext()) as pool:
+        workers=min(10,len(os.sched_getaffinity(0)))
+        with (ThreadPoolExecutor(max_workers=workers) if replay else nullcontext()) as pool:
+            pending=PendingReplay(replay,pool,workers) if replay else None
             for off in range(0,len(ix),32):
                 sl=slice(off,off+32);idx=ix[sl];q=query[qi[idx]].cuda()
                 logu=scale*(q@source.T)+word_mean.clamp_min(1e-32).log()[None]
@@ -124,11 +127,11 @@ def run(w,ds,stage):
                         if key.startswith(("32/0/stay/","128/0/stay/")):cover[key.split("/")[0]].append(mass)
                     val,order,good=rank_metrics(mat,tie[base],yc,gt,s)
                     if replay:
-                        exact=replay.score(order,yy,pool);err=float((exact-val.cpu()).abs().amax())
-                        if err>2e-6:raise ValueError("Original KD-SBIR metric mismatch")
-                        max_kd=max(max_kd,err);val=exact;lead[key].append(order[:,:5].int().cpu())
-                    scores[key].append(val.cpu());top[key].append(good.cpu())
+                        pending.submit(order,yy,val,scores[key]);lead[key].append(order[:,:5].int().cpu())
+                    else:scores[key].append(val.cpu())
+                    top[key].append(good.cpu())
                 if off%768==0:print(stage,s,off,len(ix),len(rows),flush=True)
+            if pending:max_kd=pending.finish()
         scores={k:torch.cat(v) for k,v in scores.items()};top={k:torch.cat(v) for k,v in top.items()}
         if set(scores)!=set(rows):raise ValueError("Missing lexical control")
         save_tensor({"ids":ix,"labels":y,"metrics":scores,"top1":top,"first_five":{k:torch.cat(v) for k,v in lead.items()}},dest.with_suffix(".pt"))
