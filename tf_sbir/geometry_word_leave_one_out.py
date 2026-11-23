@@ -222,8 +222,8 @@ def run(dataset):
                         global_only = GLOBAL_WEIGHT * lex
                         unsmoothed = GLOBAL_WEIGHT * log_score(raw) + REGIONAL_WEIGHT * regional_raw
                         scores = {
-                            'full': strong + gd,
-                            'without_geometry': strong,
+                            'full': native_base + gd,
+                            'without_geometry': native_base,
                             'without_hierarchy': reg_new + gd,
                             'without_regional': global_only + h * global_only.std(1, keepdim=True) + gd,
                             'without_diffusion': unsmoothed + h * unsmoothed.std(1, keepdim=True) + gr,
