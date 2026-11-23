@@ -1,0 +1,32 @@
+{
+  "config": {
+    "pilot_signature": "516aa1b7ba07d6d0062eb380ff60ebdde5654f71073dca5e9a8f679c8a198df7",
+    "code": "ce255800c5e406b2bdda3fa30b8ec76395c15377",
+    "pilot_code": "ea1a7f081f91f60de8af4f44783ef891fdf9b9b8",
+    "primary": "appearance/within/walk",
+    "static_comparator": "appearance/constant0.85/walk",
+    "rows": [
+      "appearance/constant0.85/walk",
+      "appearance/euclidean/walk",
+      "appearance/fixed/walk",
+      "appearance/global/walk",
+      "appearance/permuted/walk",
+      "appearance/within/direct",
+      "appearance/within/walk",
+      "area_shuffle/fixed/walk",
+      "area_shuffle/within/walk",
+      "empty_token/within/walk",
+      "fixed_white/within/walk",
+      "mean_colour/within/walk",
+      "native",
+      "native/walk",
+      "scrambled/within/walk"
+    ],
+    "calibration_sha256": {
+      "sketchy_1": "33163b7d2fa884a328aedeed90fe19ada27ac479d7a08665a948cb107b7cf328",
+      "sketchy_2": "a464e47c749c2f2411ed61aef28554c7f2db20d8c624d6158102fa4fed448985"
+    },
+    "selection": "single constant selected on both Sketchy pilots by equally weighted mAP and precision tie-break; primary fixed before pilots"
+  },
+  "signature": "3a9e1ac70e65fd6854d4178429e3accc52f0e3450b59d27306ebdd4a2f6c8eae"
+}
