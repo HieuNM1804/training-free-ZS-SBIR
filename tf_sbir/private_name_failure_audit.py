@@ -87,7 +87,7 @@ def run(w,ds,phase):
             sl=slice(off,off+96);b=base[ix[sl]].cuda()
             bneg=b.masked_fill(gl.cuda()[None]==y[sl,None].cuda(),-torch.inf).argmax(1).cpu()
             badid[sl]=bneg
-        wh=[];edges=[];names=[];maxerr=0.;factors=[]
+        wh=[];edges=[];names=[];maxerr=0.;normalization_error=0.;roundoff_error=0.
         for off in range(0,len(ix),48):
             sl=slice(off,off+48);a=lk[sl].double()
             both=[]
@@ -102,8 +102,15 @@ def run(w,ds,phase):
                 aphoto=(a*z).sum(1);amean=(a*ppred).sum(1)
                 ajoint=(a*ppred*ratio).sum(1)/norm
                 scalar=aphoto+prob*(amean-aphoto);specific=aphoto+prob*(ajoint-aphoto)
-                term=prob[:,None]*ppred*(a-amean[:,None])*(ratio/norm[:,None]-1.)
-                maxerr=max(maxerr,float((term.sum(1)-(specific-scalar)).abs().amax()))
+                # The archive contains FP32 probabilities, whose sums can differ slightly from one.
+                # Separate that measured roundoff from the exact covariance under a normalized measure.
+                mass=ppred.sum(1)
+                normalization_error=max(normalization_error,float((mass-1).abs().amax()))
+                mean=amean/mass
+                term=prob[:,None]*(ppred/mass[:,None])*(a-mean[:,None])*(ratio/(norm/mass)[:,None]-1.)
+                roundoff=prob*(mean-amean)
+                roundoff_error=max(roundoff_error,float(roundoff.abs().amax()))
+                maxerr=max(maxerr,float((term.sum(1)+roundoff-(specific-scalar)).abs().amax()))
                 gain=specific.log()-scalar.log()
                 both.append(torch.stack((gain,scalar.log(),specific.log(),prob,norm),1).cpu())
                 if len(both)==1:
@@ -126,7 +133,8 @@ def run(w,ds,phase):
                      "verified_has_positive_above_negative_on_errors":int((bad&(after_gap>0)).sum()),
                      "true_candidate_mean_borrowing":float(left[bad,3].mean()),"wrong_candidate_mean_borrowing":float(right[bad,3].mean())})
         atomic_json(root/(phase+"-mechanism-"+s+".json"),{"code":revision(),"setting":selected.label(),"queries":len(ix),"eligible_class_spellings":int((cat>=0).sum()),
-             "oracle_name_diagnosis":detected,"actual_first_error":part,"covariance_identity_error":maxerr,"examples":examples,
+             "oracle_name_diagnosis":detected,"actual_first_error":part,"covariance_identity_error":maxerr,"stored_mass_error":normalization_error,
+             "max_probability_roundoff_contribution":roundoff_error,"examples":examples,
              "pair_definition":"highest positive and highest negative under the preexisting regional score",
              "usage":"class labels and spellings are consulted in this post-ranking diagnostic; development still uses unseen Sketchy metrics"})
         print(s,detected,part,maxerr,flush=True)
