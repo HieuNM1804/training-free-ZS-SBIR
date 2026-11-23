@@ -30,6 +30,7 @@ from .strong_pilot_scores import location
 LOCK = '803720d5c830b715326dea26971482164e2154ee'
 ORDERS = ('excess','geometry','shuffled_excess','wrong_canvas','visual','words','base_nominees')
 METHODS = (*ORDERS,'expansion_10','expansion_50','expansion_100')
+MINIMAL = ('word_reference','word_excess','diffused_word_reference','diffused_word_excess')
 SHARD = 384
 
 
@@ -178,7 +179,8 @@ def run(dataset,only):
                             for name,chunk in zip(METHODS,projected.split(len(words)),strict=True):
                                 holders[name][:,targets] = chunk
                         updated = graph.score(CONFIG,torch.cat(list(holders.values()))).clamp_min(1e-30).log()
-                        batch = {'base':strong}
+                        batch = {'base':strong,'word_reference':direct,'word_excess':holders['excess'],
+                                 'diffused_word_reference':native,'diffused_word_excess':updated[:len(words)]}
                         for name,val in zip(METHODS,updated.split(len(words)),strict=True):
                             batch[name]=strong+.65*(val-native)
                         for name,val in batch.items():
@@ -187,7 +189,7 @@ def run(dataset,only):
                     shard = {'lock':LOCK,'qi':qi[begin:end], 'rows':{k:torch.cat(v) for k,v in gathered.items()}}
                     save_tensor(shard,where)
                 assert shard['lock']==LOCK and torch.equal(shard['qi'],qi[begin:end])
-                assert set(shard['rows'])=={'base',*METHODS}
+                assert set(shard['rows'])=={'base',*METHODS,*MINIMAL}
                 if (shard['rows']['base'][:,:2]-pack['kd'][begin:end]).abs().max()>2e-6:raise ValueError('Base ranking changed')
                 for name,val in shard['rows'].items():pieces.setdefault(name,[]).append(val)
                 print(split,end,'/',len(qi),flush=True)
