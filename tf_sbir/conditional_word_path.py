@@ -59,7 +59,7 @@ def grid():
     return sorted(out)
 
 
-def forward(tree,levels,closed,words,prior_word,needed,depths):
+def forward(tree,levels,closed,words,prior_word,needed,depths,diagnostics=None):
     # States are joint masses divided by the size prior of the node. They need not sum to one within a node.
     modes=set(needed)|{"stay"}
     if "cv-flat" in modes:modes.add("cv")
@@ -98,6 +98,11 @@ def forward(tree,levels,closed,words,prior_word,needed,depths):
                 fresh=fresh_info if m in ("cv-info","info-new","info-flat") else original
                 keep=state*rate
                 renewal=keep+(state-keep).sum(2,keepdim=True)*fresh
+                if diagnostics is not None and m in needed:
+                    parent_size=torch.bincount(tree.ids[j+1],minlength=n).float()/len(tree.ids[0])
+                    reset=(state-keep)*parent_size[None,:,None]
+                    observed=torch.stack((reset.sum((1,2)),(reset*(1-fresh)).sum((1,2))),1)
+                    diagnostics[(j,m)]=observed.cpu()
             child=renewal[:,up]*ratio
             # Summation of photo mass under each parent checks the Markov transition independently of labels.
             if m in ("cv","cv-info","stay"):
@@ -135,7 +140,7 @@ def outputs(tree,bank,closed,logu,lex,regional,rows):
         words=top_words[:,:k];u=top_values[:,:k].softmax(1)
         depths={r.depth for r in group}
         out,err,energy=forward(tree,bank,closed,words,u,{r.mode for r in group},depths)
-        coverage=(top_values[:,:k].logsumexp(1)-logu.logsumexp(1)).exp()
+        coverage=float((top_values[:,:k].logsumexp(1)-logu.logsumexp(1)).exp().mean())
         for j in sorted(depths):
             ids=tree.ids[j];m=tree.sizes[j]
             group_lex=group_mean(norm_lex,ids,m)
@@ -148,4 +153,4 @@ def outputs(tree,bank,closed,logu,lex,regional,rows):
                 if r.readout=="cell":val=finite[:,ids]+r.within*residual+r.gain*shift
                 elif r.readout=="regional":val=regional+r.gain*shift
                 else:val=pooled_reg+r.gain*shift
-                yield r.label(),val,("direct" if r.readout=="cell" else "regional"),(err,energy,float(coverage.mean()))
+                yield r.label(),val,("direct" if r.readout=="cell" else "regional"),(err,energy,coverage)
