@@ -37,6 +37,8 @@ from .standardized_context_audit import audit_inputs
 
 FAMILY = 'geometry-word-flat'
 ROWS = ('full', 'without_diffusion', 'without_regional', 'without_geometry')
+TERM_ROWS = ('full', 'without_global', 'without_regional', 'without_geometry',
+             'semantic_only', 'regional_only', 'geometry_increment', 'gcwe_word_retrieval', 'visual_cosine')
 COUNTS = {'sketchy_1': (14179, 17100, 25), 'sketchy_2': (12694, 12552, 21), 'tuberlin': (2130, 27262, 30)}
 GLOBAL_WEIGHT = .65
 REGIONAL_WEIGHT = .35
@@ -110,7 +112,7 @@ def geometry_cache(w, split, gallery, query, flipped, qi, pi, qp, pp, vision):
 
 
 @torch.inference_mode()
-def run(dataset):
+def run(dataset, term_ablation=False):
     seed = 42
     random.seed(seed)
     np.random.seed(seed)
@@ -120,7 +122,8 @@ def run(dataset):
     torch.backends.cudnn.deterministic = True
     torch.use_deterministic_algorithms(True)
     w = Path('/content/sbir')
-    root = w / 'results' / FAMILY
+    methods = TERM_ROWS if term_ablation else ROWS
+    root = w / 'results' / (FAMILY + '-terms' if term_ablation else FAMILY)
     root.mkdir(parents=True, exist_ok=True)
     inputs = semantic_inputs(w, dataset)
     cfg, qp, qs, pp, gs, q, p, src, tgt, scale = inputs
@@ -168,13 +171,13 @@ def run(dataset):
         classes = gl.cuda()
         folder = root / split
         folder.mkdir(exist_ok=True)
-        all_metrics = {name: [] for name in ROWS}
+        all_metrics = {name: [] for name in methods}
         with ThreadPoolExecutor(max_workers=min(2, len(os.sched_getaffinity(0)))) as pool:
             for start in range(0, len(qi), SHARD):
                 stop = min(len(qi), start + SHARD)
                 path = folder / f'{start:05d}.pt'
                 if not path.exists():
-                    batch = {name: [] for name in ROWS}
+                    batch = {name: [] for name in methods}
                     for b in range(start, stop, 16):
                         sl = slice(b, min(b + 16, stop))
                         ids = qi[sl]
@@ -186,7 +189,6 @@ def run(dataset):
                         first_d = graph.score(CONFIG, first)
                         lex = log_score(graph.score(CONFIG, raw))
                         regional = regional_readout(poses, crops, src, scale, words, compact_bank, first_d)
-                        regional_raw = regional_readout(poses, crops, src, scale, raw_words, raw_compact, first)
                         reg = GLOBAL_WEIGHT * log_score(first_d) + REGIONAL_WEIGHT * regional
                         reg_new = reg + GLOBAL_WEIGHT * (lex - log_score(first_d))
                         gwords = ((gscale * (gq[ids].cuda() @ gsrc.T)).softmax(1)
@@ -194,17 +196,23 @@ def run(dataset):
                         direct = gwords @ geom_bank.T
                         changed = word_update(gwords, geom_bank, near[sl], gp[compact[sl].cuda()],
                                               sp[sl].cuda(), flat[sl].cuda(), gscale, distance, folds, parts, priors)
-                        gd = GLOBAL_WEIGHT * (log_score(geom_graph.score(CONFIG, changed))
-                                              - log_score(geom_graph.score(CONFIG, direct)))
-                        gr = GLOBAL_WEIGHT * (log_score(changed) - log_score(direct))
+                        gcwe_words = log_score(geom_graph.score(CONFIG, changed))
+                        gd = GLOBAL_WEIGHT * (gcwe_words - log_score(geom_graph.score(CONFIG, direct)))
                         global_only = GLOBAL_WEIGHT * lex
-                        unsmoothed = GLOBAL_WEIGHT * log_score(raw) + REGIONAL_WEIGHT * regional_raw
                         scores = {
                             'full': reg_new + gd,
                             'without_geometry': reg_new,
                             'without_regional': global_only + gd,
-                            'without_diffusion': unsmoothed + gr,
                         }
+                        if term_ablation:
+                            scores.update(without_global=REGIONAL_WEIGHT * regional + gd,
+                                          semantic_only=lex, regional_only=regional, geometry_increment=gd,
+                                          gcwe_word_retrieval=gcwe_words,
+                                          visual_cosine=F.normalize(poses.mean(1)) @ geom_gallery.T)
+                        else:
+                            regional_raw = regional_readout(poses, crops, src, scale, raw_words, raw_compact, first)
+                            gr = GLOBAL_WEIGHT * (log_score(changed) - log_score(direct))
+                            scores['without_diffusion'] = GLOBAL_WEIGHT * log_score(raw) + REGIONAL_WEIGHT * regional_raw + gr
                         for name, value in scores.items():
                             if not torch.isfinite(value).all():
                                 raise ValueError(f'Nonfinite score for {name}')
@@ -212,19 +220,26 @@ def run(dataset):
                     shard = {'qi': qi[start:stop], 'metrics': {k: torch.cat(v) for k, v in batch.items()}}
                     save_tensor(shard, path)
                 shard = torch.load(path, weights_only=True)
-                assert torch.equal(shard['qi'], qi[start:stop]) and set(shard['metrics']) == set(ROWS)
-                for name in ROWS:
+                assert torch.equal(shard['qi'], qi[start:stop]) and set(shard['metrics']) == set(methods)
+                for name in methods:
                     all_metrics[name].append(shard['metrics'][name])
                 print(split, stop, '/', len(qi), flush=True)
         raw = {name: torch.cat(chunks) for name, chunks in all_metrics.items()}
         checks = {}
-        for name, ref in [('full', 'without_hierarchy')]:
+        comparisons = [('full', 'without_hierarchy')]
+        if term_ablation:
+            previous = torch.load(w / 'results/geometry-word-flat-first' / (split + '.pt'), mmap=True, weights_only=True)
+            assert torch.equal(previous['qi'], qi) and torch.equal(previous['pi'], pi)
+            comparisons = [(k,k) for k in ('full','without_regional','without_geometry')]
+        for name, ref in comparisons:
             difference = raw[name][:, :2] - previous['rows'][ref][:, :2]
             checks[name] = {'max_per_query': difference.abs().amax(0).tolist(),
                             'mean_signed_points': (100 * difference.double().mean(0)).tolist(),
                             'mean_absolute_points': (100 * difference.abs().double().mean(0)).tolist()}
             if not torch.isfinite(difference).all():
                 raise ValueError(f'Official per-query replay diverged: {checks}')
+            if term_ablation and max(checks[name]['mean_absolute_points']) > .03:
+                raise ValueError(f'Seed-42 control failed: {checks}')
         save_tensor({'qi': qi, 'pi': pi, 'labels': labels, 'rows': raw}, root / (split + '.pt'))
         report = {'commit': revision(), 'seed': 42, 'torch': str(torch.__version__), 'cuda': torch.version.cuda, 'pythonhashseed': os.environ.get('PYTHONHASHSEED'), 'device': torch.cuda.get_device_name(), 'split': split,
                   'counts': COUNTS[split], 'metrics': ['mAP@200', 'P@200'] if split == 'sketchy_2' else ['mAP@all', 'P@100'],
@@ -238,4 +253,6 @@ def run(dataset):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('dataset', choices=('sketchy', 'tuberlin'))
-    run(parser.parse_args().dataset)
+    parser.add_argument('--term-ablation', action='store_true')
+    args = parser.parse_args()
+    run(args.dataset, args.term_ablation)
