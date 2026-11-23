@@ -177,6 +177,49 @@ def evaluate(data,task,pairs_to_id,features):
     return result,decisions
 
 
+def opportunities(d,base,swapped,qid,decisions,split,root):
+    # Compare the original KD outputs of the two predetermined rankings. This
+    # bound and category counts are computed only after scoring and ranking.
+    heads=d['order'][:,:200].long()
+    y=d['yl']
+    good=d['gl'][heads]==y[:,None]
+    originally_wrong=~good[:,0]
+    names=d['terms'][heads].numpy()
+    budgets=(1,2,4,8,16,32)
+    reps=torch.full((len(y),max(budgets)),-1,dtype=torch.long)
+    for i,words in enumerate(names):
+        uniq={}
+        for j,t in enumerate(words):
+            uniq.setdefault(int(t),j)
+            if len(uniq)==max(budgets):break
+        pos=list(uniq.values())
+        reps[i,:len(pos)]=torch.tensor(pos)
+    proposed=good.gather(1,reps.clamp_min(0))&(reps>=0)
+    delta=(swapped-base)*100
+    compared={}
+    masks={}
+    for name in ['isolated','role','role_residual','position','counterbalanced_verified']:
+        mask=torch.zeros(len(y),dtype=torch.bool)
+        mask[qid]=decisions[name]
+        masks[name]=mask
+        taken=delta*mask[:,None]
+        compared[name]={'per_query_points_gained':taken.clamp_min(0).mean(0).tolist(),
+                        'per_query_points_lost':(-taken).clamp_min(0).mean(0).tolist(),
+                        'number_increases':(taken>1e-9).sum(0).tolist(),
+                        'number_decreases':(taken< -1e-9).sum(0).tolist()}
+    file=root/(split+'-choices.pt')
+    torch.save({'classes':y,'baseline':base,'swapped':swapped,'switched':masks,
+                'rival_position_zero_based':d['idx'],'correct_in_first_200':good.sum(1),
+                'named_representatives_correct':proposed},file)
+    return {'native_top1_errors':int(originally_wrong.sum()),
+            'native_errors_with_correct_photo_in_top200':int((originally_wrong&good.any(1)).sum()),
+            'errors_with_correct_photo_among_first_named_representatives':{
+                k:int((originally_wrong&proposed[:,:k].any(1)).sum()) for k in budgets},
+            'max_mean_gain_given_two_precomputed_rankings_pp':delta.clamp_min(0).mean(0).tolist(),
+            'possible_mean_loss_given_two_precomputed_rankings_pp':(-delta).clamp_min(0).mean(0).tolist(),
+            'observed':compared}
+
+
 @torch.inference_mode()
 def run(full=False,dataset='sketchy'):
     w=Path('/content/sbir')
@@ -197,6 +240,8 @@ def run(full=False,dataset='sketchy'):
     features,stat=axes(model,open_clip.get_tokenizer('ViT-B-32'),pairs,words)
     lookup={p:i for i,p in enumerate(pairs)}
     result={'text':stat}
+    root=w/'results/foreground-word-role'
+    root.mkdir(exist_ok=True,parents=True)
     for s,d in data.items():
         entry={'total_queries':len(d['yl']),'gallery':len(d['gl'])}
         for key,task in tasks[s].items():
@@ -225,10 +270,10 @@ def run(full=False,dataset='sketchy'):
                 switch[qid]=sw
                 metrics[name]=(100*torch.where(switch[:,None],swapped,native).mean(0)).tolist()
             entry['full_gallery_metrics']=metrics
+            if full:
+                entry['attainable_from_nomination']=opportunities(d,native,swapped,qid,decisions,s,root)
         result[s]=entry
         print(s,entry['first_different_name']['mixed_relevance'],entry['full_gallery_metrics'],flush=True)
-    root=w/'results/foreground-word-role'
-    root.mkdir(exist_ok=True,parents=True)
     (root/(dataset+('-full' if full else '')+'.json')).write_text(json.dumps(result,indent=2))
 
 if __name__=='__main__':
