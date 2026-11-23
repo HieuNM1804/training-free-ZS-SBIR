@@ -1,0 +1,5 @@
+# Which gallery propagation loses relevant photos for hard queries?
+
+On both complete Sketchy splits and TU, switching on both RGB diffusions helps average AP but makes many more queries lose every relevant photo in the top 200 than gain one. The global path diffuses raw and GCWE-updated word scores. The regional path diffuses the gallery's compact word bank before computing the query's regional likelihoods. Distinguish the two operations with a matched 2-by-2 factorial. Use the same words, folds, seed 42, CLIP features, fixed global and regional coefficients and original KD evaluator in every arm.
+
+For each path quantify the change in mAP, precision, top-1 correctness and any relevant photo in the top 200, with the other path both on and off. Report results from all splits. Treat TU as a locked transfer measurement and do not tune on it. If one path alone consistently maintains or improves average Sketchy mAP while recovering coverage, consider it a simpler baseline; a coverage benefit obtained at an mAP cost is a trade-off. These are ablations of the existing three-module system. All four configurations and all comparisons are fixed in advance.

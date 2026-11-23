@@ -39,6 +39,7 @@ FAMILY = 'geometry-word-flat'
 ROWS = ('full', 'without_diffusion', 'without_regional', 'without_geometry')
 TERM_ROWS = ('full', 'without_global', 'without_regional', 'without_geometry',
              'semantic_only', 'regional_only', 'geometry_increment', 'gcwe_word_retrieval', 'visual_cosine')
+PATH_ROWS = ('full', 'global_diffusion_only', 'regional_diffusion_only', 'without_diffusion')
 COUNTS = {'sketchy_1': (14179, 17100, 25), 'sketchy_2': (12694, 12552, 21), 'tuberlin': (2130, 27262, 30)}
 GLOBAL_WEIGHT = .65
 REGIONAL_WEIGHT = .35
@@ -112,7 +113,7 @@ def geometry_cache(w, split, gallery, query, flipped, qi, pi, qp, pp, vision):
 
 
 @torch.inference_mode()
-def run(dataset, term_ablation=False):
+def run(dataset, term_ablation=False, diffusion_paths=False):
     seed = 42
     random.seed(seed)
     np.random.seed(seed)
@@ -124,6 +125,9 @@ def run(dataset, term_ablation=False):
     w = Path('/content/sbir')
     methods = TERM_ROWS if term_ablation else ROWS
     root = w / 'results' / (FAMILY + '-terms' if term_ablation else FAMILY)
+    if diffusion_paths:
+        methods = PATH_ROWS
+        root = w / 'results' / (FAMILY + '-diffusion-paths')
     root.mkdir(parents=True, exist_ok=True)
     inputs = semantic_inputs(w, dataset)
     cfg, qp, qs, pp, gs, q, p, src, tgt, scale = inputs
@@ -213,6 +217,10 @@ def run(dataset, term_ablation=False):
                             regional_raw = regional_readout(poses, crops, src, scale, raw_words, raw_compact, first)
                             gr = GLOBAL_WEIGHT * (log_score(changed) - log_score(direct))
                             scores['without_diffusion'] = GLOBAL_WEIGHT * log_score(raw) + REGIONAL_WEIGHT * regional_raw + gr
+                            if diffusion_paths:
+                                scores = {'full':scores['full'],'without_diffusion':scores['without_diffusion'],
+                                          'global_diffusion_only':global_only + REGIONAL_WEIGHT * regional_raw + gd,
+                                          'regional_diffusion_only':GLOBAL_WEIGHT * log_score(raw) + REGIONAL_WEIGHT * regional + gr}
                         for name, value in scores.items():
                             if not torch.isfinite(value).all():
                                 raise ValueError(f'Nonfinite score for {name}')
@@ -227,10 +235,12 @@ def run(dataset, term_ablation=False):
         raw = {name: torch.cat(chunks) for name, chunks in all_metrics.items()}
         checks = {}
         comparisons = [('full', 'without_hierarchy')]
-        if term_ablation:
+        if term_ablation or diffusion_paths:
             previous = torch.load(w / 'results/geometry-word-flat-first' / (split + '.pt'), mmap=True, weights_only=True)
             assert torch.equal(previous['qi'], qi) and torch.equal(previous['pi'], pi)
             comparisons = [(k,k) for k in ('full','without_regional','without_geometry')]
+            if diffusion_paths:
+                comparisons = [(k,k) for k in ('full','without_diffusion')]
         for name, ref in comparisons:
             difference = raw[name][:, :2] - previous['rows'][ref][:, :2]
             checks[name] = {'max_per_query': difference.abs().amax(0).tolist(),
@@ -238,7 +248,7 @@ def run(dataset, term_ablation=False):
                             'mean_absolute_points': (100 * difference.abs().double().mean(0)).tolist()}
             if not torch.isfinite(difference).all():
                 raise ValueError(f'Official per-query replay diverged: {checks}')
-            if term_ablation and max(checks[name]['mean_absolute_points']) > .03:
+            if (term_ablation or diffusion_paths) and max(checks[name]['mean_absolute_points']) > .03:
                 raise ValueError(f'Seed-42 control failed: {checks}')
         save_tensor({'qi': qi, 'pi': pi, 'labels': labels, 'rows': raw}, root / (split + '.pt'))
         report = {'commit': revision(), 'seed': 42, 'torch': str(torch.__version__), 'cuda': torch.version.cuda, 'pythonhashseed': os.environ.get('PYTHONHASHSEED'), 'device': torch.cuda.get_device_name(), 'split': split,
@@ -253,6 +263,8 @@ def run(dataset, term_ablation=False):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('dataset', choices=('sketchy', 'tuberlin'))
-    parser.add_argument('--term-ablation', action='store_true')
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument('--term-ablation', action='store_true')
+    group.add_argument('--diffusion-paths', action='store_true')
     args = parser.parse_args()
-    run(args.dataset, args.term_ablation)
+    run(args.dataset, args.term_ablation, args.diffusion_paths)
