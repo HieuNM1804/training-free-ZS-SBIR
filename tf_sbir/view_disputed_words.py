@@ -9,9 +9,11 @@ from types import SimpleNamespace
 import torch
 
 from .branch_view_study import PrefixReplay
+from .branch_view_policy import outputs
 from .gallery_panel_resume import region_views, semantic_inputs
 from .gallery_region_panels import CONFIG, Index
 from .quickdraw_locked import KD_FUNCTION_SHA
+from .query_partition_tree import Hierarchy
 from .retrieval_evidence import load_kd
 
 
@@ -62,7 +64,7 @@ def score_rows(queries, bank, regional):
 
 
 @torch.inference_mode()
-def run(workspace, dataset, official, decompose=False, internal=False):
+def run(workspace, dataset, official, decompose=False, internal=False, strong=False):
     cfg, paths, qs, _, gs, q, p, src, tgt, scale = semantic_inputs(workspace, dataset)
     kd, _ = load_kd(workspace)
     assert hashlib.sha256(inspect.getsource(kd).strip().encode()).hexdigest() == KD_FUNCTION_SHA
@@ -77,6 +79,14 @@ def run(workspace, dataset, official, decompose=False, internal=False):
             graph = Index(SimpleNamespace(p=p[pi].cuda()), rgb_only=True)
             history = torch.load(workspace/"cache/pragmatic-gallery-competition"/(split+"-named-rgb16.pt"),
                                  mmap=True, weights_only=True)
+        if strong:
+            folder = workspace/"cache/branch-conditioned-query-readout"/split
+            metadata = torch.load(folder/"gallery.pt",weights_only=True)
+            tree = Hierarchy([z.cuda() for z in metadata["ids"]],
+                             [z.cuda() for z in metadata["parents"]], metadata["sizes"])
+            # Fixed before this experiment by the historical branch's two-Sketchy selection.
+            key = "3/0.50000/same/16/regional-cell/0.4"
+            pack = None
         replay = PrefixReplay(kd, classes, split)
         gclass = classes.cuda()
         output = {}
@@ -100,6 +110,18 @@ def run(workspace, dataset, official, decompose=False, internal=False):
                     scores_by_name[name] = base + .65 * (alt-old)
             else:
                 scores_by_name = score_rows(post, bank, base)
+            if strong:
+                if pack is None or not (int(pack["ids"][0]) <= start <= int(pack["ids"][-1])):
+                    pack = torch.load(folder/"full"/f"{start:06d}.pt",weights_only=True,mmap=True)
+                offset = start-int(pack["ids"][0])
+                chunk = slice(offset,offset+len(first))
+                assert torch.equal(pack["ids"][chunk], torch.arange(start,start+len(first)))
+                # For this readout outputs() is reg + gain * std(reg) * normalized_cell.
+                # Get the fixed gallery term once, then update its scale for each input.
+                _, full, _ = next(outputs(tree,pack["densities"][chunk].cuda(),base,base,[key]))
+                cell = (full-base)/base.std(1,keepdim=True,unbiased=False).clamp_min(1e-8)
+                scores_by_name = {name:value+value.std(1,keepdim=True,unbiased=False)*cell
+                                  for name,value in scores_by_name.items()}
             for name, scores in scores_by_name.items():
                 count = 200 if split == "sketchy_2" else len(pi)
                 rank = scores.topk(count).indices
@@ -134,10 +156,13 @@ if __name__ == "__main__":
     parser.add_argument("--official",action="store_true")
     parser.add_argument("--decompose",action="store_true")
     parser.add_argument("--internal",action="store_true")
+    parser.add_argument("--strong",action="store_true")
     args = parser.parse_args()
-    result = run(Path("/content/sbir"),args.dataset,args.official,args.decompose or args.internal,args.internal)
+    internal = args.internal or args.strong
+    result = run(Path("/content/sbir"),args.dataset,args.official,args.decompose or internal,internal,args.strong)
     out = Path("/content/sbir/results/view-disputed-words")
     out.mkdir(parents=True,exist_ok=True)
     suffix = ("-official" if args.official else "") + ("-decomposed" if args.decompose else "")
     suffix += "-internal" if args.internal else ""
+    suffix += "-strong" if args.strong else ""
     (out/(args.dataset+suffix+".json")).write_text(json.dumps(result,indent=2))
