@@ -1,0 +1,184 @@
+{
+  "sketchy_1": {
+    "queries": 14179,
+    "photos": 17100,
+    "gpu": "NVIDIA L4",
+    "code_sha": "061b9c5a9dd739d72b19f5a15c8412f66fa87f5f",
+    "kd_sample_max_error": 1.7881393432617188e-7,
+    "metrics": {
+      "strong": [
+        85.29072038237389,
+        84.65068004660188
+      ],
+      "strong_veto": [
+        85.28575776673613,
+        84.72029032561777
+      ],
+      "strong_control": [
+        85.28364385139996,
+        84.68954049139349
+      ],
+      "mean": [
+        76.21736668418903,
+        80.01911202174354
+      ],
+      "mean_veto": [
+        76.11469047632607,
+        80.01530355717314
+      ],
+      "mean_control": [
+        76.11096594633075,
+        80.02158045181267
+      ]
+    },
+    "foil_with_same_label_percent": 73.11695861816406,
+    "median_difference_in_foil_cosine": 0.00982898473739624,
+    "alternative_audit": {
+      "static": {
+        "eligible": 14179,
+        "wrong_top": 2168,
+        "wrong_top_with_correct_alternative": 142,
+        "switches": 269,
+        "repaired": 4,
+        "broken": 23
+      },
+      "native": {
+        "eligible": 14116,
+        "wrong_top": 2168,
+        "wrong_top_with_correct_alternative": 134,
+        "switches": 739,
+        "repaired": 8,
+        "broken": 289
+      },
+      "words": {
+        "eligible": 9215,
+        "wrong_top": 2168,
+        "wrong_top_with_correct_alternative": 347,
+        "switches": 2063,
+        "repaired": 104,
+        "broken": 882
+      }
+    },
+    "actual_winner": {
+      "errors": 2168,
+      "foil_same_class_as_query_on_errors": 142,
+      "errors_with_own_word_absent": 1061,
+      "errors_with_own_word_absent_and_foil_class_right": 28,
+      "errors_with_own_word_absent_and_foil_word_present": 120,
+      "intersection_on_errors": 4,
+      "correct_winner_with_own_word_absent": 1244,
+      "correct_winner_with_own_word_absent_and_foil_word_present": 149
+    },
+    "pairs": {
+      "target_absent": [
+        4121,
+        739
+      ],
+      "wrong_absent": [
+        826,
+        178
+      ],
+      "both_absent": [
+        348,
+        44,
+        24
+      ],
+      "native_both_absent": [
+        2837,
+        525,
+        118
+      ]
+    }
+  },
+  "sketchy_2": {
+    "queries": 12694,
+    "photos": 12552,
+    "gpu": "NVIDIA L4",
+    "code_sha": "061b9c5a9dd739d72b19f5a15c8412f66fa87f5f",
+    "kd_sample_max_error": 1.7881393432617188e-7,
+    "metrics": {
+      "strong": [
+        77.54716681241955,
+        75.45174853965742
+      ],
+      "strong_veto": [
+        77.53728485620874,
+        75.498069580009
+      ],
+      "strong_control": [
+        77.52071122734039,
+        75.50031472726329
+      ],
+      "mean": [
+        72.44776028523326,
+        71.33165167579911
+      ],
+      "mean_veto": [
+        72.44671425360356,
+        71.32471927069832
+      ],
+      "mean_control": [
+        72.4435111049192,
+        71.33381805336154
+      ]
+    },
+    "foil_with_same_label_percent": 59.1539192199707,
+    "median_difference_in_foil_cosine": 0.008552312850952148,
+    "alternative_audit": {
+      "static": {
+        "eligible": 12694,
+        "wrong_top": 3059,
+        "wrong_top_with_correct_alternative": 327,
+        "switches": 217,
+        "repaired": 13,
+        "broken": 29
+      },
+      "native": {
+        "eligible": 12644,
+        "wrong_top": 3059,
+        "wrong_top_with_correct_alternative": 405,
+        "switches": 546,
+        "repaired": 36,
+        "broken": 229
+      },
+      "words": {
+        "eligible": 9422,
+        "wrong_top": 3059,
+        "wrong_top_with_correct_alternative": 753,
+        "switches": 1908,
+        "repaired": 151,
+        "broken": 779
+      }
+    },
+    "actual_winner": {
+      "errors": 3059,
+      "foil_same_class_as_query_on_errors": 327,
+      "errors_with_own_word_absent": 1059,
+      "errors_with_own_word_absent_and_foil_class_right": 64,
+      "errors_with_own_word_absent_and_foil_word_present": 99,
+      "intersection_on_errors": 13,
+      "correct_winner_with_own_word_absent": 1079,
+      "correct_winner_with_own_word_absent_and_foil_word_present": 118
+    },
+    "pairs": {
+      "target_absent": [
+        4502,
+        744
+      ],
+      "wrong_absent": [
+        842,
+        63
+      ],
+      "both_absent": [
+        381,
+        33,
+        23
+      ],
+      "native_both_absent": [
+        3164,
+        489,
+        252
+      ]
+    }
+  }
+}
