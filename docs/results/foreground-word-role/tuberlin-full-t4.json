@@ -1,0 +1,251 @@
+{
+  "text": {
+    "unique_public_name_pairs": 305,
+    "mean_cosine_of_role_when_mentioned_first_vs_last": -0.5727180242538452,
+    "mean_fraction_role_norm_outside_name_and_order_span": 0.7776890397071838
+  },
+  "tuberlin": {
+    "total_queries": 2130,
+    "gallery": 27262,
+    "first_different_name": {
+      "eligible": 2130,
+      "mixed_relevance": 71,
+      "incumbent_correct_on_mixed": 17,
+      "readings": {
+        "isolated": {
+          "mixed_correct": 30,
+          "fixed": 19,
+          "damaged": 6,
+          "gallery_noun_pair_orientation_positive": 0.9873239398002625,
+          "balanced_accuracy": 0.4994553476572037
+        },
+        "foreground_first": {
+          "mixed_correct": 34,
+          "fixed": 25,
+          "damaged": 8,
+          "gallery_noun_pair_orientation_positive": 0.860093891620636,
+          "balanced_accuracy": 0.49618737399578094
+        },
+        "foreground_last": {
+          "mixed_correct": 30,
+          "fixed": 17,
+          "damaged": 4,
+          "gallery_noun_pair_orientation_positive": 0.5206573009490967,
+          "balanced_accuracy": 0.5397603511810303
+        },
+        "role": {
+          "mixed_correct": 34,
+          "fixed": 21,
+          "damaged": 4,
+          "gallery_noun_pair_orientation_positive": 0.9051643013954163,
+          "balanced_accuracy": 0.5767973959445953
+        },
+        "position": {
+          "mixed_correct": 37,
+          "fixed": 30,
+          "damaged": 10,
+          "gallery_noun_pair_orientation_positive": 0.6755868792533875,
+          "balanced_accuracy": 0.48366014659404755
+        },
+        "role_residual": {
+          "mixed_correct": 30,
+          "fixed": 22,
+          "damaged": 9,
+          "gallery_noun_pair_orientation_positive": 0.5732394456863403,
+          "balanced_accuracy": 0.438997820019722
+        }
+      },
+      "role_and_isolated_agree": {
+        "n": 67,
+        "role_correct": 30
+      },
+      "role_and_isolated_disagree": {
+        "n": 4,
+        "role_correct": 4
+      },
+      "verification": {
+        "two_photos_ground_both_orders": 35,
+        "joint_opportunities": 12,
+        "mixed_joint_opportunities": 6,
+        "policies": {
+          "both_orders_only": {
+            "switches": 175,
+            "fixed": 9,
+            "damaged": 1
+          },
+          "counterbalanced_verified": {
+            "switches": 6,
+            "fixed": 2,
+            "damaged": 1
+          },
+          "isolated_on_same_opportunities": {
+            "switches": 6,
+            "fixed": 2,
+            "damaged": 1
+          },
+          "position_on_same_opportunities": {
+            "switches": 5,
+            "fixed": 1,
+            "damaged": 0
+          },
+          "literal_self_verified": {
+            "switches": 471,
+            "fixed": 10,
+            "damaged": 3
+          }
+        }
+      },
+      "comparison_with_isolated": {
+        "isolated": {
+          "opportunities": 2130,
+          "net_fixed_minus_isolated": 0,
+          "class_balanced_correctness_delta_pp": 0,
+          "paired_class_ci95": [
+            0,
+            0
+          ]
+        },
+        "foreground_first": {
+          "opportunities": 2130,
+          "net_fixed_minus_isolated": 4,
+          "class_balanced_correctness_delta_pp": 0.1904761904761905,
+          "paired_class_ci95": [
+            -0.4285714285714286,
+            1.0000000000000002
+          ]
+        },
+        "foreground_last": {
+          "opportunities": 2130,
+          "net_fixed_minus_isolated": 0,
+          "class_balanced_correctness_delta_pp": 0,
+          "paired_class_ci95": [
+            -0.42857142857142855,
+            0.380952380952381
+          ]
+        },
+        "role": {
+          "opportunities": 2130,
+          "net_fixed_minus_isolated": 4,
+          "class_balanced_correctness_delta_pp": 0.1904761904761905,
+          "paired_class_ci95": [
+            0,
+            0.4285714285714286
+          ]
+        },
+        "position": {
+          "opportunities": 2130,
+          "net_fixed_minus_isolated": 7,
+          "class_balanced_correctness_delta_pp": 0.32738095238095233,
+          "paired_class_ci95": [
+            -0.8571428571428572,
+            1.7627976190476062
+          ]
+        },
+        "role_residual": {
+          "opportunities": 2130,
+          "net_fixed_minus_isolated": 0,
+          "class_balanced_correctness_delta_pp": 0,
+          "paired_class_ci95": [
+            -0.2857142857142857,
+            0.2857142857142857
+          ]
+        },
+        "both_orders_only": {
+          "opportunities": 2130,
+          "net_fixed_minus_isolated": -5,
+          "class_balanced_correctness_delta_pp": -0.23809523809523808,
+          "paired_class_ci95": [
+            -0.8095238095238095,
+            0.1904761904761905
+          ]
+        },
+        "counterbalanced_verified": {
+          "opportunities": 2130,
+          "net_fixed_minus_isolated": -12,
+          "class_balanced_correctness_delta_pp": -0.5714285714285714,
+          "paired_class_ci95": [
+            -1.6666666666666665,
+            0.09523809523809525
+          ]
+        },
+        "isolated_on_same_opportunities": {
+          "opportunities": 2130,
+          "net_fixed_minus_isolated": -12,
+          "class_balanced_correctness_delta_pp": -0.5714285714285714,
+          "paired_class_ci95": [
+            -1.6666666666666665,
+            0.09523809523809525
+          ]
+        },
+        "position_on_same_opportunities": {
+          "opportunities": 2130,
+          "net_fixed_minus_isolated": -12,
+          "class_balanced_correctness_delta_pp": -0.5773809523809524,
+          "paired_class_ci95": [
+            -1.7142857142857144,
+            0.13690476190476192
+          ]
+        },
+        "literal_self_verified": {
+          "opportunities": 2130,
+          "net_fixed_minus_isolated": -6,
+          "class_balanced_correctness_delta_pp": -0.2857142857142857,
+          "paired_class_ci95": [
+            -1.1428571428571428,
+            0.2857142857142857
+          ]
+        }
+      }
+    },
+    "full_gallery_metrics": {
+      "native": [
+        80.11241974685113,
+        81.38215972084394
+      ],
+      "isolated": [
+        80.11382269187712,
+        81.38215972084394
+      ],
+      "foreground_first": [
+        80.11308505221712,
+        81.38215972084394
+      ],
+      "foreground_last": [
+        80.11358458181502,
+        81.38215972084394
+      ],
+      "role": [
+        80.11406230254912,
+        81.38215972084394
+      ],
+      "position": [
+        80.1137221587096,
+        81.38215972084394
+      ],
+      "role_residual": [
+        80.11268358065489,
+        81.38215972084394
+      ],
+      "both_orders_only": [
+        80.11325023263832,
+        81.38215972084394
+      ],
+      "counterbalanced_verified": [
+        80.1124639326418,
+        81.38215972084394
+      ],
+      "isolated_on_same_opportunities": [
+        80.1124639326418,
+        81.38215972084394
+      ],
+      "position_on_same_opportunities": [
+        80.11250816040756,
+        81.38215972084394
+      ],
+      "literal_self_verified": [
+        80.11287219507594,
+        81.38215972084394
+      ]
+    }
+  }
+}
