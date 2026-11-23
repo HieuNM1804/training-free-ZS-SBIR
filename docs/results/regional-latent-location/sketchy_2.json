@@ -1,0 +1,263 @@
+{
+  "commit": "d94b16520750b05dc6f0a3e2f05beab1e9596930",
+  "seed": 42,
+  "queries": 1536,
+  "gallery": 12552,
+  "algebra_max": 1.9073486328125e-06,
+  "reference_mae_points": [
+    0.00010357689461670816,
+    0.00032552052289247513
+  ],
+  "metrics": {
+    "regional_self": [
+      72.01139586841236,
+      70.63346372760861
+    ],
+    "global_regional_self": [
+      78.10616327169555,
+      75.85351571839661
+    ],
+    "regional_location": [
+      71.73474100166763,
+      70.17480490734064
+    ],
+    "global_regional_location": [
+      77.95386944850785,
+      75.66569019933618
+    ],
+    "regional_displaced": [
+      71.71084431465715,
+      70.07877624031002
+    ],
+    "global_regional_displaced": [
+      77.86976533810352,
+      75.64485687077345
+    ],
+    "regional_cover_prior": [
+      72.10948441858514,
+      70.68033873401873
+    ],
+    "global_regional_cover_prior": [
+      78.10825406883546,
+      75.85351570724015
+    ],
+    "regional_shared": [
+      71.53488637956494,
+      69.67675798496202
+    ],
+    "global_regional_shared": [
+      77.40797797511428,
+      75.18066413595079
+    ],
+    "regional_scale_only": [
+      72.2697532009685,
+      70.56575541464554
+    ],
+    "global_regional_scale_only": [
+      77.74924030193992,
+      75.55631521263422
+    ],
+    "regional_position_only": [
+      70.79918626701934,
+      69.31673199099654
+    ],
+    "global_regional_position_only": [
+      77.82755639257934,
+      75.57812509682358
+    ]
+  },
+  "contrasts": {
+    "regional_location_minus_self": {
+      "points": [
+        -0.27665486674474477,
+        -0.45865882026798016
+      ],
+      "macro": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": -0.22297925146527123,
+        "positive_classes": 9,
+        "bootstrap95": [
+          -0.7859132052897547,
+          0.35921415010441
+        ]
+      }
+    },
+    "regional_location_minus_displaced": {
+      "points": [
+        0.02389668701046806,
+        0.09602866703062318
+      ],
+      "macro": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": 0.05039986950406293,
+        "positive_classes": 12,
+        "bootstrap95": [
+          -0.21132926299308738,
+          0.33141815550786213
+        ]
+      }
+    },
+    "regional_location_minus_cover_prior": {
+      "points": [
+        -0.3747434169175297,
+        -0.5055338266780988
+      ],
+      "macro": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": -0.30966773835175426,
+        "positive_classes": 9,
+        "bootstrap95": [
+          -0.8722848403788727,
+          0.2513183560554663
+        ]
+      }
+    },
+    "regional_self_minus_scale_only": {
+      "points": [
+        -0.25835733255613985,
+        0.06770831296307733
+      ],
+      "macro": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": -0.23656839950011538,
+        "positive_classes": 11,
+        "bootstrap95": [
+          -0.9618033301665226,
+          0.48094250644592
+        ]
+      }
+    },
+    "regional_self_minus_position_only": {
+      "points": [
+        1.212209601393018,
+        1.3167317366120794
+      ],
+      "macro": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": 1.1387505216885137,
+        "positive_classes": 11,
+        "bootstrap95": [
+          -0.20430451330073515,
+          2.6061396121880964
+        ]
+      }
+    },
+    "regional_self_minus_shared": {
+      "points": [
+        0.4765094888474171,
+        0.9567057426465908
+      ],
+      "macro": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": 0.45462493344160765,
+        "positive_classes": 10,
+        "bootstrap95": [
+          -0.7868488145634086,
+          1.7083421233159213
+        ]
+      }
+    },
+    "global_regional_location_minus_self": {
+      "points": [
+        -0.15229382318769544,
+        -0.187825519060425
+      ],
+      "macro": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": -0.15338532360137183,
+        "positive_classes": 8,
+        "bootstrap95": [
+          -0.4869564170538658,
+          0.14612761807816843
+        ]
+      }
+    },
+    "global_regional_location_minus_displaced": {
+      "points": [
+        0.08410411040434458,
+        0.020833328562730458
+      ],
+      "macro": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": 0.07231513453334364,
+        "positive_classes": 12,
+        "bootstrap95": [
+          -0.007356926513404424,
+          0.18193337990461123
+        ]
+      }
+    },
+    "global_regional_location_minus_cover_prior": {
+      "points": [
+        -0.1543846203276189,
+        -0.18782550790395666
+      ],
+      "macro": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": -0.1561764734821925,
+        "positive_classes": 8,
+        "bootstrap95": [
+          -0.4784477975840361,
+          0.1413330977465419
+        ]
+      }
+    },
+    "global_regional_self_minus_scale_only": {
+      "points": [
+        0.35692296975563903,
+        0.2972005057623998
+      ],
+      "macro": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": 0.34675888921479986,
+        "positive_classes": 12,
+        "bootstrap95": [
+          -0.0635711658276932,
+          0.7910925093677955
+        ]
+      }
+    },
+    "global_regional_self_minus_position_only": {
+      "points": [
+        0.27860687911622034,
+        0.27539062157302396
+      ],
+      "macro": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": 0.2792568389153856,
+        "positive_classes": 13,
+        "bootstrap95": [
+          -0.09728788852366872,
+          0.6521915338066911
+        ]
+      }
+    },
+    "global_regional_self_minus_shared": {
+      "points": [
+        0.6981852965812626,
+        0.6728515824458251
+      ],
+      "macro": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": 0.6964732516237686,
+        "positive_classes": 12,
+        "bootstrap95": [
+          0.1173201711792488,
+          1.3771766731133916
+        ]
+      }
+    }
+  }
+}
