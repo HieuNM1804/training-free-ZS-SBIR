@@ -158,10 +158,31 @@ def run():
                'variation_relative_to_native_margin':rms/native.abs().clamp_min(1e-9),
                'smoothed_fraction_of_thinned_reversals':(((trial*native<0)&inside).sum(0)+.5)/(count+1)}
         selected_label=label[ii][usable]
+        direct_margin=observations[s][3][ii,left]-observations[s][3][ii,right]
+        disputes=usable&(direct_margin!=0)&(native*direct_margin*positive<0)
+        # At a fixed number of fallback opportunities for each independent sketch,
+        # does instability identify a native ordering that direct matching repairs?
+        opportunities=ii[disputes]
+        graph_wrong=native[disputes]<0
+        decisions={}
+        for name,value in risks.items():
+            v=value[disputes]
+            selected=[]
+            for query in opportunities.unique():
+                options=(opportunities==query).nonzero().flatten()
+                depth=(len(options)+3)//4
+                selected.append(options[v[options].argsort(descending=True,stable=True)[:depth]])
+            indices=torch.cat(selected)
+            decisions[name]={'auc_graph_wrong':float(roc_auc_score(graph_wrong.numpy(),v.numpy())),
+                             'top_quarter_per_sketch':len(indices),
+                             'fallback_fixed':int(graph_wrong[indices].sum()),
+                             'fallback_damaged':int((~graph_wrong[indices]).sum())}
         result[s]={'eligible':int(usable.sum()),'all_adjacent_pairs':len(ii),
                    'sketches_covered':int(ii[usable].unique().numel()),'genuine_flips':int(crossed[usable].sum()),
                    'classes':{int(c):UNSEEN_CLASSES[ss[0]][c] for c in selected_label.unique()},
-                   'risk':summarize({k:x[usable] for k,x in risks.items()},crossed[usable],selected_label,object_groups[ii[usable]])}
+                   'risk':summarize({k:x[usable] for k,x in risks.items()},crossed[usable],selected_label,object_groups[ii[usable]]),
+                   'direct_native_disagreements':{'pairs':len(graph_wrong),'direct_correct':int(graph_wrong.sum()),
+                         'graph_correct':int((~graph_wrong).sum()),'counterfactual':decisions}}
     out=w/'results/gallery-context-reversals'
     out.mkdir(exist_ok=True,parents=True)
     (out/'native-forecast.json').write_text(json.dumps(result,indent=2))
