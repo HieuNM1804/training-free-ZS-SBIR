@@ -1,56 +1,109 @@
 """Test the predicted mechanism on exactly the same queries, endpoints and pair IDs."""
 import json
+import hashlib
+import os
 from pathlib import Path
 from types import SimpleNamespace
 
 import torch
 import torch.nn.functional as F
+from torch.utils.data import DataLoader
 
 from .gallery_context_reversals import coordinates
-from .gallery_panel_resume import region_views,semantic_inputs
+from .benchmark import merge_inputs
+from .crossdomain_inputs import runtime
+from .data import Images, SKETCHY_SPLITS, configure_image_worker, normal_transform
+from .encoding import load_frozen_clip, load_global_inputs, save_tensor
+from .foundation import load_words
+from .semantic import read_words
 from .gallery_region_panels import Index
 from .public_context_standardization import SoftStandardizedDonors,endpoint_matrix
+
+
+def audit_inputs(w):
+    workers=min(4,len(os.sched_getaffinity(0)))
+    cfg=runtime(w,'sketchy',batch=384,workers=workers)
+    qp,qs=merge_inputs(cfg.root,SKETCHY_SPLITS,'sketch')
+    pp,gs=merge_inputs(cfg.root,SKETCHY_SPLITS,'photo')
+    def common(groups):
+        return torch.tensor(sorted(set(groups['sketchy_1'][0].tolist()) & set(groups['sketchy_2'][0].tolist())))
+    cq,cp=common(qs),common(gs)
+    assert (len(cq),len(cp))==(2231,2205)
+    paths=[qp[k] for k in cq]
+    q,p,_=load_global_inputs(cfg,paths,pp,False)
+    words=read_words(cfg.vocabulary)
+    assert len(words)==20931
+    src,tgt=(v.cuda() for v in load_words(cfg,words))
+    model=load_frozen_clip(cfg.clip_checkpoint,torch.device('cuda'))
+    scale=float(model.logit_scale.exp())
+    dl=DataLoader(Images(paths,normal_transform(),'rgb'),batch_size=cfg.batch_size,
+                  num_workers=workers,pin_memory=True,worker_init_fn=configure_image_worker)
+    flips=[]
+    for pixels in dl:
+        x=pixels.cuda(non_blocking=True).to(model.visual.conv1.weight.dtype)
+        flips.append(F.normalize(model.visual(x.flip((-1,))).float()).half().cpu())
+    return qs,gs,cq,cp,q,p,torch.cat(flips),src,tgt,scale
+
+
+def fixed_boundaries(w,cq,cp,direct,truth):
+    path=w/'results/gallery-context-reversals/fixed-boundaries.pt'
+    if path.is_file():
+        fixed=torch.load(path,weights_only=True)
+        assert torch.equal(cq,fixed['queries']) and torch.equal(cp,fixed['photos'])
+        return fixed,'restored'
+    top=direct.topk(200).indices
+    hit=truth.gather(1,top)
+    rows,j=(hit[:,:-1]^hit[:,1:]).nonzero(as_tuple=True)
+    fixed={'queries':cq,'photos':cp,'rows':rows,'left':top[rows,j],'right':top[rows,j+1],
+           'orientation':hit[rows,j].float()*2-1}
+    save_tensor(fixed,path)
+    return fixed,'reconstructed from direct two-view word scores'
 
 
 @torch.inference_mode()
 def run():
     w=Path('/content/sbir')
-    cfg,paths,qs,_,gs,q,p,src,tgt,scale=semantic_inputs(w,'sketchy')
-    fixed=torch.load(w/'results/gallery-context-reversals/fixed-boundaries.pt',weights_only=True)
-    cq,cp=fixed['queries'],fixed['photos']
+    qs,gs,cq,cp,q,p,flipped,src,tgt,scale=audit_inputs(w)
     outcomes={}
     shared_mass={}
     for s in ('sketchy_1','sketchy_2'):
         qi,_=qs[s]
         pi,_=gs[s]
-        rows,cols=coordinates(qi,cq),coordinates(pi,cp)
-        views,_=region_views(w,s,cfg,paths,qi,q)
+        cols=coordinates(pi,cp)
         g=F.normalize(p[pi].cuda())
         bank=torch.cat([(scale*(part@tgt.T)).softmax(1) for part in g.split(256)])
         index=Index(SimpleNamespace(p=g),rgb_only=True)
-        estimator=SoftStandardizedDonors(endpoint_matrix(index),bank)
+        native=endpoint_matrix(index)[cols]
         del index
-        mats={'baseline':estimator.w[cols],**{k:v[cols] for k,v in estimator.kernels.items()}}
+        estimator=SoftStandardizedDonors(native,bank,cols.to(g.device))
+        mats={'baseline':native,**estimator.kernels}
         # Identify shared endpoints only after compiling all score matrices. These
         # column sums describe exposure and never enter the retrieval weights.
         shared_mass[s]={k:v[:,cols].sum(1).cpu() for k,v in mats.items()}
         scores={k:[] for k in mats}
-        for ix in rows.split(128):
-            a=(scale*(q[qi[ix]].cuda()@src.T)).softmax(1)
-            b=(scale*(views['flipped'][ix].float().cuda()@src.T)).softmax(1)
+        direct=[]
+        for ix in torch.arange(len(q)).split(48):
+            a=(scale*(q[ix].cuda()@src.T)).softmax(1)
+            b=(scale*(flipped[ix].float().cuda()@src.T)).softmax(1)
             e=((a+b)/2)@bank.T
+            direct.append(e[:,cols].clamp_min(1e-30).log().cpu())
             for name,weights in mats.items():
                 scores[name].append((e@weights.T).cpu())
         outcomes[s]={k:torch.cat(v) for k,v in scores.items()}
+        outcomes[s]['direct']=torch.cat(direct)
         del estimator,mats,bank
     # Reveal class labels and the category-boundary fixture solely for evaluation.
-    i,l,r,ori=[fixed[k] for k in ('rows','left','right','orientation')]
     first,second=outcomes.values()
     a,b=shared_mass.values()
     qi,labels=qs['sketchy_1']
     pi,gold=gs['sketchy_1']
     y=labels[coordinates(qi,cq)]
     categories=gold[coordinates(pi,cp)]
+    truth=y[:,None]==categories[None]
+    fixed,source=fixed_boundaries(w,cq,cp,first['direct'],truth)
+    i,l,r,ori=[fixed[k] for k in ('rows','left','right','orientation')]
+    assert (truth[i,l]^truth[i,r]).all()
+    assert torch.equal(ori,truth[i,l].float()*2-1)
     result={}
     for name in first:
         m1=(first[name][i,l]-first[name][i,r])*ori
@@ -61,8 +114,13 @@ def run():
                       'pair_correct':[int((m1>0).sum()),int((m2>0).sum())],
                       'shared_top1_correct':[int(h1.sum()),int(h2.sum())],
                       'shared_queries':len(y),'shared_top1_correctness_changed':int((h1^h2).sum()),
-                      'mean_shared_mass':[float(a[name].mean()),float(b[name].mean())],
-                      'mean_abs_shared_mass_drift':float((a[name]-b[name]).abs().mean())}
+                      'mean_shared_mass':[float(a[name].mean()),float(b[name].mean())] if name in a else None,
+                      'mean_abs_shared_mass_drift':float((a[name]-b[name]).abs().mean()) if name in a else None}
+    boundary_sha=hashlib.sha256()
+    for key in ('queries','photos','rows','left','right','orientation'):
+        boundary_sha.update(fixed[key].contiguous().numpy().tobytes())
+    result['protocol']={'device':torch.cuda.get_device_name(),'boundary_source':source,
+                        'boundary_arrays_sha256':boundary_sha.hexdigest(),'shared_photos':len(cp)}
     root=w/'results/public-context-standardization'
     root.mkdir(parents=True,exist_ok=True)
     (root/'same-input-audit.json').write_text(json.dumps(result,indent=2))

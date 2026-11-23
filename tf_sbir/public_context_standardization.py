@@ -104,9 +104,14 @@ class SoftStandardizedDonors:
     """One latent public name per donor draw, integrated exactly over all names."""
     comparators=('baseline','permuted','entropy_control','without_rgb')
 
-    def __init__(self,w,bank):
+    def __init__(self,w,bank,candidate_ids=None):
         self.w=w
         self.bank=bank
+        if candidate_ids is None:
+            candidate_ids=torch.arange(len(bank),device=w.device)
+        self.candidate_ids=candidate_ids
+        if w.shape!=(len(candidate_ids),len(bank)):
+            raise ValueError('Expected one row per candidate and one column per gallery donor')
         _,groups=bank.argmax(1).unique(sorted=True,return_inverse=True)
         self.permutation=grouped_permutation(groups)
         self.vocabulary_count=bank.size(1)
@@ -120,7 +125,8 @@ class SoftStandardizedDonors:
             sl=slice(start,start+256)
             native=w[sl]
             exposure=(native@bank).clamp_min(torch.finfo(bank.dtype).tiny)
-            for name,target in [('standard',bank[sl]),('permuted',bank[self.permutation[sl]])]:
+            ids=candidate_ids[sl]
+            for name,target in [('standard',bank[ids]),('permuted',bank[self.permutation[ids]])]:
                 # E[L | i] under a changed latent word distribution p_i(word).
                 weights=native*((target/exposure)@bank.T)
                 self.mass_error=max(self.mass_error,float((weights.sum(1)-1).abs().max()))
@@ -141,7 +147,7 @@ class SoftStandardizedDonors:
         outputs={k:evidence@v.T for k,v in self.kernels.items()}
         outputs['matrix_native']=evidence@self.w.T
         uniform_donor_mean=(evidence@self.bank)/self.scale
-        outputs['without_rgb']=uniform_donor_mean@self.bank.T
+        outputs['without_rgb']=uniform_donor_mean@self.bank[self.candidate_ids].T
         return outputs
 
 
