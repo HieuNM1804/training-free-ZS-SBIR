@@ -1,0 +1,77 @@
+{
+  "queries": 900,
+  "gallery": 17100,
+  "levels": [
+    {
+      "clusters": 3789,
+      "purity": 0.9801754355430603,
+      "held_photo_majority_recovery": 0.8790058479532163
+    },
+    {
+      "clusters": 428,
+      "purity": 0.965380072593689,
+      "held_photo_majority_recovery": 0.9646783625730995
+    },
+    {
+      "clusters": 75,
+      "purity": 0.9442690014839172,
+      "held_photo_majority_recovery": 0.9442690058479533
+    },
+    {
+      "clusters": 20,
+      "purity": 0.750175416469574,
+      "held_photo_majority_recovery": 0.7441520467836257
+    },
+    {
+      "clusters": 6,
+      "purity": 0.2573099434375763,
+      "held_photo_majority_recovery": 0.24912280701754386
+    },
+    {
+      "clusters": 1,
+      "purity": 0.046783626079559326,
+      "held_photo_majority_recovery": 0.046198830409356725
+    }
+  ],
+  "original_errors": {
+    "regional_top1_errors": 145,
+    "lex_rescues_regional_wrong_at_top1": 10,
+    "regional_rescues_regional_wrong_at_top1": 0,
+    "wordwalk_rescues_regional_wrong_at_top1": 9,
+    "native_rescues_regional_wrong_at_top1": 7,
+    "fragments_rescues_regional_wrong_at_top1": 18,
+    "level0_original_positive_negative_separate_on_errors": 144,
+    "level1_original_positive_negative_separate_on_errors": 137,
+    "level2_original_positive_negative_separate_on_errors": 129,
+    "level3_original_positive_negative_separate_on_errors": 103,
+    "level4_original_positive_negative_separate_on_errors": 51,
+    "level5_original_positive_negative_separate_on_errors": 0
+  },
+  "examples": [
+    {
+      "query": "/content/sbir/datasets/datasets/b20dccn616nguynhutun/sketchy/versions/1/Sketchy/sketch/harp/n03495258_13154-3.png",
+      "wrong_first": "/content/sbir/datasets/datasets/b20dccn616nguynhutun/sketchy/versions/1/Sketchy/photo/cup/n03147509_72091.jpg",
+      "positive": "/content/sbir/datasets/datasets/b20dccn616nguynhutun/sketchy/versions/1/Sketchy/photo/harp/n03495258_117091.jpg",
+      "first_corrected_visual": "/content/sbir/datasets/datasets/b20dccn616nguynhutun/sketchy/versions/1/Sketchy/photo/harp/ext_448.jpg"
+    },
+    {
+      "query": "/content/sbir/datasets/datasets/b20dccn616nguynhutun/sketchy/versions/1/Sketchy/sketch/ray/n01496331_21049-6.png",
+      "wrong_first": "/content/sbir/datasets/datasets/b20dccn616nguynhutun/sketchy/versions/1/Sketchy/photo/snail/n01944390_91851.jpg",
+      "positive": "/content/sbir/datasets/datasets/b20dccn616nguynhutun/sketchy/versions/1/Sketchy/photo/ray/ext_296.jpg",
+      "first_corrected_visual": "/content/sbir/datasets/datasets/b20dccn616nguynhutun/sketchy/versions/1/Sketchy/photo/ray/ext_456.jpg"
+    },
+    {
+      "query": "/content/sbir/datasets/datasets/b20dccn616nguynhutun/sketchy/versions/1/Sketchy/sketch/pineapple/n07753275_2743-3.png",
+      "wrong_first": "/content/sbir/datasets/datasets/b20dccn616nguynhutun/sketchy/versions/1/Sketchy/photo/tree/ext_237.jpg",
+      "positive": "/content/sbir/datasets/datasets/b20dccn616nguynhutun/sketchy/versions/1/Sketchy/photo/pineapple/n07753275_87301.jpg",
+      "first_corrected_visual": "/content/sbir/datasets/datasets/b20dccn616nguynhutun/sketchy/versions/1/Sketchy/photo/pineapple/ext_306.jpg"
+    },
+    {
+      "query": "/content/sbir/datasets/datasets/b20dccn616nguynhutun/sketchy/versions/1/Sketchy/sketch/scissors/n04148054_10871-2.png",
+      "wrong_first": "/content/sbir/datasets/datasets/b20dccn616nguynhutun/sketchy/versions/1/Sketchy/photo/parrot/ext_301.jpg",
+      "positive": "/content/sbir/datasets/datasets/b20dccn616nguynhutun/sketchy/versions/1/Sketchy/photo/scissors/ext_340.jpg",
+      "first_corrected_visual": "/content/sbir/datasets/datasets/b20dccn616nguynhutun/sketchy/versions/1/Sketchy/photo/scissors/ext_487.jpg"
+    }
+  ],
+  "usage": "post-ranking diagnostic, true labels never form a node"
+}
