@@ -1,5 +1,6 @@
 """Counterbalance a noun's semantic role and mention position on real retrieval rivals."""
 import hashlib
+import argparse
 import inspect
 import json
 from pathlib import Path
@@ -10,7 +11,8 @@ import torch.nn.functional as F
 
 from .branch_view_study import PrefixReplay
 from .encoding import load_frozen_clip
-from .finite_gallery_response import diffuse
+from .gallery_region_panels import CONFIG,Index
+from types import SimpleNamespace
 from .gallery_context_reversals import coordinates
 from .quickdraw_locked import KD_FUNCTION_SHA
 from .retrieval_evidence import load_kd
@@ -64,14 +66,15 @@ def prepare(s,qs,gs,encoded,q,p,flip,src,tgt,scale,all_queries):
     g=F.normalize(p[pi].cuda())
     bank=torch.cat([(scale*(part@tgt.T)).softmax(1) for part in g.split(256)])
     terms=bank.argmax(1).cpu()
-    seeds=[]
-    for ids in where.split(128):
+    graph=Index(SimpleNamespace(p=g),rgb_only=True)
+    if len(g)>torch.iinfo(torch.int16).max:raise ValueError('Gallery rank storage would overflow')
+    order=torch.empty((len(where),len(g)),dtype=torch.int16)
+    for start in range(0,len(where),128):
+        ids=where[start:start+128]
         a=(scale*(q[ids].cuda()@src.T)).softmax(1)
         b=(scale*(flip[ids].float().cuda()@src.T)).softmax(1)
-        seeds.append(((a+b)/2)@bank.T)
-    # Score all candidates before any class labels are consulted.
-    scores=diffuse(g,torch.cat(seeds))
-    order=scores.topk(scores.size(1)).indices.cpu().int()
+        scores=graph.score(CONFIG,((a+b)/2)@bank.T).clamp_min(1e-30).log()
+        order[start:start+len(ids)]=scores.topk(scores.size(1)).indices.to(torch.int16).cpu()
     top=order[:,:200].long()
     named=terms[top]!=terms[top[:,:1]]
     valid=named.any(1)
@@ -82,7 +85,7 @@ def prepare(s,qs,gs,encoded,q,p,flip,src,tgt,scale,all_queries):
             'order':order,'valid':valid,'idx':pos,'alt':alt,'yl':yl[sample],'gl':gl}
 
 
-def make_tasks(data):
+def make_tasks(data,only_incumbent=False):
     top=data['order'][:,:64].long()
     row=torch.arange(len(top))
     candidates={
@@ -91,6 +94,7 @@ def make_tasks(data):
                           top[:,1::2].reshape(-1),torch.ones(len(top)*32,dtype=torch.bool))}
     out={}
     for key,(q,a,b,ok) in candidates.items():
+        if only_incumbent and key!='first_different_name':continue
         u,v=data['terms'][a],data['terms'][b]
         keep=ok&(u!=v)
         out[key]=(q[keep],a[keep],b[keep],u[keep],v[keep])
@@ -157,18 +161,31 @@ def evaluate(data,task,pairs_to_id,features):
         'policies':{k:{'switches':int(take.sum()),'fixed':int((take&~ya&yb).sum()),
                       'damaged':int((take&ya&~yb).sum())} for k,take in policy.items()}}
     decisions.update(policy)
+    measures={}
+    for name,switch in decisions.items():
+        improved=(switch&yb&~ya).int()-(switch&ya&~yb).int()
+        literal=decisions['isolated']
+        cmp=improved-((literal&yb&~ya).int()-(literal&ya&~yb).int())
+        if len(q):
+            classes=data['yl'][q]
+            category=torch.stack([cmp[classes==c].double().mean()*100 for c in classes.unique()])
+            ids=torch.randint(len(category),(10000,len(category)),generator=torch.Generator().manual_seed(632))
+            measures[name]={'opportunities':len(q),'net_fixed_minus_isolated':int(cmp.sum()),
+                'class_balanced_correctness_delta_pp':float(category.mean()),
+                'paired_class_ci95':category[ids].mean(1).quantile(torch.tensor([.025,.975],dtype=torch.double)).tolist()}
+    result['comparison_with_isolated']=measures
     return result,decisions
 
 
 @torch.inference_mode()
-def run():
+def run(full=False):
     w=Path('/content/sbir')
-    qs,gs,encoded,_,q,p,flip,src,tgt,scale=audit_inputs(w,768)
+    qs,gs,encoded,_,q,p,flip,src,tgt,scale=audit_inputs(w,768,all_sketches=full)
     words=read_words(w/'assets/open-images-v7-classes.csv')
     kd,_=load_kd(w)
     assert hashlib.sha256(inspect.getsource(kd).strip().encode()).hexdigest()==KD_FUNCTION_SHA
-    data={s:prepare(s,qs,gs,encoded,q,p,flip,src,tgt,scale,False) for s in qs}
-    tasks={s:make_tasks(d) for s,d in data.items()}
+    data={s:prepare(s,qs,gs,encoded,q,p,flip,src,tgt,scale,full) for s in qs}
+    tasks={s:make_tasks(d,only_incumbent=full) for s,d in data.items()}
     names=set()
     for subset in tasks.values():
         for _,_,_,u,v in subset.values():
@@ -180,7 +197,7 @@ def run():
     lookup={p:i for i,p in enumerate(pairs)}
     result={'text':stat}
     for s,d in data.items():
-        entry={}
+        entry={'total_queries':len(d['yl']),'gallery':len(d['gl'])}
         for key,task in tasks[s].items():
             entry[key],decisions=evaluate(d,task,lookup,features)
             if key!='first_different_name':continue
@@ -189,19 +206,31 @@ def run():
             qid=task[0]
             replay=PrefixReplay(kd,d['gl'],s)
             metrics={}
-            for name,sw in {'native':torch.zeros(len(qid),dtype=torch.bool),**decisions}.items():
-                order=d['order'].clone()
-                change=qid[sw]
-                pos=d['idx'][change]
-                order[change,0],order[change,pos]=order[change,pos].clone(),order[change,0].clone()
-                v=replay.chunk((order[:,:200] if s=='sketchy_2' else order,d['yl']))
-                metrics[name]=(100*v.double().mean(0)).tolist()
+            native=[]
+            swapped=[]
+            for start in range(0,len(d['yl']),48):
+                sl=slice(start,start+48)
+                order=d['order'][sl,:200] if s=='sketchy_2' else d['order'][sl]
+                order=order.long()
+                native.append(replay.chunk((order,d['yl'][sl])))
+                ii=torch.arange(len(order))
+                pos=d['idx'][sl]
+                order[ii,0],order[ii,pos]=order[ii,pos].clone(),order[ii,0].clone()
+                swapped.append(replay.chunk((order,d['yl'][sl])))
+            native,swapped=torch.cat(native).double(),torch.cat(swapped).double()
+            metrics['native']=(100*native.mean(0)).tolist()
+            for name,sw in decisions.items():
+                switch=torch.zeros(len(native),dtype=torch.bool)
+                switch[qid]=sw
+                metrics[name]=(100*torch.where(switch[:,None],swapped,native).mean(0)).tolist()
             entry['full_gallery_metrics']=metrics
         result[s]=entry
         print(s,entry['first_different_name']['mixed_relevance'],entry['full_gallery_metrics'],flush=True)
     root=w/'results/foreground-word-role'
     root.mkdir(exist_ok=True,parents=True)
-    (root/'sketchy.json').write_text(json.dumps(result,indent=2))
+    (root/('sketchy-full.json' if full else 'sketchy.json')).write_text(json.dumps(result,indent=2))
 
 if __name__=='__main__':
-    run()
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--full',action='store_true')
+    run(parser.parse_args().full)

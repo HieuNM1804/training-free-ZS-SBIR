@@ -20,7 +20,7 @@ from .gallery_region_panels import Index
 from .public_context_standardization import SoftStandardizedDonors,endpoint_matrix
 
 
-def audit_inputs(w,additional_samples=0):
+def audit_inputs(w,additional_samples=0,*,all_sketches=False):
     workers=min(4,len(os.sched_getaffinity(0)))
     cfg=runtime(w,'sketchy',batch=384,workers=workers)
     qp,qs=merge_inputs(cfg.root,SKETCHY_SPLITS,'sketch')
@@ -29,7 +29,9 @@ def audit_inputs(w,additional_samples=0):
         return torch.tensor(sorted(set(groups['sketchy_1'][0].tolist()) & set(groups['sketchy_2'][0].tolist())))
     cq,cp=common(qs),common(gs)
     assert (len(cq),len(cp))==(2231,2205)
-    if additional_samples:
+    if all_sketches:
+        cq=torch.arange(len(qp))
+    elif additional_samples:
         studies=[all_ids[torch.randperm(len(all_ids),generator=torch.Generator().manual_seed(87243))[:additional_samples]]
                  for all_ids,_ in qs.values()]
         cq=torch.cat([cq,*studies]).unique(sorted=True)
