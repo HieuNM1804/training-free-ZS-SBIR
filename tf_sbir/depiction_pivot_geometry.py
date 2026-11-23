@@ -1,4 +1,5 @@
 """Can spatial agreement identify a content-preserving gallery intermediary?"""
+import argparse
 import hashlib
 import inspect
 import json
@@ -13,6 +14,7 @@ from .benchmark import merge_inputs
 from .branch_view_study import PrefixReplay
 from .crossdomain_inputs import runtime
 from .data import Images, SKETCHY_SPLITS, configure_image_worker, normal_transform
+from .depiction_path_diagnostic import class_interval
 from .encoding import load_frozen_clip, save_tensor
 from .gallery_context_reversals import coordinates
 from .natural_depiction_donors import two_domain_readings
@@ -23,9 +25,9 @@ from .standardized_context_audit import audit_inputs
 from .strong_pilot_scores import location
 
 
-def native_patches(paths, vision, folder):
+def native_patches(paths, vision, folder, uniform=False):
     stamp = hashlib.sha256(('ViT-B32-openai/full-grid/v1\n'+'\n'.join(map(str, paths))).encode()).hexdigest()
-    cache = folder/(stamp+'.pt')
+    cache = folder/(stamp+('-mean-color' if uniform else '')+'.pt')
     if cache.is_file():
         return torch.load(cache, weights_only=True, mmap=True)
     batches = DataLoader(Images(paths, normal_transform(), 'rgb'), batch_size=192,
@@ -34,7 +36,10 @@ def native_patches(paths, vision, folder):
     features = torch.empty((len(paths),49,512), dtype=torch.float16)
     start = 0
     for batch in batches:
-        tokens = vision.transformer(vision._embeds(batch.cuda(non_blocking=True).to(vision.conv1.weight.dtype)))
+        pixels = batch.cuda(non_blocking=True).to(vision.conv1.weight.dtype)
+        if uniform:
+            pixels = pixels.float().mean((-1,-2),keepdim=True).to(pixels.dtype).expand_as(pixels).contiguous()
+        tokens = vision.transformer(vision._embeds(pixels))
         patches = F.normalize((vision.ln_post(tokens[:,1:]) @ vision.proj).float(), dim=-1)
         features[start:start+len(batch)] = patches.half().cpu()
         start += len(batch)
@@ -63,15 +68,17 @@ def zscore(values, mask):
 
 
 @torch.inference_mode()
-def run():
+def run(dataset):
     w = Path('/content/sbir')
     family = 'depiction-pivot-geometry'
     folder = w/'results'/family
     folder.mkdir(exist_ok=True,parents=True)
-    qs, gs, enc, _, q, p, flip, src, tgt, scale = audit_inputs(w,768)
-    cfg = runtime(w,'sketchy',batch=192,workers=min(4,len(os.sched_getaffinity(0))))
-    qp,_ = merge_inputs(cfg.root,SKETCHY_SPLITS,'sketch')
-    pp,_ = merge_inputs(cfg.root,SKETCHY_SPLITS,'photo')
+    transfer = dataset=='tuberlin'
+    qs, gs, enc, _, q, p, flip, src, tgt, scale = audit_inputs(w,768,all_sketches=transfer,dataset=dataset)
+    cfg = runtime(w,dataset,batch=192,workers=min(4,len(os.sched_getaffinity(0))))
+    splits = ('tuberlin',) if transfer else SKETCHY_SPLITS
+    qp,_ = merge_inputs(cfg.root,splits,'sketch')
+    pp,_ = merge_inputs(cfg.root,splits,'photo')
     model = load_frozen_clip(cfg.clip_checkpoint,torch.device('cuda'))
     kd,_ = load_kd(w)
     assert hashlib.sha256(inspect.getsource(kd).strip().encode()).hexdigest() == KD_FUNCTION_SHA
@@ -81,7 +88,7 @@ def run():
     scrambled = dist[perm][:,perm]
     results = {}
     for split,(qi,y) in qs.items():
-        rows = torch.randperm(len(qi),generator=torch.Generator().manual_seed(87243))[:768].sort().values
+        rows = torch.arange(len(qi)) if transfer else torch.randperm(len(qi),generator=torch.Generator().manual_seed(87243))[:768].sort().values
         ix = coordinates(enc,qi[rows])
         pi,gl = gs[split]
         cl = gl.cuda()
@@ -98,6 +105,7 @@ def run():
         subset,compact = near.cpu().unique(sorted=True,return_inverse=True)
         gp = native_patches([pp[i] for i in pi[subset].tolist()],model.visual,w/'cache'/family).cuda()
         sp = native_patches([qp[i] for i in qi[rows].tolist()],model.visual,w/'cache'/family).cuda()
+        flat = native_patches([qp[i] for i in qi[rows].tolist()],model.visual,w/'cache'/family,uniform=True).cuda()
         bank = torch.cat([(scale*(part@tgt.T)).softmax(1) for part in g.split(160)])
         # Each sketch ranks its own nominated photos. Subset batching only caches identical image encodes.
         metrics, donor_stats, endpoint_stats = {}, {}, {}
@@ -112,11 +120,15 @@ def run():
             prob = (energy.softmax(-1)+energy.softmax(-2))/(2*49)
             consistency = distance_agreement(prob,dist,dist)
             sham = distance_agreement(prob,dist,scrambled)
+            flat_logits = scale*(flat[block,None] @ gp[compact[block].cuda()].transpose(-1,-2)).float()
+            flat_prob = (flat_logits.softmax(-1)+flat_logits.softmax(-2))/(2*49)
+            positional = distance_agreement(flat_prob,dist,dist)
             bag = (prob*appearance).sum((-1,-2))
             direct_word = (((scale*(q[ix[block]].cuda()@src.T)).softmax(1) +
                             (scale*(flip[ix[block]].float().cuda()@src.T)).softmax(1))/2) @ bank.T
             origin = zscore(visual[block],mask)
             scores = {'first':origin,'spatial':consistency,'scrambled':sham,'bag':bag,
+                      'flat_canvas':positional,'excess_over_flat':consistency-positional,
                       'visual_spatial':origin+zscore(consistency,mask),
                       'visual_scrambled':origin+zscore(sham,mask),'visual_bag':origin+zscore(bag,mask),
                       'words':direct_word.gather(1,idx),'strong':base[block].gather(1,idx)}
@@ -133,6 +145,22 @@ def run():
         available = ((cl[near]==truth[:,None]) & eligible).any(1)
         strong_miss = ~(cl[base.topk(200).indices]==truth[:,None]).any(1)
         hard = strong_miss & available & ~fallback
+        hard_idx = hard.nonzero().flatten()
+        # Post-ranking diagnostic. This label-informed choice never enters the scorer.
+        correct_allowed = (cl[near[hard_idx]]==truth[hard_idx,None]) & eligible[hard_idx]
+        oracle = near[hard_idx].gather(1,correct_allowed.long().argmax(1)[:,None]).flatten()
+        def diagnostics_for_oracle():
+            values = []
+            for block in hard_idx.split(64):
+                scores = x[block] @ g[lower].T
+                values.append((cl[lower[scores.topk(200).indices]]==truth[block,None]).float().mean(1))
+            direct = torch.cat(values)
+            values = []
+            for block,donor in zip(hard_idx.split(64),oracle.split(64),strict=True):
+                scores = bank[donor] @ bank[lower].T
+                values.append((cl[lower[scores.topk(200).indices]]==truth[block,None]).float().mean(1))
+            return {'direct_visual':float(direct.mean()),'oracle_word':float(torch.cat(values).mean())}
+        audits = diagnostics_for_oracle() if len(hard_idx) else {}
         def evaluate(name,score):
             exact = []
             for start in range(0,len(rows),64):
@@ -162,6 +190,8 @@ def run():
             evaluate(name+'/0.03125',base+.03125*inc)
         hard = hard.cpu()
         report = {'queries':len(rows),'hard_cases':int(hard.sum()),'fallback_cases':int(fallback.sum()),
+                  'strong_misses':int(strong_miss.sum()),'classes':len(gl.unique()),'gallery':len(gl),
+                  'oracle_lower_density_on_hard':audits,
                   'mean_marginal_donor_accuracy_mrr':{},'mean_lower_target_p200':{},
                   'official_full_gallery':{name:(100*v.double().mean(0)).tolist() for name,v in metrics.items()}}
         for name,pieces in donor_stats.items():
@@ -170,14 +200,24 @@ def run():
                 'all':stat.mean(0).tolist(),'hard':stat[hard].mean(0).tolist(),'hard_correct':int(stat[hard,0].sum())}
             report['mean_lower_target_p200'][name] = {
                 'all':float(endpoint_stats[name].mean()),'hard':float(endpoint_stats[name][hard].mean())}
+        stat = torch.cat(donor_stats['spatial'])
+        report['paired_cluster_checks'] = {}
+        for control in ('first','scrambled','flat_canvas','words'):
+            alt = torch.cat(donor_stats[control])
+            report['paired_cluster_checks'][control] = {
+                'hard_donor_accuracy':class_interval(stat[hard,0]-alt[hard,0],y[rows][hard]),
+                'hard_donor_mrr':class_interval(stat[hard,1]-alt[hard,1],y[rows][hard]),
+                'all_donor_accuracy':class_interval(stat[:,0]-alt[:,0],y[rows])}
         results[split] = report
         torch.save({'per_query_kd':metrics,'chosen':{k:torch.cat(v) for k,v in chosen.items()},'hard':hard,
                     'donors':{k:torch.cat(v) for k,v in donor_stats.items()},'density':endpoint_stats,
                     'labels':y[rows]},folder/(split+'.pt'))
         print(split,'hard',report['hard_cases'],report['mean_marginal_donor_accuracy_mrr'],flush=True)
-        del gp,sp,base,basepack,bank
-    (folder/'pilot.json').write_text(json.dumps(results,indent=2))
+        del gp,sp,flat,base,basepack,bank
+    (folder/('locked-tu.json' if transfer else 'locked-pilot.json')).write_text(json.dumps(results,indent=2))
 
 
 if __name__ == '__main__':
-    run()
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--dataset',choices=('sketchy','tuberlin'),default='sketchy')
+    run(parser.parse_args().dataset)
