@@ -104,19 +104,36 @@ def evaluate(data,task,pairs_to_id,features):
     decisions={}
     margins={}
     photo_checks={}
+    separates={}
     for k,bank in features.items():
         qmargin=[]
         photo_margin=[]
+        individual=[]
         for j in range(0,len(q),1024):
             sl=slice(j,j+1024)
             axis=bank[ids[sl]].cuda()*sign[sl,None].cuda()
             qmargin.append((data['query'][q[sl]].cuda()*axis).sum(1).cpu())
-            da=data['photos'][a[sl]].cuda()-data['photos'][b[sl]].cuda()
+            pa=data['photos'][a[sl]].cuda()
+            pb=data['photos'][b[sl]].cuda()
+            da=pa-pb
             photo_margin.append((da*axis).sum(1).cpu())
+            individual.append((((pa*axis).sum(1)>0)&((pb*axis).sum(1)<0)).cpu())
         margin=torch.cat(qmargin)
         margins[k]=margin
         decisions[k]=margin<0
         photo_checks[k]=torch.cat(photo_margin)
+        separates[k]=torch.cat(individual)
+    # Can each candidate photo itself answer the very same two questions?
+    # A fallback to the incumbent is well-defined even if either abstains.
+    identifiable=separates['foreground_first']&separates['foreground_last']
+    pose_agreement=margins['foreground_first']*margins['foreground_last']>0
+    readable=identifiable&pose_agreement
+    policy={
+        'both_orders_only':pose_agreement&decisions['role'],
+        'counterbalanced_verified':readable&decisions['role'],
+        'isolated_on_same_opportunities':readable&decisions['isolated'],
+        'position_on_same_opportunities':readable&decisions['position'],
+        'literal_self_verified':separates['isolated']&decisions['isolated']}
     # Evaluation categories enter only after pair nomination and all text readings.
     ya=data['gl'][a]==data['yl'][q]
     yb=data['gl'][b]==data['yl'][q]
@@ -135,6 +152,11 @@ def evaluate(data,task,pairs_to_id,features):
     for k,agreement in [('role_and_isolated_agree',role*literal>0),('role_and_isolated_disagree',role*literal<0)]:
         m=contested&agreement
         result[k]={'n':int(m.sum()),'role_correct':int((m&torch.where(role<0,yb,ya)).sum())}
+    result['verification']={'two_photos_ground_both_orders':int(identifiable.sum()),
+        'joint_opportunities':int(readable.sum()),'mixed_joint_opportunities':int((readable&contested).sum()),
+        'policies':{k:{'switches':int(take.sum()),'fixed':int((take&~ya&yb).sum()),
+                      'damaged':int((take&ya&~yb).sum())} for k,take in policy.items()}}
+    decisions.update(policy)
     return result,decisions
 
 
