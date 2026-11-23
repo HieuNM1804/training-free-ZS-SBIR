@@ -120,13 +120,15 @@ def run(w, ds):
                 words = post.topk(32).indices
                 contains = lambda ww:(words[:,:,None]==ww[:,None,:]).any(2).any(1)
                 best_wrong = lexical.masked_fill(classes[None]==y[sl,None].cuda(),-torch.inf).argmax(1)
+                native_wrong = (q[qi[sl]].cuda()@images.T).masked_fill(
+                    classes[None]==y[sl,None].cuda(),-torch.inf).argmax(1)
+                winner = strong.argmax(1)
                 diagnostic.append(torch.stack([contains(photo_terms[own]),contains(photo_terms[rivals[own,0]]),
                     contains(photo_terms[best_wrong]),contains(photo_terms[rivals[best_wrong,0]]),
                     (classes[rivals[own,0]]==classes[own]),
-                    contains(photo_terms[(q[qi[sl]].cuda()@images.T).masked_fill(
-                        classes[None]==y[sl,None].cuda(),-torch.inf).argmax(1)]),
-                    contains(photo_terms[rivals[(q[qi[sl]].cuda()@images.T).masked_fill(
-                        classes[None]==y[sl,None].cuda(),-torch.inf).argmax(1),0]])],1).cpu())
+                    contains(photo_terms[native_wrong]),contains(photo_terms[rivals[native_wrong,0]]),
+                    classes[winner]==y[sl].cuda(), classes[rivals[winner,0]]==y[sl].cuda(),
+                    contains(photo_terms[winner]), contains(photo_terms[rivals[winner,0]])],1).cpu())
             for name,z in {'strong':strong,'strong_veto':strong+penalty,'strong_control':strong+placebo,
                            'mean':lexical,'mean_veto':lexical+penalty,'mean_control':lexical+placebo}.items():
                 rank,metrics = raw_ranks(z,y[sl],classes,s)
@@ -141,7 +143,16 @@ def run(w, ds):
             'foil_with_same_label_percent':float((classes[rivals[:,0]]==classes).float().mean()*100),
             'median_difference_in_foil_cosine':float(((images*images[rivals[:,0]]).sum(1)-(images*images[rivals[:,1]]).sum(1)).median())}
         if diagnostic:
-            pos,fo,neg,fn,same,nneg,nfn = torch.cat(diagnostic).T
+            pos,fo,neg,fn,same,nneg,nfn,winner_ok,rival_ok,own_word,rival_word = torch.cat(diagnostic).T
+            error = ~winner_ok
+            result[s]['actual_winner'] = {
+                'errors':int(error.sum()),'foil_same_class_as_query_on_errors':int((error&rival_ok).sum()),
+                'errors_with_own_word_absent':int((error&~own_word).sum()),
+                'errors_with_own_word_absent_and_foil_class_right':int((error&~own_word&rival_ok).sum()),
+                'errors_with_own_word_absent_and_foil_word_present':int((error&~own_word&rival_word).sum()),
+                'intersection_on_errors':int((error&~own_word&rival_ok&rival_word).sum()),
+                'correct_winner_with_own_word_absent':int((winner_ok&~own_word).sum()),
+                'correct_winner_with_own_word_absent_and_foil_word_present':int((winner_ok&~own_word&rival_word).sum())}
             result[s]['pairs']={'target_absent':[int((~pos).sum()),int((~pos&fo).sum())],
                                 'wrong_absent':[int((~neg).sum()),int((~neg&fn).sum())],
                                 'both_absent':[int((~pos&~neg).sum()),int((~pos&~neg&fo).sum()),
