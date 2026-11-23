@@ -127,7 +127,8 @@ def run(w,ds,phase):
                      "true_candidate_mean_borrowing":float(left[bad,3].mean()),"wrong_candidate_mean_borrowing":float(right[bad,3].mean())})
         atomic_json(root/(phase+"-mechanism-"+s+".json"),{"code":revision(),"setting":selected.label(),"queries":len(ix),"eligible_class_spellings":int((cat>=0).sum()),
              "oracle_name_diagnosis":detected,"actual_first_error":part,"covariance_identity_error":maxerr,"examples":examples,
-             "preselected_before_inspecting_labels":True,"usage":"class labels and spellings are consulted only in this post-ranking diagnostic"})
+             "pair_definition":"highest positive and highest negative under the preexisting regional score",
+             "usage":"class labels and spellings are consulted in this post-ranking diagnostic; development still uses unseen Sketchy metrics"})
         print(s,detected,part,maxerr,flush=True)
 
 
