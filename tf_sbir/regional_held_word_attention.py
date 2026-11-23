@@ -50,7 +50,7 @@ def held_read(reader, paired):
 
 @torch.inference_mode()
 def run(*, family='regional-held-word-attention', alternate=None, start=768,
-        contrasts=(('held','self'),('held','sham'))):
+        contrasts=(('held','self'),('held','sham')), dataset='sketchy', count=1536, batch_size=8):
     random.seed(42);np.random.seed(42);torch.manual_seed(42);torch.cuda.manual_seed_all(42)
     torch.backends.cudnn.benchmark=False
     torch.backends.cudnn.deterministic=True
@@ -58,14 +58,15 @@ def run(*, family='regional-held-word-attention', alternate=None, start=768,
     w=Path('/content/sbir')
     root=w/'results'/family
     root.mkdir(exist_ok=True,parents=True)
-    inputs=semantic_inputs(w,'sketchy')
+    inputs=semantic_inputs(w,dataset)
     cfg,qp,qs,pp,gs,q,p,src,tgt,scale=inputs
-    views=source_windows(w,'sketchy',inputs)
+    views=source_windows(w,dataset,inputs)
     kd,_=load_kd(w)
     assert hashlib.sha256(inspect.getsource(kd).strip().encode()).hexdigest()==KD_FUNCTION_SHA
     for split,(qi,labels) in qs.items():
         pi,gl=gs[split]
-        select=torch.randperm(len(qi),generator=torch.Generator().manual_seed(42))[start:start+1536].sort().values
+        order=torch.randperm(len(qi),generator=torch.Generator().manual_seed(42))
+        select=order[start:start+count].sort().values
         gallery=p[pi].cuda()
         graph=Index(SimpleNamespace(p=gallery),rgb_only=True)
         paths=[str(pp[i]) for i in pi.tolist()]
@@ -80,7 +81,7 @@ def run(*, family='regional-held-word-attention', alternate=None, start=768,
         rows={}
         check=0.
         with ThreadPoolExecutor(max_workers=min(3,len(os.sched_getaffinity(0)))) as pool:
-            for batch in select.split(8):
+            for batch in select.split(batch_size):
                 ids=qi[batch]
                 a,b=q[ids].cuda(),views['flipped'][ids].cuda().float()
                 crops=views['regions'][ids].cuda()
@@ -105,6 +106,10 @@ def run(*, family='regional-held-word-attention', alternate=None, start=768,
             for variant,other in contrasts:
                 delta=100*(rows[prefix+variant].double()-rows[prefix+other].double())
                 result['contrasts'][prefix+variant+'_minus_'+other]={'points':delta.mean(0).tolist(),'macro':class_interval(delta[:,0],labels[select],seed=42)}
+        if 'regional_scale_only' in rows:
+            changes=[rows[p+'scale_only'].double()-rows[p+'self'].double() for p in ('regional_','global_regional_')]
+            delta=100*(changes[1]-changes[0])
+            result['interaction']={'points':delta.mean(0).tolist(),'macro':class_interval(delta[:,0],labels[select],seed=42)}
         save_tensor({'qi':qi[select],'pi':pi,'labels':labels[select],'rows':rows},root/(split+'.pt'))
         atomic_json(root/(split+'.json'),result)
         print(split,result['metrics'],flush=True)

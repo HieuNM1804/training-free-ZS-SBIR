@@ -1,0 +1,7 @@
+# Confirm the interaction between candidate-specific position and global word evidence
+
+Lock three readouts after the exploratory scale/location result: original candidate-specific scale and position, candidate-specific scale with shared positions at each scale, and sharing both factors. Compare each in isolation and at the original 0.35 regional / 0.65 semantic weights. Every readout uses the same 13 windows, 64 gallery words, regional gallery bank and CLIP ViT-B/32. GCWE is omitted to isolate the S × R interaction. Global word retrieval in this experiment is the diffused two-view public-word score.
+
+The directional prediction is that sharing positions improves the regional term alone, and reduces mAP once global evidence is present. The interaction is (scale-only minus original with global) minus (scale-only minus original without global). A negative value is evidence for dependence on context; it does not by itself imply that each individual effect has the predicted sign. Require the individual signs on both Sketchy splits to claim reproduction there. Report TU separately with all 30 unseen classes, both metrics and class-resampled intervals.
+
+Use the remaining seed-42 queries after the initial 6,912 entries in each Sketchy permutation (7,267 Ext-1 and 5,782 Ext-2), then the full 2,130 TU queries. No query from the scale discovery sample can enter confirmation in its own split. Data overlap between Sketchy splits and earlier historical full-run evaluations still applies. No hyperparameter selection or gallery changes.
