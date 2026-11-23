@@ -1,0 +1,170 @@
+{
+  "sketchy_1": {
+    "pilot_queries": 768,
+    "strong_misses": 96,
+    "complete_misses_with_correct_upper_donor_in_visual_top200": 61,
+    "first_upper_donor_correct_on_these": 3,
+    "lower_endpoint_gallery_size": 8550,
+    "mean_upper_fraction_excess_over_same_class_gallery_macro": {
+      "classes": 20,
+      "queries": 64,
+      "mean_across_classes": 0.3054701693356037,
+      "positive_classes": 17,
+      "bootstrap95": [
+        0.16701016965322196,
+        0.42544353775680066
+      ]
+    },
+    "columns": [
+      "correct_at_1",
+      "any_correct_in_200",
+      "fraction_correct_in_200"
+    ],
+    "endpoints": {
+      "sketch_cosine": [
+        0.1803278625011444,
+        0.9180327653884888,
+        0.13327866792678833
+      ],
+      "strong": [
+        0,
+        0.2295081913471222,
+        0.08073769509792328
+      ],
+      "first/cosine": [
+        0.13114753365516663,
+        0.868852436542511,
+        0.07147540152072906
+      ],
+      "first/target_words": [
+        0.032786883413791656,
+        0.5573770403862,
+        0.06336064636707306
+      ],
+      "earliest_correct_oracle/cosine": [
+        0.7540982961654663,
+        0.9999999403953552,
+        0.509344220161438
+      ],
+      "earliest_correct_oracle/target_words": [
+        0.8360655307769775,
+        0.9999999403953552,
+        0.6905737519264221
+      ],
+      "random_correct_oracle/cosine": [
+        0.9672130346298218,
+        0.9836065173149109,
+        0.7004917860031128
+      ],
+      "random_correct_oracle/target_words": [
+        0.9344261884689331,
+        0.9836065173149109,
+        0.8264753818511963
+      ]
+    },
+    "earliest_correct_oracle_vs_first_cosine_density_class_interval": {
+      "classes": 19,
+      "queries": 61,
+      "mean_across_classes": 0.4265388454261579,
+      "positive_classes": 18,
+      "bootstrap95": [
+        0.29615975802666267,
+        0.5600163318412866
+      ]
+    },
+    "earliest_correct_oracle_vs_sketch_cosine_density_class_interval": {
+      "classes": 19,
+      "queries": 61,
+      "mean_across_classes": 0.38752380591866215,
+      "positive_classes": 18,
+      "bootstrap95": [
+        0.28043156873042646,
+        0.4963680095259885
+      ]
+    }
+  },
+  "sketchy_2": {
+    "pilot_queries": 768,
+    "strong_misses": 137,
+    "complete_misses_with_correct_upper_donor_in_visual_top200": 124,
+    "first_upper_donor_correct_on_these": 17,
+    "lower_endpoint_gallery_size": 6276,
+    "mean_upper_fraction_excess_over_same_class_gallery_macro": {
+      "classes": 17,
+      "queries": 124,
+      "mean_across_classes": 0.3996499505113153,
+      "positive_classes": 17,
+      "bootstrap95": [
+        0.3219062259092051,
+        0.4749029170721769
+      ]
+    },
+    "columns": [
+      "correct_at_1",
+      "any_correct_in_200",
+      "fraction_correct_in_200"
+    ],
+    "endpoints": {
+      "sketch_cosine": [
+        0.25,
+        0.9758064150810242,
+        0.21008063852787018
+      ],
+      "strong": [
+        0,
+        0.22580644488334656,
+        0.050524190068244934
+      ],
+      "first/cosine": [
+        0.16935482621192932,
+        0.8306451439857483,
+        0.19737903773784637
+      ],
+      "first/target_words": [
+        0.12903225421905518,
+        0.6693547964096069,
+        0.16056451201438904
+      ],
+      "earliest_correct_oracle/cosine": [
+        0.7903225421905518,
+        1,
+        0.6397177577018738
+      ],
+      "earliest_correct_oracle/target_words": [
+        0.9032257795333862,
+        1,
+        0.9158468842506409
+      ],
+      "random_correct_oracle/cosine": [
+        0.9596773982048035,
+        1,
+        0.800927460193634
+      ],
+      "random_correct_oracle/target_words": [
+        0.9435483813285828,
+        0.9919354319572449,
+        0.9179437160491943
+      ]
+    },
+    "earliest_correct_oracle_vs_first_cosine_density_class_interval": {
+      "classes": 17,
+      "queries": 124,
+      "mean_across_classes": 0.40388037877924304,
+      "positive_classes": 16,
+      "bootstrap95": [
+        0.2701139157309252,
+        0.5445326389854446
+      ]
+    },
+    "earliest_correct_oracle_vs_sketch_cosine_density_class_interval": {
+      "classes": 17,
+      "queries": 124,
+      "mean_across_classes": 0.3912961088559207,
+      "positive_classes": 17,
+      "bootstrap95": [
+        0.27822046529720806,
+        0.5082522905376904
+      ]
+    }
+  }
+}
