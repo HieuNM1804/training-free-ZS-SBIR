@@ -57,7 +57,7 @@ def axes(model,tokenize,pairs,words):
         'mean_fraction_role_norm_outside_name_and_order_span':float(torch.cat(lengths).mean())}
 
 
-def prepare(s,qs,gs,encoded,q,p,flip,src,tgt,scale,all_queries):
+def prepare(s,qs,gs,encoded,q,p,flip,src,tgt,scale,all_queries,*,retain_scores=False):
     qi,yl=qs[s]
     sample=(torch.arange(len(qi)) if all_queries else
             torch.randperm(len(qi),generator=torch.Generator().manual_seed(87243))[:768].sort().values)
@@ -69,12 +69,14 @@ def prepare(s,qs,gs,encoded,q,p,flip,src,tgt,scale,all_queries):
     graph=Index(SimpleNamespace(p=g),rgb_only=True)
     if len(g)>torch.iinfo(torch.int16).max:raise ValueError('Gallery rank storage would overflow')
     order=torch.empty((len(where),len(g)),dtype=torch.int16)
+    log_scores=torch.empty((len(where),len(g))) if retain_scores else None
     for start in range(0,len(where),128):
         ids=where[start:start+128]
         a=(scale*(q[ids].cuda()@src.T)).softmax(1)
         b=(scale*(flip[ids].float().cuda()@src.T)).softmax(1)
         scores=graph.score(CONFIG,((a+b)/2)@bank.T).clamp_min(1e-30).log()
         order[start:start+len(ids)]=scores.topk(scores.size(1)).indices.to(torch.int16).cpu()
+        if retain_scores:log_scores[start:start+len(ids)]=scores.cpu()
     top=order[:,:200].long()
     named=terms[top]!=terms[top[:,:1]]
     valid=named.any(1)
@@ -82,7 +84,7 @@ def prepare(s,qs,gs,encoded,q,p,flip,src,tgt,scale,all_queries):
     row=torch.arange(len(sample))
     alt=top[row,pos]
     return {'query':((q[where]+flip[where].float())/2),'photos':g.cpu(),'terms':terms,
-            'order':order,'valid':valid,'idx':pos,'alt':alt,'yl':yl[sample],'gl':gl}
+            'order':order,'valid':valid,'idx':pos,'alt':alt,'yl':yl[sample],'gl':gl,'log_scores':log_scores}
 
 
 def make_tasks(data,only_incumbent=False):
