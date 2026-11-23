@@ -104,12 +104,12 @@ def selected_modes(w,ds,stage):
 
 
 @torch.inference_mode()
-def run(w,ds,stage):
+def run(w,ds,stage,*,requested_modes=None,folder_family=FAMILY):
     cfg,paths,qs,_,_,baseline,_=dataset(w,ds)
     if stage=="pilot" and ds!="sketchy":raise ValueError("No TU pilot or tuning")
     ids=torch.cat([qi[stratified_sample(y,36,63241)] for qi,y in qs.values()]).unique(sorted=True) if stage=="pilot" else torch.arange(len(paths))
-    modes=selected_modes(w,ds,stage)
-    out=w/"cache"/FAMILY/ds/stage
+    modes=selected_modes(w,ds,stage) if requested_modes is None else sorted(requested_modes)
+    out=w/"cache"/folder_family/ds/stage
     out.mkdir(parents=True,exist_ok=True)
     sig=digest({"model":CHECKPOINT,"paths":[str(paths[int(i)]) for i in ids],"operation":"mean native patch fill, exact area control, paired common spatial permutations v1",
                 "modes":modes,"seeds":SEEDS})
@@ -147,8 +147,8 @@ def run(w,ds,stage):
     (out/"done").touch()
 
 
-def load(w,ds,stage):
-    root=w/"cache"/FAMILY/ds/stage
+def load(w,ds,stage,folder_family=FAMILY):
+    root=w/"cache"/folder_family/ds/stage
     if not (root/"done").is_file():raise ValueError("Reference bank incomplete")
     meta=read(root/"manifest.json")
     files=[torch.load(f,mmap=True,weights_only=True) for f in sorted(root.glob("[0-9]*.pt"))]

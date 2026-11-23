@@ -16,7 +16,7 @@ from .crossdomain_inputs import CHECKPOINT
 from .encoding import save_tensor
 from .map_diagnosis import map_values
 from .query_fragment_likelihood import GalleryWalk
-from .query_fragment_reference_inputs import dataset,load
+from .query_fragment_reference_inputs import FAMILY as INPUT_FAMILY,dataset,load,run as encode_inputs
 from .query_fragment_reference_study import split_context
 from .quickdraw_locked import KD_FUNCTION_SHA
 from .retrieval_evidence import load_kd,paired_delta
@@ -31,6 +31,44 @@ AUDIT={"native","native/walk",PRIMARY,"appearance/within/direct","appearance/fix
        "area_shuffle/within/walk","scrambled/within/walk"}
 TEMPERATURE=64.
 FIXED=.8
+CONSTANTS=(.55,.65,.7,.75,.8,.85,.875,.9,.925,.95,1.,1.1,1.25)
+PILOT_CODE="ea1a7f081f91f60de8af4f44783ef891fdf9b9b8"
+
+
+def study_bank(w,ds,stage,rows):
+    if stage in ("pilot","calibration"):return load(w,ds,"pilot")
+    refs={name.split("/")[0] for name in rows if name.startswith(REFS)}
+    modes=refs-{"scrambled"}
+    if "scrambled" in refs:modes|={"permuted_fragments_A","permuted_fragments_B"}
+    original=w/"cache"/INPUT_FAMILY/ds/"full"
+    if (original/"done").is_file():
+        bank=load(w,ds,"full")
+        missing=modes-bank["modes"].keys()
+        if not missing:return bank
+    else:
+        bank=None;missing=modes
+    supplement=FAMILY+"-"+digest(sorted(missing))[:12]
+    encode_inputs(w,ds,"full",requested_modes=missing,folder_family=supplement)
+    second=load(w,ds,"full",folder_family=supplement)
+    if bank is None:return second
+    if not torch.equal(bank["ids"],second["ids"]) or (bank["native"]-second["native"]).abs().amax()>1e-4:
+        raise ValueError("Supplement differs from the original query bank")
+    bank["modes"].update(second["modes"])
+    return bank
+
+
+def lock_constants(root,signature):
+    parts=[read(root/("calibration-"+s+".json")) for s in ("sketchy_1","sketchy_2")]
+    choices=[k for k in parts[0]["values"] if k.startswith("appearance/constant") and k.endswith("/walk")]
+    choice=max(choices,key=lambda k:tuple(sum(v["values"][k][i] for v in parts)/2 for i in (0,1)))
+    cfg={"pilot_signature":signature,"code":revision(),"pilot_code":PILOT_CODE,"primary":PRIMARY,
+         "static_comparator":choice,"rows":sorted(AUDIT|{choice,"empty_token/within/walk","area_shuffle/fixed/walk"}),
+         "calibration_sha256":{s:checksum(root/("calibration-"+s+".json")) for s in ("sketchy_1","sketchy_2")},
+         "selection":"single constant selected on both Sketchy pilots by equally weighted mAP and precision tie-break; primary fixed before pilots"}
+    target=root/"freeze.json";sha=digest(cfg)
+    if target.is_file() and read(target)["signature"]!=sha:raise ValueError("Conflicting freeze")
+    atomic_json(target,{"config":cfg,"signature":sha})
+    print("frozen",choice,sha,flush=True)
 
 
 def edge_covariance(photos,i,j,weight):
@@ -106,7 +144,7 @@ def digest_beta(data):
 
 @torch.inference_mode()
 def run(w,stage,ds):
-    if stage=="pilot" and ds!="sketchy":raise ValueError("No tuning on TU")
+    if stage!="official" and ds!="sketchy":raise ValueError("No tuning on TU")
     root=w/"results"/FAMILY
     root.mkdir(parents=True,exist_ok=True)
     spec={"code":revision(),"checkpoint":CHECKPOINT,"evaluator":KD_FUNCTION_SHA,"primary":PRIMARY,"controls":sorted(AUDIT),
@@ -118,23 +156,37 @@ def run(w,stage,ds):
         if protocol.is_file() and read(protocol)["signature"]!=sig:raise ValueError("Altered pilot")
         atomic_json(protocol,spec|{"signature":sig,"device":torch.cuda.get_device_name()})
     else:
+        saved=read(protocol)
+        original={k:v for k,v in saved.items() if k not in ("device","signature")}
+        if original.get("code")!=PILOT_CODE or digest(original)!=saved["signature"]:raise ValueError("Wrong pilot protocol")
+        if original!={**spec,"code":PILOT_CODE}:raise ValueError("Changed inference protocol")
+        sig=saved["signature"]
+        if stage=="lock":
+            lock_constants(root,sig);return
+    if stage=="official":
         lock=read(root/"freeze.json")
-        if lock["signature"]!=digest(lock["config"]) or lock["config"]["pilot_signature"]!=sig:raise ValueError("Incompatible transfer lock")
+        if (lock["signature"]!=digest(lock["config"]) or lock["config"]["pilot_signature"]!=sig
+                or lock["config"]["code"]!=revision()):raise ValueError("Incompatible transfer lock")
     kd,_=load_kd(w)
     if hashlib.sha256(inspect.getsource(kd).strip().encode()).hexdigest()!=KD_FUNCTION_SHA:raise ValueError("Wrong KD evaluator")
     torch.backends.cuda.matmul.allow_tf32=False
     torch.backends.cudnn.allow_tf32=False
     inputs=dataset(w,ds)
-    bank=load(w,ds,"pilot" if stage=="pilot" else "full")
-    rows={"native","native/walk",*(f"{r}/{m}/{op}" for r in REFS for m in METRICS for op in ("direct","walk"))} if stage=="pilot" else set(lock["config"]["rows"])
-    verified=rows&AUDIT if stage=="pilot" else rows
+    if stage=="pilot":
+        rows={"native","native/walk",*(f"{r}/{m}/{op}" for r in REFS for m in METRICS for op in ("direct","walk"))}
+    elif stage=="calibration":
+        rows={PRIMARY,"appearance/fixed/walk",*(f"appearance/constant{x:g}/walk" for x in CONSTANTS)}
+    else:
+        rows=set(lock["config"]["rows"])
+    bank=study_bank(w,ds,stage,rows)
+    verified=rows&AUDIT if stage!="official" else rows
     for s in inputs[2]:
-        dest=root/(("pilot-" if stage=="pilot" else "")+s+".json")
+        dest=root/(("" if stage=="official" else stage+"-")+s+".json")
         if dest.is_file():
             prior=read(dest)
             if prior["signature"]!=sig or checksum(dest.with_suffix(".pt"))!=prior["per_query_sha256"]:raise ValueError("Corrupt checkpoint")
             continue
-        p=split_context(w,s,ds,inputs,bank,"pilot" if stage=="pilot" else "official",False)
+        p=split_context(w,s,ds,inputs,bank,"official" if stage=="official" else "pilot",False)
         gallery=p["gallery"];gt=p["gl"].cuda()
         graph=GalleryWalk(gallery)
         matrices,edges,graph_error=metrics(gallery,graph)
@@ -170,7 +222,9 @@ def run(w,stage,ds):
                     betas,orth=corrections(query,f,matrices)
                     maxorth=max(maxorth,max(float(o.abs().amax()) for o in orth.values()))
                     hold[ref].append(torch.cat((betas["A"],betas["B"]),1).cpu())
-                    for metric in METRICS:
+                    constants={k.split("/")[1] for k in rows if k.startswith(ref+"/constant")}
+                    for k in constants:betas[k]=torch.full_like(betas["fixed"],float(k.removeprefix("constant")))
+                    for metric in (*METRICS,*sorted(constants)):
                         name=ref+"/"+metric
                         if name+"/direct" not in rows and name+"/walk" not in rows:continue
                         b=betas[metric];coeff[name].append(b.squeeze(1).cpu())
@@ -189,7 +243,8 @@ def run(w,stage,ds):
         halves={k:torch.cat(v) for k,v in hold.items()}
         save_tensor({"ids":p["ids"],"labels":p["labels"],"metrics":m,"top1":top,"first_five":{k:torch.cat(v) for k,v in leads.items()},
                      "native_top1_error":wrong,"native_best_positive_negative":torch.cat(pairids),"margin":margins,"beta":beta,"split_beta":halves},dest.with_suffix(".pt"))
-        summary={"signature":sig,"queries":len(wrong),"gallery":len(gt),"classes":len(p["labels"].unique()),
+        summary={"signature":sig,"code":revision(),"freeze_signature":lock["signature"] if stage=="official" else None,
+                 "queries":len(wrong),"gallery":len(gt),"classes":len(p["labels"].unique()),
                  "values":{k:v.double().mean(0).tolist() for k,v in m.items()},"verified":sorted(verified),"KD_max_error":maxerr,
                  "pair_covariance_check":graph_error,"orthogonality_check":maxorth,"edge_purity_after_scoring":purity,
                  "errors_in_original":int(wrong.sum()),"best_positive_above_original_top_negative":{k:int((wrong&(v>0)).sum()) for k,v in margins.items()},
@@ -207,5 +262,5 @@ if __name__=="__main__":
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--workspace",type=Path,default=Path("/content/sbir"))
     parser.add_argument("--dataset",choices=("sketchy","tuberlin"),default="sketchy")
-    parser.add_argument("--stage",choices=("pilot","official"),default="pilot")
+    parser.add_argument("--stage",choices=("pilot","calibration","lock","official"),default="pilot")
     args=parser.parse_args();run(args.workspace,args.stage,args.dataset)
