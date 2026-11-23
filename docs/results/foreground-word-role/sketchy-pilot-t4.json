@@ -1,0 +1,467 @@
+{
+  "text": {
+    "unique_public_name_pairs": 4229,
+    "mean_cosine_of_role_when_mentioned_first_vs_last": -0.5168634653091431,
+    "mean_fraction_role_norm_outside_name_and_order_span": 0.7574170827865601
+  },
+  "sketchy_1": {
+    "first_different_name": {
+      "eligible": 768,
+      "mixed_relevance": 20,
+      "incumbent_correct_on_mixed": 8,
+      "readings": {
+        "isolated": {
+          "mixed_correct": 12,
+          "fixed": 9,
+          "damaged": 5,
+          "gallery_noun_pair_orientation_positive": 0.9973958134651184,
+          "balanced_accuracy": 0.5625
+        },
+        "foreground_first": {
+          "mixed_correct": 10,
+          "fixed": 5,
+          "damaged": 3,
+          "gallery_noun_pair_orientation_positive": 0.8776041865348816,
+          "balanced_accuracy": 0.5208333283662796
+        },
+        "foreground_last": {
+          "mixed_correct": 15,
+          "fixed": 11,
+          "damaged": 4,
+          "gallery_noun_pair_orientation_positive": 0.4453125,
+          "balanced_accuracy": 0.7083333432674408
+        },
+        "role": {
+          "mixed_correct": 11,
+          "fixed": 7,
+          "damaged": 4,
+          "gallery_noun_pair_orientation_positive": 0.8294270634651184,
+          "balanced_accuracy": 0.5416666567325592
+        },
+        "position": {
+          "mixed_correct": 8,
+          "fixed": 3,
+          "damaged": 3,
+          "gallery_noun_pair_orientation_positive": 0.8059895634651184,
+          "balanced_accuracy": 0.4375
+        },
+        "role_residual": {
+          "mixed_correct": 11,
+          "fixed": 9,
+          "damaged": 6,
+          "gallery_noun_pair_orientation_positive": 0.5104166865348816,
+          "balanced_accuracy": 0.5
+        }
+      },
+      "role_and_isolated_agree": {
+        "n": 15,
+        "role_correct": 9
+      },
+      "role_and_isolated_disagree": {
+        "n": 5,
+        "role_correct": 2
+      },
+      "verification": {
+        "two_photos_ground_both_orders": 69,
+        "joint_opportunities": 42,
+        "mixed_joint_opportunities": 2,
+        "policies": {
+          "both_orders_only": {
+            "switches": 89,
+            "fixed": 4,
+            "damaged": 0
+          },
+          "counterbalanced_verified": {
+            "switches": 13,
+            "fixed": 2,
+            "damaged": 0
+          },
+          "isolated_on_same_opportunities": {
+            "switches": 14,
+            "fixed": 2,
+            "damaged": 0
+          },
+          "position_on_same_opportunities": {
+            "switches": 15,
+            "fixed": 2,
+            "damaged": 0
+          },
+          "literal_self_verified": {
+            "switches": 183,
+            "fixed": 9,
+            "damaged": 5
+          }
+        }
+      }
+    },
+    "full_gallery_metrics": {
+      "native": [
+        83.00314239192326,
+        82.85026056109928
+      ],
+      "isolated": [
+        83.00348012489849,
+        82.85026056109928
+      ],
+      "foreground_first": [
+        83.00330650308752,
+        82.85026056109928
+      ],
+      "foreground_last": [
+        83.00381665976602,
+        82.85026056109928
+      ],
+      "role": [
+        83.00337781523316,
+        82.85026056109928
+      ],
+      "position": [
+        83.00306504606851,
+        82.85026056109928
+      ],
+      "role_residual": [
+        83.0032493218217,
+        82.85026056109928
+      ],
+      "both_orders_only": [
+        83.0036475296462,
+        82.85026056109928
+      ],
+      "counterbalanced_verified": [
+        83.0034060726272,
+        82.85026056109928
+      ],
+      "isolated_on_same_opportunities": [
+        83.0034060726272,
+        82.85026056109928
+      ],
+      "position_on_same_opportunities": [
+        83.0034060726272,
+        82.85026056109928
+      ],
+      "literal_self_verified": [
+        83.00348012489849,
+        82.85026056109928
+      ]
+    },
+    "adjacent_pairs": {
+      "eligible": 12365,
+      "mixed_relevance": 211,
+      "incumbent_correct_on_mixed": 106,
+      "readings": {
+        "isolated": {
+          "mixed_correct": 147,
+          "fixed": 75,
+          "damaged": 34,
+          "gallery_noun_pair_orientation_positive": 0.9858471751213074,
+          "balanced_accuracy": 0.6967655122280121
+        },
+        "foreground_first": {
+          "mixed_correct": 126,
+          "fixed": 59,
+          "damaged": 39,
+          "gallery_noun_pair_orientation_positive": 0.8551557064056396,
+          "balanced_accuracy": 0.5969901382923126
+        },
+        "foreground_last": {
+          "mixed_correct": 109,
+          "fixed": 67,
+          "damaged": 64,
+          "gallery_noun_pair_orientation_positive": 0.5279417634010315,
+          "balanced_accuracy": 0.5171608328819275
+        },
+        "role": {
+          "mixed_correct": 118,
+          "fixed": 58,
+          "damaged": 46,
+          "gallery_noun_pair_orientation_positive": 0.8669632077217102,
+          "balanced_accuracy": 0.5592093467712402
+        },
+        "position": {
+          "mixed_correct": 109,
+          "fixed": 46,
+          "damaged": 43,
+          "gallery_noun_pair_orientation_positive": 0.7280226349830627,
+          "balanced_accuracy": 0.5162174254655838
+        },
+        "role_residual": {
+          "mixed_correct": 89,
+          "fixed": 49,
+          "damaged": 66,
+          "gallery_noun_pair_orientation_positive": 0.6047715544700623,
+          "balanced_accuracy": 0.4220125824213028
+        }
+      },
+      "role_and_isolated_agree": {
+        "n": 134,
+        "role_correct": 94
+      },
+      "role_and_isolated_disagree": {
+        "n": 77,
+        "role_correct": 24
+      },
+      "verification": {
+        "two_photos_ground_both_orders": 878,
+        "joint_opportunities": 349,
+        "mixed_joint_opportunities": 35,
+        "policies": {
+          "both_orders_only": {
+            "switches": 2013,
+            "fixed": 35,
+            "damaged": 13
+          },
+          "counterbalanced_verified": {
+            "switches": 183,
+            "fixed": 13,
+            "damaged": 8
+          },
+          "isolated_on_same_opportunities": {
+            "switches": 186,
+            "fixed": 16,
+            "damaged": 3
+          },
+          "position_on_same_opportunities": {
+            "switches": 178,
+            "fixed": 8,
+            "damaged": 7
+          },
+          "literal_self_verified": {
+            "switches": 3997,
+            "fixed": 66,
+            "damaged": 34
+          }
+        }
+      }
+    }
+  },
+  "sketchy_2": {
+    "first_different_name": {
+      "eligible": 768,
+      "mixed_relevance": 51,
+      "incumbent_correct_on_mixed": 18,
+      "readings": {
+        "isolated": {
+          "mixed_correct": 27,
+          "fixed": 18,
+          "damaged": 9,
+          "gallery_noun_pair_orientation_positive": 0.9895833134651184,
+          "balanced_accuracy": 0.5227272808551788
+        },
+        "foreground_first": {
+          "mixed_correct": 24,
+          "fixed": 11,
+          "damaged": 5,
+          "gallery_noun_pair_orientation_positive": 0.8294270634651184,
+          "balanced_accuracy": 0.5277777761220932
+        },
+        "foreground_last": {
+          "mixed_correct": 23,
+          "fixed": 14,
+          "damaged": 9,
+          "gallery_noun_pair_orientation_positive": 0.5833333134651184,
+          "balanced_accuracy": 0.46212121844291687
+        },
+        "role": {
+          "mixed_correct": 31,
+          "fixed": 16,
+          "damaged": 3,
+          "gallery_noun_pair_orientation_positive": 0.8919270634651184,
+          "balanced_accuracy": 0.6590909063816071
+        },
+        "position": {
+          "mixed_correct": 27,
+          "fixed": 15,
+          "damaged": 6,
+          "gallery_noun_pair_orientation_positive": 0.6861979365348816,
+          "balanced_accuracy": 0.5606060773134232
+        },
+        "role_residual": {
+          "mixed_correct": 33,
+          "fixed": 18,
+          "damaged": 3,
+          "gallery_noun_pair_orientation_positive": 0.5872395634651184,
+          "balanced_accuracy": 0.689393937587738
+        }
+      },
+      "role_and_isolated_agree": {
+        "n": 31,
+        "role_correct": 19
+      },
+      "role_and_isolated_disagree": {
+        "n": 20,
+        "role_correct": 12
+      },
+      "verification": {
+        "two_photos_ground_both_orders": 62,
+        "joint_opportunities": 23,
+        "mixed_joint_opportunities": 5,
+        "policies": {
+          "both_orders_only": {
+            "switches": 77,
+            "fixed": 2,
+            "damaged": 2
+          },
+          "counterbalanced_verified": {
+            "switches": 14,
+            "fixed": 2,
+            "damaged": 1
+          },
+          "isolated_on_same_opportunities": {
+            "switches": 17,
+            "fixed": 2,
+            "damaged": 2
+          },
+          "position_on_same_opportunities": {
+            "switches": 8,
+            "fixed": 0,
+            "damaged": 2
+          },
+          "literal_self_verified": {
+            "switches": 163,
+            "fixed": 18,
+            "damaged": 9
+          }
+        }
+      }
+    },
+    "full_gallery_metrics": {
+      "native": [
+        74.06855133152325,
+        72.77799492755244
+      ],
+      "isolated": [
+        74.0411932400093,
+        72.77799492755244
+      ],
+      "foreground_first": [
+        74.04366306479156,
+        72.77799492755244
+      ],
+      "foreground_last": [
+        74.0661742315448,
+        72.77799492755244
+      ],
+      "role": [
+        74.07827997952458,
+        72.77799492755244
+      ],
+      "position": [
+        74.04610795147164,
+        72.77799492755244
+      ],
+      "role_residual": [
+        74.07954556929326,
+        72.77799492755244
+      ],
+      "both_orders_only": [
+        74.06769101453392,
+        72.77799492755244
+      ],
+      "counterbalanced_verified": [
+        74.06858041207065,
+        72.77799492755244
+      ],
+      "isolated_on_same_opportunities": [
+        74.06604771913408,
+        72.77799492755244
+      ],
+      "position_on_same_opportunities": [
+        74.06528050335814,
+        72.77799492755244
+      ],
+      "literal_self_verified": [
+        74.0411932400093,
+        72.77799492755244
+      ]
+    },
+    "adjacent_pairs": {
+      "eligible": 12668,
+      "mixed_relevance": 315,
+      "incumbent_correct_on_mixed": 151,
+      "readings": {
+        "isolated": {
+          "mixed_correct": 206,
+          "fixed": 106,
+          "damaged": 51,
+          "gallery_noun_pair_orientation_positive": 0.9821597933769226,
+          "balanced_accuracy": 0.6542965471744537
+        },
+        "foreground_first": {
+          "mixed_correct": 158,
+          "fixed": 89,
+          "damaged": 82,
+          "gallery_noun_pair_orientation_positive": 0.8644616603851318,
+          "balanced_accuracy": 0.4998182952404022
+        },
+        "foreground_last": {
+          "mixed_correct": 165,
+          "fixed": 81,
+          "damaged": 67,
+          "gallery_noun_pair_orientation_positive": 0.48263341188430786,
+          "balanced_accuracy": 0.5250969231128693
+        },
+        "role": {
+          "mixed_correct": 172,
+          "fixed": 89,
+          "damaged": 68,
+          "gallery_noun_pair_orientation_positive": 0.8854594230651855,
+          "balanced_accuracy": 0.5461758971214294
+        },
+        "position": {
+          "mixed_correct": 152,
+          "fixed": 83,
+          "damaged": 82,
+          "gallery_noun_pair_orientation_positive": 0.7451847195625305,
+          "balanced_accuracy": 0.48152559995651245
+        },
+        "role_residual": {
+          "mixed_correct": 167,
+          "fixed": 85,
+          "damaged": 69,
+          "gallery_noun_pair_orientation_positive": 0.572071373462677,
+          "balanced_accuracy": 0.5306695103645325
+        }
+      },
+      "role_and_isolated_agree": {
+        "n": 201,
+        "role_correct": 132
+      },
+      "role_and_isolated_disagree": {
+        "n": 114,
+        "role_correct": 40
+      },
+      "verification": {
+        "two_photos_ground_both_orders": 855,
+        "joint_opportunities": 322,
+        "mixed_joint_opportunities": 46,
+        "policies": {
+          "both_orders_only": {
+            "switches": 1838,
+            "fixed": 35,
+            "damaged": 26
+          },
+          "counterbalanced_verified": {
+            "switches": 150,
+            "fixed": 12,
+            "damaged": 8
+          },
+          "isolated_on_same_opportunities": {
+            "switches": 165,
+            "fixed": 11,
+            "damaged": 7
+          },
+          "position_on_same_opportunities": {
+            "switches": 174,
+            "fixed": 8,
+            "damaged": 12
+          },
+          "literal_self_verified": {
+            "switches": 4130,
+            "fixed": 103,
+            "damaged": 50
+          }
+        }
+      }
+    }
+  }
+}
