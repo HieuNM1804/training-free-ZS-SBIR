@@ -1,6 +1,8 @@
 """Can gallery-only pair choices identify a useful reading of one unseen sketch?"""
 import itertools
 import json
+import hashlib
+import inspect
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -11,6 +13,9 @@ from .branch_view_policy import outputs
 from .gallery_panel_resume import region_views, semantic_inputs
 from .gallery_region_panels import CONFIG, Index
 from .positive_foil import base_parts, STRONG
+from .branch_view_study import PrefixReplay
+from .quickdraw_locked import KD_FUNCTION_SHA
+from .retrieval_evidence import load_kd
 
 
 READERS = ('visual', 'words', 'crops_visual', 'gallery_words')
@@ -65,8 +70,13 @@ def evaluate(scores, truth, train_ids, test_ids, index, inverse):
     chosen=accuracy.gather(1,weight.argmax(1,keepdim=True))
     preference=torch.cat([(weight[:,i:i+1]-weight[:,j:j+1]).sign()*
                           (accuracy[:,i:i+1]-accuracy[:,j:j+1]).sign() for i,j in PAIRS],1)
-    return torch.cat([valid[:,None],residual[:,None],relevant_pairs[:,None],accuracy,
-                      chosen,accuracy[:,:4].amax(1,keepdim=True),preference.mean(1,keepdim=True)],1).cpu()
+    # The incumbent sorted the head in descending score before we split its ranks.
+    incumbent=(test_ids[index[1]]-test_ids[index[0]]).sign()
+    incumbent_hit=((incumbent*difference+1)*.5*difference.abs()).sum(1)/relevant_pairs.clamp_min(1)
+    statistics=torch.cat([valid[:,None],residual[:,None],relevant_pairs[:,None],accuracy,
+                          chosen,accuracy[:,:4].amax(1,keepdim=True),preference.mean(1,keepdim=True),
+                          incumbent_hit[:,None]],1)
+    return statistics.cpu(),weight
 
 
 @torch.inference_mode()
@@ -74,6 +84,8 @@ def run():
     w=Path('/content/sbir')
     cfg,paths,qs,_,gs,q,p,src,tgt,scale=semantic_inputs(w,'sketchy')
     result={}
+    kd,_=load_kd(w)
+    assert hashlib.sha256(inspect.getsource(kd).strip().encode()).hexdigest()==KD_FUNCTION_SHA
     design=torch.zeros(len(PAIRS),len(READERS),device='cuda')
     for i,(left,right) in enumerate(PAIRS):
         design[i,[left,right]]=1
@@ -88,6 +100,9 @@ def run():
         views,_=region_views(w,split,cfg,paths,qi,q)
         folder,tree,regional=base_parts(w,split)
         batches=[]
+        replay=PrefixReplay(kd,gold,split)
+        benchmark={}
+        flips={}
         for start in range(0,len(qi),48):
             sl=slice(start,start+48)
             offset=start%192
@@ -106,12 +121,32 @@ def run():
             original=graph.score(CONFIG,a@bank.T).clamp_min(1e-30).log()
             region=reg+.65*(diff-original)
             reference=region+(old-reg)*region.std(1,keepdim=True)/reg.std(1,keepdim=True)
-            ids=reference.topk(256).indices
+            order=reference.topk(reference.size(1)).indices
+            ids=order[:,:256]
             global_visual=((sketch+mirror)/2)@g.T
             crop_visual=views['regions'][sl].float().cuda().mean((1,2))@g.T
             scores=torch.stack([v.gather(1,ids) for v in (global_visual,lexical,crop_visual,diff)],1)
             truth=gold.cuda()[ids]==labels[sl].cuda()[:,None]
-            batches.append(torch.stack([evaluate(scores,truth,panels[i],panels[1-i],index,inverse) for i in (0,1)],1))
+            folds=[evaluate(scores,truth,panels[i],panels[1-i],index,inverse) for i in (0,1)]
+            batches.append(torch.stack([z[0] for z in folds],1))
+            # Put both folds on a common 256-photo percentile scale. Each item's
+            # reliability weights use only pair judgments on the other fold.
+            scale_rank=percentiles(scores)
+            weighted=torch.empty_like(scores[:,0])
+            for i,(_,weight) in enumerate(folds):
+                held=panels[1-i]
+                weighted[:,held]=(scale_rank[:,:,held]*weight[:,:,None]).sum(1)
+            natural=torch.arange(256,device=ids.device).expand_as(ids)
+            for name,arr in [('baseline',None),('words',scores[:,1]),('diffused_words',scores[:,3]),
+                             ('uniform',scale_rank.mean(1)),('moment_weights',weighted)]:
+                positions=natural if arr is None else arr.argsort(dim=1,descending=True,stable=True)
+                head=ids.gather(1,positions)
+                cutoff=200 if split=='sketchy_2' else order.size(1)
+                ranking=torch.cat([head,order[:,256:cutoff]],1)[:,:cutoff]
+                benchmark.setdefault(name,[]).append(replay.chunk((ranking.cpu(),labels[sl])))
+                ok=truth[:,0]
+                proposed=truth.gather(1,positions[:,:1])[:,0]
+                flips.setdefault(name,[]).append(torch.stack([~ok&proposed,ok&~proposed],1).cpu())
         data=torch.cat(batches).double()
         report={'queries':len(qi),'gallery':len(g),'readers':list(READERS)}
         for k,mask in [('all_mixed_heads',data[:,:,2]>0),
@@ -123,6 +158,7 @@ def run():
                  'mean_offdiagonal_residual':float(average[:,1].mean()),
                  'held_pair_accuracy_pct':dict(zip(READERS+('moment_weights','uniform','rotated_weights'),(100*average[:,3:10].mean(0)).tolist())),
                  'selected_reader_accuracy_pct':float(100*average[:,10].mean()),
+                 'incumbent_pair_accuracy_pct':float(100*average[:,13].mean()),
                  'best_reader_after_labels_pct':float(100*average[:,11].mean()),
                  'reader_order_concordance':float(average[:,12].mean())}
             gap=100*(average[:,7]-average[:,8])
@@ -133,6 +169,8 @@ def run():
             row['class_bootstrap95']=macro[boot].mean(1).quantile(torch.tensor([.025,.975],dtype=torch.double)).tolist()
             report[k]=row
         report['feasible_panel_reads']=int(data[:,:,0].sum())
+        report['official_metrics']={k:(100*torch.cat(v).double().mean(0)).tolist() for k,v in benchmark.items()}
+        report['top1_fixed_damaged']={k:torch.cat(v).sum(0).tolist() for k,v in flips.items()}
         result[split]=report
         print(split,json.dumps(report),flush=True)
     out=w/'results/query-ordinal-reliability'
