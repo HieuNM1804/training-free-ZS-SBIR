@@ -16,8 +16,8 @@ def render(workspace,dest):
     plt.rcParams.update({"font.family":"DejaVu Sans","font.size":10,"figure.facecolor":"white"})
     fig,axes=plt.subplots(6,3,figsize=(7.1,12.2))
     fig.subplots_adjust(left=.19,right=.985,bottom=.022,top=.952,hspace=.30,wspace=.09)
-    for j,title in enumerate(("Sketch truy vấn","Top-1 với màu trung bình","Top-1 với sáu mảnh")):
-        axes[0,j].set_title(title,fontsize=11,weight="bold",pad=7)
+    for j,title in enumerate(("Sketch truy vấn","Top-1 với ảnh\nmàu trung bình","Top-1 với sáu\nmảnh của sketch")):
+        axes[0,j].set_title(title,fontsize=10.5,weight="bold",pad=7)
     row=0
     for split,label in (("sketchy_1","Sketchy Ext-1"),("sketchy_2","Sketchy Ext-2"),("tuberlin","TU-Berlin")):
         folder=Path(runtime(workspace,"tuberlin" if split=="tuberlin" else "sketchy",batch=1,workers=0).root)
