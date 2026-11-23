@@ -95,9 +95,11 @@ def encode(v,pixels,modes):
     return full,obs,float(error)
 
 
-def selected_modes(w,stage):
+def selected_modes(w,ds,stage):
     if stage=="pilot":return list(MODES)
-    frozen=read(w/"results"/FAMILY/"freeze.json")
+    name="shortlist.json" if ds=="sketchy" else "freeze.json"
+    frozen=read(w/"results"/FAMILY/name)
+    if digest(frozen["config"])!=frozen["sha256"]:raise ValueError("Invalid input configuration")
     return frozen["config"]["input_modes"]
 
 
@@ -106,7 +108,7 @@ def run(w,ds,stage):
     cfg,paths,qs,_,_,baseline,_=dataset(w,ds)
     if stage=="pilot" and ds!="sketchy":raise ValueError("No TU pilot or tuning")
     ids=torch.cat([qi[stratified_sample(y,36,63241)] for qi,y in qs.values()]).unique(sorted=True) if stage=="pilot" else torch.arange(len(paths))
-    modes=selected_modes(w,stage)
+    modes=selected_modes(w,ds,stage)
     out=w/"cache"/FAMILY/ds/stage
     out.mkdir(parents=True,exist_ok=True)
     sig=digest({"model":CHECKPOINT,"paths":[str(paths[int(i)]) for i in ids],"operation":"mean native patch fill, exact area control, paired common spatial permutations v1",
