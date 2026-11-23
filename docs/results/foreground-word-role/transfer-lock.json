@@ -1,0 +1,23 @@
+{
+  "stage": "locked before TU retrieval",
+  "reference_scoring_code": "a108921631e0fe23a9387b36a2956f23197d1600",
+  "primary": "role",
+  "nomination": "First differently named photo in the first 200 of the locked standalone two-view public-word RGB diffusion ranker",
+  "readouts": [
+    "native",
+    "isolated",
+    "foreground_first",
+    "foreground_last",
+    "role",
+    "position",
+    "role_residual",
+    "both_orders_only",
+    "counterbalanced_verified",
+    "isolated_on_same_opportunities",
+    "position_on_same_opportunities",
+    "literal_self_verified"
+  ],
+  "primary_research_contrast": "Net corrected first results versus native and isolated words. Also report paired intervals by class and original mAP@all and P@100.",
+  "data": "Complete 30-class TU-Berlin-Ext. No prompt, thresholds, scoring rule, graph parameters, candidate nomination or word list selected using TU.",
+  "scope": "Same sketch-to-photo task in a new dataset, not a new domain pair."
+}

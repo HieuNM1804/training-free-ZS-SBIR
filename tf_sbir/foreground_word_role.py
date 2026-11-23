@@ -178,9 +178,10 @@ def evaluate(data,task,pairs_to_id,features):
 
 
 @torch.inference_mode()
-def run(full=False):
+def run(full=False,dataset='sketchy'):
     w=Path('/content/sbir')
-    qs,gs,encoded,_,q,p,flip,src,tgt,scale=audit_inputs(w,768,all_sketches=full)
+    if dataset=='tuberlin' and not full:raise ValueError('Only a frozen complete TU transfer is supported')
+    qs,gs,encoded,_,q,p,flip,src,tgt,scale=audit_inputs(w,768,all_sketches=full,dataset=dataset)
     words=read_words(w/'assets/open-images-v7-classes.csv')
     kd,_=load_kd(w)
     assert hashlib.sha256(inspect.getsource(kd).strip().encode()).hexdigest()==KD_FUNCTION_SHA
@@ -228,9 +229,11 @@ def run(full=False):
         print(s,entry['first_different_name']['mixed_relevance'],entry['full_gallery_metrics'],flush=True)
     root=w/'results/foreground-word-role'
     root.mkdir(exist_ok=True,parents=True)
-    (root/('sketchy-full.json' if full else 'sketchy.json')).write_text(json.dumps(result,indent=2))
+    (root/(dataset+('-full' if full else '')+'.json')).write_text(json.dumps(result,indent=2))
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser()
     parser.add_argument('--full',action='store_true')
-    run(parser.parse_args().full)
+    parser.add_argument('--dataset',choices=['sketchy','tuberlin'],default='sketchy')
+    options=parser.parse_args()
+    run(options.full,options.dataset)

@@ -20,15 +20,21 @@ from .gallery_region_panels import Index
 from .public_context_standardization import SoftStandardizedDonors,endpoint_matrix
 
 
-def audit_inputs(w,additional_samples=0,*,all_sketches=False):
+def audit_inputs(w,additional_samples=0,*,all_sketches=False,dataset='sketchy'):
     workers=min(4,len(os.sched_getaffinity(0)))
-    cfg=runtime(w,'sketchy',batch=384,workers=workers)
-    qp,qs=merge_inputs(cfg.root,SKETCHY_SPLITS,'sketch')
-    pp,gs=merge_inputs(cfg.root,SKETCHY_SPLITS,'photo')
+    cfg=runtime(w,dataset,batch=384,workers=workers)
+    splits=SKETCHY_SPLITS if dataset=='sketchy' else ('tuberlin',)
+    qp,qs=merge_inputs(cfg.root,splits,'sketch')
+    pp,gs=merge_inputs(cfg.root,splits,'photo')
     def common(groups):
         return torch.tensor(sorted(set(groups['sketchy_1'][0].tolist()) & set(groups['sketchy_2'][0].tolist())))
-    cq,cp=common(qs),common(gs)
-    assert (len(cq),len(cp))==(2231,2205)
+    if dataset=='sketchy':
+        cq,cp=common(qs),common(gs)
+        assert (len(cq),len(cp))==(2231,2205)
+    else:
+        if not all_sketches or len(qs['tuberlin'][1].unique())!=30 or len(gs['tuberlin'][1].unique())!=30:
+            raise ValueError('Only the full 30-class TU transfer is supported')
+        cq,cp=qs['tuberlin'][0],gs['tuberlin'][0]
     if all_sketches:
         cq=torch.arange(len(qp))
     elif additional_samples:
