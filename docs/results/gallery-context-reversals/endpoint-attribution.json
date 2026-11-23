@@ -1,0 +1,77 @@
+{
+  "checks": {
+    "sketchy_1": {
+      "max_abs_linear_residual": 1.0493022273294628e-7,
+      "mean_native_mass_on_shared_endpoints": 0.8036757110408983
+    },
+    "sketchy_2": {
+      "max_abs_linear_residual": 3.6241340239939746e-7,
+      "mean_native_mass_on_shared_endpoints": 0.8671739304189036
+    }
+  },
+  "shared_queries": 2231,
+  "shared_photos": 2205,
+  "boundary_pairs": 15149,
+  "native_flips": 1489,
+  "resolved_flips": 1489,
+  "ext1_to_ext2": {
+    "swaps": {
+      "swap_only_shared_endpoints": {
+        "correct_on_fixed_pairs": 11477,
+        "changes_from_native": 1359,
+        "reaches_other_order_on_native_flips": 806
+      },
+      "swap_only_other_endpoints": {
+        "correct_on_fixed_pairs": 10507,
+        "changes_from_native": 1459,
+        "reaches_other_order_on_native_flips": 718
+      },
+      "swap_only_total_exposure_to_shared": {
+        "correct_on_fixed_pairs": 11526,
+        "changes_from_native": 1136,
+        "reaches_other_order_on_native_flips": 718
+      },
+      "swap_only_mix_within_shared": {
+        "correct_on_fixed_pairs": 11150,
+        "changes_from_native": 270,
+        "reaches_other_order_on_native_flips": 189
+      }
+    },
+    "resolved_flips_one_part_suffices": {
+      "only_shared": 713,
+      "only_other": 625,
+      "either": 93,
+      "neither": 58
+    }
+  },
+  "ext2_to_ext1": {
+    "swaps": {
+      "swap_only_shared_endpoints": {
+        "correct_on_fixed_pairs": 10507,
+        "changes_from_native": 1512,
+        "reaches_other_order_on_native_flips": 771
+      },
+      "swap_only_other_endpoints": {
+        "correct_on_fixed_pairs": 11477,
+        "changes_from_native": 1236,
+        "reaches_other_order_on_native_flips": 683
+      },
+      "swap_only_total_exposure_to_shared": {
+        "correct_on_fixed_pairs": 10514,
+        "changes_from_native": 1345,
+        "reaches_other_order_on_native_flips": 729
+      },
+      "swap_only_mix_within_shared": {
+        "correct_on_fixed_pairs": 11037,
+        "changes_from_native": 250,
+        "reaches_other_order_on_native_flips": 192
+      }
+    },
+    "resolved_flips_one_part_suffices": {
+      "only_shared": 713,
+      "only_other": 625,
+      "either": 58,
+      "neither": 93
+    }
+  }
+}
