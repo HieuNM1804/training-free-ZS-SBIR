@@ -1,0 +1,284 @@
+{
+  "sketchy_1": {
+    "eligible": 14621,
+    "all_adjacent_pairs": 15147,
+    "sketches_covered": 524,
+    "genuine_flips": 1428,
+    "classes": {
+      "9": "scissors",
+      "11": "windmill",
+      "13": "tree",
+      "18": "wheelchair"
+    },
+    "risk": {
+      "small_native_margin": {
+        "roc_auc": 0.8011675298482919,
+        "class_aucs": {
+          "9": 0.8195858587592932,
+          "11": 0.7730529525839737,
+          "13": 0.816273740422568,
+          "18": 0.9142466047560256
+        },
+        "flip_fraction_top_tenth": 0.3679890560875513
+      },
+      "thinning_variation": {
+        "roc_auc": 0.5579694774900789,
+        "class_aucs": {
+          "9": 0.5851090011046056,
+          "11": 0.5425753569378386,
+          "13": 0.5612732760622242,
+          "18": 0.445407697675667
+        },
+        "flip_fraction_top_tenth": 0.1374829001367989
+      },
+      "variation_relative_to_native_margin": {
+        "roc_auc": 0.807494095948089,
+        "class_aucs": {
+          "9": 0.8385043754972156,
+          "11": 0.7690854622950374,
+          "13": 0.8322098908753193,
+          "18": 0.8842127865156476
+        },
+        "flip_fraction_top_tenth": 0.40013679890560877
+      },
+      "smoothed_fraction_of_thinned_reversals": {
+        "roc_auc": 0.5671904250216725,
+        "class_aucs": {
+          "9": 0.5377683533364239,
+          "11": 0.6062507034661407,
+          "13": 0.5390629208265614,
+          "18": 0.4985059137187539
+        },
+        "flip_fraction_top_tenth": 0.16347469220246238
+      },
+      "within_class_and_margin_decile": {
+        "n_bins_with_both_outcomes": 33,
+        "pairs_covered": 13596,
+        "weighted_auc": {
+          "small_native_margin": 0.5456361964559225,
+          "thinning_variation": 0.6434715649039575,
+          "variation_relative_to_native_margin": 0.6547432240244332,
+          "smoothed_fraction_of_thinned_reversals": 0.46769837787899965
+        }
+      },
+      "paired_auc_contrast": {
+        "pooled": {
+          "gain_over_small_margin": 0.006326566099796982,
+          "object_cluster_multiplier_ci95": [
+            -0.016240761111402005,
+            0.027920241456374128
+          ],
+          "sketch_source_objects": 248
+        },
+        "within_class_and_margin_decile": {
+          "gain_over_small_margin": 0.10910702756851044,
+          "object_cluster_multiplier_ci95": [
+            0.06668471706483689,
+            0.15080839005904995
+          ],
+          "sketch_source_objects": 248
+        }
+      }
+    },
+    "direct_native_disagreements": {
+      "pairs": 7359,
+      "direct_correct": 1913,
+      "graph_correct": 5446,
+      "counterfactual": {
+        "small_native_margin": {
+          "auc_graph_wrong": 0.689085578907216,
+          "top_quarter_per_sketch": 2069,
+          "fallback_fixed": 666,
+          "fallback_damaged": 1403
+        },
+        "thinning_variation": {
+          "auc_graph_wrong": 0.5136607117660847,
+          "top_quarter_per_sketch": 2069,
+          "fallback_fixed": 574,
+          "fallback_damaged": 1495
+        },
+        "variation_relative_to_native_margin": {
+          "auc_graph_wrong": 0.6786587277377527,
+          "top_quarter_per_sketch": 2069,
+          "fallback_fixed": 684,
+          "fallback_damaged": 1385
+        },
+        "smoothed_fraction_of_thinned_reversals": {
+          "auc_graph_wrong": 0.5778699444951997,
+          "top_quarter_per_sketch": 2069,
+          "fallback_fixed": 619,
+          "fallback_damaged": 1450
+        }
+      },
+      "independent_of_gallery_visual_readings": {
+        "global_visual": {
+          "auc_native_wrong": 0.38912852299409173,
+          "all": {
+            "opportunities": 7359,
+            "fixed": 911,
+            "damaged": 3507
+          },
+          "highest_quarter_risk_within_sketch": {
+            "opportunities": 2069,
+            "fixed": 347,
+            "damaged": 847
+          }
+        },
+        "crop_visual": {
+          "auc_native_wrong": 0.3870415977887922,
+          "all": {
+            "opportunities": 7359,
+            "fixed": 959,
+            "damaged": 3509
+          },
+          "highest_quarter_risk_within_sketch": {
+            "opportunities": 2069,
+            "fixed": 349,
+            "damaged": 845
+          }
+        }
+      }
+    }
+  },
+  "sketchy_2": {
+    "eligible": 14606,
+    "all_adjacent_pairs": 15147,
+    "sketches_covered": 523,
+    "genuine_flips": 1432,
+    "classes": {
+      "9": "scissors",
+      "11": "windmill",
+      "13": "tree",
+      "18": "wheelchair"
+    },
+    "risk": {
+      "small_native_margin": {
+        "roc_auc": 0.8189761151345167,
+        "class_aucs": {
+          "9": 0.8510211326930947,
+          "11": 0.7987893286426269,
+          "13": 0.8339433117579167,
+          "18": 0.9152426643667009
+        },
+        "flip_fraction_top_tenth": 0.38972602739726026
+      },
+      "thinning_variation": {
+        "roc_auc": 0.5877046788027543,
+        "class_aucs": {
+          "9": 0.6303944929838496,
+          "11": 0.6013219583699795,
+          "13": 0.5538704616006017,
+          "18": 0.5382998221120154
+        },
+        "flip_fraction_top_tenth": 0.14931506849315068
+      },
+      "variation_relative_to_native_margin": {
+        "roc_auc": 0.8355110858275949,
+        "class_aucs": {
+          "9": 0.8809661347389703,
+          "11": 0.8340397537379067,
+          "13": 0.831542692549856,
+          "18": 0.8919105888271971
+        },
+        "flip_fraction_top_tenth": 0.37465753424657533
+      },
+      "smoothed_fraction_of_thinned_reversals": {
+        "roc_auc": 0.7597083683537831,
+        "class_aucs": {
+          "9": 0.8715731581100923,
+          "11": 0.7268209909117561,
+          "13": 0.7586443309473353,
+          "18": 0.8364868021490306
+        },
+        "flip_fraction_top_tenth": 0.44246575342465755
+      },
+      "within_class_and_margin_decile": {
+        "n_bins_with_both_outcomes": 34,
+        "pairs_covered": 13723,
+        "weighted_auc": {
+          "small_native_margin": 0.5493414616158303,
+          "thinning_variation": 0.6865119488846707,
+          "variation_relative_to_native_margin": 0.6953652485349591,
+          "smoothed_fraction_of_thinned_reversals": 0.621069916997561
+        }
+      },
+      "paired_auc_contrast": {
+        "pooled": {
+          "gain_over_small_margin": 0.01653497069307852,
+          "object_cluster_multiplier_ci95": [
+            -0.006610384876488057,
+            0.03895134574129032
+          ],
+          "sketch_source_objects": 248
+        },
+        "within_class_and_margin_decile": {
+          "gain_over_small_margin": 0.146023786919129,
+          "object_cluster_multiplier_ci95": [
+            0.10615118771767465,
+            0.18510382331520714
+          ],
+          "sketch_source_objects": 248
+        }
+      }
+    },
+    "direct_native_disagreements": {
+      "pairs": 7362,
+      "direct_correct": 2013,
+      "graph_correct": 5349,
+      "counterfactual": {
+        "small_native_margin": {
+          "auc_graph_wrong": 0.6508249286721746,
+          "top_quarter_per_sketch": 2063,
+          "fallback_fixed": 682,
+          "fallback_damaged": 1381
+        },
+        "thinning_variation": {
+          "auc_graph_wrong": 0.5473985369170312,
+          "top_quarter_per_sketch": 2063,
+          "fallback_fixed": 671,
+          "fallback_damaged": 1392
+        },
+        "variation_relative_to_native_margin": {
+          "auc_graph_wrong": 0.6630514480702504,
+          "top_quarter_per_sketch": 2063,
+          "fallback_fixed": 704,
+          "fallback_damaged": 1359
+        },
+        "smoothed_fraction_of_thinned_reversals": {
+          "auc_graph_wrong": 0.5955764071207742,
+          "top_quarter_per_sketch": 2063,
+          "fallback_fixed": 671,
+          "fallback_damaged": 1392
+        }
+      },
+      "independent_of_gallery_visual_readings": {
+        "global_visual": {
+          "auc_native_wrong": 0.3797038264182422,
+          "all": {
+            "opportunities": 7362,
+            "fixed": 903,
+            "damaged": 3408
+          },
+          "highest_quarter_risk_within_sketch": {
+            "opportunities": 2063,
+            "fixed": 334,
+            "damaged": 822
+          }
+        },
+        "crop_visual": {
+          "auc_native_wrong": 0.37767894366186067,
+          "all": {
+            "opportunities": 7362,
+            "fixed": 958,
+            "damaged": 3416
+          },
+          "highest_quarter_risk_within_sketch": {
+            "opportunities": 2063,
+            "fixed": 354,
+            "damaged": 816
+          }
+        }
+      }
+    }
+  }
+}
