@@ -6,7 +6,7 @@ For an image pair, the observed correction is its log-score margin under native 
 
 Each candidate compares with the same 64 uniformly chosen gallery anchors. The mean of the corrected pair margins plus one common anchor offset produces its retrieval score. The strong frozen reference replaces its diffused lexical contribution by this score. The two controls use the same mean trust for every pair, or drop the paired cross term from the variance estimate. Gallery labels never enter this calculation.
 
-Two independent uniform 768-query samples (same pre-specified seed applied in each split) retained the full galleries. All rankings were replayed with the source-pinned KD-SBIR evaluator on Colab L4. The numerical result is exploratory.
+Each split used a uniform sample of 768 queries with the same pre-specified seed and its full gallery. All rankings were replayed with the source-pinned KD-SBIR evaluator on Colab L4. The numerical result is exploratory.
 
 | Method | Ext-1 mAP@all | P@100 | Ext-2 mAP@200 | P@200 |
 |---|---:|---:|---:|---:|
