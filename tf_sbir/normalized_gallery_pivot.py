@@ -101,7 +101,6 @@ def run():
         graph=Index(SimpleNamespace(p=g),rgb_only=True)
         prior=target.mean(0).clamp_min(1e-30)
         gathered={}
-        direct_scores=[]
         visual_logits=[]
         donor_style=[]
         for start in range(0,len(where),48):
@@ -125,7 +124,7 @@ def run():
                     if key=='joint_text_partition':
                         fake=weights@mix[train[shuf]]
                         inferred.setdefault('shuffled_word_identity',torch.empty_like(v))[:,test]=(fake/prior)@target[test].T
-                # The query-word-only control has the same target prior correction.
+            # The query-word-only control has the same target prior correction.
             qwords=((scale*(q[ix].cuda()@src.T)).softmax(1)+(scale*(flip[ix].float().cuda()@src.T)).softmax(1))/2
             inferred['direct_words']=(qwords/prior)@target.T
             true_log=inferred['joint_text_partition'].clamp_min(1e-30).log()
