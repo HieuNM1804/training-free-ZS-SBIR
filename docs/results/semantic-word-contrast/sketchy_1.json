@@ -1,0 +1,235 @@
+{
+  "commit": "817fedcbd3baf82793ed1315e3201599b89a873b",
+  "seed": 42,
+  "queries": 1536,
+  "gallery": 17100,
+  "pair_count": 3699,
+  "mean_paired_query_mass": 0.36752915382385254,
+  "gallery_rho_quantiles": [
+    0.48749369382858276,
+    0.8341040015220642,
+    0.9133908152580261,
+    0.9548496007919312,
+    0.9869036078453064
+  ],
+  "metrics": {
+    "direct_original": [
+      75.86246204312678,
+      79.78841158740883
+    ],
+    "diffused_original": [
+      82.32281120884485,
+      82.18619805132525
+    ],
+    "direct_gallery_corr": [
+      75.87172233312836,
+      79.79361989370469
+    ],
+    "diffused_gallery_corr": [
+      82.32161144090546,
+      82.19010429857008
+    ],
+    "direct_text_corr": [
+      75.87123469578123,
+      79.79687511239413
+    ],
+    "diffused_text_corr": [
+      82.32307301720235,
+      82.18945325703922
+    ],
+    "direct_mean_corr": [
+      75.87653199055543,
+      79.79492198937805
+    ],
+    "diffused_mean_corr": [
+      82.32135526838343,
+      82.19140638502722
+    ],
+    "direct_shuffled_corr": [
+      75.87938210478265,
+      79.79231782264833
+    ],
+    "diffused_shuffled_corr": [
+      82.32876595344956,
+      82.18945326504277
+    ],
+    "direct_coarse": [
+      75.81464534935853,
+      79.70963549002286
+    ],
+    "diffused_coarse": [
+      82.22302409340045,
+      81.90299492392418
+    ],
+    "direct_swapped": [
+      75.26539506519234,
+      78.97786467365222
+    ],
+    "diffused_swapped": [
+      81.97978617184467,
+      81.39062509205056
+    ]
+  },
+  "contrasts": {
+    "direct_gallery_corr minus direct_original": {
+      "points": [
+        0.009260290001596635,
+        0.005208306295874839
+      ],
+      "macro": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": 0.01143331151056685,
+        "positive_classes": 13,
+        "bootstrap95": [
+          -0.015041105378786175,
+          0.0427525136062212
+        ]
+      }
+    },
+    "direct_gallery_corr minus direct_text_corr": {
+      "points": [
+        0.0004876373471536984,
+        -0.0032552186894463375
+      ],
+      "macro": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": -0.0007866354774554431,
+        "positive_classes": 13,
+        "bootstrap95": [
+          -0.011888417545589239,
+          0.01072712461534966
+        ]
+      }
+    },
+    "direct_gallery_corr minus direct_mean_corr": {
+      "points": [
+        -0.004809657427055451,
+        -0.001302095673357447
+      ],
+      "macro": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": -0.0067238097727160655,
+        "positive_classes": 12,
+        "bootstrap95": [
+          -0.02436239414129573,
+          0.00831265635164497
+        ]
+      }
+    },
+    "direct_gallery_corr minus direct_shuffled_corr": {
+      "points": [
+        -0.007659771654289216,
+        0.001302071056367519
+      ],
+      "macro": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": -0.009053239231520342,
+        "positive_classes": 11,
+        "bootstrap95": [
+          -0.029747717133629635,
+          0.0072864525796904715
+        ]
+      }
+    },
+    "direct_gallery_corr minus direct_coarse": {
+      "points": [
+        0.05707698376985112,
+        0.08398440368182492
+      ],
+      "macro": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": 0.017233235513318103,
+        "positive_classes": 13,
+        "bootstrap95": [
+          -0.36710662348564643,
+          0.3747982541545394
+        ]
+      }
+    },
+    "diffused_gallery_corr minus diffused_original": {
+      "points": [
+        -0.0011997679393971339,
+        0.0039062472448373833
+      ],
+      "macro": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": 0.0006144864727991084,
+        "positive_classes": 13,
+        "bootstrap95": [
+          -0.02536204812245928,
+          0.031713012699526595
+        ]
+      }
+    },
+    "diffused_gallery_corr minus diffused_text_corr": {
+      "points": [
+        -0.0014615762969090913,
+        0.0006510415308487912
+      ],
+      "macro": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": -0.0029007419909214804,
+        "positive_classes": 11,
+        "bootstrap95": [
+          -0.017146089706367565,
+          0.010562173279045866
+        ]
+      }
+    },
+    "diffused_gallery_corr minus diffused_mean_corr": {
+      "points": [
+        0.00025617252200997126,
+        -0.001302086457144469
+      ],
+      "macro": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": -0.0012767813852483422,
+        "positive_classes": 11,
+        "bootstrap95": [
+          -0.014434497993507468,
+          0.011716804956374286
+        ]
+      }
+    },
+    "diffused_gallery_corr minus diffused_shuffled_corr": {
+      "points": [
+        -0.007154512544123766,
+        0.0006510335272954156
+      ],
+      "macro": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": -0.007954128024873004,
+        "positive_classes": 12,
+        "bootstrap95": [
+          -0.026361143698577352,
+          0.006435776998849923
+        ]
+      }
+    },
+    "diffused_gallery_corr minus diffused_coarse": {
+      "points": [
+        0.09858734750499328,
+        0.2871093746459034
+      ],
+      "macro": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": 0.05702804770753227,
+        "positive_classes": 13,
+        "bootstrap95": [
+          -0.31770118669699166,
+          0.3854806727612456
+        ]
+      }
+    }
+  }
+}
