@@ -92,6 +92,7 @@ def run():
     common=lambda z:torch.tensor(sorted(set(z[ss[0]][0].tolist())&set(z[ss[1]][0].tolist())))
     cq,cp=common(qs),common(gs)
     observations={}
+    third_readings={}
     for s in ss:
         qi,labels=qs[s]
         pi,gold=gs[s]
@@ -126,6 +127,12 @@ def run():
             assignments.append(membership)
             trials.append(scores)
         observations[s]=(orig,trials,torch.stack(assignments),evidence[:,ploc].cpu())
+        # Same fixed CLIP encoder, two ways to compare the original pixels with
+        # a candidate. No other gallery photo contributes to either reading.
+        mean_view=(q[qi[qloc]].cuda()+views['flipped'][qloc].float().cuda())/2
+        crop=views['regions'][qloc].float().cuda().mean((1,2))
+        third_readings[s]={'global_visual':(mean_view@g[ploc].T).cpu(),
+                           'crop_visual':(crop@g[ploc].T).cpu()}
         del evidence,bank
         print(s,'8 native half-gallery repeats',flush=True)
     # From here onward join independently made predictions on identical photo
@@ -165,6 +172,21 @@ def run():
         opportunities=ii[disputes]
         graph_wrong=native[disputes]<0
         decisions={}
+        dir_checks={}
+        thresholded=[]
+        for query in opportunities.unique():
+            choices=(opportunities==query).nonzero().flatten()
+            high=risks['variation_relative_to_native_margin'][disputes][choices].argsort(descending=True,stable=True)
+            thresholded.append(choices[high[:(len(choices)+3)//4]])
+        higher_risk=torch.cat(thresholded)
+        for name,score in third_readings[s].items():
+            margin=((score[ii,left]-score[ii,right])*positive)[disputes]
+            support=-native[disputes].sign()*margin
+            dir_checks[name]={'auc_native_wrong':float(roc_auc_score(graph_wrong.numpy(),support.numpy()))}
+            for key,rows in [('all',torch.arange(len(graph_wrong))),('highest_quarter_risk_within_sketch',higher_risk)]:
+                switch=rows[support[rows]>0]
+                dir_checks[name][key]={'opportunities':len(rows),'fixed':int(graph_wrong[switch].sum()),
+                                       'damaged':int((~graph_wrong[switch]).sum())}
         for name,value in risks.items():
             v=value[disputes]
             selected=[]
@@ -182,7 +204,8 @@ def run():
                    'classes':{int(c):UNSEEN_CLASSES[ss[0]][c] for c in selected_label.unique()},
                    'risk':summarize({k:x[usable] for k,x in risks.items()},crossed[usable],selected_label,object_groups[ii[usable]]),
                    'direct_native_disagreements':{'pairs':len(graph_wrong),'direct_correct':int(graph_wrong.sum()),
-                         'graph_correct':int((~graph_wrong).sum()),'counterfactual':decisions}}
+                         'graph_correct':int((~graph_wrong).sum()),'counterfactual':decisions,
+                         'independent_of_gallery_visual_readings':dir_checks}}
     out=w/'results/gallery-context-reversals'
     out.mkdir(exist_ok=True,parents=True)
     (out/'native-forecast.json').write_text(json.dumps(result,indent=2))
