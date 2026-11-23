@@ -1,0 +1,204 @@
+{
+  "sketchy_1": {
+    "queries": 14179,
+    "gallery": 17100,
+    "readers": [
+      "visual",
+      "words",
+      "crops_visual",
+      "gallery_words"
+    ],
+    "all_mixed_heads": {
+      "mixed_queries": 4382,
+      "panel_reads": 5730,
+      "mean_offdiagonal_residual": 0.3994094175933756,
+      "held_pair_accuracy_pct": {
+        "visual": 65.54370722387573,
+        "words": 84.67921949480537,
+        "crops_visual": 57.69854308729088,
+        "gallery_words": 51.227425142241735,
+        "moment_weights": 69.34354308224873,
+        "uniform": 70.51431842809669,
+        "rotated_weights": 74.4998687850552
+      },
+      "selected_reader_accuracy_pct": 65.54080897013166,
+      "incumbent_pair_accuracy_pct": 52.7427945981572,
+      "best_reader_after_labels_pct": 91.27601678638338,
+      "reader_order_concordance": -0.060969117387877594,
+      "paired_moment_minus_uniform_class_mean": -0.4385350677164853,
+      "class_bootstrap95": [
+        -1.436885440523462,
+        0.3385783020428837
+      ]
+    },
+    "identifiable_and_mixed": {
+      "mixed_queries": 2231,
+      "panel_reads": 2620,
+      "mean_offdiagonal_residual": 0.13852166998730692,
+      "held_pair_accuracy_pct": {
+        "visual": 62.2725851194821,
+        "words": 86.22940926233278,
+        "crops_visual": 57.082993713139864,
+        "gallery_words": 49.63437580652408,
+        "moment_weights": 65.23839708634257,
+        "uniform": 67.67184516906256,
+        "rotated_weights": 75.64488309760829
+      },
+      "selected_reader_accuracy_pct": 62.30950430701353,
+      "incumbent_pair_accuracy_pct": 51.415024772293464,
+      "best_reader_after_labels_pct": 90.95408403991331,
+      "reader_order_concordance": -0.1172120150551033,
+      "paired_moment_minus_uniform_class_mean": -0.09133458766248737,
+      "class_bootstrap95": [
+        -2.0924204047177524,
+        2.168454307640796
+      ]
+    },
+    "feasible_panel_reads": 11205,
+    "official_metrics": {
+      "baseline": [
+        85.29072057654668,
+        84.65068069024503
+      ],
+      "words": [
+        85.25910952492158,
+        84.5764863699353
+      ],
+      "diffused_words": [
+        85.25736371082964,
+        84.49404058885085
+      ],
+      "uniform": [
+        85.26493343578167,
+        84.5817758828576
+      ],
+      "moment_weights": [
+        85.26238997198415,
+        84.57493478773456
+      ]
+    },
+    "top1_fixed_damaged": {
+      "baseline": [
+        0,
+        0
+      ],
+      "words": [
+        77,
+        184
+      ],
+      "diffused_words": [
+        86,
+        145
+      ],
+      "uniform": [
+        115,
+        145
+      ],
+      "moment_weights": [
+        116,
+        145
+      ]
+    }
+  },
+  "sketchy_2": {
+    "queries": 12694,
+    "gallery": 12552,
+    "readers": [
+      "visual",
+      "words",
+      "crops_visual",
+      "gallery_words"
+    ],
+    "all_mixed_heads": {
+      "mixed_queries": 5265,
+      "panel_reads": 8469,
+      "mean_offdiagonal_residual": 0.6069424223898382,
+      "held_pair_accuracy_pct": {
+        "visual": 57.39458276103171,
+        "words": 66.17062905511455,
+        "crops_visual": 53.01291423268901,
+        "gallery_words": 63.1674177898271,
+        "moment_weights": 61.06141289863258,
+        "uniform": 61.497767067415744,
+        "rotated_weights": 61.90988579319201
+      },
+      "selected_reader_accuracy_pct": 57.25471628541949,
+      "incumbent_pair_accuracy_pct": 64.09872017935686,
+      "best_reader_after_labels_pct": 80.89099081961928,
+      "reader_order_concordance": -0.008420386325996032,
+      "paired_moment_minus_uniform_class_mean": 0.23987303879393249,
+      "class_bootstrap95": [
+        -0.40690927391951454,
+        0.7963868138654644
+      ]
+    },
+    "identifiable_and_mixed": {
+      "mixed_queries": 2739,
+      "panel_reads": 4271,
+      "mean_offdiagonal_residual": 0.14038195986812102,
+      "held_pair_accuracy_pct": {
+        "visual": 61.84536859063255,
+        "words": 67.48864150659341,
+        "crops_visual": 57.040104567233605,
+        "gallery_words": 63.74379958746545,
+        "moment_weights": 64.49869689320809,
+        "uniform": 65.40208570242207,
+        "rotated_weights": 66.2109058146056
+      },
+      "selected_reader_accuracy_pct": 61.500153321077974,
+      "incumbent_pair_accuracy_pct": 68.15789489570497,
+      "best_reader_after_labels_pct": 79.8032482983303,
+      "reader_order_concordance": -0.010526956373559772,
+      "paired_moment_minus_uniform_class_mean": 0.3198836287747796,
+      "class_bootstrap95": [
+        -0.929111659936206,
+        1.493590944888628
+      ]
+    },
+    "feasible_panel_reads": 11364,
+    "official_metrics": {
+      "baseline": [
+        77.54716691975567,
+        75.45174893507699
+      ],
+      "words": [
+        76.92434921658128,
+        75.4861352537652
+      ],
+      "diffused_words": [
+        77.34167384343891,
+        75.38061298549408
+      ],
+      "uniform": [
+        76.41271252054293,
+        75.25945340766118
+      ],
+      "moment_weights": [
+        76.3813696721949,
+        75.27000957705098
+      ]
+    },
+    "top1_fixed_damaged": {
+      "baseline": [
+        0,
+        0
+      ],
+      "words": [
+        280,
+        298
+      ],
+      "diffused_words": [
+        212,
+        398
+      ],
+      "uniform": [
+        362,
+        319
+      ],
+      "moment_weights": [
+        362,
+        324
+      ]
+    }
+  }
+}
