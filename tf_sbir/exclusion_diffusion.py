@@ -110,26 +110,26 @@ def kernels(kernel, g, ids, mask, *, with_controls=True):
     return variants,diagnostics
 
 
-def graph_audit(kernel, labels, veto, words, vocabulary, gallery, ids):
-    """Use unseen gallery labels to measure which wrong edges actually carry mass.
-
-    The class oracle is a post-hoc intervention on graph transitions. Its scores
-    are diagnostics and must never be included in a training-free leaderboard.
-    """
-    n=len(labels)
-    different=labels[:,None]!=labels[None,:]
-    membership=torch.zeros(vocabulary,n,device=labels.device,dtype=torch.bool)
-    membership[words,torch.arange(n,device=labels.device)[:,None]]=True
-    disjoint=torch.empty_like(veto)
+def disjoint_mask(words,vocabulary):
+    n=len(words)
+    membership=torch.zeros(vocabulary,n,device=words.device,dtype=torch.bool)
+    membership[words,torch.arange(n,device=words.device)[:,None]]=True
+    disjoint=torch.empty(n,n,device=words.device,dtype=torch.bool)
     for start in range(0,n,128):
         sl=slice(start,start+128)
         disjoint[sl]=~membership[words[sl]].any(1)
+    return disjoint
+
+
+def audit_edge_mass(kernel,labels,masks):
+    """After all rankings, measure how much cross-class mass each blind mask found."""
+    n=len(labels)
+    different=labels[:,None]!=labels[None,:]
     csr=kernel.local
     rows=torch.arange(n,device=labels.device).repeat_interleave(csr.crow_indices().diff().long())
     columns=csr.col_indices().long()
     stats={}
-    variants={}
-    for key,mask in [('excluded',veto),('disjoint_words',disjoint),('class_oracle',different)]:
+    for key,mask in masks.items():
         stats[key]={}
         for part in ['local','dense']:
             # Accumulators hold total removed mass, originally wrong mass and their intersection.
@@ -150,14 +150,13 @@ def graph_audit(kernel, labels, veto, words, vocabulary, gallery, ids):
             stats[key][part]={'base_cross_class_mass':bad/n,'removed_mass':removed/n,
                               'fraction_removed_mass_cross_class':overlap/removed if removed else None,
                               'fraction_cross_class_mass_caught':overlap/bad if bad else None}
-        variants[key]=kernels(kernel,gallery,ids,mask,with_controls=False)[0]['excluded']
-    return variants,stats
+    return stats
 
 
 @torch.inference_mode()
 def run(workspace,ds,official,audit=False):
     if audit and ds!='sketchy':
-        raise ValueError('The label intervention is a development diagnostic on Sketchy only')
+        raise ValueError('The edge attribution audit is a development diagnostic on Sketchy only')
     cfg,paths,qs,_,gs,q,p,src,tgt,scale=semantic_inputs(workspace,ds)
     out={}
     kd,_=load_kd(workspace)
@@ -173,16 +172,13 @@ def run(workspace,ds,official,audit=False):
         native=graph.kernels[0]
         ids=graph.neighbors[0][0][:,:CONFIG.neighbors]
         if audit:
-            changes,diagnostics=graph_audit(native,cl,veto,terms[:,:8],len(src),g,ids)
+            masks={'excluded':veto,'disjoint_words':disjoint_mask(terms[:,:8],len(src))}
+            changes={k:kernels(native,g,ids,m,with_controls=False)[0]['excluded'] for k,m in masks.items()}
+            diagnostics={}
         else:
             changes,diagnostics=kernels(native,g,ids,veto)
-        wrong=veto.new_zeros((),dtype=torch.long)
-        for j in range(0,len(g),128):
-            wrong+=(veto[j:j+128]&(cl[j:j+128,None]!=cl)).sum()
         diagnostics['all_pairs_vetoed']=int(veto.sum())
-        diagnostics['fraction_different_class_among_vetoed']=float(wrong/veto.sum().clamp_min(1))
         print(s,'graph',json.dumps(diagnostics),flush=True)
-        del veto
         views,_=region_views(workspace,s,cfg,paths,qi,q)
         folder,tree,regional=base_parts(workspace,s)
         replayer=PrefixReplay(kd,gl,s)
@@ -212,9 +208,17 @@ def run(workspace,ds,official,audit=False):
                 assert max_error<2e-6
                 per_query.setdefault(name,[]).append(exact if official else vals)
         z={k:torch.cat(v).double() for k,v in per_query.items()}
+        wrong=veto.new_zeros((),dtype=torch.long)
+        for j in range(0,len(g),128):
+            wrong+=(veto[j:j+128]&(cl[j:j+128,None]!=cl)).sum()
+        diagnostics['fraction_different_class_among_vetoed']=float(wrong/veto.sum().clamp_min(1))
+        del veto
+        if audit:
+            diagnostics.update(audit_edge_mass(native,cl,masks))
+            del masks
         out[s]={'graph':diagnostics,'queries':len(y),'gallery':len(gl),'official_all':official,
                 'max_checked_error':max_error,'metrics':{k:(v.mean(0)*100).tolist() for k,v in z.items()}}
-        for key in (['baseline','disjoint_words','class_oracle'] if audit else ['baseline','mass_control']):
+        for key in (['baseline','disjoint_words'] if audit else ['baseline','mass_control']):
             d=(z['excluded']-z[key])*100
             dm=torch.stack([d[y==l].mean(0) for l in y.unique()])
             boot=torch.randint(len(dm),(10000,len(dm)),generator=torch.Generator().manual_seed(817))
@@ -223,7 +227,7 @@ def run(workspace,ds,official,audit=False):
         print(s,json.dumps(out[s]),flush=True)
         del graph,changes,native,variant,readings
     dest=workspace/'results/no-label-exclusion-diffusion';dest.mkdir(exist_ok=True,parents=True)
-    (dest/(ds+('-causal-audit' if audit else '')+('-official' if official else '')+'.json')).write_text(json.dumps(out,indent=2))
+    (dest/(ds+('-edge-audit' if audit else '')+('-official' if official else '')+'.json')).write_text(json.dumps(out,indent=2))
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser()
