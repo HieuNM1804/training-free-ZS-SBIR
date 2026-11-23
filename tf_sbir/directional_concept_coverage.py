@@ -1,4 +1,5 @@
 """Test the direction of lexical support with the same public vocabulary and support size."""
+import argparse
 import json
 from pathlib import Path
 
@@ -11,7 +12,7 @@ def support(posterior, size):
 
 
 @torch.inference_mode()
-def run():
+def run(native_opponents=False):
     w = Path('/content/sbir')
     cfg, paths, queries, photos, galleries, q, p, src, tgt, scale = semantic_inputs(w,'sketchy')
     report = {}
@@ -41,8 +42,9 @@ def run():
                 ix = torch.arange(len(own),device=bank.device)
                 same_class = y[sl,None].cuda()==cls
                 # Lexical hardest wrong class is selected only for this diagnostic.
-                opponent = direct.masked_fill(same_class,-torch.inf).argmax(1)
-                control = direct.masked_fill(~same_class,-torch.inf).scatter(1,own[:,None],-torch.inf).argmax(1)
+                selector = q[qi[sl]].cuda() @ p[pi].cuda().T if native_opponents else direct
+                opponent = selector.masked_fill(same_class,-torch.inf).argmax(1)
+                control = selector.masked_fill(~same_class,-torch.inf).scatter(1,own[:,None],-torch.inf).argmax(1)
                 row = []
                 for z in (direct,forward,reverse,(forward+reverse)/2):
                     own_score = z[ix,own]
@@ -67,8 +69,11 @@ def run():
         report[s] = per_k
     directory = w/'results/directional-concept-coverage'
     directory.mkdir(exist_ok=True,parents=True)
-    (directory/'sketchy.json').write_text(json.dumps(report,indent=2))
+    filename = 'native-opponents.json' if native_opponents else 'sketchy.json'
+    (directory/filename).write_text(json.dumps(report,indent=2))
 
 
 if __name__=='__main__':
-    run()
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--native-opponents',action='store_true')
+    run(parser.parse_args().native_opponents)
