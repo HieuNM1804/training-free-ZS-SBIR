@@ -13,7 +13,7 @@ from .quickdraw_locked import KD_FUNCTION_SHA
 from .retrieval_evidence import load_kd
 
 
-def witnesses(first, flipped, regions, words, scale):
+def witnesses(first, flipped, regions, words, scale, decompose=False):
     mean = (first + flipped) / 2
     # Each of the 13 crops, in both poses, votes once for the public vocabulary.
     flat = regions.flatten(0, 2)
@@ -31,8 +31,21 @@ def witnesses(first, flipped, regions, words, scale):
     shuffled = torch.empty_like(local).scatter_(1, order, local.gather(1, order[:, source]))
     sham = shuffled.clamp(min=low, max=high)
     normalize = lambda x: x / x.sum(1, keepdim=True)
-    return {"mean": mean, "median": normalize(adjudicated), "sham": normalize(sham),
-            "third_view": (2 * mean + local) / 3}
+    output = {"mean": mean, "median": normalize(adjudicated), "sham": normalize(sham),
+              "third_view": (2 * mean + local) / 3}
+    if decompose:
+        # local - mean = (adjudicated - mean) + positive_excess - negative_excess.
+        # Uniform rescaling of one sketch posterior preserves its retrieval order.
+        positive_excess = (local-high).clamp_min(0)
+        negative_excess = (low-local).clamp_min(0)
+        output.update({
+            "inside_only": normalize(mean + (adjudicated-mean)/3),
+            "outside_only": normalize(mean + (positive_excess-negative_excess)/3),
+            "positive_only": normalize(mean + positive_excess/3),
+            "negative_only": normalize(mean - negative_excess/3),
+            "third_view_sham": (2 * mean + shuffled) / 3,
+        })
+    return output
 
 
 def score_rows(queries, bank, regional):
@@ -47,7 +60,7 @@ def score_rows(queries, bank, regional):
 
 
 @torch.inference_mode()
-def run(workspace, dataset, official):
+def run(workspace, dataset, official, decompose=False):
     cfg, paths, qs, _, gs, q, p, src, tgt, scale = semantic_inputs(workspace, dataset)
     kd, _ = load_kd(workspace)
     assert hashlib.sha256(inspect.getsource(kd).strip().encode()).hexdigest() == KD_FUNCTION_SHA
@@ -66,7 +79,7 @@ def run(workspace, dataset, official):
             sl = slice(start, start + 48)
             first = (scale * (q[qi[sl]].cuda() @ src.T)).softmax(1)
             flipped = (scale * (views["flipped"][sl].float().cuda() @ src.T)).softmax(1)
-            post = witnesses(first, flipped, views["regions"][sl].cuda().float(), src, scale)
+            post = witnesses(first, flipped, views["regions"][sl].cuda().float(), src, scale, decompose)
             for name, scores in score_rows(post, bank, regional[sl].float().cuda()).items():
                 count = 200 if split == "sketchy_2" else len(pi)
                 rank = scores.topk(count).indices
@@ -97,8 +110,10 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset", choices=["sketchy","tuberlin"],default="sketchy")
     parser.add_argument("--official",action="store_true")
+    parser.add_argument("--decompose",action="store_true")
     args = parser.parse_args()
-    result = run(Path("/content/sbir"),args.dataset,args.official)
+    result = run(Path("/content/sbir"),args.dataset,args.official,args.decompose)
     out = Path("/content/sbir/results/view-disputed-words")
     out.mkdir(parents=True,exist_ok=True)
-    (out/(args.dataset+("-official" if args.official else "")+".json")).write_text(json.dumps(result,indent=2))
+    suffix = ("-official" if args.official else "") + ("-decomposed" if args.decompose else "")
+    (out/(args.dataset+suffix+".json")).write_text(json.dumps(result,indent=2))
