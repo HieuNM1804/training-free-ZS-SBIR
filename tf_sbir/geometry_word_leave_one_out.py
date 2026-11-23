@@ -88,8 +88,8 @@ def word_update(words, gallery_words, candidates, photos, query, blank, scale, d
         return distance_agreement(joint, distance, distance)
     excess = agreement(query) - agreement(blank)
     word_rows = gallery_words[candidates]
-    result = words.new_empty(len(words), len(gallery_words))
-    for fold_id, targets in enumerate(parts):
+    updates = []
+    for fold_id in range(len(parts)):
         eligible = folds[candidates] != bool(fold_id)
         if not eligible.any(1).all():
             raise ValueError('Empty opposite gallery fold')
@@ -97,9 +97,9 @@ def word_update(words, gallery_words, candidates, photos, query, blank, scale, d
         normal = eligible.float()[:, None, :].bmm(word_rows).squeeze(1) + reference
         mass = rank_density(excess, eligible, 8)
         observed = mass[:, None, :].bmm(word_rows).squeeze(1) + reference
-        update = reweight(words, observed / normal.clamp_min(1e-30))
-        result[:, targets] = update @ gallery_words[targets].T
-    return result
+        updates.append(reweight(words, observed / normal.clamp_min(1e-30)))
+    unmasked = (torch.cat(updates) @ gallery_words.T).reshape(2, len(words), -1)
+    return torch.where(folds[None, :], unmasked[1], unmasked[0])
 
 
 def paired_summary(scores, labels):
