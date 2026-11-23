@@ -5,6 +5,7 @@ from types import SimpleNamespace
 
 import torch
 import torch.nn.functional as F
+from sklearn.metrics import roc_auc_score
 
 from .branch_view_policy import outputs
 from .gallery_panel_resume import region_views, semantic_inputs
@@ -65,6 +66,7 @@ def run():
         counterfactual=[]
         strata=[]
         sign_audit=[]
+        testimony=[]
         for start in range(0,len(qi),48):
             sl=slice(start,start+48)
             offset=start%192
@@ -122,6 +124,26 @@ def run():
                 records.append(torch.stack([actual[row,ix],gold[row,ix],switch,cls[winner]==qlabel,
                                             c2[row,ix],n2[row,ix],ix],1))
             results.append(torch.stack(records,1)[eligible].cpu())
+            # Name a competitor on panel 1 and read evidence on a disjoint panel 2.
+            opponent_index=torch.minimum(c1,n1).argmax(1)
+            ri=torch.arange(len(pool),device=g.device)
+            opponent=pool[ri,opponent_index]
+            support=tables[1][0]
+            event_a=support[winner].bool()
+            event_b=support[opponent].bool()
+            panel_docs=refs.tensor_split(2)[1]
+            query_evidence=post@readings[panel_docs].T
+            prior=query_evidence.mean(1)
+            def read_event(mask):
+                # One pseudo-observation with the unconditional mean prevents rare
+                # or empty reference sets from yielding spurious infinite odds.
+                return ((query_evidence*mask).sum(1)+prior)/(mask.sum(1)+1)
+            marginal=(read_event(event_b)/read_event(event_a)).log()
+            exclusive=(read_event(event_b&~event_a)/read_event(event_a&~event_b)).log()
+            headroom=ranker[ri,winner]-ranker[ri,opponent]
+            testimony.append(torch.stack([cls[winner]==qlabel,
+                cls[opponent]==qlabel,marginal,exclusive,headroom,
+                c2[ri,opponent_index],n2[ri,opponent_index]],1)[eligible].cpu())
             selected=choices[-1]
             row=torch.arange(len(pool),device=g.device)
             old_correct=cls[winner]==qlabel
@@ -170,8 +192,24 @@ def run():
                 'switches':int(switch.sum()),'fixed':int((switch&~ok&alt_ok).sum()),
                 'broken':int((switch&ok&~alt_ok).sum())}
         out[s]['absolute_deficit']=restrictions
+        ref_rows=torch.cat(testimony)
+        prev,nxt=ref_rows[:,0].bool(),ref_rows[:,1].bool()
+        result={}
+        for subset,mask in {'all':torch.ones_like(prev),
+                            'confirmed_deficit':(ref_rows[:,5]>0)&(ref_rows[:,6]>0)}.items():
+            tests={}
+            for j,k in [(2,'marginal'),(3,'exclusive')]:
+                odds=ref_rows[:,j]
+                contested=mask&(prev^nxt)
+                tests[k]={'auc_opponent_correct':float(roc_auc_score(nxt[contested],odds[contested]))}
+                for rule,use in [('odds_only',odds>0),('surmount_incumbent_gap',odds>ref_rows[:,4])]:
+                    take=mask&use
+                    tests[k][rule]=[int(take.sum()),int((take&nxt&~prev).sum()),int((take&prev&~nxt).sum())]
+            result[subset]={'eligible':int(mask.sum()),'only_incumbent_correct':int((mask&prev&~nxt).sum()),
+                            'only_opponent_correct':int((mask&~prev&nxt).sum()),'tests':tests}
+        out[s]['independent_event_reader']=result
         print(s,json.dumps(out[s]),flush=True)
-    dest=w/'results/gallery-concept-exclusion'
+    dest=w/'results/exclusive-event-reader'
     dest.mkdir(exist_ok=True,parents=True)
     (dest/'sketchy.json').write_text(json.dumps(out,indent=2))
 
