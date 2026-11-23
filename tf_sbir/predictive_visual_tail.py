@@ -102,10 +102,12 @@ def run(w,ds,full):
         if (neighbors==torch.arange(len(g),device=g.device)[:,None]).any():raise ValueError('Donor contains its target')
         rgb=graph.neighbors[0][0][:,:32]
         perm=torch.randperm(len(g),generator=torch.Generator().manual_seed(87017)).cuda()
+        sham=perm[neighbors[perm.argsort()]]
+        if (sham==torch.arange(len(g),device=g.device)[:,None]).any():raise ValueError('Shuffled donor contains its target')
         sizes={'raw':len(g),'conditional':len(g)//round(math.sqrt(len(g)))}
         readers={k:TailPrediction(ids,sizes[mode]) for k,ids,mode in [
             ('semantic_raw',neighbors,'raw'),('semantic_conditional',neighbors,'conditional'),
-            ('rgb_conditional',rgb,'conditional'),('shuffled_conditional',perm[neighbors],'conditional')]}
+            ('rgb_conditional',rgb,'conditional'),('shuffled_conditional',sham,'conditional')]}
         replay=PrefixReplay(kd,gl,s)
         records={}
         cats=gl.cuda()
