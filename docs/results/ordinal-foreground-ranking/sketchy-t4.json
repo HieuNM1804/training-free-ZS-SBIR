@@ -1,0 +1,539 @@
+{
+  "text": {
+    "unique_public_name_pairs": 7330,
+    "mean_cosine_of_role_when_mentioned_first_vs_last": -0.49445870518684387,
+    "mean_fraction_role_norm_outside_name_and_order_span": 0.7492028474807739
+  },
+  "sketchy_1": {
+    "queries": 768,
+    "gallery": 17100,
+    "methods": {
+      "baseline": {
+        "metrics": [
+          83.00315287463795,
+          82.85026056109928
+        ],
+        "fixed_damaged_top1": [
+          0,
+          0
+        ]
+      },
+      "isolated/2/groups": {
+        "changed_hypothesis_order": 267,
+        "mean_selected_photos_for_changed_orders": 187.2322097378277,
+        "metrics": [
+          83.01566846421338,
+          82.88671889094985
+        ],
+        "fixed_damaged_top1": [
+          9,
+          5
+        ]
+      },
+      "role/2/groups": {
+        "changed_hypothesis_order": 315,
+        "mean_selected_photos_for_changed_orders": 205.68253968253967,
+        "metrics": [
+          83.00933342810217,
+          82.87630222257576
+        ],
+        "fixed_damaged_top1": [
+          7,
+          4
+        ]
+      },
+      "position/2/groups": {
+        "changed_hypothesis_order": 402,
+        "mean_selected_photos_for_changed_orders": 199.75621890547265,
+        "metrics": [
+          83.00171524630665,
+          82.84375014069761
+        ],
+        "fixed_damaged_top1": [
+          3,
+          3
+        ]
+      },
+      "role_residual/2/groups": {
+        "changed_hypothesis_order": 393,
+        "mean_selected_photos_for_changed_orders": 210.99745547073792,
+        "metrics": [
+          83.0102958267768,
+          82.86979181211791
+        ],
+        "fixed_damaged_top1": [
+          9,
+          6
+        ]
+      },
+      "isolated/8/groups": {
+        "changed_hypothesis_order": 768,
+        "mean_selected_photos_for_changed_orders": 351.82421875,
+        "metrics": [
+          83.04450617506518,
+          82.96354181802599
+        ],
+        "fixed_damaged_top1": [
+          12,
+          9
+        ]
+      },
+      "role/8/groups": {
+        "changed_hypothesis_order": 768,
+        "mean_selected_photos_for_changed_orders": 351.82421875,
+        "metrics": [
+          83.01182299789312,
+          82.86848979502489
+        ],
+        "fixed_damaged_top1": [
+          13,
+          12
+        ]
+      },
+      "position/8/groups": {
+        "changed_hypothesis_order": 768,
+        "mean_selected_photos_for_changed_orders": 351.82421875,
+        "metrics": [
+          83.00026349218874,
+          82.9257813927446
+        ],
+        "fixed_damaged_top1": [
+          11,
+          15
+        ]
+      },
+      "role_residual/8/groups": {
+        "changed_hypothesis_order": 766,
+        "mean_selected_photos_for_changed_orders": 351.8446475195822,
+        "metrics": [
+          82.95457376176878,
+          82.79817728786534
+        ],
+        "fixed_damaged_top1": [
+          14,
+          33
+        ]
+      },
+      "role/2/leaders": {
+        "changed_hypothesis_order": 315,
+        "mean_selected_photos_for_changed_orders": 2,
+        "metrics": [
+          83.00320706305988,
+          82.85026056109928
+        ],
+        "fixed_damaged_top1": [
+          3,
+          2
+        ]
+      },
+      "role/8/leaders": {
+        "changed_hypothesis_order": 768,
+        "mean_selected_photos_for_changed_orders": 7.904947916666667,
+        "metrics": [
+          83.00247252118425,
+          82.81901059211427
+        ],
+        "fixed_damaged_top1": [
+          3,
+          2
+        ]
+      }
+    },
+    "paired": {
+      "role/2/groups minus baseline": {
+        "class_mean": [
+          0.006949084992463833,
+          0.02780644073615091
+        ],
+        "ci95": [
+          [
+            -0.009372937982060608,
+            -0.010358337368984878
+          ],
+          [
+            0.027155680166634,
+            0.09196428741727557
+          ]
+        ]
+      },
+      "role/2/groups minus isolated/2/groups": {
+        "class_mean": [
+          -0.006845960580494184,
+          -0.01273869382865113
+        ],
+        "ci95": [
+          [
+            -0.017952282454942365,
+            -0.03471210243988208
+          ],
+          [
+            0.00019399459750828467,
+            0.00465608589232914
+          ]
+        ]
+      },
+      "role/2/groups minus position/2/groups": {
+        "class_mean": [
+          0.006699793585162566,
+          0.03094692675298007
+        ],
+        "ci95": [
+          [
+            -0.007544006984642326,
+            -0.006755557281985168
+          ],
+          [
+            0.026270499906365468,
+            0.094633599799422
+          ]
+        ]
+      },
+      "role/2/groups minus role/2/leaders": {
+        "class_mean": [
+          0.006861215282632014,
+          0.02780644073615091
+        ],
+        "ci95": [
+          [
+            -0.009180746422378469,
+            -0.010358337368984878
+          ],
+          [
+            0.02694057095548556,
+            0.09196428741727557
+          ]
+        ]
+      },
+      "role/8/groups minus baseline": {
+        "class_mean": [
+          -0.000542553530300296,
+          -0.009093976912863627
+        ],
+        "ci95": [
+          [
+            -0.07145068808160107,
+            -0.21944828947434716
+          ],
+          [
+            0.06215366730146185,
+            0.16895017187614916
+          ]
+        ]
+      },
+      "role/8/groups minus isolated/8/groups": {
+        "class_mean": [
+          -0.029312548505973483,
+          -0.08287528066058478
+        ],
+        "ci95": [
+          [
+            -0.09656796452095384,
+            -0.30356330363125905
+          ],
+          [
+            0.027536378104666193,
+            0.11374032645905141
+          ]
+        ]
+      },
+      "role/8/groups minus position/8/groups": {
+        "class_mean": [
+          -0.004313359371828232,
+          -0.09800439958254195
+        ],
+        "ci95": [
+          [
+            -0.06819416908637403,
+            -0.305344367768941
+          ],
+          [
+            0.05987494020230088,
+            0.08361677194034318
+          ]
+        ]
+      },
+      "role/8/groups minus role/8/leaders": {
+        "class_mean": [
+          0.0005972797356063087,
+          0.026074617942301082
+        ],
+        "ci95": [
+          [
+            -0.06540439281392567,
+            -0.14144119011813616
+          ],
+          [
+            0.059152019484706206,
+            0.17821881947712032
+          ]
+        ]
+      }
+    }
+  },
+  "sketchy_2": {
+    "queries": 768,
+    "gallery": 12552,
+    "methods": {
+      "baseline": {
+        "metrics": [
+          74.06858313618918,
+          72.77799492755244
+        ],
+        "fixed_damaged_top1": [
+          0,
+          0
+        ]
+      },
+      "isolated/2/groups": {
+        "changed_hypothesis_order": 268,
+        "mean_selected_photos_for_changed_orders": 161.44402985074626,
+        "metrics": [
+          74.07652054783588,
+          72.81445325861569
+        ],
+        "fixed_damaged_top1": [
+          18,
+          9
+        ]
+      },
+      "role/2/groups": {
+        "changed_hypothesis_order": 275,
+        "mean_selected_photos_for_changed_orders": 201.7490909090909,
+        "metrics": [
+          74.08615127151279,
+          72.78125013229632
+        ],
+        "fixed_damaged_top1": [
+          16,
+          3
+        ]
+      },
+      "position/2/groups": {
+        "changed_hypothesis_order": 374,
+        "mean_selected_photos_for_changed_orders": 184.54545454545453,
+        "metrics": [
+          74.13031199933661,
+          72.8222657487398
+        ],
+        "fixed_damaged_top1": [
+          15,
+          6
+        ]
+      },
+      "role_residual/2/groups": {
+        "changed_hypothesis_order": 415,
+        "mean_selected_photos_for_changed_orders": 199.29397590361447,
+        "metrics": [
+          74.10493763096989,
+          72.78710949928305
+        ],
+        "fixed_damaged_top1": [
+          18,
+          3
+        ]
+      },
+      "isolated/8/groups": {
+        "changed_hypothesis_order": 762,
+        "mean_selected_photos_for_changed_orders": 320.59711286089237,
+        "metrics": [
+          73.76542706685237,
+          72.6744793009857
+        ],
+        "fixed_damaged_top1": [
+          29,
+          9
+        ]
+      },
+      "role/8/groups": {
+        "changed_hypothesis_order": 763,
+        "mean_selected_photos_for_changed_orders": 321.7208387942333,
+        "metrics": [
+          73.93308315361841,
+          72.670573039674
+        ],
+        "fixed_damaged_top1": [
+          28,
+          8
+        ]
+      },
+      "position/8/groups": {
+        "changed_hypothesis_order": 768,
+        "mean_selected_photos_for_changed_orders": 322.6809895833333,
+        "metrics": [
+          73.86253544609644,
+          72.61979180245058
+        ],
+        "fixed_damaged_top1": [
+          28,
+          20
+        ]
+      },
+      "role_residual/8/groups": {
+        "changed_hypothesis_order": 765,
+        "mean_selected_photos_for_changed_orders": 322.597385620915,
+        "metrics": [
+          73.84383701792103,
+          72.69010429311797
+        ],
+        "fixed_damaged_top1": [
+          30,
+          9
+        ]
+      },
+      "role/2/leaders": {
+        "changed_hypothesis_order": 275,
+        "mean_selected_photos_for_changed_orders": 2,
+        "metrics": [
+          74.07266188280724,
+          72.77799492755244
+        ],
+        "fixed_damaged_top1": [
+          6,
+          1
+        ]
+      },
+      "role/8/leaders": {
+        "changed_hypothesis_order": 763,
+        "mean_selected_photos_for_changed_orders": 7.665792922673656,
+        "metrics": [
+          73.99897346876969,
+          72.77799492755244
+        ],
+        "fixed_damaged_top1": [
+          7,
+          3
+        ]
+      }
+    },
+    "paired": {
+      "role/2/groups minus baseline": {
+        "class_mean": [
+          0.009192255675323798,
+          0.0027459106362858537
+        ],
+        "ci95": [
+          [
+            -0.021717149372904518,
+            -0.005728189480441705
+          ],
+          [
+            0.0377859495100213,
+            0.01083291718612063
+          ]
+        ]
+      },
+      "role/2/groups minus isolated/2/groups": {
+        "class_mean": [
+          0.0301608542296898,
+          -0.024678933704531204
+        ],
+        "ci95": [
+          [
+            -0.36077144383958215,
+            -0.22616352799092498
+          ],
+          [
+            0.4061784335922672,
+            0.15289095232106276
+          ]
+        ]
+      },
+      "role/2/groups minus position/2/groups": {
+        "class_mean": [
+          -0.059907858653717935,
+          -0.04516812450739337
+        ],
+        "ci95": [
+          [
+            -0.23737998112083675,
+            -0.12844017026513527
+          ],
+          [
+            0.0741904158282956,
+            0.005568503957106024
+          ]
+        ]
+      },
+      "role/2/groups minus role/2/leaders": {
+        "class_mean": [
+          0.004721453387952384,
+          0.0027459106362858537
+        ],
+        "ci95": [
+          [
+            -0.02675560504785136,
+            -0.005728189480441705
+          ],
+          [
+            0.0330469698237617,
+            0.01083291718612063
+          ]
+        ]
+      },
+      "role/8/groups minus baseline": {
+        "class_mean": [
+          -0.09169890978890238,
+          -0.09058988440040651
+        ],
+        "ci95": [
+          [
+            -0.5447227166161983,
+            -0.30045938759754737
+          ],
+          [
+            0.3475712955243548,
+            0.09712449413743077
+          ]
+        ]
+      },
+      "role/8/groups minus isolated/8/groups": {
+        "class_mean": [
+          0.1905571484388482,
+          0.016874851243123712
+        ],
+        "ci95": [
+          [
+            -0.26965965996484936,
+            -0.18837235347404627
+          ],
+          [
+            0.7177432010877818,
+            0.2500017531857019
+          ]
+        ]
+      },
+      "role/8/groups minus position/8/groups": {
+        "class_mean": [
+          0.14716557794942317,
+          0.08514964943840397
+        ],
+        "ci95": [
+          [
+            -0.41211359255442526,
+            -0.18346153217449743
+          ],
+          [
+            0.9021552146590305,
+            0.4585042678089896
+          ]
+        ]
+      },
+      "role/8/groups minus role/8/leaders": {
+        "class_mean": [
+          -0.05764889920996225,
+          -0.09058988440040651
+        ],
+        "ci95": [
+          [
+            -0.39699134665896196,
+            -0.30045938759754737
+          ],
+          [
+            0.2991201788329229,
+            0.09712449413743077
+          ]
+        ]
+      }
+    }
+  }
+}
