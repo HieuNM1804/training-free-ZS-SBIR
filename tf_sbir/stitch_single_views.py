@@ -29,13 +29,28 @@ class PhotoViews(Images):
             torch.random.default_generator.manual_seed(seed)
             more=[]
             for _ in range(9):
-                a=self.crop(image)
-                more.append(a.flip((-1,)) if float(torch.rand(()))<.5 else a)
-        return torch.stack([image,*more])
+                top,left,h,w=self.crop.get_params(image,self.crop.scale,self.crop.ratio)
+                more.append((top,left,h,w,int(float(torch.rand(()))<.5)))
+        return image,torch.tensor(more)
+
+
+def render(pixels,boxes):
+    # Sample all crops on the GPU with pixel-center coordinates. The source
+    # is the same normalized 224x224 image used by the global CLIP control.
+    b,m,_=boxes.shape
+    a=torch.arange(224,device=pixels.device,dtype=torch.float32)
+    top,left,h,w,flip=(t.float()[...,None] for t in boxes.unbind(-1))
+    gx=torch.where(flip.bool(),223-a,a)
+    gx=(left+((gx+.5)*w/224-.5).clamp_min(0).minimum(w-1)+.5)*(2/224)-1
+    gy=(top+((a+.5)*h/224-.5).clamp_min(0).minimum(h-1)+.5)*(2/224)-1
+    grid=torch.stack(torch.broadcast_tensors(gx[:,:,None,:],gy[:,:,:,None]),-1)
+    source=pixels[:,None].expand(-1,m,-1,-1,-1).reshape(-1,3,224,224)
+    crops=F.grid_sample(source,grid.flatten(0,1),mode='bicubic',padding_mode='border',align_corners=False)
+    return torch.cat([pixels[:,None],crops.view(b,m,3,224,224)],1)
 
 
 def storage(w,ds,paths):
-    h=hashlib.sha256(('b32/normalized-RGB-10-crops-0.5-v1\n'+'\n'.join(map(str,paths))).encode()).hexdigest()[:20]
+    h=hashlib.sha256(('b32/normalized-RGB-10-crops-0.5-grid-v2\n'+'\n'.join(map(str,paths))).encode()).hexdigest()[:20]
     return w/'cache/stitch-isolated-alignment'/(ds+'-'+h)
 
 
@@ -52,11 +67,12 @@ def encode(w,ds):
         dst=root/f'{start:06d}.pt'
         if dst.exists():continue
         ds_views=PhotoViews(photos[start:start+512],cfg.root)
-        dl=DataLoader(ds_views,batch_size=12,num_workers=cfg.workers,pin_memory=True,
+        dl=DataLoader(ds_views,batch_size=24,num_workers=cfg.workers,pin_memory=True,
                       prefetch_factor=1,worker_init_fn=configure_image_worker)
         records=[]
-        for px in dl:
-            z=F.normalize(v(px.flatten(0,1).cuda(non_blocking=True).to(v.conv1.weight.dtype)).float(),dim=1)
+        for pixels,boxes in dl:
+            px=render(pixels.cuda(non_blocking=True),boxes.cuda(non_blocking=True))
+            z=F.normalize(v(px.flatten(0,1).to(v.conv1.weight.dtype)).float(),dim=1)
             records.append(z.reshape(len(px),10,512).half().cpu())
         save_tensor(torch.cat(records),dst)
         if start%4096==0:print(ds,'views',min(start+512,len(photos)),len(photos),flush=True)
