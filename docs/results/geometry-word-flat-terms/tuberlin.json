@@ -1,0 +1,245 @@
+{
+  "commit": "ce90e01f01ceb5bb746d7046123de1a602c6bddb",
+  "seed": 42,
+  "torch": "2.14.1+cu130",
+  "cuda": "13.0",
+  "pythonhashseed": "42",
+  "device": "NVIDIA L4",
+  "split": "tuberlin",
+  "counts": [
+    2130,
+    27262,
+    30
+  ],
+  "metrics": [
+    "mAP@all",
+    "P@100"
+  ],
+  "paired_reference_checks": {
+    "full": {
+      "max_per_query": [
+        8.207559585571289e-05,
+        0.0
+      ],
+      "mean_signed_points": [
+        1.9973152680016458e-07,
+        0.0
+      ],
+      "mean_absolute_points": [
+        8.452736156087526e-06,
+        0.0
+      ]
+    },
+    "without_regional": {
+      "max_per_query": [
+        3.552436828613281e-05,
+        0.0
+      ],
+      "mean_signed_points": [
+        7.943788044889208e-07,
+        0.0
+      ],
+      "mean_absolute_points": [
+        3.0631330651296692e-06,
+        0.0
+      ]
+    },
+    "without_geometry": {
+      "max_per_query": [
+        0.00014096498489379883,
+        0.0
+      ],
+      "mean_signed_points": [
+        6.7205636154318076e-06,
+        0.0
+      ],
+      "mean_absolute_points": [
+        6.735954486148458e-06,
+        0.0
+      ]
+    }
+  },
+  "max_regional_index_discrepancy": 0.0,
+  "rows": {
+    "full": {
+      "metrics_percent": [
+        81.49476530907037,
+        82.19577467873552
+      ],
+      "ablated_minus_full_points": [
+        0.0,
+        0.0
+      ],
+      "macro_ap_removal": {
+        "classes": 30,
+        "queries": 2130,
+        "mean_across_classes": 0.0,
+        "positive_classes": 0,
+        "bootstrap95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "without_global": {
+      "metrics_percent": [
+        75.60355042197038,
+        74.76478878434905
+      ],
+      "ablated_minus_full_points": [
+        -5.891214887099997,
+        -7.4309858943864775
+      ],
+      "macro_ap_removal": {
+        "classes": 30,
+        "queries": 2130,
+        "mean_across_classes": -5.963840216852814,
+        "positive_classes": 5,
+        "bootstrap95": [
+          -8.845378609191505,
+          -3.513098072767581
+        ]
+      }
+    },
+    "without_regional": {
+      "metrics_percent": [
+        80.69562055666805,
+        81.2291081030219
+      ],
+      "ablated_minus_full_points": [
+        -0.7991447524023307,
+        -0.9666665757136166
+      ],
+      "macro_ap_removal": {
+        "classes": 30,
+        "queries": 2130,
+        "mean_across_classes": -0.8052227883821442,
+        "positive_classes": 12,
+        "bootstrap95": [
+          -1.9562635263666464,
+          0.350602090160827
+        ]
+      }
+    },
+    "without_geometry": {
+      "metrics_percent": [
+        80.5652050401998,
+        81.4713615337343
+      ],
+      "ablated_minus_full_points": [
+        -0.9295602688705767,
+        -0.7244131450012257
+      ],
+      "macro_ap_removal": {
+        "classes": 30,
+        "queries": 2130,
+        "mean_across_classes": -0.9254344841576227,
+        "positive_classes": 11,
+        "bootstrap95": [
+          -2.1904477133512654,
+          0.1262709945623225
+        ]
+      }
+    },
+    "semantic_only": {
+      "metrics_percent": [
+        80.11001924857356,
+        81.37277006796899
+      ],
+      "ablated_minus_full_points": [
+        -1.3847460604967996,
+        -0.8230046107665474
+      ],
+      "macro_ap_removal": {
+        "classes": 30,
+        "queries": 2130,
+        "mean_across_classes": -1.3785377044918106,
+        "positive_classes": 10,
+        "bootstrap95": [
+          -2.5488149701589937,
+          -0.2556155996449802
+        ]
+      }
+    },
+    "regional_only": {
+      "metrics_percent": [
+        69.981879496525,
+        68.54037561397037
+      ],
+      "ablated_minus_full_points": [
+        -11.51288581254538,
+        -13.65539906476515
+      ],
+      "macro_ap_removal": {
+        "classes": 30,
+        "queries": 2130,
+        "mean_across_classes": -11.612287630371393,
+        "positive_classes": 3,
+        "bootstrap95": [
+          -16.654436765308766,
+          -7.317742723461874
+        ]
+      }
+    },
+    "geometry_increment": {
+      "metrics_percent": [
+        53.6130384831392,
+        53.634741966975554
+      ],
+      "ablated_minus_full_points": [
+        -27.881726825931175,
+        -28.561032711759978
+      ],
+      "macro_ap_removal": {
+        "classes": 30,
+        "queries": 2130,
+        "mean_across_classes": -28.123868732375005,
+        "positive_classes": 4,
+        "bootstrap95": [
+          -36.16788953151706,
+          -20.188697898463722
+        ]
+      }
+    },
+    "gcwe_word_retrieval": {
+      "metrics_percent": [
+        80.69568613187755,
+        81.22816913678122
+      ],
+      "ablated_minus_full_points": [
+        -0.799079177192819,
+        -0.9676055419542979
+      ],
+      "macro_ap_removal": {
+        "classes": 30,
+        "queries": 2130,
+        "mean_across_classes": -0.8051561793323517,
+        "positive_classes": 12,
+        "bootstrap95": [
+          -1.9562456509600106,
+          0.3514774064094076
+        ]
+      }
+    },
+    "visual_cosine": {
+      "metrics_percent": [
+        28.84930493841341,
+        45.92018788811607
+      ],
+      "ablated_minus_full_points": [
+        -52.64546037065696,
+        -36.275586790619464
+      ],
+      "macro_ap_removal": {
+        "classes": 30,
+        "queries": 2130,
+        "mean_across_classes": -52.47690921547335,
+        "positive_classes": 0,
+        "bootstrap95": [
+          -57.90671458322488,
+          -46.63684596679993
+        ]
+      }
+    }
+  }
+}
