@@ -8,11 +8,13 @@ import hashlib
 import inspect
 import json
 from pathlib import Path
+from types import SimpleNamespace
 
 import torch
 from .branch_view_policy import outputs
 from .branch_view_study import PrefixReplay
 from .gallery_panel_resume import region_views, semantic_inputs
+from .gallery_region_panels import CONFIG, Index
 from .query_partition_tree import Hierarchy
 from .quickdraw_locked import KD_FUNCTION_SHA
 from .retrieval_evidence import load_kd
@@ -83,6 +85,7 @@ def run(w, ds):
             source = torch.tensor([keys[(Path(paths[i]).parent.name,Path(paths[i]).stem.rsplit('-',1)[0])]
                                    for i in qi.tolist()],device=images.device)
             assert torch.equal(classes[source].cpu(),y)
+        graph = Index(SimpleNamespace(p=images),rgb_only=True)
         replayer = PrefixReplay(kd,gl,s)
         rows = {}
         diagnostic = []
@@ -101,6 +104,11 @@ def run(w, ds):
             b = (scale*(region['flipped'][sl].float().cuda()@src.T)).softmax(1)
             post = (a+b)/2
             lexical = (post@bank.T).clamp_min(1e-30).log()
+            old = graph.score(CONFIG,a@bank.T).clamp_min(1e-30).log()
+            combined = graph.score(CONFIG,post@bank.T).clamp_min(1e-30).log()
+            new_reg = reg+.65*(combined-old)
+            strong = new_reg + (strong-reg)*(
+                new_reg.std(1,unbiased=False,keepdim=True)/reg.std(1,unbiased=False,keepdim=True))
             mass = post[:,photo_terms].sum(2)
             def veto(ix):
                 return (-mass[:,ix].clamp(max=1-1e-7)).log1p()
@@ -114,7 +122,11 @@ def run(w, ds):
                 best_wrong = lexical.masked_fill(classes[None]==y[sl,None].cuda(),-torch.inf).argmax(1)
                 diagnostic.append(torch.stack([contains(photo_terms[own]),contains(photo_terms[rivals[own,0]]),
                     contains(photo_terms[best_wrong]),contains(photo_terms[rivals[best_wrong,0]]),
-                    (classes[rivals[own,0]]==classes[own])],1).cpu())
+                    (classes[rivals[own,0]]==classes[own]),
+                    contains(photo_terms[(q[qi[sl]].cuda()@images.T).masked_fill(
+                        classes[None]==y[sl,None].cuda(),-torch.inf).argmax(1)]),
+                    contains(photo_terms[rivals[(q[qi[sl]].cuda()@images.T).masked_fill(
+                        classes[None]==y[sl,None].cuda(),-torch.inf).argmax(1),0]])],1).cpu())
             for name,z in {'strong':strong,'strong_veto':strong+penalty,'strong_control':strong+placebo,
                            'mean':lexical,'mean_veto':lexical+penalty,'mean_control':lexical+placebo}.items():
                 rank,metrics = raw_ranks(z,y[sl],classes,s)
@@ -129,15 +141,17 @@ def run(w, ds):
             'foil_with_same_label_percent':float((classes[rivals[:,0]]==classes).float().mean()*100),
             'median_difference_in_foil_cosine':float(((images*images[rivals[:,0]]).sum(1)-(images*images[rivals[:,1]]).sum(1)).median())}
         if diagnostic:
-            pos,fo,neg,fn,same = torch.cat(diagnostic).T
+            pos,fo,neg,fn,same,nneg,nfn = torch.cat(diagnostic).T
             result[s]['pairs']={'target_absent':[int((~pos).sum()),int((~pos&fo).sum())],
                                 'wrong_absent':[int((~neg).sum()),int((~neg&fn).sum())],
                                 'both_absent':[int((~pos&~neg).sum()),int((~pos&~neg&fo).sum()),
-                                               int((~pos&~neg&fn).sum())]}
+                                               int((~pos&~neg&fn).sum())],
+                                'native_both_absent':[int((~pos&~nneg).sum()),int((~pos&~nneg&fo).sum()),
+                                                       int((~pos&~nneg&nfn).sum())]}
         print(s,json.dumps(result[s]),flush=True)
     out=w/'results/positive-foil-evidence'
     out.mkdir(exist_ok=True,parents=True)
-    (out/(ds+'.json')).write_text(json.dumps(result,indent=2))
+    (out/(ds+'-verified-base.json')).write_text(json.dumps(result,indent=2))
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser()
