@@ -1,0 +1,20 @@
+{
+  "development": "sketchy-edge-audit-official.json",
+  "backbone": "OpenAI CLIP ViT-B/32",
+  "device": "Colab L4",
+  "dataset": "tuberlin",
+  "classes": 30,
+  "rows": [
+    "baseline",
+    "excluded",
+    "disjoint_words"
+  ],
+  "scientific_primary": "excluded",
+  "strongest_equal_split_mean_map_among_these_two_interventions": "disjoint_words",
+  "configuration": "Same reference panels, public dictionary, lexical readings, nearest-16 RGB propagation and score fusion as the Sketchy evaluation at 520bd92246443d7265929ac1d2889bddcb88cb67. No new coefficient or TU selection.",
+  "metrics": [
+    "KD-SBIR mAP@all",
+    "KD-SBIR P@100"
+  ],
+  "purpose": "one independent dataset-transfer test within sketch-to-photo retrieval"
+}

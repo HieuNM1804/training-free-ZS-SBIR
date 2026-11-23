@@ -154,9 +154,11 @@ def audit_edge_mass(kernel,labels,masks):
 
 
 @torch.inference_mode()
-def run(workspace,ds,official,audit=False):
+def run(workspace,ds,official,audit=False,transfer=False):
     if audit and ds!='sketchy':
         raise ValueError('The edge attribution audit is a development diagnostic on Sketchy only')
+    if ds=='tuberlin' and not (transfer and official):
+        raise ValueError('TU is reserved for the pre-specified official transfer')
     cfg,paths,qs,_,gs,q,p,src,tgt,scale=semantic_inputs(workspace,ds)
     out={}
     kd,_=load_kd(workspace)
@@ -171,9 +173,12 @@ def run(workspace,ds,official,audit=False):
         graph.prepare(CONFIG)
         native=graph.kernels[0]
         ids=graph.neighbors[0][0][:,:CONFIG.neighbors]
-        if audit:
+        if transfer and (s!='tuberlin' or len(gl.unique())!=30 or len(y.unique())!=30):
+            raise ValueError('The frozen transfer requires the complete 30-class split')
+        if audit or transfer:
             masks={'excluded':veto,'disjoint_words':disjoint_mask(terms[:,:8],len(src))}
             changes={k:kernels(native,g,ids,m,with_controls=False)[0]['excluded'] for k,m in masks.items()}
+            if transfer:del masks
             diagnostics={}
         else:
             changes,diagnostics=kernels(native,g,ids,veto)
@@ -218,7 +223,7 @@ def run(workspace,ds,official,audit=False):
             del masks
         out[s]={'graph':diagnostics,'queries':len(y),'gallery':len(gl),'official_all':official,
                 'max_checked_error':max_error,'metrics':{k:(v.mean(0)*100).tolist() for k,v in z.items()}}
-        for key in (['baseline','disjoint_words'] if audit else ['baseline','mass_control']):
+        for key in (['baseline','disjoint_words'] if (audit or transfer) else ['baseline','mass_control']):
             d=(z['excluded']-z[key])*100
             dm=torch.stack([d[y==l].mean(0) for l in y.unique()])
             boot=torch.randint(len(dm),(10000,len(dm)),generator=torch.Generator().manual_seed(817))
@@ -234,6 +239,7 @@ if __name__=='__main__':
     parser.add_argument('--dataset',choices=['sketchy','tuberlin'],default='sketchy')
     parser.add_argument('--official',action='store_true')
     parser.add_argument('--audit',action='store_true')
+    parser.add_argument('--transfer',action='store_true')
     args=parser.parse_args()
-    run(Path('/content/sbir'),args.dataset,args.official,args.audit)
+    run(Path('/content/sbir'),args.dataset,args.official,args.audit,args.transfer)
 
