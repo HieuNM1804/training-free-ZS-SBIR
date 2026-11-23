@@ -1,0 +1,576 @@
+{
+  "sketchy_1": {
+    "queries": 768,
+    "gallery": 17100,
+    "max_geometric_decomposition_error": 0.000001516193151473999,
+    "previous_mean_discrepancy_pp": 0.000004260073183104396,
+    "mean_vector_norm_patch_mass_KL": [
+      0.015992915257811546,
+      0.07296781241893768,
+      0.0013289140770211816
+    ],
+    "candidate_top1_top16": {
+      "native": [
+        0.7760416865348816,
+        0.7527669072151184
+      ],
+      "aligned": [
+        0.7747395634651184,
+        0.751953125
+      ],
+      "real_only": [
+        0.7760416865348816,
+        0.7516276240348816
+      ],
+      "reverse": [
+        0.7760416865348816,
+        0.7526041865348816
+      ],
+      "shuffled": [
+        0.7760416865348816,
+        0.7530110478401184
+      ],
+      "mirror": [
+        0.7747395634651184,
+        0.752197265625
+      ],
+      "aligned_4": [
+        0.7747395634651184,
+        0.7510579228401184
+      ],
+      "shuffled_4": [
+        0.77734375,
+        0.7527669072151184
+      ]
+    },
+    "rows": {
+      "base": {
+        "metrics": [
+          85.9636908787555,
+          85.57942720920741
+        ],
+        "class_macro_map_gain": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": -0.11248334786106426,
+          "positive_classes": 6,
+          "bootstrap95": [
+            -0.7465567033920196,
+            0.47056951227852195
+          ]
+        }
+      },
+      "native": {
+        "metrics": [
+          85.99853888348056,
+          85.15104179095943
+        ],
+        "class_macro_map_gain": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": 0,
+          "positive_classes": 0,
+          "bootstrap95": [
+            0,
+            0
+          ]
+        }
+      },
+      "aligned": {
+        "metrics": [
+          85.99137275329363,
+          85.17838554010572
+        ],
+        "class_macro_map_gain": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": -0.008193889057617074,
+          "positive_classes": 12,
+          "bootstrap95": [
+            -0.027116822361668312,
+            0.00837117287502502
+          ]
+        }
+      },
+      "aligned_both": {
+        "metrics": [
+          86.00297585774874,
+          85.16796887221668
+        ],
+        "class_macro_map_gain": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": 0.0034718334132694895,
+          "positive_classes": 14,
+          "bootstrap95": [
+            -0.00868024541930329,
+            0.01952157307972682
+          ]
+        }
+      },
+      "real_only": {
+        "metrics": [
+          85.97479085413701,
+          85.13411470291126
+        ],
+        "class_macro_map_gain": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": -0.025299856560305554,
+          "positive_classes": 12,
+          "bootstrap95": [
+            -0.06397601881686889,
+            0.008802063970536832
+          ]
+        }
+      },
+      "reverse": {
+        "metrics": [
+          86.00525032306905,
+          85.13932304340415
+        ],
+        "class_macro_map_gain": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": 0.008055978723063122,
+          "positive_classes": 14,
+          "bootstrap95": [
+            -0.006602642866864158,
+            0.02470022096370971
+          ]
+        }
+      },
+      "shuffled": {
+        "metrics": [
+          85.99805364331891,
+          85.14062512404053
+        ],
+        "class_macro_map_gain": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": 0.0005896357591808235,
+          "positive_classes": 11,
+          "bootstrap95": [
+            -0.00674471179254171,
+            0.007403820448595553
+          ]
+        }
+      },
+      "shuffled_both": {
+        "metrics": [
+          85.99504507316547,
+          85.1341147084895
+        ],
+        "class_macro_map_gain": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": -0.00302567811927802,
+          "positive_classes": 14,
+          "bootstrap95": [
+            -0.011003759640381307,
+            0.0029484792962093734
+          ]
+        }
+      },
+      "mirror": {
+        "metrics": [
+          85.9930520503743,
+          85.14583346259315
+        ],
+        "class_macro_map_gain": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": -0.007983735976410427,
+          "positive_classes": 10,
+          "bootstrap95": [
+            -0.023255097417983782,
+            0.003622489149012388
+          ]
+        }
+      },
+      "aligned_4": {
+        "metrics": [
+          85.97298024154347,
+          85.21223969631441
+        ],
+        "class_macro_map_gain": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": -0.026611326107845553,
+          "positive_classes": 13,
+          "bootstrap95": [
+            -0.11431724543213885,
+            0.0572013032728569
+          ]
+        }
+      },
+      "shuffled_4": {
+        "metrics": [
+          85.99500143827754,
+          85.09765636966526
+        ],
+        "class_macro_map_gain": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": 0.0005605040612451173,
+          "positive_classes": 12,
+          "bootstrap95": [
+            -0.025322903792453735,
+            0.02616262733234847
+          ]
+        }
+      },
+      "word/aligned": {
+        "metrics": [
+          76.55468499676013,
+          81.51953140307646
+        ],
+        "class_macro_map_gain": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": -0.03986923581891557,
+          "positive_classes": 7,
+          "bootstrap95": [
+            -0.07710329782057981,
+            -0.004012860101737169
+          ]
+        }
+      },
+      "word/native": {
+        "metrics": [
+          76.59695813078238,
+          81.50390639881758
+        ],
+        "class_macro_map_gain": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": 0,
+          "positive_classes": 0,
+          "bootstrap95": [
+            0,
+            0
+          ]
+        }
+      },
+      "word/shuffled": {
+        "metrics": [
+          76.5974160565141,
+          81.52734389829371
+        ],
+        "class_macro_map_gain": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": 0.004429697809699909,
+          "positive_classes": 15,
+          "bootstrap95": [
+            -0.009592246231827379,
+            0.022107960047495535
+          ]
+        }
+      },
+      "word/aligned_both": {
+        "metrics": [
+          76.60317067832997,
+          81.51432304997192
+        ],
+        "class_macro_map_gain": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": 0.0038917468340281956,
+          "positive_classes": 16,
+          "bootstrap95": [
+            -0.015553723250249668,
+            0.019458701424513232
+          ]
+        }
+      }
+    }
+  },
+  "sketchy_2": {
+    "queries": 768,
+    "gallery": 12552,
+    "max_geometric_decomposition_error": 0.0000014901161193847656,
+    "previous_mean_discrepancy_pp": 0.00003492653680344422,
+    "mean_vector_norm_patch_mass_KL": [
+      0.014653096906840801,
+      0.06932803243398666,
+      0.0008132173679769039
+    ],
+    "candidate_top1_top16": {
+      "native": [
+        0.6653645634651184,
+        0.67919921875
+      ],
+      "aligned": [
+        0.6692708134651184,
+        0.6796061396598816
+      ],
+      "real_only": [
+        0.6692708134651184,
+        0.679931640625
+      ],
+      "reverse": [
+        0.6614583134651184,
+        0.6787109375
+      ],
+      "shuffled": [
+        0.6614583134651184,
+        0.679443359375
+      ],
+      "mirror": [
+        0.6731770634651184,
+        0.679443359375
+      ],
+      "aligned_4": [
+        0.671875,
+        0.68017578125
+      ],
+      "shuffled_4": [
+        0.6666666865348816,
+        0.6796061396598816
+      ]
+    },
+    "rows": {
+      "base": {
+        "metrics": [
+          75.74428124238088,
+          74.59830735642754
+        ],
+        "class_macro_map_gain": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -1.8446801745693426,
+          "positive_classes": 6,
+          "bootstrap95": [
+            -2.771980777544517,
+            -0.8992702300472257
+          ]
+        }
+      },
+      "native": {
+        "metrics": [
+          77.4353920799816,
+          76.05924488113183
+        ],
+        "class_macro_map_gain": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": 0,
+          "positive_classes": 0,
+          "bootstrap95": [
+            0,
+            0
+          ]
+        }
+      },
+      "aligned": {
+        "metrics": [
+          77.35194838611883,
+          76.0227865618314
+        ],
+        "class_macro_map_gain": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -0.09214001454404531,
+          "positive_classes": 6,
+          "bootstrap95": [
+            -0.2010322979250081,
+            -0.004735996716741337
+          ]
+        }
+      },
+      "aligned_both": {
+        "metrics": [
+          77.41794628497397,
+          76.04687509786649
+        ],
+        "class_macro_map_gain": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -0.031435596105290765,
+          "positive_classes": 9,
+          "bootstrap95": [
+            -0.10566770459730018,
+            0.02956465200447738
+          ]
+        }
+      },
+      "real_only": {
+        "metrics": [
+          77.37805979201462,
+          76.03580737923039
+        ],
+        "class_macro_map_gain": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -0.0404768925971648,
+          "positive_classes": 8,
+          "bootstrap95": [
+            -0.1686869451501816,
+            0.09740280993562267
+          ]
+        }
+      },
+      "reverse": {
+        "metrics": [
+          77.54173893063125,
+          76.09049489219615
+        ],
+        "class_macro_map_gain": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": 0.12314073554399163,
+          "positive_classes": 13,
+          "bootstrap95": [
+            0.00694449956699782,
+            0.2769138152060216
+          ]
+        }
+      },
+      "shuffled": {
+        "metrics": [
+          77.44792522892871,
+          76.06380218361059
+        ],
+        "class_macro_map_gain": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": 0.04695591523742288,
+          "positive_classes": 4,
+          "bootstrap95": [
+            -0.070273011477005,
+            0.24894660152621104
+          ]
+        }
+      },
+      "shuffled_both": {
+        "metrics": [
+          77.45046061530351,
+          76.06705738398887
+        ],
+        "class_macro_map_gain": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": 0.03979536498591761,
+          "positive_classes": 5,
+          "bootstrap95": [
+            -0.048120824324697345,
+            0.19073756942755757
+          ]
+        }
+      },
+      "mirror": {
+        "metrics": [
+          77.32503999159235,
+          75.97851571287416
+        ],
+        "class_macro_map_gain": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -0.13270517845750793,
+          "positive_classes": 5,
+          "bootstrap95": [
+            -0.3262722725288109,
+            -0.00747827928660336
+          ]
+        }
+      },
+      "aligned_4": {
+        "metrics": [
+          77.30267568974037,
+          75.88085944383542
+        ],
+        "class_macro_map_gain": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -0.1525329630846445,
+          "positive_classes": 7,
+          "bootstrap95": [
+            -0.3896117968592646,
+            0.0684783089124576
+          ]
+        }
+      },
+      "shuffled_4": {
+        "metrics": [
+          77.37635600163534,
+          76.0019532180498
+        ],
+        "class_macro_map_gain": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -0.02394448585556287,
+          "positive_classes": 6,
+          "bootstrap95": [
+            -0.20837612052476842,
+            0.22916967911013708
+          ]
+        }
+      },
+      "word/aligned": {
+        "metrics": [
+          72.19999079061381,
+          71.35156272937215
+        ],
+        "class_macro_map_gain": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": 0.01608362459892874,
+          "positive_classes": 12,
+          "bootstrap95": [
+            -0.04629992320663188,
+            0.09356642398248723
+          ]
+        }
+      },
+      "word/native": {
+        "metrics": [
+          72.18594822619102,
+          71.34960961181301
+        ],
+        "class_macro_map_gain": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": 0,
+          "positive_classes": 0,
+          "bootstrap95": [
+            0,
+            0
+          ]
+        }
+      },
+      "word/shuffled": {
+        "metrics": [
+          72.18110367515087,
+          71.33333354346783
+        ],
+        "class_macro_map_gain": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -0.00348779456164224,
+          "positive_classes": 9,
+          "bootstrap95": [
+            -0.033728216411317076,
+            0.029425359278966414
+          ]
+        }
+      },
+      "word/aligned_both": {
+        "metrics": [
+          72.18914010736626,
+          71.34895855888317
+        ],
+        "class_macro_map_gain": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": 0.005196713049580445,
+          "positive_classes": 10,
+          "bootstrap95": [
+            -0.018401772426516222,
+            0.03562228936450801
+          ]
+        }
+      }
+    }
+  }
+}
