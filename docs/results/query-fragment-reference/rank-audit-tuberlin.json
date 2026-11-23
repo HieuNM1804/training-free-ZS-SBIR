@@ -1,0 +1,1634 @@
+{
+  "code": "4415c11c622d7d1e019c0b955195360d7c7d9da0",
+  "freeze": "6a71b3d6ee8fb9f569664b706f88457a8bd3d9a9f426e4526c302d38cd4413e7",
+  "protocol": "same gamma=.8 and tau=64 for every comparison; after-score attribution only",
+  "queries": 2130,
+  "gallery": 27262,
+  "classes": 30,
+  "pairs": {
+    "native/direct": {
+      "top1_fixed": 403,
+      "top1_broken": 86,
+      "top1_before": 0.5863849520683289,
+      "top1_after": 0.7352112531661987,
+      "fixed_pair": {
+        "original_errors": {
+          "count": 881,
+          "pair_gap_increased": 686,
+          "pair_gap_decreased": 134,
+          "correct_pair_after": 509
+        },
+        "original_correct": {
+          "count": 1249,
+          "pair_gap_increased": 844,
+          "pair_gap_decreased": 338,
+          "correct_pair_after": 1061
+        }
+      },
+      "examples": {
+        "repair": {
+          "id": 413,
+          "query": "sketch/couch/4712.png",
+          "first_before": "photo/floor lamp/n03367059_1305.JPEG",
+          "first_after": "photo/couch/n04344873_15573.JPEG",
+          "gap_before": -0.022556841373443604,
+          "gap_after": 0.04654625058174133
+        },
+        "loss": {
+          "id": 553,
+          "query": "sketch/airplane/74.png",
+          "first_before": "photo/airplane/n02691156_2150.JPEG",
+          "first_after": "photo/helicopter/n03512147_1514.JPEG",
+          "gap_before": 0.036839425563812256,
+          "gap_after": 0.012402132153511047
+        }
+      },
+      "by_class": {
+        "helicopter": [
+          10,
+          2
+        ],
+        "wrist-watch": [
+          17,
+          1
+        ],
+        "mermaid": [
+          24,
+          1
+        ],
+        "mosquito": [
+          14,
+          0
+        ],
+        "pear": [
+          3,
+          0
+        ],
+        "couch": [
+          46,
+          0
+        ],
+        "hammer": [
+          20,
+          5
+        ],
+        "airplane": [
+          16,
+          2
+        ],
+        "house": [
+          41,
+          0
+        ],
+        "baseball bat": [
+          4,
+          40
+        ],
+        "toilet": [
+          10,
+          2
+        ],
+        "panda": [
+          12,
+          4
+        ],
+        "butterfly": [
+          17,
+          1
+        ],
+        "mug": [
+          2,
+          0
+        ],
+        "wineglass": [
+          1,
+          0
+        ],
+        "motorbike": [
+          36,
+          0
+        ],
+        "eyeglasses": [
+          0,
+          7
+        ],
+        "hot air balloon": [
+          20,
+          0
+        ],
+        "cup": [
+          0,
+          0
+        ],
+        "skull": [
+          0,
+          4
+        ],
+        "truck": [
+          6,
+          6
+        ],
+        "palm tree": [
+          4,
+          7
+        ],
+        "cell phone": [
+          11,
+          0
+        ],
+        "horse": [
+          1,
+          1
+        ],
+        "sailboat": [
+          15,
+          0
+        ],
+        "suv": [
+          12,
+          0
+        ],
+        "church": [
+          13,
+          0
+        ],
+        "floor lamp": [
+          0,
+          3
+        ],
+        "bus": [
+          43,
+          0
+        ],
+        "tv": [
+          5,
+          0
+        ]
+      }
+    },
+    "native/walk": {
+      "top1_fixed": 521,
+      "top1_broken": 49,
+      "top1_before": 0.48732393980026245,
+      "top1_after": 0.7089201807975769,
+      "fixed_pair": {
+        "original_errors": {
+          "count": 1092,
+          "pair_gap_increased": 996,
+          "pair_gap_decreased": 36,
+          "correct_pair_after": 833
+        },
+        "original_correct": {
+          "count": 1038,
+          "pair_gap_increased": 361,
+          "pair_gap_decreased": 619,
+          "correct_pair_after": 843
+        }
+      },
+      "examples": {
+        "repair": {
+          "id": 1081,
+          "query": "sketch/motorbike/10758.png",
+          "first_before": "photo/skull/pic_00135.jpg",
+          "first_after": "photo/motorbike/n03790512_7171.JPEG",
+          "gap_before": -0.9761390686035156,
+          "gap_after": 3.5455188751220703
+        },
+        "loss": {
+          "id": 1821,
+          "query": "sketch/suv/16861.png",
+          "first_before": "photo/suv/n04285965_16073.JPEG",
+          "first_after": "photo/truck/n03930630_6439.JPEG",
+          "gap_before": 0.24344253540039062,
+          "gap_after": -0.042819976806640625
+        }
+      },
+      "by_class": {
+        "helicopter": [
+          22,
+          1
+        ],
+        "wrist-watch": [
+          18,
+          0
+        ],
+        "mermaid": [
+          21,
+          1
+        ],
+        "mosquito": [
+          15,
+          0
+        ],
+        "pear": [
+          3,
+          3
+        ],
+        "couch": [
+          32,
+          0
+        ],
+        "hammer": [
+          25,
+          0
+        ],
+        "airplane": [
+          27,
+          1
+        ],
+        "house": [
+          57,
+          0
+        ],
+        "baseball bat": [
+          8,
+          15
+        ],
+        "toilet": [
+          8,
+          0
+        ],
+        "panda": [
+          9,
+          1
+        ],
+        "butterfly": [
+          25,
+          0
+        ],
+        "mug": [
+          0,
+          1
+        ],
+        "wineglass": [
+          1,
+          0
+        ],
+        "motorbike": [
+          45,
+          0
+        ],
+        "eyeglasses": [
+          0,
+          7
+        ],
+        "hot air balloon": [
+          22,
+          0
+        ],
+        "cup": [
+          5,
+          1
+        ],
+        "skull": [
+          0,
+          9
+        ],
+        "truck": [
+          35,
+          0
+        ],
+        "palm tree": [
+          6,
+          3
+        ],
+        "cell phone": [
+          10,
+          0
+        ],
+        "horse": [
+          3,
+          3
+        ],
+        "sailboat": [
+          34,
+          0
+        ],
+        "suv": [
+          13,
+          2
+        ],
+        "church": [
+          13,
+          0
+        ],
+        "floor lamp": [
+          6,
+          0
+        ],
+        "bus": [
+          49,
+          0
+        ],
+        "tv": [
+          9,
+          1
+        ]
+      }
+    },
+    "mean_colour/direct": {
+      "top1_fixed": 197,
+      "top1_broken": 47,
+      "top1_before": 0.6647887229919434,
+      "top1_after": 0.7352112531661987,
+      "fixed_pair": {
+        "original_errors": {
+          "count": 714,
+          "pair_gap_increased": 557,
+          "pair_gap_decreased": 95,
+          "correct_pair_after": 233
+        },
+        "original_correct": {
+          "count": 1416,
+          "pair_gap_increased": 712,
+          "pair_gap_decreased": 635,
+          "correct_pair_after": 1283
+        }
+      },
+      "examples": {
+        "repair": {
+          "id": 1709,
+          "query": "sketch/sailboat/13930.png",
+          "first_before": "photo/pear/n07767847_11567.JPEG",
+          "first_after": "photo/sailboat/n04128499_11789.JPEG",
+          "gap_before": -0.004187285900115967,
+          "gap_after": 0.02453833818435669
+        },
+        "loss": {
+          "id": 447,
+          "query": "sketch/hammer/7789.png",
+          "first_before": "photo/hammer/n03481172_11158.JPEG",
+          "first_after": "photo/floor lamp/n03367059_7973.JPEG",
+          "gap_before": 0.0010348707437515259,
+          "gap_after": -0.004060626029968262
+        }
+      },
+      "by_class": {
+        "helicopter": [
+          10,
+          2
+        ],
+        "wrist-watch": [
+          12,
+          0
+        ],
+        "mermaid": [
+          8,
+          2
+        ],
+        "mosquito": [
+          0,
+          7
+        ],
+        "pear": [
+          0,
+          1
+        ],
+        "couch": [
+          19,
+          1
+        ],
+        "hammer": [
+          4,
+          8
+        ],
+        "airplane": [
+          2,
+          3
+        ],
+        "house": [
+          7,
+          1
+        ],
+        "baseball bat": [
+          7,
+          6
+        ],
+        "toilet": [
+          9,
+          2
+        ],
+        "panda": [
+          14,
+          3
+        ],
+        "butterfly": [
+          21,
+          0
+        ],
+        "mug": [
+          0,
+          0
+        ],
+        "wineglass": [
+          0,
+          1
+        ],
+        "motorbike": [
+          13,
+          1
+        ],
+        "eyeglasses": [
+          7,
+          0
+        ],
+        "hot air balloon": [
+          11,
+          0
+        ],
+        "cup": [
+          0,
+          0
+        ],
+        "skull": [
+          1,
+          1
+        ],
+        "truck": [
+          2,
+          5
+        ],
+        "palm tree": [
+          11,
+          1
+        ],
+        "cell phone": [
+          6,
+          0
+        ],
+        "horse": [
+          6,
+          2
+        ],
+        "sailboat": [
+          2,
+          0
+        ],
+        "suv": [
+          13,
+          0
+        ],
+        "church": [
+          5,
+          0
+        ],
+        "floor lamp": [
+          0,
+          0
+        ],
+        "bus": [
+          5,
+          0
+        ],
+        "tv": [
+          2,
+          0
+        ]
+      }
+    },
+    "mean_colour/walk": {
+      "top1_fixed": 233,
+      "top1_broken": 37,
+      "top1_before": 0.6169013977050781,
+      "top1_after": 0.7089201807975769,
+      "fixed_pair": {
+        "original_errors": {
+          "count": 816,
+          "pair_gap_increased": 659,
+          "pair_gap_decreased": 96,
+          "correct_pair_after": 263
+        },
+        "original_correct": {
+          "count": 1314,
+          "pair_gap_increased": 290,
+          "pair_gap_decreased": 958,
+          "correct_pair_after": 1187
+        }
+      },
+      "examples": {
+        "repair": {
+          "id": 74,
+          "query": "sketch/wrist-watch/19848.png",
+          "first_before": "photo/hammer/n03481172_19720.JPEG",
+          "first_after": "photo/wrist-watch/n04607869_748.JPEG",
+          "gap_before": -0.2671384811401367,
+          "gap_after": 0.9386920928955078
+        },
+        "loss": {
+          "id": 1995,
+          "query": "sketch/bus/2656.png",
+          "first_before": "photo/bus/n02924116_1579.JPEG",
+          "first_after": "photo/truck/n03930630_5285.JPEG",
+          "gap_before": 0.5716838836669922,
+          "gap_after": 0.3724861145019531
+        }
+      },
+      "by_class": {
+        "helicopter": [
+          7,
+          0
+        ],
+        "wrist-watch": [
+          9,
+          0
+        ],
+        "mermaid": [
+          9,
+          1
+        ],
+        "mosquito": [
+          0,
+          5
+        ],
+        "pear": [
+          0,
+          5
+        ],
+        "couch": [
+          11,
+          0
+        ],
+        "hammer": [
+          0,
+          8
+        ],
+        "airplane": [
+          12,
+          0
+        ],
+        "house": [
+          5,
+          0
+        ],
+        "baseball bat": [
+          26,
+          0
+        ],
+        "toilet": [
+          9,
+          0
+        ],
+        "panda": [
+          27,
+          0
+        ],
+        "butterfly": [
+          19,
+          1
+        ],
+        "mug": [
+          4,
+          1
+        ],
+        "wineglass": [
+          0,
+          0
+        ],
+        "motorbike": [
+          11,
+          0
+        ],
+        "eyeglasses": [
+          10,
+          0
+        ],
+        "hot air balloon": [
+          18,
+          0
+        ],
+        "cup": [
+          5,
+          4
+        ],
+        "skull": [
+          0,
+          3
+        ],
+        "truck": [
+          6,
+          1
+        ],
+        "palm tree": [
+          7,
+          1
+        ],
+        "cell phone": [
+          3,
+          0
+        ],
+        "horse": [
+          5,
+          2
+        ],
+        "sailboat": [
+          2,
+          0
+        ],
+        "suv": [
+          15,
+          0
+        ],
+        "church": [
+          3,
+          0
+        ],
+        "floor lamp": [
+          4,
+          2
+        ],
+        "bus": [
+          2,
+          3
+        ],
+        "tv": [
+          4,
+          0
+        ]
+      }
+    },
+    "empty_token/direct": {
+      "top1_fixed": 191,
+      "top1_broken": 58,
+      "top1_before": 0.6727699637413025,
+      "top1_after": 0.7352112531661987,
+      "fixed_pair": {
+        "original_errors": {
+          "count": 697,
+          "pair_gap_increased": 530,
+          "pair_gap_decreased": 103,
+          "correct_pair_after": 220
+        },
+        "original_correct": {
+          "count": 1433,
+          "pair_gap_increased": 742,
+          "pair_gap_decreased": 622,
+          "correct_pair_after": 1287
+        }
+      },
+      "examples": {
+        "repair": {
+          "id": 1612,
+          "query": "sketch/cell phone/3992.png",
+          "first_before": "photo/eyeglasses/n04272054_51937.JPEG",
+          "first_after": "photo/cell phone/n02992529_5498.JPEG",
+          "gap_before": -0.04504959285259247,
+          "gap_after": -0.020496264100074768
+        },
+        "loss": {
+          "id": 782,
+          "query": "sketch/panda/11456.png",
+          "first_before": "photo/panda/n02510455_1010.JPEG",
+          "first_after": "photo/wineglass/n04592099_13304.JPEG",
+          "gap_before": 0.01848827302455902,
+          "gap_after": 0.007163107395172119
+        }
+      },
+      "by_class": {
+        "helicopter": [
+          17,
+          0
+        ],
+        "wrist-watch": [
+          15,
+          0
+        ],
+        "mermaid": [
+          9,
+          1
+        ],
+        "mosquito": [
+          0,
+          6
+        ],
+        "pear": [
+          0,
+          0
+        ],
+        "couch": [
+          23,
+          1
+        ],
+        "hammer": [
+          3,
+          10
+        ],
+        "airplane": [
+          1,
+          6
+        ],
+        "house": [
+          6,
+          2
+        ],
+        "baseball bat": [
+          5,
+          6
+        ],
+        "toilet": [
+          8,
+          0
+        ],
+        "panda": [
+          4,
+          10
+        ],
+        "butterfly": [
+          17,
+          0
+        ],
+        "mug": [
+          0,
+          0
+        ],
+        "wineglass": [
+          0,
+          1
+        ],
+        "motorbike": [
+          15,
+          1
+        ],
+        "eyeglasses": [
+          6,
+          0
+        ],
+        "hot air balloon": [
+          6,
+          1
+        ],
+        "cup": [
+          0,
+          0
+        ],
+        "skull": [
+          0,
+          3
+        ],
+        "truck": [
+          1,
+          6
+        ],
+        "palm tree": [
+          7,
+          1
+        ],
+        "cell phone": [
+          8,
+          0
+        ],
+        "horse": [
+          3,
+          3
+        ],
+        "sailboat": [
+          2,
+          0
+        ],
+        "suv": [
+          13,
+          0
+        ],
+        "church": [
+          3,
+          0
+        ],
+        "floor lamp": [
+          6,
+          0
+        ],
+        "bus": [
+          10,
+          0
+        ],
+        "tv": [
+          3,
+          0
+        ]
+      }
+    },
+    "empty_token/walk": {
+      "top1_fixed": 171,
+      "top1_broken": 51,
+      "top1_before": 0.6525821685791016,
+      "top1_after": 0.7089201807975769,
+      "fixed_pair": {
+        "original_errors": {
+          "count": 740,
+          "pair_gap_increased": 580,
+          "pair_gap_decreased": 103,
+          "correct_pair_after": 220
+        },
+        "original_correct": {
+          "count": 1390,
+          "pair_gap_increased": 390,
+          "pair_gap_decreased": 933,
+          "correct_pair_after": 1226
+        }
+      },
+      "examples": {
+        "repair": {
+          "id": 872,
+          "query": "sketch/butterfly/2838.png",
+          "first_before": "photo/mosquito/n02200198_1527.JPEG",
+          "first_after": "photo/butterfly/n02274259_4997.JPEG",
+          "gap_before": -0.6172676086425781,
+          "gap_after": 0.3200855255126953
+        },
+        "loss": {
+          "id": 342,
+          "query": "sketch/pear/11912.png",
+          "first_before": "photo/pear/n07767847_32.JPEG",
+          "first_after": "photo/mug/n03797390_26627.JPEG",
+          "gap_before": 0.7186212539672852,
+          "gap_after": 0.6057701110839844
+        }
+      },
+      "by_class": {
+        "helicopter": [
+          6,
+          0
+        ],
+        "wrist-watch": [
+          9,
+          0
+        ],
+        "mermaid": [
+          7,
+          2
+        ],
+        "mosquito": [
+          0,
+          6
+        ],
+        "pear": [
+          0,
+          7
+        ],
+        "couch": [
+          11,
+          0
+        ],
+        "hammer": [
+          0,
+          9
+        ],
+        "airplane": [
+          5,
+          3
+        ],
+        "house": [
+          4,
+          0
+        ],
+        "baseball bat": [
+          32,
+          0
+        ],
+        "toilet": [
+          7,
+          0
+        ],
+        "panda": [
+          8,
+          0
+        ],
+        "butterfly": [
+          5,
+          2
+        ],
+        "mug": [
+          1,
+          1
+        ],
+        "wineglass": [
+          0,
+          0
+        ],
+        "motorbike": [
+          11,
+          0
+        ],
+        "eyeglasses": [
+          12,
+          0
+        ],
+        "hot air balloon": [
+          11,
+          0
+        ],
+        "cup": [
+          5,
+          3
+        ],
+        "skull": [
+          0,
+          4
+        ],
+        "truck": [
+          3,
+          2
+        ],
+        "palm tree": [
+          0,
+          3
+        ],
+        "cell phone": [
+          5,
+          0
+        ],
+        "horse": [
+          2,
+          5
+        ],
+        "sailboat": [
+          0,
+          0
+        ],
+        "suv": [
+          15,
+          0
+        ],
+        "church": [
+          1,
+          1
+        ],
+        "floor lamp": [
+          6,
+          1
+        ],
+        "bus": [
+          1,
+          2
+        ],
+        "tv": [
+          4,
+          0
+        ]
+      }
+    },
+    "area_shuffle/direct": {
+      "top1_fixed": 69,
+      "top1_broken": 38,
+      "top1_before": 0.7206572890281677,
+      "top1_after": 0.7352112531661987,
+      "fixed_pair": {
+        "original_errors": {
+          "count": 595,
+          "pair_gap_increased": 322,
+          "pair_gap_decreased": 211,
+          "correct_pair_after": 81
+        },
+        "original_correct": {
+          "count": 1535,
+          "pair_gap_increased": 812,
+          "pair_gap_decreased": 654,
+          "correct_pair_after": 1430
+        }
+      },
+      "examples": {
+        "repair": {
+          "id": 1795,
+          "query": "sketch/suv/16829.png",
+          "first_before": "photo/truck/n03930630_6997.JPEG",
+          "first_after": "photo/suv/n04285965_13826.JPEG",
+          "gap_before": -0.009604081511497498,
+          "gap_after": -0.0004825592041015625
+        },
+        "loss": {
+          "id": 4,
+          "query": "sketch/helicopter/8328.png",
+          "first_before": "photo/helicopter/n03512147_2528.JPEG",
+          "first_after": "photo/toilet/n04446276_16861.JPEG",
+          "gap_before": 0.003919750452041626,
+          "gap_after": -0.0015077143907546997
+        }
+      },
+      "by_class": {
+        "helicopter": [
+          3,
+          2
+        ],
+        "wrist-watch": [
+          5,
+          0
+        ],
+        "mermaid": [
+          2,
+          3
+        ],
+        "mosquito": [
+          0,
+          2
+        ],
+        "pear": [
+          0,
+          1
+        ],
+        "couch": [
+          6,
+          0
+        ],
+        "hammer": [
+          6,
+          6
+        ],
+        "airplane": [
+          3,
+          1
+        ],
+        "house": [
+          1,
+          0
+        ],
+        "baseball bat": [
+          7,
+          3
+        ],
+        "toilet": [
+          2,
+          1
+        ],
+        "panda": [
+          3,
+          4
+        ],
+        "butterfly": [
+          3,
+          5
+        ],
+        "mug": [
+          0,
+          0
+        ],
+        "wineglass": [
+          0,
+          0
+        ],
+        "motorbike": [
+          5,
+          2
+        ],
+        "eyeglasses": [
+          1,
+          0
+        ],
+        "hot air balloon": [
+          2,
+          1
+        ],
+        "cup": [
+          0,
+          0
+        ],
+        "skull": [
+          0,
+          0
+        ],
+        "truck": [
+          1,
+          1
+        ],
+        "palm tree": [
+          2,
+          1
+        ],
+        "cell phone": [
+          2,
+          1
+        ],
+        "horse": [
+          1,
+          2
+        ],
+        "sailboat": [
+          0,
+          0
+        ],
+        "suv": [
+          7,
+          2
+        ],
+        "church": [
+          4,
+          0
+        ],
+        "floor lamp": [
+          1,
+          0
+        ],
+        "bus": [
+          2,
+          0
+        ],
+        "tv": [
+          0,
+          0
+        ]
+      }
+    },
+    "area_shuffle/walk": {
+      "top1_fixed": 56,
+      "top1_broken": 34,
+      "top1_before": 0.6985915303230286,
+      "top1_after": 0.7089201807975769,
+      "fixed_pair": {
+        "original_errors": {
+          "count": 642,
+          "pair_gap_increased": 346,
+          "pair_gap_decreased": 242,
+          "correct_pair_after": 67
+        },
+        "original_correct": {
+          "count": 1488,
+          "pair_gap_increased": 644,
+          "pair_gap_decreased": 780,
+          "correct_pair_after": 1392
+        }
+      },
+      "examples": {
+        "repair": {
+          "id": 1136,
+          "query": "sketch/eyeglasses/6180.png",
+          "first_before": "photo/hammer/n03481172_7876.JPEG",
+          "first_after": "photo/eyeglasses/n04272054_17105.JPEG",
+          "gap_before": -0.1325836181640625,
+          "gap_after": 0.23535919189453125
+        },
+        "loss": {
+          "id": 904,
+          "query": "sketch/butterfly/2874.png",
+          "first_before": "photo/butterfly/n02274259_8160.JPEG",
+          "first_after": "photo/mosquito/n02200198_5472.JPEG",
+          "gap_before": 0.0066432952880859375,
+          "gap_after": -0.11236381530761719
+        }
+      },
+      "by_class": {
+        "helicopter": [
+          2,
+          0
+        ],
+        "wrist-watch": [
+          0,
+          0
+        ],
+        "mermaid": [
+          0,
+          2
+        ],
+        "mosquito": [
+          0,
+          0
+        ],
+        "pear": [
+          0,
+          4
+        ],
+        "couch": [
+          2,
+          0
+        ],
+        "hammer": [
+          2,
+          7
+        ],
+        "airplane": [
+          0,
+          2
+        ],
+        "house": [
+          2,
+          0
+        ],
+        "baseball bat": [
+          9,
+          2
+        ],
+        "toilet": [
+          0,
+          2
+        ],
+        "panda": [
+          5,
+          0
+        ],
+        "butterfly": [
+          0,
+          4
+        ],
+        "mug": [
+          3,
+          1
+        ],
+        "wineglass": [
+          1,
+          0
+        ],
+        "motorbike": [
+          3,
+          0
+        ],
+        "eyeglasses": [
+          2,
+          2
+        ],
+        "hot air balloon": [
+          3,
+          0
+        ],
+        "cup": [
+          5,
+          2
+        ],
+        "skull": [
+          0,
+          3
+        ],
+        "truck": [
+          3,
+          0
+        ],
+        "palm tree": [
+          2,
+          0
+        ],
+        "cell phone": [
+          2,
+          0
+        ],
+        "horse": [
+          0,
+          2
+        ],
+        "sailboat": [
+          0,
+          0
+        ],
+        "suv": [
+          4,
+          0
+        ],
+        "church": [
+          1,
+          0
+        ],
+        "floor lamp": [
+          4,
+          1
+        ],
+        "bus": [
+          1,
+          0
+        ],
+        "tv": [
+          0,
+          0
+        ]
+      }
+    },
+    "permuted/direct": {
+      "top1_fixed": 37,
+      "top1_broken": 46,
+      "top1_before": 0.7394366264343262,
+      "top1_after": 0.7352112531661987,
+      "fixed_pair": {
+        "original_errors": {
+          "count": 555,
+          "pair_gap_increased": 255,
+          "pair_gap_decreased": 238,
+          "correct_pair_after": 48
+        },
+        "original_correct": {
+          "count": 1575,
+          "pair_gap_increased": 658,
+          "pair_gap_decreased": 848,
+          "correct_pair_after": 1460
+        }
+      },
+      "examples": {
+        "repair": {
+          "id": 749,
+          "query": "sketch/toilet/18056.png",
+          "first_before": "photo/hammer/n03481172_41320.JPEG",
+          "first_after": "photo/toilet/n04446276_16477.JPEG",
+          "gap_before": -0.004842817783355713,
+          "gap_after": 0.002330869436264038
+        },
+        "loss": {
+          "id": 447,
+          "query": "sketch/hammer/7789.png",
+          "first_before": "photo/hammer/n03481172_11158.JPEG",
+          "first_after": "photo/floor lamp/n03367059_7973.JPEG",
+          "gap_before": 0.0038843005895614624,
+          "gap_after": -0.004060626029968262
+        }
+      },
+      "by_class": {
+        "helicopter": [
+          3,
+          1
+        ],
+        "wrist-watch": [
+          4,
+          0
+        ],
+        "mermaid": [
+          0,
+          1
+        ],
+        "mosquito": [
+          0,
+          2
+        ],
+        "pear": [
+          1,
+          0
+        ],
+        "couch": [
+          0,
+          0
+        ],
+        "hammer": [
+          2,
+          9
+        ],
+        "airplane": [
+          6,
+          2
+        ],
+        "house": [
+          0,
+          5
+        ],
+        "baseball bat": [
+          4,
+          1
+        ],
+        "toilet": [
+          2,
+          1
+        ],
+        "panda": [
+          1,
+          3
+        ],
+        "butterfly": [
+          0,
+          6
+        ],
+        "mug": [
+          0,
+          0
+        ],
+        "wineglass": [
+          0,
+          1
+        ],
+        "motorbike": [
+          1,
+          3
+        ],
+        "eyeglasses": [
+          1,
+          3
+        ],
+        "hot air balloon": [
+          3,
+          0
+        ],
+        "cup": [
+          0,
+          0
+        ],
+        "skull": [
+          0,
+          1
+        ],
+        "truck": [
+          1,
+          0
+        ],
+        "palm tree": [
+          3,
+          0
+        ],
+        "cell phone": [
+          2,
+          0
+        ],
+        "horse": [
+          1,
+          3
+        ],
+        "sailboat": [
+          0,
+          1
+        ],
+        "suv": [
+          1,
+          1
+        ],
+        "church": [
+          1,
+          0
+        ],
+        "floor lamp": [
+          0,
+          1
+        ],
+        "bus": [
+          0,
+          0
+        ],
+        "tv": [
+          0,
+          1
+        ]
+      }
+    },
+    "permuted/walk": {
+      "top1_fixed": 27,
+      "top1_broken": 38,
+      "top1_before": 0.7140845060348511,
+      "top1_after": 0.7089201807975769,
+      "fixed_pair": {
+        "original_errors": {
+          "count": 609,
+          "pair_gap_increased": 272,
+          "pair_gap_decreased": 282,
+          "correct_pair_after": 34
+        },
+        "original_correct": {
+          "count": 1521,
+          "pair_gap_increased": 581,
+          "pair_gap_decreased": 876,
+          "correct_pair_after": 1428
+        }
+      },
+      "examples": {
+        "repair": {
+          "id": 636,
+          "query": "sketch/baseball bat/1007.png",
+          "first_before": "photo/hammer/n03481172_4021.JPEG",
+          "first_after": "photo/baseball bat/n02799175_15905.JPEG",
+          "gap_before": -0.01741504669189453,
+          "gap_after": 0.030181884765625
+        },
+        "loss": {
+          "id": 291,
+          "query": "sketch/pear/11852.png",
+          "first_before": "photo/pear/n07767847_32.JPEG",
+          "first_after": "photo/mug/n03797390_5502.JPEG",
+          "gap_before": 0.033603668212890625,
+          "gap_after": -0.07698631286621094
+        }
+      },
+      "by_class": {
+        "helicopter": [
+          1,
+          0
+        ],
+        "wrist-watch": [
+          0,
+          0
+        ],
+        "mermaid": [
+          0,
+          3
+        ],
+        "mosquito": [
+          0,
+          0
+        ],
+        "pear": [
+          0,
+          3
+        ],
+        "couch": [
+          0,
+          0
+        ],
+        "hammer": [
+          1,
+          4
+        ],
+        "airplane": [
+          1,
+          4
+        ],
+        "house": [
+          1,
+          0
+        ],
+        "baseball bat": [
+          5,
+          4
+        ],
+        "toilet": [
+          0,
+          0
+        ],
+        "panda": [
+          2,
+          2
+        ],
+        "butterfly": [
+          0,
+          3
+        ],
+        "mug": [
+          3,
+          1
+        ],
+        "wineglass": [
+          0,
+          0
+        ],
+        "motorbike": [
+          1,
+          1
+        ],
+        "eyeglasses": [
+          0,
+          0
+        ],
+        "hot air balloon": [
+          2,
+          0
+        ],
+        "cup": [
+          5,
+          1
+        ],
+        "skull": [
+          0,
+          3
+        ],
+        "truck": [
+          0,
+          0
+        ],
+        "palm tree": [
+          2,
+          1
+        ],
+        "cell phone": [
+          2,
+          1
+        ],
+        "horse": [
+          0,
+          3
+        ],
+        "sailboat": [
+          0,
+          0
+        ],
+        "suv": [
+          1,
+          3
+        ],
+        "church": [
+          0,
+          0
+        ],
+        "floor lamp": [
+          0,
+          1
+        ],
+        "bus": [
+          0,
+          0
+        ],
+        "tv": [
+          0,
+          0
+        ]
+      }
+    }
+  },
+  "linear_identity_error": 8.307397365570068e-07,
+  "geometry_mean_cosine_distanceNorm_relativeScoreStd": {
+    "mean_colour": [
+      0.7856785655021667,
+      0.6415457129478455,
+      0.2941693365573883
+    ],
+    "empty_token": [
+      0.7576740980148315,
+      0.6805670857429504,
+      0.31210461258888245
+    ],
+    "area_shuffle": [
+      0.9764390587806702,
+      0.20216678082942963,
+      0.09663702547550201
+    ],
+    "permuted": [
+      0.987861156463623,
+      0.1475391983985901,
+      0.07030770927667618
+    ]
+  },
+  "per_query_sha256": "58c33d252f675a1673d83da8096bbdc24e21047eed4e0c6842f8ceadf86bd0ce"
+}

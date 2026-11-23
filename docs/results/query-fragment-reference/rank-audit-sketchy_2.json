@@ -1,0 +1,1274 @@
+{
+  "code": "4415c11c622d7d1e019c0b955195360d7c7d9da0",
+  "freeze": "6a71b3d6ee8fb9f569664b706f88457a8bd3d9a9f426e4526c302d38cd4413e7",
+  "protocol": "same gamma=.8 and tau=64 for every comparison; after-score attribution only",
+  "queries": 12694,
+  "gallery": 12552,
+  "classes": 21,
+  "pairs": {
+    "native/direct": {
+      "top1_fixed": 4310,
+      "top1_broken": 360,
+      "top1_before": 0.3691507875919342,
+      "top1_after": 0.6803213953971863,
+      "fixed_pair": {
+        "original_errors": {
+          "count": 8008,
+          "pair_gap_increased": 7829,
+          "pair_gap_decreased": 179,
+          "correct_pair_after": 5736
+        },
+        "original_correct": {
+          "count": 4686,
+          "pair_gap_increased": 3591,
+          "pair_gap_decreased": 1095,
+          "correct_pair_after": 4400
+        }
+      },
+      "examples": {
+        "repair": {
+          "id": 11515,
+          "query": "sketch/wheelchair/n04576002_9533-4.png",
+          "first_before": "photo/scissors/ext_154.jpg",
+          "first_after": "photo/wheelchair/ext_32.jpg",
+          "gap_before": -0.03715711832046509,
+          "gap_after": 0.04401233792304993
+        },
+        "loss": {
+          "id": 3293,
+          "query": "sketch/giraffe/n02439033_12485-5.png",
+          "first_before": "photo/giraffe/ext_126.jpg",
+          "first_after": "photo/cow/ext_55.jpg",
+          "gap_before": 0.004485189914703369,
+          "gap_after": 0.018038272857666016
+        }
+      },
+      "by_class": {
+        "bat": [
+          206,
+          7
+        ],
+        "cabin": [
+          217,
+          6
+        ],
+        "cow": [
+          375,
+          3
+        ],
+        "dolphin": [
+          94,
+          31
+        ],
+        "door": [
+          321,
+          3
+        ],
+        "giraffe": [
+          27,
+          129
+        ],
+        "helicopter": [
+          180,
+          0
+        ],
+        "mouse": [
+          97,
+          79
+        ],
+        "pear": [
+          163,
+          3
+        ],
+        "raccoon": [
+          335,
+          6
+        ],
+        "rhinoceros": [
+          217,
+          6
+        ],
+        "saw": [
+          171,
+          0
+        ],
+        "scissors": [
+          1,
+          43
+        ],
+        "seagull": [
+          210,
+          15
+        ],
+        "skyscraper": [
+          228,
+          0
+        ],
+        "songbird": [
+          336,
+          0
+        ],
+        "sword": [
+          282,
+          3
+        ],
+        "tree": [
+          230,
+          2
+        ],
+        "wheelchair": [
+          243,
+          0
+        ],
+        "windmill": [
+          161,
+          1
+        ],
+        "window": [
+          216,
+          23
+        ]
+      }
+    },
+    "native/walk": {
+      "top1_fixed": 4977,
+      "top1_broken": 293,
+      "top1_before": 0.3051835596561432,
+      "top1_after": 0.6741767525672913,
+      "fixed_pair": {
+        "original_errors": {
+          "count": 8820,
+          "pair_gap_increased": 7944,
+          "pair_gap_decreased": 876,
+          "correct_pair_after": 5875
+        },
+        "original_correct": {
+          "count": 3874,
+          "pair_gap_increased": 1878,
+          "pair_gap_decreased": 1996,
+          "correct_pair_after": 3465
+        }
+      },
+      "examples": {
+        "repair": {
+          "id": 8174,
+          "query": "sketch/seagull/n02041246_12364-3.png",
+          "first_before": "photo/giraffe/ext_439.jpg",
+          "first_after": "photo/seagull/n02041246_12956.jpg",
+          "gap_before": -2.667499542236328,
+          "gap_after": 0.10745429992675781
+        },
+        "loss": {
+          "id": 7931,
+          "query": "sketch/scissors/n04148054_24128-4.png",
+          "first_before": "photo/scissors/ext_338.jpg",
+          "first_after": "photo/sword/n04373894_295621.jpg",
+          "gap_before": 0.07331466674804688,
+          "gap_after": -0.010137557983398438
+        }
+      },
+      "by_class": {
+        "bat": [
+          160,
+          13
+        ],
+        "cabin": [
+          136,
+          4
+        ],
+        "cow": [
+          362,
+          0
+        ],
+        "dolphin": [
+          77,
+          60
+        ],
+        "door": [
+          338,
+          0
+        ],
+        "giraffe": [
+          28,
+          133
+        ],
+        "helicopter": [
+          300,
+          0
+        ],
+        "mouse": [
+          351,
+          0
+        ],
+        "pear": [
+          244,
+          2
+        ],
+        "raccoon": [
+          365,
+          1
+        ],
+        "rhinoceros": [
+          180,
+          18
+        ],
+        "saw": [
+          256,
+          0
+        ],
+        "scissors": [
+          0,
+          42
+        ],
+        "seagull": [
+          276,
+          6
+        ],
+        "skyscraper": [
+          243,
+          1
+        ],
+        "songbird": [
+          365,
+          0
+        ],
+        "sword": [
+          326,
+          0
+        ],
+        "tree": [
+          234,
+          0
+        ],
+        "wheelchair": [
+          304,
+          0
+        ],
+        "windmill": [
+          173,
+          0
+        ],
+        "window": [
+          259,
+          13
+        ]
+      }
+    },
+    "mean_colour/direct": {
+      "top1_fixed": 1138,
+      "top1_broken": 819,
+      "top1_before": 0.6551914215087891,
+      "top1_after": 0.6803213953971863,
+      "fixed_pair": {
+        "original_errors": {
+          "count": 4377,
+          "pair_gap_increased": 3261,
+          "pair_gap_decreased": 1116,
+          "correct_pair_after": 1412
+        },
+        "original_correct": {
+          "count": 8317,
+          "pair_gap_increased": 4439,
+          "pair_gap_decreased": 3878,
+          "correct_pair_after": 7608
+        }
+      },
+      "examples": {
+        "repair": {
+          "id": 7676,
+          "query": "sketch/scissors/n04148054_13647-2.png",
+          "first_before": "photo/sword/n04373894_53201.jpg",
+          "first_after": "photo/scissors/ext_384.jpg",
+          "gap_before": -0.01624119281768799,
+          "gap_after": 0.0021067261695861816
+        },
+        "loss": {
+          "id": 1053,
+          "query": "sketch/cabin/n03686924_3639-6.png",
+          "first_before": "photo/cabin/n03686924_70881.jpg",
+          "first_after": "photo/door/n03226880_48761.jpg",
+          "gap_before": 0.010479390621185303,
+          "gap_after": 0.002140715718269348
+        }
+      },
+      "by_class": {
+        "bat": [
+          29,
+          74
+        ],
+        "cabin": [
+          21,
+          212
+        ],
+        "cow": [
+          122,
+          13
+        ],
+        "dolphin": [
+          38,
+          18
+        ],
+        "door": [
+          189,
+          17
+        ],
+        "giraffe": [
+          4,
+          80
+        ],
+        "helicopter": [
+          59,
+          8
+        ],
+        "mouse": [
+          79,
+          47
+        ],
+        "pear": [
+          11,
+          11
+        ],
+        "raccoon": [
+          85,
+          55
+        ],
+        "rhinoceros": [
+          40,
+          18
+        ],
+        "saw": [
+          84,
+          34
+        ],
+        "scissors": [
+          21,
+          14
+        ],
+        "seagull": [
+          28,
+          25
+        ],
+        "skyscraper": [
+          59,
+          5
+        ],
+        "songbird": [
+          106,
+          17
+        ],
+        "sword": [
+          13,
+          50
+        ],
+        "tree": [
+          53,
+          7
+        ],
+        "wheelchair": [
+          28,
+          4
+        ],
+        "windmill": [
+          49,
+          2
+        ],
+        "window": [
+          20,
+          108
+        ]
+      }
+    },
+    "mean_colour/walk": {
+      "top1_fixed": 1010,
+      "top1_broken": 725,
+      "top1_before": 0.6517252326011658,
+      "top1_after": 0.6741767525672913,
+      "fixed_pair": {
+        "original_errors": {
+          "count": 4421,
+          "pair_gap_increased": 3448,
+          "pair_gap_decreased": 973,
+          "correct_pair_after": 1189
+        },
+        "original_correct": {
+          "count": 8273,
+          "pair_gap_increased": 2698,
+          "pair_gap_decreased": 5575,
+          "correct_pair_after": 7743
+        }
+      },
+      "examples": {
+        "repair": {
+          "id": 2516,
+          "query": "sketch/door/n03222176_11589-3.png",
+          "first_before": "photo/window/n04587648_85491.jpg",
+          "first_after": "photo/door/n03222318_464.jpg",
+          "gap_before": -0.18140411376953125,
+          "gap_after": 0.8660049438476562
+        },
+        "loss": {
+          "id": 3079,
+          "query": "sketch/giraffe/n02439033_10130-3.png",
+          "first_before": "photo/giraffe/ext_439.jpg",
+          "first_after": "photo/rhinoceros/n02391994_105641.jpg",
+          "gap_before": 0.20862960815429688,
+          "gap_after": 0.06349372863769531
+        }
+      },
+      "by_class": {
+        "bat": [
+          26,
+          40
+        ],
+        "cabin": [
+          5,
+          266
+        ],
+        "cow": [
+          27,
+          16
+        ],
+        "dolphin": [
+          32,
+          10
+        ],
+        "door": [
+          142,
+          39
+        ],
+        "giraffe": [
+          5,
+          70
+        ],
+        "helicopter": [
+          68,
+          1
+        ],
+        "mouse": [
+          38,
+          34
+        ],
+        "pear": [
+          4,
+          13
+        ],
+        "raccoon": [
+          252,
+          5
+        ],
+        "rhinoceros": [
+          63,
+          8
+        ],
+        "saw": [
+          72,
+          46
+        ],
+        "scissors": [
+          17,
+          17
+        ],
+        "seagull": [
+          9,
+          15
+        ],
+        "skyscraper": [
+          69,
+          2
+        ],
+        "songbird": [
+          39,
+          9
+        ],
+        "sword": [
+          11,
+          48
+        ],
+        "tree": [
+          20,
+          11
+        ],
+        "wheelchair": [
+          28,
+          1
+        ],
+        "windmill": [
+          46,
+          3
+        ],
+        "window": [
+          37,
+          71
+        ]
+      }
+    },
+    "empty_token/direct": {
+      "top1_fixed": 1278,
+      "top1_broken": 739,
+      "top1_before": 0.6378604173660278,
+      "top1_after": 0.6803213953971863,
+      "fixed_pair": {
+        "original_errors": {
+          "count": 4597,
+          "pair_gap_increased": 3607,
+          "pair_gap_decreased": 990,
+          "correct_pair_after": 1472
+        },
+        "original_correct": {
+          "count": 8097,
+          "pair_gap_increased": 4523,
+          "pair_gap_decreased": 3574,
+          "correct_pair_after": 7428
+        }
+      },
+      "examples": {
+        "repair": {
+          "id": 9488,
+          "query": "sketch/songbird/n01531178_5255-4.png",
+          "first_before": "photo/seagull/n02041246_12364.jpg",
+          "first_after": "photo/songbird/n01534433_12711.jpg",
+          "gap_before": -0.0035243630409240723,
+          "gap_after": 0.017009824514389038
+        },
+        "loss": {
+          "id": 6041,
+          "query": "sketch/raccoon/n02508021_2326-8.png",
+          "first_before": "photo/raccoon/ext_309.jpg",
+          "first_after": "photo/mouse/ext_95.jpg",
+          "gap_before": 0.02784457802772522,
+          "gap_after": 0.017308533191680908
+        }
+      },
+      "by_class": {
+        "bat": [
+          64,
+          52
+        ],
+        "cabin": [
+          29,
+          192
+        ],
+        "cow": [
+          168,
+          13
+        ],
+        "dolphin": [
+          18,
+          36
+        ],
+        "door": [
+          185,
+          14
+        ],
+        "giraffe": [
+          11,
+          73
+        ],
+        "helicopter": [
+          64,
+          7
+        ],
+        "mouse": [
+          77,
+          41
+        ],
+        "pear": [
+          27,
+          4
+        ],
+        "raccoon": [
+          103,
+          25
+        ],
+        "rhinoceros": [
+          55,
+          26
+        ],
+        "saw": [
+          127,
+          5
+        ],
+        "scissors": [
+          23,
+          19
+        ],
+        "seagull": [
+          47,
+          18
+        ],
+        "skyscraper": [
+          68,
+          3
+        ],
+        "songbird": [
+          53,
+          27
+        ],
+        "sword": [
+          20,
+          60
+        ],
+        "tree": [
+          22,
+          15
+        ],
+        "wheelchair": [
+          42,
+          4
+        ],
+        "windmill": [
+          55,
+          5
+        ],
+        "window": [
+          20,
+          100
+        ]
+      }
+    },
+    "empty_token/walk": {
+      "top1_fixed": 1241,
+      "top1_broken": 680,
+      "top1_before": 0.6299826502799988,
+      "top1_after": 0.6741767525672913,
+      "fixed_pair": {
+        "original_errors": {
+          "count": 4697,
+          "pair_gap_increased": 3553,
+          "pair_gap_decreased": 1144,
+          "correct_pair_after": 1369
+        },
+        "original_correct": {
+          "count": 7997,
+          "pair_gap_increased": 3098,
+          "pair_gap_decreased": 4899,
+          "correct_pair_after": 7500
+        }
+      },
+      "examples": {
+        "repair": {
+          "id": 7321,
+          "query": "sketch/saw/n04140064_24013-4.png",
+          "first_before": "photo/sword/n04373894_398791.jpg",
+          "first_after": "photo/saw/n02770585_16481.jpg",
+          "gap_before": -0.3940753936767578,
+          "gap_after": 0.5562267303466797
+        },
+        "loss": {
+          "id": 6530,
+          "query": "sketch/rhinoceros/n02391994_12378-6.png",
+          "first_before": "photo/rhinoceros/ext_552.jpg",
+          "first_after": "photo/cow/n01887787_17371.jpg",
+          "gap_before": 0.3062877655029297,
+          "gap_after": 0.17645931243896484
+        }
+      },
+      "by_class": {
+        "bat": [
+          44,
+          48
+        ],
+        "cabin": [
+          20,
+          239
+        ],
+        "cow": [
+          36,
+          11
+        ],
+        "dolphin": [
+          12,
+          40
+        ],
+        "door": [
+          165,
+          33
+        ],
+        "giraffe": [
+          10,
+          65
+        ],
+        "helicopter": [
+          76,
+          3
+        ],
+        "mouse": [
+          78,
+          21
+        ],
+        "pear": [
+          15,
+          7
+        ],
+        "raccoon": [
+          247,
+          1
+        ],
+        "rhinoceros": [
+          77,
+          17
+        ],
+        "saw": [
+          164,
+          17
+        ],
+        "scissors": [
+          8,
+          24
+        ],
+        "seagull": [
+          20,
+          10
+        ],
+        "skyscraper": [
+          94,
+          0
+        ],
+        "songbird": [
+          24,
+          12
+        ],
+        "sword": [
+          17,
+          49
+        ],
+        "tree": [
+          24,
+          13
+        ],
+        "wheelchair": [
+          40,
+          4
+        ],
+        "windmill": [
+          38,
+          2
+        ],
+        "window": [
+          32,
+          64
+        ]
+      }
+    },
+    "area_shuffle/direct": {
+      "top1_fixed": 675,
+      "top1_broken": 434,
+      "top1_before": 0.6613360643386841,
+      "top1_after": 0.6803213953971863,
+      "fixed_pair": {
+        "original_errors": {
+          "count": 4299,
+          "pair_gap_increased": 2740,
+          "pair_gap_decreased": 1559,
+          "correct_pair_after": 749
+        },
+        "original_correct": {
+          "count": 8395,
+          "pair_gap_increased": 4688,
+          "pair_gap_decreased": 3707,
+          "correct_pair_after": 7951
+        }
+      },
+      "examples": {
+        "repair": {
+          "id": 6185,
+          "query": "sketch/raccoon/n02508021_4383-7.png",
+          "first_before": "photo/mouse/ext_95.jpg",
+          "first_after": "photo/raccoon/ext_191.jpg",
+          "gap_before": -0.007084712386131287,
+          "gap_after": 0.0028275996446609497
+        },
+        "loss": {
+          "id": 9409,
+          "query": "sketch/songbird/n01530575_10069-2.png",
+          "first_before": "photo/songbird/n01594787_9656.jpg",
+          "first_after": "photo/seagull/n02041246_236181.jpg",
+          "gap_before": 0.0019298791885375977,
+          "gap_after": -0.00638832151889801
+        }
+      },
+      "by_class": {
+        "bat": [
+          36,
+          21
+        ],
+        "cabin": [
+          23,
+          79
+        ],
+        "cow": [
+          53,
+          9
+        ],
+        "dolphin": [
+          16,
+          20
+        ],
+        "door": [
+          109,
+          11
+        ],
+        "giraffe": [
+          2,
+          29
+        ],
+        "helicopter": [
+          18,
+          20
+        ],
+        "mouse": [
+          37,
+          29
+        ],
+        "pear": [
+          8,
+          6
+        ],
+        "raccoon": [
+          45,
+          36
+        ],
+        "rhinoceros": [
+          17,
+          8
+        ],
+        "saw": [
+          52,
+          12
+        ],
+        "scissors": [
+          7,
+          15
+        ],
+        "seagull": [
+          19,
+          18
+        ],
+        "skyscraper": [
+          27,
+          7
+        ],
+        "songbird": [
+          99,
+          6
+        ],
+        "sword": [
+          23,
+          22
+        ],
+        "tree": [
+          16,
+          7
+        ],
+        "wheelchair": [
+          14,
+          5
+        ],
+        "windmill": [
+          31,
+          10
+        ],
+        "window": [
+          23,
+          64
+        ]
+      }
+    },
+    "area_shuffle/walk": {
+      "top1_fixed": 476,
+      "top1_broken": 346,
+      "top1_before": 0.6639357209205627,
+      "top1_after": 0.6741767525672913,
+      "fixed_pair": {
+        "original_errors": {
+          "count": 4266,
+          "pair_gap_increased": 2435,
+          "pair_gap_decreased": 1831,
+          "correct_pair_after": 539
+        },
+        "original_correct": {
+          "count": 8428,
+          "pair_gap_increased": 4259,
+          "pair_gap_decreased": 4168,
+          "correct_pair_after": 8140
+        }
+      },
+      "examples": {
+        "repair": {
+          "id": 2658,
+          "query": "sketch/door/n03222318_10437-2.png",
+          "first_before": "photo/window/ext_208.jpg",
+          "first_after": "photo/door/n03226880_71151.jpg",
+          "gap_before": -0.052639007568359375,
+          "gap_after": 0.4261331558227539
+        },
+        "loss": {
+          "id": 12446,
+          "query": "sketch/window/n04587648_314-3.png",
+          "first_before": "photo/window/n04587648_2645.jpg",
+          "first_after": "photo/door/n03222176_127471.jpg",
+          "gap_before": 0.21090316772460938,
+          "gap_after": -0.06206798553466797
+        }
+      },
+      "by_class": {
+        "bat": [
+          26,
+          22
+        ],
+        "cabin": [
+          7,
+          72
+        ],
+        "cow": [
+          13,
+          9
+        ],
+        "dolphin": [
+          12,
+          12
+        ],
+        "door": [
+          82,
+          24
+        ],
+        "giraffe": [
+          1,
+          35
+        ],
+        "helicopter": [
+          15,
+          6
+        ],
+        "mouse": [
+          25,
+          20
+        ],
+        "pear": [
+          1,
+          10
+        ],
+        "raccoon": [
+          78,
+          11
+        ],
+        "rhinoceros": [
+          19,
+          12
+        ],
+        "saw": [
+          48,
+          16
+        ],
+        "scissors": [
+          4,
+          9
+        ],
+        "seagull": [
+          9,
+          9
+        ],
+        "skyscraper": [
+          36,
+          5
+        ],
+        "songbird": [
+          27,
+          5
+        ],
+        "sword": [
+          12,
+          17
+        ],
+        "tree": [
+          6,
+          5
+        ],
+        "wheelchair": [
+          19,
+          4
+        ],
+        "windmill": [
+          13,
+          2
+        ],
+        "window": [
+          23,
+          41
+        ]
+      }
+    },
+    "permuted/direct": {
+      "top1_fixed": 377,
+      "top1_broken": 334,
+      "top1_before": 0.676934003829956,
+      "top1_after": 0.6803213953971863,
+      "fixed_pair": {
+        "original_errors": {
+          "count": 4101,
+          "pair_gap_increased": 2514,
+          "pair_gap_decreased": 1587,
+          "correct_pair_after": 448
+        },
+        "original_correct": {
+          "count": 8593,
+          "pair_gap_increased": 3845,
+          "pair_gap_decreased": 4748,
+          "correct_pair_after": 8250
+        }
+      },
+      "examples": {
+        "repair": {
+          "id": 341,
+          "query": "sketch/bat/n02139199_7787-1.png",
+          "first_before": "photo/sword/n04373894_321201.jpg",
+          "first_after": "photo/bat/n02139199_114871.jpg",
+          "gap_before": -0.0046654194593429565,
+          "gap_after": 0.002371758222579956
+        },
+        "loss": {
+          "id": 7192,
+          "query": "sketch/saw/n03474779_3459-1.png",
+          "first_before": "photo/saw/n03474779_43141.jpg",
+          "first_after": "photo/window/ext_217.jpg",
+          "gap_before": 0.002559870481491089,
+          "gap_after": -0.0036326348781585693
+        }
+      },
+      "by_class": {
+        "bat": [
+          21,
+          20
+        ],
+        "cabin": [
+          23,
+          35
+        ],
+        "cow": [
+          8,
+          13
+        ],
+        "dolphin": [
+          11,
+          10
+        ],
+        "door": [
+          76,
+          20
+        ],
+        "giraffe": [
+          6,
+          9
+        ],
+        "helicopter": [
+          9,
+          8
+        ],
+        "mouse": [
+          16,
+          22
+        ],
+        "pear": [
+          10,
+          4
+        ],
+        "raccoon": [
+          29,
+          25
+        ],
+        "rhinoceros": [
+          12,
+          6
+        ],
+        "saw": [
+          34,
+          16
+        ],
+        "scissors": [
+          5,
+          9
+        ],
+        "seagull": [
+          4,
+          13
+        ],
+        "skyscraper": [
+          18,
+          13
+        ],
+        "songbird": [
+          32,
+          7
+        ],
+        "sword": [
+          21,
+          13
+        ],
+        "tree": [
+          6,
+          9
+        ],
+        "wheelchair": [
+          6,
+          3
+        ],
+        "windmill": [
+          20,
+          7
+        ],
+        "window": [
+          10,
+          72
+        ]
+      }
+    },
+    "permuted/walk": {
+      "top1_fixed": 284,
+      "top1_broken": 254,
+      "top1_before": 0.671813428401947,
+      "top1_after": 0.6741767525672913,
+      "fixed_pair": {
+        "original_errors": {
+          "count": 4166,
+          "pair_gap_increased": 2456,
+          "pair_gap_decreased": 1710,
+          "correct_pair_after": 305
+        },
+        "original_correct": {
+          "count": 8528,
+          "pair_gap_increased": 3602,
+          "pair_gap_decreased": 4926,
+          "correct_pair_after": 8310
+        }
+      },
+      "examples": {
+        "repair": {
+          "id": 5036,
+          "query": "sketch/mouse/n02330245_8735-3.png",
+          "first_before": "photo/dolphin/ext_2.jpg",
+          "first_after": "photo/mouse/n02330245_97021.jpg",
+          "gap_before": -0.13274192810058594,
+          "gap_after": 0.18079566955566406
+        },
+        "loss": {
+          "id": 1099,
+          "query": "sketch/cabin/n03686924_619-4.png",
+          "first_before": "photo/cabin/n02932400_154661.jpg",
+          "first_after": "photo/door/n03226880_48761.jpg",
+          "gap_before": 0.06402778625488281,
+          "gap_after": -0.14011001586914062
+        }
+      },
+      "by_class": {
+        "bat": [
+          13,
+          22
+        ],
+        "cabin": [
+          13,
+          14
+        ],
+        "cow": [
+          2,
+          11
+        ],
+        "dolphin": [
+          8,
+          7
+        ],
+        "door": [
+          58,
+          22
+        ],
+        "giraffe": [
+          6,
+          15
+        ],
+        "helicopter": [
+          9,
+          4
+        ],
+        "mouse": [
+          16,
+          14
+        ],
+        "pear": [
+          4,
+          6
+        ],
+        "raccoon": [
+          51,
+          9
+        ],
+        "rhinoceros": [
+          6,
+          9
+        ],
+        "saw": [
+          30,
+          18
+        ],
+        "scissors": [
+          0,
+          9
+        ],
+        "seagull": [
+          1,
+          9
+        ],
+        "skyscraper": [
+          18,
+          7
+        ],
+        "songbird": [
+          10,
+          7
+        ],
+        "sword": [
+          10,
+          10
+        ],
+        "tree": [
+          2,
+          9
+        ],
+        "wheelchair": [
+          9,
+          2
+        ],
+        "windmill": [
+          5,
+          4
+        ],
+        "window": [
+          13,
+          46
+        ]
+      }
+    }
+  },
+  "linear_identity_error": 9.015202522277832e-07,
+  "geometry_mean_cosine_distanceNorm_relativeScoreStd": {
+    "mean_colour": [
+      0.8616343140602112,
+      0.5145557522773743,
+      0.2933543920516968
+    ],
+    "empty_token": [
+      0.8248070478439331,
+      0.5775595307350159,
+      0.3268183767795563
+    ],
+    "area_shuffle": [
+      0.9737775921821594,
+      0.21374371647834778,
+      0.11635272204875946
+    ],
+    "permuted": [
+      0.9888117909431458,
+      0.14075914025306702,
+      0.08187000453472137
+    ]
+  },
+  "per_query_sha256": "5a9e9f2b0e7f5869d325407375eb48daff3906cd779b1bb641359b2d6f9b588e"
+}

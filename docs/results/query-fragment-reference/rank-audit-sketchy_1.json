@@ -1,0 +1,1434 @@
+{
+  "code": "4415c11c622d7d1e019c0b955195360d7c7d9da0",
+  "freeze": "6a71b3d6ee8fb9f569664b706f88457a8bd3d9a9f426e4526c302d38cd4413e7",
+  "protocol": "same gamma=.8 and tau=64 for every comparison; after-score attribution only",
+  "queries": 14179,
+  "gallery": 17100,
+  "classes": 25,
+  "pairs": {
+    "native/direct": {
+      "top1_fixed": 5519,
+      "top1_broken": 117,
+      "top1_before": 0.36673954129219055,
+      "top1_after": 0.7477254867553711,
+      "fixed_pair": {
+        "original_errors": {
+          "count": 8979,
+          "pair_gap_increased": 8886,
+          "pair_gap_decreased": 93,
+          "correct_pair_after": 6348
+        },
+        "original_correct": {
+          "count": 5200,
+          "pair_gap_increased": 4118,
+          "pair_gap_decreased": 1082,
+          "correct_pair_after": 5026
+        }
+      },
+      "examples": {
+        "repair": {
+          "id": 7852,
+          "query": "sketch/wine_bottle/n04591713_1473-6.png",
+          "first_before": "photo/scissors/ext_515.jpg",
+          "first_after": "photo/wine_bottle/ext_304.jpg",
+          "gap_before": -0.004050552845001221,
+          "gap_after": 0.11024975776672363
+        },
+        "loss": {
+          "id": 13403,
+          "query": "sketch/horse/n02374451_2825-1.png",
+          "first_before": "photo/horse/ext_215.jpg",
+          "first_after": "photo/camel/n02437136_45311.jpg",
+          "gap_before": 0.020954370498657227,
+          "gap_after": 0.010018080472946167
+        }
+      },
+      "by_class": {
+        "cup": [
+          91,
+          1
+        ],
+        "swan": [
+          187,
+          0
+        ],
+        "harp": [
+          376,
+          0
+        ],
+        "squirrel": [
+          168,
+          28
+        ],
+        "snail": [
+          342,
+          0
+        ],
+        "ray": [
+          146,
+          3
+        ],
+        "pineapple": [
+          136,
+          4
+        ],
+        "volcano": [
+          359,
+          0
+        ],
+        "rifle": [
+          377,
+          0
+        ],
+        "scissors": [
+          0,
+          27
+        ],
+        "parrot": [
+          378,
+          1
+        ],
+        "windmill": [
+          149,
+          0
+        ],
+        "teddy_bear": [
+          187,
+          1
+        ],
+        "tree": [
+          201,
+          0
+        ],
+        "wine_bottle": [
+          324,
+          0
+        ],
+        "deer": [
+          96,
+          0
+        ],
+        "chicken": [
+          94,
+          9
+        ],
+        "airplane": [
+          423,
+          0
+        ],
+        "wheelchair": [
+          235,
+          1
+        ],
+        "tank": [
+          172,
+          0
+        ],
+        "umbrella": [
+          239,
+          0
+        ],
+        "butterfly": [
+          258,
+          0
+        ],
+        "camel": [
+          177,
+          5
+        ],
+        "horse": [
+          6,
+          36
+        ],
+        "bell": [
+          398,
+          1
+        ]
+      }
+    },
+    "native/walk": {
+      "top1_fixed": 6046,
+      "top1_broken": 63,
+      "top1_before": 0.32414132356643677,
+      "top1_after": 0.7461034059524536,
+      "fixed_pair": {
+        "original_errors": {
+          "count": 9583,
+          "pair_gap_increased": 9533,
+          "pair_gap_decreased": 50,
+          "correct_pair_after": 7130
+        },
+        "original_correct": {
+          "count": 4596,
+          "pair_gap_increased": 1534,
+          "pair_gap_decreased": 3062,
+          "correct_pair_after": 4062
+        }
+      },
+      "examples": {
+        "repair": {
+          "id": 10313,
+          "query": "sketch/wheelchair/n04576002_2166-1.png",
+          "first_before": "photo/scissors/ext_33.jpg",
+          "first_after": "photo/wheelchair/n04576002_16531.jpg",
+          "gap_before": -2.3448333740234375,
+          "gap_after": 1.7610483169555664
+        },
+        "loss": {
+          "id": 5308,
+          "query": "sketch/scissors/n04148054_18401-5.png",
+          "first_before": "photo/scissors/ext_33.jpg",
+          "first_after": "photo/rifle/n02749479_2121.jpg",
+          "gap_before": 0.46820068359375,
+          "gap_after": 0.41962146759033203
+        }
+      },
+      "by_class": {
+        "cup": [
+          155,
+          0
+        ],
+        "swan": [
+          211,
+          0
+        ],
+        "harp": [
+          370,
+          0
+        ],
+        "squirrel": [
+          239,
+          2
+        ],
+        "snail": [
+          330,
+          0
+        ],
+        "ray": [
+          129,
+          1
+        ],
+        "pineapple": [
+          181,
+          0
+        ],
+        "volcano": [
+          366,
+          0
+        ],
+        "rifle": [
+          337,
+          0
+        ],
+        "scissors": [
+          0,
+          22
+        ],
+        "parrot": [
+          423,
+          0
+        ],
+        "windmill": [
+          180,
+          0
+        ],
+        "teddy_bear": [
+          235,
+          0
+        ],
+        "tree": [
+          227,
+          0
+        ],
+        "wine_bottle": [
+          371,
+          2
+        ],
+        "deer": [
+          91,
+          0
+        ],
+        "chicken": [
+          121,
+          4
+        ],
+        "airplane": [
+          464,
+          0
+        ],
+        "wheelchair": [
+          298,
+          0
+        ],
+        "tank": [
+          176,
+          0
+        ],
+        "umbrella": [
+          276,
+          0
+        ],
+        "butterfly": [
+          289,
+          0
+        ],
+        "camel": [
+          229,
+          0
+        ],
+        "horse": [
+          40,
+          32
+        ],
+        "bell": [
+          308,
+          0
+        ]
+      }
+    },
+    "mean_colour/direct": {
+      "top1_fixed": 1021,
+      "top1_broken": 263,
+      "top1_before": 0.694266140460968,
+      "top1_after": 0.7477254867553711,
+      "fixed_pair": {
+        "original_errors": {
+          "count": 4335,
+          "pair_gap_increased": 3567,
+          "pair_gap_decreased": 768,
+          "correct_pair_after": 1314
+        },
+        "original_correct": {
+          "count": 9844,
+          "pair_gap_increased": 5468,
+          "pair_gap_decreased": 4376,
+          "correct_pair_after": 9533
+        }
+      },
+      "examples": {
+        "repair": {
+          "id": 2304,
+          "query": "sketch/squirrel/n02355227_6961-6.png",
+          "first_before": "photo/teddy_bear/ext_322.jpg",
+          "first_after": "photo/squirrel/n02355227_30791.jpg",
+          "gap_before": -0.03923237323760986,
+          "gap_after": -0.015193596482276917
+        },
+        "loss": {
+          "id": 2359,
+          "query": "sketch/snail/n01944390_10126-5.png",
+          "first_before": "photo/snail/n01944390_31471.jpg",
+          "first_after": "photo/cup/ext_276.jpg",
+          "gap_before": 0.003376901149749756,
+          "gap_after": -0.0034272372722625732
+        }
+      },
+      "by_class": {
+        "cup": [
+          23,
+          11
+        ],
+        "swan": [
+          22,
+          11
+        ],
+        "harp": [
+          17,
+          24
+        ],
+        "squirrel": [
+          128,
+          2
+        ],
+        "snail": [
+          19,
+          70
+        ],
+        "ray": [
+          38,
+          30
+        ],
+        "pineapple": [
+          98,
+          4
+        ],
+        "volcano": [
+          71,
+          1
+        ],
+        "rifle": [
+          15,
+          7
+        ],
+        "scissors": [
+          21,
+          10
+        ],
+        "parrot": [
+          13,
+          22
+        ],
+        "windmill": [
+          45,
+          7
+        ],
+        "teddy_bear": [
+          2,
+          3
+        ],
+        "tree": [
+          21,
+          12
+        ],
+        "wine_bottle": [
+          13,
+          2
+        ],
+        "deer": [
+          9,
+          4
+        ],
+        "chicken": [
+          73,
+          1
+        ],
+        "airplane": [
+          87,
+          1
+        ],
+        "wheelchair": [
+          37,
+          1
+        ],
+        "tank": [
+          17,
+          5
+        ],
+        "umbrella": [
+          37,
+          3
+        ],
+        "butterfly": [
+          57,
+          2
+        ],
+        "camel": [
+          65,
+          13
+        ],
+        "horse": [
+          26,
+          11
+        ],
+        "bell": [
+          67,
+          6
+        ]
+      }
+    },
+    "mean_colour/walk": {
+      "top1_fixed": 835,
+      "top1_broken": 270,
+      "top1_before": 0.7062557339668274,
+      "top1_after": 0.7461034059524536,
+      "fixed_pair": {
+        "original_errors": {
+          "count": 4165,
+          "pair_gap_increased": 3505,
+          "pair_gap_decreased": 660,
+          "correct_pair_after": 937
+        },
+        "original_correct": {
+          "count": 10014,
+          "pair_gap_increased": 3008,
+          "pair_gap_decreased": 7006,
+          "correct_pair_after": 9388
+        }
+      },
+      "examples": {
+        "repair": {
+          "id": 10677,
+          "query": "sketch/wheelchair/n04576002_9533-7.png",
+          "first_before": "photo/scissors/ext_253.jpg",
+          "first_after": "photo/wheelchair/n04576002_53491.jpg",
+          "gap_before": -0.6018362045288086,
+          "gap_after": 0.6864767074584961
+        },
+        "loss": {
+          "id": 4827,
+          "query": "sketch/rifle/n03416775_5212-2.png",
+          "first_before": "photo/rifle/n04090263_39441.jpg",
+          "first_after": "photo/windmill/n04587404_130591.jpg",
+          "gap_before": 0.39644813537597656,
+          "gap_after": 0.07354545593261719
+        }
+      },
+      "by_class": {
+        "cup": [
+          5,
+          14
+        ],
+        "swan": [
+          11,
+          20
+        ],
+        "harp": [
+          30,
+          15
+        ],
+        "squirrel": [
+          156,
+          0
+        ],
+        "snail": [
+          16,
+          37
+        ],
+        "ray": [
+          8,
+          46
+        ],
+        "pineapple": [
+          70,
+          2
+        ],
+        "volcano": [
+          51,
+          2
+        ],
+        "rifle": [
+          11,
+          14
+        ],
+        "scissors": [
+          4,
+          7
+        ],
+        "parrot": [
+          6,
+          32
+        ],
+        "windmill": [
+          43,
+          8
+        ],
+        "teddy_bear": [
+          8,
+          3
+        ],
+        "tree": [
+          12,
+          12
+        ],
+        "wine_bottle": [
+          19,
+          6
+        ],
+        "deer": [
+          12,
+          4
+        ],
+        "chicken": [
+          109,
+          0
+        ],
+        "airplane": [
+          45,
+          4
+        ],
+        "wheelchair": [
+          25,
+          5
+        ],
+        "tank": [
+          6,
+          5
+        ],
+        "umbrella": [
+          28,
+          3
+        ],
+        "butterfly": [
+          27,
+          4
+        ],
+        "camel": [
+          79,
+          6
+        ],
+        "horse": [
+          18,
+          13
+        ],
+        "bell": [
+          36,
+          8
+        ]
+      }
+    },
+    "empty_token/direct": {
+      "top1_fixed": 1349,
+      "top1_broken": 349,
+      "top1_before": 0.6771986484527588,
+      "top1_after": 0.7477254867553711,
+      "fixed_pair": {
+        "original_errors": {
+          "count": 4577,
+          "pair_gap_increased": 3820,
+          "pair_gap_decreased": 757,
+          "correct_pair_after": 1547
+        },
+        "original_correct": {
+          "count": 9602,
+          "pair_gap_increased": 5635,
+          "pair_gap_decreased": 3967,
+          "correct_pair_after": 9230
+        }
+      },
+      "examples": {
+        "repair": {
+          "id": 4248,
+          "query": "sketch/volcano/n09472597_33008-2.png",
+          "first_before": "photo/tree/ext_37.jpg",
+          "first_after": "photo/volcano/n09472597_21426.jpg",
+          "gap_before": -0.008541852235794067,
+          "gap_after": 0.019576236605644226
+        },
+        "loss": {
+          "id": 3290,
+          "query": "sketch/ray/n01498041_12427-2.png",
+          "first_before": "photo/ray/ext_287.jpg",
+          "first_after": "photo/pineapple/n07753275_87431.jpg",
+          "gap_before": 0.030382484197616577,
+          "gap_after": 0.01825319230556488
+        }
+      },
+      "by_class": {
+        "cup": [
+          22,
+          14
+        ],
+        "swan": [
+          12,
+          20
+        ],
+        "harp": [
+          45,
+          15
+        ],
+        "squirrel": [
+          84,
+          20
+        ],
+        "snail": [
+          92,
+          27
+        ],
+        "ray": [
+          4,
+          132
+        ],
+        "pineapple": [
+          117,
+          5
+        ],
+        "volcano": [
+          78,
+          2
+        ],
+        "rifle": [
+          36,
+          8
+        ],
+        "scissors": [
+          14,
+          18
+        ],
+        "parrot": [
+          25,
+          15
+        ],
+        "windmill": [
+          44,
+          6
+        ],
+        "teddy_bear": [
+          8,
+          4
+        ],
+        "tree": [
+          13,
+          16
+        ],
+        "wine_bottle": [
+          16,
+          1
+        ],
+        "deer": [
+          1,
+          20
+        ],
+        "chicken": [
+          85,
+          1
+        ],
+        "airplane": [
+          229,
+          0
+        ],
+        "wheelchair": [
+          40,
+          0
+        ],
+        "tank": [
+          21,
+          0
+        ],
+        "umbrella": [
+          43,
+          6
+        ],
+        "butterfly": [
+          70,
+          1
+        ],
+        "camel": [
+          96,
+          12
+        ],
+        "horse": [
+          63,
+          5
+        ],
+        "bell": [
+          91,
+          1
+        ]
+      }
+    },
+    "empty_token/walk": {
+      "top1_fixed": 1151,
+      "top1_broken": 352,
+      "top1_before": 0.689752459526062,
+      "top1_after": 0.7461034059524536,
+      "fixed_pair": {
+        "original_errors": {
+          "count": 4399,
+          "pair_gap_increased": 3789,
+          "pair_gap_decreased": 610,
+          "correct_pair_after": 1403
+        },
+        "original_correct": {
+          "count": 9780,
+          "pair_gap_increased": 3825,
+          "pair_gap_decreased": 5955,
+          "correct_pair_after": 9303
+        }
+      },
+      "examples": {
+        "repair": {
+          "id": 14049,
+          "query": "sketch/bell/n02824448_5621-6.png",
+          "first_before": "photo/ray/n01496331_51021.jpg",
+          "first_after": "photo/bell/n02824448_132601.jpg",
+          "gap_before": -0.33260059356689453,
+          "gap_after": 1.068033218383789
+        },
+        "loss": {
+          "id": 2996,
+          "query": "sketch/ray/n01496331_15577-4.png",
+          "first_before": "photo/ray/n01496331_51021.jpg",
+          "first_after": "photo/umbrella/n04507155_124201.jpg",
+          "gap_before": 0.8967065811157227,
+          "gap_after": 0.4457063674926758
+        }
+      },
+      "by_class": {
+        "cup": [
+          18,
+          7
+        ],
+        "swan": [
+          13,
+          19
+        ],
+        "harp": [
+          68,
+          8
+        ],
+        "squirrel": [
+          80,
+          0
+        ],
+        "snail": [
+          71,
+          20
+        ],
+        "ray": [
+          4,
+          172
+        ],
+        "pineapple": [
+          104,
+          0
+        ],
+        "volcano": [
+          65,
+          3
+        ],
+        "rifle": [
+          48,
+          10
+        ],
+        "scissors": [
+          3,
+          16
+        ],
+        "parrot": [
+          16,
+          18
+        ],
+        "windmill": [
+          41,
+          5
+        ],
+        "teddy_bear": [
+          6,
+          12
+        ],
+        "tree": [
+          15,
+          11
+        ],
+        "wine_bottle": [
+          20,
+          7
+        ],
+        "deer": [
+          5,
+          16
+        ],
+        "chicken": [
+          97,
+          0
+        ],
+        "airplane": [
+          122,
+          1
+        ],
+        "wheelchair": [
+          40,
+          5
+        ],
+        "tank": [
+          13,
+          5
+        ],
+        "umbrella": [
+          55,
+          2
+        ],
+        "butterfly": [
+          61,
+          3
+        ],
+        "camel": [
+          104,
+          1
+        ],
+        "horse": [
+          48,
+          2
+        ],
+        "bell": [
+          34,
+          9
+        ]
+      }
+    },
+    "area_shuffle/direct": {
+      "top1_fixed": 485,
+      "top1_broken": 208,
+      "top1_before": 0.7281895875930786,
+      "top1_after": 0.7477254867553711,
+      "fixed_pair": {
+        "original_errors": {
+          "count": 3854,
+          "pair_gap_increased": 2528,
+          "pair_gap_decreased": 1326,
+          "correct_pair_after": 543
+        },
+        "original_correct": {
+          "count": 10325,
+          "pair_gap_increased": 6538,
+          "pair_gap_decreased": 3787,
+          "correct_pair_after": 10121
+        }
+      },
+      "examples": {
+        "repair": {
+          "id": 2844,
+          "query": "sketch/snail/n01944390_7038-5.png",
+          "first_before": "photo/parrot/n01816887_8397.jpg",
+          "first_after": "photo/snail/n01944390_11820.jpg",
+          "gap_before": -0.006889522075653076,
+          "gap_after": 0.004775404930114746
+        },
+        "loss": {
+          "id": 1273,
+          "query": "sketch/harp/n03495258_12918-3.png",
+          "first_before": "photo/harp/ext_399.jpg",
+          "first_after": "photo/umbrella/n04507155_3589.jpg",
+          "gap_before": 0.00020860135555267334,
+          "gap_after": -0.005668580532073975
+        }
+      },
+      "by_class": {
+        "cup": [
+          16,
+          10
+        ],
+        "swan": [
+          4,
+          12
+        ],
+        "harp": [
+          23,
+          9
+        ],
+        "squirrel": [
+          33,
+          7
+        ],
+        "snail": [
+          29,
+          26
+        ],
+        "ray": [
+          17,
+          25
+        ],
+        "pineapple": [
+          37,
+          6
+        ],
+        "volcano": [
+          31,
+          4
+        ],
+        "rifle": [
+          16,
+          5
+        ],
+        "scissors": [
+          4,
+          8
+        ],
+        "parrot": [
+          6,
+          11
+        ],
+        "windmill": [
+          30,
+          6
+        ],
+        "teddy_bear": [
+          3,
+          2
+        ],
+        "tree": [
+          8,
+          11
+        ],
+        "wine_bottle": [
+          8,
+          2
+        ],
+        "deer": [
+          6,
+          4
+        ],
+        "chicken": [
+          27,
+          2
+        ],
+        "airplane": [
+          47,
+          4
+        ],
+        "wheelchair": [
+          18,
+          3
+        ],
+        "tank": [
+          7,
+          9
+        ],
+        "umbrella": [
+          18,
+          7
+        ],
+        "butterfly": [
+          10,
+          3
+        ],
+        "camel": [
+          29,
+          15
+        ],
+        "horse": [
+          7,
+          13
+        ],
+        "bell": [
+          51,
+          4
+        ]
+      }
+    },
+    "area_shuffle/walk": {
+      "top1_fixed": 355,
+      "top1_broken": 192,
+      "top1_before": 0.7346075177192688,
+      "top1_after": 0.7461034059524536,
+      "fixed_pair": {
+        "original_errors": {
+          "count": 3763,
+          "pair_gap_increased": 2419,
+          "pair_gap_decreased": 1344,
+          "correct_pair_after": 401
+        },
+        "original_correct": {
+          "count": 10416,
+          "pair_gap_increased": 5103,
+          "pair_gap_decreased": 5313,
+          "correct_pair_after": 10210
+        }
+      },
+      "examples": {
+        "repair": {
+          "id": 2426,
+          "query": "sketch/snail/n01944390_11540-2.png",
+          "first_before": "photo/umbrella/n04507155_12420.jpg",
+          "first_after": "photo/snail/n01944390_8679.jpg",
+          "gap_before": -0.2649040222167969,
+          "gap_after": 0.3081321716308594
+        },
+        "loss": {
+          "id": 229,
+          "query": "sketch/cup/n03063073_9082-4.png",
+          "first_before": "photo/cup/n03147509_11370.jpg",
+          "first_after": "photo/wine_bottle/n04591713_69171.jpg",
+          "gap_before": 0.20679664611816406,
+          "gap_after": -0.08427715301513672
+        }
+      },
+      "by_class": {
+        "cup": [
+          3,
+          8
+        ],
+        "swan": [
+          2,
+          11
+        ],
+        "harp": [
+          25,
+          2
+        ],
+        "squirrel": [
+          29,
+          5
+        ],
+        "snail": [
+          15,
+          21
+        ],
+        "ray": [
+          11,
+          32
+        ],
+        "pineapple": [
+          22,
+          2
+        ],
+        "volcano": [
+          19,
+          5
+        ],
+        "rifle": [
+          16,
+          4
+        ],
+        "scissors": [
+          1,
+          4
+        ],
+        "parrot": [
+          4,
+          16
+        ],
+        "windmill": [
+          16,
+          10
+        ],
+        "teddy_bear": [
+          1,
+          5
+        ],
+        "tree": [
+          4,
+          12
+        ],
+        "wine_bottle": [
+          11,
+          3
+        ],
+        "deer": [
+          5,
+          1
+        ],
+        "chicken": [
+          43,
+          3
+        ],
+        "airplane": [
+          24,
+          4
+        ],
+        "wheelchair": [
+          15,
+          4
+        ],
+        "tank": [
+          3,
+          4
+        ],
+        "umbrella": [
+          25,
+          1
+        ],
+        "butterfly": [
+          3,
+          6
+        ],
+        "camel": [
+          29,
+          10
+        ],
+        "horse": [
+          4,
+          14
+        ],
+        "bell": [
+          25,
+          5
+        ]
+      }
+    },
+    "permuted/direct": {
+      "top1_fixed": 223,
+      "top1_broken": 207,
+      "top1_before": 0.7465970516204834,
+      "top1_after": 0.7477254867553711,
+      "fixed_pair": {
+        "original_errors": {
+          "count": 3593,
+          "pair_gap_increased": 2275,
+          "pair_gap_decreased": 1318,
+          "correct_pair_after": 254
+        },
+        "original_correct": {
+          "count": 10586,
+          "pair_gap_increased": 4900,
+          "pair_gap_decreased": 5686,
+          "correct_pair_after": 10388
+        }
+      },
+      "examples": {
+        "repair": {
+          "id": 11907,
+          "query": "sketch/butterfly/n02274259_15828-2.png",
+          "first_before": "photo/ray/n01498041_95421.jpg",
+          "first_after": "photo/butterfly/ext_49.jpg",
+          "gap_before": -0.0035936683416366577,
+          "gap_after": 0.0024263113737106323
+        },
+        "loss": {
+          "id": 13403,
+          "query": "sketch/horse/n02374451_2825-1.png",
+          "first_before": "photo/horse/n02374451_114831.jpg",
+          "first_after": "photo/camel/n02437136_45311.jpg",
+          "gap_before": 0.003935664892196655,
+          "gap_after": -0.0022012442350387573
+        }
+      },
+      "by_class": {
+        "cup": [
+          5,
+          12
+        ],
+        "swan": [
+          4,
+          11
+        ],
+        "harp": [
+          4,
+          15
+        ],
+        "squirrel": [
+          29,
+          7
+        ],
+        "snail": [
+          11,
+          30
+        ],
+        "ray": [
+          10,
+          30
+        ],
+        "pineapple": [
+          23,
+          6
+        ],
+        "volcano": [
+          7,
+          3
+        ],
+        "rifle": [
+          14,
+          2
+        ],
+        "scissors": [
+          3,
+          6
+        ],
+        "parrot": [
+          6,
+          6
+        ],
+        "windmill": [
+          15,
+          9
+        ],
+        "teddy_bear": [
+          1,
+          2
+        ],
+        "tree": [
+          1,
+          11
+        ],
+        "wine_bottle": [
+          1,
+          2
+        ],
+        "deer": [
+          3,
+          4
+        ],
+        "chicken": [
+          9,
+          1
+        ],
+        "airplane": [
+          7,
+          7
+        ],
+        "wheelchair": [
+          8,
+          2
+        ],
+        "tank": [
+          7,
+          3
+        ],
+        "umbrella": [
+          9,
+          7
+        ],
+        "butterfly": [
+          10,
+          1
+        ],
+        "camel": [
+          20,
+          9
+        ],
+        "horse": [
+          0,
+          15
+        ],
+        "bell": [
+          16,
+          6
+        ]
+      }
+    },
+    "permuted/walk": {
+      "top1_fixed": 213,
+      "top1_broken": 191,
+      "top1_before": 0.7445517778396606,
+      "top1_after": 0.7461034059524536,
+      "fixed_pair": {
+        "original_errors": {
+          "count": 3622,
+          "pair_gap_increased": 2246,
+          "pair_gap_decreased": 1376,
+          "correct_pair_after": 222
+        },
+        "original_correct": {
+          "count": 10557,
+          "pair_gap_increased": 3817,
+          "pair_gap_decreased": 6740,
+          "correct_pair_after": 10399
+        }
+      },
+      "examples": {
+        "repair": {
+          "id": 10259,
+          "query": "sketch/wheelchair/n04576002_13277-3.png",
+          "first_before": "photo/teddy_bear/n04399382_47041.jpg",
+          "first_after": "photo/wheelchair/n04576002_102091.jpg",
+          "gap_before": -0.256500244140625,
+          "gap_after": 0.0832061767578125
+        },
+        "loss": {
+          "id": 920,
+          "query": "sketch/swan/n01858441_9966-9.png",
+          "first_before": "photo/swan/n01858441_28461.jpg",
+          "first_after": "photo/umbrella/n04507155_124201.jpg",
+          "gap_before": 0.25353145599365234,
+          "gap_after": -0.0014362335205078125
+        }
+      },
+      "by_class": {
+        "cup": [
+          2,
+          11
+        ],
+        "swan": [
+          1,
+          10
+        ],
+        "harp": [
+          4,
+          10
+        ],
+        "squirrel": [
+          19,
+          7
+        ],
+        "snail": [
+          6,
+          24
+        ],
+        "ray": [
+          3,
+          32
+        ],
+        "pineapple": [
+          9,
+          4
+        ],
+        "volcano": [
+          2,
+          4
+        ],
+        "rifle": [
+          13,
+          2
+        ],
+        "scissors": [
+          1,
+          4
+        ],
+        "parrot": [
+          5,
+          6
+        ],
+        "windmill": [
+          13,
+          11
+        ],
+        "teddy_bear": [
+          0,
+          9
+        ],
+        "tree": [
+          1,
+          10
+        ],
+        "wine_bottle": [
+          7,
+          3
+        ],
+        "deer": [
+          5,
+          2
+        ],
+        "chicken": [
+          26,
+          1
+        ],
+        "airplane": [
+          12,
+          7
+        ],
+        "wheelchair": [
+          10,
+          4
+        ],
+        "tank": [
+          4,
+          2
+        ],
+        "umbrella": [
+          15,
+          0
+        ],
+        "butterfly": [
+          4,
+          7
+        ],
+        "camel": [
+          21,
+          8
+        ],
+        "horse": [
+          2,
+          11
+        ],
+        "bell": [
+          28,
+          2
+        ]
+      }
+    }
+  },
+  "linear_identity_error": 9.462237358093262e-07,
+  "geometry_mean_cosine_distanceNorm_relativeScoreStd": {
+    "mean_colour": [
+      0.8649393320083618,
+      0.5091632008552551,
+      0.2655051350593567
+    ],
+    "empty_token": [
+      0.8202656507492065,
+      0.5853549838066101,
+      0.32200536131858826
+    ],
+    "area_shuffle": [
+      0.973621666431427,
+      0.2142229825258255,
+      0.11201552301645279
+    ],
+    "permuted": [
+      0.9891408085823059,
+      0.13898181915283203,
+      0.07805982977151871
+    ]
+  },
+  "per_query_sha256": "57fe698b522a804fbd7f739362bdd492d9ad89f7ca1f34bdcafa6a46cc59dbe6"
+}

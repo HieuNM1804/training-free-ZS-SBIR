@@ -1,0 +1,124 @@
+{
+  "code": "69be53c25cf6094493327c94adab01e3cdf42fef",
+  "freeze": "6a71b3d6ee8fb9f569664b706f88457a8bd3d9a9f426e4526c302d38cd4413e7",
+  "post_lock_matched_diagnostic": true,
+  "coefficient": 0.8,
+  "temperature": 64.0,
+  "query_count": 12694,
+  "gallery": 12552,
+  "classes": 21,
+  "KD_max_error": 2.384185791015625e-07,
+  "original_mean_error": 7.877725599625407e-07,
+  "values": {
+    "appearance": [
+      0.7195638109098169,
+      0.6885977643854536
+    ],
+    "mean_colour": [
+      0.679339488720639,
+      0.6474227998433575
+    ],
+    "empty_token": [
+      0.6561338082687014,
+      0.6267386180022504
+    ],
+    "permuted": [
+      0.7131161897049106,
+      0.6827895085680077
+    ],
+    "area_shuffle": [
+      0.7043563633941408,
+      0.6753844354503157
+    ]
+  },
+  "paired": {
+    "mean_colour": {
+      "mAP": {
+        "delta_pp": 4.022432218917795,
+        "ci95_class": [
+          -0.007157410823194886,
+          8.78833230858194
+        ],
+        "classes_up": 12,
+        "classes": 21
+      },
+      "precision": {
+        "delta_pp": 4.117496454209613,
+        "ci95_class": [
+          0.19565382377301518,
+          8.579396954230242
+        ],
+        "classes_up": 12,
+        "classes": 21
+      }
+    },
+    "empty_token": {
+      "mAP": {
+        "delta_pp": 6.343000264111563,
+        "ci95_class": [
+          2.203256467670785,
+          10.963432495171475
+        ],
+        "classes_up": 17,
+        "classes": 21
+      },
+      "precision": {
+        "delta_pp": 6.185914638320318,
+        "ci95_class": [
+          2.0375307630099013,
+          10.654536990331374
+        ],
+        "classes_up": 17,
+        "classes": 21
+      }
+    },
+    "permuted": {
+      "mAP": {
+        "delta_pp": 0.6447621204906305,
+        "ci95_class": [
+          -0.6488310162855329,
+          2.0224636359251043
+        ],
+        "classes_up": 12,
+        "classes": 21
+      },
+      "precision": {
+        "delta_pp": 0.5808255817445926,
+        "ci95_class": [
+          -0.5706696549161404,
+          1.7162544723776216
+        ],
+        "classes_up": 13,
+        "classes": 21
+      }
+    },
+    "area_shuffle": {
+      "mAP": {
+        "delta_pp": 1.5207447515676165,
+        "ci95_class": [
+          0.03165181352837692,
+          3.211264878284658
+        ],
+        "classes_up": 14,
+        "classes": 21
+      },
+      "precision": {
+        "delta_pp": 1.3213328935137851,
+        "ci95_class": [
+          0.06227164339660906,
+          2.7093045932779636
+        ],
+        "classes_up": 13,
+        "classes": 21
+      }
+    }
+  },
+  "top1_replay_matches": {
+    "appearance": 12694,
+    "mean_colour": 12694,
+    "empty_token": 12694,
+    "permuted": 12694,
+    "area_shuffle": 12694
+  },
+  "per_query_sha256": "01237e63954061e0247b1336dfe1b53f4c59de18987c0bfe864bda106b585b7d"
+}
