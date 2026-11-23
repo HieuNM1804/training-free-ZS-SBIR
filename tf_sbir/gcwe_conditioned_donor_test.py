@@ -59,7 +59,7 @@ def get_updates(query, blank, patches, dist, scale, words, bank, nominees, fold,
 
 
 @torch.inference_mode()
-def run():
+def run(*, update_fn=get_updates, family='gcwe-conditioned-donor-test', start=0, count=768, controls=True):
     import random
     import numpy as np
     random.seed(42)
@@ -70,7 +70,7 @@ def run():
     torch.backends.cudnn.deterministic = True
     torch.use_deterministic_algorithms(True)
     w = Path('/content/sbir')
-    root = w / 'results/gcwe-conditioned-donor-test'
+    root = w / 'results' / family
     root.mkdir(parents=True, exist_ok=True)
     inputs = semantic_inputs(w, 'sketchy')
     cfg, qp, qs, pp, gs, q, p, src, tgt, scale = inputs
@@ -87,7 +87,7 @@ def run():
         if (root / (split+'.json')).exists():
             continue
         pi, gallery_labels = gs[split]
-        ix = torch.randperm(len(qi), generator=torch.Generator().manual_seed(42))[:768].sort().values
+        ix = torch.randperm(len(qi), generator=torch.Generator().manual_seed(42))[start:start+count].sort().values
         ref = torch.load(w/'results/geometry-word-flat-first'/(split+'.pt'), mmap=True, weights_only=True)
         assert torch.equal(qi, ref['qi']) and torch.equal(pi, ref['pi'])
         gallery = p[pi].cuda()
@@ -130,17 +130,19 @@ def run():
                 gwords = ((gscale*(gq[ids].cuda() @ gsrc.T)).softmax(1)
                           +(gscale*(flip[ids].float().cuda() @ gsrc.T)).softmax(1))/2
                 direct = log_score(geometry_graph.score(CONFIG, gwords @ geom_bank.T))
-                update = get_updates(sp[batch].cuda(),flat[batch].cuda(),gp[compact[batch].cuda()],
+                update = update_fn(sp[batch].cuda(),flat[batch].cuda(),gp[compact[batch].cuda()],
                                      dist,gscale,gwords,geom_bank,near[batch],folds,priors,random_order)
                 base = GLOBAL_WEIGHT*lex + REGIONAL_WEIGHT*regional
                 scores = {'cosine_two_views': F.normalize(poses.mean(1)) @ geom_gallery.T,
                           'semantic_direct': raw, 'semantic_diffused':lex,
                           'semantic_wrong_identity':graph.score(CONFIG,post[:,perm] @ bank.T),
                           'regional_only':regional,'semantic_regional':base}
+                if not controls:
+                    scores = {'semantic_regional':base}
                 for name,val in update.items():
                     delta = GLOBAL_WEIGHT*(log_score(geometry_graph.score(CONFIG,val))-direct)
                     scores[name] = base + delta
-                    if name=='original':
+                    if controls and name=='original':
                         scores['without_global_term'] = REGIONAL_WEIGHT*regional + delta
                         scores['shared_regional_attention'] = GLOBAL_WEIGHT*lex + REGIONAL_WEIGHT*shared + delta
                 for name,val in scores.items():
@@ -153,6 +155,9 @@ def run():
                      ('matched','random_pairs'),('between_pairs','semantic_regional'),
                      ('original','shared_regional_attention'),('original','without_global_term'),
                      ('semantic_diffused','semantic_wrong_identity'),('semantic_direct','cosine_two_views')]
+        if not controls:
+            contrasts = [('original','semantic_regional'),('expected','original'),('expected','semantic_regional'),
+                         ('expected','inclusive'),('all_donors','expected')]
         summary = {'commit':revision(),'sample_rows':len(ix),'gallery':len(pi),'seed':42,'replay_mae_points':gap.tolist(),
                    'metrics':{k:(100*v.double().mean(0)).tolist() for k,v in rows.items()},'contrasts':{}}
         for a,b in contrasts:
