@@ -1,0 +1,47 @@
+{
+  "code": "8900cf507e9e908acbffb9143904d2cd9636311d",
+  "setting": "tree-r25-p25/2/0.35/0.6/joint/1",
+  "queries": 756,
+  "eligible_class_spellings": 18,
+  "oracle_name_diagnosis": {
+    "whole": {
+      "eligible": 648,
+      "top1_among_listed_names": 540,
+      "top32_in_public_dictionary": 361,
+      "median_rank_in_public_dictionary": 20.0
+    },
+    "gallery_root": {
+      "eligible": 648,
+      "top1_among_listed_names": 454,
+      "top32_in_public_dictionary": 534,
+      "median_rank_in_public_dictionary": 2.0
+    }
+  },
+  "actual_first_error": {
+    "raw_name_prefers_true_to_wrong": 24,
+    "eligible_original_errors": 80,
+    "regional_original_top1_errors": 161,
+    "weighted_name_prefers_true_to_wrong": 27,
+    "verified_margin_increases_on_regional_errors": 67,
+    "scalar_has_positive_above_negative_on_errors": 28,
+    "verified_has_positive_above_negative_on_errors": 26,
+    "true_candidate_mean_borrowing": 0.6366159112981422,
+    "wrong_candidate_mean_borrowing": 0.7385656437664041
+  },
+  "covariance_identity_error": 2.599188361285601e-16,
+  "stored_mass_error": 2.2939955512946142e-07,
+  "max_probability_roundoff_contribution": 5.202363213158662e-08,
+  "examples": [
+    {
+      "outcome": "lost",
+      "query": "sketch/dolphin/n02068974_966-2.png",
+      "true_photo": "photo/dolphin/n02068974_82371.jpg",
+      "wrong_photo": "photo/seagull/n02041246_65331.jpg",
+      "supporting_public_term_for_true_photo": "phin",
+      "log_gap_scalar": 0.2449012029397064,
+      "log_gap_verified": -0.02329207179561088
+    }
+  ],
+  "pair_definition": "highest positive and highest negative under the preexisting regional score",
+  "usage": "class labels and spellings are consulted in this post-ranking diagnostic; development still uses unseen Sketchy metrics"
+}

@@ -1,0 +1,56 @@
+{
+  "code": "8900cf507e9e908acbffb9143904d2cd9636311d",
+  "setting": "tree-r25-p25/2/0.35/0.6/joint/1",
+  "queries": 900,
+  "eligible_class_spellings": 24,
+  "oracle_name_diagnosis": {
+    "whole": {
+      "eligible": 864,
+      "top1_among_listed_names": 732,
+      "top32_in_public_dictionary": 600,
+      "median_rank_in_public_dictionary": 7.0
+    },
+    "gallery_root": {
+      "eligible": 864,
+      "top1_among_listed_names": 695,
+      "top32_in_public_dictionary": 798,
+      "median_rank_in_public_dictionary": 2.0
+    }
+  },
+  "actual_first_error": {
+    "raw_name_prefers_true_to_wrong": 31,
+    "eligible_original_errors": 122,
+    "regional_original_top1_errors": 145,
+    "weighted_name_prefers_true_to_wrong": 37,
+    "verified_margin_increases_on_regional_errors": 58,
+    "scalar_has_positive_above_negative_on_errors": 27,
+    "verified_has_positive_above_negative_on_errors": 26,
+    "true_candidate_mean_borrowing": 0.64790314656421,
+    "wrong_candidate_mean_borrowing": 0.7506091035462183
+  },
+  "covariance_identity_error": 3.9811903773667723e-16,
+  "stored_mass_error": 3.137444988254856e-07,
+  "max_probability_roundoff_contribution": 8.303891242059072e-08,
+  "examples": [
+    {
+      "outcome": "rescued",
+      "query": "sketch/parrot/n01816887_11450-3.png",
+      "true_photo": "photo/parrot/n01819313_54471.jpg",
+      "wrong_photo": "photo/ray/ext_32.jpg",
+      "supporting_public_term_for_true_photo": "parrot",
+      "log_gap_scalar": -0.8218078949314513,
+      "log_gap_verified": 0.050141927634133054
+    },
+    {
+      "outcome": "lost",
+      "query": "sketch/ray/n01498041_2351-5.png",
+      "true_photo": "photo/ray/n01498041_2961.jpg",
+      "wrong_photo": "photo/bell/n02824448_11376.jpg",
+      "supporting_public_term_for_true_photo": "black swan",
+      "log_gap_scalar": 0.008048210136586853,
+      "log_gap_verified": -0.047164086762343516
+    }
+  ],
+  "pair_definition": "highest positive and highest negative under the preexisting regional score",
+  "usage": "class labels and spellings are consulted in this post-ranking diagnostic; development still uses unseen Sketchy metrics"
+}
