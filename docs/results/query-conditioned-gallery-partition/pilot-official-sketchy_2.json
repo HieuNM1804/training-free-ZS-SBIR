@@ -1,0 +1,3145 @@
+{
+  "signature": "f32506633016a948dee1f9e4f93708a0855a9b25dfdc0fbb4272a1ec81a28b1a",
+  "code": "9b47b043412f95b979018d91d5c4608cdab208f5",
+  "queries": 756,
+  "gallery": 12552,
+  "classes": 21,
+  "levels": [
+    3181,
+    385,
+    74,
+    23,
+    6,
+    2,
+    1
+  ],
+  "values": {
+    "base/lex": [
+      0.7409806211778361,
+      0.7281547637579953
+    ],
+    "base/regional": [
+      0.8062916048753159,
+      0.783816138595323
+    ],
+    "base/wordwalk": [
+      0.7657396938471942,
+      0.7538227520971781
+    ],
+    "base/native": [
+      0.3664984723452045,
+      0.33878306870191066
+    ],
+    "base/fragments": [
+      0.6671499637585064,
+      0.6112632289597834
+    ],
+    "fragments/pool/native/level3/2/1.5/0.92": [
+      0.7078570662689686,
+      0.684662698987359
+    ],
+    "fragments/pool/native/other/2/1.5/0.92": [
+      0.7204221229404014,
+      0.6909126990989698
+    ],
+    "fragments/pool/native/permgate/0.5/3/0.92": [
+      0.7012250731371481,
+      0.6691468266533718
+    ],
+    "fragments/pool/native/prior/2/1.5/1": [
+      0.7185479099277121,
+      0.6919312195904139
+    ],
+    "fragments/pool/native/read/8/3/0.92": [
+      0.7122739030752903,
+      0.689219578012834
+    ],
+    "lex/pool/fragments/other/2/1.5/0.7": [
+      0.7587346000672027,
+      0.7442923298502272
+    ],
+    "lex/pool/native/level2/2/1.5/0.7": [
+      0.7634338728797735,
+      0.7473082033148597
+    ],
+    "lex/pool/native/other/8/1.5/0.7": [
+      0.7562363161557605,
+      0.7415806894774534
+    ],
+    "lex/pool/native/permgate/0.5/1.5/0.7": [
+      0.7532833112199253,
+      0.7436640223675461
+    ],
+    "lex/pool/native/prior/2/1.5/0.92": [
+      0.7612353317623111,
+      0.7504365096218568
+    ],
+    "lex/pool/native/read/0.5/1.5/0.7": [
+      0.7591119067713855,
+      0.7459060862086339
+    ],
+    "lex/shift/native/level4/2/0/0.15": [
+      0.7408690414651391,
+      0.7280026471301441
+    ],
+    "lex/shift/native/other/8/0/0.15": [
+      0.7392345934615978,
+      0.7250727527102249
+    ],
+    "lex/shift/native/permgate/8/0/0.15": [
+      0.7409806211778361,
+      0.7281547637579953
+    ],
+    "lex/shift/native/prior/2/0/0.15": [
+      0.7410551045686203,
+      0.7280158745666976
+    ],
+    "lex/shift/native/read/8/0/0.15": [
+      0.7390224897461604,
+      0.7250330702958521
+    ],
+    "regional/pool/native/level3/2/0/0.35": [
+      0.8102542008716791,
+      0.7872089953568305
+    ],
+    "regional/pool/native/other/2/3/0.35": [
+      0.8062330647778239,
+      0.7828703714884502
+    ],
+    "regional/pool/native/prior/2/3/0.7": [
+      0.8054958944801468,
+      0.7824801602979836
+    ],
+    "regional/pool/native/read/8/3/0.35": [
+      0.805857432703118,
+      0.7834722233059072
+    ]
+  },
+  "original_evaluator": true,
+  "KD_max_error": 1.7881393432617188e-07,
+  "per_query_sha256": "cdd45f7c2cd60465114db5ef2428e6678ecfaf595ee2db7450924ce86c5b6fce",
+  "paired": {
+    "lex/pool/native/other/8/1.5/0.7": {
+      "base/fragments": {
+        "mAP": {
+          "delta_pp": 8.90863523972541,
+          "ci95_class": [
+            3.479523300264085,
+            13.578479417471
+          ],
+          "classes_up": 18,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 13.031746051767003,
+          "ci95_class": [
+            6.841170660299545,
+            18.293667338417702
+          ],
+          "classes_up": 18,
+          "classes": 21
+        }
+      },
+      "base/lex": {
+        "mAP": {
+          "delta_pp": 1.5255694977924346,
+          "ci95_class": [
+            0.3823896445147324,
+            2.6405499324774735
+          ],
+          "classes_up": 16,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 1.3425925719458116,
+          "ci95_class": [
+            0.0813326212884267,
+            2.7150793658032324
+          ],
+          "classes_up": 15,
+          "classes": 21
+        }
+      },
+      "base/native": {
+        "mAP": {
+          "delta_pp": 38.9737843810556,
+          "ci95_class": [
+            30.298670930572335,
+            47.70352172844539
+          ],
+          "classes_up": 21,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 40.279762077554274,
+          "ci95_class": [
+            32.13756629537173,
+            48.1819612072182
+          ],
+          "classes_up": 21,
+          "classes": 21
+        }
+      },
+      "base/regional": {
+        "mAP": {
+          "delta_pp": -5.005528871955537,
+          "ci95_class": [
+            -8.349839001427412,
+            -2.152235131892784
+          ],
+          "classes_up": 4,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -4.223544911786953,
+          "ci95_class": [
+            -6.507523067488961,
+            -2.029679062959207
+          ],
+          "classes_up": 4,
+          "classes": 21
+        }
+      },
+      "base/wordwalk": {
+        "mAP": {
+          "delta_pp": -0.9503377691433622,
+          "ci95_class": [
+            -2.2803736203220777,
+            0.37246641919149764
+          ],
+          "classes_up": 7,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -1.224206261972468,
+          "ci95_class": [
+            -2.5266367347914698,
+            -0.03700371123616331
+          ],
+          "classes_up": 6,
+          "classes": 21
+        }
+      },
+      "fragments/pool/native/level3/2/1.5/0.92": {
+        "mAP": {
+          "delta_pp": 4.837924988679194,
+          "ci95_class": [
+            -0.7963574131523878,
+            10.03113730554345
+          ],
+          "classes_up": 16,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 5.691799049009446,
+          "ci95_class": [
+            -0.40547289825832994,
+            11.656531056736604
+          ],
+          "classes_up": 16,
+          "classes": 21
+        }
+      },
+      "fragments/pool/native/other/2/1.5/0.92": {
+        "mAP": {
+          "delta_pp": 3.5814193215359142,
+          "ci95_class": [
+            -0.9956474030848033,
+            7.6843190516351925
+          ],
+          "classes_up": 15,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 5.066799037848358,
+          "ci95_class": [
+            -0.00798597070758044,
+            9.764616565662436
+          ],
+          "classes_up": 16,
+          "classes": 21
+        }
+      },
+      "fragments/pool/native/permgate/0.5/3/0.92": {
+        "mAP": {
+          "delta_pp": 5.501124301861243,
+          "ci95_class": [
+            0.7145875655287118,
+            9.703519734239547
+          ],
+          "classes_up": 17,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 7.243386282408166,
+          "ci95_class": [
+            2.511689849219423,
+            11.659656159555729
+          ],
+          "classes_up": 17,
+          "classes": 21
+        }
+      },
+      "fragments/pool/native/prior/2/1.5/1": {
+        "mAP": {
+          "delta_pp": 3.7688406228048423,
+          "ci95_class": [
+            -1.553848848898991,
+            8.497322404122093
+          ],
+          "classes_up": 15,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 4.964946988703949,
+          "ci95_class": [
+            -0.3884097132166581,
+            9.840658043782847
+          ],
+          "classes_up": 15,
+          "classes": 21
+        }
+      },
+      "fragments/pool/native/read/8/3/0.92": {
+        "mAP": {
+          "delta_pp": 4.396241308047027,
+          "ci95_class": [
+            -0.37909050032905434,
+            9.079902314521835
+          ],
+          "classes_up": 14,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 5.236111146461948,
+          "ci95_class": [
+            -0.031001986596959807,
+            10.43678904132715
+          ],
+          "classes_up": 15,
+          "classes": 21
+        }
+      },
+      "lex/pool/fragments/other/2/1.5/0.7": {
+        "mAP": {
+          "delta_pp": -0.24982839114421967,
+          "ci95_class": [
+            -1.1384529752839139,
+            0.5778906033322012
+          ],
+          "classes_up": 10,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -0.27116403727738,
+          "ci95_class": [
+            -1.1646826024119195,
+            0.47425599824193615
+          ],
+          "classes_up": 11,
+          "classes": 21
+        }
+      },
+      "lex/pool/native/level2/2/1.5/0.7": {
+        "mAP": {
+          "delta_pp": -0.7197556724013002,
+          "ci95_class": [
+            -1.8648596304325908,
+            0.18001973953143563
+          ],
+          "classes_up": 10,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -0.5727513837406323,
+          "ci95_class": [
+            -1.752695259955347,
+            0.35330686051454996
+          ],
+          "classes_up": 10,
+          "classes": 21
+        }
+      },
+      "lex/pool/native/other/8/1.5/0.7": {
+        "mAP": {
+          "delta_pp": 0.0,
+          "ci95_class": [
+            0.0,
+            0.0
+          ],
+          "classes_up": 0,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 0.0,
+          "ci95_class": [
+            0.0,
+            0.0
+          ],
+          "classes_up": 0,
+          "classes": 21
+        }
+      },
+      "lex/pool/native/permgate/0.5/1.5/0.7": {
+        "mAP": {
+          "delta_pp": 0.2953004935835168,
+          "ci95_class": [
+            -0.6972146592803284,
+            1.1767196183283222
+          ],
+          "classes_up": 12,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -0.20833328900927747,
+          "ci95_class": [
+            -1.1951388746700815,
+            0.6091601002182826
+          ],
+          "classes_up": 12,
+          "classes": 21
+        }
+      },
+      "lex/pool/native/prior/2/1.5/0.92": {
+        "mAP": {
+          "delta_pp": -0.499901560655051,
+          "ci95_class": [
+            -1.7654151161368836,
+            0.607554836561484
+          ],
+          "classes_up": 12,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -0.885582014440347,
+          "ci95_class": [
+            -2.024520540091938,
+            0.1177415601870969
+          ],
+          "classes_up": 11,
+          "classes": 21
+        }
+      },
+      "lex/pool/native/read/0.5/1.5/0.7": {
+        "mAP": {
+          "delta_pp": -0.2875590615624946,
+          "ci95_class": [
+            -1.2076657679392069,
+            0.45384124922011704
+          ],
+          "classes_up": 13,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -0.43253967311804886,
+          "ci95_class": [
+            -1.3505621877543272,
+            0.300942577326808
+          ],
+          "classes_up": 13,
+          "classes": 21
+        }
+      },
+      "lex/shift/native/level4/2/0/0.15": {
+        "mAP": {
+          "delta_pp": 1.5367274690621469,
+          "ci95_class": [
+            0.3835994556220372,
+            2.6554350394425446
+          ],
+          "classes_up": 16,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 1.3578042347309371,
+          "ci95_class": [
+            0.09454367679257993,
+            2.7235615110577935
+          ],
+          "classes_up": 15,
+          "classes": 21
+        }
+      },
+      "lex/shift/native/other/8/0/0.15": {
+        "mAP": {
+          "delta_pp": 1.7001722694162733,
+          "ci95_class": [
+            0.39530720539568437,
+            3.0139602518273327
+          ],
+          "classes_up": 17,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 1.650793676722854,
+          "ci95_class": [
+            0.32336317593165276,
+            3.121329422066324
+          ],
+          "classes_up": 16,
+          "classes": 21
+        }
+      },
+      "lex/shift/native/permgate/8/0/0.15": {
+        "mAP": {
+          "delta_pp": 1.5255694977924346,
+          "ci95_class": [
+            0.3823896445147324,
+            2.6405499324774735
+          ],
+          "classes_up": 16,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 1.3425925719458116,
+          "ci95_class": [
+            0.0813326212884267,
+            2.7150793658032324
+          ],
+          "classes_up": 15,
+          "classes": 21
+        }
+      },
+      "lex/shift/native/prior/2/0/0.15": {
+        "mAP": {
+          "delta_pp": 1.5181211587140169,
+          "ci95_class": [
+            0.36468838631648515,
+            2.64760643775358
+          ],
+          "classes_up": 16,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 1.3564814910755822,
+          "ci95_class": [
+            0.09981807585554346,
+            2.724884363937206
+          ],
+          "classes_up": 15,
+          "classes": 21
+        }
+      },
+      "lex/shift/native/read/8/0/0.15": {
+        "mAP": {
+          "delta_pp": 1.7213826409600201,
+          "ci95_class": [
+            0.47314480716262813,
+            2.995389525913485
+          ],
+          "classes_up": 16,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 1.654761918160138,
+          "ci95_class": [
+            0.33993051611268943,
+            3.1310185440939167
+          ],
+          "classes_up": 16,
+          "classes": 21
+        }
+      },
+      "regional/pool/native/level3/2/0/0.35": {
+        "mAP": {
+          "delta_pp": -5.401788471591851,
+          "ci95_class": [
+            -8.72577795320592,
+            -2.574068754298549
+          ],
+          "classes_up": 4,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -4.562830587937718,
+          "ci95_class": [
+            -6.8513061609347075,
+            -2.349785024040902
+          ],
+          "classes_up": 4,
+          "classes": 21
+        }
+      },
+      "regional/pool/native/other/2/3/0.35": {
+        "mAP": {
+          "delta_pp": -4.999674862206337,
+          "ci95_class": [
+            -8.27476139156032,
+            -2.1404894172071085
+          ],
+          "classes_up": 4,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -4.128968201099683,
+          "ci95_class": [
+            -6.37306536811468,
+            -1.9537037680918479
+          ],
+          "classes_up": 5,
+          "classes": 21
+        }
+      },
+      "regional/pool/native/prior/2/3/0.7": {
+        "mAP": {
+          "delta_pp": -4.925957832438625,
+          "ci95_class": [
+            -8.288772124327442,
+            -2.007505586429343
+          ],
+          "classes_up": 4,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -4.089947082053023,
+          "ci95_class": [
+            -6.363210880949665,
+            -1.8849041333382646
+          ],
+          "classes_up": 4,
+          "classes": 21
+        }
+      },
+      "regional/pool/native/read/8/3/0.35": {
+        "mAP": {
+          "delta_pp": -4.962111654735747,
+          "ci95_class": [
+            -8.25489514296697,
+            -2.1266565162309075
+          ],
+          "classes_up": 4,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -4.18915338284538,
+          "ci95_class": [
+            -6.505323981434456,
+            -1.9734127109004302
+          ],
+          "classes_up": 5,
+          "classes": 21
+        }
+      }
+    },
+    "lex/shift/native/other/8/0/0.15": {
+      "base/fragments": {
+        "mAP": {
+          "delta_pp": 7.208462970309137,
+          "ci95_class": [
+            2.277305570872077,
+            11.528830100509962
+          ],
+          "classes_up": 17,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 11.38095237504415,
+          "ci95_class": [
+            5.53875662110778,
+            16.261243290750176
+          ],
+          "classes_up": 18,
+          "classes": 21
+        }
+      },
+      "base/lex": {
+        "mAP": {
+          "delta_pp": -0.17460277162383867,
+          "ci95_class": [
+            -0.5016820283425558,
+            0.14786729285131311
+          ],
+          "classes_up": 9,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -0.3082011047770422,
+          "ci95_class": [
+            -0.7308366840210049,
+            0.0879960374293164
+          ],
+          "classes_up": 9,
+          "classes": 21
+        }
+      },
+      "base/native": {
+        "mAP": {
+          "delta_pp": 37.27361211163933,
+          "ci95_class": [
+            28.86303905588291,
+            45.52547056751791
+          ],
+          "classes_up": 20,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 38.62896840083142,
+          "ci95_class": [
+            31.0567462984066,
+            46.092691916397094
+          ],
+          "classes_up": 21,
+          "classes": 21
+        }
+      },
+      "base/regional": {
+        "mAP": {
+          "delta_pp": -6.705701141371811,
+          "ci95_class": [
+            -10.824180710575698,
+            -3.3462516836718574
+          ],
+          "classes_up": 5,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -5.874338588509807,
+          "ci95_class": [
+            -8.784044194534154,
+            -3.065294271086163
+          ],
+          "classes_up": 4,
+          "classes": 21
+        }
+      },
+      "base/wordwalk": {
+        "mAP": {
+          "delta_pp": -2.6505100385596356,
+          "ci95_class": [
+            -3.957721087236201,
+            -1.200448499826803
+          ],
+          "classes_up": 3,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -2.8749999386953218,
+          "ci95_class": [
+            -4.74007938341755,
+            -1.158002665785029
+          ],
+          "classes_up": 4,
+          "classes": 21
+        }
+      },
+      "fragments/pool/native/level3/2/1.5/0.92": {
+        "mAP": {
+          "delta_pp": 3.13775271926292,
+          "ci95_class": [
+            -2.172136670083211,
+            7.983395076230859
+          ],
+          "classes_up": 14,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 4.041005372286592,
+          "ci95_class": [
+            -1.7602844858356066,
+            9.775281269620688
+          ],
+          "classes_up": 14,
+          "classes": 21
+        }
+      },
+      "fragments/pool/native/other/2/1.5/0.92": {
+        "mAP": {
+          "delta_pp": 1.8812470521196407,
+          "ci95_class": [
+            -2.813143254854906,
+            6.044615671055873
+          ],
+          "classes_up": 15,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 3.416005361125504,
+          "ci95_class": [
+            -1.6782242341876203,
+            8.184540393585513
+          ],
+          "classes_up": 14,
+          "classes": 21
+        }
+      },
+      "fragments/pool/native/permgate/0.5/3/0.92": {
+        "mAP": {
+          "delta_pp": 3.800952032444969,
+          "ci95_class": [
+            -0.7195827236787722,
+            7.847307930762375
+          ],
+          "classes_up": 17,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 5.592592605685312,
+          "ci95_class": [
+            0.9576388713737418,
+            9.969593095993524
+          ],
+          "classes_up": 16,
+          "classes": 21
+        }
+      },
+      "fragments/pool/native/prior/2/1.5/1": {
+        "mAP": {
+          "delta_pp": 2.068668353388569,
+          "ci95_class": [
+            -3.141760833770229,
+            6.6806381311659955
+          ],
+          "classes_up": 14,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 3.3141533119810953,
+          "ci95_class": [
+            -1.9001656047976452,
+            8.097205615898698
+          ],
+          "classes_up": 14,
+          "classes": 21
+        }
+      },
+      "fragments/pool/native/read/8/3/0.92": {
+        "mAP": {
+          "delta_pp": 2.6960690386307538,
+          "ci95_class": [
+            -2.152582680570607,
+            7.481270092333141
+          ],
+          "classes_up": 13,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 3.585317469739094,
+          "ci95_class": [
+            -1.7560186043779598,
+            8.888938463559107
+          ],
+          "classes_up": 13,
+          "classes": 21
+        }
+      },
+      "lex/pool/fragments/other/2/1.5/0.7": {
+        "mAP": {
+          "delta_pp": -1.950000660560493,
+          "ci95_class": [
+            -3.408298400321867,
+            -0.47818792125711623
+          ],
+          "classes_up": 5,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -1.921957714000234,
+          "ci95_class": [
+            -3.5033069866421145,
+            -0.5191467784341459
+          ],
+          "classes_up": 5,
+          "classes": 21
+        }
+      },
+      "lex/pool/native/level2/2/1.5/0.7": {
+        "mAP": {
+          "delta_pp": -2.4199279418175736,
+          "ci95_class": [
+            -3.592252634045614,
+            -1.1530107439932336
+          ],
+          "classes_up": 2,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -2.2235450604634863,
+          "ci95_class": [
+            -3.763922197388845,
+            -0.7922950008928425
+          ],
+          "classes_up": 4,
+          "classes": 21
+        }
+      },
+      "lex/pool/native/other/8/1.5/0.7": {
+        "mAP": {
+          "delta_pp": -1.7001722694162733,
+          "ci95_class": [
+            -3.013960251827335,
+            -0.39530720539568454
+          ],
+          "classes_up": 4,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -1.650793676722854,
+          "ci95_class": [
+            -3.1213294220663284,
+            -0.3233631759316535
+          ],
+          "classes_up": 5,
+          "classes": 21
+        }
+      },
+      "lex/pool/native/permgate/0.5/1.5/0.7": {
+        "mAP": {
+          "delta_pp": -1.4048717758327565,
+          "ci95_class": [
+            -2.310605819097464,
+            -0.3981756009503327
+          ],
+          "classes_up": 4,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -1.8591269657321314,
+          "ci95_class": [
+            -2.8559525889435675,
+            -0.9602677384323679
+          ],
+          "classes_up": 5,
+          "classes": 21
+        }
+      },
+      "lex/pool/native/prior/2/1.5/0.92": {
+        "mAP": {
+          "delta_pp": -2.2000738300713243,
+          "ci95_class": [
+            -3.687610040881077,
+            -0.6391338433974274
+          ],
+          "classes_up": 7,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -2.536375691163201,
+          "ci95_class": [
+            -4.084027919092304,
+            -1.0792824152146265
+          ],
+          "classes_up": 5,
+          "classes": 21
+        }
+      },
+      "lex/pool/native/read/0.5/1.5/0.7": {
+        "mAP": {
+          "delta_pp": -1.9877313309787679,
+          "ci95_class": [
+            -3.217507839954653,
+            -0.7231118298266898
+          ],
+          "classes_up": 4,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -2.0833333498409026,
+          "ci95_class": [
+            -3.441170784869606,
+            -0.880869749121039
+          ],
+          "classes_up": 4,
+          "classes": 21
+        }
+      },
+      "lex/shift/native/level4/2/0/0.15": {
+        "mAP": {
+          "delta_pp": -0.16344480035412642,
+          "ci95_class": [
+            -0.4651112668616599,
+            0.12233994789076567
+          ],
+          "classes_up": 8,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -0.29298944199191673,
+          "ci95_class": [
+            -0.6944775118347178,
+            0.08070438209287896
+          ],
+          "classes_up": 9,
+          "classes": 21
+        }
+      },
+      "lex/shift/native/other/8/0/0.15": {
+        "mAP": {
+          "delta_pp": 0.0,
+          "ci95_class": [
+            0.0,
+            0.0
+          ],
+          "classes_up": 0,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 0.0,
+          "ci95_class": [
+            0.0,
+            0.0
+          ],
+          "classes_up": 0,
+          "classes": 21
+        }
+      },
+      "lex/shift/native/permgate/8/0/0.15": {
+        "mAP": {
+          "delta_pp": -0.17460277162383867,
+          "ci95_class": [
+            -0.5016820283425558,
+            0.14786729285131311
+          ],
+          "classes_up": 9,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -0.3082011047770422,
+          "ci95_class": [
+            -0.7308366840210049,
+            0.0879960374293164
+          ],
+          "classes_up": 9,
+          "classes": 21
+        }
+      },
+      "lex/shift/native/prior/2/0/0.15": {
+        "mAP": {
+          "delta_pp": -0.18205111070225635,
+          "ci95_class": [
+            -0.4764260830331185,
+            0.10461992238156691
+          ],
+          "classes_up": 9,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -0.29431218564727163,
+          "ci95_class": [
+            -0.6845402826398621,
+            0.06615413551492268
+          ],
+          "classes_up": 8,
+          "classes": 21
+        }
+      },
+      "lex/shift/native/read/8/0/0.15": {
+        "mAP": {
+          "delta_pp": 0.021210371543746935,
+          "ci95_class": [
+            -0.05081549584964123,
+            0.10308660534931165
+          ],
+          "classes_up": 10,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 0.003968241437284088,
+          "ci95_class": [
+            -0.052910005238286595,
+            0.059523722280073105
+          ],
+          "classes_up": 8,
+          "classes": 21
+        }
+      },
+      "regional/pool/native/level3/2/0/0.35": {
+        "mAP": {
+          "delta_pp": -7.101960741008124,
+          "ci95_class": [
+            -11.164461763069975,
+            -3.730305645082988
+          ],
+          "classes_up": 4,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -6.213624264660572,
+          "ci95_class": [
+            -9.11737760867081,
+            -3.3405257068591685
+          ],
+          "classes_up": 4,
+          "classes": 21
+        }
+      },
+      "regional/pool/native/other/2/3/0.35": {
+        "mAP": {
+          "delta_pp": -6.699847131622611,
+          "ci95_class": [
+            -10.793984596954447,
+            -3.312997724811632
+          ],
+          "classes_up": 4,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -5.779761877822537,
+          "ci95_class": [
+            -8.728191197428497,
+            -2.9318451982178786
+          ],
+          "classes_up": 4,
+          "classes": 21
+        }
+      },
+      "regional/pool/native/prior/2/3/0.7": {
+        "mAP": {
+          "delta_pp": -6.626130101854899,
+          "ci95_class": [
+            -10.716897502686907,
+            -3.174774480714753
+          ],
+          "classes_up": 4,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -5.7407407587758765,
+          "ci95_class": [
+            -8.656167285957265,
+            -2.8418650908368557
+          ],
+          "classes_up": 4,
+          "classes": 21
+        }
+      },
+      "regional/pool/native/read/8/3/0.35": {
+        "mAP": {
+          "delta_pp": -6.66228392415202,
+          "ci95_class": [
+            -10.71998885751113,
+            -3.2901861318667414
+          ],
+          "classes_up": 4,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -5.839947059568234,
+          "ci95_class": [
+            -8.79637872678888,
+            -2.9430886643886986
+          ],
+          "classes_up": 4,
+          "classes": 21
+        }
+      }
+    },
+    "lex/pool/fragments/other/2/1.5/0.7": {
+      "base/fragments": {
+        "mAP": {
+          "delta_pp": 9.15846363086963,
+          "ci95_class": [
+            3.547946130185482,
+            13.7467477187821
+          ],
+          "classes_up": 18,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 13.302910089044383,
+          "ci95_class": [
+            7.003240823230174,
+            18.49421296751609
+          ],
+          "classes_up": 18,
+          "classes": 21
+        }
+      },
+      "base/lex": {
+        "mAP": {
+          "delta_pp": 1.7753978889366542,
+          "ci95_class": [
+            0.3628160600136552,
+            3.1678539846956633
+          ],
+          "classes_up": 16,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 1.6137566092231916,
+          "ci95_class": [
+            0.210912609417435,
+            3.1527778314286103
+          ],
+          "classes_up": 15,
+          "classes": 21
+        }
+      },
+      "base/native": {
+        "mAP": {
+          "delta_pp": 39.22361277219982,
+          "ci95_class": [
+            30.6761882318262,
+            47.80638611224565
+          ],
+          "classes_up": 21,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 40.550926114831654,
+          "ci95_class": [
+            32.589203244024056,
+            48.346594020354104
+          ],
+          "classes_up": 21,
+          "classes": 21
+        }
+      },
+      "base/regional": {
+        "mAP": {
+          "delta_pp": -4.755700480811318,
+          "ci95_class": [
+            -8.165292630651805,
+            -1.7685145294283353
+          ],
+          "classes_up": 5,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -3.9523808745095734,
+          "ci95_class": [
+            -6.1250495263954345,
+            -1.6209655598288895
+          ],
+          "classes_up": 5,
+          "classes": 21
+        }
+      },
+      "base/wordwalk": {
+        "mAP": {
+          "delta_pp": -0.7005093779991425,
+          "ci95_class": [
+            -2.0673965431858226,
+            0.6454357923477851
+          ],
+          "classes_up": 8,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -0.953042224695088,
+          "ci95_class": [
+            -2.260598492625086,
+            0.23890556520585088
+          ],
+          "classes_up": 8,
+          "classes": 21
+        }
+      },
+      "fragments/pool/native/level3/2/1.5/0.92": {
+        "mAP": {
+          "delta_pp": 5.087753379823413,
+          "ci95_class": [
+            -0.32196967135104654,
+            10.102257871183886
+          ],
+          "classes_up": 16,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 5.962963086286826,
+          "ci95_class": [
+            0.13222569575109497,
+            11.692609166105585
+          ],
+          "classes_up": 16,
+          "classes": 21
+        }
+      },
+      "fragments/pool/native/other/2/1.5/0.92": {
+        "mAP": {
+          "delta_pp": 3.831247712680134,
+          "ci95_class": [
+            -0.6994222615190742,
+            7.910762184109198
+          ],
+          "classes_up": 16,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 5.337963075125738,
+          "ci95_class": [
+            0.3916503846055273,
+            9.861210289466065
+          ],
+          "classes_up": 16,
+          "classes": 21
+        }
+      },
+      "fragments/pool/native/permgate/0.5/3/0.92": {
+        "mAP": {
+          "delta_pp": 5.750952693005462,
+          "ci95_class": [
+            0.9376675976168061,
+            9.872914577902677
+          ],
+          "classes_up": 17,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 7.514550319685546,
+          "ci95_class": [
+            2.774983559339061,
+            11.847222129344354
+          ],
+          "classes_up": 17,
+          "classes": 21
+        }
+      },
+      "fragments/pool/native/prior/2/1.5/1": {
+        "mAP": {
+          "delta_pp": 4.0186690139490615,
+          "ci95_class": [
+            -1.1910747894823241,
+            8.649939486946943
+          ],
+          "classes_up": 17,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 5.236111025981329,
+          "ci95_class": [
+            0.09685824422853169,
+            9.969576672896023
+          ],
+          "classes_up": 16,
+          "classes": 21
+        }
+      },
+      "fragments/pool/native/read/8/3/0.92": {
+        "mAP": {
+          "delta_pp": 4.646069699191247,
+          "ci95_class": [
+            -0.03905250203811744,
+            9.276603359538719
+          ],
+          "classes_up": 15,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 5.507275183739328,
+          "ci95_class": [
+            0.36572431237252045,
+            10.59231150300345
+          ],
+          "classes_up": 15,
+          "classes": 21
+        }
+      },
+      "lex/pool/fragments/other/2/1.5/0.7": {
+        "mAP": {
+          "delta_pp": 0.0,
+          "ci95_class": [
+            0.0,
+            0.0
+          ],
+          "classes_up": 0,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 0.0,
+          "ci95_class": [
+            0.0,
+            0.0
+          ],
+          "classes_up": 0,
+          "classes": 21
+        }
+      },
+      "lex/pool/native/level2/2/1.5/0.7": {
+        "mAP": {
+          "delta_pp": -0.4699272812570805,
+          "ci95_class": [
+            -1.375230050652852,
+            0.36819165730670234
+          ],
+          "classes_up": 8,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -0.3015873464632523,
+          "ci95_class": [
+            -1.248032421920148,
+            0.3419807176265819
+          ],
+          "classes_up": 10,
+          "classes": 21
+        }
+      },
+      "lex/pool/native/other/8/1.5/0.7": {
+        "mAP": {
+          "delta_pp": 0.24982839114421967,
+          "ci95_class": [
+            -0.5778906033322013,
+            1.1384529752839139
+          ],
+          "classes_up": 11,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 0.27116403727738,
+          "ci95_class": [
+            -0.47425599824193687,
+            1.1646826024119195
+          ],
+          "classes_up": 10,
+          "classes": 21
+        }
+      },
+      "lex/pool/native/permgate/0.5/1.5/0.7": {
+        "mAP": {
+          "delta_pp": 0.5451288847277365,
+          "ci95_class": [
+            -0.5813991617631271,
+            1.6802471095838332
+          ],
+          "classes_up": 10,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 0.06283074826810253,
+          "ci95_class": [
+            -0.9372188119592253,
+            0.9908071460008917
+          ],
+          "classes_up": 13,
+          "classes": 21
+        }
+      },
+      "lex/pool/native/prior/2/1.5/0.92": {
+        "mAP": {
+          "delta_pp": -0.25007316951083125,
+          "ci95_class": [
+            -1.1186706965817532,
+            0.6254104215487903
+          ],
+          "classes_up": 11,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -0.614417977162967,
+          "ci95_class": [
+            -1.3822751167808072,
+            0.039682492115485565
+          ],
+          "classes_up": 9,
+          "classes": 21
+        }
+      },
+      "lex/pool/native/read/0.5/1.5/0.7": {
+        "mAP": {
+          "delta_pp": -0.037730670418274936,
+          "ci95_class": [
+            -0.722080557490083,
+            0.7511445068077925
+          ],
+          "classes_up": 12,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -0.16137563584066889,
+          "ci95_class": [
+            -0.8055555113411395,
+            0.41798943525584287
+          ],
+          "classes_up": 11,
+          "classes": 21
+        }
+      },
+      "lex/shift/native/level4/2/0/0.15": {
+        "mAP": {
+          "delta_pp": 1.7865558602063665,
+          "ci95_class": [
+            0.40445241045235114,
+            3.116790110329425
+          ],
+          "classes_up": 16,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 1.6289682720083172,
+          "ci95_class": [
+            0.23873997822640433,
+            3.103191213578813
+          ],
+          "classes_up": 16,
+          "classes": 21
+        }
+      },
+      "lex/shift/native/other/8/0/0.15": {
+        "mAP": {
+          "delta_pp": 1.950000660560493,
+          "ci95_class": [
+            0.47818792125711557,
+            3.408298400321866
+          ],
+          "classes_up": 16,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 1.921957714000234,
+          "ci95_class": [
+            0.5191467784341454,
+            3.5033069866421145
+          ],
+          "classes_up": 16,
+          "classes": 21
+        }
+      },
+      "lex/shift/native/permgate/8/0/0.15": {
+        "mAP": {
+          "delta_pp": 1.7753978889366542,
+          "ci95_class": [
+            0.3628160600136552,
+            3.1678539846956633
+          ],
+          "classes_up": 16,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 1.6137566092231916,
+          "ci95_class": [
+            0.210912609417435,
+            3.1527778314286103
+          ],
+          "classes_up": 15,
+          "classes": 21
+        }
+      },
+      "lex/shift/native/prior/2/0/0.15": {
+        "mAP": {
+          "delta_pp": 1.7679495498582365,
+          "ci95_class": [
+            0.3776185947150687,
+            3.142171882999329
+          ],
+          "classes_up": 16,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 1.6276455283529623,
+          "ci95_class": [
+            0.24530414884562593,
+            3.1441966370401024
+          ],
+          "classes_up": 15,
+          "classes": 21
+        }
+      },
+      "lex/shift/native/read/8/0/0.15": {
+        "mAP": {
+          "delta_pp": 1.97121103210424,
+          "ci95_class": [
+            0.4976141185295847,
+            3.4048976593761124
+          ],
+          "classes_up": 16,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 1.9259259554375179,
+          "ci95_class": [
+            0.5310349500271191,
+            3.5026621936744067
+          ],
+          "classes_up": 17,
+          "classes": 21
+        }
+      },
+      "regional/pool/native/level3/2/0/0.35": {
+        "mAP": {
+          "delta_pp": -5.1519600804476315,
+          "ci95_class": [
+            -8.486250938951448,
+            -2.2359099436878407
+          ],
+          "classes_up": 4,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -4.291666550660338,
+          "ci95_class": [
+            -6.482341095676434,
+            -1.9682042793987975
+          ],
+          "classes_up": 4,
+          "classes": 21
+        }
+      },
+      "regional/pool/native/other/2/3/0.35": {
+        "mAP": {
+          "delta_pp": -4.749846471062117,
+          "ci95_class": [
+            -8.112758987265387,
+            -1.7791784571843459
+          ],
+          "classes_up": 5,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -3.857804163822303,
+          "ci95_class": [
+            -5.975562198852588,
+            -1.5383101285930494
+          ],
+          "classes_up": 5,
+          "classes": 21
+        }
+      },
+      "regional/pool/native/prior/2/3/0.7": {
+        "mAP": {
+          "delta_pp": -4.676129441294405,
+          "ci95_class": [
+            -8.099207652969257,
+            -1.632971107559685
+          ],
+          "classes_up": 5,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -3.8187830447756426,
+          "ci95_class": [
+            -5.970370369318444,
+            -1.5177083331611148
+          ],
+          "classes_up": 5,
+          "classes": 21
+        }
+      },
+      "regional/pool/native/read/8/3/0.35": {
+        "mAP": {
+          "delta_pp": -4.7122832635915275,
+          "ci95_class": [
+            -7.999733703051725,
+            -1.7285965971165815
+          ],
+          "classes_up": 5,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -3.917989345568001,
+          "ci95_class": [
+            -6.122470214644511,
+            -1.5356810692581968
+          ],
+          "classes_up": 5,
+          "classes": 21
+        }
+      }
+    },
+    "regional/pool/native/other/2/3/0.35": {
+      "base/fragments": {
+        "mAP": {
+          "delta_pp": 13.908310101931747,
+          "ci95_class": [
+            7.089370518655482,
+            19.66971432698691
+          ],
+          "classes_up": 18,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 17.160714252866686,
+          "ci95_class": [
+            9.991236836797308,
+            23.10057878432667
+          ],
+          "classes_up": 19,
+          "classes": 21
+        }
+      },
+      "base/lex": {
+        "mAP": {
+          "delta_pp": 6.525244359998772,
+          "ci95_class": [
+            3.343002303646971,
+            10.355781298118421
+          ],
+          "classes_up": 17,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 5.4715607730454945,
+          "ci95_class": [
+            2.775049660990517,
+            8.174024408168243
+          ],
+          "classes_up": 18,
+          "classes": 21
+        }
+      },
+      "base/native": {
+        "mAP": {
+          "delta_pp": 43.97345924326194,
+          "ci95_class": [
+            34.59152726288367,
+            53.064785539475935
+          ],
+          "classes_up": 21,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 44.408730278653955,
+          "ci95_class": [
+            35.72814163741121,
+            53.16956039656398
+          ],
+          "classes_up": 21,
+          "classes": 21
+        }
+      },
+      "base/regional": {
+        "mAP": {
+          "delta_pp": -0.005854009749200293,
+          "ci95_class": [
+            -0.26430340709069877,
+            0.25692977131006833
+          ],
+          "classes_up": 11,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -0.09457671068727024,
+          "ci95_class": [
+            -0.35252983666150756,
+            0.14088949956684768
+          ],
+          "classes_up": 10,
+          "classes": 21
+        }
+      },
+      "base/wordwalk": {
+        "mAP": {
+          "delta_pp": 4.049337093062975,
+          "ci95_class": [
+            1.1026463614777962,
+            7.883127598571169
+          ],
+          "classes_up": 15,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 2.904761939127215,
+          "ci95_class": [
+            0.7817130759771096,
+            5.086210336894651
+          ],
+          "classes_up": 15,
+          "classes": 21
+        }
+      },
+      "fragments/pool/native/level3/2/1.5/0.92": {
+        "mAP": {
+          "delta_pp": 9.83759985088553,
+          "ci95_class": [
+            2.9504559207421224,
+            16.059791272522745
+          ],
+          "classes_up": 17,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 9.820767250109128,
+          "ci95_class": [
+            2.705671297094942,
+            16.380588790514533
+          ],
+          "classes_up": 17,
+          "classes": 21
+        }
+      },
+      "fragments/pool/native/other/2/1.5/0.92": {
+        "mAP": {
+          "delta_pp": 8.581094183742252,
+          "ci95_class": [
+            2.929636990091278,
+            13.328320544617121
+          ],
+          "classes_up": 18,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 9.19576723894804,
+          "ci95_class": [
+            3.1432210692178666,
+            14.453042396436636
+          ],
+          "classes_up": 18,
+          "classes": 21
+        }
+      },
+      "fragments/pool/native/permgate/0.5/3/0.92": {
+        "mAP": {
+          "delta_pp": 10.50079916406758,
+          "ci95_class": [
+            4.296909556189791,
+            15.75911893253861
+          ],
+          "classes_up": 18,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 11.37235448350785,
+          "ci95_class": [
+            5.515443096112918,
+            16.384986675234767
+          ],
+          "classes_up": 19,
+          "classes": 21
+        }
+      },
+      "fragments/pool/native/prior/2/1.5/1": {
+        "mAP": {
+          "delta_pp": 8.768515485011179,
+          "ci95_class": [
+            2.1653310047562986,
+            14.34064641789682
+          ],
+          "classes_up": 18,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 9.093915189803631,
+          "ci95_class": [
+            2.669460792636509,
+            14.637681882506328
+          ],
+          "classes_up": 17,
+          "classes": 21
+        }
+      },
+      "fragments/pool/native/read/8/3/0.92": {
+        "mAP": {
+          "delta_pp": 9.395916170253365,
+          "ci95_class": [
+            3.6009675846589118,
+            14.620440146601238
+          ],
+          "classes_up": 16,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 9.36507934756163,
+          "ci95_class": [
+            3.3176090968212253,
+            15.080307466369094
+          ],
+          "classes_up": 16,
+          "classes": 21
+        }
+      },
+      "lex/pool/fragments/other/2/1.5/0.7": {
+        "mAP": {
+          "delta_pp": 4.749846471062117,
+          "ci95_class": [
+            1.7791784571843448,
+            8.112758987265387
+          ],
+          "classes_up": 16,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 3.857804163822303,
+          "ci95_class": [
+            1.5383101285930485,
+            5.975562198852588
+          ],
+          "classes_up": 16,
+          "classes": 21
+        }
+      },
+      "lex/pool/native/level2/2/1.5/0.7": {
+        "mAP": {
+          "delta_pp": 4.279919189805037,
+          "ci95_class": [
+            1.5327237062519614,
+            7.648895816902424
+          ],
+          "classes_up": 16,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 3.5562168173590507,
+          "ci95_class": [
+            1.415343832649,
+            5.657655273557381
+          ],
+          "classes_up": 15,
+          "classes": 21
+        }
+      },
+      "lex/pool/native/other/8/1.5/0.7": {
+        "mAP": {
+          "delta_pp": 4.999674862206337,
+          "ci95_class": [
+            2.1404894172071067,
+            8.274761391560315
+          ],
+          "classes_up": 17,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 4.128968201099683,
+          "ci95_class": [
+            1.9537037680918479,
+            6.373065368114679
+          ],
+          "classes_up": 16,
+          "classes": 21
+        }
+      },
+      "lex/pool/native/permgate/0.5/1.5/0.7": {
+        "mAP": {
+          "delta_pp": 5.294975355789854,
+          "ci95_class": [
+            2.4143408567068123,
+            8.809818932549438
+          ],
+          "classes_up": 16,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 3.9206349120904056,
+          "ci95_class": [
+            1.5567955899818569,
+            6.263376312843453
+          ],
+          "classes_up": 16,
+          "classes": 21
+        }
+      },
+      "lex/pool/native/prior/2/1.5/0.92": {
+        "mAP": {
+          "delta_pp": 4.499773301551286,
+          "ci95_class": [
+            1.7833595796104487,
+            7.677195673839561
+          ],
+          "classes_up": 16,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 3.243386186659336,
+          "ci95_class": [
+            1.0561177209352277,
+            5.3717260901931985
+          ],
+          "classes_up": 15,
+          "classes": 21
+        }
+      },
+      "lex/pool/native/read/0.5/1.5/0.7": {
+        "mAP": {
+          "delta_pp": 4.712115800643843,
+          "ci95_class": [
+            1.9905022324032702,
+            7.850742840573681
+          ],
+          "classes_up": 17,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 3.696428527981634,
+          "ci95_class": [
+            1.6097387621701553,
+            5.709738804411792
+          ],
+          "classes_up": 15,
+          "classes": 21
+        }
+      },
+      "lex/shift/native/level4/2/0/0.15": {
+        "mAP": {
+          "delta_pp": 6.536402331268484,
+          "ci95_class": [
+            3.329628855091638,
+            10.398784250813401
+          ],
+          "classes_up": 17,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 5.48677243583062,
+          "ci95_class": [
+            2.8113921388162044,
+            8.195833402184434
+          ],
+          "classes_up": 18,
+          "classes": 21
+        }
+      },
+      "lex/shift/native/other/8/0/0.15": {
+        "mAP": {
+          "delta_pp": 6.699847131622611,
+          "ci95_class": [
+            3.3129977248116305,
+            10.793984596954445
+          ],
+          "classes_up": 17,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 5.779761877822537,
+          "ci95_class": [
+            2.931845198217878,
+            8.728191197428497
+          ],
+          "classes_up": 17,
+          "classes": 21
+        }
+      },
+      "lex/shift/native/permgate/8/0/0.15": {
+        "mAP": {
+          "delta_pp": 6.525244359998772,
+          "ci95_class": [
+            3.343002303646971,
+            10.355781298118421
+          ],
+          "classes_up": 17,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 5.4715607730454945,
+          "ci95_class": [
+            2.775049660990517,
+            8.174024408168243
+          ],
+          "classes_up": 18,
+          "classes": 21
+        }
+      },
+      "lex/shift/native/prior/2/0/0.15": {
+        "mAP": {
+          "delta_pp": 6.517796020920354,
+          "ci95_class": [
+            3.3092427550767,
+            10.388865664403603
+          ],
+          "classes_up": 17,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 5.485449692175266,
+          "ci95_class": [
+            2.785598525938223,
+            8.211656709096305
+          ],
+          "classes_up": 18,
+          "classes": 21
+        }
+      },
+      "lex/shift/native/read/8/0/0.15": {
+        "mAP": {
+          "delta_pp": 6.7210575031663575,
+          "ci95_class": [
+            3.3597545975248857,
+            10.770225387749386
+          ],
+          "classes_up": 17,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 5.783730119259821,
+          "ci95_class": [
+            2.94373347447069,
+            8.725115701740371
+          ],
+          "classes_up": 17,
+          "classes": 21
+        }
+      },
+      "regional/pool/native/level3/2/0/0.35": {
+        "mAP": {
+          "delta_pp": -0.40211360938551405,
+          "ci95_class": [
+            -0.846708495519124,
+            0.020723860543319674
+          ],
+          "classes_up": 6,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -0.4338623868380353,
+          "ci95_class": [
+            -0.8240905900149502,
+            -0.054877516946006594
+          ],
+          "classes_up": 6,
+          "classes": 21
+        }
+      },
+      "regional/pool/native/other/2/3/0.35": {
+        "mAP": {
+          "delta_pp": 0.0,
+          "ci95_class": [
+            0.0,
+            0.0
+          ],
+          "classes_up": 0,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 0.0,
+          "ci95_class": [
+            0.0,
+            0.0
+          ],
+          "classes_up": 0,
+          "classes": 21
+        }
+      },
+      "regional/pool/native/prior/2/3/0.7": {
+        "mAP": {
+          "delta_pp": 0.07371702976771212,
+          "ci95_class": [
+            -0.25980621694726375,
+            0.3603155531494869
+          ],
+          "classes_up": 14,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 0.03902111904666064,
+          "ci95_class": [
+            -0.25864753348903147,
+            0.33268843575752755
+          ],
+          "classes_up": 12,
+          "classes": 21
+        }
+      },
+      "regional/pool/native/read/8/3/0.35": {
+        "mAP": {
+          "delta_pp": 0.03756320747059016,
+          "ci95_class": [
+            -0.27448347366227716,
+            0.3682370357758675
+          ],
+          "classes_up": 9,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -0.060185181745697584,
+          "ci95_class": [
+            -0.36509589455336844,
+            0.24935516930387266
+          ],
+          "classes_up": 9,
+          "classes": 21
+        }
+      }
+    },
+    "fragments/pool/native/other/2/1.5/0.92": {
+      "base/fragments": {
+        "mAP": {
+          "delta_pp": 5.327215918189496,
+          "ci95_class": [
+            2.4327145879607768,
+            8.080438019932005
+          ],
+          "classes_up": 18,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 7.964947013918645,
+          "ci95_class": [
+            5.117046985674832,
+            10.764004567828367
+          ],
+          "classes_up": 19,
+          "classes": 21
+        }
+      },
+      "base/lex": {
+        "mAP": {
+          "delta_pp": -2.0558498237434795,
+          "ci95_class": [
+            -6.240178759963739,
+            2.6901869781246934
+          ],
+          "classes_up": 7,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -3.724206465902546,
+          "ci95_class": [
+            -8.595320946344781,
+            1.5355322714069561
+          ],
+          "classes_up": 7,
+          "classes": 21
+        }
+      },
+      "base/native": {
+        "mAP": {
+          "delta_pp": 35.39236505951969,
+          "ci95_class": [
+            28.217434388247845,
+            42.54013292425221
+          ],
+          "classes_up": 19,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 35.21296303970591,
+          "ci95_class": [
+            28.735301136852257,
+            41.87382588820241
+          ],
+          "classes_up": 21,
+          "classes": 21
+        }
+      },
+      "base/regional": {
+        "mAP": {
+          "delta_pp": -8.586948193491452,
+          "ci95_class": [
+            -13.375645322037157,
+            -2.883938881061992
+          ],
+          "classes_up": 3,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -9.29034394963531,
+          "ci95_class": [
+            -14.565740877943528,
+            -3.239269032162769
+          ],
+          "classes_up": 4,
+          "classes": 21
+        }
+      },
+      "base/wordwalk": {
+        "mAP": {
+          "delta_pp": -4.531757090679276,
+          "ci95_class": [
+            -9.000028482832017,
+            0.3158829011369194
+          ],
+          "classes_up": 5,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -6.291005299820826,
+          "ci95_class": [
+            -11.303769882969192,
+            -1.0646660713153722
+          ],
+          "classes_up": 6,
+          "classes": 21
+        }
+      },
+      "fragments/pool/native/level3/2/1.5/0.92": {
+        "mAP": {
+          "delta_pp": 1.2565056671432795,
+          "ci95_class": [
+            -1.4412674383015776,
+            4.22651962761486
+          ],
+          "classes_up": 13,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 0.6250000111610879,
+          "ci95_class": [
+            -1.8822917544218913,
+            3.619097235009552
+          ],
+          "classes_up": 10,
+          "classes": 21
+        }
+      },
+      "fragments/pool/native/other/2/1.5/0.92": {
+        "mAP": {
+          "delta_pp": 0.0,
+          "ci95_class": [
+            0.0,
+            0.0
+          ],
+          "classes_up": 0,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 0.0,
+          "ci95_class": [
+            0.0,
+            0.0
+          ],
+          "classes_up": 0,
+          "classes": 21
+        }
+      },
+      "fragments/pool/native/permgate/0.5/3/0.92": {
+        "mAP": {
+          "delta_pp": 1.9197049803253283,
+          "ci95_class": [
+            0.006525226642017994,
+            3.9276500572401165
+          ],
+          "classes_up": 14,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 2.176587244559809,
+          "ci95_class": [
+            0.8352676977399766,
+            3.5767526448662412
+          ],
+          "classes_up": 14,
+          "classes": 21
+        }
+      },
+      "fragments/pool/native/prior/2/1.5/1": {
+        "mAP": {
+          "delta_pp": 0.18742130126892811,
+          "ci95_class": [
+            -1.3800296439156652,
+            1.7960945104212478
+          ],
+          "classes_up": 13,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -0.1018520491444087,
+          "ci95_class": [
+            -1.6105160752074823,
+            1.3624831744397012
+          ],
+          "classes_up": 9,
+          "classes": 21
+        }
+      },
+      "fragments/pool/native/read/8/3/0.92": {
+        "mAP": {
+          "delta_pp": 0.8148219865111131,
+          "ci95_class": [
+            -1.0838862652453056,
+            2.78575571826733
+          ],
+          "classes_up": 12,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": 0.16931210861359008,
+          "ci95_class": [
+            -1.5087301731041864,
+            2.023859070087339
+          ],
+          "classes_up": 11,
+          "classes": 21
+        }
+      },
+      "lex/pool/fragments/other/2/1.5/0.7": {
+        "mAP": {
+          "delta_pp": -3.831247712680134,
+          "ci95_class": [
+            -7.910762184109199,
+            0.6994222615190732
+          ],
+          "classes_up": 5,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -5.337963075125738,
+          "ci95_class": [
+            -9.861210289466067,
+            -0.39165038460553503
+          ],
+          "classes_up": 5,
+          "classes": 21
+        }
+      },
+      "lex/pool/native/level2/2/1.5/0.7": {
+        "mAP": {
+          "delta_pp": -4.301174993937214,
+          "ci95_class": [
+            -8.55833074679135,
+            0.43135802739665324
+          ],
+          "classes_up": 5,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -5.63955042158899,
+          "ci95_class": [
+            -10.562004178307246,
+            -0.4364421487928787
+          ],
+          "classes_up": 5,
+          "classes": 21
+        }
+      },
+      "lex/pool/native/other/8/1.5/0.7": {
+        "mAP": {
+          "delta_pp": -3.5814193215359142,
+          "ci95_class": [
+            -7.684319051635198,
+            0.995647403084791
+          ],
+          "classes_up": 6,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -5.066799037848358,
+          "ci95_class": [
+            -9.764616565662436,
+            0.007985970707570338
+          ],
+          "classes_up": 5,
+          "classes": 21
+        }
+      },
+      "lex/pool/native/permgate/0.5/1.5/0.7": {
+        "mAP": {
+          "delta_pp": -3.2861188279523974,
+          "ci95_class": [
+            -7.659534190244918,
+            1.558693972118716
+          ],
+          "classes_up": 5,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -5.275132326857635,
+          "ci95_class": [
+            -10.23234138483916,
+            -0.1096063357483494
+          ],
+          "classes_up": 5,
+          "classes": 21
+        }
+      },
+      "lex/pool/native/prior/2/1.5/0.92": {
+        "mAP": {
+          "delta_pp": -4.081320882190965,
+          "ci95_class": [
+            -8.283427494598698,
+            0.5226339656374845
+          ],
+          "classes_up": 5,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -5.952381052288705,
+          "ci95_class": [
+            -10.830902849824819,
+            -0.7485783028523526
+          ],
+          "classes_up": 5,
+          "classes": 21
+        }
+      },
+      "lex/pool/native/read/0.5/1.5/0.7": {
+        "mAP": {
+          "delta_pp": -3.868978383098409,
+          "ci95_class": [
+            -8.144334579747731,
+            0.9930896976572697
+          ],
+          "classes_up": 5,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -5.4993387109664065,
+          "ci95_class": [
+            -10.252529753777987,
+            -0.3648644651282639
+          ],
+          "classes_up": 5,
+          "classes": 21
+        }
+      },
+      "lex/shift/native/level4/2/0/0.15": {
+        "mAP": {
+          "delta_pp": -2.0446918524737674,
+          "ci95_class": [
+            -6.179775498967886,
+            2.6015316519751273
+          ],
+          "classes_up": 7,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -3.7089948031174207,
+          "ci95_class": [
+            -8.52450405093213,
+            1.4954365242615075
+          ],
+          "classes_up": 7,
+          "classes": 21
+        }
+      },
+      "lex/shift/native/other/8/0/0.15": {
+        "mAP": {
+          "delta_pp": -1.8812470521196407,
+          "ci95_class": [
+            -6.044615671055874,
+            2.8131432548549005
+          ],
+          "classes_up": 6,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -3.416005361125504,
+          "ci95_class": [
+            -8.184540393585513,
+            1.6782242341876066
+          ],
+          "classes_up": 7,
+          "classes": 21
+        }
+      },
+      "lex/shift/native/permgate/8/0/0.15": {
+        "mAP": {
+          "delta_pp": -2.0558498237434795,
+          "ci95_class": [
+            -6.240178759963739,
+            2.6901869781246934
+          ],
+          "classes_up": 7,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -3.724206465902546,
+          "ci95_class": [
+            -8.595320946344781,
+            1.5355322714069561
+          ],
+          "classes_up": 7,
+          "classes": 21
+        }
+      },
+      "lex/shift/native/prior/2/0/0.15": {
+        "mAP": {
+          "delta_pp": -2.063298162821897,
+          "ci95_class": [
+            -6.216014963075784,
+            2.638095960765707
+          ],
+          "classes_up": 7,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -3.7103175467727754,
+          "ci95_class": [
+            -8.568303698853088,
+            1.5224205341809662
+          ],
+          "classes_up": 7,
+          "classes": 21
+        }
+      },
+      "lex/shift/native/read/8/0/0.15": {
+        "mAP": {
+          "delta_pp": -1.8600366805758939,
+          "ci95_class": [
+            -5.994210485749319,
+            2.7737927182115962
+          ],
+          "classes_up": 6,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -3.41203711968822,
+          "ci95_class": [
+            -8.163640876827273,
+            1.6427414454538147
+          ],
+          "classes_up": 7,
+          "classes": 21
+        }
+      },
+      "regional/pool/native/level3/2/0/0.35": {
+        "mAP": {
+          "delta_pp": -8.983207793127765,
+          "ci95_class": [
+            -13.820509158719144,
+            -3.260427693970059
+          ],
+          "classes_up": 3,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -9.629629625786077,
+          "ci95_class": [
+            -14.920833328546015,
+            -3.5872849817270733
+          ],
+          "classes_up": 4,
+          "classes": 21
+        }
+      },
+      "regional/pool/native/other/2/3/0.35": {
+        "mAP": {
+          "delta_pp": -8.581094183742252,
+          "ci95_class": [
+            -13.328320544617123,
+            -2.929636990091281
+          ],
+          "classes_up": 3,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -9.19576723894804,
+          "ci95_class": [
+            -14.453042396436636,
+            -3.143221069217871
+          ],
+          "classes_up": 3,
+          "classes": 21
+        }
+      },
+      "regional/pool/native/prior/2/3/0.7": {
+        "mAP": {
+          "delta_pp": -8.50737715397454,
+          "ci95_class": [
+            -13.225005469543653,
+            -2.9359973367967624
+          ],
+          "classes_up": 3,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -9.15674611990138,
+          "ci95_class": [
+            -14.346296344594242,
+            -3.157886881347398
+          ],
+          "classes_up": 4,
+          "classes": 21
+        }
+      },
+      "regional/pool/native/read/8/3/0.35": {
+        "mAP": {
+          "delta_pp": -8.543530976271661,
+          "ci95_class": [
+            -13.354525613323194,
+            -2.923621726154584
+          ],
+          "classes_up": 3,
+          "classes": 21
+        },
+        "precision": {
+          "delta_pp": -9.255952420693738,
+          "ci95_class": [
+            -14.569593226569754,
+            -3.1710317350552115
+          ],
+          "classes_up": 3,
+          "classes": 21
+        }
+      }
+    }
+  },
+  "top1": {
+    "lex/pool/native/other/8/1.5/0.7": {
+      "base/fragments": [
+        74,
+        72
+      ],
+      "base/lex": [
+        44,
+        19
+      ],
+      "base/native": [
+        289,
+        29
+      ],
+      "base/regional": [
+        19,
+        69
+      ],
+      "base/wordwalk": [
+        36,
+        33
+      ],
+      "fragments/pool/native/level3/2/1.5/0.92": [
+        66,
+        70
+      ],
+      "fragments/pool/native/other/2/1.5/0.92": [
+        68,
+        62
+      ],
+      "fragments/pool/native/permgate/0.5/3/0.92": [
+        81,
+        72
+      ],
+      "fragments/pool/native/prior/2/1.5/1": [
+        74,
+        73
+      ],
+      "fragments/pool/native/read/8/3/0.92": [
+        69,
+        68
+      ],
+      "lex/pool/fragments/other/2/1.5/0.7": [
+        12,
+        10
+      ],
+      "lex/pool/native/level2/2/1.5/0.7": [
+        10,
+        25
+      ],
+      "lex/pool/native/other/8/1.5/0.7": [
+        0,
+        0
+      ],
+      "lex/pool/native/permgate/0.5/1.5/0.7": [
+        31,
+        33
+      ],
+      "lex/pool/native/prior/2/1.5/0.92": [
+        21,
+        36
+      ],
+      "lex/pool/native/read/0.5/1.5/0.7": [
+        12,
+        18
+      ],
+      "lex/shift/native/level4/2/0/0.15": [
+        44,
+        19
+      ],
+      "lex/shift/native/other/8/0/0.15": [
+        44,
+        19
+      ],
+      "lex/shift/native/permgate/8/0/0.15": [
+        44,
+        19
+      ],
+      "lex/shift/native/prior/2/0/0.15": [
+        44,
+        19
+      ],
+      "lex/shift/native/read/8/0/0.15": [
+        44,
+        19
+      ],
+      "regional/pool/native/level3/2/0/0.35": [
+        19,
+        75
+      ],
+      "regional/pool/native/other/2/3/0.35": [
+        15,
+        72
+      ],
+      "regional/pool/native/prior/2/3/0.7": [
+        15,
+        77
+      ],
+      "regional/pool/native/read/8/3/0.35": [
+        19,
+        70
+      ]
+    },
+    "lex/shift/native/other/8/0/0.15": {
+      "base/fragments": [
+        66,
+        89
+      ],
+      "base/lex": [
+        0,
+        0
+      ],
+      "base/native": [
+        270,
+        35
+      ],
+      "base/regional": [
+        22,
+        97
+      ],
+      "base/wordwalk": [
+        37,
+        59
+      ],
+      "fragments/pool/native/level3/2/1.5/0.92": [
+        62,
+        91
+      ],
+      "fragments/pool/native/other/2/1.5/0.92": [
+        57,
+        76
+      ],
+      "fragments/pool/native/permgate/0.5/3/0.92": [
+        75,
+        91
+      ],
+      "fragments/pool/native/prior/2/1.5/1": [
+        67,
+        91
+      ],
+      "fragments/pool/native/read/8/3/0.92": [
+        58,
+        82
+      ],
+      "lex/pool/fragments/other/2/1.5/0.7": [
+        23,
+        46
+      ],
+      "lex/pool/native/level2/2/1.5/0.7": [
+        19,
+        59
+      ],
+      "lex/pool/native/other/8/1.5/0.7": [
+        19,
+        44
+      ],
+      "lex/pool/native/permgate/0.5/1.5/0.7": [
+        24,
+        51
+      ],
+      "lex/pool/native/prior/2/1.5/0.92": [
+        17,
+        57
+      ],
+      "lex/pool/native/read/0.5/1.5/0.7": [
+        20,
+        51
+      ],
+      "lex/shift/native/level4/2/0/0.15": [
+        0,
+        0
+      ],
+      "lex/shift/native/other/8/0/0.15": [
+        0,
+        0
+      ],
+      "lex/shift/native/permgate/8/0/0.15": [
+        0,
+        0
+      ],
+      "lex/shift/native/prior/2/0/0.15": [
+        0,
+        0
+      ],
+      "lex/shift/native/read/8/0/0.15": [
+        0,
+        0
+      ],
+      "regional/pool/native/level3/2/0/0.35": [
+        23,
+        104
+      ],
+      "regional/pool/native/other/2/3/0.35": [
+        19,
+        101
+      ],
+      "regional/pool/native/prior/2/3/0.7": [
+        19,
+        106
+      ],
+      "regional/pool/native/read/8/3/0.35": [
+        25,
+        101
+      ]
+    },
+    "lex/pool/fragments/other/2/1.5/0.7": {
+      "base/fragments": [
+        69,
+        69
+      ],
+      "base/lex": [
+        46,
+        23
+      ],
+      "base/native": [
+        284,
+        26
+      ],
+      "base/regional": [
+        16,
+        68
+      ],
+      "base/wordwalk": [
+        33,
+        32
+      ],
+      "fragments/pool/native/level3/2/1.5/0.92": [
+        61,
+        67
+      ],
+      "fragments/pool/native/other/2/1.5/0.92": [
+        64,
+        60
+      ],
+      "fragments/pool/native/permgate/0.5/3/0.92": [
+        76,
+        69
+      ],
+      "fragments/pool/native/prior/2/1.5/1": [
+        70,
+        71
+      ],
+      "fragments/pool/native/read/8/3/0.92": [
+        66,
+        67
+      ],
+      "lex/pool/fragments/other/2/1.5/0.7": [
+        0,
+        0
+      ],
+      "lex/pool/native/level2/2/1.5/0.7": [
+        5,
+        22
+      ],
+      "lex/pool/native/other/8/1.5/0.7": [
+        10,
+        12
+      ],
+      "lex/pool/native/permgate/0.5/1.5/0.7": [
+        30,
+        34
+      ],
+      "lex/pool/native/prior/2/1.5/0.92": [
+        16,
+        33
+      ],
+      "lex/pool/native/read/0.5/1.5/0.7": [
+        8,
+        16
+      ],
+      "lex/shift/native/level4/2/0/0.15": [
+        46,
+        23
+      ],
+      "lex/shift/native/other/8/0/0.15": [
+        46,
+        23
+      ],
+      "lex/shift/native/permgate/8/0/0.15": [
+        46,
+        23
+      ],
+      "lex/shift/native/prior/2/0/0.15": [
+        46,
+        23
+      ],
+      "lex/shift/native/read/8/0/0.15": [
+        46,
+        23
+      ],
+      "regional/pool/native/level3/2/0/0.35": [
+        15,
+        73
+      ],
+      "regional/pool/native/other/2/3/0.35": [
+        13,
+        72
+      ],
+      "regional/pool/native/prior/2/3/0.7": [
+        11,
+        75
+      ],
+      "regional/pool/native/read/8/3/0.35": [
+        17,
+        70
+      ]
+    },
+    "regional/pool/native/other/2/3/0.35": {
+      "base/fragments": [
+        106,
+        47
+      ],
+      "base/lex": [
+        101,
+        19
+      ],
+      "base/native": [
+        330,
+        13
+      ],
+      "base/regional": [
+        14,
+        7
+      ],
+      "base/wordwalk": [
+        71,
+        11
+      ],
+      "fragments/pool/native/level3/2/1.5/0.92": [
+        93,
+        40
+      ],
+      "fragments/pool/native/other/2/1.5/0.92": [
+        95,
+        32
+      ],
+      "fragments/pool/native/permgate/0.5/3/0.92": [
+        105,
+        39
+      ],
+      "fragments/pool/native/prior/2/1.5/1": [
+        102,
+        44
+      ],
+      "fragments/pool/native/read/8/3/0.92": [
+        97,
+        39
+      ],
+      "lex/pool/fragments/other/2/1.5/0.7": [
+        72,
+        13
+      ],
+      "lex/pool/native/level2/2/1.5/0.7": [
+        61,
+        19
+      ],
+      "lex/pool/native/other/8/1.5/0.7": [
+        72,
+        15
+      ],
+      "lex/pool/native/permgate/0.5/1.5/0.7": [
+        71,
+        16
+      ],
+      "lex/pool/native/prior/2/1.5/0.92": [
+        58,
+        16
+      ],
+      "lex/pool/native/read/0.5/1.5/0.7": [
+        69,
+        18
+      ],
+      "lex/shift/native/level4/2/0/0.15": [
+        101,
+        19
+      ],
+      "lex/shift/native/other/8/0/0.15": [
+        101,
+        19
+      ],
+      "lex/shift/native/permgate/8/0/0.15": [
+        101,
+        19
+      ],
+      "lex/shift/native/prior/2/0/0.15": [
+        101,
+        19
+      ],
+      "lex/shift/native/read/8/0/0.15": [
+        101,
+        19
+      ],
+      "regional/pool/native/level3/2/0/0.35": [
+        9,
+        8
+      ],
+      "regional/pool/native/other/2/3/0.35": [
+        0,
+        0
+      ],
+      "regional/pool/native/prior/2/3/0.7": [
+        1,
+        6
+      ],
+      "regional/pool/native/read/8/3/0.35": [
+        9,
+        3
+      ]
+    },
+    "fragments/pool/native/other/2/1.5/0.92": {
+      "base/fragments": [
+        51,
+        55
+      ],
+      "base/lex": [
+        76,
+        57
+      ],
+      "base/native": [
+        276,
+        22
+      ],
+      "base/regional": [
+        35,
+        91
+      ],
+      "base/wordwalk": [
+        61,
+        64
+      ],
+      "fragments/pool/native/level3/2/1.5/0.92": [
+        32,
+        42
+      ],
+      "fragments/pool/native/other/2/1.5/0.92": [
+        0,
+        0
+      ],
+      "fragments/pool/native/permgate/0.5/3/0.92": [
+        47,
+        44
+      ],
+      "fragments/pool/native/prior/2/1.5/1": [
+        30,
+        35
+      ],
+      "fragments/pool/native/read/8/3/0.92": [
+        25,
+        30
+      ],
+      "lex/pool/fragments/other/2/1.5/0.7": [
+        60,
+        64
+      ],
+      "lex/pool/native/level2/2/1.5/0.7": [
+        51,
+        72
+      ],
+      "lex/pool/native/other/8/1.5/0.7": [
+        62,
+        68
+      ],
+      "lex/pool/native/permgate/0.5/1.5/0.7": [
+        59,
+        67
+      ],
+      "lex/pool/native/prior/2/1.5/0.92": [
+        49,
+        70
+      ],
+      "lex/pool/native/read/0.5/1.5/0.7": [
+        58,
+        70
+      ],
+      "lex/shift/native/level4/2/0/0.15": [
+        76,
+        57
+      ],
+      "lex/shift/native/other/8/0/0.15": [
+        76,
+        57
+      ],
+      "lex/shift/native/permgate/8/0/0.15": [
+        76,
+        57
+      ],
+      "lex/shift/native/prior/2/0/0.15": [
+        76,
+        57
+      ],
+      "lex/shift/native/read/8/0/0.15": [
+        76,
+        57
+      ],
+      "regional/pool/native/level3/2/0/0.35": [
+        34,
+        96
+      ],
+      "regional/pool/native/other/2/3/0.35": [
+        32,
+        95
+      ],
+      "regional/pool/native/prior/2/3/0.7": [
+        29,
+        97
+      ],
+      "regional/pool/native/read/8/3/0.35": [
+        36,
+        93
+      ]
+    }
+  }
+}
