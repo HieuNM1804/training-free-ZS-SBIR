@@ -1,0 +1,335 @@
+{
+  "queries": 2231,
+  "shared_photos": 2205,
+  "classes": [
+    "scissors",
+    "tree",
+    "wheelchair",
+    "windmill"
+  ],
+  "native_gallery_sizes": [
+    17100,
+    12552
+  ],
+  "scores": {
+    "direct": {
+      "top_common_correct": [
+        1953,
+        1953
+      ],
+      "different_top_photo": 0,
+      "different_top_class": 0,
+      "top_correctness_changed": 0,
+      "fixed_direct_boundaries": {
+        "pairs": 15149,
+        "rank_reversed": 0,
+        "ext1_correct_ext2_wrong": 0,
+        "ext2_correct_ext1_wrong": 0
+      },
+      "per_class": {
+        "scissors": {
+          "pairs": 1440,
+          "rank_reversed": 0,
+          "ext1_correct_ext2_wrong": 0,
+          "ext2_correct_ext1_wrong": 0
+        },
+        "tree": {
+          "pairs": 4383,
+          "rank_reversed": 0,
+          "ext1_correct_ext2_wrong": 0,
+          "ext2_correct_ext1_wrong": 0
+        },
+        "wheelchair": {
+          "pairs": 1571,
+          "rank_reversed": 0,
+          "ext1_correct_ext2_wrong": 0,
+          "ext2_correct_ext1_wrong": 0
+        },
+        "windmill": {
+          "pairs": 7755,
+          "rank_reversed": 0,
+          "ext1_correct_ext2_wrong": 0,
+          "ext2_correct_ext1_wrong": 0
+        }
+      }
+    },
+    "diffused": {
+      "top_common_correct": [
+        2001,
+        1983
+      ],
+      "different_top_photo": 1249,
+      "different_top_class": 45,
+      "top_correctness_changed": 32,
+      "fixed_direct_boundaries": {
+        "pairs": 15149,
+        "rank_reversed": 1489,
+        "ext1_correct_ext2_wrong": 842,
+        "ext2_correct_ext1_wrong": 647
+      },
+      "per_class": {
+        "scissors": {
+          "pairs": 1440,
+          "rank_reversed": 140,
+          "ext1_correct_ext2_wrong": 107,
+          "ext2_correct_ext1_wrong": 33
+        },
+        "tree": {
+          "pairs": 4383,
+          "rank_reversed": 617,
+          "ext1_correct_ext2_wrong": 202,
+          "ext2_correct_ext1_wrong": 415
+        },
+        "wheelchair": {
+          "pairs": 1571,
+          "rank_reversed": 81,
+          "ext1_correct_ext2_wrong": 23,
+          "ext2_correct_ext1_wrong": 58
+        },
+        "windmill": {
+          "pairs": 7755,
+          "rank_reversed": 651,
+          "ext1_correct_ext2_wrong": 510,
+          "ext2_correct_ext1_wrong": 141
+        }
+      },
+      "examples": [
+        {
+          "query": "scissors/n04148054_5354-3.png",
+          "correct_class": "scissors",
+          "selected_ext1": "ext_340.jpg",
+          "selected_ext2": "n04576002_9533.jpg",
+          "class_ext1": "scissors",
+          "class_ext2": "wheelchair",
+          "same_pair_ext1_margin": 0.23013925552368164,
+          "same_pair_ext2_margin": -0.04812812805175781
+        },
+        {
+          "query": "scissors/n04148054_16364-4.png",
+          "correct_class": "scissors",
+          "selected_ext1": "n04576002_95331.jpg",
+          "selected_ext2": "n04148054_201721.jpg",
+          "class_ext1": "wheelchair",
+          "class_ext2": "scissors",
+          "same_pair_ext1_margin": 0.033791542053222656,
+          "same_pair_ext2_margin": -0.05463409423828125
+        },
+        {
+          "query": "tree/n11608250_16869-4.png",
+          "correct_class": "tree",
+          "selected_ext1": "n11608250_101571.jpg",
+          "selected_ext2": "ext_125.jpg",
+          "class_ext1": "tree",
+          "class_ext2": "windmill",
+          "same_pair_ext1_margin": 1.4754362106323242,
+          "same_pair_ext2_margin": -0.7443618774414062
+        },
+        {
+          "query": "tree/n11608250_10157-3.png",
+          "correct_class": "tree",
+          "selected_ext1": "n04576002_9291.jpg",
+          "selected_ext2": "ext_56.jpg",
+          "class_ext1": "wheelchair",
+          "class_ext2": "tree",
+          "same_pair_ext1_margin": 0.9696540832519531,
+          "same_pair_ext2_margin": -0.24051952362060547
+        },
+        {
+          "query": "wheelchair/n04576002_5196-4.png",
+          "correct_class": "wheelchair",
+          "selected_ext1": "n04576002_40991.jpg",
+          "selected_ext2": "n04148054_68721.jpg",
+          "class_ext1": "wheelchair",
+          "class_ext2": "scissors",
+          "same_pair_ext1_margin": 0.4040355682373047,
+          "same_pair_ext2_margin": -0.06862354278564453
+        },
+        {
+          "query": "windmill/n04587559_10116-3.png",
+          "correct_class": "windmill",
+          "selected_ext1": "ext_185.jpg",
+          "selected_ext2": "n04148054_201491.jpg",
+          "class_ext1": "windmill",
+          "class_ext2": "scissors",
+          "same_pair_ext1_margin": 0.37485456466674805,
+          "same_pair_ext2_margin": -0.0988311767578125
+        },
+        {
+          "query": "windmill/n04587559_13391-7.png",
+          "correct_class": "windmill",
+          "selected_ext1": "n12593994_46591.jpg",
+          "selected_ext2": "n04587559_84301.jpg",
+          "class_ext1": "tree",
+          "class_ext2": "windmill",
+          "same_pair_ext1_margin": 0.013655662536621094,
+          "same_pair_ext2_margin": -1.5377826690673828
+        }
+      ]
+    },
+    "geometric": {
+      "top_common_correct": [
+        2038,
+        2000
+      ],
+      "different_top_photo": 1373,
+      "different_top_class": 54,
+      "top_correctness_changed": 48,
+      "fixed_direct_boundaries": {
+        "pairs": 15149,
+        "rank_reversed": 1284,
+        "ext1_correct_ext2_wrong": 555,
+        "ext2_correct_ext1_wrong": 729
+      },
+      "per_class": {
+        "scissors": {
+          "pairs": 1440,
+          "rank_reversed": 174,
+          "ext1_correct_ext2_wrong": 147,
+          "ext2_correct_ext1_wrong": 27
+        },
+        "tree": {
+          "pairs": 4383,
+          "rank_reversed": 529,
+          "ext1_correct_ext2_wrong": 116,
+          "ext2_correct_ext1_wrong": 413
+        },
+        "wheelchair": {
+          "pairs": 1571,
+          "rank_reversed": 102,
+          "ext1_correct_ext2_wrong": 27,
+          "ext2_correct_ext1_wrong": 75
+        },
+        "windmill": {
+          "pairs": 7755,
+          "rank_reversed": 479,
+          "ext1_correct_ext2_wrong": 265,
+          "ext2_correct_ext1_wrong": 214
+        }
+      }
+    },
+    "strong": {
+      "top_common_correct": [
+        2075,
+        2067
+      ],
+      "different_top_photo": 1603,
+      "different_top_class": 69,
+      "top_correctness_changed": 52,
+      "fixed_direct_boundaries": {
+        "pairs": 15149,
+        "rank_reversed": 1464,
+        "ext1_correct_ext2_wrong": 734,
+        "ext2_correct_ext1_wrong": 730
+      },
+      "per_class": {
+        "scissors": {
+          "pairs": 1440,
+          "rank_reversed": 192,
+          "ext1_correct_ext2_wrong": 137,
+          "ext2_correct_ext1_wrong": 55
+        },
+        "tree": {
+          "pairs": 4383,
+          "rank_reversed": 404,
+          "ext1_correct_ext2_wrong": 124,
+          "ext2_correct_ext1_wrong": 280
+        },
+        "wheelchair": {
+          "pairs": 1571,
+          "rank_reversed": 2,
+          "ext1_correct_ext2_wrong": 0,
+          "ext2_correct_ext1_wrong": 2
+        },
+        "windmill": {
+          "pairs": 7755,
+          "rank_reversed": 866,
+          "ext1_correct_ext2_wrong": 473,
+          "ext2_correct_ext1_wrong": 393
+        }
+      },
+      "examples": [
+        {
+          "query": "scissors/n04148054_17682-4.png",
+          "correct_class": "scissors",
+          "selected_ext1": "ext_71.jpg",
+          "selected_ext2": "n04576002_40991.jpg",
+          "class_ext1": "scissors",
+          "class_ext2": "wheelchair",
+          "same_pair_ext1_margin": 0.5612131357192993,
+          "same_pair_ext2_margin": -0.8212100267410278
+        },
+        {
+          "query": "scissors/n04148054_10148-1.png",
+          "correct_class": "scissors",
+          "selected_ext1": "ext_348.jpg",
+          "selected_ext2": "n04148054_201491.jpg",
+          "class_ext1": "tree",
+          "class_ext2": "scissors",
+          "same_pair_ext1_margin": 0.45934104919433594,
+          "same_pair_ext2_margin": -2.0387587547302246
+        },
+        {
+          "query": "tree/n11759853_17749-2.png",
+          "correct_class": "tree",
+          "selected_ext1": "n11608250_101571.jpg",
+          "selected_ext2": "n04587404_180101.jpg",
+          "class_ext1": "tree",
+          "class_ext2": "windmill",
+          "same_pair_ext1_margin": 1.5756840705871582,
+          "same_pair_ext2_margin": -1.0451292991638184
+        },
+        {
+          "query": "tree/n12523475_12146-1.png",
+          "correct_class": "tree",
+          "selected_ext1": "ext_116.jpg",
+          "selected_ext2": "ext_348.jpg",
+          "class_ext1": "wheelchair",
+          "class_ext2": "tree",
+          "same_pair_ext1_margin": 0.7214944362640381,
+          "same_pair_ext2_margin": -1.5237512588500977
+        },
+        {
+          "query": "wheelchair/n04576002_7105-4.png",
+          "correct_class": "wheelchair",
+          "selected_ext1": "ext_178.jpg",
+          "selected_ext2": "n04148054_12331.jpg",
+          "class_ext1": "wheelchair",
+          "class_ext2": "scissors",
+          "same_pair_ext1_margin": 1.339268684387207,
+          "same_pair_ext2_margin": -0.7003674507141113
+        },
+        {
+          "query": "wheelchair/n04576002_8374-4.png",
+          "correct_class": "wheelchair",
+          "selected_ext1": "n04148054_13596.jpg",
+          "selected_ext2": "n04576002_427.jpg",
+          "class_ext1": "scissors",
+          "class_ext2": "wheelchair",
+          "same_pair_ext1_margin": 0.07612180709838867,
+          "same_pair_ext2_margin": -0.8218405246734619
+        },
+        {
+          "query": "windmill/n04587559_9068-4.png",
+          "correct_class": "windmill",
+          "selected_ext1": "n04587404_18010.jpg",
+          "selected_ext2": "n04148054_69891.jpg",
+          "class_ext1": "windmill",
+          "class_ext2": "scissors",
+          "same_pair_ext1_margin": 0.5515735149383545,
+          "same_pair_ext2_margin": -0.7416245937347412
+        },
+        {
+          "query": "windmill/n04587559_8803-6.png",
+          "correct_class": "windmill",
+          "selected_ext1": "ext_340.jpg",
+          "selected_ext2": "ext_258.jpg",
+          "class_ext1": "scissors",
+          "class_ext2": "windmill",
+          "same_pair_ext1_margin": 0.9047015905380249,
+          "same_pair_ext2_margin": -1.0395878553390503
+        }
+      ]
+    }
+  },
+  "max_direct_logscore_difference": 0.00002193450927734375
+}

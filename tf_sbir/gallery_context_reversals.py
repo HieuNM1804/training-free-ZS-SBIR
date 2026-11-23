@@ -19,7 +19,6 @@ def coordinates(global_ids, common):
 
 
 def consensus_examples(first,second,t1,t2,truth,query_files,image_files,classes,photo_classes):
-    rows=torch.arange(len(truth))
     examples=[]
     for c in sorted(set(classes)):
         for was_correct in [True,False]:
@@ -69,7 +68,7 @@ def run():
             if not len(rows):continue
             pack=torch.load(folder/'full'/f'{begin:06d}.pt',mmap=True,weights_only=True)
             for ix in rows.split(48):
-                out_id=torch.tensor([int(x) for x in torch.searchsorted(shared_queries,qi[ix])])
+                out_id=torch.searchsorted(shared_queries,qi[ix])
                 assert torch.equal(shared_queries[out_id],qi[ix])
                 offset=ix-begin
                 assert torch.equal(pack['ids'][offset],ix)
