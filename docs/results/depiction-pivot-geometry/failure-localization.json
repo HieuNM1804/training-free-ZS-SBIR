@@ -1,0 +1,165 @@
+{
+  "tu_visual_recovery": {
+    "strong_misses": 240,
+    "recovered_by_visual": 188,
+    "recovered_by_upper_visual": 184,
+    "mean_fraction_among_relevant_visual_photos": 0.8311195969581604,
+    "matched_gallery_fraction": 0.511847198009491,
+    "class_macro_fraction_difference": {
+      "classes": 27,
+      "queries": 188,
+      "mean_across_classes": 0.31373871117830276,
+      "positive_classes": 26,
+      "bootstrap95": [
+        0.23840744465727498,
+        0.3882800157147425
+      ]
+    }
+  },
+  "paired": {
+    "sketchy_1": {
+      "queries": 768,
+      "hard": 61,
+      "full_gallery_mean_delta_ap_points": -0.14638421853305772,
+      "max_gain_if_oracle_turns_spatial_correction_on_or_off": 0.16484573619284976,
+      "class_macro_full_gallery_delta_ap_points": {
+        "classes": 25,
+        "queries": 768,
+        "mean_across_classes": -0.17285265543848738,
+        "positive_classes": 13,
+        "bootstrap95": [
+          -0.45705672800473907,
+          0.05606066025850898
+        ]
+      },
+      "exclusive_correct_donors_geometry_then_control": {
+        "strong": {
+          "all": [
+            5,
+            280
+          ],
+          "hard": [
+            4,
+            2
+          ]
+        },
+        "direct_words": {
+          "all": [
+            11,
+            228
+          ],
+          "hard": [
+            4,
+            4
+          ]
+        },
+        "content_free": {
+          "all": [
+            274,
+            6
+          ],
+          "hard": [
+            5,
+            1
+          ]
+        }
+      }
+    },
+    "sketchy_2": {
+      "queries": 768,
+      "hard": 124,
+      "full_gallery_mean_delta_ap_points": 0.2331146557480679,
+      "max_gain_if_oracle_turns_spatial_correction_on_or_off": 0.6226907872284453,
+      "class_macro_full_gallery_delta_ap_points": {
+        "classes": 21,
+        "queries": 768,
+        "mean_across_classes": 0.14263652536822172,
+        "positive_classes": 12,
+        "bootstrap95": [
+          -0.289497507881401,
+          0.5733580799036173
+        ]
+      },
+      "exclusive_correct_donors_geometry_then_control": {
+        "strong": {
+          "all": [
+            37,
+            293
+          ],
+          "hard": [
+            30,
+            2
+          ]
+        },
+        "direct_words": {
+          "all": [
+            39,
+            245
+          ],
+          "hard": [
+            19,
+            13
+          ]
+        },
+        "content_free": {
+          "all": [
+            267,
+            1
+          ],
+          "hard": [
+            30,
+            1
+          ]
+        }
+      }
+    },
+    "tuberlin": {
+      "queries": 2130,
+      "hard": 184,
+      "full_gallery_mean_delta_ap_points": 0.2104557123900929,
+      "max_gain_if_oracle_turns_spatial_correction_on_or_off": 0.39185188896516815,
+      "class_macro_full_gallery_delta_ap_points": {
+        "classes": 30,
+        "queries": 2130,
+        "mean_across_classes": 0.2141210971167311,
+        "positive_classes": 23,
+        "bootstrap95": [
+          0.05935282633346063,
+          0.3750720189070784
+        ]
+      },
+      "exclusive_correct_donors_geometry_then_control": {
+        "strong": {
+          "all": [
+            116,
+            509
+          ],
+          "hard": [
+            52,
+            7
+          ]
+        },
+        "direct_words": {
+          "all": [
+            193,
+            449
+          ],
+          "hard": [
+            42,
+            24
+          ]
+        },
+        "content_free": {
+          "all": [
+            1037,
+            7
+          ],
+          "hard": [
+            53,
+            1
+          ]
+        }
+      }
+    }
+  }
+}
