@@ -1,0 +1,73 @@
+{
+  "config": {
+    "rows": [
+      "appearance/32/1/ratio_after_walk",
+      "appearance/64/0.8/walk_after_ratio",
+      "appearance/8/0.8/direct",
+      "area_shuffle/32/1/ratio_after_walk",
+      "empty_token/32/1/ratio_after_walk",
+      "gallery_mean/8/0.55/walk_after_ratio",
+      "geometric/64/0.8/walk_after_ratio",
+      "mean_colour/32/1/ratio_after_walk",
+      "mix0.08|appearance/32/1/ratio_after_walk",
+      "mix0.08|appearance/64/0.8/walk_after_ratio",
+      "mix0.08|appearance/8/0.8/direct",
+      "mix0.08|area_shuffle/8/1/ratio_after_walk",
+      "mix0.08|empty_token/32/1/ratio_after_walk",
+      "mix0.08|gallery_mean/32/1/ratio_after_walk",
+      "mix0.08|paired/32/1/ratio_after_walk",
+      "mix0.08|scrambled_whole/32/1/ratio_after_walk",
+      "mix0.08|walk/8",
+      "native",
+      "paired/32/1/ratio_after_walk",
+      "regional",
+      "scrambled_whole/32/1/ratio_after_walk",
+      "scrambled_whole/64/1/walk_after_ratio",
+      "t4_linear",
+      "t4_source",
+      "walk/8"
+    ],
+    "pure": {
+      "best": "geometric/64/0.8/walk_after_ratio",
+      "primary": "paired/32/1/ratio_after_walk",
+      "appearance_after": "appearance/32/1/ratio_after_walk",
+      "appearance_direct": "appearance/8/0.8/direct",
+      "appearance_before": "appearance/64/0.8/walk_after_ratio",
+      "empty": "mean_colour/32/1/ratio_after_walk",
+      "permuted_whole": "scrambled_whole/64/1/walk_after_ratio",
+      "area_control": "area_shuffle/32/1/ratio_after_walk",
+      "walk": "walk/8",
+      "global_mean": "gallery_mean/8/0.55/walk_after_ratio"
+    },
+    "regional_plus_visual": {
+      "best": "mix0.08|appearance/32/1/ratio_after_walk",
+      "primary": "mix0.08|paired/32/1/ratio_after_walk",
+      "appearance_after": "mix0.08|appearance/32/1/ratio_after_walk",
+      "appearance_direct": "mix0.08|appearance/8/0.8/direct",
+      "appearance_before": "mix0.08|appearance/64/0.8/walk_after_ratio",
+      "empty": "mix0.08|empty_token/32/1/ratio_after_walk",
+      "permuted_whole": "mix0.08|scrambled_whole/32/1/ratio_after_walk",
+      "area_control": "mix0.08|area_shuffle/8/1/ratio_after_walk",
+      "walk": "mix0.08|walk/8",
+      "global_mean": "mix0.08|gallery_mean/32/1/ratio_after_walk"
+    },
+    "input_modes": [
+      "appearance",
+      "area_shuffle",
+      "empty_token",
+      "mean_colour",
+      "permuted_fragments_A",
+      "permuted_fragments_B",
+      "permuted_whole_A",
+      "permuted_whole_B"
+    ],
+    "shortlist": "bd0f06ebc4ada318e6a63ed6052c0a3f86eb933e1fd790c3f043f1022b2b65ca",
+    "scan_sha256": {
+      "sketchy_1": "e8a842f5e7c9007609f719e4f9c1d3f4996ab6df332ab20cbff507fd9640bd47",
+      "sketchy_2": "25c59c9c1006d751a6aaf40ff9a314852d28c6e0ce58e3d8649c6bc685547551"
+    },
+    "selection": "locked on complete unseen Sketchy Ext-1 and Ext-2 with equal mAP weights before TU-Berlin scores",
+    "code": "970e2b4121c552156f18b045445eae940c60fc4b"
+  },
+  "sha256": "6a71b3d6ee8fb9f569664b706f88457a8bd3d9a9f426e4526c302d38cd4413e7"
+}

@@ -1,0 +1,648 @@
+{
+  "signature": "bd0f06ebc4ada318e6a63ed6052c0a3f86eb933e1fd790c3f043f1022b2b65ca",
+  "queries": 900,
+  "gallery": 17100,
+  "classes": 25,
+  "values": {
+    "native": [
+      0.30740021273907686,
+      0.4221666676695976
+    ],
+    "t4_source": [
+      0.5840771342565616,
+      0.7238111123256386
+    ],
+    "t4_linear": [
+      0.582470961049613,
+      0.7223000020864937
+    ],
+    "walk/8": [
+      0.5143402757040328,
+      0.42232222222412624
+    ],
+    "area_shuffle/8/1/ratio_after_walk": [
+      0.7042813867206374,
+      0.7481111123185191
+    ],
+    "mean_colour/32/1/ratio_after_walk": [
+      0.7041742713149223,
+      0.7385000007123583
+    ],
+    "paired/32/1/ratio_after_walk": [
+      0.6989261674508452,
+      0.7436222226938439
+    ],
+    "empty_token/32/1/ratio_after_walk": [
+      0.6994176228220265,
+      0.711633334433039
+    ],
+    "appearance/32/1/ratio_after_walk": [
+      0.7209466036988629,
+      0.762755556276275
+    ],
+    "appearance/64/0.8/walk_after_ratio": [
+      0.7492110495310691,
+      0.7599777789186273
+    ],
+    "scrambled_whole/64/1/walk_after_ratio": [
+      0.738168849469059,
+      0.7515000011627045
+    ],
+    "fixed_white/64/0.8/walk_after_ratio": [
+      0.7156435069379707,
+      0.7221222240105272
+    ],
+    "geometric/64/0.8/walk_after_ratio": [
+      0.748879889442275,
+      0.7655888900326357
+    ],
+    "fixed_neutral/64/1/walk_after_ratio": [
+      0.7004170714132488,
+      0.7077777794727849
+    ]
+  },
+  "original_evaluator": true,
+  "effective_RGB_operator_max_error": 2.384185791015625e-07,
+  "KD_max_error": 2.384185791015625e-07,
+  "per_query_sha256": "f4d686d7f2609003b92cc3978955e5cd86d6a55fa28ab17de6968350012880e5",
+  "paired": {
+    "paired/32/1/ratio_after_walk": {
+      "native": {
+        "mAP": {
+          "delta_pp": 39.15259547117684,
+          "ci95_class": [
+            34.03847747389227,
+            43.89067511669256
+          ],
+          "classes_up": 25,
+          "classes": 25
+        },
+        "precision": {
+          "delta_pp": 32.145555502424635,
+          "ci95_class": [
+            26.440999930222624,
+            37.70555544773945
+          ],
+          "classes_up": 24,
+          "classes": 25
+        }
+      },
+      "t4_source": {
+        "mAP": {
+          "delta_pp": 11.484903319428364,
+          "ci95_class": [
+            8.75280594706225,
+            14.050205793800867
+          ],
+          "classes_up": 23,
+          "classes": 25
+        },
+        "precision": {
+          "delta_pp": 1.9811110368205442,
+          "ci95_class": [
+            -0.2935277816115154,
+            4.18463882844274
+          ],
+          "classes_up": 17,
+          "classes": 25
+        }
+      },
+      "t4_linear": {
+        "mAP": {
+          "delta_pp": 11.645520640123221,
+          "ci95_class": [
+            8.93310098434902,
+            14.219800509693515
+          ],
+          "classes_up": 23,
+          "classes": 25
+        },
+        "precision": {
+          "delta_pp": 2.132222060735027,
+          "ci95_class": [
+            -0.20027802042766568,
+            4.366749887168407
+          ],
+          "classes_up": 17,
+          "classes": 25
+        }
+      },
+      "walk/8": {
+        "mAP": {
+          "delta_pp": 18.45858917468124,
+          "ci95_class": [
+            13.766426229668367,
+            23.047915029386058
+          ],
+          "classes_up": 23,
+          "classes": 25
+        },
+        "precision": {
+          "delta_pp": 32.13000004697177,
+          "ci95_class": [
+            25.637444482510908,
+            38.541194486912964
+          ],
+          "classes_up": 24,
+          "classes": 25
+        }
+      },
+      "area_shuffle/8/1/ratio_after_walk": {
+        "mAP": {
+          "delta_pp": -0.5355219269792239,
+          "ci95_class": [
+            -3.7367868314186734,
+            2.792320307763292
+          ],
+          "classes_up": 10,
+          "classes": 25
+        },
+        "precision": {
+          "delta_pp": -0.4488889624675115,
+          "ci95_class": [
+            -3.7803611220067572,
+            2.8079443101667674
+          ],
+          "classes_up": 11,
+          "classes": 25
+        }
+      },
+      "mean_colour/32/1/ratio_after_walk": {
+        "mAP": {
+          "delta_pp": -0.5248103864077065,
+          "ci95_class": [
+            -3.606034047886108,
+            2.3533094730228177
+          ],
+          "classes_up": 10,
+          "classes": 25
+        },
+        "precision": {
+          "delta_pp": 0.5122221981485685,
+          "ci95_class": [
+            -3.545749993213556,
+            4.166777747336567
+          ],
+          "classes_up": 12,
+          "classes": 25
+        }
+      },
+      "paired/32/1/ratio_after_walk": {
+        "mAP": {
+          "delta_pp": 0.0,
+          "ci95_class": [
+            0.0,
+            0.0
+          ],
+          "classes_up": 0,
+          "classes": 25
+        },
+        "precision": {
+          "delta_pp": 0.0,
+          "ci95_class": [
+            0.0,
+            0.0
+          ],
+          "classes_up": 0,
+          "classes": 25
+        }
+      },
+      "empty_token/32/1/ratio_after_walk": {
+        "mAP": {
+          "delta_pp": -0.04914553711811701,
+          "ci95_class": [
+            -3.7419403756037353,
+            3.448341395669707
+          ],
+          "classes_up": 9,
+          "classes": 25
+        },
+        "precision": {
+          "delta_pp": 3.1988888260804944,
+          "ci95_class": [
+            -1.0269167132934347,
+            7.332249987782496
+          ],
+          "classes_up": 16,
+          "classes": 25
+        }
+      },
+      "appearance/32/1/ratio_after_walk": {
+        "mAP": {
+          "delta_pp": -2.2020436248017683,
+          "ci95_class": [
+            -4.323266300957443,
+            -0.14844442753431705
+          ],
+          "classes_up": 8,
+          "classes": 25
+        },
+        "precision": {
+          "delta_pp": -1.9133333582431078,
+          "ci95_class": [
+            -4.481138898530562,
+            0.6813332785490039
+          ],
+          "classes_up": 7,
+          "classes": 25
+        }
+      },
+      "appearance/64/0.8/walk_after_ratio": {
+        "mAP": {
+          "delta_pp": -5.028488208022383,
+          "ci95_class": [
+            -8.68008814721058,
+            -1.8636542176413875
+          ],
+          "classes_up": 5,
+          "classes": 25
+        },
+        "precision": {
+          "delta_pp": -1.635555622478326,
+          "ci95_class": [
+            -3.971111141290102,
+            0.6333888485665529
+          ],
+          "classes_up": 9,
+          "classes": 25
+        }
+      },
+      "scrambled_whole/64/1/walk_after_ratio": {
+        "mAP": {
+          "delta_pp": -3.92426820182138,
+          "ci95_class": [
+            -7.034122004432397,
+            -1.1631752640267627
+          ],
+          "classes_up": 9,
+          "classes": 25
+        },
+        "precision": {
+          "delta_pp": -0.787777846886052,
+          "ci95_class": [
+            -3.4945556751659343,
+            1.6858332416094386
+          ],
+          "classes_up": 13,
+          "classes": 25
+        }
+      },
+      "fixed_white/64/0.8/walk_after_ratio": {
+        "mAP": {
+          "delta_pp": -1.6717339487125475,
+          "ci95_class": [
+            -5.545177625533607,
+            2.214298912329185
+          ],
+          "classes_up": 11,
+          "classes": 25
+        },
+        "precision": {
+          "delta_pp": 2.149999868331684,
+          "ci95_class": [
+            -1.8478890319406571,
+            6.344638792534046
+          ],
+          "classes_up": 16,
+          "classes": 25
+        }
+      },
+      "geometric/64/0.8/walk_after_ratio": {
+        "mAP": {
+          "delta_pp": -4.995372199142973,
+          "ci95_class": [
+            -8.498280601834672,
+            -1.850679583775088
+          ],
+          "classes_up": 6,
+          "classes": 25
+        },
+        "precision": {
+          "delta_pp": -2.196666733879182,
+          "ci95_class": [
+            -4.860027862888657,
+            0.22666661463057003
+          ],
+          "classes_up": 10,
+          "classes": 25
+        }
+      },
+      "fixed_neutral/64/1/walk_after_ratio": {
+        "mAP": {
+          "delta_pp": -0.14909039624035358,
+          "ci95_class": [
+            -3.8946328128118894,
+            3.626254643877552
+          ],
+          "classes_up": 11,
+          "classes": 25
+        },
+        "precision": {
+          "delta_pp": 3.5844443221059112,
+          "ci95_class": [
+            -0.626666741595707,
+            7.80111093529914
+          ],
+          "classes_up": 17,
+          "classes": 25
+        }
+      }
+    },
+    "geometric/64/0.8/walk_after_ratio": {
+      "native": {
+        "mAP": {
+          "delta_pp": 44.14796767031981,
+          "ci95_class": [
+            39.781363282285426,
+            48.59912307951082
+          ],
+          "classes_up": 25,
+          "classes": 25
+        },
+        "precision": {
+          "delta_pp": 34.34222223630382,
+          "ci95_class": [
+            28.13833328806795,
+            40.255916834984795
+          ],
+          "classes_up": 24,
+          "classes": 25
+        }
+      },
+      "t4_source": {
+        "mAP": {
+          "delta_pp": 16.480275518571336,
+          "ci95_class": [
+            14.261339067186539,
+            18.66828313765323
+          ],
+          "classes_up": 25,
+          "classes": 25
+        },
+        "precision": {
+          "delta_pp": 4.177777770699726,
+          "ci95_class": [
+            2.808861085249939,
+            5.616777689786005
+          ],
+          "classes_up": 23,
+          "classes": 25
+        }
+      },
+      "t4_linear": {
+        "mAP": {
+          "delta_pp": 16.640892839266193,
+          "ci95_class": [
+            14.415333550811434,
+            18.84397978954431
+          ],
+          "classes_up": 25,
+          "classes": 25
+        },
+        "precision": {
+          "delta_pp": 4.328888794614209,
+          "ci95_class": [
+            2.9810832694121117,
+            5.770027637052245
+          ],
+          "classes_up": 23,
+          "classes": 25
+        }
+      },
+      "walk/8": {
+        "mAP": {
+          "delta_pp": 23.453961373824214,
+          "ci95_class": [
+            17.99414179040533,
+            28.968087204157683
+          ],
+          "classes_up": 24,
+          "classes": 25
+        },
+        "precision": {
+          "delta_pp": 34.32666678085096,
+          "ci95_class": [
+            27.079861224075366,
+            41.52969455911984
+          ],
+          "classes_up": 24,
+          "classes": 25
+        }
+      },
+      "area_shuffle/8/1/ratio_after_walk": {
+        "mAP": {
+          "delta_pp": 4.459850272163749,
+          "ci95_class": [
+            1.0231280558742584,
+            8.33237692728224
+          ],
+          "classes_up": 16,
+          "classes": 25
+        },
+        "precision": {
+          "delta_pp": 1.7477777714116707,
+          "ci95_class": [
+            -0.9189444758929313,
+            4.873361078003007
+          ],
+          "classes_up": 14,
+          "classes": 25
+        }
+      },
+      "mean_colour/32/1/ratio_after_walk": {
+        "mAP": {
+          "delta_pp": 4.470561812735266,
+          "ci95_class": [
+            1.582876804046747,
+            7.804098976310342
+          ],
+          "classes_up": 17,
+          "classes": 25
+        },
+        "precision": {
+          "delta_pp": 2.7088889320277505,
+          "ci95_class": [
+            -0.3744444234089719,
+            5.798916732085247
+          ],
+          "classes_up": 15,
+          "classes": 25
+        }
+      },
+      "paired/32/1/ratio_after_walk": {
+        "mAP": {
+          "delta_pp": 4.995372199142973,
+          "ci95_class": [
+            1.8506795837750867,
+            8.49828060183467
+          ],
+          "classes_up": 19,
+          "classes": 25
+        },
+        "precision": {
+          "delta_pp": 2.196666733879182,
+          "ci95_class": [
+            -0.22666661463057003,
+            4.860027862888657
+          ],
+          "classes_up": 15,
+          "classes": 25
+        }
+      },
+      "empty_token/32/1/ratio_after_walk": {
+        "mAP": {
+          "delta_pp": 4.946226662024856,
+          "ci95_class": [
+            1.874968343310886,
+            8.338826076784683
+          ],
+          "classes_up": 17,
+          "classes": 25
+        },
+        "precision": {
+          "delta_pp": 5.395555559959677,
+          "ci95_class": [
+            1.707416665621309,
+            9.383472226135845
+          ],
+          "classes_up": 19,
+          "classes": 25
+        }
+      },
+      "appearance/32/1/ratio_after_walk": {
+        "mAP": {
+          "delta_pp": 2.7933285743412046,
+          "ci95_class": [
+            0.004328688203046725,
+            6.0256784614382495
+          ],
+          "classes_up": 18,
+          "classes": 25
+        },
+        "precision": {
+          "delta_pp": 0.2833333756360743,
+          "ci95_class": [
+            -2.3644444128394957,
+            2.790083404625247
+          ],
+          "classes_up": 10,
+          "classes": 25
+        }
+      },
+      "appearance/64/0.8/walk_after_ratio": {
+        "mAP": {
+          "delta_pp": -0.033116008879409894,
+          "ci95_class": [
+            -0.5733980819427719,
+            0.5897511507901879
+          ],
+          "classes_up": 10,
+          "classes": 25
+        },
+        "precision": {
+          "delta_pp": 0.5611111114008559,
+          "ci95_class": [
+            -0.38672221604113777,
+            1.5778055254421712
+          ],
+          "classes_up": 11,
+          "classes": 25
+        }
+      },
+      "scrambled_whole/64/1/walk_after_ratio": {
+        "mAP": {
+          "delta_pp": 1.0711039973215923,
+          "ci95_class": [
+            -1.0265931477873689,
+            3.096447155433189
+          ],
+          "classes_up": 17,
+          "classes": 25
+        },
+        "precision": {
+          "delta_pp": 1.40888888699313,
+          "ci95_class": [
+            -0.8079167142251713,
+            3.615722304473939
+          ],
+          "classes_up": 16,
+          "classes": 25
+        }
+      },
+      "fixed_white/64/0.8/walk_after_ratio": {
+        "mAP": {
+          "delta_pp": 3.323638250430425,
+          "ci95_class": [
+            1.1178253990028881,
+            5.4657452378784175
+          ],
+          "classes_up": 20,
+          "classes": 25
+        },
+        "precision": {
+          "delta_pp": 4.346666602210866,
+          "ci95_class": [
+            1.6999721904595693,
+            7.111166597959688
+          ],
+          "classes_up": 20,
+          "classes": 25
+        }
+      },
+      "geometric/64/0.8/walk_after_ratio": {
+        "mAP": {
+          "delta_pp": 0.0,
+          "ci95_class": [
+            0.0,
+            0.0
+          ],
+          "classes_up": 0,
+          "classes": 25
+        },
+        "precision": {
+          "delta_pp": 0.0,
+          "ci95_class": [
+            0.0,
+            0.0
+          ],
+          "classes_up": 0,
+          "classes": 25
+        }
+      },
+      "fixed_neutral/64/1/walk_after_ratio": {
+        "mAP": {
+          "delta_pp": 4.846281802902619,
+          "ci95_class": [
+            1.2630350541892565,
+            8.612885380044785
+          ],
+          "classes_up": 20,
+          "classes": 25
+        },
+        "precision": {
+          "delta_pp": 5.781111055985093,
+          "ci95_class": [
+            1.5687499157049591,
+            10.037916603022149
+          ],
+          "classes_up": 20,
+          "classes": 25
+        }
+      }
+    }
+  },
+  "top1": {
+    "paired/32/1/ratio_after_walk": {
+      "native": {
+        "fixed": 356,
+        "broken": 5
+      }
+    },
+    "geometric/64/0.8/walk_after_ratio": {
+      "native": {
+        "fixed": 359,
+        "broken": 9
+      }
+    }
+  }
+}
