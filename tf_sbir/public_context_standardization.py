@@ -44,6 +44,7 @@ def grouped_permutation(groups):
 
 
 class StandardizedDonors:
+    comparators=('baseline','permuted','same_backoff','without_rgb')
     def __init__(self,w,bank):
         self.w=w
         words,self.group=bank.argmax(1).unique(sorted=True,return_inverse=True)
@@ -76,8 +77,64 @@ class StandardizedDonors:
         return outputs
 
 
+def concentration_matched(native,target):
+    """Change only native kernel temperature to reproduce target row entropy."""
+    log=native.clamp_min(1e-30).log()
+    entropy=-(target*target.clamp_min(1e-30).log()).sum(1,keepdim=True)
+    low=torch.zeros_like(entropy)
+    high=torch.full_like(entropy,128)
+    for _ in range(21):
+        power=(low+high)/2
+        candidate=(log*power).softmax(1)
+        h=-(candidate*candidate.clamp_min(1e-30).log()).sum(1,keepdim=True)
+        low=torch.where(h>entropy,power,low)
+        high=torch.where(h>entropy,high,power)
+    return (log*((low+high)/2)).softmax(1)
+
+
+class SoftStandardizedDonors:
+    """One latent public name per donor draw, integrated exactly over all names."""
+    comparators=('baseline','permuted','entropy_control','without_rgb')
+
+    def __init__(self,w,bank):
+        self.w=w
+        self.bank=bank
+        _,groups=bank.argmax(1).unique(sorted=True,return_inverse=True)
+        self.permutation=grouped_permutation(groups)
+        self.vocabulary_count=bank.size(1)
+        self.scale=bank.sum(0).clamp_min(1e-30)
+        self.kernels={k:torch.empty_like(w) for k in ('standard','permuted','entropy_control')}
+        self.mass_error=0.
+        self.entropy_error=0.
+        self.tv=0.
+        for start in range(0,len(w),256):
+            sl=slice(start,start+256)
+            native=w[sl]
+            exposure=(native@bank).clamp_min(torch.finfo(bank.dtype).tiny)
+            for name,target in [('standard',bank[sl]),('permuted',bank[self.permutation[sl]])]:
+                # E[L | i] under a changed latent word distribution p_i(word).
+                weights=native*((target/exposure)@bank.T)
+                self.mass_error=max(self.mass_error,float((weights.sum(1)-1).abs().max()))
+                weights=weights/weights.sum(1,keepdim=True)
+                self.kernels[name][sl]=weights
+                if name=='standard':
+                    self.tv+=float((weights-native).abs().sum())/(2*len(w))
+                    control=concentration_matched(native,weights)
+                    def entropy(x):return -(x*x.clamp_min(1e-30).log()).sum(1)
+                    self.entropy_error=max(self.entropy_error,float((entropy(control)-entropy(weights)).abs().max()))
+                    self.kernels['entropy_control'][sl]=control
+        assert self.mass_error<.005 and self.entropy_error<.02
+
+    def score(self,evidence):
+        outputs={k:evidence@v.T for k,v in self.kernels.items()}
+        outputs['matrix_native']=evidence@self.w.T
+        uniform_donor_mean=(evidence@self.bank)/self.scale
+        outputs['without_rgb']=uniform_donor_mean@self.bank.T
+        return outputs
+
+
 @torch.inference_mode()
-def run(workspace,ds,full):
+def run(workspace,ds,full,soft):
     cfg,paths,qs,_,gs,q,p,src,tgt,scale=semantic_inputs(workspace,ds)
     kd,_=load_kd(workspace)
     assert hashlib.sha256(inspect.getsource(kd).strip().encode()).hexdigest()==KD_FUNCTION_SHA
@@ -90,7 +147,7 @@ def run(workspace,ds,full):
         g=F.normalize(p[pi].cuda())
         bank=torch.cat([(scale*(chunk@tgt.T)).softmax(1) for chunk in g.split(256)])
         graph=Index(SimpleNamespace(p=g),rgb_only=True)
-        estimator=StandardizedDonors(endpoint_matrix(graph),bank)
+        estimator=(SoftStandardizedDonors if soft else StandardizedDonors)(endpoint_matrix(graph),bank)
         views,_=region_views(workspace,s,cfg,paths,qi,q)
         folder,tree,regional=base_parts(workspace,s)
         replay=PrefixReplay(kd,gold,s)
@@ -136,27 +193,32 @@ def run(workspace,ds,full):
         z={k:torch.cat(v).double() for k,v in scores.items()}
         y=labels[rows]
         ci={}
-        for k in ('baseline','permuted','same_backoff','without_rgb'):
+        for k in estimator.comparators:
             delta=(z['standard']-z[k])*100
             macro=torch.stack([delta[y==c].mean(0) for c in y.unique()])
             boot=torch.randint(len(macro),(10000,len(macro)),generator=torch.Generator().manual_seed(5728))
             ci[k]={'class_mean':macro.mean(0).tolist(),'ci95':macro[boot].mean(1).quantile(torch.tensor([.025,.975],dtype=macro.dtype),dim=0).tolist()}
         result[s]={'queries':len(rows),'gallery':len(gold),'active_names':estimator.vocabulary_count,
-            'mean_candidate_posterior_mass_on_active_names':float(estimator.target.sum(1).mean()),
+            'mean_candidate_posterior_mass_on_active_names':1.0 if soft else float(estimator.target.sum(1).mean()),
             'fraction_permutation_moved':float((estimator.permutation!=torch.arange(len(g),device=g.device)).float().mean()),
             'native_operator_max_absolute_error':max_error,'native_operator_max_log_error':max_log_error,
             'metrics':{k:(100*v.mean(0)).tolist() for k,v in z.items()},'top1_fixed_damaged':{k:torch.cat(v).sum(0).tolist() for k,v in top1.items()},
             'standard_minus_control':ci}
+        if soft:
+            result[s]['kernel_mass_error']=estimator.mass_error
+            result[s]['entropy_control_error_nats']=estimator.entropy_error
+            result[s]['mean_total_variation_from_native_kernel']=estimator.tv
         print(s,json.dumps(result[s]),flush=True)
         del estimator,graph,bank
     out=workspace/'results/public-context-standardization'
     out.mkdir(parents=True,exist_ok=True)
-    (out/(ds+('-full' if full else '-pilot')+'.json')).write_text(json.dumps(result,indent=2))
+    (out/(ds+('-soft' if soft else '')+('-full' if full else '-pilot')+'.json')).write_text(json.dumps(result,indent=2))
 
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser()
     parser.add_argument('--dataset',default='sketchy',choices=['sketchy','tuberlin'])
     parser.add_argument('--full',action='store_true')
+    parser.add_argument('--soft',action='store_true')
     options=parser.parse_args()
-    run(Path('/content/sbir'),options.dataset,options.full)
+    run(Path('/content/sbir'),options.dataset,options.full,options.soft)
