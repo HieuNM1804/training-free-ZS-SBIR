@@ -1,0 +1,117 @@
+{
+  "commit": "cca8750e99c12a050bc8fcf4a0b15a7888af75e1",
+  "seed": 42,
+  "torch": "2.14.1+cu130",
+  "cuda": "13.0",
+  "pythonhashseed": "42",
+  "device": "NVIDIA L4",
+  "split": "tuberlin",
+  "counts": [
+    2130,
+    27262,
+    30
+  ],
+  "metrics": [
+    "mAP@all",
+    "P@100"
+  ],
+  "paired_reference_checks": {
+    "full": {
+      "max_per_query": [
+        0.8398944735527039,
+        1.0
+      ],
+      "mean_signed_points": [
+        0.10484604742115652,
+        0.08873239570590252
+      ],
+      "mean_absolute_points": [
+        0.6751421606386772,
+        0.7666666712174673
+      ]
+    }
+  },
+  "max_regional_index_discrepancy": 0.0,
+  "rows": {
+    "full": {
+      "metrics_percent": [
+        81.49478414410751,
+        82.19577467873552
+      ],
+      "ablated_minus_full_points": [
+        0.0,
+        0.0
+      ],
+      "macro_ap_removal": {
+        "classes": 30,
+        "queries": 2130,
+        "mean_across_classes": 0.0,
+        "positive_classes": 0,
+        "bootstrap95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "without_diffusion": {
+      "metrics_percent": [
+        77.7788835744474,
+        80.47793441535161
+      ],
+      "ablated_minus_full_points": [
+        -3.715900569660108,
+        -1.717840263383909
+      ],
+      "macro_ap_removal": {
+        "classes": 30,
+        "queries": 2130,
+        "mean_across_classes": -3.7218179348412717,
+        "positive_classes": 2,
+        "bootstrap95": [
+          -4.722286902184576,
+          -2.692111387360464
+        ]
+      }
+    },
+    "without_regional": {
+      "metrics_percent": [
+        80.6956262845205,
+        81.2291081030219
+      ],
+      "ablated_minus_full_points": [
+        -0.7991578595870188,
+        -0.9666665757136166
+      ],
+      "macro_ap_removal": {
+        "classes": 30,
+        "queries": 2130,
+        "mean_across_classes": -0.8052360828123276,
+        "positive_classes": 12,
+        "bootstrap95": [
+          -1.9562633848172566,
+          0.35056519349759685
+        ]
+      }
+    },
+    "without_geometry": {
+      "metrics_percent": [
+        80.5652052462713,
+        81.4713615337343
+      ],
+      "ablated_minus_full_points": [
+        -0.9295788978362027,
+        -0.7244131450012257
+      ],
+      "macro_ap_removal": {
+        "classes": 30,
+        "queries": 2130,
+        "mean_across_classes": -0.9254533792513288,
+        "positive_classes": 11,
+        "bootstrap95": [
+          -2.1905064018939377,
+          0.12624162492353314
+        ]
+      }
+    }
+  }
+}
