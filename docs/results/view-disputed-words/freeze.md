@@ -1,0 +1,5 @@
+# Frozen transfer comparison
+
+The preexisting hierarchical ranker uses `3/0.50000/same/16/regional-cell/0.4`. Its original regional component gives the reference. The primary view control replaces the native sketch word posterior at the input of the fixed RGB propagation branch with the arithmetic mean of the native and flipped sketch word posteriors. The primary uses no crop vote at this input. The historical regional component itself already uses regions. We freeze the mean as a reproducible control. The shuffled crop ablation had the highest two-Sketchy average mAP among the strong rows and is retained as a negative control. The median is the proposed word-specific mechanism and did not beat mean on either split.
+
+Strong scoring code was fixed at `1c3e085fce9d9fa07795da9fb6c73c31fccd0960` before its TU-Berlin evaluation. Primary-only replay computes identical scores for both retained rows. Semantic inputs and gallery data are the same as in the historical branch. The earlier direct dictionary TU test had already been observed. No strong TU result was used to choose the intervention.

@@ -64,7 +64,7 @@ def score_rows(queries, bank, regional):
 
 
 @torch.inference_mode()
-def run(workspace, dataset, official, decompose=False, internal=False, strong=False):
+def run(workspace, dataset, official, decompose=False, internal=False, strong=False, primary=False):
     cfg, paths, qs, _, gs, q, p, src, tgt, scale = semantic_inputs(workspace, dataset)
     kd, _ = load_kd(workspace)
     assert hashlib.sha256(inspect.getsource(kd).strip().encode()).hexdigest() == KD_FUNCTION_SHA
@@ -105,7 +105,8 @@ def run(workspace, dataset, official, decompose=False, internal=False, strong=Fa
                 if (gap-gap.median(dim=1,keepdim=True).values).abs().mean() > .01:
                     raise ValueError("Could not reproduce the frozen pre-region branch")
                 scores_by_name = {"regional":base}
-                for name in ("mean","median","third_view","outside_only","third_view_sham"):
+                methods = ("mean",) if primary else ("mean","median","third_view","outside_only","third_view_sham")
+                for name in methods:
                     alt = graph.score(CONFIG, post[name] @ bank.T).clamp_min(1e-30).log()
                     scores_by_name[name] = base + .65 * (alt-old)
             else:
@@ -141,11 +142,16 @@ def run(workspace, dataset, official, decompose=False, internal=False, strong=Fa
                          "metrics":{k:(v.mean(0)*100).tolist() for k,v in all_rows.items()}}
         comparisons = ([("third_view","regional"),("third_view","mean"),("outside_only","third_view")]
                        if internal else [("median","mean"),("median","sham"),("regional_median","regional")])
-        for left,right in comparisons:
+        for left,right in ([("mean","regional")] if primary else comparisons):
             delta = (all_rows[left][:,0]-all_rows[right][:,0])*100
             class_delta = torch.stack([delta[labels==c].mean() for c in labels.unique()])
             result[split][left+" minus "+right] = {"classes_improved":int((class_delta>0).sum()),
                                                    "macro_delta":class_delta.mean().item()}
+            if primary:
+                rand = torch.Generator().manual_seed(11307)
+                samples = torch.randint(len(class_delta),(10000,len(class_delta)),generator=rand)
+                result[split][left+" minus "+right]["macro_ci95"] = (
+                    class_delta[samples].mean(1).quantile(torch.tensor([.025,.975],dtype=torch.double)).tolist())
         print(json.dumps({split:result[split]}),flush=True)
     return result
 
@@ -157,12 +163,16 @@ if __name__ == "__main__":
     parser.add_argument("--decompose",action="store_true")
     parser.add_argument("--internal",action="store_true")
     parser.add_argument("--strong",action="store_true")
+    parser.add_argument("--primary",action="store_true",help="Recheck frozen mean and original regional input only")
     args = parser.parse_args()
     internal = args.internal or args.strong
-    result = run(Path("/content/sbir"),args.dataset,args.official,args.decompose or internal,internal,args.strong)
+    if args.primary and not internal:
+        parser.error("--primary requires --internal or --strong")
+    result = run(Path("/content/sbir"),args.dataset,args.official,args.decompose or internal,internal,args.strong,args.primary)
     out = Path("/content/sbir/results/view-disputed-words")
     out.mkdir(parents=True,exist_ok=True)
     suffix = ("-official" if args.official else "") + ("-decomposed" if args.decompose else "")
     suffix += "-internal" if args.internal else ""
     suffix += "-strong" if args.strong else ""
+    suffix += "-primary" if args.primary else ""
     (out/(args.dataset+suffix+".json")).write_text(json.dumps(result,indent=2))
