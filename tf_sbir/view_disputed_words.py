@@ -4,11 +4,13 @@ import hashlib
 import inspect
 import json
 from pathlib import Path
+from types import SimpleNamespace
 
 import torch
 
 from .branch_view_study import PrefixReplay
 from .gallery_panel_resume import region_views, semantic_inputs
+from .gallery_region_panels import CONFIG, Index
 from .quickdraw_locked import KD_FUNCTION_SHA
 from .retrieval_evidence import load_kd
 
@@ -60,7 +62,7 @@ def score_rows(queries, bank, regional):
 
 
 @torch.inference_mode()
-def run(workspace, dataset, official, decompose=False):
+def run(workspace, dataset, official, decompose=False, internal=False):
     cfg, paths, qs, _, gs, q, p, src, tgt, scale = semantic_inputs(workspace, dataset)
     kd, _ = load_kd(workspace)
     assert hashlib.sha256(inspect.getsource(kd).strip().encode()).hexdigest() == KD_FUNCTION_SHA
@@ -71,6 +73,10 @@ def run(workspace, dataset, official, decompose=False):
         views, _ = region_views(workspace, split, cfg, paths, qi, q)
         regional = torch.load(workspace/"cache/gallery-stable-region-evidence"/(split+"-regional-reference.pt"),
                               mmap=True, weights_only=True)
+        if internal:
+            graph = Index(SimpleNamespace(p=p[pi].cuda()), rgb_only=True)
+            history = torch.load(workspace/"cache/pragmatic-gallery-competition"/(split+"-named-rgb16.pt"),
+                                 mmap=True, weights_only=True)
         replay = PrefixReplay(kd, classes, split)
         gclass = classes.cuda()
         output = {}
@@ -80,7 +86,21 @@ def run(workspace, dataset, official, decompose=False):
             first = (scale * (q[qi[sl]].cuda() @ src.T)).softmax(1)
             flipped = (scale * (views["flipped"][sl].float().cuda() @ src.T)).softmax(1)
             post = witnesses(first, flipped, views["regions"][sl].cuda().float(), src, scale, decompose)
-            for name, scores in score_rows(post, bank, regional[sl].float().cuda()).items():
+            base = regional[sl].float().cuda()
+            if internal:
+                old = graph.score(CONFIG, first @ bank.T).clamp_min(1e-30).log()
+                historical = history[sl].cuda().clamp_min(1e-30).log()
+                gap = historical - old
+                # Softmax vs max-normalized emissions differ by a query-wide multiplier.
+                if (gap-gap.median(dim=1,keepdim=True).values).abs().mean() > .01:
+                    raise ValueError("Could not reproduce the frozen pre-region branch")
+                scores_by_name = {"regional":base}
+                for name in ("mean","median","third_view","outside_only","third_view_sham"):
+                    alt = graph.score(CONFIG, post[name] @ bank.T).clamp_min(1e-30).log()
+                    scores_by_name[name] = base + .65 * (alt-old)
+            else:
+                scores_by_name = score_rows(post, bank, base)
+            for name, scores in scores_by_name.items():
                 count = 200 if split == "sketchy_2" else len(pi)
                 rank = scores.topk(count).indices
                 hit = gclass[rank] == labels[sl,None].cuda()
@@ -97,7 +117,9 @@ def run(workspace, dataset, official, decompose=False):
         result[split] = {"queries":len(labels),"photos":len(pi),"official_all":official,
                          "maximum_checked_error":maximum_error,
                          "metrics":{k:(v.mean(0)*100).tolist() for k,v in all_rows.items()}}
-        for left,right in [("median","mean"),("median","sham"),("regional_median","regional")]:
+        comparisons = ([("third_view","regional"),("third_view","mean"),("outside_only","third_view")]
+                       if internal else [("median","mean"),("median","sham"),("regional_median","regional")])
+        for left,right in comparisons:
             delta = (all_rows[left][:,0]-all_rows[right][:,0])*100
             class_delta = torch.stack([delta[labels==c].mean() for c in labels.unique()])
             result[split][left+" minus "+right] = {"classes_improved":int((class_delta>0).sum()),
@@ -111,9 +133,11 @@ if __name__ == "__main__":
     parser.add_argument("--dataset", choices=["sketchy","tuberlin"],default="sketchy")
     parser.add_argument("--official",action="store_true")
     parser.add_argument("--decompose",action="store_true")
+    parser.add_argument("--internal",action="store_true")
     args = parser.parse_args()
-    result = run(Path("/content/sbir"),args.dataset,args.official,args.decompose)
+    result = run(Path("/content/sbir"),args.dataset,args.official,args.decompose or args.internal,args.internal)
     out = Path("/content/sbir/results/view-disputed-words")
     out.mkdir(parents=True,exist_ok=True)
     suffix = ("-official" if args.official else "") + ("-decomposed" if args.decompose else "")
+    suffix += "-internal" if args.internal else ""
     (out/(args.dataset+suffix+".json")).write_text(json.dumps(result,indent=2))
