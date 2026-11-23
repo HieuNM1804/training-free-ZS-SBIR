@@ -8,7 +8,7 @@ Before viewing TU retrieval, commit `f8632868ffc83da4ca842f8365140df18b541e2f` l
 | Sketchy Ext-2 | 160 / 86 | 214 / 160 | 166 / 143 | 75.1522 / 73.5939 | 75.1252 / 73.5939 |
 | TU-Berlin | 21 / 4 | 19 / 6 | 30 / 10 | 80.1124 / 81.3822 | 80.1141 / 81.3822 |
 
-Only 71 TU queries nominated a pair in which exactly one candidate was relevant. Foreground role achieved 34 correct choices versus 30 with isolated nouns and 37 with position alone. Class-balanced precision of the two possible choices averages to 0.577 with role and 0.484 with position on this conditional test (balanced accuracy over the two orientations). Requiring both photos and the sketch to justify the role left just six informative TU decisions. The name-position control prevents attributing the net TU top-1 gain uniquely to foreground semantics.
+Only 71 TU queries nominated a pair in which exactly one candidate was relevant. Foreground role achieved 34 correct choices versus 30 with isolated nouns and 37 with position alone. Balanced accuracy over the two possible orientations was 0.577 with role and 0.484 with position on this conditional test. Requiring both photos and the sketch to justify the role left just six informative TU decisions. The name-position control prevents attributing the net TU top-1 gain uniquely to foreground semantics.
 
 ## An upper bound on this intervention
 
