@@ -1,0 +1,186 @@
+{
+  "sketchy_1": {
+    "graph": {
+      "all_pairs_vetoed": 233531986,
+      "fraction_different_class_among_vetoed": 0.999590277671814,
+      "excluded": {
+        "local": {
+          "base_cross_class_mass": 0.02858899568256579,
+          "removed_mass": 0.0037208133273654515,
+          "fraction_removed_mass_cross_class": 0.7733483420917733,
+          "fraction_cross_class_mass_caught": 0.10065008403585862
+        },
+        "dense": {
+          "base_cross_class_mass": 0.2775105834983246,
+          "removed_mass": 0.170849566487541,
+          "fraction_removed_mass_cross_class": 0.9973515677892604,
+          "fraction_cross_class_mass_caught": 0.614020124365791
+        }
+      },
+      "disjoint_words": {
+        "local": {
+          "base_cross_class_mass": 0.02858899568256579,
+          "removed_mass": 0.06481682314510234,
+          "fraction_removed_mass_cross_class": 0.3243468320926968,
+          "fraction_cross_class_mass_caught": 0.7353574601519463
+        },
+        "dense": {
+          "base_cross_class_mass": 0.2775105834983246,
+          "removed_mass": 0.3197000577714708,
+          "fraction_removed_mass_cross_class": 0.8505945848655188,
+          "fraction_cross_class_mass_caught": 0.9799090704706344
+        }
+      }
+    },
+    "queries": 14179,
+    "gallery": 17100,
+    "official_all": true,
+    "max_checked_error": 2.980232238769531e-7,
+    "metrics": {
+      "baseline": [
+        85.29072046660607,
+        84.65068069024503
+      ],
+      "excluded": [
+        85.36381821105206,
+        84.66690185004471
+      ],
+      "disjoint_words": [
+        85.21062044543847,
+        84.66097758589632
+      ]
+    },
+    "excluded minus baseline": {
+      "class_mean": [
+        0.07571236210377214,
+        0.00945371461487015
+      ],
+      "classes_up": [
+        11,
+        11
+      ],
+      "class_ci95": [
+        [
+          -0.033551371583109946,
+          -0.09610798525644161
+        ],
+        [
+          0.21294455835451048,
+          0.11801596113238587
+        ]
+      ]
+    },
+    "excluded minus disjoint_words": {
+      "class_mean": [
+        0.15930696816857048,
+        0.005844744958288403
+      ],
+      "classes_up": [
+        16,
+        15
+      ],
+      "class_ci95": [
+        [
+          -0.04946286695687012,
+          -0.11795141893727978
+        ],
+        [
+          0.47117670642714793,
+          0.12877272946529192
+        ]
+      ]
+    }
+  },
+  "sketchy_2": {
+    "graph": {
+      "all_pairs_vetoed": 126105396,
+      "fraction_different_class_among_vetoed": 0.9994372129440308,
+      "excluded": {
+        "local": {
+          "base_cross_class_mass": 0.03139872699880995,
+          "removed_mass": 0.0031137314474909378,
+          "fraction_removed_mass_cross_class": 0.788175270752485,
+          "fraction_cross_class_mass_caught": 0.07816132567316225
+        },
+        "dense": {
+          "base_cross_class_mass": 0.22134907865615466,
+          "removed_mass": 0.10759712946574501,
+          "fraction_removed_mass_cross_class": 0.9964930465390286,
+          "fraction_cross_class_mass_caught": 0.4843923091576567
+        }
+      },
+      "disjoint_words": {
+        "local": {
+          "base_cross_class_mass": 0.03139872699880995,
+          "removed_mass": 0.04790267312199998,
+          "fraction_removed_mass_cross_class": 0.2998208912771631,
+          "fraction_cross_class_mass_caught": 0.45741415410061004
+        },
+        "dense": {
+          "base_cross_class_mass": 0.22134907865615466,
+          "removed_mass": 0.23385524688973558,
+          "fraction_removed_mass_cross_class": 0.8276499915915154,
+          "fraction_cross_class_mass_caught": 0.8744120115475335
+        }
+      }
+    },
+    "queries": 12694,
+    "gallery": 12552,
+    "official_all": true,
+    "max_checked_error": 2.384185791015625e-7,
+    "metrics": {
+      "baseline": [
+        77.54716664366043,
+        75.45174893507699
+      ],
+      "excluded": [
+        77.48265760135709,
+        75.42988821640797
+      ],
+      "disjoint_words": [
+        77.81982115596871,
+        75.4276431009657
+      ]
+    },
+    "excluded minus baseline": {
+      "class_mean": [
+        -0.059834271546057624,
+        -0.013975526564920113
+      ],
+      "classes_up": [
+        4,
+        7
+      ],
+      "class_ci95": [
+        [
+          -0.2391592514352239,
+          -0.22908298948988112
+        ],
+        [
+          0.13491024517631292,
+          0.2242593819889392
+        ]
+      ]
+    },
+    "excluded minus disjoint_words": {
+      "class_mean": [
+        -0.3691580033464382,
+        -0.008730003033276907
+      ],
+      "classes_up": [
+        12,
+        13
+      ],
+      "class_ci95": [
+        [
+          -1.06271229095695,
+          -0.22726096150366232
+        ],
+        [
+          0.05024751107352482,
+          0.18925899054082032
+        ]
+      ]
+    }
+  }
+}
