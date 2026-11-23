@@ -49,13 +49,14 @@ def held_read(reader, paired):
 
 
 @torch.inference_mode()
-def run():
+def run(*, family='regional-held-word-attention', alternate=None, start=768,
+        contrasts=(('held','self'),('held','sham'))):
     random.seed(42);np.random.seed(42);torch.manual_seed(42);torch.cuda.manual_seed_all(42)
     torch.backends.cudnn.benchmark=False
     torch.backends.cudnn.deterministic=True
     torch.use_deterministic_algorithms(True)
     w=Path('/content/sbir')
-    root=w/'results/regional-held-word-attention'
+    root=w/'results'/family
     root.mkdir(exist_ok=True,parents=True)
     inputs=semantic_inputs(w,'sketchy')
     cfg,qp,qs,pp,gs,q,p,src,tgt,scale=inputs
@@ -64,7 +65,7 @@ def run():
     assert hashlib.sha256(inspect.getsource(kd).strip().encode()).hexdigest()==KD_FUNCTION_SHA
     for split,(qi,labels) in qs.items():
         pi,gl=gs[split]
-        select=torch.randperm(len(qi),generator=torch.Generator().manual_seed(42))[768:2304].sort().values
+        select=torch.randperm(len(qi),generator=torch.Generator().manual_seed(42))[start:start+1536].sort().values
         gallery=p[pi].cuda()
         graph=Index(SimpleNamespace(p=gallery),rgb_only=True)
         paths=[str(pp[i]) for i in pi.tolist()]
@@ -90,9 +91,9 @@ def run():
                 reader.prepare(scale)
                 reader.scale=scale
                 existing=reader.read('self',1.,'gallery')
-                tested=held_read(reader,peer)
+                tested=held_read(reader,peer) if alternate is None else alternate(reader)
                 check=max(check,float((tested['self']-existing).abs().max()))
-                for key,r in {'self':existing,'held':tested['held'],'sham':tested['sham']}.items():
+                for key,r in {**tested,'self':existing}.items():
                     for name,value in [('regional_'+key,r),('global_regional_'+key,GLOBAL_WEIGHT*lex+REGIONAL_WEIGHT*r)]:
                         rows.setdefault(name,[]).append(score_rows(value,labels[batch],gl.cuda(),split,replay,pool)[:,:2])
         rows={k:torch.cat(v) for k,v in rows.items()}
@@ -101,9 +102,9 @@ def run():
         result={'commit':revision(),'seed':42,'queries':len(select),'gallery':len(pi),'algebra_max':check,
                 'reference_mae_points':mismatch.tolist(),'metrics':{k:(100*v.double().mean(0)).tolist() for k,v in rows.items()},'contrasts':{}}
         for prefix in ('regional_','global_regional_'):
-            for other in ('self','sham'):
-                delta=100*(rows[prefix+'held'].double()-rows[prefix+other].double())
-                result['contrasts'][prefix+'held_minus_'+other]={'points':delta.mean(0).tolist(),'macro':class_interval(delta[:,0],labels[select],seed=42)}
+            for variant,other in contrasts:
+                delta=100*(rows[prefix+variant].double()-rows[prefix+other].double())
+                result['contrasts'][prefix+variant+'_minus_'+other]={'points':delta.mean(0).tolist(),'macro':class_interval(delta[:,0],labels[select],seed=42)}
         save_tensor({'qi':qi[select],'pi':pi,'labels':labels[select],'rows':rows},root/(split+'.pt'))
         atomic_json(root/(split+'.json'),result)
         print(split,result['metrics'],flush=True)
