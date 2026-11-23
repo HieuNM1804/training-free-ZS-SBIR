@@ -1,4 +1,5 @@
 """Do changes in the winner of a matched visual choice identify retrieval-relevant concepts?"""
+import argparse
 import hashlib
 import inspect
 import json
@@ -29,11 +30,16 @@ from .strong_pilot_scores import location
 
 
 @torch.inference_mode()
-def run():
+def run(full_words=False):
     w = Path('/content/sbir')
     folder = w/'results/paired-depiction-choices'
+    if full_words:
+        from .paired_choice_full_vocabulary import infer_full
+        from .paired_choice_penalty import check_penalty_kernel
+        folder = folder/'full-vocabulary'
     folder.mkdir(parents=True,exist_ok=True)
     law_error = check_choice_law()
+    penalty_error = check_penalty_kernel() if full_words else None
     qs,gs,enc,_,q,p,flip,src,tgt,scale = audit_inputs(w,768)
     cfg = runtime(w,'sketchy',workers=min(4,len(os.sched_getaffinity(0))))
     qp,_ = merge_inputs(cfg.root,SKETCHY_SPLITS,'sketch')
@@ -89,7 +95,10 @@ def run():
                 for j,targets in enumerate(parts):
                     valid=fold[cand]!=bool(j)
                     reference=priors[1-j]
-                    post,meta=infer(words,donors,real,blank,valid,reference,ids)
+                    if full_words:
+                        post,meta=infer_full(words,donors,real,blank,valid,reference)
+                    else:
+                        post,meta=infer(words,donors,real,blank,valid,reference,ids)
                     weights=rank_density(real-blank,valid,8)
                     normal=(valid.float()[:,None]@donors).squeeze(1)+reference
                     excess=(weights[:,None]@donors).squeeze(1)+reference
@@ -100,14 +109,15 @@ def run():
                     posts.append({**post,'initial':words})
                     metas.append(meta)
                 for j in range(2):
-                    hold=held_logscore(metas[j],posts[1-j],ids)
-                    for k,values in hold.items():predictive.setdefault(k,[]).append(values.cpu())
+                    if not full_words:
+                        hold=held_logscore(metas[j],posts[1-j],ids)
+                        for k,values in hold.items():predictive.setdefault(k,[]).append(values.cpu())
                     diagnostics.append(torch.stack([metas[j][k] for k in ('retained','switch_mass','separated_switch_mass')],1).cpu())
                 improved=graph.score(CONFIG,torch.cat(list(holders.values()))).clamp_min(1e-30).log()
                 scores={'base':strong,'word_original':direct}
                 for name,part in zip(holders,improved.split(len(words)),strict=True):
                     scores[name]=strong+.65*(part-native)
-                for key in ('matched_one','matched_log','independent_log','previous'):
+                for key in (('direction_only' if full_words else 'matched_one'),'matched_log','independent_log','previous'):
                     scores['word/'+key]=holders[key]
                 for name,score in scores.items():
                     val=score_rows(score,y[rows[sl]],cl,split,replay,pool)
@@ -125,15 +135,17 @@ def run():
                          'macro_map_change_vs_previous':class_interval(100*delta[:,0],y[rows])}
         diag=torch.cat(diagnostics)
         pred={k:torch.cat(v) for k,v in predictive.items()}
-        experiment={'sample':len(rows),'gallery':len(g),'law_check':law_error,'max_mean_replay_difference_pp':paired_mean_difference,
+        experiment={'sample':len(rows),'gallery':len(g),'law_check':law_error,'penalty_kernel_check':penalty_error,'max_mean_replay_difference_pp':paired_mean_difference,
               'mean_retained_prior_and_switch_probabilities':diag.mean(0).tolist(),'rows':table,
               'opposite_fold_predictive_log_gain_over_chance':{k:float(v.mean()) for k,v in pred.items()}}
         results[split]=experiment
         save_tensor({'rows':raw,'labels':y[rows],'heldout':pred,'diagnostics':diag},folder/(split+'.pt'))
-        print(split,'result',table['matched_log'],table['matched_one'],flush=True)
+        print(split,'result',table['matched_log'],table['direction_only' if full_words else 'matched_one'],flush=True)
         del bank,gp,sp,flat,graph
     (folder/'pilot.json').write_text(json.dumps(results,indent=2))
 
 
 if __name__=='__main__':
-    run()
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--full-words',action='store_true')
+    run(parser.parse_args().full_words)
