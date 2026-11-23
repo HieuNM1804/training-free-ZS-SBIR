@@ -1,0 +1,650 @@
+{
+  "sketchy_1": {
+    "queries": 768,
+    "gallery": 17100,
+    "max_kernel_identity_error": 0.00018310546875,
+    "max_mean_reference_error_pp": 0.0000045925844460725784,
+    "rows": {
+      "base": {
+        "metrics": [
+          85.9636908787555,
+          85.57942720920741
+        ],
+        "macro_delta_vs_native": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": -0.11248368325662218,
+          "positive_classes": 6,
+          "bootstrap95": [
+            -0.7465578986606942,
+            0.4705689969338301
+          ]
+        }
+      },
+      "native": {
+        "metrics": [
+          85.99853921599183,
+          85.15104179095943
+        ],
+        "macro_delta_vs_native": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": 0,
+          "positive_classes": 0,
+          "bootstrap95": [
+            0,
+            0
+          ]
+        }
+      },
+      "plain/native": {
+        "metrics": [
+          85.69367540549138,
+          84.94140636369897
+        ],
+        "macro_delta_vs_native": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": -0.677600628526899,
+          "positive_classes": 12,
+          "bootstrap95": [
+            -2.0867727560674796,
+            0.448411300478563
+          ]
+        }
+      },
+      "same": {
+        "metrics": [
+          85.81674550975245,
+          85.25651052307998
+        ],
+        "macro_delta_vs_native": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": -0.13024021327471083,
+          "positive_classes": 11,
+          "bootstrap95": [
+            -0.7409935626133944,
+            0.4263105286340178
+          ]
+        }
+      },
+      "plain/same": {
+        "metrics": [
+          85.33777339155981,
+          84.58593761509596
+        ],
+        "macro_delta_vs_native": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": -1.0086132668078767,
+          "positive_classes": 10,
+          "bootstrap95": [
+            -2.380288389666194,
+            0.19337081330468794
+          ]
+        }
+      },
+      "independent": {
+        "metrics": [
+          85.57991397222699,
+          85.1289063495642
+        ],
+        "macro_delta_vs_native": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": -0.3422004558623376,
+          "positive_classes": 11,
+          "bootstrap95": [
+            -1.043448159493261,
+            0.28231175427844596
+          ]
+        }
+      },
+      "plain/independent": {
+        "metrics": [
+          85.32492773714088,
+          84.5664063890581
+        ],
+        "macro_delta_vs_native": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": -1.0112447224566352,
+          "positive_classes": 12,
+          "bootstrap95": [
+            -2.4815907824556067,
+            0.26911847488003937
+          ]
+        }
+      },
+      "mismatch": {
+        "metrics": [
+          85.55811660868736,
+          85.13020845493884
+        ],
+        "macro_delta_vs_native": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": -0.35125198665529167,
+          "positive_classes": 11,
+          "bootstrap95": [
+            -1.0853604381236963,
+            0.29605859135184254
+          ]
+        }
+      },
+      "shared_component": {
+        "metrics": [
+          86.01587039835672,
+          84.97135429109525
+        ],
+        "macro_delta_vs_native": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": -0.22532842313418144,
+          "positive_classes": 14,
+          "bootstrap95": [
+            -1.4926379183668403,
+            0.7927764263336738
+          ]
+        }
+      },
+      "independent_scale": {
+        "metrics": [
+          85.57655746602299,
+          85.12239594104662
+        ],
+        "macro_delta_vs_native": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": -0.34523443395781667,
+          "positive_classes": 11,
+          "bootstrap95": [
+            -1.0475326029045422,
+            0.2798445482838059
+          ]
+        }
+      },
+      "word/native": {
+        "metrics": [
+          76.59695997669283,
+          81.50390639881758
+        ],
+        "macro_delta_vs_native": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": 0,
+          "positive_classes": 0,
+          "bootstrap95": [
+            0,
+            0
+          ]
+        }
+      },
+      "word/same": {
+        "metrics": [
+          75.12383172967625,
+          80.55338554307431
+        ],
+        "macro_delta_vs_native": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": -1.3392682098970017,
+          "positive_classes": 9,
+          "bootstrap95": [
+            -2.3356868831193136,
+            -0.3834040175483339
+          ]
+        }
+      },
+      "word/independent": {
+        "metrics": [
+          74.35054508508378,
+          80.07421889245356
+        ],
+        "macro_delta_vs_native": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": -2.0041722435986116,
+          "positive_classes": 8,
+          "bootstrap95": [
+            -3.2210762617394733,
+            -0.8509756884108629
+          ]
+        }
+      },
+      "word/mismatch": {
+        "metrics": [
+          74.28702069591964,
+          80.03906258842713
+        ],
+        "macro_delta_vs_native": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": -2.05604728773808,
+          "positive_classes": 7,
+          "bootstrap95": [
+            -3.337550706927278,
+            -0.84279612154118
+          ]
+        }
+      },
+      "word/shared_component": {
+        "metrics": [
+          76.14434164449145,
+          81.0195313587125
+        ],
+        "macro_delta_vs_native": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": -0.70814766718942,
+          "positive_classes": 14,
+          "bootstrap95": [
+            -2.3972940919485355,
+            0.8353608921604503
+          ]
+        }
+      }
+    },
+    "nominee_metrics_top1_top16": {
+      "native": [
+        0.6419270634651184,
+        0.5974934697151184
+      ],
+      "plain/native": [
+        0.51171875,
+        0.4644368588924408
+      ],
+      "same": [
+        0.6002604365348816,
+        0.5713704228401184
+      ],
+      "plain/same": [
+        0.34765625,
+        0.3529459536075592
+      ],
+      "independent": [
+        0.5859375,
+        0.5528157353401184
+      ],
+      "plain/independent": [
+        0.3138020932674408,
+        0.2989095151424408
+      ],
+      "mismatch": [
+        0.58984375,
+        0.55029296875
+      ],
+      "shared_component": [
+        0.6106770634651184,
+        0.5810546875
+      ],
+      "independent_scale": [
+        0.5859375,
+        0.5530598759651184
+      ]
+    },
+    "mean_real_blank_diagonal_then_real_blank_geom": {
+      "native": [
+        0.04302262142300606,
+        0.0334089957177639,
+        0.11681538820266724,
+        0.08343998342752457
+      ],
+      "same": [
+        0.04419386386871338,
+        0.03689855709671974,
+        0.0970056876540184,
+        0.06831368803977966
+      ],
+      "independent": [
+        0.037036359310150146,
+        0.03196733817458153,
+        0.07975824922323227,
+        0.05970289185643196
+      ],
+      "mismatch": [
+        0.034898679703474045,
+        0.030531233176589012,
+        0.07703905552625656,
+        0.060746386647224426
+      ],
+      "shared_component": [
+        0.028879553079605103,
+        0.024841314181685448,
+        0.03917938470840454,
+        0.009641170501708984
+      ],
+      "independent_scale": [
+        0.037023238837718964,
+        0.03196989372372627,
+        0.07967522740364075,
+        0.05970894172787666
+      ]
+    }
+  },
+  "sketchy_2": {
+    "queries": 768,
+    "gallery": 12552,
+    "max_kernel_identity_error": 0.00019073486328125,
+    "max_mean_reference_error_pp": 0.00003716559149324894,
+    "rows": {
+      "base": {
+        "metrics": [
+          75.74428124238088,
+          74.59830735642754
+        ],
+        "macro_delta_vs_native": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -1.8446886034526397,
+          "positive_classes": 6,
+          "bootstrap95": [
+            -2.7720665953378454,
+            -0.8992653746569275
+          ]
+        }
+      },
+      "native": {
+        "metrics": [
+          77.43538984092689,
+          76.05924488113183
+        ],
+        "macro_delta_vs_native": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": 0,
+          "positive_classes": 0,
+          "bootstrap95": [
+            0,
+            0
+          ]
+        }
+      },
+      "plain/native": {
+        "metrics": [
+          76.87320874132033,
+          75.31315115969241
+        ],
+        "macro_delta_vs_native": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -0.8191726617449367,
+          "positive_classes": 9,
+          "bootstrap95": [
+            -2.9601597837129145,
+            1.030258151188135
+          ]
+        }
+      },
+      "same": {
+        "metrics": [
+          76.71747415649102,
+          75.18619798041377
+        ],
+        "macro_delta_vs_native": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -0.6255549378370837,
+          "positive_classes": 5,
+          "bootstrap95": [
+            -1.59297852710349,
+            0.4159285671242652
+          ]
+        }
+      },
+      "plain/same": {
+        "metrics": [
+          76.52147668710919,
+          75.11263030476889
+        ],
+        "macro_delta_vs_native": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -0.9646419294399445,
+          "positive_classes": 9,
+          "bootstrap95": [
+            -3.204760770755371,
+            1.6941217494691463
+          ]
+        }
+      },
+      "independent": {
+        "metrics": [
+          76.28471830588146,
+          74.57747403617154
+        ],
+        "macro_delta_vs_native": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -1.0701290626519673,
+          "positive_classes": 6,
+          "bootstrap95": [
+            -2.1700472509948665,
+            0.07365344550842744
+          ]
+        }
+      },
+      "plain/independent": {
+        "metrics": [
+          76.47832161243664,
+          75.11458342257052
+        ],
+        "macro_delta_vs_native": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -0.9716879975132138,
+          "positive_classes": 8,
+          "bootstrap95": [
+            -3.336721457971103,
+            1.758156752711072
+          ]
+        }
+      },
+      "mismatch": {
+        "metrics": [
+          76.55665647483451,
+          74.66145841002194
+        ],
+        "macro_delta_vs_native": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -0.8538429957614604,
+          "positive_classes": 9,
+          "bootstrap95": [
+            -2.141232010076023,
+            0.468601632155963
+          ]
+        }
+      },
+      "shared_component": {
+        "metrics": [
+          77.43607556634137,
+          75.65755218771906
+        ],
+        "macro_delta_vs_native": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -0.18299824425923042,
+          "positive_classes": 12,
+          "bootstrap95": [
+            -1.471840734150212,
+            1.0420251563252991
+          ]
+        }
+      },
+      "independent_scale": {
+        "metrics": [
+          76.27881770895328,
+          74.5755209101238
+        ],
+        "macro_delta_vs_native": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -1.0745096672445342,
+          "positive_classes": 6,
+          "bootstrap95": [
+            -2.1715040140284585,
+            0.06888765656414783
+          ]
+        }
+      },
+      "word/native": {
+        "metrics": [
+          72.18597119493401,
+          71.34895857076722
+        ],
+        "macro_delta_vs_native": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": 0,
+          "positive_classes": 0,
+          "bootstrap95": [
+            0,
+            0
+          ]
+        }
+      },
+      "word/same": {
+        "metrics": [
+          71.34420581235949,
+          70.3600261823643
+        ],
+        "macro_delta_vs_native": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -0.6357773000824515,
+          "positive_classes": 9,
+          "bootstrap95": [
+            -1.7108854375268334,
+            0.4341255500036216
+          ]
+        }
+      },
+      "word/independent": {
+        "metrics": [
+          71.23537757458203,
+          70.12500008786446
+        ],
+        "macro_delta_vs_native": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -0.602008170025878,
+          "positive_classes": 8,
+          "bootstrap95": [
+            -1.8438129882951946,
+            0.5645663783003257
+          ]
+        }
+      },
+      "word/mismatch": {
+        "metrics": [
+          71.17058422585009,
+          70.06901050202336
+        ],
+        "macro_delta_vs_native": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -0.609229825996327,
+          "positive_classes": 8,
+          "bootstrap95": [
+            -2.049144174857987,
+            0.7468064585543331
+          ]
+        }
+      },
+      "word/shared_component": {
+        "metrics": [
+          72.03444036016057,
+          70.50455749461739
+        ],
+        "macro_delta_vs_native": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -0.5439825893262541,
+          "positive_classes": 12,
+          "bootstrap95": [
+            -3.1433013869662982,
+            1.7854748222454737
+          ]
+        }
+      }
+    },
+    "nominee_metrics_top1_top16": {
+      "native": [
+        0.5546875,
+        0.509521484375
+      ],
+      "plain/native": [
+        0.4401041567325592,
+        0.3793131411075592
+      ],
+      "same": [
+        0.4505208432674408,
+        0.4806315004825592
+      ],
+      "plain/same": [
+        0.3515625,
+        0.3055826723575592
+      ],
+      "independent": [
+        0.3841145932674408,
+        0.466552734375
+      ],
+      "plain/independent": [
+        0.2955729067325592,
+        0.2598470151424408
+      ],
+      "mismatch": [
+        0.3802083432674408,
+        0.4637857973575592
+      ],
+      "shared_component": [
+        0.4986979067325592,
+        0.474609375
+      ],
+      "independent_scale": [
+        0.3828125,
+        0.4664713442325592
+      ]
+    },
+    "mean_real_blank_diagonal_then_real_blank_geom": {
+      "native": [
+        0.043289829045534134,
+        0.035165417939424515,
+        0.11536822468042374,
+        0.08781810849905014
+      ],
+      "same": [
+        0.04473454877734184,
+        0.038864076137542725,
+        0.09679418057203293,
+        0.07536477595567703
+      ],
+      "independent": [
+        0.037251804023981094,
+        0.03310106322169304,
+        0.08145763725042343,
+        0.06599152833223343
+      ],
+      "mismatch": [
+        0.035052429884672165,
+        0.0314171202480793,
+        0.07946764677762985,
+        0.0671248808503151
+      ],
+      "shared_component": [
+        0.028471028432250023,
+        0.025283081457018852,
+        0.03396763652563095,
+        0.010128635913133621
+      ],
+      "independent_scale": [
+        0.03724079206585884,
+        0.03310396149754524,
+        0.0813957154750824,
+        0.06599953025579453
+      ]
+    }
+  }
+}
