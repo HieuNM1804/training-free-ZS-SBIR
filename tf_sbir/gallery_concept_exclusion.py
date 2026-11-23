@@ -62,6 +62,8 @@ def run():
         folder,tree,regional=base_parts(w,s)
         graph=Index(SimpleNamespace(p=g),rgb_only=True)
         results=[]
+        counterfactual=[]
+        strata=[]
         for start in range(0,len(qi),48):
             sl=slice(start,start+48)
             offset=start%192
@@ -101,6 +103,16 @@ def run():
             high=post.topk(32).indices
             omission=(high[:,:,None]!=terms[winner,None,:]).all((1,2))
             records=[]
+            by_candidate=[]
+            for k in range(pool.size(1)):
+                claim=(high[:,:,None]==terms[pool[:,k],None,:]).any(2).any(1)
+                switch=omission&claim
+                current=cls[winner]==qlabel
+                by_candidate.append(torch.stack([actual[:,k],(~current)&gold[:,k],switch&~current&gold[:,k],
+                                               switch&current&~gold[:,k],c2[:,k],n2[:,k]],1))
+            counterfactual.append(torch.stack(by_candidate,1)[eligible].cpu())
+            # Diagnostic stratification after ranking: class and depth of the eighth eligible rival.
+            strata.append(torch.stack([qlabel,order[:,-1]//20],1)[eligible].cpu())
             for ix in choices:
                 row=torch.arange(len(pool),device=g.device)
                 alt=pool[row,ix]
@@ -110,6 +122,9 @@ def run():
                                             c2[row,ix],n2[row,ix],ix],1))
             results.append(torch.stack(records,1)[eligible].cpu())
         v=torch.cat(results).double()
+        options=torch.cat(counterfactual).double()
+        stratum=torch.cat(strata)
+        _,stratum_ids=stratum.unique(dim=0,return_inverse=True)
         report={}
         for name,z in zip(('first','co_panel_1','co_both','neighbor_both','joint_both'),v.unbind(1)):
             diff,correct,switch,old=z[:,:4].bool().T
@@ -118,7 +133,21 @@ def run():
                 'switches':int(switch.sum()),'fixed':int((switch&~old&correct).sum()),
                 'damaged':int((switch&old&~correct).sum()),'mean_selected_index':float(z[:,6].mean()),
                 'reference2_mean_deficit':z[:,4:6].mean(0).tolist()}
-        out[s]={'queries':len(y),'photos':len(pi),'reserved_panels':4096,'outcomes':report}
+            chosen=z[:,6].long()
+            expected=torch.zeros(len(v),6,dtype=torch.double)
+            for sid in stratum_ids.unique():
+                keep=stratum_ids==sid
+                weights=chosen[keep].bincount(minlength=8).double()/keep.sum()
+                expected[keep]=(options[keep]*weights[None,:,None]).sum(1)
+            report[name]['position_matched_null_totals']=expected[:,:4].sum(0).tolist()
+            report[name]['position_matched_null_panel2']=expected[:,4:].mean(0).tolist()
+            difference=options[torch.arange(len(v)),chosen,0]-expected[:,0]
+            macro=torch.stack([difference[stratum[:,0]==c].mean() for c in stratum[:,0].unique()])
+            report[name]['class_mean_delta_pp']=100*float(macro.mean())
+            ids=torch.randint(len(macro),(10000,len(macro)),generator=torch.Generator().manual_seed(731))
+            report[name]['ci95_macro_delta_pp']=(100*macro[ids].mean(1).quantile(torch.tensor([.025,.975],dtype=torch.double))).tolist()
+        out[s]={'queries':len(y),'photos':len(pi),'reserved_panels':4096,'outcomes':report,
+                'errors_with_correct_rival_available':int(options[:,:,1].amax(1).sum())}
         print(s,json.dumps(out[s]),flush=True)
     dest=w/'results/gallery-concept-exclusion'
     dest.mkdir(exist_ok=True,parents=True)
