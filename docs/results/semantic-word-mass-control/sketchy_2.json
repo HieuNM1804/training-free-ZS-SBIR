@@ -1,0 +1,112 @@
+{
+  "commit": "f567e935767231d0494dd9b826734e812609f491",
+  "seed": 42,
+  "queries": 1536,
+  "gallery": 12552,
+  "pair_count": 3699,
+  "mean_paired_query_mass": 0.3680659830570221,
+  "gallery_rho_quantiles": [
+    0.5064047574996948,
+    0.8256078958511353,
+    0.9110139608383179,
+    0.9561753869056702,
+    0.9918050765991211
+  ],
+  "metrics": {
+    "direct_original": [
+      70.45991398487482,
+      69.49088558612857
+    ],
+    "diffused_original": [
+      73.24849807825254,
+      71.59700528985317
+    ],
+    "direct_near": [
+      70.11498746172342,
+      69.23046892212975
+    ],
+    "diffused_near": [
+      73.15460774540648,
+      71.52278657528464
+    ],
+    "direct_frequency": [
+      66.94066800907117,
+      65.68359393810775
+    ],
+    "diffused_frequency": [
+      72.12934356412006,
+      70.08854177778025
+    ]
+  },
+  "contrasts": {
+    "direct_near minus direct_original": {
+      "points": [
+        -0.3449265231514194,
+        -0.2604166639988155
+      ],
+      "macro": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": -0.29453342048333214,
+        "positive_classes": 12,
+        "bootstrap95": [
+          -0.9041041526240801,
+          0.3008583395801917
+        ]
+      }
+    },
+    "direct_near minus direct_frequency": {
+      "points": [
+        3.1743194526522225,
+        3.546874984021997
+      ],
+      "macro": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": 3.1192617109509806,
+        "positive_classes": 14,
+        "bootstrap95": [
+          0.832148892859496,
+          5.809884709192381
+        ]
+      }
+    },
+    "diffused_near minus diffused_original": {
+      "points": [
+        -0.0938903328460583,
+        -0.07421871456851174
+      ],
+      "macro": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": -0.010429223033331301,
+        "positive_classes": 10,
+        "bootstrap95": [
+          -0.6736710778373636,
+          0.7603928846964465
+        ]
+      }
+    },
+    "diffused_near minus diffused_frequency": {
+      "points": [
+        1.0252641812864265,
+        1.43424479750441
+      ],
+      "macro": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": 1.0441902377845804,
+        "positive_classes": 11,
+        "bootstrap95": [
+          -0.5183309993070101,
+          2.793070948549298
+        ]
+      }
+    }
+  },
+  "mean_equal_tv": 0.14311081171035767,
+  "mean_text_pair_cosine": {
+    "near": 0.9398514032363892,
+    "frequency": 0.6760780811309814
+  }
+}
