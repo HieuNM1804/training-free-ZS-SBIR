@@ -1,0 +1,178 @@
+{
+  "overlap": {
+    "queries": 2231,
+    "photos": 2205,
+    "classes": [
+      "scissors",
+      "tree",
+      "wheelchair",
+      "windmill"
+    ]
+  },
+  "official_rows": {
+    "sketchy_1": {
+      "all_shared_queries": 2231,
+      "base_misses_top1": 271,
+      "base_no_correct_photo_top200": 219,
+      "top1_fixed_lost": [
+        22,
+        20
+      ],
+      "top200_fixed_lost": [
+        19,
+        26
+      ],
+      "native_protocol_mAP_change_on_shared": -0.05870532446487877
+    },
+    "sketchy_2": {
+      "all_shared_queries": 2231,
+      "base_misses_top1": 263,
+      "base_no_correct_photo_top200": 192,
+      "top1_fixed_lost": [
+        29,
+        23
+      ],
+      "top200_fixed_lost": [
+        22,
+        18
+      ],
+      "native_protocol_mAP_change_on_shared": 0.3184801687668894
+    }
+  },
+  "matched_query_outcomes": {
+    "top1": {
+      "baseline_hit_disagrees_between_galleries": 128,
+      "updated_hit_disagrees_between_galleries": 122,
+      "intervention_fixed_in_both": 3,
+      "intervention_lost_in_both": 4,
+      "opposite_signs_in_two_galleries": 0,
+      "one_gallery_changed_other_did_not": 80
+    },
+    "top200": {
+      "baseline_hit_disagrees_between_galleries": 109,
+      "updated_hit_disagrees_between_galleries": 106,
+      "intervention_fixed_in_both": 3,
+      "intervention_lost_in_both": 3,
+      "opposite_signs_in_two_galleries": 1,
+      "one_gallery_changed_other_did_not": 71
+    }
+  },
+  "by_class": {
+    "sketchy_1": {
+      "scissors": {
+        "queries": 558,
+        "gallery_relevant": 739,
+        "relevant_gallery_shared": 739,
+        "base_no_correct_photo_top200": 21,
+        "top1_fixed_lost": [
+          3,
+          0
+        ],
+        "top200_fixed_lost": [
+          5,
+          1
+        ]
+      },
+      "tree": {
+        "queries": 533,
+        "gallery_relevant": 595,
+        "relevant_gallery_shared": 595,
+        "base_no_correct_photo_top200": 67,
+        "top1_fixed_lost": [
+          8,
+          3
+        ],
+        "top200_fixed_lost": [
+          7,
+          8
+        ]
+      },
+      "wheelchair": {
+        "queries": 542,
+        "gallery_relevant": 378,
+        "relevant_gallery_shared": 378,
+        "base_no_correct_photo_top200": 14,
+        "top1_fixed_lost": [
+          0,
+          5
+        ],
+        "top200_fixed_lost": [
+          0,
+          7
+        ]
+      },
+      "windmill": {
+        "queries": 598,
+        "gallery_relevant": 493,
+        "relevant_gallery_shared": 493,
+        "base_no_correct_photo_top200": 117,
+        "top1_fixed_lost": [
+          11,
+          12
+        ],
+        "top200_fixed_lost": [
+          7,
+          10
+        ]
+      }
+    },
+    "sketchy_2": {
+      "scissors": {
+        "queries": 558,
+        "gallery_relevant": 739,
+        "relevant_gallery_shared": 739,
+        "base_no_correct_photo_top200": 36,
+        "top1_fixed_lost": [
+          16,
+          4
+        ],
+        "top200_fixed_lost": [
+          9,
+          1
+        ]
+      },
+      "tree": {
+        "queries": 533,
+        "gallery_relevant": 595,
+        "relevant_gallery_shared": 595,
+        "base_no_correct_photo_top200": 47,
+        "top1_fixed_lost": [
+          5,
+          6
+        ],
+        "top200_fixed_lost": [
+          4,
+          4
+        ]
+      },
+      "wheelchair": {
+        "queries": 542,
+        "gallery_relevant": 378,
+        "relevant_gallery_shared": 378,
+        "base_no_correct_photo_top200": 4,
+        "top1_fixed_lost": [
+          1,
+          3
+        ],
+        "top200_fixed_lost": [
+          1,
+          2
+        ]
+      },
+      "windmill": {
+        "queries": 598,
+        "gallery_relevant": 493,
+        "relevant_gallery_shared": 493,
+        "base_no_correct_photo_top200": 105,
+        "top1_fixed_lost": [
+          7,
+          10
+        ],
+        "top200_fixed_lost": [
+          8,
+          11
+        ]
+      }
+    }
+  }
+}

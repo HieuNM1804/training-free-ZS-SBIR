@@ -1,0 +1,156 @@
+{
+  "sketchy_1": {
+    "queries": 768,
+    "fold_decisions": 1536,
+    "unseen_classes": 25,
+    "classes_with_literal_word": 24,
+    "literal_word_count": 24,
+    "outcomes": {
+      "original": {
+        "correct_fold_decisions": 1280,
+        "fixed_lost": [
+          0,
+          0
+        ],
+        "macro_change_points": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": 0,
+          "positive_classes": 0,
+          "bootstrap95": [
+            0,
+            0
+          ]
+        }
+      },
+      "full": {
+        "correct_fold_decisions": 1290,
+        "fixed_lost": [
+          45,
+          35
+        ],
+        "macro_change_points": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": 0.6868866920471192,
+          "positive_classes": 11,
+          "bootstrap95": [
+            -0.9654370818138123,
+            2.384933069944381
+          ]
+        }
+      },
+      "without_literal_update": {
+        "correct_fold_decisions": 1287,
+        "fixed_lost": [
+          35,
+          28
+        ],
+        "macro_change_points": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": 0.6484915781021118,
+          "positive_classes": 10,
+          "bootstrap95": [
+            -0.77930382335186,
+            2.1508469732999793
+          ]
+        }
+      },
+      "only_literal_update": {
+        "correct_fold_decisions": 1282,
+        "fixed_lost": [
+          20,
+          18
+        ],
+        "macro_change_points": {
+          "classes": 25,
+          "queries": 768,
+          "mean_across_classes": -0.1882827854156494,
+          "positive_classes": 5,
+          "bootstrap95": [
+            -1.4042427591085433,
+            1.0307213535308832
+          ]
+        }
+      }
+    }
+  },
+  "sketchy_2": {
+    "queries": 768,
+    "fold_decisions": 1536,
+    "unseen_classes": 21,
+    "classes_with_literal_word": 18,
+    "literal_word_count": 18,
+    "outcomes": {
+      "original": {
+        "correct_fold_decisions": 1126,
+        "fixed_lost": [
+          0,
+          0
+        ],
+        "macro_change_points": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": 0,
+          "positive_classes": 0,
+          "bootstrap95": [
+            0,
+            0
+          ]
+        }
+      },
+      "full": {
+        "correct_fold_decisions": 1170,
+        "fixed_lost": [
+          82,
+          38
+        ],
+        "macro_change_points": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": 3.357244162332444,
+          "positive_classes": 14,
+          "bootstrap95": [
+            1.3714017919131687,
+            5.718756517909822
+          ]
+        }
+      },
+      "without_literal_update": {
+        "correct_fold_decisions": 1162,
+        "fixed_lost": [
+          65,
+          29
+        ],
+        "macro_change_points": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": 2.9352685780752275,
+          "positive_classes": 13,
+          "bootstrap95": [
+            0.9555764758870716,
+            5.22042398580483
+          ]
+        }
+      },
+      "only_literal_update": {
+        "correct_fold_decisions": 1134,
+        "fixed_lost": [
+          18,
+          10
+        ],
+        "macro_change_points": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": 0.5138317658787682,
+          "positive_classes": 7,
+          "bootstrap95": [
+            -0.21164758581490742,
+            1.4227887232388765
+          ]
+        }
+      }
+    }
+  }
+}
