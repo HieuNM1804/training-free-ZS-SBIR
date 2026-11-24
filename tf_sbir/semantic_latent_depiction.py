@@ -43,6 +43,10 @@ def probabilities(bank,words,size):
 
 def evaluate(bank,words,size,targets):
     observed,weights,info=probabilities(bank,words,size)
+    return score_distinct(bank,words,targets,observed,weights),info
+
+
+def score_distinct(bank,words,targets,observed,weights):
     scores=[]
     for mix in weights:
         # The observed word is outside the target alphabet. Zero its log contribution below.
@@ -55,7 +59,7 @@ def evaluate(bank,words,size,targets):
         excluded=targets.gather(2,words[:,None].expand(-1,len(targets[0]),-1)).transpose(1,2)
         assert (excluded<1).all()
         scores.append((cross/(1-excluded)).mean(1))
-    return torch.stack(scores,2),info
+    return torch.stack(scores,2)
 
 
 def validate(size):
