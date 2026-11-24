@@ -1,0 +1,117 @@
+{
+  "commit": "b61ca5859ff3f0472d7c5755e99fd387b892100c",
+  "queries": 2231,
+  "photos": 2205,
+  "distinct_queries_with_boundaries": 524,
+  "fixed_relevance_pairs": 15162,
+  "classes": [
+    "scissors",
+    "tree",
+    "wheelchair",
+    "windmill"
+  ],
+  "methods": {
+    "region": {
+      "pair_reversals": 759,
+      "ties_on_either": 0,
+      "fixed_pair_both_correct": 12151,
+      "fixed_pair_both_wrong": 2252,
+      "correct_fixed_pairs_per_gallery": [
+        12463,
+        12598
+      ],
+      "correct_top1_among_shared": [
+        2045,
+        2069
+      ]
+    },
+    "region_additive": {
+      "pair_reversals": 730,
+      "ties_on_either": 0,
+      "fixed_pair_both_correct": 12189,
+      "fixed_pair_both_wrong": 2243,
+      "correct_fixed_pairs_per_gallery": [
+        12504,
+        12604
+      ],
+      "correct_top1_among_shared": [
+        2043,
+        2069
+      ]
+    },
+    "combined": {
+      "pair_reversals": 963,
+      "ties_on_either": 0,
+      "fixed_pair_both_correct": 12079,
+      "fixed_pair_both_wrong": 2120,
+      "correct_fixed_pairs_per_gallery": [
+        12604,
+        12517
+      ],
+      "correct_top1_among_shared": [
+        2066,
+        2057
+      ]
+    },
+    "combined_additive": {
+      "pair_reversals": 953,
+      "ties_on_either": 0,
+      "fixed_pair_both_correct": 12086,
+      "fixed_pair_both_wrong": 2123,
+      "correct_fixed_pairs_per_gallery": [
+        12620,
+        12505
+      ],
+      "correct_top1_among_shared": [
+        2068,
+        2060
+      ]
+    }
+  },
+  "transitions": {
+    "region_additive": {
+      "reversals_prevented": 99,
+      "reversals_created": 70,
+      "previously_reversing_now_both_correct": 73,
+      "previously_reversing_now_neither_correct": 26
+    },
+    "combined_additive": {
+      "reversals_prevented": 130,
+      "reversals_created": 120,
+      "previously_reversing_now_both_correct": 75,
+      "previously_reversing_now_neither_correct": 55
+    }
+  },
+  "median_margin_examples": [
+    {
+      "split": "sketchy_1",
+      "change": "rescued",
+      "in_stratum": 6,
+      "paths": [
+        "windmill/n04587559_10116-3.png",
+        "scissors/ext_340.jpg",
+        "windmill/ext_162.jpg"
+      ]
+    },
+    {
+      "split": "sketchy_1",
+      "change": "lost",
+      "in_stratum": 4,
+      "paths": [
+        "windmill/n04587404_13675-4.png",
+        "windmill/ext_125.jpg",
+        "tree/n12593994_46591.jpg"
+      ]
+    },
+    {
+      "split": "sketchy_2",
+      "change": "rescued",
+      "in_stratum": 3,
+      "paths": [
+        "scissors/n04148054_1255-4.png",
+        "wheelchair/n04576002_12659.jpg",
+        "scissors/n04148054_142871.jpg"
+      ]
+    }
+  ]
+}

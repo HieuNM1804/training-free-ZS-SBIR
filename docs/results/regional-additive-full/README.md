@@ -20,3 +20,9 @@ Do một số sketch có mặt ở cả hai split, đã loại **hợp** các ID
 Lượt thử đầu tiên giữ hiệu ứng kích thước và tương tác nhưng bỏ hiệu ứng chính của vị trí. Nó làm giảm mAP ở cả hai split. Phát hiện phụ dẫn tới biến thể hiện tại: giữ cả hai hiệu ứng chính và bỏ hạng tương tác. Biến thể vượt các đối chứng ở mẫu xác nhận 3.072 truy vấn mỗi split, nhưng hiệu quả sau cùng với GCWE nhỏ và không làm tăng mAP trên TU. Điều đã chứng minh là có thể can thiệp riêng vào cách ứng viên chọn kích thước và chọn vị trí khi chấm một bộ đặc trưng CLIP cố định. Ích lợi truy hồi của việc loại hẳn tương tác cần thêm bằng chứng.
 
 [Phân rã toán học và prior art](mechanism-vi.md) · [Tiêu chí khóa trước TU](freeze.md) · [Điểm từng split và ngoài mẫu](paired-effects.json) · [Biểu đồ khoảng bootstrap theo lớp](paired-class-effects.pdf) · [Hướng dẫn tái lập](reproduce.md) · [Kết quả theo truy vấn](paired-T4.zip)
+
+### Cùng một sketch và cặp ảnh trong hai gallery
+
+Hai split có 2.231 sketch và 2.205 ảnh chung thuộc bốn lớp. Dựng lại mỗi gallery độc lập, rồi so thứ tự của đúng hai ảnh trong 15.162 quyết định khó đã cố định theo điểm khớp từ trực tiếp. Phép thử cô lập điểm vùng và ngữ nghĩa toàn ảnh, tắt GCWE. Với điểm vùng đứng riêng, số quyết định đảo chiều khi đổi gallery giảm từ 759 xuống 730. Khi có cả ngữ nghĩa toàn ảnh, số lần đảo giảm từ 963 xuống 953. Biến thể tránh 130 lần đảo cũ, nhưng tạo 120 lần đảo mới. Trong 130 cặp đã ổn định, 75 cặp trở thành đúng ở cả hai gallery và 55 cặp trở thành sai ở cả hai. Do đó ổn định đôi khi chỉ là giữ nguyên lựa chọn sai.
+
+Trong chẩn đoán top-1 giữa các ảnh chung, Ext-1 sửa 6 truy vấn và làm hỏng 4; Ext-2 sửa 3 và làm hỏng 0. Các ví dụ lưu ID được chọn ở trung vị độ lớn thay đổi biên xếp hạng trong từng nhóm sửa/hỏng. Kết quả chẩn đoán có thể sử dụng trùng ảnh và sketch giữa các cặp; không xem 15.162 quyết định là các mẫu độc lập. [Thống kê và ID truy vấn minh họa](shared-gallery-decisions.json)
