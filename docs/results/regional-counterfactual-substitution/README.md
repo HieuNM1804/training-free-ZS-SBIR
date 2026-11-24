@@ -16,4 +16,4 @@ Kết quả chẩn đoán dùng 850 / 998 cặp so sánh đúng lớp–sai lớ
 
 Mức xáo trộn trung bình của ảnh đúng và sai lần lượt là 0,04130 và 0,04363 nat ở Ext-1, 0,04245 và 0,03940 nat ở Ext-2. Chiều của hiệu ứng đảo giữa hai split. Tương tác giữa hai phần đủ để CLIP đổi nghĩa, nhưng kích thước của nó chưa chỉ ra ảnh nào đúng lớp. Bằng chứng hiện tại bác bỏ việc lấy khả năng thay thế đối xứng ở cùng tọa độ làm tiêu chí truy hồi chính trên tập cặp này. Kết quả phụ thuộc cách chọn cặp thăm dò, gồm những cặp đã được dùng để chẩn đoán trước đó.
 
-Chạy trên Colab Tesla T4, frozen OpenAI CLIP ViT-B/32, seed 42, commit `8d71ea9`. [Protocol đã khóa](protocol.md) · [Kết quả Ext-1](sketchy_1.json) · [Kết quả Ext-2](sketchy_2.json) · [Bản ghi theo cặp và log T4](paired-T4.zip)
+Chạy trên Colab Tesla T4, frozen OpenAI CLIP ViT-B/32, seed 42, commit `8d71ea9`. [Protocol đã khóa](protocol.md) · [Kết quả Ext-1](sketchy_1.json) · [Kết quả Ext-2](sketchy_2.json) · [Điểm theo cặp và theo trục trên T4](paired-T4.zip)

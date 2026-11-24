@@ -1,0 +1,351 @@
+{
+  "commit": "88f045ee8cb375fd73d04ed05746c6b8eba3c6ae",
+  "seed": 42,
+  "gpu": "Tesla T4",
+  "arms": [
+    "native",
+    "bridge",
+    "swapped_native",
+    "swapped_bridge",
+    "photo_alone",
+    "sketch_alone"
+  ],
+  "assessment": {
+    "pairs": 850,
+    "queries": 655,
+    "both": 195,
+    "arms": {
+      "native": {
+        "balanced": 0.5128205128205128,
+        "query_gain": 0.0,
+        "class_gain": {
+          "classes": 23,
+          "queries": 195,
+          "mean_across_classes": 0.0,
+          "positive_classes": 0,
+          "bootstrap95": [
+            0.0,
+            0.0
+          ]
+        },
+        "mean_margin": 0.06189860154600704,
+        "mean_relevant": 10.736318775134928,
+        "mean_foil": 10.798217376680935,
+        "rescued": 203.0,
+        "damaged": 217.0
+      },
+      "bridge": {
+        "balanced": 0.4846153846153846,
+        "query_gain": 2.8205128205128207,
+        "class_gain": {
+          "classes": 23,
+          "queries": 195,
+          "mean_across_classes": -0.855475040257649,
+          "positive_classes": 7,
+          "bootstrap95": [
+            -6.137084483551875,
+            4.550925925925925
+          ]
+        },
+        "mean_margin": 0.04162778896443984,
+        "mean_relevant": 10.685440589119406,
+        "mean_foil": 10.727068378083846,
+        "rescued": 207.0,
+        "damaged": 232.0
+      },
+      "swapped_native": {
+        "balanced": 0.48717948717948717,
+        "query_gain": 2.5641025641025643,
+        "class_gain": {
+          "classes": 23,
+          "queries": 195,
+          "mean_across_classes": 0.5337014032666207,
+          "positive_classes": 7,
+          "bootstrap95": [
+            -4.101628997009431,
+            5.55183891189326
+          ]
+        },
+        "mean_margin": 0.05302763314808116,
+        "mean_relevant": 10.771686371284373,
+        "mean_foil": 10.824714004432455,
+        "rescued": 211.0,
+        "damaged": 208.0
+      },
+      "swapped_bridge": {
+        "balanced": 0.4358974358974359,
+        "query_gain": 7.6923076923076925,
+        "class_gain": {
+          "classes": 23,
+          "queries": 195,
+          "mean_across_classes": 2.7864044168391997,
+          "positive_classes": 10,
+          "bootstrap95": [
+            -5.117343857832989,
+            10.385610766045549
+          ]
+        },
+        "mean_margin": 0.018178335498361026,
+        "mean_relevant": 10.720588738497566,
+        "mean_foil": 10.738767073995927,
+        "rescued": 197.0,
+        "damaged": 238.0
+      },
+      "photo_alone": {
+        "balanced": 0.4948717948717949,
+        "query_gain": 1.794871794871795,
+        "class_gain": {
+          "classes": 23,
+          "queries": 195,
+          "mean_across_classes": 0.9331147918104435,
+          "positive_classes": 7,
+          "bootstrap95": [
+            -4.48620456636761,
+            6.208304577869796
+          ]
+        },
+        "mean_margin": 0.15339547486866223,
+        "mean_relevant": 11.147054871601217,
+        "mean_foil": 11.30045034646988,
+        "rescued": 222.0,
+        "damaged": 179.0
+      },
+      "sketch_alone": {
+        "balanced": 0.5,
+        "query_gain": 1.2820512820512822,
+        "class_gain": {
+          "classes": 23,
+          "queries": 195,
+          "mean_across_classes": -9.497354497354497,
+          "positive_classes": 8,
+          "bootstrap95": [
+            -19.56547619047619,
+            0.10260668276971012
+          ]
+        },
+        "mean_margin": 0.0,
+        "mean_relevant": 9.676165324800154,
+        "mean_foil": 9.676165324800154,
+        "rescued": 196.0,
+        "damaged": 229.0
+      }
+    },
+    "class_primary_minus_chance": {
+      "classes": 23,
+      "queries": 195,
+      "mean_across_classes": -9.497354497354497,
+      "positive_classes": 8,
+      "bootstrap95": [
+        -19.56547619047619,
+        0.10260668276971012
+      ]
+    }
+  },
+  "forecast_gain": {
+    "bridge": {
+      "relevant": {
+        "mean_per_query": -0.040468658545078376,
+        "per_class": {
+          "classes": 23,
+          "queries": 195,
+          "mean_across_classes": -0.04106327189997692,
+          "positive_classes": 5,
+          "bootstrap95": [
+            -0.08676071651511312,
+            0.005300718807635265
+          ]
+        }
+      },
+      "foil": {
+        "mean_per_query": -0.049436574410169555,
+        "per_class": {
+          "classes": 23,
+          "queries": 195,
+          "mean_across_classes": -0.033789019317826595,
+          "positive_classes": 8,
+          "bootstrap95": [
+            -0.06523252944214977,
+            0.0005090442685655015
+          ]
+        }
+      },
+      "discrimination": {
+        "mean_per_query": 0.008967915865091177,
+        "per_class": {
+          "classes": 23,
+          "queries": 195,
+          "mean_across_classes": -0.007274252582150324,
+          "positive_classes": 13,
+          "bootstrap95": [
+            -0.06796978450248933,
+            0.05228656745074202
+          ]
+        }
+      }
+    },
+    "swapped_native": {
+      "relevant": {
+        "mean_per_query": 0.026896043312855257,
+        "per_class": {
+          "classes": 23,
+          "queries": 195,
+          "mean_across_classes": 0.0020632410504666074,
+          "positive_classes": 13,
+          "bootstrap95": [
+            -0.04995029331533928,
+            0.051588015971593466
+          ]
+        }
+      },
+      "foil": {
+        "mean_per_query": -0.004026199915470221,
+        "per_class": {
+          "classes": 23,
+          "queries": 195,
+          "mean_across_classes": -0.04133241448027802,
+          "positive_classes": 8,
+          "bootstrap95": [
+            -0.07993107438689064,
+            -0.0029765078222474704
+          ]
+        }
+      },
+      "discrimination": {
+        "mean_per_query": 0.03092224322832548,
+        "per_class": {
+          "classes": 23,
+          "queries": 195,
+          "mean_across_classes": 0.04339565553074463,
+          "positive_classes": 15,
+          "bootstrap95": [
+            -0.004793757615910467,
+            0.09283359626317081
+          ]
+        }
+      }
+    },
+    "swapped_bridge": {
+      "relevant": {
+        "mean_per_query": -0.02309453181731395,
+        "per_class": {
+          "classes": 23,
+          "queries": 195,
+          "mean_across_classes": -0.04754201444862134,
+          "positive_classes": 6,
+          "bootstrap95": [
+            -0.12337128522531421,
+            0.03500611330180063
+          ]
+        }
+      },
+      "foil": {
+        "mean_per_query": -0.07816907106301724,
+        "per_class": {
+          "classes": 23,
+          "queries": 195,
+          "mean_across_classes": -0.08725902644181652,
+          "positive_classes": 5,
+          "bootstrap95": [
+            -0.14791331348564943,
+            -0.020912571372380787
+          ]
+        }
+      },
+      "discrimination": {
+        "mean_per_query": 0.05507453924570328,
+        "per_class": {
+          "classes": 23,
+          "queries": 195,
+          "mean_across_classes": 0.03971701199319518,
+          "positive_classes": 13,
+          "bootstrap95": [
+            -0.051414752155490955,
+            0.1294736787321336
+          ]
+        }
+      }
+    },
+    "photo_alone": {
+      "relevant": {
+        "mean_per_query": 0.5464357904898814,
+        "per_class": {
+          "classes": 23,
+          "queries": 195,
+          "mean_across_classes": 0.6297270003916178,
+          "positive_classes": 23,
+          "bootstrap95": [
+            0.5301743298287374,
+            0.7471916683969627
+          ]
+        }
+      },
+      "foil": {
+        "mean_per_query": 0.5082908315536303,
+        "per_class": {
+          "classes": 23,
+          "queries": 195,
+          "mean_across_classes": 0.5084497272262142,
+          "positive_classes": 23,
+          "bootstrap95": [
+            0.42594048944473517,
+            0.5997054733979735
+          ]
+        }
+      },
+      "discrimination": {
+        "mean_per_query": 0.038144958936251125,
+        "per_class": {
+          "classes": 23,
+          "queries": 195,
+          "mean_across_classes": 0.1212772731654036,
+          "positive_classes": 15,
+          "bootstrap95": [
+            -4.056004453848031e-05,
+            0.23967874860951055
+          ]
+        }
+      }
+    },
+    "sketch_alone": {
+      "relevant": {
+        "mean_per_query": -1.1368990085063837,
+        "per_class": {
+          "classes": 23,
+          "queries": 195,
+          "mean_across_classes": -1.3498062760604506,
+          "positive_classes": 0,
+          "bootstrap95": [
+            -1.5394163218447574,
+            -1.1705375756661158
+          ]
+        }
+      },
+      "foil": {
+        "mean_per_query": -1.1315505663553873,
+        "per_class": {
+          "classes": 23,
+          "queries": 195,
+          "mean_across_classes": -1.2124368098670926,
+          "positive_classes": 0,
+          "bootstrap95": [
+            -1.341533114030796,
+            -1.0901696854157918
+          ]
+        }
+      },
+      "discrimination": {
+        "mean_per_query": -0.005348442150996282,
+        "per_class": {
+          "classes": 23,
+          "queries": 195,
+          "mean_across_classes": -0.137369466193358,
+          "positive_classes": 9,
+          "bootstrap95": [
+            -0.29149596313856607,
+            0.015639513818808935
+          ]
+        }
+      }
+    }
+  }
+}
