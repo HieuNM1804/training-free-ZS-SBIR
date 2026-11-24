@@ -27,7 +27,8 @@ def coordinates(query, atoms):
     gram = centered @ centered.transpose(1,2)
     ridge = .1 * gram.diagonal(dim1=1,dim2=2).mean(1)
     gram.diagonal(dim1=1,dim2=2).add_(ridge[:,None].clamp_min(1e-9))
-    weights = torch.linalg.solve(gram,rhs)
+    # Colab's T4 build lacks the batched LU kernel. Only these small local systems go to LAPACK.
+    weights = torch.linalg.solve(gram.cpu().double(),rhs.cpu().double().unsqueeze(-1)).squeeze(-1).to(query)
     weights += (1-weights.sum(1,keepdim=True))/weights.shape[1]
     torch.testing.assert_close(weights.sum(1),torch.ones_like(ridge),atol=1e-5,rtol=0)
     return weights
@@ -45,12 +46,13 @@ def gallery_decoder(features, probabilities, reference):
     centered=features[reference]-mean
     cov=centered.T@centered/len(reference)
     cov.diagonal().add_(.02*cov.diagonal().mean())
-    return numerator/mass[:,None]-mean,mean,torch.linalg.cholesky(cov)
+    precision=torch.cholesky_inverse(torch.linalg.cholesky(cov.cpu().double())).to(features)
+    return numerator/mass[:,None]-mean,mean,precision
 
 
-def evidence(weights, mean_offsets, photos, mean, cholesky, isotropic=False):
+def evidence(weights, mean_offsets, photos, mean, precision, isotropic=False):
     delta=(weights[:,None,:]@mean_offsets).squeeze(1)
-    direction=delta if isotropic else torch.cholesky_solve(delta.T,cholesky).T
+    direction=delta if isotropic else delta@precision
     return direction@(photos-mean).T-.5*(direction*delta).sum(1,keepdim=True)
 
 
@@ -65,8 +67,8 @@ def compute(query, photos, bank, source, target, scale, folds, models, sizes):
         result[f"text_{k}"]=F.normalize((weights[:,None,:]@target[ids]).squeeze(1),dim=-1)@photos.T
         for label,wts,isotropic in (("affine",weights,False),("soft",soft,False),("isotropic",weights,True)):
             scores=torch.empty((len(query),len(photos)),device=query.device)
-            for held,(offsets,mean,chol) in zip(folds,models):
-                scores[:,held]=evidence(wts,offsets[ids],photos[held],mean,chol,isotropic)
+            for held,(offsets,mean,precision) in zip(folds,models):
+                scores[:,held]=evidence(wts,offsets[ids],photos[held],mean,precision,isotropic)
             result[f"{label}_{k}"]=scores
     return result
 
