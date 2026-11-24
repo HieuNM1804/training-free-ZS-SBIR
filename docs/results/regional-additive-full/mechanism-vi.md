@@ -1,0 +1,13 @@
+# Từ attention vùng đến hai tỉ số bằng chứng
+
+Với một sketch và ảnh ứng viên i, gọi X_i(s,p) là điểm khớp từ giữa ảnh và cửa sổ có kích thước s, vị trí p. Bộ đọc gốc chuẩn hóa X_i bằng điểm trung bình của cùng cửa sổ trên gallery, nhân với prior cửa sổ rồi chuẩn hóa tổng thành một. Viết attention thu được thành λ_i(s) β_i(p|s). λ_i là tổng trọng số của các cửa sổ cùng kích thước; β_i là phân bố vị trí có điều kiện theo kích thước đó. Lấy trung bình attention trên gallery trong **chính truy vấn đang xét** cho phân bố đối chứng λ_0(s) β_0(p|s).
+
+Chấm bốn lần trên cùng tensor đặc trưng. T_ab là tổng X_i có trọng số λ_a β_b, lấy trung bình likelihood giữa hai hướng nhìn **trước khi lấy log**. Chỉ số 1 dùng lựa chọn riêng của ứng viên i, chỉ số 0 dùng lựa chọn chung của gallery. T_11 chính là likelihood vùng gốc. T_10/T_00 đo mức điểm thay đổi khi ứng viên tự chọn kích thước; T_01/T_00 đo mức thay đổi khi nó tự chọn vị trí bên trong từng kích thước.
+
+Biến thể đã khóa là T_add = T_00 × (T_10/T_00) × (T_01/T_00). Trong không gian log, điểm vùng là L_10 + L_01 − L_00. Phép trừ L_00 loại một lần đếm điểm đối chứng. So với gốc, thay đổi duy nhất là bỏ log cross-ratio L_11 − L_10 − L_01 + L_00. Khi một trong hai phân bố riêng trùng với phân bố chung ở cả hai hướng nhìn, biến thể tái hiện đúng likelihood gốc. Không có hệ số mới cần học hoặc tune. Phép nhân hai tỉ số là giả thuyết về cách gộp bằng chứng; đại số không đảm bảo mAP tăng.
+
+Hạng tử ngữ nghĩa toàn ảnh và GCWE vẫn dùng đặc trưng, gallery, seed và hệ số cũ. Việc thay điểm vùng thêm đúng 0,35 × (L_add − L_11) vào điểm của **từng ứng viên**. Mức thay đổi mAP có thể khác khi bật GCWE vì thứ tự các ứng viên trước khi thêm hiệu chỉnh cũng khác. Chi phí bổ sung nằm ở phép gộp 13 cửa sổ; cùng số lượt chạy CLIP.
+
+### Phạm vi tuyên bố về novelty
+
+SCAN đã dùng alignment phụ thuộc cặp vùng–từ cho truy hồi ảnh–văn bản. Dynamic Head đã tách attention theo mức đặc trưng và theo vị trí trong phát hiện đối tượng. Cả việc dùng attention riêng theo ứng viên lẫn việc phân biệt scale với position đều có tiền lệ. Phần đang kiểm chứng ở đây là phép **can thiệp vào hai thừa số của một bộ đọc CLIP đóng băng**, dùng tương phản theo cùng gallery để thu hai tỉ số bằng chứng, rồi đánh giá trực tiếp vai trò của hạng tương tác trong thứ hạng. Các bài này cung cấp tiền lệ; phép đối chiếu này chưa chứng minh ưu tiên phát minh. [SCAN, ECCV 2018](https://openaccess.thecvf.com/content_ECCV_2018/html/Kuang-Huei_Lee_Stacked_Cross_Attention_for_Image-Text_Matching_ECCV_2018_paper.html) · [Dynamic Head, CVPR 2021](https://openaccess.thecvf.com/content/CVPR2021/papers/Dai_Dynamic_Head_Unifying_Object_Detection_Heads_With_Attentions_CVPR_2021_paper.pdf)
