@@ -22,7 +22,7 @@ def run():
         prop=100*fixed/total
         ax.barh(i,prop,height=.42,color=blue)
         ax.barh(i,100-prop,left=prop,height=.42,color=light)
-        ax.text(3,i,f'{fixed} / {total} fixed',color='white',va='center',size=10)
+        ax.text(3,i,f'{fixed} / {total} cannot reverse',color='white',va='center',size=10)
         ax.text(50,i+.31,f'{total-fixed} potentially reversible',ha='center',size=9,color='#36454e')
     ax.set(xlim=(0,100),ylim=(1.7,-.6),xlabel='Share of independent-model errors (%)')
     ax.set_yticks([0,1],['Ext-1','Ext-2'])
