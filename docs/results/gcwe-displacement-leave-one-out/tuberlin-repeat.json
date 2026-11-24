@@ -1,0 +1,87 @@
+{
+  "scoring_commit": "f05394c9904ec948e0ea03ec1568cb94677fb63c",
+  "repeat_commit": "9d16a2b43fc8d4d365dace2a43ada4730dc61a62",
+  "torch": "2.14.1+cu130",
+  "gpu": "Tesla T4",
+  "seed": 42,
+  "queries": 2130,
+  "gallery": 27262,
+  "matched_ids": true,
+  "arms": {
+    "semantic_regional": {
+      "equal": false,
+      "unequal": [
+        140,
+        0
+      ],
+      "max_points": [
+        0.13433992862701416,
+        0.0
+      ],
+      "mean_points": [
+        0.00018708285451495032,
+        0.0
+      ]
+    },
+    "same_partition": {
+      "equal": false,
+      "unequal": [
+        169,
+        0
+      ],
+      "max_points": [
+        0.1339167356491089,
+        0.0
+      ],
+      "mean_points": [
+        0.00046787127642564373,
+        0.0
+      ]
+    },
+    "without_semantic": {
+      "equal": false,
+      "unequal": [
+        181,
+        0
+      ],
+      "max_points": [
+        0.03400444984436035,
+        0.0
+      ],
+      "mean_points": [
+        0.00022375298130540222,
+        0.0
+      ]
+    },
+    "without_regional": {
+      "equal": false,
+      "unequal": [
+        171,
+        1
+      ],
+      "max_points": [
+        0.12716054916381836,
+        0.9999990463256836
+      ],
+      "mean_points": [
+        0.00027022619639903726,
+        0.00046948312034069653
+      ]
+    },
+    "original": {
+      "equal": false,
+      "unequal": [
+        171,
+        1
+      ],
+      "max_points": [
+        0.04381835460662842,
+        0.9999990463256836
+      ],
+      "mean_points": [
+        0.00023404234679232184,
+        0.00046948312034069653
+      ]
+    }
+  }
+}
