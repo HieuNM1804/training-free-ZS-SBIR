@@ -1,0 +1,88 @@
+{
+  "commit": "002d841ebf219fe1dceded984e3001bb03ab3714",
+  "gpu": "Tesla T4",
+  "seed": 42,
+  "evaluator": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+  "queries": 1828,
+  "gallery": 12552,
+  "private_replay": [
+    0.0004261946305632591,
+    0.0006859824061393738
+  ],
+  "replay_points": [
+    0.001382012851536274,
+    0.0005470439526751735
+  ],
+  "absolute_replay_points": [
+    0.035115037494516346,
+    0.025711160844000346
+  ],
+  "metrics": {
+    "read_only": [
+      47.33087968405263,
+      45.81208977322512
+    ],
+    "shared_feedback": [
+      47.40236102729726,
+      45.9887856401552
+    ],
+    "native_joint": [
+      62.471991663603056,
+      61.05826052111579
+    ],
+    "additive": [
+      45.50603128316521,
+      44.184628123554035
+    ]
+  },
+  "contrasts": {
+    "read_only minus additive": {
+      "points": [
+        1.8248484008874197,
+        1.6274616496710828
+      ],
+      "class_ap": {
+        "classes": 21,
+        "queries": 1828,
+        "mean_across_classes": 1.8170521475693102,
+        "positive_classes": 13,
+        "bootstrap95": [
+          -0.3630252302118209,
+          4.101258330145261
+        ]
+      }
+    },
+    "shared_feedback minus read_only": {
+      "points": [
+        0.07148134324463243,
+        0.17669586693008046
+      ],
+      "class_ap": {
+        "classes": 21,
+        "queries": 1828,
+        "mean_across_classes": 0.05247205874998473,
+        "positive_classes": 11,
+        "bootstrap95": [
+          -0.8695155033711216,
+          0.9593383445850202
+        ]
+      }
+    },
+    "native_joint minus shared_feedback": {
+      "points": [
+        15.06963063630579,
+        15.069474880960597
+      ],
+      "class_ap": {
+        "classes": 21,
+        "queries": 1828,
+        "mean_across_classes": 15.001270194736842,
+        "positive_classes": 20,
+        "bootstrap95": [
+          10.214845032584433,
+          20.780802680257533
+        ]
+      }
+    }
+  }
+}
