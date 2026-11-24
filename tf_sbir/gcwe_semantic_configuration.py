@@ -6,6 +6,7 @@ import inspect
 import math
 from pathlib import Path
 import random
+from types import SimpleNamespace
 
 import numpy as np
 import torch
@@ -18,6 +19,7 @@ from .data import Images, configure_image_worker, normal_transform
 from .depiction_path_diagnostic import class_interval
 from .encoding import load_frozen_clip, save_tensor
 from .gallery_panel_resume import semantic_inputs
+from .gallery_region_panels import CONFIG, Index
 from .geometry_word_flat import KD_FUNCTION_SHA, PrefixReplay, load_kd, make_word_bank, score_rows
 
 
@@ -73,14 +75,17 @@ def encode(config,paths,vision,bins,prior,folder):
     return result
 
 
-def laws(bank,hist,reference,background):
+def laws(bank,hist,reference,background,shuffle=False):
     n=math.isqrt(len(background))
     mass=bank.new_zeros(bank.shape[1])
     joint=bank.new_zeros((bank.shape[1],len(background)))
-    for batch in reference.split(512):
+    evidence_ids=reference.cpu()
+    if shuffle:
+        evidence_ids=evidence_ids[torch.randperm(len(reference),generator=torch.Generator().manual_seed(42))]
+    for batch,read_ids in zip(reference.split(512),evidence_ids.split(512)):
         b=bank[batch]
         mass+=b.sum(0)
-        joint.addmm_(b.T,hist[batch.cpu()].cuda().float()/(49*24))
+        joint.addmm_(b.T,hist[read_ids].cuda().float()/(49*24))
     joint=(joint+background)/(mass+1)[:,None]
     torch.testing.assert_close(joint.sum(1),torch.ones_like(mass),atol=2e-5,rtol=0)
     table=joint.view(-1,n,n)
@@ -147,10 +152,21 @@ def run(dataset,stage,selected):
     sketch_hist=encode(cfg,[qp[i] for i in all_queries.tolist()],vision,bins,background,cache)
     for split,(ids,labels) in plans.items():
         pi,gl=gs[split]
-        bank=make_word_bank(F.normalize(pf[pi].cuda().float(),dim=1),tgt,scale,192)
+        photos=F.normalize(pf[pi].cuda().float(),dim=1)
+        bank=make_word_bank(photos,tgt,scale,192)
         folds=[v.cuda() for v in torch.randperm(len(pi),generator=torch.Generator().manual_seed(42)).tensor_split(2)]
         hist=photos_hist[pi]
-        distributions=[laws(bank,hist,ref,background) for ref in reversed(folds)]
+        distributions=[]
+        for ref in reversed(folds):
+            joint,independent=laws(bank,hist,ref,background)
+            models={"joint":joint,"independent":independent}
+            if stage!="pilot":
+                models["shuffled"]=laws(bank,hist,ref,background,shuffle=True)[0]
+            distributions.append(models)
+        graph=None
+        if stage!="pilot":
+            graph=Index(SimpleNamespace(p=photos),rgb_only=True)
+            graph.prepare(CONFIG)
         evaluator=PrefixReplay(kd,gl,split)
         raw={}
         all_strengths=(1,4,16) if stage=="pilot" else (() if selected=="one" else (int(selected[5:]),))
@@ -161,19 +177,28 @@ def run(dataset,stage,selected):
                 scores={"word":prior@bank.T}
                 for held,models in zip(folds,distributions):
                     held_bank=bank[held]
-                    for label,model in zip(("joint","independent"),models):
+                    for label,model in models.items():
                         for rule,posterior in predictions(prior,observed,model,all_strengths).items():
                             name=label+"_"+rule
                             if name not in scores:
                                 scores[name]=torch.empty_like(scores["word"])
                             scores[name][:,held]=posterior@held_bank.T
+                if graph is not None:
+                    names=list(scores)
+                    stacked=torch.cat([scores[name] for name in names],0)
+                    propagated=graph.score(CONFIG,stacked).split(len(b))
+                    scores.update({"rgb_"+k:v for k,v in zip(names,propagated)})
                 for name,val in scores.items():
                     raw.setdefault(name,[]).append(score_rows(val,labels[b],gl.cuda(),split,evaluator,pool)[:,:2])
         raw={a:torch.cat(v).double() for a,v in raw.items()}
         contrasts={}
         for key in raw:
-            if key.startswith("joint_"):
-                for ctrl in ("word",key.replace("joint_","independent_")):
+            if key.startswith(("joint_","rgb_joint_")):
+                baseline="rgb_word" if key.startswith("rgb_") else "word"
+                controls=[baseline,key.replace("joint_","independent_")]
+                if stage!="pilot":
+                    controls.append(key.replace("joint_","shuffled_"))
+                for ctrl in controls:
                     change=100*(raw[key]-raw[ctrl])
                     contrasts[key+" minus "+ctrl]=dict(points=change.mean(0).tolist(),classes=class_interval(change[:,0],labels,seed=42))
         stem=split+"-"+stage
@@ -182,6 +207,7 @@ def run(dataset,stage,selected):
         atomic_json(out/(stem+".json"),dict(commit=revision(),seed=42,gpu=torch.cuda.get_device_name(),
                     evaluator=KD_FUNCTION_SHA,queries=len(ids),gallery=len(pi),metrics=metrics,contrasts=contrasts))
         print(stem,metrics,flush=True)
+        del graph,models,distributions,joint,independent,bank
 
 
 if __name__=="__main__":
