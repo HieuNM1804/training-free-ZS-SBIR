@@ -111,7 +111,7 @@ def lexical(tokens,vision,words,scale):
     return (scale*(h@words.T)).double().softmax(-1)
 
 
-def assess(meta,raw):
+def assess(meta,raw,names=NAMES):
     direction=(2*meta[:,3]-1)[:,None]
     margin=(raw[:,:,1]-raw[:,:,0])*direction
     success=(margin>1e-10).double()+.5*(margin.abs()<=1e-10)
@@ -120,7 +120,7 @@ def assess(meta,raw):
     balanced=supported.double()@success/2
     labels=meta[supported.long().argmax(1),5]
     result={}
-    for i,name in enumerate(NAMES):
+    for i,name in enumerate(names):
         diff=100*(balanced[:,0]-balanced[:,i])
         result[name]=dict(balanced=float(balanced[:,i].mean()),query_gain=float(diff.mean()),
             class_gain=class_interval(diff,labels,seed=42),mean_margin=float(margin[:,i].mean()),
