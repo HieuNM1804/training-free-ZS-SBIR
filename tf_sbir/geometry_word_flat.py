@@ -157,21 +157,15 @@ def run(dataset, term_ablation=False, diffusion_paths=False, workspace=Path('/co
     root.mkdir(parents=True, exist_ok=True)
     inputs = semantic_inputs(w, dataset)
     cfg, qp, qs, pp, gs, q, p, src, tgt, scale = inputs
-    views = source_windows(w, dataset, inputs)
-    aq, ag, encoded, _, gq, photo, flip, gsrc, gtgt, gscale = audit_inputs(w, all_sketches=True, dataset=dataset)
-    assert torch.equal(encoded, torch.arange(len(qp))) and scale == gscale
     kd, _ = load_kd(w)
     assert hashlib.sha256(inspect.getsource(kd).strip().encode()).hexdigest() == KD_FUNCTION_SHA
-    vision = load_frozen_clip(cfg.clip_checkpoint, torch.device('cuda')).visual
-    coords = torch.cartesian_prod(torch.arange(7), torch.arange(7)).cuda().float()
-    distance = torch.cdist(coords, coords)
+    views = None
     source_tree = subprocess.check_output(['git','rev-parse','HEAD:tf_sbir'],
                                           cwd=Path(__file__).resolve().parents[1],text=True).strip()
     for split, (qi, labels) in qs.items():
         out = root / (split + '.json')
         pi, gl = gs[split]
         assert (len(qi), len(pi), len(gl.unique())) == COUNTS[split]
-        assert torch.equal(aq[split][0], qi) and torch.equal(ag[split][0], pi)
         paths = [str(pp[i]) for i in pi.tolist()]
         recipe = digest({'seed':seed,'methods':list(methods),'model':CHECKPOINT,'evaluator':KD_FUNCTION_SHA,
                          'gallery':paths,'queries':[str(qp[i]) for i in qi.tolist()],
@@ -192,6 +186,14 @@ def run(dataset, term_ablation=False, diffusion_paths=False, workspace=Path('/co
                 if (set(record['rows'])==set(methods) and torch.equal(record['qi'],qi) and torch.equal(record['pi'],pi)
                         and torch.equal(record['labels'],labels)):
                     continue
+        if views is None:
+            views = source_windows(w, dataset, inputs)
+            aq, ag, encoded, _, gq, photo, flip, gsrc, gtgt, gscale = audit_inputs(w, all_sketches=True, dataset=dataset)
+            assert torch.equal(encoded, torch.arange(len(qp))) and scale == gscale
+            vision = load_frozen_clip(cfg.clip_checkpoint, torch.device('cuda')).visual
+            coords = torch.cartesian_prod(torch.arange(7), torch.arange(7)).cuda().float()
+            distance = torch.cdist(coords, coords)
+        assert torch.equal(aq[split][0], qi) and torch.equal(ag[split][0], pi)
         gallery = p[pi].cuda()
         geom_gallery = F.normalize(photo[pi].cuda())
         stamp = digest({'gallery': paths, 'model': CHECKPOINT, 'source': 'regional-64/RGB16'})

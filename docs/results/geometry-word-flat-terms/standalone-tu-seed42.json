@@ -1,0 +1,46 @@
+{
+  "seed": 42,
+  "source": "9afe400565feca8d5101cd8128842c040f982634",
+  "recipe": "077233beb7809103062b6bda33a5cb896dea018ddd0437a7ae9713da15fb691c",
+  "device": "NVIDIA L4",
+  "rows": [
+    "full",
+    "without_global",
+    "without_regional",
+    "without_geometry",
+    "semantic_only",
+    "regional_only",
+    "geometry_increment",
+    "gcwe_word_retrieval",
+    "visual_cosine"
+  ],
+  "reference_family": null,
+  "reference_checks": {},
+  "counts": [
+    2130,
+    27262,
+    30
+  ],
+  "raw_inputs": [
+    "tuberlin-data.json",
+    "assets",
+    "inquiry_kd_reference.py",
+    "features"
+  ],
+  "matched_ids": true,
+  "per_method_max_mean_delta_points": {
+    "full": 0.00001901762883568034,
+    "without_global": 0.000001876112161108026,
+    "without_regional": 0.000005593357231695328,
+    "without_geometry": 0.00000289789982524836,
+    "semantic_only": 6.261286041546315e-8,
+    "regional_only": 0.00000909670417857282,
+    "geometry_increment": 7.668982299280838e-7,
+    "gcwe_word_retrieval": 1.3886762896613896e-7,
+    "visual_cosine": 0
+  },
+  "metrics": [
+    81.4947843266992,
+    82.19577467873552
+  ]
+}
