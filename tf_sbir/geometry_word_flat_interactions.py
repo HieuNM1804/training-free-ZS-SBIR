@@ -20,11 +20,21 @@ def run():
     root=Path('/content/sbir/results')
     output=root/'geometry-word-flat-terms'
     report={}
+    ceilings={}
     for split in ('sketchy_1','sketchy_2','tuberlin'):
         terms=torch.load(output/(split+'.pt'),mmap=True,weights_only=True)
         first=torch.load(root/'geometry-word-flat-first'/(split+'.pt'),mmap=True,weights_only=True)
         assert all(torch.equal(terms[k],first[k]) for k in ('labels','pi','qi'))
         rows,labels=terms['rows'],terms['labels']
+        full=rows['full'][:,0].double()
+        ceilings[split]={}
+        for name in ('without_geometry','without_regional','without_global'):
+            ablated=rows[name][:,0].double()
+            gains=(full-ablated).clamp_min(0)
+            losses=(ablated-full).clamp_min(0)
+            ceilings[split][name]={'perfect_binary_oracle_map':float(100*torch.maximum(full,ablated).mean()),
+                'headroom_over_full':float(100*losses.mean()),'mAP_attributable_positive_only':float(100*gains.mean()),
+                'improved_gt_5pt':int((gains>.05).sum()),'harmed_gt_5pt':int((losses>.05).sum())}
         contrasts={('full',k) for k in ('without_global','without_regional','without_geometry')}
         # Each pair toggles G or R at fixed semantic base, permitting a paired interaction in utility.
         contrasts.update({('gcwe_word_retrieval','semantic_only'),('without_geometry','semantic_only'),
@@ -38,6 +48,7 @@ def run():
         summary['diffusion_inside_full']=compare(first['rows']['full'],first['rows']['without_diffusion'],labels)
         report[split]=summary
     atomic_json(output/'interactions.json',report)
+    atomic_json(output/'oracle-limits.json',ceilings)
     print(json.dumps({s:r['G_by_R_interaction_on_S']['change_points'] for s,r in report.items()}))
 
 
