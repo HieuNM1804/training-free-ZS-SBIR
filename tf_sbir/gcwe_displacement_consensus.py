@@ -1,5 +1,6 @@
 """Test whether disjoint sets of CLIP matches support a common displacement beyond marginal occupancy."""
 from functools import lru_cache
+import argparse
 
 import torch
 
@@ -44,12 +45,35 @@ def centered_histograms(coupling, geometry):
             'same_partition':sum(v.square().sum(-1) for v in adjusted)/2}
 
 
-def update(query,blank,patches,dist,scale,words,bank,nominees,fold,priors,unused):
+def concentration_controls(coupling, geometry):
+    native, shuffled, raw, individual = [], [], [], []
+    for rows, offset, sham_offset in geometry:
+        c=coupling.index_select(-2,rows)
+        c=c/c.sum((-1,-2),keepdim=True)
+        residual=(c-c.sum(-1,keepdim=True)*c.sum(-2,keepdim=True)).flatten(-2)
+        native.append(residual@offset)
+        shuffled.append(residual@sham_offset)
+        raw.append(c.flatten(-2)@offset)
+        individual.append(residual.square().sum(-1))
+    def energy(histograms):
+        return sum(v.square().sum(-1) for v in histograms)/2
+    whole_vote=(native[0]+native[1])/2
+    difference=(native[0]-native[1])/2
+    shared=whole_vote.square().sum(-1)
+    partition=difference.square().sum(-1)
+    full=energy(native)
+    if (full-shared-partition).abs().max()>1e-6:
+        raise ValueError('Displacement-energy identity failed')
+    return {'same_partition':full,'wrong_coordinates':energy(shuffled),'uncentered_energy':energy(raw),
+            'individual_matches':sum(individual)/2, 'consensus_energy':shared,'difference_energy':partition}
+
+
+def score_update(measure,query,blank,patches,dist,scale,words,bank,nominees,fold,priors,unused):
     geometry=offset_geometry(query.device)
     def verify(tokens):
         z=scale*(tokens[:,None]@patches.transpose(-1,-2)).float()
         c=(z.softmax(-1)+z.softmax(-2))/98
-        result=centered_histograms(c,geometry)
+        result=measure(c,geometry)
         result['original']=distance_agreement(c,dist,dist)
         return result
     real,null=verify(query),verify(blank)
@@ -69,6 +93,17 @@ def update(query,blank,patches,dist,scale,words,bank,nominees,fold,priors,unused
 
 
 if __name__=='__main__':
-    run(update_fn=update,family='gcwe-displacement-consensus',start=8448,count=1536,controls=False,
-        comparisons=[('cross','original'),('cross','semantic_regional'),('cross','uncentered'),
-                     ('cross','permuted'),('cross','same_partition'),('original','semantic_regional')])
+    from functools import partial
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--confirm-concentration',action='store_true')
+    confirm=parser.parse_args().confirm_concentration
+    if confirm:
+        primary='same_partition'
+        comparisons=[(primary,c) for c in ('original','wrong_coordinates','individual_matches',
+                                          'uncentered_energy','consensus_energy','difference_energy','semantic_regional')]
+        run(update_fn=partial(score_update,concentration_controls),family='gcwe-displacement-concentration',
+            start=9984,count=1536,controls=False,comparisons=comparisons)
+    else:
+        run(update_fn=partial(score_update,centered_histograms),family='gcwe-displacement-consensus',
+            start=8448,count=1536,controls=False,comparisons=[('cross','original'),('cross','semantic_regional'),
+            ('cross','uncentered'),('cross','permuted'),('cross','same_partition'),('original','semantic_regional')])
