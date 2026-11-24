@@ -1,0 +1,5 @@
+# Locked leave-one-out ablation for the best three-term retrieval model
+
+Reuse the full displacement-concentration run with frozen OpenAI CLIP ViT-B/32, identical data order, official KD-SBIR evaluator, seed 42, and single-query retrieval. Evaluate the original expression 0.65 S + 0.35 R + 0.65 G and each one-term deletion without renormalization or retuning. S is the whole-image diffused public-word score, R is the candidate-conditioned regional log score, and G is the log-score difference induced by the locked displacement-conditioned word update. Here “without S” removes its additive term. The vocabulary, diffusion inside G, and other shared infrastructure remain necessary for the remaining terms. Hierarchical is absent in every row.
+
+The scorer checks the identity and order of every query and gallery photo and replays per-query AP and precision for the full and no-G rows against the previous T4 run. Report raw metrics, full-minus-deletion differences, and class-bootstrap uncertainty. TU-Berlin is a locked transfer evaluation. The original-GCWE row is an extra replay check and is excluded from the four-row ablation table.

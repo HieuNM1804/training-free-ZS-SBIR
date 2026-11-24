@@ -61,7 +61,7 @@ def get_updates(query, blank, patches, dist, scale, words, bank, nominees, fold,
 
 @torch.inference_mode()
 def run(*, update_fn=get_updates, family='gcwe-conditioned-donor-test', start=0, count=768,
-        controls=True, update_factory=None, comparisons=None, dataset="sketchy"):
+        controls=True, update_factory=None, comparisons=None, dataset="sketchy", ablate_term=None):
     import random
     import numpy as np
     random.seed(42)
@@ -161,6 +161,9 @@ def run(*, update_fn=get_updates, family='gcwe-conditioned-donor-test', start=0,
                         for name,val in update.items():
                             delta = GLOBAL_WEIGHT*(log_score(geometry_graph.score(CONFIG,val))-direct)
                             scores[name] = base + delta
+                            if ablate_term == name:
+                                scores['without_semantic'] = REGIONAL_WEIGHT*regional + delta
+                                scores['without_regional'] = GLOBAL_WEIGHT*lex + delta
                             if controls and name=='original':
                                 scores['without_global_term'] = REGIONAL_WEIGHT*regional + delta
                                 scores['shared_regional_attention'] = GLOBAL_WEIGHT*lex + REGIONAL_WEIGHT*shared + delta
@@ -176,6 +179,12 @@ def run(*, update_fn=get_updates, family='gcwe-conditioned-donor-test', start=0,
         rows = {k:torch.cat(v)[:,:2] for k,v in all_rows.items()}
         gap = (100*(rows['original']-ref['rows']['full'][ix,:2]).double().abs().mean(0))
         if gap.max()>.04:raise ValueError(f'Reconstruction changed by {gap}')
+        if ablate_term is not None:
+            locked = torch.load(w/'results/gcwe-displacement-full'/(split+'.pt'), weights_only=True)
+            assert torch.equal(locked['qi'], qi[ix]) and torch.equal(locked['pi'], pi)
+            assert torch.equal(locked['labels'], labels[ix])
+            for name in (ablate_term,'semantic_regional'):
+                torch.testing.assert_close(rows[name], locked['rows'][name], atol=3e-5, rtol=1e-5)
         contrasts = [('original','semantic_regional'),('matched','original'),('matched','semantic_regional'),
                      ('matched','random_pairs'),('between_pairs','semantic_regional'),
                      ('original','shared_regional_attention'),('original','without_global_term'),
