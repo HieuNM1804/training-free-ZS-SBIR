@@ -1,0 +1,200 @@
+{
+  "commit": "e78b8b4f1df06e84759d8d9e8d728a756873c9f9",
+  "seed": 42,
+  "gpu": "Tesla T4",
+  "evaluator": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+  "queries": 11158,
+  "gallery": 12552,
+  "metrics": {
+    "word": [
+      71.43211683508314,
+      70.27213674245313
+    ],
+    "diffusion": [
+      74.26847448057693,
+      72.72862532251364
+    ],
+    "one_16": [
+      73.34496877124064,
+      72.12461924244157
+    ],
+    "all_16": [
+      73.85702814124669,
+      72.6682650050134
+    ],
+    "half_16": [
+      73.80074336999208,
+      72.61718057699802
+    ],
+    "marginal_16": [
+      73.8494185853219,
+      72.64899631460044
+    ],
+    "anchored_16": [
+      73.8490508546566,
+      72.65441843969064
+    ]
+  },
+  "contrasts": {
+    "marginal_16 minus word": {
+      "points": [
+        2.417301750238761,
+        2.3768595721473145
+      ],
+      "classes": {
+        "classes": 21,
+        "queries": 11158,
+        "mean_across_classes": 2.5360386401630555,
+        "positive_classes": 19,
+        "bootstrap95": [
+          1.3300517217005,
+          3.826717255061245
+        ]
+      }
+    },
+    "marginal_16 minus diffusion": {
+      "points": [
+        -0.41905589525503223,
+        -0.07962900791320564
+      ],
+      "classes": {
+        "classes": 21,
+        "queries": 11158,
+        "mean_across_classes": -0.3406718788709548,
+        "positive_classes": 9,
+        "bootstrap95": [
+          -1.3538116590523048,
+          0.7365628661772518
+        ]
+      }
+    },
+    "marginal_16 minus one_16": {
+      "points": [
+        0.5044498140812668,
+        0.5243770721588678
+      ],
+      "classes": {
+        "classes": 21,
+        "queries": 11158,
+        "mean_across_classes": 0.5139557128165289,
+        "positive_classes": 17,
+        "bootstrap95": [
+          0.21879032700670306,
+          0.8066013665117201
+        ]
+      }
+    },
+    "marginal_16 minus all_16": {
+      "points": [
+        -0.007609555924781699,
+        -0.01926869041296258
+      ],
+      "classes": {
+        "classes": 21,
+        "queries": 11158,
+        "mean_across_classes": -0.007397506760253932,
+        "positive_classes": 2,
+        "bootstrap95": [
+          -0.011026731450080323,
+          -0.004163066666155488
+        ]
+      }
+    },
+    "marginal_16 minus half_16": {
+      "points": [
+        0.04867521532982999,
+        0.031815737602405275
+      ],
+      "classes": {
+        "classes": 21,
+        "queries": 11158,
+        "mean_across_classes": 0.048165380568735615,
+        "positive_classes": 17,
+        "bootstrap95": [
+          0.0179241237751743,
+          0.07993403090466164
+        ]
+      }
+    },
+    "anchored_16 minus word": {
+      "points": [
+        2.4169340195734574,
+        2.3822816972375227
+      ],
+      "classes": {
+        "classes": 21,
+        "queries": 11158,
+        "mean_across_classes": 2.5356307071951694,
+        "positive_classes": 19,
+        "bootstrap95": [
+          1.3301635994008312,
+          3.8254316086141724
+        ]
+      }
+    },
+    "anchored_16 minus diffusion": {
+      "points": [
+        -0.41942362592033583,
+        -0.07420688282299756
+      ],
+      "classes": {
+        "classes": 21,
+        "queries": 11158,
+        "mean_across_classes": -0.3410798118388414,
+        "positive_classes": 9,
+        "bootstrap95": [
+          -1.3537142866727672,
+          0.7354306673012533
+        ]
+      }
+    },
+    "anchored_16 minus one_16": {
+      "points": [
+        0.5040820834159632,
+        0.5297991972490758
+      ],
+      "classes": {
+        "classes": 21,
+        "queries": 11158,
+        "mean_across_classes": 0.5135477798486421,
+        "positive_classes": 17,
+        "bootstrap95": [
+          0.21880495074725081,
+          0.8058213171776812
+        ]
+      }
+    },
+    "anchored_16 minus all_16": {
+      "points": [
+        -0.007977286590085297,
+        -0.013846565322754502
+      ],
+      "classes": {
+        "classes": 21,
+        "queries": 11158,
+        "mean_across_classes": -0.007805439728140636,
+        "positive_classes": 1,
+        "bootstrap95": [
+          -0.011330320367334485,
+          -0.004542305289323576
+        ]
+      }
+    },
+    "anchored_16 minus half_16": {
+      "points": [
+        0.0483074846645264,
+        0.03723786269261335
+      ],
+      "classes": {
+        "classes": 21,
+        "queries": 11158,
+        "mean_across_classes": 0.047757447600848914,
+        "positive_classes": 17,
+        "bootstrap95": [
+          0.017810579452298077,
+          0.07952177195120562
+        ]
+      }
+    }
+  }
+}

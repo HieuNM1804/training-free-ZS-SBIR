@@ -1,0 +1,267 @@
+{
+  "commit": "4be9f67ab1bc66f7b8d6b3fb8cfa01c173aac497",
+  "seed": 42,
+  "gpu": "Tesla T4",
+  "evaluator": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+  "queries": 1536,
+  "gallery": 12552,
+  "metrics": {
+    "word": [
+      71.28452712067883,
+      70.32552099105183
+    ],
+    "diffusion": [
+      73.78840225904545,
+      72.3076173201965
+    ],
+    "half": [
+      74.27798588845084,
+      73.01074233322046
+    ],
+    "all": [
+      74.35300715742414,
+      73.12369806440984
+    ],
+    "marginal_4": [
+      74.32611805285583,
+      73.07226576534353
+    ],
+    "marginal_8": [
+      74.29824278366746,
+      73.09505222037842
+    ],
+    "marginal_16": [
+      74.28544051726931,
+      73.10611992470513
+    ]
+  },
+  "contrasts": {
+    "marginal_4 minus word": {
+      "points": [
+        3.041590932177011,
+        2.7467447742916797
+      ],
+      "classes": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": 3.131562416594732,
+        "positive_classes": 18,
+        "bootstrap95": [
+          0.9795867246816237,
+          5.470040123308305
+        ]
+      }
+    },
+    "marginal_4 minus diffusion": {
+      "points": [
+        0.5377157938103968,
+        0.7646484451470315
+      ],
+      "classes": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": 0.5871060087533794,
+        "positive_classes": 14,
+        "bootstrap95": [
+          -1.6605306009728178,
+          2.7281598060807704
+        ]
+      }
+    },
+    "marginal_4 minus half": {
+      "points": [
+        0.04813216440500886,
+        0.06152343212306732
+      ],
+      "classes": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": 0.09194835524996202,
+        "positive_classes": 13,
+        "bootstrap95": [
+          -0.3765699324075092,
+          0.605442708894383
+        ]
+      }
+    },
+    "marginal_4 minus all": {
+      "points": [
+        -0.026889104568302475,
+        -0.05143229906631556
+      ],
+      "classes": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": -0.07617768520338408,
+        "positive_classes": 8,
+        "bootstrap95": [
+          -0.5932836572345618,
+          0.3572690229879019
+        ]
+      }
+    },
+    "marginal_8 minus word": {
+      "points": [
+        3.01371566298864,
+        2.7695312293265792
+      ],
+      "classes": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": 3.116638862874055,
+        "positive_classes": 18,
+        "bootstrap95": [
+          0.9460596919944931,
+          5.522782477432497
+        ]
+      }
+    },
+    "marginal_8 minus diffusion": {
+      "points": [
+        0.5098405246220258,
+        0.7874349001819306
+      ],
+      "classes": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": 0.5721824550327029,
+        "positive_classes": 13,
+        "bootstrap95": [
+          -1.7068504636193846,
+          2.818216214644546
+        ]
+      }
+    },
+    "marginal_8 minus half": {
+      "points": [
+        0.020256895216637833,
+        0.08430988715796654
+      ],
+      "classes": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": 0.07702480152928548,
+        "positive_classes": 11,
+        "bootstrap95": [
+          -0.4425105143603591,
+          0.6887113178171811
+        ]
+      }
+    },
+    "marginal_8 minus all": {
+      "points": [
+        -0.0547643737566735,
+        -0.028645844031416345
+      ],
+      "classes": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": -0.09110123892406059,
+        "positive_classes": 8,
+        "bootstrap95": [
+          -0.49859728119291585,
+          0.25257312366537343
+        ]
+      }
+    },
+    "marginal_16 minus word": {
+      "points": [
+        3.0009133965904766,
+        2.7805989336532853
+      ],
+      "classes": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": 3.1110002938028227,
+        "positive_classes": 18,
+        "bootstrap95": [
+          0.883095033900927,
+          5.561343435017486
+        ]
+      }
+    },
+    "marginal_16 minus diffusion": {
+      "points": [
+        0.49703825822386233,
+        0.7985026045086366
+      ],
+      "classes": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": 0.5665438859614704,
+        "positive_classes": 13,
+        "bootstrap95": [
+          -1.764072189830647,
+          2.8811797266915837
+        ]
+      }
+    },
+    "marginal_16 minus half": {
+      "points": [
+        0.0074546288184744,
+        0.09537759148467255
+      ],
+      "classes": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": 0.07138623245805299,
+        "positive_classes": 11,
+        "bootstrap95": [
+          -0.5140733213984874,
+          0.763396219368521
+        ]
+      }
+    },
+    "marginal_16 minus all": {
+      "points": [
+        -0.06756664015483693,
+        -0.017578139704710338
+      ],
+      "classes": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": -0.0967398079952931,
+        "positive_classes": 9,
+        "bootstrap95": [
+          -0.42678123411993474,
+          0.17796825579629316
+        ]
+      }
+    }
+  },
+  "quadrature": {
+    "marginal_4": {
+      "centered_max": 0.00027404827415011823,
+      "drift_points": [
+        0.0,
+        0.0
+      ],
+      "max_points": [
+        0.0,
+        0.0
+      ]
+    },
+    "marginal_8": {
+      "centered_max": 0.0005663598421961069,
+      "drift_points": [
+        0.0,
+        0.0
+      ],
+      "max_points": [
+        0.0,
+        0.0
+      ]
+    },
+    "marginal_16": {
+      "centered_max": 0.0012216875329613686,
+      "drift_points": [
+        0.0,
+        0.0
+      ],
+      "max_points": [
+        0.0,
+        0.0
+      ]
+    }
+  }
+}

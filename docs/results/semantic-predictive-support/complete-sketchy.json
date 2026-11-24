@@ -1,0 +1,304 @@
+{
+  "selected": "marginal_16",
+  "evaluator": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+  "splits": {
+    "sketchy_1": {
+      "queries": 14179,
+      "gallery": 17100,
+      "classes": 25,
+      "pilot_commit": "51b70691a8cf280dde4b8657c19147ff1716ad7d",
+      "confirmation_commit": "e78b8b4f1df06e84759d8d9e8d728a756873c9f9",
+      "arms": {
+        "word": {
+          "metrics": [
+            75.30726548745389,
+            78.93998179148868
+          ],
+          "selected_minus": [
+            4.680507088380747,
+            2.2206078323227105
+          ],
+          "class_ap": {
+            "classes": 25,
+            "queries": 14179,
+            "mean_across_classes": 4.713726890004945,
+            "positive_classes": 25,
+            "bootstrap95": [
+              3.9308262544632617,
+              5.5778977089491
+            ]
+          }
+        },
+        "diffusion": {
+          "metrics": [
+            81.85589758601634,
+            81.32928991139195
+          ],
+          "selected_minus": [
+            -1.8681250101817,
+            -0.16870028758056999
+          ],
+          "class_ap": {
+            "classes": 25,
+            "queries": 14179,
+            "mean_across_classes": -1.878436943310341,
+            "positive_classes": 3,
+            "bootstrap95": [
+              -2.7436884977903726,
+              -1.190842660479219
+            ]
+          }
+        },
+        "one_16": {
+          "metrics": [
+            79.87280243172084,
+            80.63763317683114
+          ],
+          "selected_minus": [
+            0.11497014411378625,
+            0.5229564469802387
+          ],
+          "class_ap": {
+            "classes": 25,
+            "queries": 14179,
+            "mean_across_classes": 0.10066889176160487,
+            "positive_classes": 15,
+            "bootstrap95": [
+              -0.11793443828451412,
+              0.3183725255199456
+            ]
+          }
+        },
+        "all_16": {
+          "metrics": [
+            79.66417265180121,
+            81.16496228580446
+          ],
+          "selected_minus": [
+            0.32359992403341825,
+            -0.0043726619930746224
+          ],
+          "class_ap": {
+            "classes": 25,
+            "queries": 14179,
+            "mean_across_classes": 0.3324019589804076,
+            "positive_classes": 22,
+            "bootstrap95": [
+              0.18331405979608784,
+              0.5365939565536552
+            ]
+          }
+        },
+        "half_16": {
+          "metrics": [
+            80.03094910028345,
+            81.12631358409365
+          ],
+          "selected_minus": [
+            -0.04317652444882692,
+            0.03427603971774037
+          ],
+          "class_ap": {
+            "classes": 25,
+            "queries": 14179,
+            "mean_across_classes": -0.04742865277605401,
+            "positive_classes": 9,
+            "bootstrap95": [
+              -0.09507003824062182,
+              -0.001407255867890118
+            ]
+          }
+        },
+        "marginal_16": {
+          "metrics": [
+            79.98777257583464,
+            81.16058962381139
+          ],
+          "selected_minus": [
+            0.0,
+            0.0
+          ],
+          "class_ap": {
+            "classes": 25,
+            "queries": 14179,
+            "mean_across_classes": 0.0,
+            "positive_classes": 0,
+            "bootstrap95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "anchored_16": {
+          "metrics": [
+            79.85565376154891,
+            81.16023699016743
+          ],
+          "selected_minus": [
+            0.13211881428572345,
+            0.00035263364395660444
+          ],
+          "class_ap": {
+            "classes": 25,
+            "queries": 14179,
+            "mean_across_classes": 0.13821283660401884,
+            "positive_classes": 19,
+            "bootstrap95": [
+              0.017811807492840257,
+              0.36029228729960094
+            ]
+          }
+        }
+      }
+    },
+    "sketchy_2": {
+      "queries": 12694,
+      "gallery": 12552,
+      "classes": 21,
+      "pilot_commit": "51b70691a8cf280dde4b8657c19147ff1716ad7d",
+      "confirmation_commit": "e78b8b4f1df06e84759d8d9e8d728a756873c9f9",
+      "arms": {
+        "word": {
+          "metrics": [
+            71.41425817734522,
+            70.27859634587581
+          ],
+          "selected_minus": [
+            2.400848059306059,
+            2.3552858794986387
+          ],
+          "class_ap": {
+            "classes": 21,
+            "queries": 12694,
+            "mean_across_classes": 2.524802048581528,
+            "positive_classes": 19,
+            "bootstrap95": [
+              1.3358199573539074,
+              3.7941634800542205
+            ]
+          }
+        },
+        "diffusion": {
+          "metrics": [
+            74.21039963141158,
+            72.67764310326973
+          ],
+          "selected_minus": [
+            -0.39529339476028225,
+            -0.04376087789527212
+          ],
+          "class_ap": {
+            "classes": 21,
+            "queries": 12694,
+            "mean_across_classes": -0.32600513055860997,
+            "positive_classes": 10,
+            "bootstrap95": [
+              -1.3171556054742455,
+              0.7098219193701951
+            ]
+          }
+        },
+        "one_16": {
+          "metrics": [
+            73.30490542454001,
+            72.10477403980185
+          ],
+          "selected_minus": [
+            0.5102008121112799,
+            0.5291081855725952
+          ],
+          "class_ap": {
+            "classes": 21,
+            "queries": 12694,
+            "mean_across_classes": 0.5224253656796685,
+            "positive_classes": 17,
+            "bootstrap95": [
+              0.22472075028621163,
+              0.8121356154866475
+            ]
+          }
+        },
+        "all_16": {
+          "metrics": [
+            73.82247815184778,
+            72.65278879943833
+          ],
+          "selected_minus": [
+            -0.007371915196487805,
+            -0.0189065740638776
+          ],
+          "class_ap": {
+            "classes": 21,
+            "queries": 12694,
+            "mean_across_classes": -0.007173554646784776,
+            "positive_classes": 1,
+            "bootstrap95": [
+              -0.010818719712305535,
+              -0.00400620570262203
+            ]
+          }
+        },
+        "half_16": {
+          "metrics": [
+            73.76525130801032,
+            72.60174105595813
+          ],
+          "selected_minus": [
+            0.049854928640963025,
+            0.03214116941633301
+          ],
+          "class_ap": {
+            "classes": 21,
+            "queries": 12694,
+            "mean_across_classes": 0.04955760660860816,
+            "positive_classes": 16,
+            "bootstrap95": [
+              0.01998349642154349,
+              0.08095387792163625
+            ]
+          }
+        },
+        "marginal_16": {
+          "metrics": [
+            73.81510623665129,
+            72.63388222537446
+          ],
+          "selected_minus": [
+            0.0,
+            0.0
+          ],
+          "class_ap": {
+            "classes": 21,
+            "queries": 12694,
+            "mean_across_classes": 0.0,
+            "positive_classes": 0,
+            "bootstrap95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "anchored_16": {
+          "metrics": [
+            73.81481775253593,
+            72.6389239833894
+          ],
+          "selected_minus": [
+            0.0002884841153560444,
+            -0.005041758014951257
+          ],
+          "class_ap": {
+            "classes": 21,
+            "queries": 12694,
+            "mean_across_classes": 0.00031883632281955166,
+            "positive_classes": 12,
+            "bootstrap95": [
+              -0.0003366829797643403,
+              0.0009756192125189979
+            ]
+          }
+        }
+      }
+    }
+  }
+}
