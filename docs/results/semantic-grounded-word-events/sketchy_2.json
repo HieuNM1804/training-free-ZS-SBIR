@@ -1,0 +1,157 @@
+{
+  "commit": "4d76e7832f51ae6fb52f76465bfae459234a893e",
+  "seed": 42,
+  "device": "Tesla T4",
+  "queries": 384,
+  "gallery": 12552,
+  "evaluator": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+  "coverage": {
+    "mean_exposed_probability_all_pairs": 0.22465071082115173,
+    "relevant": 0.7292827367782593,
+    "native_top200": 0.8696283102035522,
+    "direct_class_interval_map": {
+      "classes": 21,
+      "queries": 384,
+      "mean_across_classes": -0.00037722138175831047,
+      "positive_classes": 12,
+      "bootstrap95": [
+        -0.024305532069270244,
+        0.019984079707023573
+      ]
+    },
+    "diffused_class_interval_map": {
+      "classes": 21,
+      "queries": 384,
+      "mean_across_classes": 0.053609949311431135,
+      "positive_classes": 10,
+      "bootstrap95": [
+        -0.019256656241128052,
+        0.15059650912991007
+      ]
+    }
+  },
+  "joint_minus": {
+    "joint": {
+      "change": [
+        0.0,
+        0.0
+      ],
+      "ap_class": {
+        "classes": 21,
+        "queries": 384,
+        "mean_across_classes": 0.0,
+        "positive_classes": 0,
+        "bootstrap95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "native": {
+      "change": [
+        0.042364947997460455,
+        -0.01822915558780854
+      ],
+      "ap_class": {
+        "classes": 21,
+        "queries": 384,
+        "mean_across_classes": 0.053609949311431135,
+        "positive_classes": 10,
+        "bootstrap95": [
+          -0.019256656241128052,
+          0.15059650912991007
+        ]
+      }
+    },
+    "candidate_words": {
+      "change": [
+        0.018360064981000807,
+        -0.018229174505298335
+      ],
+      "ap_class": {
+        "classes": 21,
+        "queries": 384,
+        "mean_across_classes": 0.030962298050225386,
+        "positive_classes": 11,
+        "bootstrap95": [
+          -0.022692979108640016,
+          0.11704280449493448
+        ]
+      }
+    },
+    "turned": {
+      "change": [
+        0.048007226602445975,
+        -0.011718729607916126
+      ],
+      "ap_class": {
+        "classes": 21,
+        "queries": 384,
+        "mean_across_classes": 0.061458827445890464,
+        "positive_classes": 11,
+        "bootstrap95": [
+          -0.025363727667839536,
+          0.1722610874145196
+        ]
+      }
+    },
+    "permuted_words": {
+      "change": [
+        0.02122471099331354,
+        -0.011718731063107649
+      ],
+      "ap_class": {
+        "classes": 21,
+        "queries": 384,
+        "mean_across_classes": 0.017837777864958142,
+        "positive_classes": 11,
+        "bootstrap95": [
+          -0.020988198198718586,
+          0.06172650525677414
+        ]
+      }
+    }
+  },
+  "metrics": {
+    "joint/direct": [
+      72.14519419042821,
+      71.57031260261041
+    ],
+    "joint/diffused": [
+      76.26612441405692,
+      74.7447918234684
+    ],
+    "native/direct": [
+      72.14294196625511,
+      71.56901054841
+    ],
+    "native/diffused": [
+      76.22375946605948,
+      74.76302097905622
+    ],
+    "candidate_words/direct": [
+      72.14899026318258,
+      71.57812512935683
+    ],
+    "candidate_words/diffused": [
+      76.24776434907594,
+      74.76302099797371
+    ],
+    "turned/direct": [
+      72.14584675821243,
+      71.55729180885828
+    ],
+    "turned/diffused": [
+      76.21811718745448,
+      74.75651055307631
+    ],
+    "permuted_words/direct": [
+      72.15015573492565,
+      71.5794272631077
+    ],
+    "permuted_words/diffused": [
+      76.24489970306362,
+      74.7565105545315
+    ]
+  }
+}

@@ -1,0 +1,289 @@
+{
+  "commit": "73adfb6787c6e9e304783da9f321ba2b04b22639",
+  "seed": 42,
+  "gpu": "Tesla T4",
+  "evaluator": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+  "queries": 768,
+  "gallery": 12552,
+  "queries_with_mixed": 263,
+  "both_directions": 157,
+  "pair_counts": [
+    2105,
+    1091,
+    1014
+  ],
+  "columns": [
+    "mixed",
+    "global_correct",
+    "global_wrong",
+    "balanced"
+  ],
+  "official": {
+    "regional_original": [
+      68.41400355109121,
+      67.15625015761665
+    ],
+    "semantic/direct": [
+      69.8426689631257,
+      68.82682306216643
+    ],
+    "semantic/diffused": [
+      72.86209675057762,
+      71.53059910585094
+    ],
+    "unregistered/direct": [
+      12.391751458138362,
+      9.92968746832048
+    ],
+    "unregistered/diffused": [
+      9.79006829966238,
+      9.302083347574808
+    ],
+    "raw_registered/direct": [
+      9.764004861305391,
+      7.594401027745334
+    ],
+    "raw_registered/diffused": [
+      8.7957892511137,
+      8.753906240235665
+    ],
+    "visibility/direct": [
+      9.963175455353241,
+      5.801432287262287
+    ],
+    "visibility/diffused": [
+      6.311180211559986,
+      3.908203107251514
+    ],
+    "turned/direct": [
+      8.928573452249111,
+      5.402343738266305
+    ],
+    "turned/diffused": [
+      6.515288938802162,
+      3.7890624820041316
+    ]
+  },
+  "conditional": {
+    "regional_original": {
+      "available_means": [
+        0.575252188773323,
+        0.6087697081162896,
+        0.5966414316660829,
+        0.6417390366743325
+      ],
+      "rescued": 617.0,
+      "damaged": 422.0
+    },
+    "semantic/direct": {
+      "available_means": [
+        0.5640350426104586,
+        0.5961151377695827,
+        0.5333831048602067,
+        0.5630557141770982
+      ],
+      "rescued": 510.0,
+      "damaged": 522.0
+    },
+    "semantic/diffused": {
+      "available_means": [
+        0.5178649014733137,
+        1.0,
+        0.0,
+        0.5
+      ],
+      "rescued": 0.0,
+      "damaged": 0.0
+    },
+    "unregistered/direct": {
+      "available_means": [
+        0.41920014230017427,
+        0.4071948099619066,
+        0.45506298250478244,
+        0.4506811013646946
+      ],
+      "rescued": 466.0,
+      "damaged": 594.0
+    },
+    "unregistered/diffused": {
+      "available_means": [
+        0.4406651676890968,
+        0.4415634625499517,
+        0.45297721757189086,
+        0.45536932676650915
+      ],
+      "rescued": 445.0,
+      "damaged": 602.0
+    },
+    "raw_registered/direct": {
+      "available_means": [
+        0.4441178466543952,
+        0.4419257432886972,
+        0.48170735204709325,
+        0.49180553825038253
+      ],
+      "rescued": 517.0,
+      "damaged": 542.0
+    },
+    "raw_registered/diffused": {
+      "available_means": [
+        0.476724319358289,
+        0.4780407707980821,
+        0.48201100693808663,
+        0.4873109232207203
+      ],
+      "rescued": 478.0,
+      "damaged": 563.0
+    },
+    "visibility/direct": {
+      "available_means": [
+        0.5583354165005593,
+        0.576174328129896,
+        0.5396508885826465,
+        0.5579072173898387
+      ],
+      "rescued": 544.0,
+      "damaged": 480.0
+    },
+    "visibility/diffused": {
+      "available_means": [
+        0.5276957465045352,
+        0.5195500069066112,
+        0.5585810534008171,
+        0.558515169497603
+      ],
+      "rescued": 619.0,
+      "damaged": 449.0
+    },
+    "turned/direct": {
+      "available_means": [
+        0.5373898574749553,
+        0.5542223016980669,
+        0.5469081201703077,
+        0.5706241980527237
+      ],
+      "rescued": 568.0,
+      "damaged": 495.0
+    },
+    "turned/diffused": {
+      "available_means": [
+        0.5189670943177018,
+        0.5140438997164858,
+        0.5568202222710934,
+        0.5610503305319199
+      ],
+      "rescued": 614.0,
+      "damaged": 458.0
+    }
+  },
+  "paired": {
+    "visibility/direct": {
+      "chance": {
+        "mean": 0.057907217389838714,
+        "classes": {
+          "classes": 19,
+          "queries": 157,
+          "mean_across_classes": 4.7579248732528105,
+          "positive_classes": 9,
+          "bootstrap95": [
+            -2.549376284224975,
+            12.202417130742441
+          ]
+        }
+      },
+      "turned": {
+        "mean": -0.012716980662884986,
+        "classes": {
+          "classes": 19,
+          "queries": 157,
+          "mean_across_classes": 0.20190747352146177,
+          "positive_classes": 9,
+          "bootstrap95": [
+            -2.198078615630802,
+            2.8645608398679636
+          ]
+        }
+      },
+      "raw_registered": {
+        "mean": 0.06610167913945617,
+        "classes": {
+          "classes": 19,
+          "queries": 157,
+          "mean_across_classes": 7.503568217320407,
+          "positive_classes": 12,
+          "bootstrap95": [
+            -2.2257209804782594,
+            17.843206432359967
+          ]
+        }
+      },
+      "unregistered": {
+        "mean": 0.10722611602514413,
+        "classes": {
+          "classes": 19,
+          "queries": 157,
+          "mean_across_classes": 9.06098915236303,
+          "positive_classes": 11,
+          "bootstrap95": [
+            -0.92069124391817,
+            20.13255213639577
+          ]
+        }
+      }
+    },
+    "visibility/diffused": {
+      "chance": {
+        "mean": 0.05851516949760306,
+        "classes": {
+          "classes": 19,
+          "queries": 157,
+          "mean_across_classes": 5.821624840744626,
+          "positive_classes": 10,
+          "bootstrap95": [
+            -6.490761386593444,
+            17.95475477196727
+          ]
+        }
+      },
+      "turned": {
+        "mean": -0.0025351610343167736,
+        "classes": {
+          "classes": 19,
+          "queries": 157,
+          "mean_across_classes": -1.589884964987244,
+          "positive_classes": 8,
+          "bootstrap95": [
+            -6.330588462197881,
+            3.078157371609079
+          ]
+        }
+      },
+      "raw_registered": {
+        "mean": 0.07120424627688281,
+        "classes": {
+          "classes": 19,
+          "queries": 157,
+          "mean_across_classes": 10.361747954577748,
+          "positive_classes": 10,
+          "bootstrap95": [
+            -5.305443973168447,
+            26.64328300210669
+          ]
+        }
+      },
+      "unregistered": {
+        "mean": 0.10314584273109391,
+        "classes": {
+          "classes": 19,
+          "queries": 157,
+          "mean_across_classes": 11.644869458887833,
+          "positive_classes": 11,
+          "bootstrap95": [
+            -7.962046024381456,
+            31.38095364273403
+          ]
+        }
+      }
+    }
+  }
+}
