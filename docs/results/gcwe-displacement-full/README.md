@@ -20,3 +20,18 @@ Chấm trên Colab T4 với OpenAI CLIP ViT-B/32 đóng băng, seed 42, 20.931 t
 **Thứ hạng thay đổi ở đâu?** Số truy vấn chuyển từ không có sang có ít nhất một ảnh đúng ở cutoff precision chính thức là 237 / 253 / 46. Số truy vấn mất ảnh đúng cuối cùng ở cutoff đó là 166 / 191 / 32. Trên Ext-2, riêng các truy vấn giữ được ít nhất một ảnh đúng trước và sau can thiệp đóng góp +0,497 trong tổng mức tăng +0,546 mAP. Ở lượt xác nhận, xác suất ảnh cung cấp bằng chứng thuộc đúng lớp tăng rất ít trên Ext-1 và giảm nhẹ trên Ext-2. Cơ chế cải thiện thứ hạng vẫn cần giải thích sâu hơn. [Phân tích ảnh cung cấp bằng chứng và biên ngữ nghĩa](../gcwe-displacement-donor-audit/README.md)
 
 [Cách tính từng bước và prior art](mechanism-vi.md) · [Thiết kế khóa trước khi chấm](protocol.md) · [Lượt xác nhận](../gcwe-displacement-concentration/README.md) · [Khoảng tin cậy và chuyển trạng thái theo từng split](paired-effects.json) · [Biểu đồ so sánh](displacement-comparisons.pdf) · [Kết quả theo truy vấn](paired-T4.zip)
+
+### Từ nào thực sự làm đổi thứ hạng?
+
+Mỗi split lấy một sketch có ảnh đúng mới lọt vào cutoff và một sketch mất ảnh đúng cuối cùng. Trong mỗi nhóm, chọn trung vị độ lớn thay đổi AP trong các trường hợp AP cùng chiều với thay đổi hit. Hai split Sketchy cũng loại mọi ID đã dùng để phát hiện hoặc xác nhận biến thể. So sánh một ảnh đúng với ảnh cạnh tranh đứng đầu ở cấu hình bất lợi. Khi ảnh đúng đầu tiên thay đổi danh tính, hạng của một ảnh cố định có thể khác hạng của ảnh đúng tốt nhất.
+
+| Truy vấn | Hạng ảnh đúng đầu tiên, gốc → mới | Điều quan sát được |
+|---|---:|---|
+| Ext-1, bướm | 287 → 91 | Các từ chỉ bướm và từ *bougainvillea* cùng thu hẹp cách biệt với ảnh gấu bông giữa hoa. |
+| Ext-1, lạc đà | 79 → 491 | *Camel* và *camelid* góp tổng cộng −0,728 vào thay đổi biên điểm so với ảnh hươu. |
+| Ext-2, chim hót | 583 → 152 | *American goldfinch* đóng góp +0,559 vào thay đổi biên +0,715 so với ảnh hải âu. Ảnh hải âu còn đứng hạng 2. |
+| Ext-2, hải âu | 5 → 527 | Ảnh dơi vượt lên hạng 1. *Gull dong* có đóng góp âm lớn nhất vào thay đổi biên của cặp này. |
+| TU, xe tải | 414 → 1 | Ảnh TV rơi từ hạng 1 xuống 2.088. Các từ về TV, màn hình và xe tải cùng đóng góp vào việc đảo thứ tự. |
+| TU, máy bay | 1 → 237 | Trực thăng lên hạng 1. *Helicopter*, *airplane* và *plane (tool)* đóng góp âm vào thay đổi biên. |
+
+Điểm đóng góp được tính qua toán tử diffusion chuyển vị. Với mỗi ảnh, tách thay đổi xác suất thành tổng theo từng từ, rồi đổi đơn vị sang chênh lệch log điểm bằng hệ số log(a/b)/(a−b). Các đóng góp cộng lại tái tạo thay đổi biên của cặp ảnh với sai số lớn nhất 0,000005 trên sáu trường hợp. Dấu dương có thể phản ánh giảm bằng chứng cho ảnh cạnh tranh hoặc tăng bằng chứng cho ảnh đúng. Sáu ví dụ mô tả các quyết định cụ thể. Tần suất gây lỗi của các từ đa nghĩa trên toàn gallery vẫn là câu hỏi mở. [Số liệu Sketchy](word-cases-sketchy.json) · [Số liệu TU-Berlin](word-cases-tuberlin.json) · [Mã quy đóng góp](../../../tf_sbir/gcwe_displacement_examples.py)
