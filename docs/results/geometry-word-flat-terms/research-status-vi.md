@@ -1,5 +1,7 @@
 # Ba thành phần của framework ZS-SBIR và bằng chứng hiện tại
 
+[Kiểm định trực tiếp ba cơ chế, trần sửa lỗi do quan hệ giữa các vùng và kết quả trên ảnh khác nguồn](semantic-observation-tests-vi.md)
+
 [Nghiên cứu về thông tin ngữ nghĩa còn thiếu, prior art CIR, đối chứng dự báo và kết quả mới trên các bản vẽ cùng nguồn](semantic-inference-vi.md)
 
 **Cập nhật T4.** Ứng viên dẫn đầu trong đợt kiểm định thay riêng phép chọn ảnh cung cấp bằng chứng của GCWE. Frozen CLIP chấm các cặp patch; sự tập trung của chúng theo độ dịch chuyển quyết định ảnh nào có ảnh hưởng lớn hơn đến phân bố từ của sketch. Trên Ext-1 / Ext-2 / TU-Berlin, mAP đạt **85,086 / 78,406 / 81,870**, precision đạt **84,600 / 76,170 / 82,981**. So với GCWE gốc trong cùng lượt, mAP tăng **0,303 / 0,546 / 0,375**. Các ước lượng điểm đều dương khi so với đối chứng xáo tọa độ hoặc bỏ bước gom theo độ dịch chuyển. Khoảng tin cậy 95% của chênh lệch mAP so với GCWE gốc vẫn chứa 0 trên từng split. [Bảng đầy đủ và cơ chế](https://github.com/HieuNM1804/training-free-ZS-SBIR/tree/f0cb524/docs/results/gcwe-displacement-full) · [Đối chiếu với mốc ECCV 2026](published-comparison-vi.md)
@@ -46,3 +48,5 @@ Một biến thể của Candidate-Conditioned Regional Matching giữ riêng hi
 ## Bằng chứng mới về thông tin chia sẻ giữa các ảnh
 
 Đã kiểm tra liệu vùng được chọn cho một ảnh thật sự giúp phân biệt nó với ảnh sai, liệu quan hệ hình học dự báo được một bộ phận sketch chưa thấy, và liệu cách sketch lược thông tin có ổn định giữa các vùng. [Các phép thử, lượt xác nhận trên ảnh nguồn khác và giới hạn của kết luận](regional-and-semantic-evidence-vi.md)
+
+Ở phép chấm toàn gallery, giữ nguyên các patch nhưng mã hóa chúng cùng nhau tăng 17,57 / 16,96 mAP so với mô hình cộng tính. Thay một phần sketch bằng một phần ảnh đúng lớp chưa giúp phân biệt các ứng viên sát hạng. Đã tách được hiệu ứng của ngữ cảnh trong chính sketch khỏi giả thuyết về thông tin bổ sung do ảnh mang đến. [Kết quả ba nhánh và giới hạn của bằng chứng](semantic-observation-tests-vi.md)
