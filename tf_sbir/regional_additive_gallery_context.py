@@ -56,6 +56,47 @@ def diagnose(scores,truth,ids,pos,neg):
     return by_method,comparisons
 
 
+def matched_examples(scores,truth,cq,cp,qp,pp,names,root):
+    from PIL import Image, ImageOps
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    records=[]
+    for split,panels in zip(names,scores,strict=True):
+        native_panel=panels['combined']
+        additive_panel=panels['combined_additive']
+        native=native_panel.argmax(1)
+        additive=additive_panel.argmax(1)
+        q=torch.arange(len(cq))
+        first,second=truth[q,native],truth[q,additive]
+        for change,mask in [('rescued',~first & second),('lost',first & ~second)]:
+            ids=mask.nonzero().flatten()
+            if not len(ids):
+                continue
+            margin=native_panel[ids,native[ids]]-native_panel[ids,additive[ids]]
+            margin+=additive_panel[ids,additive[ids]]-additive_panel[ids,native[ids]]
+            ordered=margin.argsort(stable=True)
+            row=int(ids[ordered[(len(ids)-1)//2]])
+            paths=[Path(qp[int(cq[row])]),Path(pp[int(cp[native[row]])]),Path(pp[int(cp[additive[row]])])]
+            records.append((split,change,len(ids),paths))
+    if records:
+        fig,axes=plt.subplots(len(records),3,figsize=(8,2.15*len(records)),squeeze=False,layout='constrained')
+        for i,(split,change,n,paths) in enumerate(records):
+            for j,path in enumerate(paths):
+                with Image.open(path) as im:
+                    axes[i,j].imshow(ImageOps.contain(im.convert('RGB'),(256,200)))
+                axes[i,j].set_xticks([])
+                axes[i,j].set_yticks([])
+                axes[i,j].set_title(('Query','Original region score','Additive region score')[j]+' · '+path.parent.name,fontsize=9)
+                for spine in axes[i,j].spines.values():spine.set_visible(False)
+            axes[i,0].set_ylabel(split.replace('sketchy_','Ext-')+' · '+change,fontsize=9)
+        fig.suptitle('Same gallery photos, top-1 among the shared subset',fontsize=12)
+        fig.savefig(root/'shared-gallery-examples.png',dpi=160)
+        plt.close(fig)
+    return [{'split':s,'change':c,'in_stratum':n,'paths':[p.parent.name+'/'+p.name for p in paths]}
+            for s,c,n,paths in records]
+
+
 @torch.inference_mode()
 def run():
     random.seed(42); np.random.seed(42); torch.manual_seed(42); torch.cuda.manual_seed_all(42)
@@ -113,7 +154,8 @@ def run():
         del globalbank,graph,buffers
     methods,comparisons=diagnose(scores,truth,ids,pos,neg)
     out={'commit':revision(),'queries':len(cq),'photos':len(cp),'distinct_queries_with_boundaries':len(ids.unique()),
-         'fixed_relevance_pairs':len(ids),'classes':cat,'methods':methods,'transitions':comparisons}
+         'fixed_relevance_pairs':len(ids),'classes':cat,'methods':methods,'transitions':comparisons,
+         'median_margin_examples':matched_examples(scores,truth,cq,cp,qp,pp,names,root)}
     atomic_json(root/'shared-gallery-decisions.json',out)
     print(json.dumps(comparisons))
 
