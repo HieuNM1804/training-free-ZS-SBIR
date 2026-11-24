@@ -1,0 +1,9 @@
+# Has donor nomination already consumed the evidence used by the update?
+
+The preceding paired-role test saw negative ordinary held-out log gains against its supposed prior under both splits. That prior already uses the two observed sketch regions to find gallery photos. Repeating this evidence inside the conditional model could reduce utility. Compare three panel designs, fixing the number of unique photos exactly at every query, fold and completion trial.
+
+* Original panel: union of the top 32 photos from A and B.
+* Context panel: use only the fourth, separately encoded corner O, outside A, B and held-out C, to nominate photos. Then use A and B in the same semantic models as before.
+* Blind panel: draw a deterministic uniform order of the same eligible photos from seed 42 and query ID, independent of all pixel values. Use the same number of donors.
+
+Repeat the previous 768 queries per split and always exclude the reference photo's fold from the donor pool. Retain every matching algorithm, readout, scene bank and grid placement. Check that the first panel reproduces the archived ordinary scores. Primary comparison is the difference of the distinct-role minus prior gain between context and original nomination. Require a positive absolute gain relative to the context-panel prior as well as a positive difference in both splits. Report blind-panel results, literal versus tree and the marginal probability ratio of the two observed evidences under the literal versus ordinary-tree model. The latter detects aggregate dependence left after conditioning on the missing word. Also test geometry against unrestricted position permutations. Even if a contextual update is helpful, its final forecast must also be compared against the original anchor-conditioned panel's forecast. The changed panel alters semantic content as well as the reuse of observations, so the design does not isolate a unique causal bias.
