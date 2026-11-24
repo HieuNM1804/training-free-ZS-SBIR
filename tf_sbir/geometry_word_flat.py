@@ -6,6 +6,7 @@ import json
 import os
 os.environ["CUBLAS_WORKSPACE_CONFIG"] = ":4096:8"
 import random
+import subprocess
 import numpy as np
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
@@ -138,7 +139,7 @@ def geometry_cache(w, split, gallery, query, flipped, qi, pi, qp, pp, vision):
 
 
 @torch.inference_mode()
-def run(dataset, term_ablation=False, diffusion_paths=False):
+def run(dataset, term_ablation=False, diffusion_paths=False, workspace=Path('/content/sbir')):
     seed = SEED
     random.seed(seed)
     np.random.seed(seed)
@@ -147,7 +148,7 @@ def run(dataset, term_ablation=False, diffusion_paths=False):
     torch.backends.cudnn.benchmark = False
     torch.backends.cudnn.deterministic = True
     torch.use_deterministic_algorithms(True)
-    w = Path('/content/sbir')
+    w = workspace
     methods = TERM_ROWS if term_ablation else ROWS
     root = w / 'results' / (FAMILY + '-terms' if term_ablation else FAMILY)
     if diffusion_paths:
@@ -164,6 +165,8 @@ def run(dataset, term_ablation=False, diffusion_paths=False):
     vision = load_frozen_clip(cfg.clip_checkpoint, torch.device('cuda')).visual
     coords = torch.cartesian_prod(torch.arange(7), torch.arange(7)).cuda().float()
     distance = torch.cdist(coords, coords)
+    source_tree = subprocess.check_output(['git','rev-parse','HEAD:tf_sbir'],
+                                          cwd=Path(__file__).resolve().parents[1],text=True).strip()
     for split, (qi, labels) in qs.items():
         out = root / (split + '.json')
         pi, gl = gs[split]
@@ -172,12 +175,15 @@ def run(dataset, term_ablation=False, diffusion_paths=False):
         paths = [str(pp[i]) for i in pi.tolist()]
         recipe = digest({'seed':seed,'methods':list(methods),'model':CHECKPOINT,'evaluator':KD_FUNCTION_SHA,
                          'gallery':paths,'queries':[str(qp[i]) for i in qi.tolist()],
-                         'source_revision':revision(),'torch':str(torch.__version__),'cuda':torch.version.cuda,
+                         'source_tree':source_tree,'torch':str(torch.__version__),'cuda':torch.version.cuda,
                          'device':torch.cuda.get_device_name()})
         if out.exists() and out.with_suffix('.pt').is_file():
             saved = json.loads(out.read_text())
             if saved.get('recipe') == recipe:
-                continue
+                record = torch.load(out.with_suffix('.pt'),mmap=True,weights_only=True)
+                if record.get('recipe')==recipe and set(record['rows'])==set(methods) and all(
+                    torch.equal(record[k],v) for k,v in (('qi',qi),('pi',pi),('labels',labels))):
+                    continue
             # Completed published seed-42 runs predate recipe tags. Check the data and known scoring revision.
             legacy = {'cca8750e99c12a050bc8fcf4a0b15a7888af75e1','ce90e01f01ceb5bb746d7046123de1a602c6bddb',
                       '71ec3528e92c4d0a9b7cfd0e42d0aafdc0ed73d7'}
@@ -295,8 +301,9 @@ def run(dataset, term_ablation=False, diffusion_paths=False):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('dataset', choices=('sketchy', 'tuberlin'))
+    parser.add_argument('--workspace', type=Path, default=Path('/content/sbir'))
     group = parser.add_mutually_exclusive_group()
     group.add_argument('--term-ablation', action='store_true')
     group.add_argument('--diffusion-paths', action='store_true')
     args = parser.parse_args()
-    run(args.dataset, args.term_ablation, args.diffusion_paths)
+    run(args.dataset, args.term_ablation, args.diffusion_paths, args.workspace)
