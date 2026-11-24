@@ -1,5 +1,7 @@
 # Ba thành phần của framework ZS-SBIR và bằng chứng hiện tại
 
+**Cross-Domain Semantic Retrieval.** Suy ra tỷ lệ ảnh láng giềng ủng hộ sketch đạt 79,99 / 81,16 trên Ext-1, 73,82 / 72,63 trên Ext-2 và 77,87 / 79,10 trên TU-Berlin 30 lớp (mAP / precision, toàn bộ truy vấn). So với khớp từ trực tiếp, mAP tăng 4,68 / 2,40 / 4,52 điểm. Riêng đóng góp so với trung bình trên cùng 16 ảnh chỉ là 0,11 / 0,51 / 0,10 điểm. Diffusion RGB đạt 81,86 / 74,21 / 79,16 mAP. Vì thế tiếp tục dùng diffusion làm đối chứng chính. Khi giữ nguyên đồ thị, cách suy luận mới vẫn chỉ cải thiện mAP trên một trong hai split thăm dò. [Ba tập đầy đủ, phép khóa cấu hình và ablation](https://github.com/HieuNM1804/training-free-ZS-SBIR/tree/b7eaaf9/docs/results/semantic-predictive-support) · [Đối chứng cùng đồ thị](https://github.com/HieuNM1804/training-free-ZS-SBIR/tree/b7eaaf9/docs/results/semantic-predictive-diffusion)
+
 [Kiểm định trực tiếp ba cơ chế, trần sửa lỗi do quan hệ giữa các vùng và kết quả trên ảnh khác nguồn](semantic-observation-tests-vi.md)
 
 [Nghiên cứu về thông tin ngữ nghĩa còn thiếu, prior art CIR, đối chứng dự báo và kết quả mới trên các bản vẽ cùng nguồn](semantic-inference-vi.md)
