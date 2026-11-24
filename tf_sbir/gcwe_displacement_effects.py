@@ -22,10 +22,18 @@ def effects(primary,comparison,labels):
     micro=totals[draws].sum(1)/counts[draws].sum(1)[:,None]
     macro=means[draws].mean(1)
     per_class={str(k):dict(count=int(n),mean_points=v.tolist()) for k,n,v in zip(classes,counts,means)}
+    had_hit=comparison[:,1].numpy()>0
+    has_hit=primary[:,1].numpy()>0
+    transitions={}
+    for name,mask in [('gained',~had_hit & has_hit),('lost',had_hit & ~has_hit),
+                      ('retained',had_hit & has_hit),('absent',~had_hit & ~has_hit)]:
+        transitions[name]=dict(queries=int(mask.sum()),contribution_to_map=float(delta[mask,0].sum()/len(labels)))
+    assert abs(sum(x['contribution_to_map'] for x in transitions.values())-delta[:,0].mean())<1e-8
     return dict(points=delta.mean(0).tolist(),micro95=np.quantile(micro,[.025,.975],axis=0).T.tolist(),
         macro_points=means.mean(0).tolist(),macro95=np.quantile(macro,[.025,.975],axis=0).T.tolist(),
         improved_classes=(means>0).sum(0).tolist(),classes=len(classes),per_class=per_class,
-        query_wins=(delta>0).sum(0).tolist(),query_losses=(delta<0).sum(0).tolist(),query_ties=(delta==0).sum(0).tolist())
+        query_wins=(delta>0).sum(0).tolist(),query_losses=(delta<0).sum(0).tolist(),
+        query_ties=(delta==0).sum(0).tolist(),hit_at_precision_cutoff=transitions)
 
 
 def plot(report,output):
