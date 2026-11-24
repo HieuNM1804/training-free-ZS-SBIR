@@ -1,0 +1,201 @@
+{
+  "commit": "a0db83ae79311053386ff4ec958b0f4e91093d22",
+  "seed": 42,
+  "evaluator": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+  "gpu": "Tesla T4",
+  "queries": 1828,
+  "gallery": 12552,
+  "arms": [
+    "separate/split",
+    "separate/words",
+    "raw_additive/split",
+    "raw_additive/words",
+    "joint_union/split",
+    "joint_union/words",
+    "full/split",
+    "full/words"
+  ],
+  "boundary": {
+    "pairs": 998,
+    "both": 362,
+    "certified": 458,
+    "balanced": [
+      0.47513812154696133,
+      0.4544198895027624,
+      0.46408839779005523,
+      0.4972375690607735,
+      0.5069060773480663,
+      0.5041436464088398,
+      0.5428176795580111,
+      0.5524861878453039
+    ],
+    "corrected_certified": [
+      0.0,
+      86.0,
+      53.0,
+      127.0,
+      93.0,
+      173.0,
+      145.0,
+      216.0
+    ],
+    "damaged": [
+      0.0,
+      133.0,
+      87.0,
+      138.0,
+      82.0,
+      160.0,
+      93.0,
+      164.0
+    ],
+    "rescued": [
+      0.0,
+      96.0,
+      64.0,
+      138.0,
+      107.0,
+      187.0,
+      162.0,
+      232.0
+    ]
+  },
+  "baseline_pair_replay": {
+    "changed": 0,
+    "mean_log_drift": 0.0015121795559546174,
+    "maximum_log_drift": 0.011726630678417393
+  },
+  "full_token_replay_max": 0.0,
+  "metrics": {
+    "separate/words": [
+      45.2717726899635,
+      43.957604020752456
+    ],
+    "separate/split": [
+      43.211622441496246,
+      41.329595258895566
+    ],
+    "raw_additive/words": [
+      45.50603128316521,
+      44.184628123554035
+    ],
+    "raw_additive/split": [
+      42.74560118028364,
+      40.71526267520953
+    ],
+    "joint_union/words": [
+      62.47060965075152,
+      61.05771347716312
+    ],
+    "joint_union/split": [
+      58.67603423587949,
+      57.44775722258779
+    ],
+    "full/words": [
+      71.28894746240383,
+      70.06892797356792
+    ],
+    "full/split": [
+      67.4067373686833,
+      66.61624739321532
+    ]
+  },
+  "effects": {
+    "raw_additive minus separate/words": {
+      "points": [
+        0.23425859320171064,
+        0.2270241028015834
+      ],
+      "class_ap": {
+        "classes": 21,
+        "queries": 1828,
+        "mean_across_classes": 0.23797760826746248,
+        "positive_classes": 12,
+        "bootstrap95": [
+          -2.5922345909367643,
+          3.098947378202393
+        ]
+      }
+    },
+    "joint_union minus raw_additive/words": {
+      "points": [
+        16.964578367586306,
+        16.873085353609085
+      ],
+      "class_ap": {
+        "classes": 21,
+        "queries": 1828,
+        "mean_across_classes": 16.86926145216024,
+        "positive_classes": 20,
+        "bootstrap95": [
+          11.149271981237359,
+          23.702788125151265
+        ]
+      }
+    },
+    "full minus joint_union/words": {
+      "points": [
+        8.818337811652318,
+        9.011214496404813
+      ],
+      "class_ap": {
+        "classes": 21,
+        "queries": 1828,
+        "mean_across_classes": 8.811547876343768,
+        "positive_classes": 21,
+        "bootstrap95": [
+          6.773064363834207,
+          11.1596541608794
+        ]
+      }
+    },
+    "raw_additive minus separate/split": {
+      "points": [
+        -0.46602126121260146,
+        -0.6143325836860312
+      ],
+      "class_ap": {
+        "classes": 21,
+        "queries": 1828,
+        "mean_across_classes": -0.45965151333956344,
+        "positive_classes": 8,
+        "bootstrap95": [
+          -2.9543202300062332,
+          2.1736705329524635
+        ]
+      }
+    },
+    "joint_union minus raw_additive/split": {
+      "points": [
+        15.930433055595852,
+        16.732494547378263
+      ],
+      "class_ap": {
+        "classes": 21,
+        "queries": 1828,
+        "mean_across_classes": 15.833148446439177,
+        "positive_classes": 19,
+        "bootstrap95": [
+          10.489595278829887,
+          22.252222117204692
+        ]
+      }
+    },
+    "full minus joint_union/split": {
+      "points": [
+        8.73070313280379,
+        9.168490170627523
+      ],
+      "class_ap": {
+        "classes": 21,
+        "queries": 1828,
+        "mean_across_classes": 8.718055792910743,
+        "positive_classes": 20,
+        "bootstrap95": [
+          6.817412304024107,
+          10.870271126806891
+        ]
+      }
+    }
+  }
+}
