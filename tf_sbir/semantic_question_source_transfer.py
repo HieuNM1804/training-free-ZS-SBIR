@@ -1,5 +1,6 @@
 """Factor a pair decision into within-category photo transfer and a matched depiction change."""
 import json
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 import torch
@@ -100,7 +101,21 @@ def run():
     pw=word_rows(pf,original_candidates,(src,tgt),scale)
     pw.update(word_rows(pf,all_photos-original_candidates,(src,tgt),scale))
     for split,rows in records.items():
-        details=decisions(rows,source_ids[split],qw,pw)
+        saved_split=root/(split+"-transfer.json")
+        # This previous revision finished Ext-1 with the identical original input cohorts and strict replay.
+        if saved_split.exists() and (root/(split+"-transfer-pairs.json")).is_file():
+            prior=json.loads(saved_split.read_bytes())
+            if prior["commit"]=="ae5b7ef53397a457da6d9f847c3b97c0b608bcbd" and prior["decisions"]==len(rows):
+                print("Reusing verified",split,prior["commit"],flush=True)
+                continue
+        def one(row):
+            key=f"{split}-{row['q']}-{row['pos']}-{row['neg']}.json"
+            cached=work/"cache/semantic-question-source-transfer"/revision()/key
+            if not cached.exists():
+                atomic_json(cached,decisions([row],source_ids[split],qw,pw)[0])
+            return json.loads(cached.read_bytes())
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            details=list(pool.map(one,rows))
         stats={arm:summary(details,arm) for arm in (*ARMS,"direct")}
         atomic_json(root/(split+"-transfer-pairs.json"),details)
         atomic_json(root/(split+"-transfer.json"),dict(commit=revision(),seed=42,gpu=torch.cuda.get_device_name(),

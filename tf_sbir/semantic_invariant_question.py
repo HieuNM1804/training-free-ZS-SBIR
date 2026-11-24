@@ -12,10 +12,10 @@ class Optimum:
     residual: float
 
 
-def linear_program(contrast, basis, scale):
+def linear_program(contrast, basis, scale, method="highs-ds"):
     options = dict(dual_feasibility_tolerance=1e-9, primal_feasibility_tolerance=1e-9)
     fit = linprog(-scale * contrast, A_eq=scale * basis, b_eq=np.zeros(len(basis)),
-                  bounds=(-1., 1.), method="highs-ds", options=options)
+                  bounds=(-1., 1.), method=method, options=options)
     if not fit.success:
         raise RuntimeError(fit.message)
     return fit.x, fit.eqlin.marginals
@@ -47,7 +47,12 @@ def solve_decision(contrast, equalities, *, full=False):
         for _ in range(32):
             cost = np.bincount(group, weights=contrast)
             rows = np.stack([np.bincount(group, weights=row) for row in basis])
-            ans, dual = linear_program(cost, rows, scale)
+            try:
+                ans, dual = linear_program(cost, rows, scale)
+            except RuntimeError:
+                # A degenerate grouped problem can return HiGHS status 'unknown'.
+                # The unrestricted problem has the same original equalities and directly certifies the answer.
+                break
             result = bound_answer(contrast, equalities, basis, ans[group], dual)
             if result.upper-result.lower < 2e-11:
                 return result
@@ -57,7 +62,10 @@ def solve_decision(contrast, equalities, *, full=False):
             if split.max() == group.max() or len(cost) >= len(group)//2:
                 break
             group = split
-    ans, dual = linear_program(contrast, basis, scale)
+    try:
+        ans, dual = linear_program(contrast, basis, scale)
+    except RuntimeError:
+        ans, dual = linear_program(contrast, basis, scale, method="highs-ipm")
     result = bound_answer(contrast, equalities, basis, ans, dual)
     if result.upper-result.lower > 2e-7:
         raise ArithmeticError("Unresolved whole-vocabulary primal/dual gap")
