@@ -1,0 +1,188 @@
+{
+  "commit": "c362fad5f0538571358ec4fc33081c604e9d6170",
+  "seed": 42,
+  "queries": 3072,
+  "gallery": 12552,
+  "algebra_max": 0.0,
+  "reference_mae_points": [
+    0.050689781149534006,
+    0.04150390074452541
+  ],
+  "metrics": {
+    "regional_self": [
+      72.29930183934812,
+      70.39322937343968
+    ],
+    "global_regional_self": [
+      76.9313936554378,
+      74.74804695536173
+    ],
+    "regional_agreement": [
+      72.56729001017752,
+      70.51220723184693
+    ],
+    "global_regional_agreement": [
+      76.99490578094506,
+      74.78157560038503
+    ],
+    "regional_scale_agreement": [
+      72.47315512430154,
+      70.5234376925849
+    ],
+    "global_regional_scale_agreement": [
+      76.94583289621733,
+      74.77311206060526
+    ],
+    "regional_near_score_sham": [
+      72.43092154919091,
+      70.50732440666252
+    ],
+    "global_regional_near_score_sham": [
+      76.94342786339803,
+      74.7836914886951
+    ],
+    "regional_separate_words": [
+      72.1053428012965,
+      70.22639994362785
+    ],
+    "global_regional_separate_words": [
+      76.79887572345856,
+      74.61832689920507
+    ]
+  },
+  "contrasts": {
+    "regional_agreement_minus_self": {
+      "points": [
+        0.26798817082938814,
+        0.11897785840725798
+      ],
+      "macro": {
+        "classes": 21,
+        "queries": 3072,
+        "mean_across_classes": 0.2404381992816597,
+        "positive_classes": 14,
+        "bootstrap95": [
+          -0.05727012189227588,
+          0.5393314696958219
+        ]
+      }
+    },
+    "regional_agreement_minus_scale_agreement": {
+      "points": [
+        0.09413488587597385,
+        -0.011230460737958007
+      ],
+      "macro": {
+        "classes": 21,
+        "queries": 3072,
+        "mean_across_classes": 0.07383902844258323,
+        "positive_classes": 10,
+        "bootstrap95": [
+          -0.17846224758359686,
+          0.3271627762077317
+        ]
+      }
+    },
+    "regional_agreement_minus_near_score_sham": {
+      "points": [
+        0.13636846098658376,
+        0.004882825184419441
+      ],
+      "macro": {
+        "classes": 21,
+        "queries": 3072,
+        "mean_across_classes": 0.10947581876074972,
+        "positive_classes": 15,
+        "bootstrap95": [
+          -0.06534400652996192,
+          0.27549767096679073
+        ]
+      }
+    },
+    "regional_separate_words_minus_self": {
+      "points": [
+        -0.19395903805161652,
+        -0.16682942981181745
+      ],
+      "macro": {
+        "classes": 21,
+        "queries": 3072,
+        "mean_across_classes": -0.1422470726092526,
+        "positive_classes": 7,
+        "bootstrap95": [
+          -0.5839465694268235,
+          0.3836720081745697
+        ]
+      }
+    },
+    "global_regional_agreement_minus_self": {
+      "points": [
+        0.06351212550725904,
+        0.03352864502327672
+      ],
+      "macro": {
+        "classes": 21,
+        "queries": 3072,
+        "mean_across_classes": 0.0608046908136754,
+        "positive_classes": 13,
+        "bootstrap95": [
+          -0.06965585649367532,
+          0.1859424210250618
+        ]
+      }
+    },
+    "global_regional_agreement_minus_scale_agreement": {
+      "points": [
+        0.04907288472774477,
+        0.008463539779768325
+      ],
+      "macro": {
+        "classes": 21,
+        "queries": 3072,
+        "mean_across_classes": 0.050050062885433975,
+        "positive_classes": 12,
+        "bootstrap95": [
+          -0.04814811017094406,
+          0.14998487416518635
+        ]
+      }
+    },
+    "global_regional_agreement_minus_near_score_sham": {
+      "points": [
+        0.05147791754704182,
+        -0.002115888310072478
+      ],
+      "macro": {
+        "classes": 21,
+        "queries": 3072,
+        "mean_across_classes": 0.042232828196718426,
+        "positive_classes": 11,
+        "bootstrap95": [
+          -0.019484954363201426,
+          0.11636318032462278
+        ]
+      }
+    },
+    "global_regional_separate_words_minus_self": {
+      "points": [
+        -0.1325179319792369,
+        -0.12972005615665694
+      ],
+      "macro": {
+        "classes": 21,
+        "queries": 3072,
+        "mean_across_classes": -0.12206621551146732,
+        "positive_classes": 6,
+        "bootstrap95": [
+          -0.26846456657707896,
+          0.03096085427469287
+        ]
+      }
+    }
+  },
+  "matched_device_mae_points": [
+    4.153480404056609e-05,
+    0.0
+  ],
+  "device": "Tesla T4"
+}
