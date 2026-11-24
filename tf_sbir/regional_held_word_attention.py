@@ -50,7 +50,8 @@ def held_read(reader, paired):
 
 @torch.inference_mode()
 def run(*, family='regional-held-word-attention', alternate=None, start=768,
-        contrasts=(('held','self'),('held','sham')), dataset='sketchy', count=1536, batch_size=8):
+        contrasts=(('held','self'),('held','sham')), dataset='sketchy', count=1536, batch_size=8,
+        semantic_reference=False):
     random.seed(42);np.random.seed(42);torch.manual_seed(42);torch.cuda.manual_seed_all(42)
     torch.backends.cudnn.benchmark=False
     torch.backends.cudnn.deterministic=True
@@ -92,7 +93,12 @@ def run(*, family='regional-held-word-attention', alternate=None, start=768,
                 reader.prepare(scale)
                 reader.scale=scale
                 existing=reader.read('self',1.,'gallery')
-                tested=held_read(reader,peer) if alternate is None else alternate(reader)
+                if alternate is None:
+                    tested=held_read(reader,peer)
+                elif semantic_reference:
+                    tested=alternate(reader,lex)
+                else:
+                    tested=alternate(reader)
                 check=max(check,float((tested['self']-existing).abs().max()))
                 for key,r in {**tested,'self':existing}.items():
                     for name,value in [('regional_'+key,r),('global_regional_'+key,GLOBAL_WEIGHT*lex+REGIONAL_WEIGHT*r)]:
