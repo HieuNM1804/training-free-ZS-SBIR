@@ -69,21 +69,21 @@ def run(dataset):
     _,background=distance_bins()
     ph=cached(pp,cache)
     stages=("pilot","confirmation") if dataset=="sketchy" else ("transfer",)
-    stage_hists=[]
+    stage_hists={}
+    memberships={}
     for s in stages:
-        partial=[torch.load(folder/(split+"-"+s+".pt"),weights_only=True,mmap=True)["qi"] for split in qs]
-        qids=torch.cat(partial).unique()
-        stage_hists.append((qids,cached([qp[i] for i in qids.tolist()],cache)))
-    # Split overlap can place an ID in both stage caches. Check that its observed events agree.
-    by_id={}
-    for qids,hist in stage_hists:
-        for q,obs in zip(qids.tolist(),hist):
-            if q in by_id:
-                assert torch.equal(by_id[q],obs)
-            by_id[q]=obs
+        partial={split:torch.load(folder/(split+"-"+s+".pt"),weights_only=True,mmap=True)["qi"] for split in qs}
+        memberships[s]=partial
+        qids=torch.cat(list(partial.values())).unique()
+        stage_hists[s]=(qids,cached([qp[i] for i in qids.tolist()],cache))
     for split,(ids,labels) in qs.items():
         pi,gl=gs[split]
         ranked=verify_rank_rows(folder,split,ids,labels,pi,stages)
+        # Shared split IDs can occur in different stages. Use the exact encoding batch from the scored stage.
+        by_id={}
+        for s,(qids,cached_hist) in stage_hists.items():
+            take=memberships[s][split]
+            by_id.update(zip(take.tolist(),cached_hist[torch.searchsorted(qids,take)]))
         qhist=torch.stack([by_id[q] for q in ids.tolist()])
         bank=make_word_bank(F.normalize(pf[pi].cuda().float(),dim=1),tgt,scale,192)
         folds=[v.cuda() for v in torch.randperm(len(pi),generator=torch.Generator().manual_seed(42)).tensor_split(2)]
