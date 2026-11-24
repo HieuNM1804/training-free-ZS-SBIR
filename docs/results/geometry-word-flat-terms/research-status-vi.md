@@ -23,3 +23,13 @@ GCWE cập nhật phân bố từ của sketch bằng tỉ số giữa khối l�
 Đóng góp mAP trong toàn bộ framework là +0,15 / +0,29 / +0,93. Khoảng bootstrap theo lớp của cả ba phép so sánh seed 42 này đều chứa 0. Các pilot đã tách riêng sự thay đổi ý nghĩa ở donor cùng hạng cosine, tính kỳ vọng chính xác trên tập donor, gộp tỉ số của những từ gần nghĩa và quy phần đóng góp hình học cho từng patch có liên quan đến một từ. Không có biến thể nào vượt qua đủ đối chứng đã khóa. Việc phân rã điểm hình học chính xác về toán học chưa chứng minh rằng patch CLIP xác định đúng đối tượng. [Donor cùng hạng](https://github.com/HieuNM1804/training-free-ZS-SBIR/tree/f3c84f2/docs/results/gcwe-conditioned-donor-test) · [Lấy kỳ vọng](https://github.com/HieuNM1804/training-free-ZS-SBIR/tree/6222983/docs/results/gcwe-expected-donors) · [Gộp từ](https://github.com/HieuNM1804/training-free-ZS-SBIR/tree/47c283e/docs/results/gcwe-semantic-rate-pooling) · [Quy đóng góp theo patch](https://github.com/HieuNM1804/training-free-ZS-SBIR/tree/5943746/docs/results/gcwe-word-local-geometry)
 
 Mốc SpLIP cùng tên split/cutoff là 80,2 / 76,4 / 73,1 mAP và 86,7 / 77,3 / 78,2 precision. Baseline hiện vượt số mAP công bố của SpLIP, còn precision trên hai split Sketchy thấp hơn. Khác biệt về prompt learning, gallery và cách chọn cấu hình phải đi cùng mọi so sánh. Chưa có cơ sở kết luận đứng đầu bảng hoặc tổng quát sang những cặp miền ngoài sketch → photo. [SpLIP, ECCV 2024, bảng 1](https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/03426.pdf)
+
+## Những hướng đã loại sau kiểm tra tiếp theo
+
+| Can thiệp vào đúng thành phần | Thay đổi mAP Ext-1 / Ext-2 so với đối chứng trên cùng truy vấn | Quyết định |
+|---|---:|---|
+| Dùng các ứng viên hợp lý theo toàn ảnh làm nền cho chọn vị trí vùng | −0,049 / +0,147 | Chỉ Ext-2 vượt đối chứng hoán đổi |
+| Giảm mức cập nhật GCWE theo phương sai chính xác khi hoán vị donor | +0,041 / −0,298 | Gán nhầm độ tin cậy giữa các từ gần tần suất vẫn tốt hơn trên cả hai split |
+| Dùng biểu diễn vùng để tự chọn mức khôi phục xác suất từ | −0,333 / −0,096 | Có thêm ròng 26 / 42 truy vấn có ảnh đúng trong top 200, nhưng giảm mAP |
+
+Các hàng dùng pilot riêng và được so với đối chứng ghép cặp trong từng hàng. Không cộng các thay đổi từ những mẫu khác nhau. Mỗi nghiên cứu công bố mã scoring, đối chứng, hai metric và kết quả theo từng truy vấn. [Chọn vị trí theo ngữ nghĩa](https://github.com/HieuNM1804/training-free-ZS-SBIR/tree/d420777/docs/results/regional-semantic-reference) · [Phương sai cập nhật từ](https://github.com/HieuNM1804/training-free-ZS-SBIR/tree/6c1b03c/docs/results/gcwe-word-null-variance) · [Mức khôi phục theo vùng](https://github.com/HieuNM1804/training-free-ZS-SBIR/tree/336827e/docs/results/semantic-regional-mass-witness)
