@@ -52,7 +52,7 @@ def held_read(reader, paired):
 @torch.inference_mode()
 def run(*, family='regional-held-word-attention', alternate=None, start=768,
         contrasts=(('held','self'),('held','sham')), dataset='sketchy', count=1536, batch_size=8,
-        selected_windows=False, device_reference=False):
+        selected_windows=False, device_reference=None):
     random.seed(42);np.random.seed(42);torch.manual_seed(42);torch.cuda.manual_seed_all(42)
     torch.backends.cudnn.benchmark=False
     torch.backends.cudnn.deterministic=True
@@ -113,7 +113,7 @@ def run(*, family='regional-held-word-attention', alternate=None, start=768,
         mismatch=(100*(rows['global_regional_self']-ref['rows']['without_geometry'][select,:2]).double().abs().mean(0))
         matched=mismatch
         if device_reference:
-            same=torch.load(w/'results/regional-position-device-reference'/(split+'.pt'),weights_only=True)
+            same=torch.load(w/'results'/device_reference/(split+'.pt'),weights_only=True)
             assert same['device']==torch.cuda.get_device_name() and same['seed']==42 and same['commit']==revision()
             assert torch.equal(same['qi'],qi[select]) and torch.equal(same['pi'],pi) and torch.equal(same['labels'],labels[select])
             matched=100*(rows['global_regional_self'].double()-same['kd'].double()).abs().mean(0)

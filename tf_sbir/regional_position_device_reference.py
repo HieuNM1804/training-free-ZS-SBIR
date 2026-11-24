@@ -1,4 +1,5 @@
 """Replay the locked pre-GCWE global-plus-regional score on this GPU for the prospective pilot."""
+import argparse
 import hashlib
 import inspect
 import os
@@ -19,7 +20,7 @@ from .geometry_word_flat import (
 
 
 @torch.inference_mode()
-def run():
+def run(confirmation=False):
     random.seed(42)
     np.random.seed(42)
     torch.manual_seed(42)
@@ -32,7 +33,8 @@ def run():
     cfg, qp, qs, pp, gs, q, p, src, tgt, scale = semantic_inputs(w, dataset)
     kd, _ = load_kd(w)
     assert hashlib.sha256(inspect.getsource(kd).strip().encode()).hexdigest() == KD_FUNCTION_SHA
-    rows = {s: torch.randperm(len(ids), generator=torch.Generator().manual_seed(42))[:1536].sort().values
+    segment = slice(1536, 4608) if confirmation else slice(0, 1536)
+    rows = {s: torch.randperm(len(ids), generator=torch.Generator().manual_seed(42))[segment].sort().values
             for s,(ids,_) in qs.items()}
     needed = torch.cat([ids[rows[s]] for s,(ids,_) in qs.items()]).unique(sorted=True)
     views,_ = region_views(w, 'sampled-'+dataset, cfg, qp, needed, q)
@@ -62,10 +64,13 @@ def run():
                 reg = GLOBAL_WEIGHT*log_score(first_d) + REGIONAL_WEIGHT*regional
                 combined = reg + GLOBAL_WEIGHT*(lex-log_score(first_d))
                 metrics.append(score_rows(combined,labels[group],gl.cuda(),s,replay,pool)[:,:2])
+        folder = 'regional-additive-device-reference' if confirmation else 'regional-position-device-reference'
         save_tensor({'qi':qi[ids],'pi':pi,'labels':labels[ids],'kd':torch.cat(metrics),
-                     'device':torch.cuda.get_device_name(),'commit':revision(),'seed':42},w/'results/regional-position-device-reference'/(s+'.pt'))
+                     'device':torch.cuda.get_device_name(),'commit':revision(),'seed':42},w/'results'/folder/(s+'.pt'))
         del bank,graph,region_bank
 
 
 if __name__ == '__main__':
-    run()
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--confirmation',action='store_true')
+    run(parser.parse_args().confirmation)

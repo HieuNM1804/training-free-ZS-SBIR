@@ -1,4 +1,6 @@
 """Disentangle standalone positional evidence from the scale-position interaction in a candidate's regional score."""
+import argparse
+
 import torch
 
 from .regional_held_word_attention import run
@@ -39,6 +41,13 @@ def decompose(reader):
 
 
 if __name__ == '__main__':
-    run(family='regional-scale-position-contrast', alternate=decompose, start=0, count=1536,
-        batch_size=24, selected_windows=True, device_reference=True, contrasts=(('scale_interaction','self'),('scale_interaction','scale'),
-        ('scale_interaction','permuted_interaction'),('self','additive'),('position','shared')))
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--confirmation',action='store_true')
+    confirm=parser.parse_args().confirmation
+    family='regional-additive-confirmation' if confirm else 'regional-scale-position-contrast'
+    ref='regional-additive-device-reference' if confirm else 'regional-position-device-reference'
+    comparisons=(('additive','self'),('additive','scale'),('additive','position')) if confirm else (
+        ('scale_interaction','self'),('scale_interaction','scale'),
+        ('scale_interaction','permuted_interaction'),('self','additive'),('position','shared'))
+    run(family=family,alternate=decompose,start=1536 if confirm else 0,count=3072 if confirm else 1536,
+        batch_size=24,selected_windows=True,device_reference=ref,contrasts=comparisons)
