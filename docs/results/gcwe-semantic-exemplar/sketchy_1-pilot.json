@@ -1,0 +1,263 @@
+{
+  "commit": "ebd8daf2650d598dbe5dcdf04ad41d1127bcd409",
+  "gpu": "Tesla T4",
+  "seed": 42,
+  "queries": 1536,
+  "gallery": 17100,
+  "evaluator": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+  "metrics": {
+    "word": [
+      75.32983546007017,
+      78.58203135353202
+    ],
+    "shared_1": [
+      75.33103791029134,
+      78.58138030896953
+    ],
+    "independent_1": [
+      75.33103746294123,
+      78.58138030896953
+    ],
+    "shuffled_1": [
+      75.32963526027743,
+      78.58138031345638
+    ],
+    "shared_4": [
+      75.33381858690214,
+      78.57682302237663
+    ],
+    "independent_4": [
+      75.33387090564551,
+      78.5781251051958
+    ],
+    "shuffled_4": [
+      75.32895270560402,
+      78.58333343210688
+    ],
+    "shared_16": [
+      75.33929023265955,
+      78.5449220010681
+    ],
+    "independent_16": [
+      75.34003207947535,
+      78.54361991315577
+    ],
+    "shuffled_16": [
+      75.32469586088459,
+      78.57877615594285
+    ],
+    "shared_64": [
+      75.22098113901544,
+      78.35416676777336
+    ],
+    "independent_64": [
+      75.27882441560601,
+      78.43684907275019
+    ],
+    "shuffled_64": [
+      75.26762378790104,
+      78.53971364335544
+    ]
+  },
+  "contrasts": {
+    "shared_1 minus word": {
+      "points": [
+        0.0012024502211716026,
+        -0.0006510445624977971
+      ],
+      "classes": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": 0.001656402553931941,
+        "positive_classes": 11,
+        "bootstrap95": [
+          -0.0013091434785343968,
+          0.00501290572653019
+        ]
+      }
+    },
+    "shared_1 minus independent_1": {
+      "points": [
+        4.473501273120443e-07,
+        0.0
+      ],
+      "classes": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": 6.617499008693929e-07,
+        "positive_classes": 12,
+        "bootstrap95": [
+          -5.63863749024993e-07,
+          2.4234527626349953e-06
+        ]
+      }
+    },
+    "shared_1 minus shuffled_1": {
+      "points": [
+        0.0014026500139152631,
+        -4.486840528746446e-09
+      ],
+      "classes": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": 0.0018102075421129859,
+        "positive_classes": 10,
+        "bootstrap95": [
+          -0.001250824325670546,
+          0.00530584833015149
+        ]
+      }
+    },
+    "shared_4 minus word": {
+      "points": [
+        0.003983126831978249,
+        -0.005208331155396688
+      ],
+      "classes": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": 0.005858159739456407,
+        "positive_classes": 10,
+        "bootstrap95": [
+          -0.005957825481553219,
+          0.019282872693911962
+        ]
+      }
+    },
+    "shared_4 minus independent_4": {
+      "points": [
+        -5.231874335246781e-05,
+        -0.001302082819165662
+      ],
+      "classes": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": -0.00012916889835727475,
+        "positive_classes": 10,
+        "bootstrap95": [
+          -0.00042774032536517634,
+          0.00015458474237277914
+        ]
+      }
+    },
+    "shared_4 minus shuffled_4": {
+      "points": [
+        0.004865881298125411,
+        -0.006510409730253741
+      ],
+      "classes": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": 0.006545435349708187,
+        "positive_classes": 10,
+        "bootstrap95": [
+          -0.00549615371648634,
+          0.020345274513957293
+        ]
+      }
+    },
+    "shared_16 minus word": {
+      "points": [
+        0.00945477258937899,
+        -0.03710935246393395
+      ],
+      "classes": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": 0.015893329583395607,
+        "positive_classes": 10,
+        "bootstrap95": [
+          -0.029331326968278254,
+          0.06739093787087745
+        ]
+      }
+    },
+    "shared_16 minus independent_16": {
+      "points": [
+        -0.000741846815799363,
+        0.0013020879123359919
+      ],
+      "classes": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": -0.002230367565739115,
+        "positive_classes": 9,
+        "bootstrap95": [
+          -0.008116648463186266,
+          0.0035417307268466834
+        ]
+      }
+    },
+    "shared_16 minus shuffled_16": {
+      "points": [
+        0.014594371774971174,
+        -0.033854154874764696
+      ],
+      "classes": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": 0.019669237616716323,
+        "positive_classes": 9,
+        "bootstrap95": [
+          -0.027233654193995867,
+          0.0729218423987211
+        ]
+      }
+    },
+    "shared_64 minus word": {
+      "points": [
+        -0.10885432105472621,
+        -0.22786458575865254
+      ],
+      "classes": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": -0.08363997024082322,
+        "positive_classes": 9,
+        "bootstrap95": [
+          -0.26835158007424675,
+          0.11302738859571257
+        ]
+      }
+    },
+    "shared_64 minus independent_64": {
+      "points": [
+        -0.05784327659057453,
+        -0.08268230497681846
+      ],
+      "classes": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": -0.06856439035309904,
+        "positive_classes": 9,
+        "bootstrap95": [
+          -0.16496253337325406,
+          0.025759443461294444
+        ]
+      }
+    },
+    "shared_64 minus shuffled_64": {
+      "points": [
+        -0.04664264888560865,
+        -0.1855468755820766
+      ],
+      "classes": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": -0.03741229494557639,
+        "positive_classes": 8,
+        "bootstrap95": [
+          -0.24454102577715517,
+          0.18543438941046675
+        ]
+      }
+    }
+  },
+  "mean_geometry_dispersion": 0.008059371262788773,
+  "effective_reference_fraction": {
+    "1": 0.9999186396598816,
+    "4": 0.998691737651825,
+    "16": 0.9789980053901672,
+    "64": 0.7646152377128601
+  }
+}

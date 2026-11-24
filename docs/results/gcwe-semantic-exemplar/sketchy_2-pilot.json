@@ -1,0 +1,263 @@
+{
+  "commit": "ebd8daf2650d598dbe5dcdf04ad41d1127bcd409",
+  "gpu": "Tesla T4",
+  "seed": 42,
+  "queries": 1536,
+  "gallery": 12552,
+  "evaluator": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+  "metrics": {
+    "word": [
+      71.28452540137005,
+      70.32552099105183
+    ],
+    "shared_1": [
+      71.28815925289018,
+      70.32291683293201
+    ],
+    "independent_1": [
+      71.28815925289018,
+      70.32291683293201
+    ],
+    "shuffled_1": [
+      71.28224435558272,
+      70.3258465104227
+    ],
+    "shared_4": [
+      71.29211837145704,
+      70.32356784742055
+    ],
+    "independent_4": [
+      71.29256003978904,
+      70.32356784742055
+    ],
+    "shuffled_4": [
+      71.28460275013518,
+      70.32779962173663
+    ],
+    "shared_16": [
+      71.31823357406878,
+      70.35937513549774
+    ],
+    "independent_16": [
+      71.32000653676491,
+      70.3645834682296
+    ],
+    "shuffled_16": [
+      71.2752598842902,
+      70.32649755031647
+    ],
+    "shared_64": [
+      71.38154337335436,
+      70.39095070522308
+    ],
+    "independent_64": [
+      71.50185603677528,
+      70.51822935245582
+    ],
+    "shuffled_64": [
+      71.15771615423606,
+      70.26009132065761
+    ]
+  },
+  "contrasts": {
+    "shared_1 minus word": {
+      "points": [
+        0.0036338515201350674,
+        -0.0026041581198417894
+      ],
+      "classes": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": 0.0030730073882794355,
+        "positive_classes": 15,
+        "bootstrap95": [
+          -0.00665436580722467,
+          0.012273444238061735
+        ]
+      }
+    },
+    "shared_1 minus independent_1": {
+      "points": [
+        0.0,
+        0.0
+      ],
+      "classes": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": 0.0,
+        "positive_classes": 0,
+        "bootstrap95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "shared_1 minus shuffled_1": {
+      "points": [
+        0.005914897307472226,
+        -0.002929677490707642
+      ],
+      "classes": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": 0.006180314550421797,
+        "positive_classes": 15,
+        "bootstrap95": [
+          -0.004998333803827073,
+          0.01713449658690275
+        ]
+      }
+    },
+    "shared_4 minus word": {
+      "points": [
+        0.007592970086989226,
+        -0.001953143631302131
+      ],
+      "classes": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": 0.006388598726440825,
+        "positive_classes": 14,
+        "bootstrap95": [
+          -0.028372955341116106,
+          0.03877335579763891
+        ]
+      }
+    },
+    "shared_4 minus independent_4": {
+      "points": [
+        -0.0004416683320111285,
+        0.0
+      ],
+      "classes": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": -0.0003153618179569316,
+        "positive_classes": 11,
+        "bootstrap95": [
+          -0.0010808484411696665,
+          0.0003364661368944172
+        ]
+      }
+    },
+    "shared_4 minus shuffled_4": {
+      "points": [
+        0.007515621321848205,
+        -0.004231774316091712
+      ],
+      "classes": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": 0.00684801678092005,
+        "positive_classes": 14,
+        "bootstrap95": [
+          -0.03400105028477243,
+          0.04514783261467237
+        ]
+      }
+    },
+    "shared_16 minus word": {
+      "points": [
+        0.033708172698728354,
+        0.03385414444589211
+      ],
+      "classes": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": 0.03511593195847663,
+        "positive_classes": 13,
+        "bootstrap95": [
+          -0.08153807439229303,
+          0.14643083930040068
+        ]
+      }
+    },
+    "shared_16 minus independent_16": {
+      "points": [
+        -0.001772962696122704,
+        -0.0052083327318541706
+      ],
+      "classes": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": 0.0010535143417757015,
+        "positive_classes": 11,
+        "bootstrap95": [
+          -0.011243257105352828,
+          0.013278786101364556
+        ]
+      }
+    },
+    "shared_16 minus shuffled_16": {
+      "points": [
+        0.042973689778591506,
+        0.03287758518126793
+      ],
+      "classes": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": 0.04558706045923736,
+        "positive_classes": 14,
+        "bootstrap95": [
+          -0.09105019686176041,
+          0.17853305064176514
+        ]
+      }
+    },
+    "shared_64 minus word": {
+      "points": [
+        0.0970179719843145,
+        0.06542971417123529
+      ],
+      "classes": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": 0.13054396911023122,
+        "positive_classes": 15,
+        "bootstrap95": [
+          -0.31622786383278956,
+          0.550380630330145
+        ]
+      }
+    },
+    "shared_64 minus independent_64": {
+      "points": [
+        -0.1203126634209184,
+        -0.12727864723274251
+      ],
+      "classes": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": -0.08330015914781679,
+        "positive_classes": 10,
+        "bootstrap95": [
+          -0.2571826214652554,
+          0.08822851405367464
+        ]
+      }
+    },
+    "shared_64 minus shuffled_64": {
+      "points": [
+        0.22382721911829626,
+        0.13085938456545895
+      ],
+      "classes": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": 0.2696898457622871,
+        "positive_classes": 15,
+        "bootstrap95": [
+          -0.25561008142633374,
+          0.7698026857939002
+        ]
+      }
+    }
+  },
+  "mean_geometry_dispersion": 0.008479735814034939,
+  "effective_reference_fraction": {
+    "1": 0.9999095797538757,
+    "4": 0.9985465407371521,
+    "16": 0.9769940376281738,
+    "64": 0.7600943446159363
+  }
+}
