@@ -33,7 +33,7 @@ def assessment(ids,cls,truth,scores):
     return results,torch.stack((mixed.sum(1),correct.sum(1),wrong.sum(1)),1).cpu()
 
 
-def score_arms(poses,crops,src,scale,heads,bank,native,query_ids):
+def region_observations(poses,crops,src,scale,heads,bank,native):
     empty=src.new_empty((0,len(src)))
     reader=CandidateRegions(poses[:,0],poses[:,1],crops[:,:,0],crops[:,:,1],src,heads,bank,empty,native)
     reader.prepare(scale)
@@ -45,6 +45,11 @@ def score_arms(poses,crops,src,scale,heads,bank,native,query_ids):
     global_read=full.read('self',1.,'gallery')
     torch.testing.assert_close(global_read,full.read('uniform',1.,'gallery'),atol=1e-5,rtol=1e-6)
     weights=(reader.prior.log()+reader.logl-reader.l.mean(3,keepdim=True).clamp_min(1e-30).log()).softmax(2)
+    return reader.l,weights,global_read,uniform,actual
+
+
+def score_arms(poses,crops,src,scale,heads,bank,native,query_ids):
+    values,weights,global_read,uniform,actual=region_observations(poses,crops,src,scale,heads,bank,native)
     # The window selector sees a neighboring candidate under the whole-query readout; the value always uses the real photo.
     order=global_read.argsort(dim=1,descending=True,stable=True)
     n=order.size(1)
@@ -60,7 +65,7 @@ def score_arms(poses,crops,src,scale,heads,bank,native,query_ids):
         permutation.append(pairs)
     perm=torch.stack(permutation)
     other=weights.gather(3,perm[:,None,None].expand_as(weights))
-    matched=(other*reader.l).sum(2).mean(1).clamp_min(1e-30).log()
+    matched=(other*values).sum(2).mean(1).clamp_min(1e-30).log()
     delta_obs=uniform-global_read
     delta_cond=actual-uniform
     torch.testing.assert_close(actual-global_read,delta_obs+delta_cond,atol=3e-6,rtol=1e-6)
