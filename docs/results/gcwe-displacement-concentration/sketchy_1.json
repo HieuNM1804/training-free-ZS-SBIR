@@ -1,0 +1,158 @@
+{
+  "commit": "b9cd0d534be2d581ac660fadb80b6b29fe359112",
+  "sample_rows": 1536,
+  "gallery": 17100,
+  "seed": 42,
+  "replay_mae_points": [
+    4.971661837771535e-06,
+    0.0
+  ],
+  "metrics": {
+    "semantic_regional": [
+      84.6904751531838,
+      84.35677093487661
+    ],
+    "same_partition": [
+      85.19011131914644,
+      84.84049488251912
+    ],
+    "wrong_coordinates": [
+      84.92597429794841,
+      84.56575530484164
+    ],
+    "uncentered_energy": [
+      85.22839733632281,
+      84.72330738259188
+    ],
+    "individual_matches": [
+      85.02972325125788,
+      84.45833343127256
+    ],
+    "consensus_energy": [
+      85.15999130953182,
+      84.8671875964404
+    ],
+    "difference_energy": [
+      85.18076496984577,
+      85.13802093790824
+    ],
+    "original": [
+      84.96243981705143,
+      84.5247396743313
+    ]
+  },
+  "contrasts": {
+    "same_partition minus original": {
+      "points": [
+        0.22767150209498746,
+        0.31575520818781416
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": 0.17490906572841106,
+        "positive_classes": 14,
+        "bootstrap95": [
+          -0.3975816261564472,
+          0.736565554324114
+        ]
+      }
+    },
+    "same_partition minus wrong_coordinates": {
+      "points": [
+        0.264137021198015,
+        0.27473957767748897
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": 0.26817277275351786,
+        "positive_classes": 15,
+        "bootstrap95": [
+          -0.21949955719570993,
+          0.7357945619618242
+        ]
+      }
+    },
+    "same_partition minus individual_matches": {
+      "points": [
+        0.16038806788856164,
+        0.3821614512465506
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": 0.1781909079155017,
+        "positive_classes": 17,
+        "bootstrap95": [
+          -0.40051409797354565,
+          0.6954717208644127
+        ]
+      }
+    },
+    "same_partition minus uncentered_energy": {
+      "points": [
+        -0.038286017176384725,
+        0.11718749992724042
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": -0.037713950315883135,
+        "positive_classes": 12,
+        "bootstrap95": [
+          -0.3286663796775095,
+          0.2534509124727885
+        ]
+      }
+    },
+    "same_partition minus consensus_energy": {
+      "points": [
+        0.030120009614620358,
+        -0.02669271392126878
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": 0.026108797042439288,
+        "positive_classes": 11,
+        "bootstrap95": [
+          -0.12020244238542237,
+          0.19086374088389388
+        ]
+      }
+    },
+    "same_partition minus difference_energy": {
+      "points": [
+        0.009346349300661435,
+        -0.29752605538912275
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": 0.037609860673442685,
+        "positive_classes": 14,
+        "bootstrap95": [
+          -0.3776843924442831,
+          0.4744520440331793
+        ]
+      }
+    },
+    "same_partition minus semantic_regional": {
+      "points": [
+        0.4996361659626321,
+        0.4837239476425263
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": 0.5387231084483223,
+        "positive_classes": 18,
+        "bootstrap95": [
+          0.03163945619071571,
+          1.0717018027842586
+        ]
+      }
+    }
+  }
+}

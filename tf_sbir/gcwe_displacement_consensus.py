@@ -96,13 +96,22 @@ if __name__=='__main__':
     from functools import partial
     parser=argparse.ArgumentParser()
     parser.add_argument('--confirm-concentration',action='store_true')
-    confirm=parser.parse_args().confirm_concentration
+    parser.add_argument('--full', choices=['sketchy','tuberlin'])
+    args=parser.parse_args()
+    confirm=args.confirm_concentration or args.full
     if confirm:
         primary='same_partition'
         comparisons=[(primary,c) for c in ('original','wrong_coordinates','individual_matches',
                                           'uncentered_energy','consensus_energy','difference_energy','semantic_regional')]
-        run(update_fn=partial(score_update,concentration_controls),family='gcwe-displacement-concentration',
-            start=9984,count=1536,controls=False,comparisons=comparisons)
+        measure=concentration_controls
+        if args.full:
+            def measure(coupling, geometry):
+                stats=concentration_controls(coupling, geometry)
+                return {k:stats[k] for k in ('same_partition','wrong_coordinates','uncentered_energy','individual_matches')}
+            comparisons=[(a,b) for a,b in comparisons if b not in ('consensus_energy','difference_energy')]
+        family='gcwe-displacement-full' if args.full else 'gcwe-displacement-concentration'
+        run(update_fn=partial(score_update,measure),family=family,dataset=args.full or 'sketchy',
+            start=9984,count=None if args.full else 1536,controls=False,comparisons=comparisons)
     else:
         run(update_fn=partial(score_update,centered_histograms),family='gcwe-displacement-consensus',
             start=8448,count=1536,controls=False,comparisons=[('cross','original'),('cross','semantic_regional'),
