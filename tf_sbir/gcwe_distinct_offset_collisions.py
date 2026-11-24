@@ -52,6 +52,13 @@ def measures(coupling,geometry):
                 'independent':collision(independent,offset)[2]}
         for name,v in values.items():
             results[name]=results.get(name,0.)+.5*v
+    # Whole-grid intervention uses the original unit-mass coupling and all 49 locations.
+    # Group once by original rows and sum the vectors before taking their squared norms.
+    residual=coupling-coupling.sum(-1,keepdim=True)*coupling.sum(-2,keepdim=True)
+    whole=sum(residual.index_select(-2,rows).flatten(-2) @ offset for rows,offset,_ in geometry)
+    wrong=sum(residual.index_select(-2,rows).flatten(-2) @ sham for rows,_,sham in geometry)
+    results['whole_grid']=whole.square().sum(-1)
+    results['whole_grid_sham']=wrong.square().sum(-1)
     return results
 
 
@@ -59,4 +66,5 @@ if __name__=='__main__':
     enumerate_check()
     run(update_fn=partial(score_update,measures),family='gcwe-distinct-offset-collisions',start=11520,count=1152,
         controls=False,comparisons=[('conditional',k) for k in ('original','same_partition','disjoint_joint',
-                                                                'raw','scrambled','independent','semantic_regional')])
+            'raw','scrambled','independent','semantic_regional')]+[('whole_grid',k) for k in
+            ('original','same_partition','whole_grid_sham')])
