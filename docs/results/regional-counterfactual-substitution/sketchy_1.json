@@ -1,0 +1,124 @@
+{
+  "commit": "8d71ea94262ebdebf191bc553dd89d61b8d6a57d",
+  "seed": 42,
+  "gpu": "Tesla T4",
+  "arms": [
+    "query_interaction",
+    "pooled_interaction",
+    "lower_order",
+    "total",
+    "unmixed_js"
+  ],
+  "assessment": {
+    "pairs": 850,
+    "queries": 655,
+    "both": 195,
+    "arms": {
+      "query_interaction": {
+        "balanced": 0.45897435897435895,
+        "query_gain": 0.0,
+        "class_gain": {
+          "classes": 23,
+          "queries": 195,
+          "mean_across_classes": 0.0,
+          "positive_classes": 0,
+          "bootstrap95": [
+            0.0,
+            0.0
+          ]
+        },
+        "mean_margin": 0.002334467716788775,
+        "mean_relevant": 0.041299243927286955,
+        "mean_foil": 0.043633711644075736,
+        "rescued": 193.0,
+        "damaged": 251.0
+      },
+      "pooled_interaction": {
+        "balanced": 0.4025641025641026,
+        "query_gain": 5.641025641025641,
+        "class_gain": {
+          "classes": 23,
+          "queries": 195,
+          "mean_across_classes": 3.3548999309868877,
+          "positive_classes": 8,
+          "bootstrap95": [
+            -2.0954106280193234,
+            9.740467563837127
+          ]
+        },
+        "mean_margin": -0.001877467812249978,
+        "mean_relevant": 0.034785624004256624,
+        "mean_foil": 0.03290815619200665,
+        "rescued": 171.0,
+        "damaged": 276.0
+      },
+      "lower_order": {
+        "balanced": 0.6,
+        "query_gain": -14.102564102564102,
+        "class_gain": {
+          "classes": 23,
+          "queries": 195,
+          "mean_across_classes": 7.250402576489535,
+          "positive_classes": 13,
+          "bootstrap95": [
+            -13.609414538762367,
+            28.25429175293306
+          ]
+        },
+        "mean_margin": 0.0401367159392237,
+        "mean_relevant": 0.5309493076865561,
+        "mean_foil": 0.5710860236257799,
+        "rescued": 245.0,
+        "damaged": 146.0
+      },
+      "total": {
+        "balanced": 0.5948717948717949,
+        "query_gain": -13.58974358974359,
+        "class_gain": {
+          "classes": 23,
+          "queries": 195,
+          "mean_across_classes": 6.612318840579709,
+          "positive_classes": 14,
+          "bootstrap95": [
+            -14.364044168391995,
+            27.445695307108345
+          ]
+        },
+        "mean_margin": 0.038259248126973726,
+        "mean_relevant": 0.5657349316908127,
+        "mean_foil": 0.6039941798177865,
+        "rescued": 244.0,
+        "damaged": 144.0
+      },
+      "unmixed_js": {
+        "balanced": 0.5230769230769231,
+        "query_gain": -6.410256410256411,
+        "class_gain": {
+          "classes": 23,
+          "queries": 195,
+          "mean_across_classes": 14.287152058891193,
+          "positive_classes": 16,
+          "bootstrap95": [
+            -6.107121290545202,
+            34.38210978835976
+          ]
+        },
+        "mean_margin": 0.01642621990902112,
+        "mean_relevant": 0.4643876032497768,
+        "mean_foil": 0.48081382315879795,
+        "rescued": 229.0,
+        "damaged": 180.0
+      }
+    },
+    "class_primary_minus_chance": {
+      "classes": 23,
+      "queries": 195,
+      "mean_across_classes": 4.618127444214401,
+      "positive_classes": 13,
+      "bootstrap95": [
+        -6.485837934207501,
+        15.673862721417066
+      ]
+    }
+  }
+}
