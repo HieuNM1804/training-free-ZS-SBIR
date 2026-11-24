@@ -12,6 +12,7 @@ import inspect
 import random
 import numpy as np
 import torch
+from .gallery_panel_resume import region_views
 
 
 def except_word(contributions):
@@ -50,7 +51,8 @@ def held_read(reader, paired):
 
 @torch.inference_mode()
 def run(*, family='regional-held-word-attention', alternate=None, start=768,
-        contrasts=(('held','self'),('held','sham')), dataset='sketchy', count=1536, batch_size=8):
+        contrasts=(('held','self'),('held','sham')), dataset='sketchy', count=1536, batch_size=8,
+        selected_windows=False):
     random.seed(42);np.random.seed(42);torch.manual_seed(42);torch.cuda.manual_seed_all(42)
     torch.backends.cudnn.benchmark=False
     torch.backends.cudnn.deterministic=True
@@ -60,13 +62,21 @@ def run(*, family='regional-held-word-attention', alternate=None, start=768,
     root.mkdir(exist_ok=True,parents=True)
     inputs=semantic_inputs(w,dataset)
     cfg,qp,qs,pp,gs,q,p,src,tgt,scale=inputs
-    views=source_windows(w,dataset,inputs)
+    selections={s:torch.randperm(len(ids),generator=torch.Generator().manual_seed(42))[start:start+count].sort().values
+                for s,(ids,_) in qs.items()}
+    if selected_windows:
+        needed=torch.cat([ids[selections[s]] for s,(ids,_) in qs.items()]).unique(sorted=True)
+        views,_=region_views(w,'sampled-'+dataset,cfg,qp,needed,q)
+        view_index=torch.full((len(qp),),-1,dtype=torch.long)
+        view_index[needed]=torch.arange(len(needed))
+    else:
+        views=source_windows(w,dataset,inputs)
+        view_index=torch.arange(len(qp))
     kd,_=load_kd(w)
     assert hashlib.sha256(inspect.getsource(kd).strip().encode()).hexdigest()==KD_FUNCTION_SHA
     for split,(qi,labels) in qs.items():
         pi,gl=gs[split]
-        order=torch.randperm(len(qi),generator=torch.Generator().manual_seed(42))
-        select=order[start:start+count].sort().values
+        select=selections[split]
         gallery=p[pi].cuda()
         graph=Index(SimpleNamespace(p=gallery),rgb_only=True)
         paths=[str(pp[i]) for i in pi.tolist()]
@@ -83,8 +93,10 @@ def run(*, family='regional-held-word-attention', alternate=None, start=768,
         with ThreadPoolExecutor(max_workers=min(3,len(os.sched_getaffinity(0)))) as pool:
             for batch in select.split(batch_size):
                 ids=qi[batch]
-                a,b=q[ids].cuda(),views['flipped'][ids].cuda().float()
-                crops=views['regions'][ids].cuda()
+                view_rows=view_index[ids]
+                assert (view_rows>=0).all()
+                a,b=q[ids].cuda(),views['flipped'][view_rows].cuda().float()
+                crops=views['regions'][view_rows].cuda()
                 poses=torch.stack((a,b),1)
                 direct=(scale*(poses@src.T)).softmax(2).mean(1) @ fullbank.T
                 lex=graph.score(CONFIG,direct).clamp_min(1e-30).log()

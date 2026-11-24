@@ -40,5 +40,5 @@ def decompose(reader):
 
 if __name__ == '__main__':
     run(family='regional-scale-position-contrast', alternate=decompose, start=0, count=1536,
-        batch_size=24, contrasts=(('scale_interaction','self'),('scale_interaction','scale'),
+        batch_size=24, selected_windows=True, contrasts=(('scale_interaction','self'),('scale_interaction','scale'),
         ('scale_interaction','permuted_interaction'),('self','additive'),('position','shared')))
