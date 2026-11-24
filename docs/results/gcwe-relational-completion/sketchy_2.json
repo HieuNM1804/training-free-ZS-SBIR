@@ -1,0 +1,282 @@
+{
+  "commit": "1e72af84697fd743c9be1ff83b3b28f99d54f77a",
+  "seed": 42,
+  "gpu": "Tesla T4",
+  "evaluator": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+  "queries": 768,
+  "gallery": 12552,
+  "role_names": [
+    "distinct",
+    "tree",
+    "same_donor",
+    "literal",
+    "no_relation",
+    "prior"
+  ],
+  "readouts": [
+    "distinct",
+    "tree",
+    "same_donor",
+    "literal",
+    "no_relation",
+    "prior",
+    "literal_direct",
+    "native"
+  ],
+  "global_targets": [
+    "separate_redraw",
+    "reference_photo"
+  ],
+  "degenerate": [
+    0,
+    0
+  ],
+  "contrasts": {
+    "ordinary": {
+      "distinct": {
+        "mean": 0.0,
+        "classes": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": 0.0,
+          "positive_classes": 0,
+          "bootstrap95": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "tree": {
+        "mean": 0.001686036452696666,
+        "classes": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": 0.0018331049501691557,
+          "positive_classes": 18,
+          "bootstrap95": [
+            0.0009298092163343815,
+            0.0030626304414507993
+          ]
+        }
+      },
+      "same_donor": {
+        "mean": 0.0012235231477913458,
+        "classes": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": 0.0011785869604828078,
+          "positive_classes": 17,
+          "bootstrap95": [
+            -0.0008282270313205753,
+            0.0027224927329839413
+          ]
+        }
+      },
+      "literal": {
+        "mean": 0.001351126423943259,
+        "classes": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": 0.0013103525972646716,
+          "positive_classes": 17,
+          "bootstrap95": [
+            -0.0006516342088188811,
+            0.0028505379764700513
+          ]
+        }
+      },
+      "no_relation": {
+        "mean": -0.0004997565525537758,
+        "classes": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -0.0004933674259472105,
+          "positive_classes": 5,
+          "bootstrap95": [
+            -0.001149438921003856,
+            0.0002334295871030527
+          ]
+        }
+      },
+      "prior": {
+        "mean": -0.006336045054673202,
+        "classes": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -0.004613762196727862,
+          "positive_classes": 5,
+          "bootstrap95": [
+            -0.01162525691549647,
+            0.0033752446354780702
+          ]
+        }
+      }
+    },
+    "depleted": {
+      "distinct": {
+        "mean": 0.0,
+        "classes": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": 0.0,
+          "positive_classes": 0,
+          "bootstrap95": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "tree": {
+        "mean": -0.0013393330571446985,
+        "classes": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -0.0013383609313250581,
+          "positive_classes": 0,
+          "bootstrap95": [
+            -0.0014784366349327295,
+            -0.0012039396270070444
+          ]
+        }
+      },
+      "same_donor": {
+        "mean": -0.000834352362115,
+        "classes": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -0.0007869588335749722,
+          "positive_classes": 1,
+          "bootstrap95": [
+            -0.0010142263838749375,
+            -0.0005606026449888088
+          ]
+        }
+      },
+      "literal": {
+        "mean": -0.0009922480186065584,
+        "classes": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": -0.000939044655762292,
+          "positive_classes": 1,
+          "bootstrap95": [
+            -0.0011748819004928773,
+            -0.0006865925283639527
+          ]
+        }
+      },
+      "no_relation": {
+        "mean": 7.609318039667028e-05,
+        "classes": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": 6.89035338442432e-05,
+          "positive_classes": 12,
+          "bootstrap95": [
+            -8.148508234708595e-05,
+            0.00022311584103440338
+          ]
+        }
+      },
+      "prior": {
+        "mean": 0.0025398527945737887,
+        "classes": {
+          "classes": 21,
+          "queries": 768,
+          "mean_across_classes": 0.002659027496501388,
+          "positive_classes": 18,
+          "bootstrap95": [
+            0.0015274928459696041,
+            0.0038493725653173765
+          ]
+        }
+      }
+    }
+  },
+  "local_log_scores": [
+    [
+      -4.253661440281042,
+      -4.255347476733739,
+      -4.254884963428833,
+      -4.255012566704985,
+      -4.2531616837284885,
+      -4.247325395226368
+    ],
+    [
+      -4.259572285445221,
+      -4.258232952388076,
+      -4.258737933083106,
+      -4.258580037426614,
+      -4.259648378625617,
+      -4.262112138239794
+    ]
+  ],
+  "global_log_scores": [
+    [
+      -10.240674421812097,
+      -9.838439390684167
+    ],
+    [
+      -10.235922077049812,
+      -9.833008438659212
+    ],
+    [
+      -10.235271162663897,
+      -9.832042314733068
+    ],
+    [
+      -10.235465348387757,
+      -9.832126930356026
+    ],
+    [
+      -10.24063385774692,
+      -9.838399605515102
+    ],
+    [
+      -10.275693416595459,
+      -9.888398113350073
+    ],
+    [
+      -10.173204223935803,
+      -9.742455330987772
+    ],
+    [
+      -8.21776195925971,
+      -7.9901411002501845
+    ]
+  ],
+  "retrieval_percent": {
+    "distinct": [
+      8.274642859275144,
+      8.097656262543751
+    ],
+    "tree": [
+      8.37311466069271,
+      8.16536459994192
+    ],
+    "same_donor": [
+      8.395360115294654,
+      8.138020846551324
+    ],
+    "literal": [
+      8.394295698963106,
+      8.13736980453541
+    ],
+    "no_relation": [
+      8.274106386428077,
+      8.096354180452181
+    ],
+    "prior": [
+      6.8644915241748095,
+      6.7988281332266824
+    ],
+    "literal_direct": [
+      11.137931193904176,
+      9.970703128177167
+    ],
+    "native": [
+      74.71096750759898,
+      73.28255220624365
+    ]
+  }
+}
