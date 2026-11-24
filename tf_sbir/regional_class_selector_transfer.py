@@ -1,4 +1,5 @@
 """Match selector photo donors symmetrically around each candidate's frozen semantic rank."""
+import argparse
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -83,24 +84,46 @@ def summarize(data, labels):
                     balanced_points=stats(balanced['same']-balanced['different'])))
 
 
+def independent_drawings(split, queries, paths, gallery_paths, pi, previous):
+    def source(i):
+        path = Path(paths[i])
+        return path.parent.name, path.stem.rsplit('-', 1)[0]
+    seen = {source(i) for ref in previous.values() for i in ref['qi'].tolist()}
+    legal = {(Path(gallery_paths[i]).parent.name, Path(gallery_paths[i]).stem) for i in pi.tolist()}
+    qi, labels = queries[split]
+    selected = []
+    for j in torch.randperm(len(qi), generator=torch.Generator().manual_seed(42)).tolist():
+        key = source(int(qi[j]))
+        assert key in legal
+        if key not in seen:
+            selected.append(j)
+            seen.add(key)
+    selected.sort()
+    assert len(selected) == len({source(int(qi[j])) for j in selected})
+    return qi[selected], labels[selected]
+
+
 @torch.inference_mode()
-def run():
+def run(independent):
     torch.manual_seed(42)
     torch.cuda.manual_seed_all(42)
     torch.use_deterministic_algorithms(True)
     torch.backends.cudnn.benchmark = False
     w = Path('/content/sbir')
-    root = w/'results/regional-class-selector-transfer'
+    family = 'regional-selector-independent-sources' if independent else 'regional-class-selector-transfer'
+    root = w/'results'/family
     root.mkdir(parents=True, exist_ok=True)
     inputs = semantic_inputs(w, 'sketchy')
-    _, _, queries, paths, galleries, q, p, src, tgt, scale = inputs
+    _, sketch_paths, queries, paths, galleries, q, p, src, tgt, scale = inputs
     views = complete_windows(w, 'sketchy', inputs)
+    previous = {s:torch.load(w/'results/regional-category-information'/(s+'.pt'), weights_only=True) for s in queries}
     for split, (all_qi, all_labels) in queries.items():
-        ref = torch.load(w/'results/regional-category-information'/(split+'.pt'), weights_only=True)
-        qi, labels = ref['qi'], ref['labels']
+        ref = previous[split]
+        pi, cls = galleries[split]
+        qi, labels = (independent_drawings(split,queries,sketch_paths,paths,pi,previous)
+                      if independent else (ref['qi'],ref['labels']))
         ix = {v:i for i,v in enumerate(all_qi.tolist())}
         assert torch.equal(labels, all_labels[[ix[v] for v in qi.tolist()]])
-        pi, cls = galleries[split]
         assert torch.equal(pi, ref['pi'])
         gallery, cls = p[pi].cuda(), cls.cuda()
         stamp = digest(dict(gallery=[str(paths[i]) for i in pi.tolist()],model=CHECKPOINT,source='regional-64/RGB16'))
@@ -124,12 +147,15 @@ def run():
                 records.setdefault(k,[]).append(v.cpu())
         data = {k:torch.cat(v) for k,v in records.items()}
         assessment = summarize(data,labels)
-        assert assessment['mixed_pairs'] == int(ref['counts'][:,0].sum())
+        if not independent:
+            assert assessment['mixed_pairs'] == int(ref['counts'][:,0].sum())
         save_tensor(dict(qi=qi,pi=pi,labels=labels,**data),root/(split+'.pt'))
         atomic_json(root/(split+'.json'),dict(commit=revision(),seed=42,gpu=torch.cuda.get_device_name(),
-            queries=len(qi),gallery=len(pi),assessment=assessment))
+            queries=len(qi),gallery=len(pi),one_per_new_source=independent,assessment=assessment))
         print(split, assessment['eligible_pairs'], assessment['same_minus_different']['margin']['mean'],flush=True)
 
 
 if __name__ == '__main__':
-    run()
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--independent-sources',action='store_true')
+    run(parser.parse_args().independent_sources)
