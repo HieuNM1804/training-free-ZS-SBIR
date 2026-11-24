@@ -1,0 +1,131 @@
+{
+  "commit": "71ec3528e92c4d0a9b7cfd0e42d0aafdc0ed73d7",
+  "seed": 42,
+  "torch": "2.14.1+cu130",
+  "cuda": "13.0",
+  "pythonhashseed": "42",
+  "device": "NVIDIA L4",
+  "split": "tuberlin",
+  "counts": [
+    2130,
+    27262,
+    30
+  ],
+  "metrics": [
+    "mAP@all",
+    "P@100"
+  ],
+  "paired_reference_checks": {
+    "full": {
+      "max_per_query": [
+        8.207559585571289e-05,
+        0.0
+      ],
+      "mean_signed_points": [
+        -2.9819812013509693e-06,
+        0.0
+      ],
+      "mean_absolute_points": [
+        5.50118690365357e-06,
+        0.0
+      ]
+    },
+    "without_diffusion": {
+      "max_per_query": [
+        0.0,
+        0.0
+      ],
+      "mean_signed_points": [
+        0.0,
+        0.0
+      ],
+      "mean_absolute_points": [
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "max_regional_index_discrepancy": 0.0,
+  "rows": {
+    "full": {
+      "metrics_percent": [
+        81.49476212735765,
+        82.19577467873552
+      ],
+      "ablated_minus_full_points": [
+        0.0,
+        0.0
+      ],
+      "macro_ap_removal": {
+        "classes": 30,
+        "queries": 2130,
+        "mean_across_classes": 0.0,
+        "positive_classes": 0,
+        "bootstrap95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "global_diffusion_only": {
+      "metrics_percent": [
+        80.73196655148071,
+        82.08920196853053
+      ],
+      "ablated_minus_full_points": [
+        -0.7627955758769257,
+        -0.10657271020499194
+      ],
+      "macro_ap_removal": {
+        "classes": 30,
+        "queries": 2130,
+        "mean_across_classes": -0.7650116250428948,
+        "positive_classes": 6,
+        "bootstrap95": [
+          -1.223096952408031,
+          -0.28602754775091105
+        ]
+      }
+    },
+    "regional_diffusion_only": {
+      "metrics_percent": [
+        78.47857738075507,
+        80.71784047200016
+      ],
+      "ablated_minus_full_points": [
+        -3.016184746602576,
+        -1.4779342067353602
+      ],
+      "macro_ap_removal": {
+        "classes": 30,
+        "queries": 2130,
+        "mean_across_classes": -3.0224306813796007,
+        "positive_classes": 4,
+        "bootstrap95": [
+          -3.9826553772818967,
+          -2.073664156531006
+        ]
+      }
+    },
+    "without_diffusion": {
+      "metrics_percent": [
+        77.7788835744474,
+        80.47793441535161
+      ],
+      "ablated_minus_full_points": [
+        -3.7158785529102376,
+        -1.717840263383909
+      ],
+      "macro_ap_removal": {
+        "classes": 30,
+        "queries": 2130,
+        "mean_across_classes": -3.721795603566404,
+        "positive_classes": 2,
+        "bootstrap95": [
+          -4.722286280450256,
+          -2.6920882348070987
+        ]
+      }
+    }
+  }
+}
