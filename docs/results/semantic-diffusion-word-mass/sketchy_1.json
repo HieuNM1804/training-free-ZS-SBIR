@@ -1,0 +1,137 @@
+{
+  "commit": "a36b3e7c3aff00a5922d10bc9cfbc04df7e00755",
+  "seed": 42,
+  "split": "sketchy_1",
+  "queries": 3072,
+  "gallery": 17100,
+  "baseline_mae": [
+    0.0010774407201097347,
+    0.0006510410457849503
+  ],
+  "mean_tv_raw_word_projected_and_step": [
+    0.27932403192971833,
+    0.17108297893598015,
+    0.13333851291584628,
+    0.4645668712231175
+  ],
+  "metrics": {
+    "raw": [
+      77.0174940595704,
+      80.78906265448799
+    ],
+    "diffused": [
+      83.52125258261367,
+      83.18196626508629
+    ],
+    "projected": [
+      82.34013125020283,
+      82.58007819270765
+    ],
+    "linear": [
+      81.56023434773184,
+      82.16048187714478
+    ],
+    "shuffled": [
+      83.02217392865714,
+      82.88932318858619
+    ]
+  },
+  "contrasts": {
+    "projected_minus_diffused": {
+      "points": [
+        -1.1811213324108394,
+        -0.6018880723786424
+      ],
+      "macro_ap": {
+        "classes": 25,
+        "queries": 3072,
+        "mean_across_classes": -1.1797400717359192,
+        "positive_classes": 3,
+        "bootstrap95": [
+          -1.6549196636871584,
+          -0.764309039548362
+        ]
+      },
+      "top200_gained_lost": [
+        71,
+        3
+      ],
+      "top1_gained_lost": [
+        18,
+        94
+      ]
+    },
+    "projected_minus_linear": {
+      "points": [
+        0.7798969024709852,
+        0.41959631556286087
+      ],
+      "macro_ap": {
+        "classes": 25,
+        "queries": 3072,
+        "mean_across_classes": 0.7935785397069455,
+        "positive_classes": 23,
+        "bootstrap95": [
+          0.5110775552446417,
+          1.1071638738965779
+        ]
+      },
+      "top200_gained_lost": [
+        2,
+        70
+      ],
+      "top1_gained_lost": [
+        90,
+        43
+      ]
+    },
+    "projected_minus_shuffled": {
+      "points": [
+        -0.6820426784543088,
+        -0.3092449958785437
+      ],
+      "macro_ap": {
+        "classes": 25,
+        "queries": 3072,
+        "mean_across_classes": -0.6821860725597769,
+        "positive_classes": 6,
+        "bootstrap95": [
+          -1.2070487548483657,
+          -0.14355930746138998
+        ]
+      },
+      "top200_gained_lost": [
+        54,
+        28
+      ],
+      "top1_gained_lost": [
+        29,
+        113
+      ]
+    },
+    "projected_minus_raw": {
+      "points": [
+        5.322637190632426,
+        1.7910155382196535
+      ],
+      "macro_ap": {
+        "classes": 25,
+        "queries": 3072,
+        "mean_across_classes": 5.411890347352085,
+        "positive_classes": 25,
+        "bootstrap95": [
+          4.306944115628567,
+          6.682882077678152
+        ]
+      },
+      "top200_gained_lost": [
+        0,
+        134
+      ],
+      "top1_gained_lost": [
+        155,
+        39
+      ]
+    }
+  }
+}

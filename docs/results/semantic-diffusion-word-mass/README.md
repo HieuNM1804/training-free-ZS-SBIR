@@ -1,0 +1,5 @@
+# Lexical projection recovers hard queries at a cost in average precision
+
+On two 3,072-query samples, restoring the direct word marginal gave 82.340 / 82.580 on Ext-1 and 74.645 / 72.816 on Ext-2. Native diffusion scored 83.521 / 83.182 and 74.770 / 73.026. The projection gained/lost at least one relevant top-200 photo for 71/3 and 152/9 queries. At exactly the same per-query total variation, direct linear interpolation gave only 81.560 / 82.160 and 74.066 / 72.597. Thus the lexical direction retained more AP than an equally large direct interpolation, but the full projection traded accuracy for coverage. It did not meet the pre-registered accuracy criterion. Native diffusion remains the primary.
+
+The contraction bounds and mass identities passed on both samples. The data identify a conflict between recovering alternatives and preserving the high-confidence ranking. They do not justify changing the coefficient on TU. [Derivation and controls](protocol.md) · [Ext-1](sketchy_1.json) · [Ext-2](sketchy_2.json) · [Paired outputs](paired-L4.zip)

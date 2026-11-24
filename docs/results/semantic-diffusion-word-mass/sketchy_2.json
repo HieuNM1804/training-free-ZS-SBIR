@@ -1,0 +1,137 @@
+{
+  "commit": "a36b3e7c3aff00a5922d10bc9cfbc04df7e00755",
+  "seed": 42,
+  "split": "sketchy_2",
+  "queries": 3072,
+  "gallery": 12552,
+  "baseline_mae": [
+    0.0001401987295442571,
+    0.00016276026144623756
+  ],
+  "mean_tv_raw_word_projected_and_step": [
+    0.2368096103236894,
+    0.14028498623641403,
+    0.10515830234059347,
+    0.4346725538634928
+  ],
+  "metrics": {
+    "raw": [
+      72.58583629859459,
+      71.13720718919771
+    ],
+    "diffused": [
+      74.76976740126702,
+      73.02604178345669
+    ],
+    "projected": [
+      74.64508481511984,
+      72.81608084646601
+    ],
+    "linear": [
+      74.06551189504475,
+      72.59716819129002
+    ],
+    "shuffled": [
+      73.75157221454174,
+      72.41666688087207
+    ]
+  },
+  "contrasts": {
+    "projected_minus_diffused": {
+      "points": [
+        -0.12468258614717342,
+        -0.20996093699068297
+      ],
+      "macro_ap": {
+        "classes": 21,
+        "queries": 3072,
+        "mean_across_classes": -0.054346944082728305,
+        "positive_classes": 9,
+        "bootstrap95": [
+          -0.5574528517774946,
+          0.5077411437473723
+        ]
+      },
+      "top200_gained_lost": [
+        152,
+        9
+      ],
+      "top1_gained_lost": [
+        75,
+        119
+      ]
+    },
+    "projected_minus_linear": {
+      "points": [
+        0.5795729200751036,
+        0.21891265517600308
+      ],
+      "macro_ap": {
+        "classes": 21,
+        "queries": 3072,
+        "mean_across_classes": 0.6824062743977651,
+        "positive_classes": 15,
+        "bootstrap95": [
+          0.02290733652621742,
+          1.5106693956297985
+        ]
+      },
+      "top200_gained_lost": [
+        9,
+        103
+      ],
+      "top1_gained_lost": [
+        94,
+        82
+      ]
+    },
+    "projected_minus_shuffled": {
+      "points": [
+        0.8935126005781058,
+        0.3994139655939459
+      ],
+      "macro_ap": {
+        "classes": 21,
+        "queries": 3072,
+        "mean_across_classes": 0.8731067051633656,
+        "positive_classes": 12,
+        "bootstrap95": [
+          -1.243401474115435,
+          3.3324771809335414
+        ]
+      },
+      "top200_gained_lost": [
+        93,
+        49
+      ],
+      "top1_gained_lost": [
+        103,
+        124
+      ]
+    },
+    "projected_minus_raw": {
+      "points": [
+        2.0592485165252583,
+        1.6788736572683167
+      ],
+      "macro_ap": {
+        "classes": 21,
+        "queries": 3072,
+        "mean_across_classes": 2.1238357206801686,
+        "positive_classes": 18,
+        "bootstrap95": [
+          1.2196261319829556,
+          3.0734325148145913
+        ]
+      },
+      "top200_gained_lost": [
+        3,
+        191
+      ],
+      "top1_gained_lost": [
+        163,
+        98
+      ]
+    }
+  }
+}
