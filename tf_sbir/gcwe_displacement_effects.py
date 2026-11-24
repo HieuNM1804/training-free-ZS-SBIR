@@ -42,7 +42,7 @@ def plot(report,output):
     import matplotlib.pyplot as plt
     names=['Native GCWE','No GCWE','Scrambled coordinates','Unbinned matches','Raw offset votes']
     titles=['Sketchy Ext-1','Sketchy Ext-2','TU-Berlin']
-    fig,axes=plt.subplots(1,3,figsize=(10,3.3),sharey=True,layout='constrained')
+    fig,axes=plt.subplots(1,3,figsize=(10,3.3),sharex=True,sharey=True,layout='constrained')
     for axis,(split,pack),title in zip(axes,report.items(),titles):
         axis.axvline(0,color='.55',lw=.8)
         for i,control in enumerate(CONTROLS):
