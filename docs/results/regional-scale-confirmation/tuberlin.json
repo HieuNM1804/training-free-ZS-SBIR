@@ -1,0 +1,119 @@
+{
+  "commit": "5c6a82e89109c8cc6e66a88e2a84304a103dcf70",
+  "seed": 42,
+  "queries": 2130,
+  "gallery": 27262,
+  "algebra_max": 1.9073486328125e-06,
+  "reference_mae_points": [
+    0.002040915003160076,
+    0.002347419799213678
+  ],
+  "metrics": {
+    "regional_self": [
+      69.98225696677858,
+      68.54131457881188
+    ],
+    "global_regional_self": [
+      80.56561950670704,
+      81.47183101545548
+    ],
+    "regional_scale_only": [
+      71.6180661290954,
+      70.15680756892117
+    ],
+    "global_regional_scale_only": [
+      80.52593870370478,
+      81.4187793722245
+    ],
+    "regional_shared": [
+      70.1308940676535,
+      68.67511740514021
+    ],
+    "global_regional_shared": [
+      80.37072537740158,
+      81.28028171757857
+    ]
+  },
+  "contrasts": {
+    "regional_scale_only_minus_self": {
+      "points": [
+        1.6358091623168176,
+        1.6154929901092825
+      ],
+      "macro": {
+        "classes": 30,
+        "queries": 2130,
+        "mean_across_classes": 1.643070223275572,
+        "positive_classes": 24,
+        "bootstrap95": [
+          0.7769744352869957,
+          2.5215837231099916
+        ]
+      }
+    },
+    "regional_scale_only_minus_shared": {
+      "points": [
+        1.4871720614418946,
+        1.4816901637809656
+      ],
+      "macro": {
+        "classes": 30,
+        "queries": 2130,
+        "mean_across_classes": 1.4849438184395523,
+        "positive_classes": 22,
+        "bootstrap95": [
+          0.5452832130266222,
+          2.5038383917863634
+        ]
+      }
+    },
+    "global_regional_scale_only_minus_self": {
+      "points": [
+        -0.03968080300225618,
+        -0.05305164323096544
+      ],
+      "macro": {
+        "classes": 30,
+        "queries": 2130,
+        "mean_across_classes": -0.03890956054619026,
+        "positive_classes": 15,
+        "bootstrap95": [
+          -0.3540631136973388,
+          0.28262215866346907
+        ]
+      }
+    },
+    "global_regional_scale_only_minus_shared": {
+      "points": [
+        0.15521332630319215,
+        0.13849765464593547
+      ],
+      "macro": {
+        "classes": 30,
+        "queries": 2130,
+        "mean_across_classes": 0.1531854788273839,
+        "positive_classes": 16,
+        "bootstrap95": [
+          -0.06016060397350451,
+          0.3692361429499994
+        ]
+      }
+    }
+  },
+  "interaction": {
+    "points": [
+      -1.6754899653190738,
+      -1.6685446333402478
+    ],
+    "macro": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": -1.6819797838217625,
+      "positive_classes": 8,
+      "bootstrap95": [
+        -2.4394847539694244,
+        -0.9491923030019584
+      ]
+    }
+  }
+}
