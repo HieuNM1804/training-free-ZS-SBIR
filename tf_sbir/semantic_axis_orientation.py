@@ -1,6 +1,7 @@
 """Measure what matched second-order visual geometry explains in CLIP word retrieval."""
 import hashlib
 import inspect
+import json
 import os
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
@@ -89,12 +90,28 @@ def run():
     w = Path('/content/sbir')
     root = w/'results/semantic-axis-orientation'
     root.mkdir(parents=True,exist_ok=True)
+    complete = set()
+    for split in ('sketchy_1','sketchy_2'):
+        path=root/(split+'.json')
+        if path.is_file() and path.with_suffix('.pt').is_file():
+            report=json.loads(path.read_text())
+            saved=torch.load(path.with_suffix('.pt'),weights_only=True,mmap=True)
+            expected={'native','shared_0','shared_1','shared_2','separate','entropy_matched'}
+            required={k+'_'+mode for k in expected for mode in ('direct','diffused')}|{'visual_cosine'}
+            if (report.get('commit')==revision() and report.get('device')==torch.cuda.get_device_name()
+                    and len(saved['qi'].unique())==1536 and len(saved['pi'])==COUNTS[split][1]
+                    and set(saved['rows'])==required and set(report['metrics'])==required):
+                complete.add(split)
+    if len(complete)==2:
+        return
     inputs = semantic_inputs(w,'sketchy')
     _,_,qs,_,gs,q,p,src,tgt,scale = inputs
     views = complete_windows(w,'sketchy',inputs)
     kd,_ = load_kd(w)
     assert hashlib.sha256(inspect.getsource(kd).strip().encode()).hexdigest() == KD_FUNCTION_SHA
     for split,(qi,labels) in qs.items():
+        if split in complete:
+            continue
         pi,gl = gs[split]
         assert (len(qi),len(pi),len(gl.unique())) == COUNTS[split]
         ix = torch.randperm(len(qi),generator=torch.Generator().manual_seed(42))[:1536].sort().values
