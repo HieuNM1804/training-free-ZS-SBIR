@@ -1,0 +1,131 @@
+{
+  "commit": "e896de55640222a72b44cb893568daa60a205fde",
+  "seed": 42,
+  "torch": "2.14.1+cu130",
+  "cuda": "13.0",
+  "pythonhashseed": "42",
+  "device": "Tesla T4",
+  "split": "tuberlin",
+  "counts": [
+    2130,
+    27262,
+    30
+  ],
+  "metrics": [
+    "mAP@all",
+    "P@100"
+  ],
+  "paired_reference_checks": {
+    "full": {
+      "max_per_query": [
+        0.103878915309906,
+        0.14000000059604645
+      ],
+      "mean_signed_points": [
+        -5.31496611279501e-06,
+        -0.010798117364516281
+      ],
+      "mean_absolute_points": [
+        0.08927065857244489,
+        0.05962441434882616
+      ]
+    },
+    "without_geometry": {
+      "max_per_query": [
+        0.041373491287231445,
+        0.10000002384185791
+      ],
+      "mean_signed_points": [
+        0.00427618428207759,
+        -0.005633802516079845
+      ],
+      "mean_absolute_points": [
+        0.026941210394419136,
+        0.03755869177725393
+      ]
+    }
+  },
+  "max_regional_index_discrepancy": 1.1920928955078125e-07,
+  "rows": {
+    "full": {
+      "metrics_percent": [
+        81.49475979437273,
+        82.18497656137102
+      ],
+      "ablated_minus_full_points": [
+        0.0,
+        0.0
+      ],
+      "macro_ap_removal": {
+        "classes": 30,
+        "queries": 2130,
+        "mean_across_classes": 0.0,
+        "positive_classes": 0,
+        "bootstrap95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "additive": {
+      "metrics_percent": [
+        81.47491548975555,
+        82.24272304446275
+      ],
+      "ablated_minus_full_points": [
+        -0.019844304617197023,
+        0.05774648309173718
+      ],
+      "macro_ap_removal": {
+        "classes": 30,
+        "queries": 2130,
+        "mean_across_classes": -0.02126146505387234,
+        "positive_classes": 13,
+        "bootstrap95": [
+          -0.12215750132135803,
+          0.06725501960331925
+        ]
+      }
+    },
+    "without_geometry": {
+      "metrics_percent": [
+        80.56947450391826,
+        81.46572773121822
+      ],
+      "ablated_minus_full_points": [
+        -0.9252852904544749,
+        -0.7192488301527892
+      ],
+      "macro_ap_removal": {
+        "classes": 30,
+        "queries": 2130,
+        "mean_across_classes": -0.9206297575728968,
+        "positive_classes": 11,
+        "bootstrap95": [
+          -2.1699557243928123,
+          0.1254796317804856
+        ]
+      }
+    },
+    "additive_without_geometry": {
+      "metrics_percent": [
+        80.59144336481015,
+        81.55352115604869
+      ],
+      "ablated_minus_full_points": [
+        -0.9033164295625868,
+        -0.6314554053223189
+      ],
+      "macro_ap_removal": {
+        "classes": 30,
+        "queries": 2130,
+        "mean_across_classes": -0.8978580702539711,
+        "positive_classes": 11,
+        "bootstrap95": [
+          -2.1125705575531657,
+          0.1770159318472169
+        ]
+      }
+    }
+  }
+}
