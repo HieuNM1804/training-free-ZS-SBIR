@@ -44,6 +44,31 @@ COUNTS = {'sketchy_1': (14179, 17100, 25), 'sketchy_2': (12694, 12552, 21), 'tub
 GLOBAL_WEIGHT = .65
 REGIONAL_WEIGHT = .35
 SHARD = 256
+SEED = 42
+
+
+def prior_run(w, split, qi, pi, labels, term_ablation, diffusion_paths):
+    if term_ablation or diffusion_paths:
+        folders = ('geometry-word-flat-first','geometry-word-flat')
+        matches = ('full','without_diffusion') if diffusion_paths else ('full','without_regional','without_geometry')
+        pairs = [(k,k) for k in matches]
+    else:
+        folders = ('geometry-word-leave-one-out',)
+        pairs = [('full','without_hierarchy')]
+    for family in folders:
+        directory = w / 'results' / family
+        path = directory / (split + '.pt')
+        if not path.is_file():
+            continue
+        if term_ablation or diffusion_paths:
+            meta = directory / (split + '.json')
+            if not meta.is_file() or json.loads(meta.read_text()).get('seed') != SEED:
+                continue
+        record = torch.load(path, mmap=True, weights_only=True)
+        if not all(torch.equal(record[k],v) for k,v in (('qi',qi),('pi',pi),('labels',labels))):
+            raise ValueError(f'Different ordering in reference {path}')
+        return record, pairs, family
+    return None, [], None
 
 
 def log_score(value):
@@ -114,7 +139,7 @@ def geometry_cache(w, split, gallery, query, flipped, qi, pi, qp, pp, vision):
 
 @torch.inference_mode()
 def run(dataset, term_ablation=False, diffusion_paths=False):
-    seed = 42
+    seed = SEED
     random.seed(seed)
     np.random.seed(seed)
     torch.manual_seed(seed)
@@ -141,14 +166,26 @@ def run(dataset, term_ablation=False, diffusion_paths=False):
     distance = torch.cdist(coords, coords)
     for split, (qi, labels) in qs.items():
         out = root / (split + '.json')
-        if out.exists():
-            continue
         pi, gl = gs[split]
         assert (len(qi), len(pi), len(gl.unique())) == COUNTS[split]
         assert torch.equal(aq[split][0], qi) and torch.equal(ag[split][0], pi)
-        previous = torch.load(w/'results/geometry-word-leave-one-out'/(split+'.pt'), mmap=True, weights_only=True)
-        assert torch.equal(previous['qi'], qi) and torch.equal(previous['pi'], pi)
         paths = [str(pp[i]) for i in pi.tolist()]
+        recipe = digest({'seed':seed,'methods':list(methods),'model':CHECKPOINT,'evaluator':KD_FUNCTION_SHA,
+                         'gallery':paths,'queries':[str(qp[i]) for i in qi.tolist()],
+                         'source_revision':revision(),'torch':str(torch.__version__),'cuda':torch.version.cuda,
+                         'device':torch.cuda.get_device_name()})
+        if out.exists() and out.with_suffix('.pt').is_file():
+            saved = json.loads(out.read_text())
+            if saved.get('recipe') == recipe:
+                continue
+            # Completed published seed-42 runs predate recipe tags. Check the data and known scoring revision.
+            legacy = {'cca8750e99c12a050bc8fcf4a0b15a7888af75e1','ce90e01f01ceb5bb746d7046123de1a602c6bddb',
+                      '71ec3528e92c4d0a9b7cfd0e42d0aafdc0ed73d7'}
+            if 'recipe' not in saved and saved.get('seed')==seed and saved.get('commit') in legacy and set(saved['rows'])==set(methods):
+                record = torch.load(out.with_suffix('.pt'),mmap=True,weights_only=True)
+                if (set(record['rows'])==set(methods) and torch.equal(record['qi'],qi) and torch.equal(record['pi'],pi)
+                        and torch.equal(record['labels'],labels)):
+                    continue
         gallery = p[pi].cuda()
         geom_gallery = F.normalize(photo[pi].cuda())
         stamp = digest({'gallery': paths, 'model': CHECKPOINT, 'source': 'regional-64/RGB16'})
@@ -167,14 +204,14 @@ def run(dataset, term_ablation=False, diffusion_paths=False):
             raise ValueError(f'Regional diffusion cache differs: {check_index}')
         geom_bank = make_word_bank(geom_gallery, gtgt, gscale, 160)
         near, compact, gp, sp, flat = geometry_cache(w, split, geom_gallery, gq, flip, qi, pi, qp, pp, vision)
-        parts = torch.randperm(len(pi), generator=torch.Generator().manual_seed(42)).cuda().tensor_split(2)
+        parts = torch.randperm(len(pi), generator=torch.Generator().manual_seed(seed)).cuda().tensor_split(2)
         folds = torch.empty(len(pi), dtype=torch.bool, device='cuda')
         folds[parts[0]], folds[parts[1]] = False, True
         priors = [geom_bank[part].mean(0) for part in parts]
         replay = PrefixReplay(kd, gl, split)
         classes = gl.cuda()
-        folder = root / split
-        folder.mkdir(exist_ok=True)
+        folder = root / split / recipe
+        folder.mkdir(parents=True, exist_ok=True)
         all_metrics = {name: [] for name in methods}
         with ThreadPoolExecutor(max_workers=min(2, len(os.sched_getaffinity(0)))) as pool:
             for start in range(0, len(qi), SHARD):
@@ -234,13 +271,7 @@ def run(dataset, term_ablation=False, diffusion_paths=False):
                 print(split, stop, '/', len(qi), flush=True)
         raw = {name: torch.cat(chunks) for name, chunks in all_metrics.items()}
         checks = {}
-        comparisons = [('full', 'without_hierarchy')]
-        if term_ablation or diffusion_paths:
-            previous = torch.load(w / 'results/geometry-word-flat-first' / (split + '.pt'), mmap=True, weights_only=True)
-            assert torch.equal(previous['qi'], qi) and torch.equal(previous['pi'], pi)
-            comparisons = [(k,k) for k in ('full','without_regional','without_geometry')]
-            if diffusion_paths:
-                comparisons = [(k,k) for k in ('full','without_diffusion')]
+        previous, comparisons, reference_family = prior_run(w, split, qi, pi, labels, term_ablation, diffusion_paths)
         for name, ref in comparisons:
             difference = raw[name][:, :2] - previous['rows'][ref][:, :2]
             checks[name] = {'max_per_query': difference.abs().amax(0).tolist(),
@@ -250,8 +281,9 @@ def run(dataset, term_ablation=False, diffusion_paths=False):
                 raise ValueError(f'Official per-query replay diverged: {checks}')
             if (term_ablation or diffusion_paths) and max(checks[name]['mean_absolute_points']) > .03:
                 raise ValueError(f'Seed-42 control failed: {checks}')
-        save_tensor({'qi': qi, 'pi': pi, 'labels': labels, 'rows': raw}, root / (split + '.pt'))
-        report = {'commit': revision(), 'seed': 42, 'torch': str(torch.__version__), 'cuda': torch.version.cuda, 'pythonhashseed': os.environ.get('PYTHONHASHSEED'), 'device': torch.cuda.get_device_name(), 'split': split,
+        save_tensor({'qi': qi, 'pi': pi, 'labels': labels, 'rows': raw, 'recipe':recipe}, root / (split + '.pt'))
+        report = {'commit': revision(), 'seed': seed, 'recipe':recipe,'reference_family':reference_family,
+                  'torch': str(torch.__version__), 'cuda': torch.version.cuda, 'pythonhashseed': os.environ.get('PYTHONHASHSEED'), 'device': torch.cuda.get_device_name(), 'split': split,
                   'counts': COUNTS[split], 'metrics': ['mAP@200', 'P@200'] if split == 'sketchy_2' else ['mAP@all', 'P@100'],
                   'paired_reference_checks': checks,
                   'max_regional_index_discrepancy': check_index, 'rows': paired_summary(raw, labels)}
