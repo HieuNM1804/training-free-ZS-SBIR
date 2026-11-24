@@ -1,0 +1,865 @@
+{
+  "commit": "7f51d0b39224983545f28eeb6f23c2f83cd27922",
+  "assessment": {
+    "sketchy_1/same": {
+      "counts": {
+        "all": 6707,
+        "global_wrong": 2881,
+        "global_correct": 3826
+      },
+      "single_query_accuracy": {
+        "global": 0.53258523953388,
+        "registered": 0.5731549417350021,
+        "uniform_orientation": 0.5166163141993958,
+        "nonidentity": 0.5101424255502806,
+        "inferred": 0.5153215364695727,
+        "unconditioned": 0.5105740181268882
+      },
+      "conditional": {
+        "all": {
+          "global": {
+            "pairs": 200,
+            "mean": 0.5593516568143055,
+            "pair_bootstrap95": [
+              0.5257800219241737,
+              0.592728509192527
+            ]
+          },
+          "registered": {
+            "pairs": 200,
+            "mean": 0.7363919713443522,
+            "pair_bootstrap95": [
+              0.7059734875408982,
+              0.7664888170036535
+            ]
+          },
+          "uniform_orientation": {
+            "pairs": 200,
+            "mean": 0.5974931697381102,
+            "pair_bootstrap95": [
+              0.5675969345832739,
+              0.627429166021093
+            ]
+          },
+          "nonidentity": {
+            "pairs": 200,
+            "mean": 0.5238105457648612,
+            "pair_bootstrap95": [
+              0.4914766981625352,
+              0.5560001438292472
+            ]
+          },
+          "inferred": {
+            "pairs": 200,
+            "mean": 0.5809548836525028,
+            "pair_bootstrap95": [
+              0.5528334581587669,
+              0.6092850915061294
+            ]
+          },
+          "unconditioned": {
+            "pairs": 200,
+            "mean": 0.5734946836012312,
+            "pair_bootstrap95": [
+              0.5438074920749995,
+              0.603103717575414
+            ]
+          },
+          "registered_minus_uniform": {
+            "pairs": 200,
+            "mean": 0.1388988016062421,
+            "pair_bootstrap95": [
+              0.10569699697155799,
+              0.17148970811788522
+            ]
+          },
+          "inferred_minus_uniform": {
+            "pairs": 200,
+            "mean": -0.01653828608560752,
+            "pair_bootstrap95": [
+              -0.03981368985759611,
+              0.006403485546365005
+            ]
+          }
+        },
+        "global_wrong": {
+          "global": {
+            "pairs": 195,
+            "mean": 0.0,
+            "pair_bootstrap95": [
+              0.0,
+              0.0
+            ]
+          },
+          "registered": {
+            "pairs": 195,
+            "mean": 0.7416959883181128,
+            "pair_bootstrap95": [
+              0.7084872051781612,
+              0.7742388723002772
+            ]
+          },
+          "uniform_orientation": {
+            "pairs": 195,
+            "mean": 0.5848982701779158,
+            "pair_bootstrap95": [
+              0.5454443478829754,
+              0.6230325973141871
+            ]
+          },
+          "nonidentity": {
+            "pairs": 195,
+            "mean": 0.5084330638185732,
+            "pair_bootstrap95": [
+              0.4688296894254339,
+              0.5486402240618588
+            ]
+          },
+          "inferred": {
+            "pairs": 195,
+            "mean": 0.581038881585011,
+            "pair_bootstrap95": [
+              0.5457757623184073,
+              0.6163321378509481
+            ]
+          },
+          "unconditioned": {
+            "pairs": 195,
+            "mean": 0.5623402843600314,
+            "pair_bootstrap95": [
+              0.5233567820492159,
+              0.6012485144209567
+            ]
+          },
+          "registered_minus_uniform": {
+            "pairs": 195,
+            "mean": 0.15679771814019694,
+            "pair_bootstrap95": [
+              0.11694386378029029,
+              0.19628510549226136
+            ]
+          },
+          "inferred_minus_uniform": {
+            "pairs": 195,
+            "mean": -0.003859388592904768,
+            "pair_bootstrap95": [
+              -0.03408201845070987,
+              0.027080262530229684
+            ]
+          }
+        },
+        "global_correct": {
+          "global": {
+            "pairs": 196,
+            "mean": 1.0,
+            "pair_bootstrap95": [
+              1.0,
+              1.0
+            ]
+          },
+          "registered": {
+            "pairs": 196,
+            "mean": 0.736080485797646,
+            "pair_bootstrap95": [
+              0.7011067372728467,
+              0.7706519211983585
+            ]
+          },
+          "uniform_orientation": {
+            "pairs": 196,
+            "mean": 0.6022048088985122,
+            "pair_bootstrap95": [
+              0.5680621584007794,
+              0.6375724997995217
+            ]
+          },
+          "nonidentity": {
+            "pairs": 196,
+            "mean": 0.5231207017322768,
+            "pair_bootstrap95": [
+              0.4844821524940994,
+              0.5608033632505197
+            ]
+          },
+          "inferred": {
+            "pairs": 196,
+            "mean": 0.5825870070995226,
+            "pair_bootstrap95": [
+              0.548639904254801,
+              0.6171176136434575
+            ]
+          },
+          "unconditioned": {
+            "pairs": 196,
+            "mean": 0.5810041886672204,
+            "pair_bootstrap95": [
+              0.5470833992951643,
+              0.615994398418233
+            ]
+          },
+          "registered_minus_uniform": {
+            "pairs": 196,
+            "mean": 0.1338756768991335,
+            "pair_bootstrap95": [
+              0.0974154185347435,
+              0.17201448992903376
+            ]
+          },
+          "inferred_minus_uniform": {
+            "pairs": 196,
+            "mean": -0.019617801798989594,
+            "pair_bootstrap95": [
+              -0.04538057845304552,
+              0.00532884564874928
+            ]
+          }
+        }
+      }
+    },
+    "sketchy_1/different": {
+      "counts": {
+        "all": 6675,
+        "global_wrong": 94,
+        "global_correct": 6581
+      },
+      "single_query_accuracy": {
+        "global": 0.9507984462667242,
+        "registered": 0.5968925334484246,
+        "uniform_orientation": 0.5438066465256798,
+        "nonidentity": 0.5412170910660337,
+        "inferred": 0.5938713854121709,
+        "unconditioned": 0.5550280535174795
+      },
+      "conditional": {
+        "all": {
+          "global": {
+            "pairs": 200,
+            "mean": 0.9869059523809522,
+            "pair_bootstrap95": [
+              0.979129320436508,
+              0.9931717509920636
+            ]
+          },
+          "registered": {
+            "pairs": 200,
+            "mean": 0.8265159059525131,
+            "pair_bootstrap95": [
+              0.7986349997423211,
+              0.8534914816317941
+            ]
+          },
+          "uniform_orientation": {
+            "pairs": 200,
+            "mean": 0.7788130484594771,
+            "pair_bootstrap95": [
+              0.7465773961124855,
+              0.8089933743686868
+            ]
+          },
+          "nonidentity": {
+            "pairs": 200,
+            "mean": 0.7455662935279007,
+            "pair_bootstrap95": [
+              0.7114202480051365,
+              0.7777700027485741
+            ]
+          },
+          "inferred": {
+            "pairs": 200,
+            "mean": 0.7920100020680378,
+            "pair_bootstrap95": [
+              0.7613524724870038,
+              0.8215827213139044
+            ]
+          },
+          "unconditioned": {
+            "pairs": 200,
+            "mean": 0.7501610009038581,
+            "pair_bootstrap95": [
+              0.7182406052660962,
+              0.7799821847596847
+            ]
+          },
+          "registered_minus_uniform": {
+            "pairs": 200,
+            "mean": 0.047702857493036065,
+            "pair_bootstrap95": [
+              0.02587539821289821,
+              0.06952918574150717
+            ]
+          },
+          "inferred_minus_uniform": {
+            "pairs": 200,
+            "mean": 0.013196953608560753,
+            "pair_bootstrap95": [
+              -0.0023179631653069137,
+              0.0286599662928011
+            ]
+          }
+        },
+        "global_wrong": {
+          "global": {
+            "pairs": 21,
+            "mean": 0.0,
+            "pair_bootstrap95": [
+              0.0,
+              0.0
+            ]
+          },
+          "registered": {
+            "pairs": 21,
+            "mean": 0.7536681339202348,
+            "pair_bootstrap95": [
+              0.5988987261571295,
+              0.8885887688408697
+            ]
+          },
+          "uniform_orientation": {
+            "pairs": 21,
+            "mean": 0.457703081232493,
+            "pair_bootstrap95": [
+              0.2952380952380952,
+              0.626984126984127
+            ]
+          },
+          "nonidentity": {
+            "pairs": 21,
+            "mean": 0.3815359477124183,
+            "pair_bootstrap95": [
+              0.21287056489262368,
+              0.5527544351073763
+            ]
+          },
+          "inferred": {
+            "pairs": 21,
+            "mean": 0.4823295985060691,
+            "pair_bootstrap95": [
+              0.31267798786181134,
+              0.6549585667600373
+            ]
+          },
+          "unconditioned": {
+            "pairs": 21,
+            "mean": 0.47456816059757234,
+            "pair_bootstrap95": [
+              0.31642827964519143,
+              0.6359159080298785
+            ]
+          },
+          "registered_minus_uniform": {
+            "pairs": 21,
+            "mean": 0.2959650526877417,
+            "pair_bootstrap95": [
+              0.12861811391223157,
+              0.47466003067893814
+            ]
+          },
+          "inferred_minus_uniform": {
+            "pairs": 21,
+            "mean": 0.024626517273576093,
+            "pair_bootstrap95": [
+              -0.12138188608776843,
+              0.16755368814192242
+            ]
+          }
+        },
+        "global_correct": {
+          "global": {
+            "pairs": 200,
+            "mean": 1.0,
+            "pair_bootstrap95": [
+              1.0,
+              1.0
+            ]
+          },
+          "registered": {
+            "pairs": 200,
+            "mean": 0.8266277237719748,
+            "pair_bootstrap95": [
+              0.7988058800806914,
+              0.8536011783017147
+            ]
+          },
+          "uniform_orientation": {
+            "pairs": 200,
+            "mean": 0.7795967937692322,
+            "pair_bootstrap95": [
+              0.7473786601245528,
+              0.809296279657402
+            ]
+          },
+          "nonidentity": {
+            "pairs": 200,
+            "mean": 0.7465804697858357,
+            "pair_bootstrap95": [
+              0.712392911537256,
+              0.7785429620246237
+            ]
+          },
+          "inferred": {
+            "pairs": 200,
+            "mean": 0.79316634840842,
+            "pair_bootstrap95": [
+              0.7625537751970967,
+              0.8228523804045101
+            ]
+          },
+          "unconditioned": {
+            "pairs": 200,
+            "mean": 0.7505385304609803,
+            "pair_bootstrap95": [
+              0.719270986659385,
+              0.7803362397238557
+            ]
+          },
+          "registered_minus_uniform": {
+            "pairs": 200,
+            "mean": 0.04703093000274263,
+            "pair_bootstrap95": [
+              0.025220894905287696,
+              0.06887767050773497
+            ]
+          },
+          "inferred_minus_uniform": {
+            "pairs": 200,
+            "mean": 0.013569554639187893,
+            "pair_bootstrap95": [
+              -0.0021992360761078846,
+              0.02919933635096718
+            ]
+          }
+        }
+      }
+    },
+    "sketchy_2/same": {
+      "counts": {
+        "all": 6355,
+        "global_wrong": 2688,
+        "global_correct": 3667
+      },
+      "single_query_accuracy": {
+        "global": 0.5343065693430656,
+        "registered": 0.5289537712895377,
+        "uniform_orientation": 0.5051094890510949,
+        "nonidentity": 0.5031630170316301,
+        "inferred": 0.5119221411192214,
+        "unconditioned": 0.5041362530413626
+      },
+      "conditional": {
+        "all": {
+          "global": {
+            "pairs": 168,
+            "mean": 0.5775555108707745,
+            "pair_bootstrap95": [
+              0.5448627645502644,
+              0.6116642802999626
+            ]
+          },
+          "registered": {
+            "pairs": 168,
+            "mean": 0.6865145144758239,
+            "pair_bootstrap95": [
+              0.651280574679517,
+              0.7203702479857083
+            ]
+          },
+          "uniform_orientation": {
+            "pairs": 168,
+            "mean": 0.5688889983001377,
+            "pair_bootstrap95": [
+              0.5335339084888405,
+              0.6028156907694534
+            ]
+          },
+          "nonidentity": {
+            "pairs": 168,
+            "mean": 0.5256428452814508,
+            "pair_bootstrap95": [
+              0.4876670979719449,
+              0.5611243421776478
+            ]
+          },
+          "inferred": {
+            "pairs": 168,
+            "mean": 0.5578489710127679,
+            "pair_bootstrap95": [
+              0.5242085965913692,
+              0.5914824334040825
+            ]
+          },
+          "unconditioned": {
+            "pairs": 168,
+            "mean": 0.558043120506981,
+            "pair_bootstrap95": [
+              0.5220033426414699,
+              0.5925491211004603
+            ]
+          },
+          "registered_minus_uniform": {
+            "pairs": 168,
+            "mean": 0.11762551617568626,
+            "pair_bootstrap95": [
+              0.08162959070938983,
+              0.15574142861284118
+            ]
+          },
+          "inferred_minus_uniform": {
+            "pairs": 168,
+            "mean": -0.011040027287369972,
+            "pair_bootstrap95": [
+              -0.03163352960382084,
+              0.009588762425590123
+            ]
+          }
+        },
+        "global_wrong": {
+          "global": {
+            "pairs": 163,
+            "mean": 0.0,
+            "pair_bootstrap95": [
+              0.0,
+              0.0
+            ]
+          },
+          "registered": {
+            "pairs": 163,
+            "mean": 0.6819629505968653,
+            "pair_bootstrap95": [
+              0.6375212690824195,
+              0.724595533937733
+            ]
+          },
+          "uniform_orientation": {
+            "pairs": 163,
+            "mean": 0.5480004657642387,
+            "pair_bootstrap95": [
+              0.5054625791588565,
+              0.5893584607323515
+            ]
+          },
+          "nonidentity": {
+            "pairs": 163,
+            "mean": 0.5057647865799707,
+            "pair_bootstrap95": [
+              0.46116124750741755,
+              0.5480477318275639
+            ]
+          },
+          "inferred": {
+            "pairs": 163,
+            "mean": 0.5165713750802187,
+            "pair_bootstrap95": [
+              0.472968017971398,
+              0.5599018958638093
+            ]
+          },
+          "unconditioned": {
+            "pairs": 163,
+            "mean": 0.5219824621807305,
+            "pair_bootstrap95": [
+              0.4771365941049814,
+              0.5649926477426053
+            ]
+          },
+          "registered_minus_uniform": {
+            "pairs": 163,
+            "mean": 0.1339624848326266,
+            "pair_bootstrap95": [
+              0.0886335925160771,
+              0.1803851804678885
+            ]
+          },
+          "inferred_minus_uniform": {
+            "pairs": 163,
+            "mean": -0.03142909068402005,
+            "pair_bootstrap95": [
+              -0.05762283992402988,
+              -0.0036595368308993273
+            ]
+          }
+        },
+        "global_correct": {
+          "global": {
+            "pairs": 167,
+            "mean": 1.0,
+            "pair_bootstrap95": [
+              1.0,
+              1.0
+            ]
+          },
+          "registered": {
+            "pairs": 167,
+            "mean": 0.6844882082801259,
+            "pair_bootstrap95": [
+              0.6450677705978846,
+              0.7222014092739923
+            ]
+          },
+          "uniform_orientation": {
+            "pairs": 167,
+            "mean": 0.5807486622654168,
+            "pair_bootstrap95": [
+              0.5401614392321646,
+              0.6208732602336332
+            ]
+          },
+          "nonidentity": {
+            "pairs": 167,
+            "mean": 0.5321983983479013,
+            "pair_bootstrap95": [
+              0.48965823911707507,
+              0.5736233006624337
+            ]
+          },
+          "inferred": {
+            "pairs": 167,
+            "mean": 0.5706820904016479,
+            "pair_bootstrap95": [
+              0.531059883912807,
+              0.6074686675905077
+            ]
+          },
+          "unconditioned": {
+            "pairs": 167,
+            "mean": 0.5777687652935765,
+            "pair_bootstrap95": [
+              0.5391262494826459,
+              0.6144258894427393
+            ]
+          },
+          "registered_minus_uniform": {
+            "pairs": 167,
+            "mean": 0.10373954601470903,
+            "pair_bootstrap95": [
+              0.06594399879057214,
+              0.14409431433115574
+            ]
+          },
+          "inferred_minus_uniform": {
+            "pairs": 167,
+            "mean": -0.010066571863768957,
+            "pair_bootstrap95": [
+              -0.0371038174451451,
+              0.015334959469462086
+            ]
+          }
+        }
+      }
+    },
+    "sketchy_2/different": {
+      "counts": {
+        "all": 6290,
+        "global_wrong": 200,
+        "global_correct": 6090
+      },
+      "single_query_accuracy": {
+        "global": 0.8953771289537713,
+        "registered": 0.5878345498783455,
+        "uniform_orientation": 0.55669099756691,
+        "nonidentity": 0.5523114355231143,
+        "inferred": 0.5868613138686132,
+        "unconditioned": 0.5615571776155718
+      },
+      "conditional": {
+        "all": {
+          "global": {
+            "pairs": 168,
+            "mean": 0.9676349753916718,
+            "pair_bootstrap95": [
+              0.9545060130428434,
+              0.9792085002877413
+            ]
+          },
+          "registered": {
+            "pairs": 168,
+            "mean": 0.8259805771003687,
+            "pair_bootstrap95": [
+              0.798262763736071,
+              0.8528376740137343
+            ]
+          },
+          "uniform_orientation": {
+            "pairs": 168,
+            "mean": 0.774285866387801,
+            "pair_bootstrap95": [
+              0.7378501691106787,
+              0.8100555902706201
+            ]
+          },
+          "nonidentity": {
+            "pairs": 168,
+            "mean": 0.7467420377241806,
+            "pair_bootstrap95": [
+              0.7082544379810005,
+              0.7848626410791589
+            ]
+          },
+          "inferred": {
+            "pairs": 168,
+            "mean": 0.7845624184017042,
+            "pair_bootstrap95": [
+              0.7487818958075654,
+              0.8184017110947915
+            ]
+          },
+          "unconditioned": {
+            "pairs": 168,
+            "mean": 0.752222688242565,
+            "pair_bootstrap95": [
+              0.7162114975488302,
+              0.7880049700890608
+            ]
+          },
+          "registered_minus_uniform": {
+            "pairs": 168,
+            "mean": 0.05169471071256786,
+            "pair_bootstrap95": [
+              0.027390411878135092,
+              0.0762732759139009
+            ]
+          },
+          "inferred_minus_uniform": {
+            "pairs": 168,
+            "mean": 0.010276552013903206,
+            "pair_bootstrap95": [
+              -0.0070269752155912866,
+              0.027348785697464992
+            ]
+          }
+        },
+        "global_wrong": {
+          "global": {
+            "pairs": 47,
+            "mean": 0.0,
+            "pair_bootstrap95": [
+              0.0,
+              0.0
+            ]
+          },
+          "registered": {
+            "pairs": 47,
+            "mean": 0.6599889472229898,
+            "pair_bootstrap95": [
+              0.5505040526849038,
+              0.7638323201621076
+            ]
+          },
+          "uniform_orientation": {
+            "pairs": 47,
+            "mean": 0.6754075711522519,
+            "pair_bootstrap95": [
+              0.5609341899235516,
+              0.7836418900248686
+            ]
+          },
+          "nonidentity": {
+            "pairs": 47,
+            "mean": 0.6579994473611495,
+            "pair_bootstrap95": [
+              0.5409763286359031,
+              0.769446440084738
+            ]
+          },
+          "inferred": {
+            "pairs": 47,
+            "mean": 0.6994865064013999,
+            "pair_bootstrap95": [
+              0.5970698051948052,
+              0.7944491457124436
+            ]
+          },
+          "unconditioned": {
+            "pairs": 47,
+            "mean": 0.6485297503914524,
+            "pair_bootstrap95": [
+              0.5363705155659944,
+              0.7567874412821222
+            ]
+          },
+          "registered_minus_uniform": {
+            "pairs": 47,
+            "mean": -0.01541862392926223,
+            "pair_bootstrap95": [
+              -0.1081179193147278,
+              0.07350591784102421
+            ]
+          },
+          "inferred_minus_uniform": {
+            "pairs": 47,
+            "mean": 0.024078935249148014,
+            "pair_bootstrap95": [
+              -0.049655867182462926,
+              0.10664530947775616
+            ]
+          }
+        },
+        "global_correct": {
+          "global": {
+            "pairs": 168,
+            "mean": 1.0,
+            "pair_bootstrap95": [
+              1.0,
+              1.0
+            ]
+          },
+          "registered": {
+            "pairs": 168,
+            "mean": 0.8294884866090781,
+            "pair_bootstrap95": [
+              0.8015900566012522,
+              0.8565942542041585
+            ]
+          },
+          "uniform_orientation": {
+            "pairs": 168,
+            "mean": 0.778886599040794,
+            "pair_bootstrap95": [
+              0.7418485397510687,
+              0.8144676179281595
+            ]
+          },
+          "nonidentity": {
+            "pairs": 168,
+            "mean": 0.7491909320316624,
+            "pair_bootstrap95": [
+              0.7099762152973759,
+              0.7868824986168679
+            ]
+          },
+          "inferred": {
+            "pairs": 168,
+            "mean": 0.7885513510448063,
+            "pair_bootstrap95": [
+              0.752606585215107,
+              0.8227693024764506
+            ]
+          },
+          "unconditioned": {
+            "pairs": 168,
+            "mean": 0.7553782508725085,
+            "pair_bootstrap95": [
+              0.7195420322989977,
+              0.7908023400718689
+            ]
+          },
+          "registered_minus_uniform": {
+            "pairs": 168,
+            "mean": 0.05060188756828406,
+            "pair_bootstrap95": [
+              0.026997651156860668,
+              0.07413216572040879
+            ]
+          },
+          "inferred_minus_uniform": {
+            "pairs": 168,
+            "mean": 0.009664752004012185,
+            "pair_bootstrap95": [
+              -0.0075120206752630125,
+              0.02679043953887649
+            ]
+          }
+        }
+      }
+    }
+  }
+}
