@@ -1,0 +1,236 @@
+{
+  "commit": "ccc67dc5194918da0284f9ea1beb071f6a17eb45",
+  "seed": 42,
+  "queries": 1536,
+  "gallery": 12552,
+  "algebra_max": 0.0,
+  "reference_mae_points": [
+    0.05627143600577256,
+    0.048502599929634016
+  ],
+  "metrics": {
+    "regional_self": [
+      73.64947245499329,
+      71.81152363676424
+    ],
+    "global_regional_self": [
+      77.32541750689657,
+      75.0354818374035
+    ],
+    "regional_shared": [
+      72.97890635945805,
+      70.89681009674678
+    ],
+    "global_regional_shared": [
+      76.46777012026482,
+      73.95833338662973
+    ],
+    "regional_scale": [
+      74.20039854508408,
+      71.91276059123388
+    ],
+    "global_regional_scale": [
+      76.4992643570622,
+      74.18619799967323
+    ],
+    "regional_position": [
+      72.11311470534079,
+      70.30631526267825
+    ],
+    "global_regional_position": [
+      77.24791008446724,
+      74.90917976817096
+    ],
+    "regional_additive": [
+      73.76557684492582,
+      71.85123716753878
+    ],
+    "global_regional_additive": [
+      77.58627332323158,
+      75.19889330293759
+    ],
+    "regional_scale_interaction": [
+      73.89976358396476,
+      71.52669288340499
+    ],
+    "global_regional_scale_interaction": [
+      76.40994373817497,
+      74.03157559110696
+    ],
+    "regional_permuted_interaction": [
+      74.05022709481273,
+      72.00195333395337
+    ],
+    "global_regional_permuted_interaction": [
+      76.50390095310891,
+      74.2985026795092
+    ]
+  },
+  "contrasts": {
+    "regional_scale_interaction_minus_self": {
+      "points": [
+        0.2502911289714878,
+        -0.28483075335922575
+      ],
+      "macro": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": 0.20734058505389347,
+        "positive_classes": 11,
+        "bootstrap95": [
+          -0.8721126545930238,
+          1.1686281272785628
+        ]
+      }
+    },
+    "regional_scale_interaction_minus_scale": {
+      "points": [
+        -0.3006349611193097,
+        -0.38606770782886696
+      ],
+      "macro": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": -0.3817322178788695,
+        "positive_classes": 6,
+        "bootstrap95": [
+          -0.8035611518628114,
+          0.08214818562041608
+        ]
+      }
+    },
+    "regional_scale_interaction_minus_permuted_interaction": {
+      "points": [
+        -0.15046351084796092,
+        -0.47526045054837596
+      ],
+      "macro": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": -0.24531224053267403,
+        "positive_classes": 6,
+        "bootstrap95": [
+          -0.9015024400848657,
+          0.4197234407901419
+        ]
+      }
+    },
+    "regional_self_minus_additive": {
+      "points": [
+        -0.11610438993254017,
+        -0.039713530774558116
+      ],
+      "macro": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": -0.07871259439832043,
+        "positive_classes": 9,
+        "bootstrap95": [
+          -0.5047864357296488,
+          0.3065427251120228
+        ]
+      }
+    },
+    "regional_position_minus_shared": {
+      "points": [
+        -0.8657916541172502,
+        -0.5904948340685223
+      ],
+      "macro": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": -1.0027687159502605,
+        "positive_classes": 7,
+        "bootstrap95": [
+          -2.3290604789506104,
+          0.4150173866889066
+        ]
+      }
+    },
+    "global_regional_scale_interaction_minus_self": {
+      "points": [
+        -0.915473768721616,
+        -1.0039062462965376
+      ],
+      "macro": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": -0.8768010517778115,
+        "positive_classes": 3,
+        "bootstrap95": [
+          -1.4827868719247104,
+          -0.35917948466571786
+        ]
+      }
+    },
+    "global_regional_scale_interaction_minus_scale": {
+      "points": [
+        -0.0893206188872379,
+        -0.15462240856625917
+      ],
+      "macro": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": -0.07239408515021353,
+        "positive_classes": 9,
+        "bootstrap95": [
+          -0.2353889873645175,
+          0.08258777648484733
+        ]
+      }
+    },
+    "global_regional_scale_interaction_minus_permuted_interaction": {
+      "points": [
+        -0.09395721493395588,
+        -0.2669270884022505
+      ],
+      "macro": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": -0.07298445383774652,
+        "positive_classes": 10,
+        "bootstrap95": [
+          -0.37989558978460597,
+          0.18210064954588348
+        ]
+      }
+    },
+    "global_regional_self_minus_additive": {
+      "points": [
+        -0.26085581633500016,
+        -0.16341146553410604
+      ],
+      "macro": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": -0.24366932733338303,
+        "positive_classes": 11,
+        "bootstrap95": [
+          -0.6567035890848704,
+          0.07564985974700601
+        ]
+      }
+    },
+    "global_regional_position_minus_shared": {
+      "points": [
+        0.7801399642024384,
+        0.9508463815412446
+      ],
+      "macro": {
+        "classes": 21,
+        "queries": 1536,
+        "mean_across_classes": 0.7520274462816711,
+        "positive_classes": 13,
+        "bootstrap95": [
+          0.10811853215928888,
+          1.6641936616541733
+        ]
+      }
+    }
+  },
+  "matched_device_mae_points": [
+    0.00012939126463606954,
+    0.00032552052289247513
+  ],
+  "device": "Tesla T4"
+}
