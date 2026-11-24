@@ -48,7 +48,9 @@ def decisions(rows, sources, query_words, photo_words):
                 answers={k:[accuracy(orient*x["signed_certificate"]),orient*x["response"]]
                          for k,x in zip(READINGS,results)}
                 assert answers["sketch_source"][0]==r[arm]["acc"]
-                assert abs(answers["sketch_source"][1]-r[arm]["answer"])<1e-6
+                drift=abs(answers["sketch_source"][1]-r[arm]["answer"])
+                if drift>=1e-6:
+                    raise AssertionError(f"Sketch vote replay changed by {drift} for {(q,a,b,arm)}")
             rec[arm]=answers
         details.append(rec)
     return details
@@ -80,15 +82,23 @@ def run():
     root=work/"results"/FAMILY
     _,paths,_,photos,galleries,qf,pf,src,tgt,scale=semantic_inputs(work,"sketchy")
     records={}
+    original_queries=set()
+    original_candidates=set()
     source_ids={}
     for split,(ids,labels) in galleries.items():
-        records[split]=json.loads((root/(split+"-pairs.json")).read_bytes())["boundary"]
+        previous=json.loads((root/(split+"-pairs.json")).read_bytes())
+        records[split]=previous["boundary"]
+        # The pilot GEMMs used the sorted union across both cohorts and both splits.
+        # Keeping the last arithmetic batch identical matters for non-unique optimal votes.
+        for cohort in previous.values():
+            for r in cohort:
+                original_queries.add(r["q"])
+                original_candidates.update((r["pos"],r["neg"]))
         source_ids[split]=match_sources(records[split],paths,photos,ids,labels)
-    all_queries=set(q for lookup in source_ids.values() for q in lookup)
     all_photos=set(i for lookup in source_ids.values() for i in lookup.values())
-    all_photos.update(i for rows in records.values() for r in rows for i in (r["pos"],r["neg"]))
-    qw=word_rows(qf,all_queries,(src,tgt),scale)
-    pw=word_rows(pf,all_photos,(src,tgt),scale)
+    qw=word_rows(qf,original_queries,(src,tgt),scale)
+    pw=word_rows(pf,original_candidates,(src,tgt),scale)
+    pw.update(word_rows(pf,all_photos-original_candidates,(src,tgt),scale))
     for split,rows in records.items():
         details=decisions(rows,source_ids[split],qw,pw)
         stats={arm:summary(details,arm) for arm in (*ARMS,"direct")}
