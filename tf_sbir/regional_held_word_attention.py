@@ -52,7 +52,7 @@ def held_read(reader, paired):
 @torch.inference_mode()
 def run(*, family='regional-held-word-attention', alternate=None, start=768,
         contrasts=(('held','self'),('held','sham')), dataset='sketchy', count=1536, batch_size=8,
-        selected_windows=False):
+        selected_windows=False, device_reference=False):
     random.seed(42);np.random.seed(42);torch.manual_seed(42);torch.cuda.manual_seed_all(42)
     torch.backends.cudnn.benchmark=False
     torch.backends.cudnn.deterministic=True
@@ -111,9 +111,17 @@ def run(*, family='regional-held-word-attention', alternate=None, start=768,
                         rows.setdefault(name,[]).append(score_rows(value,labels[batch],gl.cuda(),split,replay,pool)[:,:2])
         rows={k:torch.cat(v) for k,v in rows.items()}
         mismatch=(100*(rows['global_regional_self']-ref['rows']['without_geometry'][select,:2]).double().abs().mean(0))
-        if check>.01 or mismatch.max()>.04:raise ValueError((check,mismatch))
+        matched=mismatch
+        if device_reference:
+            same=torch.load(w/'results/regional-position-device-reference'/(split+'.pt'),weights_only=True)
+            assert same['device']==torch.cuda.get_device_name() and same['seed']==42 and same['commit']==revision()
+            assert torch.equal(same['qi'],qi[select]) and torch.equal(same['pi'],pi) and torch.equal(same['labels'],labels[select])
+            matched=100*(rows['global_regional_self'].double()-same['kd'].double()).abs().mean(0)
+        if not torch.isfinite(matched).all() or check>.01 or matched.max()>.04:raise ValueError((check,matched,mismatch))
         result={'commit':revision(),'seed':42,'queries':len(select),'gallery':len(pi),'algebra_max':check,
                 'reference_mae_points':mismatch.tolist(),'metrics':{k:(100*v.double().mean(0)).tolist() for k,v in rows.items()},'contrasts':{}}
+        result['matched_device_mae_points']=matched.tolist()
+        result['device']=torch.cuda.get_device_name()
         for prefix in ('regional_','global_regional_'):
             for variant,other in contrasts:
                 delta=100*(rows[prefix+variant].double()-rows[prefix+other].double())
