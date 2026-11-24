@@ -67,6 +67,11 @@ def assignment_scores(q,b,group,full=False):
         def predict(w):
             return (w[:,:,:,None,None]*kernel).sum(2)
         inferred=predict(weight)
+        # For the full group, exchanging only the two unseen locations leaves every
+        # observed likelihood unchanged and complements the forecast exactly.
+        if len(group)==24:
+            torch.testing.assert_close(inferred,torch.full_like(inferred,.5),atol=4e-6,rtol=0.)
+            inferred=torch.full_like(inferred,.5)
         tested=q[:,k,:,None]*q[:,l,None,:]
         def evaluate(prob):
             return (tested[:,None]*prob.clamp_min(1e-30).log()).sum((-1,-2))
@@ -74,6 +79,7 @@ def assignment_scores(q,b,group,full=False):
         if full:
             neutral=kernel.mean(2)
             torch.testing.assert_close(neutral,torch.full_like(neutral,.5),atol=4e-6,rtol=0.)
+            neutral=torch.full_like(neutral,.5)
             # A reversed observed assignment complements each orientation's likelihood.
             reverse=predict(2./len(group)-weight)
             fixed=assignment_kernel(lb,k,l)
@@ -152,6 +158,7 @@ def run():
             margins=v[:,:,0]-v[:,:,1]
             # Unconditioned assignment is analytically 1/2 for every word pair and candidate.
             margins[:,1]=0
+            margins[:,3]=0
             margins[:,7]=0
             pairs=np.unique(tr[:,4])
             association=[]
