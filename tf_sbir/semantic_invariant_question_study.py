@@ -14,7 +14,7 @@ from .crossdomain_benchmark import revision
 from .depiction_path_diagnostic import class_interval
 from .gallery_panel_resume import semantic_inputs
 from .semantic import read_words
-from .semantic_invariant_question import Question, validate
+from .semantic_invariant_question import Question, solve_decision, validate
 
 
 FAMILY = "semantic-invariant-question"
@@ -72,6 +72,26 @@ def score_pair(pair, state, queries, photos):
 
 def accuracy(score):
     return float((1+np.sign(score))/2)
+
+
+def replay_full_solver(trials, photos, queries):
+    checks = []
+    for (split, stage), cases in trials.items():
+        q, a, b = cases[0, :3].tolist()
+        for name in ARMS:
+            test = Question(photos[a][:2], photos[b][:2], invariant=(name=="invariant"))
+            sketch = queries[q][0]
+            read = test.read(sketch)
+            direct = solve_decision(test.contrast, test.rows, full=True)
+            tie = solve_decision(test.contrast, np.vstack((test.rows, sketch)), full=True)
+            cert = np.sign(sketch @ direct.answer)*max(0.,(direct.lower-tie.upper)/2)
+            delta = abs(float(cert)-read["signed_certificate"])
+            response_delta = abs(float(sketch @ direct.answer)-read["response"])
+            if delta > 5e-7:
+                raise ArithmeticError("Whole-vocabulary and refined signed certificates disagree")
+            checks.append(dict(split=split,stage=stage,arm=name,ids=[q,a,b],certificate_delta=delta,
+                               answer_delta=response_delta,full_dual_gap=direct.upper-direct.lower))
+    return checks
 
 
 def describe(trials, records, source):
@@ -159,6 +179,8 @@ def run():
     queries = word_rows(qf, qids, [src], scale)
     photos = word_rows(pf, pids, [src,tgt,bare], scale)
     commit = revision()
+    replay = replay_full_solver(trials, photos, queries)
+    atomic_json(out / "solver-validation.json",dict(commit=commit,checks=replay))
     # Include the exact input readouts so restored or regenerated caches cannot silently mix.
     records = {}
     for number, (pair, qset) in enumerate(sorted(grouped.items()),1):

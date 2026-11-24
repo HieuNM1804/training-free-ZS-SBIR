@@ -12,25 +12,56 @@ class Optimum:
     residual: float
 
 
-def solve_decision(contrast, equalities):
-    """Maximize c·g for Rg=0, -1<=g<=1; project and rescale for the primal bound."""
-    _, singular, vh = np.linalg.svd(equalities, full_matrices=False)
-    cutoff = singular[0] * max(equalities.shape) * np.finfo(float).eps
-    basis = vh[singular > cutoff]
-    scale = len(contrast)
+def linear_program(contrast, basis, scale):
     options = dict(dual_feasibility_tolerance=1e-9, primal_feasibility_tolerance=1e-9)
     fit = linprog(-scale * contrast, A_eq=scale * basis, b_eq=np.zeros(len(basis)),
                   bounds=(-1., 1.), method="highs-ds", options=options)
     if not fit.success:
         raise RuntimeError(fit.message)
-    answer = fit.x - basis.T @ (basis @ fit.x)
+    return fit.x, fit.eqlin.marginals
+
+
+def bound_answer(contrast, equalities, basis, answer, multipliers):
+    answer = answer - basis.T @ (basis @ answer)
     answer /= max(1., np.max(np.abs(answer)))
     lower = float(contrast @ answer)
-    upper = float(np.abs(contrast + basis.T @ fit.eqlin.marginals).sum())
+    upper = float(np.abs(contrast + basis.T @ multipliers).sum())
     residual = float(np.max(np.abs(equalities @ answer)))
-    if not (-2e-9 <= upper - lower <= 2e-7 and residual < 2e-9):
+    if upper-lower < -2e-9 or residual >= 2e-9:
         raise ArithmeticError(f"Invalid numerical certificate: {lower}, {upper}, {residual}")
     return Optimum(answer, lower, max(upper, lower), residual)
+
+
+def solve_decision(contrast, equalities, *, full=False):
+    """Maximise c·g with Rg=0 and certify every original word, even in the grouped solver."""
+    _, singular, vh = np.linalg.svd(equalities, full_matrices=False)
+    cutoff = singular[0] * max(equalities.shape) * np.finfo(float).eps
+    basis = vh[singular > cutoff]
+    scale = len(contrast)
+    if not full:
+        # Restrict the primal to one answer per group. This supplies a feasible lower bound.
+        code = (contrast >= 0).astype(np.int64)
+        for row in basis:
+            code = 2 * code + (row >= 0)
+        group = np.unique(code, return_inverse=True)[1]
+        for _ in range(32):
+            cost = np.bincount(group, weights=contrast)
+            rows = np.stack([np.bincount(group, weights=row) for row in basis])
+            ans, dual = linear_program(cost, rows, scale)
+            result = bound_answer(contrast, equalities, basis, ans[group], dual)
+            if result.upper-result.lower < 2e-11:
+                return result
+            # A restricted dual underestimates the whole-word L1 norm only when signs cancel.
+            reduced_cost = contrast + basis.T @ dual
+            split = np.unique(2*group + (reduced_cost >= 0), return_inverse=True)[1]
+            if split.max() == group.max() or len(cost) >= len(group)//2:
+                break
+            group = split
+    ans, dual = linear_program(contrast, basis, scale)
+    result = bound_answer(contrast, equalities, basis, ans, dual)
+    if result.upper-result.lower > 2e-7:
+        raise ArithmeticError("Unresolved whole-vocabulary primal/dual gap")
+    return result
 
 
 class Question:
@@ -82,3 +113,11 @@ def validate():
     # Even two maximizers that give opposite verdicts on a word absent from both photos must tie.
     padded = Question(np.pad(a, ((0,0),(0,1))), np.pad(b, ((0,0),(0,1))), True)
     assert padded.read(np.array([0.,0.,0.,0.,1.]))["signed_certificate"] == 0
+    rng = np.random.default_rng(42)
+    for size in (11,37,1024):
+        rows = rng.dirichlet(np.ones(size), size=5)
+        test = Question(rows[:2], rows[2:4], True)
+        for constraints in (test.rows, np.vstack((test.rows,rows[4]))):
+            small = solve_decision(test.contrast, constraints)
+            full = solve_decision(test.contrast, constraints, full=True)
+            assert max(full.lower,small.lower) <= min(full.upper,small.upper)+2e-9
