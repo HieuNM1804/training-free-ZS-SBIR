@@ -1,0 +1,118 @@
+{
+  "commit": "5113c24562b3e30186b1e59b8978802de0b65f38",
+  "sample_rows": 1536,
+  "gallery": 17100,
+  "seed": 42,
+  "replay_mae_points": [
+    8.094260313858587e-06,
+    0.0
+  ],
+  "metrics": {
+    "semantic_regional": [
+      84.13224022442591,
+      83.98437509216214
+    ],
+    "original": [
+      84.30646125343628,
+      84.26888030893073
+    ],
+    "semantic_pairs": [
+      84.27446032789399,
+      84.2122396803461
+    ],
+    "equal_distinct": [
+      84.30601533570248,
+      84.26627614135214
+    ],
+    "marginals_only": [
+      84.28204894868637,
+      84.22916676172463
+    ],
+    "permuted": [
+      84.3229696021202,
+      84.27408863426535
+    ]
+  },
+  "contrasts": {
+    "semantic_pairs minus original": {
+      "points": [
+        -0.03200092554228225,
+        -0.05664062858462179
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": -0.03065280366198876,
+        "positive_classes": 8,
+        "bootstrap95": [
+          -0.05468584358311295,
+          -0.009478833912844865
+        ]
+      }
+    },
+    "semantic_pairs minus equal_distinct": {
+      "points": [
+        -0.03155500780849252,
+        -0.0540364610060351
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": -0.030583052347698404,
+        "positive_classes": 8,
+        "bootstrap95": [
+          -0.05432212629227041,
+          -0.009872676629187956
+        ]
+      }
+    },
+    "semantic_pairs minus marginals_only": {
+      "points": [
+        -0.0075886207923758775,
+        -0.016927081378526054
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": -0.006379355664983457,
+        "positive_classes": 11,
+        "bootstrap95": [
+          -0.01649299639160276,
+          0.002781236477547866
+        ]
+      }
+    },
+    "semantic_pairs minus permuted": {
+      "points": [
+        -0.048509274226186484,
+        -0.06184895391925238
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": -0.04878091059024468,
+        "positive_classes": 8,
+        "bootstrap95": [
+          -0.08218531034357944,
+          -0.017783678271820598
+        ]
+      }
+    },
+    "semantic_pairs minus semantic_regional": {
+      "points": [
+        0.14222010346808625,
+        0.22786458818397173
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": 0.28996338329409527,
+        "positive_classes": 13,
+        "bootstrap95": [
+          -0.4237134362943344,
+          1.0827170083819366
+        ]
+      }
+    }
+  }
+}
