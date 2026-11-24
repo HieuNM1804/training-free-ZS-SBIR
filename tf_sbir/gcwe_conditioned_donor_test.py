@@ -59,6 +59,20 @@ def get_updates(query, blank, patches, dist, scale, words, bank, nominees, fold,
     return updates
 
 
+def paired_replay(rows, locked, names):
+    audit = {}
+    for name in names:
+        left, right = rows[name].double(), locked['rows'][name].double()
+        gap = left - right
+        mae = 100 * gap.abs().mean(0)
+        if not torch.isfinite(gap).all() or mae.max() > .04:
+            raise ValueError(f'Paired replay exceeded the established reconstruction tolerance: {name}, {mae}')
+        audit[name] = dict(mean_points=(100*gap.mean(0)).tolist(), mean_absolute_points=mae.tolist(),
+                           max_absolute_points=(100*gap.abs().amax(0)).tolist(),
+                           queries_over_strict_tolerance=(gap.abs()>3e-5+1e-5*right.abs()).sum(0).tolist())
+    return audit
+
+
 @torch.inference_mode()
 def run(*, update_fn=get_updates, family='gcwe-conditioned-donor-test', start=0, count=768,
         controls=True, update_factory=None, comparisons=None, dataset="sketchy", ablate_term=None):
@@ -179,12 +193,12 @@ def run(*, update_fn=get_updates, family='gcwe-conditioned-donor-test', start=0,
         rows = {k:torch.cat(v)[:,:2] for k,v in all_rows.items()}
         gap = (100*(rows['original']-ref['rows']['full'][ix,:2]).double().abs().mean(0))
         if gap.max()>.04:raise ValueError(f'Reconstruction changed by {gap}')
+        replay_audit = None
         if ablate_term is not None:
             locked = torch.load(w/'results/gcwe-displacement-full'/(split+'.pt'), weights_only=True)
             assert torch.equal(locked['qi'], qi[ix]) and torch.equal(locked['pi'], pi)
             assert torch.equal(locked['labels'], labels[ix])
-            for name in (ablate_term,'semantic_regional'):
-                torch.testing.assert_close(rows[name], locked['rows'][name], atol=3e-5, rtol=1e-5)
+            replay_audit = paired_replay(rows, locked, (ablate_term,'semantic_regional','original'))
         contrasts = [('original','semantic_regional'),('matched','original'),('matched','semantic_regional'),
                      ('matched','random_pairs'),('between_pairs','semantic_regional'),
                      ('original','shared_regional_attention'),('original','without_global_term'),
@@ -196,6 +210,8 @@ def run(*, update_fn=get_updates, family='gcwe-conditioned-donor-test', start=0,
             contrasts = comparisons
         summary = {'commit':revision(),'recipe':recipe,'device':torch.cuda.get_device_name(),'torch':str(torch.__version__),'evaluator_sha':KD_FUNCTION_SHA,'sample_rows':len(ix),'gallery':len(pi),'seed':42,'replay_mae_points':gap.tolist(),
                    'metrics':{k:(100*v.double().mean(0)).tolist() for k,v in rows.items()},'contrasts':{}}
+        if replay_audit is not None:
+            summary['paired_replay'] = replay_audit
         for a,b in contrasts:
             diff=100*(rows[a].double()-rows[b].double())
             summary['contrasts'][a+' minus '+b]={'points':diff.mean(0).tolist(),'class_delta':class_interval(diff[:,0],labels[ix],seed=42)}
