@@ -1,0 +1,134 @@
+{
+  "commit": "7b18d9118d5e860527bfc01511d107104a9bc874",
+  "sample_rows": 1536,
+  "gallery": 17100,
+  "seed": 42,
+  "replay_mae_points": [
+    8.008282748050988e-06,
+    0.0
+  ],
+  "metrics": {
+    "semantic_regional": [
+      84.61690446153321,
+      84.23567719582934
+    ],
+    "original": [
+      84.59148531571068,
+      83.9049480195778
+    ],
+    "eccentricity": [
+      84.58563814771574,
+      83.78385426719129
+    ],
+    "relational": [
+      83.46519670546209,
+      82.9492188502627
+    ],
+    "relational_normalized": [
+      83.47674216396021,
+      82.80664071583791
+    ],
+    "wrong_coordinates": [
+      83.9004661742365,
+      83.19205738989695
+    ]
+  },
+  "contrasts": {
+    "relational minus original": {
+      "points": [
+        -1.1262886102485936,
+        -0.9557291693151152
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": -1.104885667307663,
+        "positive_classes": 8,
+        "bootstrap95": [
+          -2.4330053634491704,
+          -0.06537178655746415
+        ]
+      }
+    },
+    "relational minus eccentricity": {
+      "points": [
+        -1.1204414422536502,
+        -0.8346354169286011
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": -1.0985824372610649,
+        "positive_classes": 10,
+        "bootstrap95": [
+          -2.808112771251556,
+          0.2209511760774461
+        ]
+      }
+    },
+    "relational minus wrong_coordinates": {
+      "points": [
+        -0.43526946877439815,
+        -0.24283853963424917
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": -0.4589858531387585,
+        "positive_classes": 9,
+        "bootstrap95": [
+          -1.244477604542889,
+          0.2549094835920997
+        ]
+      }
+    },
+    "relational minus semantic_regional": {
+      "points": [
+        -1.1517077560711186,
+        -1.2864583455666434
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": -1.140472319683479,
+        "positive_classes": 9,
+        "bootstrap95": [
+          -2.323427873287067,
+          -0.10244025932434675
+        ]
+      }
+    },
+    "relational_normalized minus relational": {
+      "points": [
+        0.011545458498100439,
+        -0.14257813442479042
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": 0.019387449794974424,
+        "positive_classes": 16,
+        "bootstrap95": [
+          -0.11476139924116753,
+          0.13590713939598342
+        ]
+      }
+    },
+    "original minus semantic_regional": {
+      "points": [
+        -0.025419145822525024,
+        -0.33072917625152815
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": -0.035586652375815736,
+        "positive_classes": 12,
+        "bootstrap95": [
+          -0.5855750919722533,
+          0.5125814519369033
+        ]
+      }
+    }
+  }
+}
