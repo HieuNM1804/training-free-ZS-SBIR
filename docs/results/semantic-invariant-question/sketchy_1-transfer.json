@@ -1,0 +1,742 @@
+{
+  "commit": "ae5b7ef53397a457da6d9f847c3b97c0b608bcbd",
+  "seed": 42,
+  "gpu": "Tesla T4",
+  "decisions": 192,
+  "sketches": 96,
+  "source_photos": 96,
+  "measurements": [
+    "accuracy",
+    "signed_answer"
+  ],
+  "transition_order": [
+    "wrong",
+    "tie",
+    "correct"
+  ],
+  "results": {
+    "invariant": {
+      "means": {
+        "candidate_source": [
+          1.0,
+          0.892129260494127
+        ],
+        "source_source": [
+          0.9375,
+          0.5917972272538675
+        ],
+        "sketch_source": [
+          0.359375,
+          -0.08558671710149711
+        ],
+        "source_target": [
+          0.9244791666666666,
+          0.5899179457598615
+        ],
+        "sketch_target": [
+          0.40625,
+          -0.09910491627485359
+        ]
+      },
+      "transitions": {
+        "candidate_source to source_source": {
+          "delta": [
+            -0.0625,
+            -0.30033203324025937
+          ],
+          "class_accuracy": {
+            "classes": 23,
+            "queries": 192,
+            "mean_across_classes": -0.05869565217391304,
+            "positive_classes": 0,
+            "bootstrap95": [
+              -0.09782608695652174,
+              -0.02608695652173913
+            ]
+          },
+          "class_answer": {
+            "classes": 23,
+            "queries": 192,
+            "mean_across_classes": -0.2907563487715081,
+            "positive_classes": 0,
+            "bootstrap95": [
+              -0.35804741121863864,
+              -0.22295786920087346
+            ]
+          },
+          "transitions": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              11,
+              2,
+              179
+            ]
+          ]
+        },
+        "source_source to sketch_source": {
+          "delta": [
+            -0.578125,
+            -0.6773839443553648
+          ],
+          "class_accuracy": {
+            "classes": 23,
+            "queries": 192,
+            "mean_across_classes": -0.5934782608695651,
+            "positive_classes": 1,
+            "bootstrap95": [
+              -0.7079710144927536,
+              -0.46594202898550724
+            ]
+          },
+          "class_answer": {
+            "classes": 23,
+            "queries": 192,
+            "mean_across_classes": -0.682784993616092,
+            "positive_classes": 1,
+            "bootstrap95": [
+              -0.7996568951429469,
+              -0.544753361022691
+            ]
+          },
+          "transitions": [
+            [
+              7,
+              0,
+              4
+            ],
+            [
+              2,
+              0,
+              0
+            ],
+            [
+              113,
+              2,
+              64
+            ]
+          ]
+        },
+        "source_target to sketch_target": {
+          "delta": [
+            -0.5182291666666666,
+            -0.6890228620347151
+          ],
+          "class_accuracy": {
+            "classes": 23,
+            "queries": 192,
+            "mean_across_classes": -0.5445652173913044,
+            "positive_classes": 1,
+            "bootstrap95": [
+              -0.6739221014492754,
+              -0.40434782608695646
+            ]
+          },
+          "class_answer": {
+            "classes": 23,
+            "queries": 192,
+            "mean_across_classes": -0.7077929896078774,
+            "positive_classes": 2,
+            "bootstrap95": [
+              -0.8237819421955684,
+              -0.5775014028357376
+            ]
+          },
+          "transitions": [
+            [
+              9,
+              0,
+              5
+            ],
+            [
+              0,
+              0,
+              1
+            ],
+            [
+              105,
+              0,
+              72
+            ]
+          ]
+        },
+        "source_target to source_source": {
+          "delta": [
+            0.013020833333333334,
+            0.0018792814940062185
+          ],
+          "class_accuracy": {
+            "classes": 23,
+            "queries": 192,
+            "mean_across_classes": 0.006884057971014493,
+            "positive_classes": 4,
+            "bootstrap95": [
+              -0.027536231884057974,
+              0.041666666666666664
+            ]
+          },
+          "class_answer": {
+            "classes": 23,
+            "queries": 192,
+            "mean_across_classes": -0.003128801008389516,
+            "positive_classes": 12,
+            "bootstrap95": [
+              -0.025940781836059874,
+              0.01740940079339919
+            ]
+          },
+          "transitions": [
+            [
+              9,
+              1,
+              4
+            ],
+            [
+              0,
+              0,
+              1
+            ],
+            [
+              2,
+              1,
+              174
+            ]
+          ]
+        },
+        "sketch_target to sketch_source": {
+          "delta": [
+            -0.046875,
+            0.013518199173356496
+          ],
+          "class_accuracy": {
+            "classes": 23,
+            "queries": 192,
+            "mean_across_classes": -0.042028985507246375,
+            "positive_classes": 1,
+            "bootstrap95": [
+              -0.07101449275362319,
+              -0.011594202898550727
+            ]
+          },
+          "class_answer": {
+            "classes": 23,
+            "queries": 192,
+            "mean_across_classes": 0.02187919498339597,
+            "positive_classes": 14,
+            "bootstrap95": [
+              -0.00856141100894573,
+              0.05554238899257935
+            ]
+          },
+          "transitions": [
+            [
+              109,
+              0,
+              5
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              13,
+              2,
+              63
+            ]
+          ]
+        }
+      }
+    },
+    "pooled": {
+      "means": {
+        "candidate_source": [
+          1.0,
+          0.9038173020498611
+        ],
+        "source_source": [
+          0.9557291666666666,
+          0.6152881494128581
+        ],
+        "sketch_source": [
+          0.3697916666666667,
+          -0.06937955828386883
+        ],
+        "source_target": [
+          0.9348958333333334,
+          0.616022224771977
+        ],
+        "sketch_target": [
+          0.4088541666666667,
+          -0.08408803936956384
+        ]
+      },
+      "transitions": {
+        "candidate_source to source_source": {
+          "delta": [
+            -0.044270833333333336,
+            -0.2885291526370029
+          ],
+          "class_accuracy": {
+            "classes": 23,
+            "queries": 192,
+            "mean_across_classes": -0.04021739130434783,
+            "positive_classes": 0,
+            "bootstrap95": [
+              -0.07173913043478261,
+              -0.013043478260869568
+            ]
+          },
+          "class_answer": {
+            "classes": 23,
+            "queries": 192,
+            "mean_across_classes": -0.27642237882285203,
+            "positive_classes": 0,
+            "bootstrap95": [
+              -0.3487467653442038,
+              -0.20615581611667638
+            ]
+          },
+          "transitions": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              8,
+              1,
+              183
+            ]
+          ]
+        },
+        "source_source to sketch_source": {
+          "delta": [
+            -0.5859375,
+            -0.6846677076967268
+          ],
+          "class_accuracy": {
+            "classes": 23,
+            "queries": 192,
+            "mean_across_classes": -0.6090579710144928,
+            "positive_classes": 1,
+            "bootstrap95": [
+              -0.7163134057971015,
+              -0.4891304347826087
+            ]
+          },
+          "class_answer": {
+            "classes": 23,
+            "queries": 192,
+            "mean_across_classes": -0.690914237016626,
+            "positive_classes": 1,
+            "bootstrap95": [
+              -0.8095299507646818,
+              -0.5503481508269256
+            ]
+          },
+          "transitions": [
+            [
+              6,
+              0,
+              2
+            ],
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              111,
+              6,
+              66
+            ]
+          ]
+        },
+        "source_target to sketch_target": {
+          "delta": [
+            -0.5260416666666666,
+            -0.7001102641415408
+          ],
+          "class_accuracy": {
+            "classes": 23,
+            "queries": 192,
+            "mean_across_classes": -0.5550724637681159,
+            "positive_classes": 1,
+            "bootstrap95": [
+              -0.677536231884058,
+              -0.41956521739130437
+            ]
+          },
+          "class_answer": {
+            "classes": 23,
+            "queries": 192,
+            "mean_across_classes": -0.7182708467150153,
+            "positive_classes": 2,
+            "bootstrap95": [
+              -0.8436479796465625,
+              -0.5806133572270509
+            ]
+          },
+          "transitions": [
+            [
+              7,
+              0,
+              5
+            ],
+            [
+              0,
+              0,
+              1
+            ],
+            [
+              106,
+              1,
+              72
+            ]
+          ]
+        },
+        "source_target to source_source": {
+          "delta": [
+            0.020833333333333332,
+            -0.0007340753591188054
+          ],
+          "class_accuracy": {
+            "classes": 23,
+            "queries": 192,
+            "mean_across_classes": 0.015579710144927537,
+            "positive_classes": 5,
+            "bootstrap95": [
+              -0.010507246376811595,
+              0.0427536231884058
+            ]
+          },
+          "class_answer": {
+            "classes": 23,
+            "queries": 192,
+            "mean_across_classes": -0.005792014355184412,
+            "positive_classes": 11,
+            "bootstrap95": [
+              -0.03746679593952734,
+              0.023105365932280537
+            ]
+          },
+          "transitions": [
+            [
+              7,
+              0,
+              5
+            ],
+            [
+              0,
+              0,
+              1
+            ],
+            [
+              1,
+              1,
+              177
+            ]
+          ]
+        },
+        "sketch_target to sketch_source": {
+          "delta": [
+            -0.0390625,
+            0.014708481085695009
+          ],
+          "class_accuracy": {
+            "classes": 23,
+            "queries": 192,
+            "mean_across_classes": -0.03840579710144927,
+            "positive_classes": 4,
+            "bootstrap95": [
+              -0.09420289855072463,
+              0.012318840579710144
+            ]
+          },
+          "class_answer": {
+            "classes": 23,
+            "queries": 192,
+            "mean_across_classes": 0.021564595343204897,
+            "positive_classes": 13,
+            "bootstrap95": [
+              -0.011669645363325987,
+              0.0571214120540836
+            ]
+          },
+          "transitions": [
+            [
+              103,
+              4,
+              6
+            ],
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              14,
+              2,
+              62
+            ]
+          ]
+        }
+      }
+    },
+    "direct": {
+      "means": {
+        "candidate_source": [
+          1.0,
+          0.14655171720349078
+        ],
+        "source_source": [
+          0.9635416666666666,
+          0.04029090643509547
+        ],
+        "sketch_source": [
+          0.484375,
+          0.0011354640841541427
+        ],
+        "source_target": [
+          0.9739583333333334,
+          0.03908170807878307
+        ],
+        "sketch_target": [
+          0.4895833333333333,
+          0.0012172810595547172
+        ]
+      },
+      "transitions": {
+        "candidate_source to source_source": {
+          "delta": [
+            -0.036458333333333336,
+            -0.10626081076839529
+          ],
+          "class_accuracy": {
+            "classes": 23,
+            "queries": 192,
+            "mean_across_classes": -0.03152173913043478,
+            "positive_classes": 0,
+            "bootstrap95": [
+              -0.056521739130434796,
+              -0.009782608695652175
+            ]
+          },
+          "class_answer": {
+            "classes": 23,
+            "queries": 192,
+            "mean_across_classes": -0.10483261508638565,
+            "positive_classes": 0,
+            "bootstrap95": [
+              -0.13375286075749312,
+              -0.07869747761601237
+            ]
+          },
+          "transitions": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              7,
+              0,
+              185
+            ]
+          ]
+        },
+        "source_source to sketch_source": {
+          "delta": [
+            -0.4791666666666667,
+            -0.03915544235094132
+          ],
+          "class_accuracy": {
+            "classes": 23,
+            "queries": 192,
+            "mean_across_classes": -0.4692028985507246,
+            "positive_classes": 1,
+            "bootstrap95": [
+              -0.5550815217391305,
+              -0.380072463768116
+            ]
+          },
+          "class_answer": {
+            "classes": 23,
+            "queries": 192,
+            "mean_across_classes": -0.035563397162438504,
+            "positive_classes": 2,
+            "bootstrap95": [
+              -0.05537943002769565,
+              -0.01898544201146927
+            ]
+          },
+          "transitions": [
+            [
+              4,
+              0,
+              3
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              95,
+              0,
+              90
+            ]
+          ]
+        },
+        "source_target to sketch_target": {
+          "delta": [
+            -0.484375,
+            -0.037864427019228354
+          ],
+          "class_accuracy": {
+            "classes": 23,
+            "queries": 192,
+            "mean_across_classes": -0.48514492753623195,
+            "positive_classes": 0,
+            "bootstrap95": [
+              -0.6094202898550725,
+              -0.3634057971014492
+            ]
+          },
+          "class_answer": {
+            "classes": 23,
+            "queries": 192,
+            "mean_across_classes": -0.034682536461739286,
+            "positive_classes": 1,
+            "bootstrap95": [
+              -0.05255329478263584,
+              -0.019482362195477127
+            ]
+          },
+          "transitions": [
+            [
+              3,
+              0,
+              2
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              95,
+              0,
+              92
+            ]
+          ]
+        },
+        "source_target to source_source": {
+          "delta": [
+            -0.010416666666666666,
+            0.0012091983563123929
+          ],
+          "class_accuracy": {
+            "classes": 23,
+            "queries": 192,
+            "mean_across_classes": -0.008695652173913044,
+            "positive_classes": 0,
+            "bootstrap95": [
+              -0.021739130434782608,
+              0.0
+            ]
+          },
+          "class_answer": {
+            "classes": 23,
+            "queries": 192,
+            "mean_across_classes": 0.000893719613766402,
+            "positive_classes": 10,
+            "bootstrap95": [
+              -0.004546294228102714,
+              0.006301980418270154
+            ]
+          },
+          "transitions": [
+            [
+              5,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              0,
+              185
+            ]
+          ]
+        },
+        "sketch_target to sketch_source": {
+          "delta": [
+            -0.005208333333333333,
+            -8.18169754005745e-05
+          ],
+          "class_accuracy": {
+            "classes": 23,
+            "queries": 192,
+            "mean_across_classes": 0.007246376811594216,
+            "positive_classes": 9,
+            "bootstrap95": [
+              -0.10583333333333331,
+              0.12028985507246377
+            ]
+          },
+          "class_answer": {
+            "classes": 23,
+            "queries": 192,
+            "mean_across_classes": 1.2858913067185575e-05,
+            "positive_classes": 11,
+            "bootstrap95": [
+              -0.00037453610313290496,
+              0.000411194711018038
+            ]
+          },
+          "transitions": [
+            [
+              74,
+              0,
+              24
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              25,
+              0,
+              69
+            ]
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,382 @@
+{
+  "commit": "654b0248617f421156b9890de924798ea5ea69f1",
+  "seed": 42,
+  "examples": {
+    "sketchy_1": [
+      {
+        "query": 11713,
+        "positive": 14190,
+        "negative": 6471,
+        "query_class": "umbrella",
+        "relevant_class": "umbrella",
+        "foil_class": "scissors",
+        "correct": false,
+        "signed_answer_for_relevant": -0.6257256004442582,
+        "reversal_cost_points": 0.3423623524360042,
+        "vote_words": [
+          {
+            "word": "dice",
+            "contribution": 0.020573069520713645,
+            "query_word_probability": 0.020573069520713822
+          },
+          {
+            "word": "diamond (gemstone)",
+            "contribution": 0.014958022725067126,
+            "query_word_probability": 0.014958022725067256
+          },
+          {
+            "word": "star",
+            "contribution": 0.012344753950147131,
+            "query_word_probability": 0.012344753950147239
+          },
+          {
+            "word": "snowflake",
+            "contribution": 0.007155737591792137,
+            "query_word_probability": 0.007155737591792198
+          },
+          {
+            "word": "cubeb",
+            "contribution": 0.006616145368508329,
+            "query_word_probability": 0.0066161453685083865
+          }
+        ],
+        "word_changes_needed_to_tie": [
+          {
+            "word": "dice",
+            "contribution": 0.04114613904142739,
+            "query_word_probability": 0.020573069520713822
+          },
+          {
+            "word": "diamond (gemstone)",
+            "contribution": 0.029916045450134324,
+            "query_word_probability": 0.014958022725067256
+          },
+          {
+            "word": "star",
+            "contribution": 0.024689507900294325,
+            "query_word_probability": 0.012344753950147239
+          },
+          {
+            "word": "snowflake",
+            "contribution": 0.014311475183584308,
+            "query_word_probability": 0.007155737591792198
+          },
+          {
+            "word": "cubeb",
+            "contribution": 0.01323229073701669,
+            "query_word_probability": 0.0066161453685083865
+          }
+        ],
+        "photo_discrimination_cost_words": [
+          {
+            "word": "pan dulce",
+            "contribution": 0.00019494707124299124,
+            "query_word_probability": 1.2992191403648075e-05
+          },
+          {
+            "word": "horchata",
+            "contribution": 0.00013931212457213751,
+            "query_word_probability": 1.6316937672213523e-06
+          },
+          {
+            "word": "constellation",
+            "contribution": 0.00010751271139801127,
+            "query_word_probability": 0.0029217132438438044
+          },
+          {
+            "word": "cubeb",
+            "contribution": 0.00010020116885717801,
+            "query_word_probability": 0.0066161453685083865
+          },
+          {
+            "word": "astronomical object",
+            "contribution": 9.498596493748485e-05,
+            "query_word_probability": 0.0019844745063748196
+          }
+        ],
+        "description": "Word contributions are signed and additive. Individual words can have negative cost."
+      },
+      {
+        "query": 11713,
+        "positive": 13597,
+        "negative": 6753,
+        "query_class": "umbrella",
+        "relevant_class": "umbrella",
+        "foil_class": "scissors",
+        "correct": true,
+        "signed_answer_for_relevant": 0.21841820318546826,
+        "reversal_cost_points": 0.06860770278132033,
+        "vote_words": [
+          {
+            "word": "hexagon",
+            "contribution": 0.025153869449442805,
+            "query_word_probability": 0.025153869449442978
+          },
+          {
+            "word": "dice",
+            "contribution": 0.020573069520713683,
+            "query_word_probability": 0.020573069520713822
+          },
+          {
+            "word": "cube",
+            "contribution": 0.016997769220037616,
+            "query_word_probability": 0.01699776922003773
+          },
+          {
+            "word": "star",
+            "contribution": 0.012344753950147155,
+            "query_word_probability": 0.012344753950147239
+          },
+          {
+            "word": "prism",
+            "contribution": 0.011473899355940825,
+            "query_word_probability": 0.011473899355940906
+          }
+        ],
+        "word_changes_needed_to_tie": [
+          {
+            "word": "dice",
+            "contribution": 0.041146139041427075,
+            "query_word_probability": 0.020573069520713822
+          },
+          {
+            "word": "cube",
+            "contribution": 0.033995538440075024,
+            "query_word_probability": 0.01699776922003773
+          },
+          {
+            "word": "cubeb",
+            "contribution": 0.013232290737016634,
+            "query_word_probability": 0.0066161453685083865
+          },
+          {
+            "word": "star anise",
+            "contribution": 0.012399873601463267,
+            "query_word_probability": 0.0061999368007316985
+          },
+          {
+            "word": "bouillon cube",
+            "contribution": 0.01030089677379937,
+            "query_word_probability": 0.005150448386899738
+          }
+        ],
+        "photo_discrimination_cost_words": [
+          {
+            "word": "saw u",
+            "contribution": 0.00028975164190483553,
+            "query_word_probability": 7.722986890519258e-06
+          },
+          {
+            "word": "umbrella",
+            "contribution": 0.00020950842113266397,
+            "query_word_probability": 0.00035992890088082385
+          },
+          {
+            "word": "blade",
+            "contribution": 0.0001783150603656655,
+            "query_word_probability": 4.365225530335699e-05
+          },
+          {
+            "word": "cartwheel",
+            "contribution": 8.367241165528127e-05,
+            "query_word_probability": 0.0002309845170418249
+          },
+          {
+            "word": "skewer",
+            "contribution": 7.120765354461966e-05,
+            "query_word_probability": 6.231216471338578e-05
+          }
+        ],
+        "description": "Word contributions are signed and additive. Individual words can have negative cost."
+      }
+    ],
+    "sketchy_2": [
+      {
+        "query": 19725,
+        "positive": 22264,
+        "negative": 6471,
+        "query_class": "pear",
+        "relevant_class": "pear",
+        "foil_class": "scissors",
+        "correct": false,
+        "signed_answer_for_relevant": -0.32900931627972874,
+        "reversal_cost_points": 0.3467880738079021,
+        "vote_words": [
+          {
+            "word": "eyebrow",
+            "contribution": 0.004727808710177032,
+            "query_word_probability": 0.0047278087101771185
+          },
+          {
+            "word": "pigtail",
+            "contribution": 0.0033704835180010176,
+            "query_word_probability": 0.0033704835180010783
+          },
+          {
+            "word": "hook",
+            "contribution": 0.0032369510872153045,
+            "query_word_probability": 0.0032369510872153396
+          },
+          {
+            "word": "forehead",
+            "contribution": 0.0027787522944399024,
+            "query_word_probability": 0.0027787522944399544
+          },
+          {
+            "word": "earwig",
+            "contribution": 0.002519853597257285,
+            "query_word_probability": 0.002519853597257333
+          }
+        ],
+        "word_changes_needed_to_tie": [
+          {
+            "word": "eyebrow",
+            "contribution": 0.009455617420354034,
+            "query_word_probability": 0.0047278087101771185
+          },
+          {
+            "word": "forehead",
+            "contribution": 0.005557504588879799,
+            "query_word_probability": 0.0027787522944399544
+          },
+          {
+            "word": "earwig",
+            "contribution": 0.005039707194514567,
+            "query_word_probability": 0.002519853597257333
+          },
+          {
+            "word": "ponytail",
+            "contribution": 0.004361211897443567,
+            "query_word_probability": 0.0021806059487218254
+          },
+          {
+            "word": "eyewear",
+            "contribution": 0.0042450328133723046,
+            "query_word_probability": 0.0021225164066861926
+          }
+        ],
+        "photo_discrimination_cost_words": [
+          {
+            "word": "eyebrow",
+            "contribution": 0.00023750673428236087,
+            "query_word_probability": 0.0047278087101771185
+          },
+          {
+            "word": "procyon",
+            "contribution": 0.00017642908357323443,
+            "query_word_probability": 2.9295696419015656e-05
+          },
+          {
+            "word": "signature",
+            "contribution": 0.00016722772022158353,
+            "query_word_probability": 0.0012224020955009954
+          },
+          {
+            "word": "gusle",
+            "contribution": 0.00012581788711055468,
+            "query_word_probability": 0.00016070708189146288
+          },
+          {
+            "word": "plan",
+            "contribution": 0.00010186685358722495,
+            "query_word_probability": 3.1318493282504215e-06
+          }
+        ],
+        "description": "Word contributions are signed and additive. Individual words can have negative cost."
+      },
+      {
+        "query": 19725,
+        "positive": 22287,
+        "negative": 26799,
+        "query_class": "pear",
+        "relevant_class": "pear",
+        "foil_class": "sword",
+        "correct": true,
+        "signed_answer_for_relevant": 0.27415843933055706,
+        "reversal_cost_points": 0.012741119129811018,
+        "vote_words": [
+          {
+            "word": "eyebrow",
+            "contribution": 0.004727808710177108,
+            "query_word_probability": 0.0047278087101771185
+          },
+          {
+            "word": "hook",
+            "contribution": 0.0032369510872153322,
+            "query_word_probability": 0.0032369510872153396
+          },
+          {
+            "word": "forehead",
+            "contribution": 0.0027787522944399483,
+            "query_word_probability": 0.0027787522944399544
+          },
+          {
+            "word": "emoticon",
+            "contribution": 0.002768758515654299,
+            "query_word_probability": 0.0027687585156543053
+          },
+          {
+            "word": "earwig",
+            "contribution": 0.002519853597257327,
+            "query_word_probability": 0.002519853597257333
+          }
+        ],
+        "word_changes_needed_to_tie": [
+          {
+            "word": "eyebrow",
+            "contribution": 0.009455617420354206,
+            "query_word_probability": 0.0047278087101771185
+          },
+          {
+            "word": "earwig",
+            "contribution": 0.005039707194514653,
+            "query_word_probability": 0.002519853597257333
+          },
+          {
+            "word": "ponytail",
+            "contribution": 0.00436121189744364,
+            "query_word_probability": 0.0021806059487218254
+          },
+          {
+            "word": "eyewear",
+            "contribution": 0.004245032813372374,
+            "query_word_probability": 0.0021225164066861926
+          },
+          {
+            "word": "feathered hair",
+            "contribution": 0.004003775598741703,
+            "query_word_probability": 0.0020018877993708568
+          }
+        ],
+        "photo_discrimination_cost_words": [
+          {
+            "word": "drentse patrijshond",
+            "contribution": 1.962664695213367e-05,
+            "query_word_probability": 4.745782963242191e-05
+          },
+          {
+            "word": "gofio",
+            "contribution": 1.3648205108463903e-05,
+            "query_word_probability": 0.00011581723395570041
+          },
+          {
+            "word": "eyebrow",
+            "contribution": 8.63408143871546e-06,
+            "query_word_probability": 0.0047278087101771185
+          },
+          {
+            "word": "little finger",
+            "contribution": 7.007335633416539e-06,
+            "query_word_probability": 0.00198040002373035
+          },
+          {
+            "word": "dadiah",
+            "contribution": 5.199167727580812e-06,
+            "query_word_probability": 3.854300300769401e-05
+          }
+        ],
+        "description": "Word contributions are signed and additive. Individual words can have negative cost."
+      }
+    ]
+  }
+}
