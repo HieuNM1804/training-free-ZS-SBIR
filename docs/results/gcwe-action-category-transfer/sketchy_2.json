@@ -1,0 +1,157 @@
+{
+  "commit": "f32c99f0f4348cee1346a62e79cd6a20f15c9610",
+  "gpu": "Tesla T4",
+  "seed": 42,
+  "evaluator": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+  "queries": 1828,
+  "gallery": 12552,
+  "native_metrics": [
+    74.83645426883837,
+    73.25519703336761
+  ],
+  "excluded_discovery_photos": 524,
+  "assessment": {
+    "eligible_queries": 636,
+    "both": 362,
+    "sampled_pairs": 998,
+    "native_correct": 489,
+    "native_wrong": 509,
+    "arms": {
+      "shared": {
+        "balanced": 0.4696132596685083,
+        "class_above_chance": {
+          "classes": 21,
+          "queries": 362,
+          "mean_across_classes": -0.5132233680806512,
+          "positive_classes": 6,
+          "bootstrap95": [
+            -5.646808504103395,
+            4.973989951671725
+          ]
+        },
+        "class_vs_candidate": {
+          "classes": 21,
+          "queries": 362,
+          "mean_across_classes": 3.821266113831728,
+          "positive_classes": 8,
+          "bootstrap95": [
+            -2.636067699149374,
+            11.092239792258367
+          ]
+        },
+        "balanced_gain_vs_candidate": 0.0055248618784530384,
+        "rescued": 251.0,
+        "damaged": 257.0,
+        "correct_margin": -0.0007406536318018346
+      },
+      "candidate": {
+        "balanced": 0.46408839779005523,
+        "class_above_chance": {
+          "classes": 21,
+          "queries": 362,
+          "mean_across_classes": -4.334489481912379,
+          "positive_classes": 6,
+          "bootstrap95": [
+            -11.056124980356515,
+            1.7500935681290049
+          ]
+        },
+        "class_vs_candidate": {
+          "classes": 21,
+          "queries": 362,
+          "mean_across_classes": 0.0,
+          "positive_classes": 0,
+          "bootstrap95": [
+            0.0,
+            0.0
+          ]
+        },
+        "balanced_gain_vs_candidate": 0.0,
+        "rescued": 240.0,
+        "damaged": 275.0,
+        "correct_margin": -0.002229239306373443
+      },
+      "registered": {
+        "balanced": 0.5124309392265194,
+        "class_above_chance": {
+          "classes": 21,
+          "queries": 362,
+          "mean_across_classes": 4.780256627189239,
+          "positive_classes": 12,
+          "bootstrap95": [
+            -1.6582636905853485,
+            11.258278325319132
+          ]
+        },
+        "class_vs_candidate": {
+          "classes": 21,
+          "queries": 362,
+          "mean_across_classes": 9.114746109101619,
+          "positive_classes": 12,
+          "bootstrap95": [
+            2.609728701065364,
+            15.932382239744582
+          ]
+        },
+        "balanced_gain_vs_candidate": 0.04834254143646409,
+        "rescued": 268.0,
+        "damaged": 239.0,
+        "correct_margin": 9.623780577837346e-05
+      },
+      "geometric_peak": {
+        "balanced": 0.5096685082872928,
+        "class_above_chance": {
+          "classes": 21,
+          "queries": 362,
+          "mean_across_classes": -1.1701809603733528,
+          "positive_classes": 9,
+          "bootstrap95": [
+            -6.248256387575274,
+            3.4512342723864156
+          ]
+        },
+        "class_vs_candidate": {
+          "classes": 21,
+          "queries": 362,
+          "mean_across_classes": 3.164308521539026,
+          "positive_classes": 11,
+          "bootstrap95": [
+            -5.100593417191438,
+            11.780354793163108
+          ]
+        },
+        "balanced_gain_vs_candidate": 0.04558011049723757,
+        "rescued": 270.0,
+        "damaged": 224.0,
+        "correct_margin": 0.02841700264112744
+      },
+      "global": {
+        "balanced": 0.5,
+        "class_above_chance": {
+          "classes": 21,
+          "queries": 362,
+          "mean_across_classes": 0.0,
+          "positive_classes": 0,
+          "bootstrap95": [
+            0.0,
+            0.0
+          ]
+        },
+        "class_vs_candidate": {
+          "classes": 21,
+          "queries": 362,
+          "mean_across_classes": 4.334489481912379,
+          "positive_classes": 9,
+          "bootstrap95": [
+            -1.7500935681290055,
+            11.056124980356513
+          ]
+        },
+        "balanced_gain_vs_candidate": 0.03591160220994475,
+        "rescued": 0.0,
+        "damaged": 0.0,
+        "correct_margin": -0.02004008016032064
+      }
+    }
+  }
+}
