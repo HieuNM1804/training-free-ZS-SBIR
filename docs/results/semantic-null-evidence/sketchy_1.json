@@ -1,0 +1,260 @@
+{
+  "commit": "759464e63839d707ca418ec341346fd385480d67",
+  "seed": 42,
+  "device": "Tesla T4",
+  "queries": 768,
+  "gallery": 17100,
+  "evaluator": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+  "metrics": {
+    "native_direct": [
+      76.65018120751483,
+      80.58984389087223
+    ],
+    "native_diffused": [
+      82.97804211373054,
+      82.80989596557143
+    ],
+    "conditional_direct": [
+      65.11117170909225,
+      72.01432309690668
+    ],
+    "conditional_diffused": [
+      74.41648853103592,
+      73.88281262368159
+    ],
+    "pooled_direct": [
+      68.2442837426303,
+      73.95703139651837
+    ],
+    "pooled_diffused": [
+      76.77126458826629,
+      76.4544272174438
+    ],
+    "permuted_direct": [
+      73.93168079458215,
+      78.83723968091849
+    ],
+    "permuted_diffused": [
+      81.56854726670039,
+      81.28776053029773
+    ],
+    "excess_direct": [
+      71.86664486677424,
+      78.5846355279015
+    ],
+    "excess_diffused": [
+      80.21497303586025,
+      80.89322927504932
+    ],
+    "entropy_only_direct": [
+      76.40441585996692,
+      80.94791677285684
+    ],
+    "entropy_only_diffused": [
+      83.07854982437371,
+      82.90234386367956
+    ]
+  },
+  "conditional_minus": {
+    "native_direct": {
+      "points": [
+        -11.539009498422578,
+        -8.575520793965552
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 768,
+        "mean_across_classes": -11.818211515602247,
+        "positive_classes": 3,
+        "bootstrap95": [
+          -16.89251077027718,
+          -7.081802028628233
+        ]
+      }
+    },
+    "native_diffused": {
+      "points": [
+        -8.561553582694614,
+        -8.92708334188986
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 768,
+        "mean_across_classes": -8.66829739854577,
+        "positive_classes": 8,
+        "bootstrap95": [
+          -14.415204133257236,
+          -3.620666114645651
+        ]
+      }
+    },
+    "conditional_direct": {
+      "points": [
+        0.0,
+        0.0
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 768,
+        "mean_across_classes": 0.0,
+        "positive_classes": 0,
+        "bootstrap95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "conditional_diffused": {
+      "points": [
+        0.0,
+        0.0
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 768,
+        "mean_across_classes": 0.0,
+        "positive_classes": 0,
+        "bootstrap95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "pooled_direct": {
+      "points": [
+        -3.1331120335380547,
+        -1.942708299611695
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 768,
+        "mean_across_classes": -3.5300875035481933,
+        "positive_classes": 11,
+        "bootstrap95": [
+          -7.443623490676652,
+          0.14709417515863252
+        ]
+      }
+    },
+    "pooled_diffused": {
+      "points": [
+        -2.3547760572303864,
+        -2.571614593762206
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 768,
+        "mean_across_classes": -2.701885249330276,
+        "positive_classes": 12,
+        "bootstrap95": [
+          -6.851088201810774,
+          0.7659769111178206
+        ]
+      }
+    },
+    "permuted_direct": {
+      "points": [
+        -8.820509085489903,
+        -6.8229165840117885
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 768,
+        "mean_across_classes": -8.656005484640463,
+        "positive_classes": 5,
+        "bootstrap95": [
+          -13.792193680552357,
+          -4.044661281444715
+        ]
+      }
+    },
+    "permuted_diffused": {
+      "points": [
+        -7.152058735664468,
+        -7.404947906616144
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 768,
+        "mean_across_classes": -6.97048595182995,
+        "positive_classes": 9,
+        "bootstrap95": [
+          -12.542186277332744,
+          -2.180993204986065
+        ]
+      }
+    },
+    "excess_direct": {
+      "points": [
+        -6.75547315768199,
+        -6.570312430994818
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 768,
+        "mean_across_classes": -6.57312275721305,
+        "positive_classes": 7,
+        "bootstrap95": [
+          -11.287973523695504,
+          -2.4202425585825047
+        ]
+      }
+    },
+    "excess_diffused": {
+      "points": [
+        -5.798484504824349,
+        -7.010416651367753
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 768,
+        "mean_across_classes": -5.501136161459547,
+        "positive_classes": 8,
+        "bootstrap95": [
+          -10.91199775811166,
+          -1.1106105176166408
+        ]
+      }
+    },
+    "entropy_only_direct": {
+      "points": [
+        -11.29324415087467,
+        -8.933593675950155
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 768,
+        "mean_across_classes": -11.542140317513692,
+        "positive_classes": 4,
+        "bootstrap95": [
+          -16.71211398007709,
+          -6.704625853717785
+        ]
+      }
+    },
+    "entropy_only_diffused": {
+      "points": [
+        -8.662061293337805,
+        -9.019531239997983
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 768,
+        "mean_across_classes": -8.769336025867709,
+        "positive_classes": 8,
+        "bootstrap95": [
+          -14.588694994799,
+          -3.6535333196282167
+        ]
+      }
+    }
+  },
+  "mean_entropy": {
+    "native": 6.7427496910095215,
+    "conditional": 8.045937538146973,
+    "pooled": 7.588649749755859,
+    "permuted": 6.847132205963135,
+    "excess": 7.402853012084961,
+    "entropy_only": 8.045937538146973
+  }
+}
