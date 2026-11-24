@@ -1,0 +1,173 @@
+{
+  "commit": "b1e9fdf8f118490be9bfd05d6ef9d5876fea1a0c",
+  "seed": 42,
+  "gpu": "Tesla T4",
+  "arms": [
+    "shared",
+    "independent",
+    "size_only",
+    "false_correspondence",
+    "forced_word"
+  ],
+  "word_axis": [
+    6468,
+    12918
+  ],
+  "assessment": {
+    "both": 362,
+    "queries": 636,
+    "pairs": 998,
+    "arms": {
+      "shared": {
+        "balanced": 0.47513812154696133,
+        "true_margin": -0.03816181767679647,
+        "shared_advantage": 0.0,
+        "shared_minus_balanced": 0.0,
+        "class_balanced": {
+          "classes": 21,
+          "queries": 362,
+          "mean_across_classes": 0.0,
+          "positive_classes": 0,
+          "bootstrap95": [
+            0.0,
+            0.0
+          ]
+        },
+        "class_margin": {
+          "classes": 21,
+          "queries": 362,
+          "mean_across_classes": 0.0,
+          "positive_classes": 0,
+          "bootstrap95": [
+            0.0,
+            0.0
+          ]
+        },
+        "resolved": 0,
+        "damaged": 0,
+        "original_rescued": 261.0,
+        "original_damaged": 232.0
+      },
+      "independent": {
+        "balanced": 0.47513812154696133,
+        "true_margin": -0.037706078890569227,
+        "shared_advantage": -0.00045573878622723964,
+        "shared_minus_balanced": 0.0,
+        "class_balanced": {
+          "classes": 21,
+          "queries": 362,
+          "mean_across_classes": -0.1922391763723033,
+          "positive_classes": 2,
+          "bootstrap95": [
+            -0.8928571428571429,
+            0.2801120448179272
+          ]
+        },
+        "class_margin": {
+          "classes": 21,
+          "queries": 362,
+          "mean_across_classes": 0.004644767603429874,
+          "positive_classes": 12,
+          "bootstrap95": [
+            -0.010057939637833337,
+            0.019156418274040247
+          ]
+        },
+        "resolved": 9,
+        "damaged": 6,
+        "original_rescued": 261.0,
+        "original_damaged": 235.0
+      },
+      "size_only": {
+        "balanced": 0.47513812154696133,
+        "true_margin": -0.03418648266840077,
+        "shared_advantage": -0.003975335008395697,
+        "shared_minus_balanced": 0.0,
+        "class_balanced": {
+          "classes": 21,
+          "queries": 362,
+          "mean_across_classes": -0.1922391763723033,
+          "positive_classes": 2,
+          "bootstrap95": [
+            -0.8928571428571429,
+            0.2801120448179272
+          ]
+        },
+        "class_margin": {
+          "classes": 21,
+          "queries": 362,
+          "mean_across_classes": 0.0010160052113834777,
+          "positive_classes": 12,
+          "bootstrap95": [
+            -0.008977832856206147,
+            0.010585270216666581
+          ]
+        },
+        "resolved": 6,
+        "damaged": 4,
+        "original_rescued": 261.0,
+        "original_damaged": 234.0
+      },
+      "false_correspondence": {
+        "balanced": 0.47513812154696133,
+        "true_margin": -0.03308734339559245,
+        "shared_advantage": -0.0050744742812040096,
+        "shared_minus_balanced": 0.0,
+        "class_balanced": {
+          "classes": 21,
+          "queries": 362,
+          "mean_across_classes": -0.10703842940685046,
+          "positive_classes": 1,
+          "bootstrap95": [
+            -0.44642857142857145,
+            0.12531328320802004
+          ]
+        },
+        "class_margin": {
+          "classes": 21,
+          "queries": 362,
+          "mean_across_classes": -0.002560249062666801,
+          "positive_classes": 10,
+          "bootstrap95": [
+            -0.012377521704097564,
+            0.006479369736140345
+          ]
+        },
+        "resolved": 3,
+        "damaged": 2,
+        "original_rescued": 262.0,
+        "original_damaged": 234.0
+      },
+      "forced_word": {
+        "balanced": 0.47651933701657456,
+        "true_margin": -0.0014843520277248834,
+        "shared_advantage": -0.03667746564907158,
+        "shared_minus_balanced": -0.13812154696132597,
+        "class_balanced": {
+          "classes": 21,
+          "queries": 362,
+          "mean_across_classes": 0.5201822920010967,
+          "positive_classes": 7,
+          "bootstrap95": [
+            -2.1017392435151208,
+            3.0825095950875006
+          ]
+        },
+        "class_margin": {
+          "classes": 21,
+          "queries": 362,
+          "mean_across_classes": -0.04545040355736401,
+          "positive_classes": 7,
+          "bootstrap95": [
+            -0.09933182443714042,
+            0.002325716804401117
+          ]
+        },
+        "resolved": 18,
+        "damaged": 16,
+        "original_rescued": 265.0,
+        "original_damaged": 238.0
+      }
+    }
+  }
+}
