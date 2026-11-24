@@ -28,20 +28,22 @@ def reference_models(bank, hist, ref, background):
     average=hist[ref.cpu()].float().mean(0).cuda()/(49*24)
     null=(mass[:,None]*average+background)/(mass+1)[:,None]
     torch.testing.assert_close(null.sum(1),torch.ones_like(mass),rtol=2e-5,atol=1e-6)
-    return measured.clamp_min(1e-30).log(),null.clamp_min(1e-30).log(),average
+    return measured.double().clamp_min(1e-30).log(),null.double().clamp_min(1e-30).log(),average.double()
 
 
 def responses(prior,obs,loglaw,lognull,average):
-    base=prior.clamp_min(1e-30).log()
+    base=prior.double().clamp_min(1e-30).log()
+    obs=obs.double()
     fixed=(base+16*(average@lognull.T)).softmax(1)
     null=16*(obs@lognull.T)
     real=16*(obs@loglaw.T)
     association=16*(obs@(loglaw-lognull).T)
     residual=(real-null-association).abs().max().item()
-    if residual>1e-4:
+    if residual>1e-9:
         raise ArithmeticError(f"Log-evidence factorization drift {residual}")
-    return {"null":(base+null).softmax(1),"fixed_null":fixed,"association":(base+association).softmax(1),
-            "joint":(base+real).softmax(1)},residual
+    results={"null":(base+null).softmax(1),"fixed_null":fixed,"association":(base+association).softmax(1),
+             "joint":(base+real).softmax(1)}
+    return {k:v.to(prior) for k,v in results.items()},residual
 
 
 @torch.inference_mode()
