@@ -43,3 +43,6 @@ Các hàng dùng pilot riêng và được so với đối chứng ghép cặp t
 ## Kiểm định trên T4 với đủ ba thành phần
 
 Một biến thể của Candidate-Conditioned Regional Matching giữ riêng hiệu ứng kích thước và vị trí bằng hai tỉ số likelihood so với attention chung của truy vấn. Nó vượt mốc gốc và từng hiệu ứng đơn trên mẫu xác nhận 3.072 truy vấn mỗi split khi ghép với ngữ nghĩa toàn ảnh. Trong framework đầy đủ, giữ GCWE, chênh lệch mAP trên Ext-1 / Ext-2 / TU là **+0,028 / +0,054 / −0,020**; chênh lệch precision là **+0,028 / +0,080 / +0,058**. Sau khi loại mọi ID liên quan đến hai giai đoạn phát triển của biến thể trên cả hai split, mức tăng mAP Sketchy còn +0,027 / +0,025. Các khoảng bootstrap theo lớp của chênh lệch AP trên cả ba split đầy đủ đều chứa 0. Giữ bộ đọc gốc làm baseline chính. [Toàn bộ thí nghiệm T4, công thức, hình và bằng chứng theo truy vấn](https://github.com/HieuNM1804/training-free-ZS-SBIR/tree/539338b/docs/results/regional-additive-full)
+## Bằng chứng mới về thông tin chia sẻ giữa các ảnh
+
+Đã kiểm tra liệu vùng được chọn cho một ảnh thật sự giúp phân biệt nó với ảnh sai, liệu quan hệ hình học dự báo được một bộ phận sketch chưa thấy, và liệu cách sketch lược thông tin có ổn định giữa các vùng. [Các phép thử, lượt xác nhận trên ảnh nguồn khác và giới hạn của kết luận](regional-and-semantic-evidence-vi.md)
