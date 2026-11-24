@@ -36,7 +36,7 @@ def project(direct,diffused,words):
     linear=torch.lerp(d,a,step)
     if (tv(linear,d)-motion).abs().max()>2e-5:
         raise ValueError('Control does not match the amount of mass moved')
-    return {'raw':a,'diffused':d,'projected':projected,'linear':linear},torch.cat((original,lexical,motion,step),1)
+    return {'raw':a,'diffused':d,'projected':projected,'linear':linear},torch.cat((original,lexical,motion,step),1),(ma,md)
 
 
 @torch.inference_mode()
@@ -77,7 +77,7 @@ def run():
                 post=(scale*(poses@src.T)).softmax(2).mean(1)
                 direct=post@words.T
                 diff=graph.score(CONFIG,direct)
-                panels,diagnostic=project(direct,diff,words)
+                panels,diagnostic,_=project(direct,diff,words)
                 stats.append(diagnostic.cpu())
                 d=panels['diffused']
                 target=panels['raw']@words;source=d@words
