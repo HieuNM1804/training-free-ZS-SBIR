@@ -1,0 +1,5 @@
+# Frozen full-framework comparison
+
+The 3,072-query confirmation on each Sketchy split met the pre-specified criteria: the additive readout beat the original in combined mAP (+0.0655 / +0.0986), as well as each single-factor control. Its class-bootstrap 95% interval for mAP versus the original was [+0.0201,+0.1144] on Ext-1 and [−0.0503,+0.2837] on Ext-2. No TU results for this readout were inspected for selection.
+
+Now score every query in the two full Sketchy splits and all 30 TU classes. In each split, run all four combinations of original/additive regional score and disabled/enabled GCWE. The primary is the change in full-system mAP with GCWE kept on; record both precision measures at their original cutoffs and paired per-class uncertainty. The readout is L10+L01−L00 in log evidence, without any coefficient changes. No tuning after transfer. Report the TU result even if it reverses the small gains on Sketchy. Separate query IDs that were outside discovery and confirmation when reporting the full Sketchy outcomes. GCWE donor seed, compact word bank, two poses and all score weights remain locked to the existing three-module estimator.

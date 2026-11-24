@@ -1,0 +1,172 @@
+{
+  "commit": "3e6bf1cdc756ae2cb3b8a8d177137ec02fc0f4e0",
+  "seed": 42,
+  "queries": 3072,
+  "gallery": 17100,
+  "algebra_max": 0.0,
+  "reference_mae_points": [
+    0.02232561479710663,
+    0.0328776029467311
+  ],
+  "metrics": {
+    "regional_self": [
+      81.71418373046131,
+      80.95345074198121
+    ],
+    "global_regional_self": [
+      85.4048667365229,
+      84.77506521921896
+    ],
+    "regional_shared": [
+      80.99850754800477,
+      80.58105490642143
+    ],
+    "global_regional_shared": [
+      85.1126425807403,
+      84.64811208195897
+    ],
+    "regional_scale": [
+      81.92440917913095,
+      81.25781272313665
+    ],
+    "global_regional_scale": [
+      85.28546049322662,
+      84.84733083926889
+    ],
+    "regional_position": [
+      80.47095454500473,
+      79.8668622091403
+    ],
+    "global_regional_position": [
+      85.3704390226388,
+      84.98307303574015
+    ],
+    "regional_additive": [
+      81.85522162827206,
+      81.16113304010165
+    ],
+    "global_regional_additive": [
+      85.4704096336718,
+      84.86751313527444
+    ],
+    "regional_scale_interaction": [
+      81.7573639199812,
+      81.16503927988865
+    ],
+    "global_regional_scale_interaction": [
+      85.19297919677533,
+      84.78710948529624
+    ],
+    "regional_permuted_interaction": [
+      81.77045922851298,
+      81.26822939617946
+    ],
+    "global_regional_permuted_interaction": [
+      85.25880561270847,
+      84.83789074095208
+    ]
+  },
+  "contrasts": {
+    "regional_additive_minus_self": {
+      "points": [
+        0.14103789781074738,
+        0.20768229812044106
+      ],
+      "macro": {
+        "classes": 25,
+        "queries": 3072,
+        "mean_across_classes": 0.14391163789890327,
+        "positive_classes": 14,
+        "bootstrap95": [
+          0.0010588614422825566,
+          0.30396972641091635
+        ]
+      }
+    },
+    "regional_additive_minus_scale": {
+      "points": [
+        -0.06918755085886612,
+        -0.09667968303498735
+      ],
+      "macro": {
+        "classes": 25,
+        "queries": 3072,
+        "mean_across_classes": -0.03282503694675128,
+        "positive_classes": 14,
+        "bootstrap95": [
+          -0.7370765417737607,
+          0.592244322236524
+        ]
+      }
+    },
+    "regional_additive_minus_position": {
+      "points": [
+        1.384267083267332,
+        1.294270830961371
+      ],
+      "macro": {
+        "classes": 25,
+        "queries": 3072,
+        "mean_across_classes": 1.3886470419380457,
+        "positive_classes": 22,
+        "bootstrap95": [
+          0.7742459556891489,
+          2.045957758205451
+        ]
+      }
+    },
+    "global_regional_additive_minus_self": {
+      "points": [
+        0.06554289714889212,
+        0.09244791605548623
+      ],
+      "macro": {
+        "classes": 25,
+        "queries": 3072,
+        "mean_across_classes": 0.06577159752733809,
+        "positive_classes": 18,
+        "bootstrap95": [
+          0.02009198479515253,
+          0.11440021949348299
+        ]
+      }
+    },
+    "global_regional_additive_minus_scale": {
+      "points": [
+        0.18494914044519342,
+        0.020182296005562723
+      ],
+      "macro": {
+        "classes": 25,
+        "queries": 3072,
+        "mean_across_classes": 0.1936264624263277,
+        "positive_classes": 19,
+        "bootstrap95": [
+          0.039076311521776715,
+          0.35806007462758044
+        ]
+      }
+    },
+    "global_regional_additive_minus_position": {
+      "points": [
+        0.09997061103301046,
+        -0.11555990046569302
+      ],
+      "macro": {
+        "classes": 25,
+        "queries": 3072,
+        "mean_across_classes": 0.10249856491199155,
+        "positive_classes": 17,
+        "bootstrap95": [
+          -0.1029856122972683,
+          0.27185428840946213
+        ]
+      }
+    }
+  },
+  "matched_device_mae_points": [
+    1.689992738344396e-05,
+    0.0
+  ],
+  "device": "Tesla T4"
+}

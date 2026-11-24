@@ -110,7 +110,7 @@ def geometry_cache(w, split, gallery, query, flipped, qi, pi, qp, pp, vision):
 
 
 @torch.inference_mode()
-def run(dataset):
+def run(dataset, additive=False):
     seed = 42
     random.seed(seed)
     np.random.seed(seed)
@@ -120,11 +120,17 @@ def run(dataset):
     torch.backends.cudnn.deterministic = True
     torch.use_deterministic_algorithms(True)
     w = Path('/content/sbir')
-    root = w / 'results' / FAMILY
+    family = 'regional-additive-full' if additive else FAMILY
+    methods = ('full','additive','without_geometry','additive_without_geometry') if additive else ROWS
+    root = w / 'results' / family
     root.mkdir(parents=True, exist_ok=True)
     inputs = semantic_inputs(w, dataset)
     cfg, qp, qs, pp, gs, q, p, src, tgt, scale = inputs
-    views = source_windows(w, dataset, inputs)
+    if additive:
+        from .regional_scale_position_contrast import factorial_scores, complete_windows
+        views = complete_windows(w, dataset, inputs)
+    else:
+        views = source_windows(w, dataset, inputs)
     aq, ag, encoded, _, gq, photo, flip, gsrc, gtgt, gscale = audit_inputs(w, all_sketches=True, dataset=dataset)
     assert torch.equal(encoded, torch.arange(len(qp))) and scale == gscale
     kd, _ = load_kd(w)
@@ -139,7 +145,8 @@ def run(dataset):
         pi, gl = gs[split]
         assert (len(qi), len(pi), len(gl.unique())) == COUNTS[split]
         assert torch.equal(aq[split][0], qi) and torch.equal(ag[split][0], pi)
-        previous = torch.load(w/'results/geometry-word-leave-one-out'/(split+'.pt'), mmap=True, weights_only=True)
+        ref_folder = 'geometry-word-flat-first' if additive else 'geometry-word-leave-one-out'
+        previous = torch.load(w/'results'/ref_folder/(split+'.pt'), mmap=True, weights_only=True)
         assert torch.equal(previous['qi'], qi) and torch.equal(previous['pi'], pi)
         paths = [str(pp[i]) for i in pi.tolist()]
         gallery = p[pi].cuda()
@@ -168,13 +175,13 @@ def run(dataset):
         classes = gl.cuda()
         folder = root / split
         folder.mkdir(exist_ok=True)
-        all_metrics = {name: [] for name in ROWS}
+        all_metrics = {name: [] for name in methods}
         with ThreadPoolExecutor(max_workers=min(2, len(os.sched_getaffinity(0)))) as pool:
             for start in range(0, len(qi), SHARD):
                 stop = min(len(qi), start + SHARD)
                 path = folder / f'{start:05d}.pt'
                 if not path.exists():
-                    batch = {name: [] for name in ROWS}
+                    batch = {name: [] for name in methods}
                     for b in range(start, stop, 16):
                         sl = slice(b, min(b + 16, stop))
                         ids = qi[sl]
@@ -185,8 +192,16 @@ def run(dataset):
                         raw = post.mean(1) @ bank.T
                         first_d = graph.score(CONFIG, first)
                         lex = log_score(graph.score(CONFIG, raw))
-                        regional = regional_readout(poses, crops, src, scale, words, compact_bank, first_d)
-                        regional_raw = regional_readout(poses, crops, src, scale, raw_words, raw_compact, first)
+                        if additive:
+                            reader = CandidateRegions(poses[:,0],poses[:,1],crops[:,:,0],crops[:,:,1],src,words,
+                                                      compact_bank,src.new_empty((0,len(src))),first_d)
+                            reader.prepare(scale)
+                            regional, shared, scale_part, position_part = factorial_scores(reader)
+                            if (regional-reader.read('self',1.,'gallery')).abs().max()>.001:
+                                raise ValueError('Native regional score changed')
+                            add_reg = scale_part+position_part-shared
+                        else:
+                            regional = regional_readout(poses, crops, src, scale, words, compact_bank, first_d)
                         reg = GLOBAL_WEIGHT * log_score(first_d) + REGIONAL_WEIGHT * regional
                         reg_new = reg + GLOBAL_WEIGHT * (lex - log_score(first_d))
                         gwords = ((gscale * (gq[ids].cuda() @ gsrc.T)).softmax(1)
@@ -196,15 +211,16 @@ def run(dataset):
                                               sp[sl].cuda(), flat[sl].cuda(), gscale, distance, folds, parts, priors)
                         gd = GLOBAL_WEIGHT * (log_score(geom_graph.score(CONFIG, changed))
                                               - log_score(geom_graph.score(CONFIG, direct)))
-                        gr = GLOBAL_WEIGHT * (log_score(changed) - log_score(direct))
                         global_only = GLOBAL_WEIGHT * lex
-                        unsmoothed = GLOBAL_WEIGHT * log_score(raw) + REGIONAL_WEIGHT * regional_raw
-                        scores = {
-                            'full': reg_new + gd,
-                            'without_geometry': reg_new,
-                            'without_regional': global_only + gd,
-                            'without_diffusion': unsmoothed + gr,
-                        }
+                        scores = {'full': reg_new + gd, 'without_geometry': reg_new}
+                        if additive:
+                            alternative = global_only + REGIONAL_WEIGHT*add_reg
+                            scores.update(additive=alternative+gd, additive_without_geometry=alternative)
+                        else:
+                            regional_raw = regional_readout(poses, crops, src, scale, raw_words, raw_compact, first)
+                            gr = GLOBAL_WEIGHT * (log_score(changed) - log_score(direct))
+                            unsmoothed = GLOBAL_WEIGHT * log_score(raw) + REGIONAL_WEIGHT * regional_raw
+                            scores.update(without_regional=global_only+gd,without_diffusion=unsmoothed+gr)
                         for name, value in scores.items():
                             if not torch.isfinite(value).all():
                                 raise ValueError(f'Nonfinite score for {name}')
@@ -212,13 +228,13 @@ def run(dataset):
                     shard = {'qi': qi[start:stop], 'metrics': {k: torch.cat(v) for k, v in batch.items()}}
                     save_tensor(shard, path)
                 shard = torch.load(path, weights_only=True)
-                assert torch.equal(shard['qi'], qi[start:stop]) and set(shard['metrics']) == set(ROWS)
-                for name in ROWS:
+                assert torch.equal(shard['qi'], qi[start:stop]) and set(shard['metrics']) == set(methods)
+                for name in methods:
                     all_metrics[name].append(shard['metrics'][name])
                 print(split, stop, '/', len(qi), flush=True)
         raw = {name: torch.cat(chunks) for name, chunks in all_metrics.items()}
         checks = {}
-        for name, ref in [('full', 'without_hierarchy')]:
+        for name, ref in ([('full','full'), ('without_geometry','without_geometry')] if additive else [('full','without_hierarchy')]):
             difference = raw[name][:, :2] - previous['rows'][ref][:, :2]
             checks[name] = {'max_per_query': difference.abs().amax(0).tolist(),
                             'mean_signed_points': (100 * difference.double().mean(0)).tolist(),
@@ -238,4 +254,6 @@ def run(dataset):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('dataset', choices=('sketchy', 'tuberlin'))
-    run(parser.parse_args().dataset)
+    parser.add_argument('--additive', action='store_true')
+    args=parser.parse_args()
+    run(args.dataset, args.additive)
