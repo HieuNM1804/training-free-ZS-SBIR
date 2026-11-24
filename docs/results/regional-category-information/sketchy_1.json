@@ -1,0 +1,177 @@
+{
+  "commit": "c19161d71108cf7021c2fa0f9eded214a3231384",
+  "gpu": "Tesla T4",
+  "seed": 42,
+  "evaluator": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+  "queries": 768,
+  "gallery": 17100,
+  "both_directions": 59,
+  "mixed": 216,
+  "measures": [
+    "all_mixed",
+    "global_wrong",
+    "global_correct",
+    "within_query_balanced",
+    "rescued_total",
+    "damaged_total"
+  ],
+  "conditional": {
+    "global_heads": [
+      0.7114346593411432,
+      0.6711801770534224,
+      0.7060380594597923,
+      0.6067295239891036,
+      294.0,
+      132.0
+    ],
+    "window_marginal": [
+      0.7004256574264555,
+      0.6481521871822481,
+      0.6992920273914933,
+      0.5856439691605204,
+      274.0,
+      150.0
+    ],
+    "candidate": [
+      0.7247247831309559,
+      0.6979825519992195,
+      0.7060711281374097,
+      0.6238131927863017,
+      289.0,
+      144.0
+    ],
+    "adjacent_selector": [
+      0.694363455236372,
+      0.6551207279544751,
+      0.6862248479285173,
+      0.5943829945714797,
+      276.0,
+      153.0
+    ],
+    "observation_increment": [
+      0.47220846068941885,
+      0.4731628692332115,
+      0.48788855799163383,
+      0.5062736298068095,
+      202.0,
+      254.0
+    ],
+    "conditional_increment": [
+      0.6115496196542625,
+      0.6446228923688408,
+      0.6073489013748864,
+      0.6856257681245521,
+      315.0,
+      130.0
+    ],
+    "identity_increment": [
+      0.5137604136123426,
+      0.5150089768394259,
+      0.5147072059723238,
+      0.514836276549909,
+      227.0,
+      223.0
+    ]
+  },
+  "metrics": {
+    "global_heads": [
+      81.68032982357545,
+      80.36718769193007
+    ],
+    "window_marginal": [
+      78.16542186386263,
+      77.18229190286365
+    ],
+    "candidate": [
+      78.30190059661012,
+      76.82552105858727
+    ],
+    "adjacent_selector": [
+      78.41886752309316,
+      77.14713563958261
+    ]
+  },
+  "candidate_minus": {
+    "global_heads": {
+      "balanced_points": 1.7083668797197988,
+      "class_balanced": {
+        "classes": 20,
+        "queries": 59,
+        "mean_across_classes": -3.34751993127995,
+        "positive_classes": 7,
+        "bootstrap95": [
+          -21.055563198123124,
+          13.056765896350974
+        ]
+      },
+      "official_points": [
+        -3.378429226965333,
+        -3.5416666333427806
+      ],
+      "class_ap": {
+        "classes": 25,
+        "queries": 768,
+        "mean_across_classes": -3.1936219278230964,
+        "positive_classes": 7,
+        "bootstrap95": [
+          -5.180919491118397,
+          -1.1844180628500325
+        ]
+      }
+    },
+    "window_marginal": {
+      "balanced_points": 3.8169223625781172,
+      "class_balanced": {
+        "classes": 20,
+        "queries": 59,
+        "mean_across_classes": 1.8298611897561288,
+        "positive_classes": 5,
+        "bootstrap95": [
+          -0.625,
+          4.456349361273977
+        ]
+      },
+      "official_points": [
+        0.13647873274749145,
+        -0.35677084427637357
+      ],
+      "class_ap": {
+        "classes": 25,
+        "queries": 768,
+        "mean_across_classes": -0.10743625270755292,
+        "positive_classes": 17,
+        "bootstrap95": [
+          -1.2165816010132273,
+          0.905018747561074
+        ]
+      }
+    },
+    "adjacent_selector": {
+      "balanced_points": 2.9430198214821894,
+      "class_balanced": {
+        "classes": 20,
+        "queries": 59,
+        "mean_across_classes": 3.6033475030627513,
+        "positive_classes": 5,
+        "bootstrap95": [
+          0.37037041452195907,
+          9.032264625446663
+        ]
+      },
+      "official_points": [
+        -0.11696692648304936,
+        -0.32161458099532564
+      ],
+      "class_ap": {
+        "classes": 25,
+        "queries": 768,
+        "mean_across_classes": -0.13470922660791138,
+        "positive_classes": 13,
+        "bootstrap95": [
+          -0.4790365982881891,
+          0.20080098408037234
+        ]
+      }
+    }
+  }
+}

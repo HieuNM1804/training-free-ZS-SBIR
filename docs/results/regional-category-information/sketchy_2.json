@@ -1,0 +1,177 @@
+{
+  "commit": "c19161d71108cf7021c2fa0f9eded214a3231384",
+  "gpu": "Tesla T4",
+  "seed": 42,
+  "evaluator": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+  "queries": 768,
+  "gallery": 12552,
+  "both_directions": 157,
+  "mixed": 263,
+  "measures": [
+    "all_mixed",
+    "global_wrong",
+    "global_correct",
+    "within_query_balanced",
+    "rescued_total",
+    "damaged_total"
+  ],
+  "conditional": {
+    "global_heads": [
+      0.5976291396885317,
+      0.6161772839473065,
+      0.6230085951061876,
+      0.6510069933097073,
+      661.0,
+      360.0
+    ],
+    "window_marginal": [
+      0.5475455418144115,
+      0.5633572406418945,
+      0.5858423230828533,
+      0.6106136847216233,
+      581.0,
+      452.0
+    ],
+    "candidate": [
+      0.575252188773323,
+      0.5966414316660829,
+      0.6087697081162896,
+      0.6417390366743325,
+      617.0,
+      422.0
+    ],
+    "adjacent_selector": [
+      0.5867295360808816,
+      0.6035293011525691,
+      0.6092608887439882,
+      0.6344048878664423,
+      612.0,
+      420.0
+    ],
+    "observation_increment": [
+      0.44569570316221324,
+      0.442832862517396,
+      0.4446047666556958,
+      0.4441100368572838,
+      469.0,
+      616.0
+    ],
+    "conditional_increment": [
+      0.576029467230004,
+      0.6098464003039731,
+      0.5894609217317731,
+      0.633630725513598,
+      621.0,
+      409.0
+    ],
+    "identity_increment": [
+      0.4932187452289088,
+      0.48682397431221563,
+      0.5017151907436165,
+      0.4900888479581684,
+      524.0,
+      524.0
+    ]
+  },
+  "metrics": {
+    "global_heads": [
+      73.90558565378646,
+      72.3691408195009
+    ],
+    "window_marginal": [
+      68.76260201740175,
+      67.03255223656015
+    ],
+    "candidate": [
+      68.41400355109121,
+      67.15625015761665
+    ],
+    "adjacent_selector": [
+      68.7580978586387,
+      67.46614601433976
+    ]
+  },
+  "candidate_minus": {
+    "global_heads": {
+      "balanced_points": -0.9267956635374932,
+      "class_balanced": {
+        "classes": 19,
+        "queries": 157,
+        "mean_across_classes": 5.364949206063047,
+        "positive_classes": 6,
+        "bootstrap95": [
+          -7.4217635530866914,
+          19.404857663939133
+        ]
+      },
+      "official_points": [
+        -5.491582102695247,
+        -5.212890661884255
+      ],
+      "class_ap": {
+        "classes": 21,
+        "queries": 768,
+        "mean_across_classes": -5.103689341691352,
+        "positive_classes": 4,
+        "bootstrap95": [
+          -8.983867865165479,
+          -1.2576594998926633
+        ]
+      }
+    },
+    "window_marginal": {
+      "balanced_points": 3.112535195270921,
+      "class_balanced": {
+        "classes": 19,
+        "queries": 157,
+        "mean_across_classes": 4.208700884046165,
+        "positive_classes": 10,
+        "bootstrap95": [
+          0.6117933327236517,
+          8.223380964158773
+        ]
+      },
+      "official_points": [
+        -0.3485984663105531,
+        0.12369792105649442
+      ],
+      "class_ap": {
+        "classes": 21,
+        "queries": 768,
+        "mean_across_classes": -0.2560408773145729,
+        "positive_classes": 7,
+        "bootstrap95": [
+          -1.30804940560295,
+          0.8610818044892127
+        ]
+      }
+    },
+    "adjacent_selector": {
+      "balanced_points": 0.7334148807890096,
+      "class_balanced": {
+        "classes": 19,
+        "queries": 157,
+        "mean_across_classes": 1.4471327510745802,
+        "positive_classes": 5,
+        "bootstrap95": [
+          -0.6525624525126031,
+          4.259573628109226
+        ]
+      },
+      "official_points": [
+        -0.34409430754749337,
+        -0.30989585672311176
+      ],
+      "class_ap": {
+        "classes": 21,
+        "queries": 768,
+        "mean_across_classes": -0.2624072491916382,
+        "positive_classes": 8,
+        "bootstrap95": [
+          -0.7002999539637655,
+          0.17149877710384193
+        ]
+      }
+    }
+  }
+}

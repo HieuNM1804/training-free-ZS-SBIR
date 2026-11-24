@@ -1,0 +1,165 @@
+{
+  "commit": "dc30592707a664443030ef8361ae32663b209c63",
+  "seed": 42,
+  "gpu": "Tesla T4",
+  "queries": 768,
+  "gallery": 17100,
+  "assessment": {
+    "mixed_pairs": 878,
+    "eligible_pairs": 192,
+    "eligible_queries": 30,
+    "original_correct": 89,
+    "original_wrong": 103,
+    "selector_ties": 0.0,
+    "accuracy": {
+      "same": {
+        "balanced_percent": {
+          "mean": 63.93518518518518,
+          "queries": 18,
+          "by_class": {
+            "classes": 8,
+            "queries": 18,
+            "mean_across_classes": 68.98313492063492,
+            "positive_classes": 7,
+            "bootstrap95": [
+              41.51785714285714,
+              91.66666666666666
+            ]
+          }
+        },
+        "per_query_percent": {
+          "mean": 65.64814814814814,
+          "queries": 30,
+          "by_class": {
+            "classes": 11,
+            "queries": 30,
+            "mean_across_classes": 74.40516273849607,
+            "positive_classes": 11,
+            "bootstrap95": [
+              57.99102132435466,
+              89.39393939393939
+            ]
+          }
+        }
+      },
+      "different": {
+        "balanced_percent": {
+          "mean": 62.28894335511983,
+          "queries": 18,
+          "by_class": {
+            "classes": 8,
+            "queries": 18,
+            "mean_across_classes": 67.19187675070029,
+            "positive_classes": 7,
+            "bootstrap95": [
+              39.84375,
+              91.36904761904762
+            ]
+          }
+        },
+        "per_query_percent": {
+          "mean": 67.80332056194125,
+          "queries": 30,
+          "by_class": {
+            "classes": 11,
+            "queries": 30,
+            "mean_across_classes": 75.58071132783776,
+            "positive_classes": 11,
+            "bootstrap95": [
+              59.06285072951741,
+              90.47970122682767
+            ]
+          }
+        }
+      },
+      "own": {
+        "balanced_percent": {
+          "mean": 64.49074074074073,
+          "queries": 18,
+          "by_class": {
+            "classes": 8,
+            "queries": 18,
+            "mean_across_classes": 69.3998015873016,
+            "positive_classes": 7,
+            "bootstrap95": [
+              41.979166666666664,
+              91.66666666666666
+            ]
+          }
+        },
+        "per_query_percent": {
+          "mean": 69.39814814814814,
+          "queries": 30,
+          "by_class": {
+            "classes": 11,
+            "queries": 30,
+            "mean_across_classes": 79.32940516273851,
+            "positive_classes": 11,
+            "bootstrap95": [
+              63.43434343434344,
+              93.1537598204265
+            ]
+          }
+        }
+      }
+    },
+    "same_minus_different": {
+      "relevant": {
+        "mean": 0.44489410519599915,
+        "queries": 30,
+        "by_class": {
+          "classes": 11,
+          "queries": 30,
+          "mean_across_classes": 0.6793099927123297,
+          "positive_classes": 10,
+          "bootstrap95": [
+            0.37522808219390835,
+            1.0145380333362315
+          ]
+        }
+      },
+      "irrelevant": {
+        "mean": 0.13516075909137726,
+        "queries": 30,
+        "by_class": {
+          "classes": 11,
+          "queries": 30,
+          "mean_across_classes": 0.1898838931863958,
+          "positive_classes": 9,
+          "bootstrap95": [
+            0.016397607106376798,
+            0.4081978640603748
+          ]
+        }
+      },
+      "margin": {
+        "mean": 0.3097333312034607,
+        "queries": 30,
+        "by_class": {
+          "classes": 11,
+          "queries": 30,
+          "mean_across_classes": 0.4894261028278958,
+          "positive_classes": 9,
+          "bootstrap95": [
+            0.1532576503909447,
+            0.9185907258228823
+          ]
+        }
+      },
+      "balanced_points": {
+        "mean": 1.6462418300653598,
+        "queries": 18,
+        "by_class": {
+          "classes": 8,
+          "queries": 18,
+          "mean_across_classes": 1.791258169934641,
+          "positive_classes": 2,
+          "bootstrap95": [
+            0.0,
+            5.130718954248368
+          ]
+        }
+      }
+    }
+  }
+}
