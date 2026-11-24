@@ -46,7 +46,7 @@ def score_arms(poses,crops,src,scale,heads,bank,native,query_ids):
     torch.testing.assert_close(global_read,full.read('uniform',1.,'gallery'),atol=1e-5,rtol=1e-6)
     weights=(reader.prior.log()+reader.logl-reader.l.mean(3,keepdim=True).clamp_min(1e-30).log()).softmax(2)
     # The window selector sees a neighboring candidate under the whole-query readout; the value always uses the real photo.
-    order=global_read.argsort(1,descending=True,stable=True)
+    order=global_read.argsort(dim=1,descending=True,stable=True)
     n=order.size(1)
     permutation=[]
     for i,qid in enumerate(query_ids.tolist()):
