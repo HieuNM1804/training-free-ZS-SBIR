@@ -1,0 +1,60 @@
+{
+  "commit": "32c179ae5794c4e4604f9113b252939be2079bd4",
+  "seed": 42,
+  "device": "Tesla T4",
+  "queries": 1536,
+  "columns": [
+    "probability_selected_donor_has_query_class",
+    "change_in_heldout_positive_minus_negative_word_overlap"
+  ],
+  "means": {
+    "uniform": [
+      0.34058149387874437,
+      5.33553142377158e-11
+    ],
+    "original": [
+      0.4880923475169972,
+      0.0016526532517175212
+    ],
+    "same_partition": [
+      0.4863559782202343,
+      0.001774662707818934
+    ],
+    "wrong_coordinates": [
+      0.4725133571166526,
+      0.0016285739936056458
+    ],
+    "individual_matches": [
+      0.4851820832288638,
+      0.0017016956888342705
+    ],
+    "uncentered_energy": [
+      0.47501484878372935,
+      0.0016074110100608256
+    ]
+  },
+  "primary_minus_original": {
+    "donor_purity_points": {
+      "classes": 21,
+      "queries": 1536,
+      "mean_across_classes": -0.06329489643953996,
+      "positive_classes": 14,
+      "bootstrap95": [
+        -3.1107313208653204,
+        2.5973562012394726
+      ],
+      "within_class_correlation_with_ap_change": 0.1535817306349635
+    },
+    "heldout_margin_x10000": {
+      "classes": 21,
+      "queries": 1536,
+      "mean_across_classes": 0.5608203238049622,
+      "positive_classes": 11,
+      "bootstrap95": [
+        -5.926419992574103,
+        8.264773515998307
+      ],
+      "within_class_correlation_with_ap_change": 0.1067558068778323
+    }
+  }
+}
