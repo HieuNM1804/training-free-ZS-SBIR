@@ -30,7 +30,7 @@ def rank_audit(text,folds,sample):
         # Reconstruct only from the revealed centered word logits.
         residual=sample.double().flatten(0,1)
         measured=residual@t.T
-        predicted=torch.linalg.solve(gram,t@measured.T).T
+        predicted=torch.linalg.solve(gram,t.T@measured.T).T
         result.append(dict(n=len(t),rank=int((singular>singular.max()*1e-10).sum()),
             smallest=float(singular.min()),largest=float(singular.max()),
             max_embedding_error=float((residual-predicted).abs().max()),
