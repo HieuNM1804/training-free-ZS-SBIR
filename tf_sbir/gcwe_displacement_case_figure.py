@@ -3,6 +3,7 @@ import json
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont, ImageOps
+from matplotlib.font_manager import FontProperties, findfont
 
 
 def run():
@@ -11,10 +12,10 @@ def run():
     if set(cases)!={'sketchy_1','sketchy_2','tuberlin'}:
         raise ValueError('Both complete case reports are required')
     rows=[(name,case) for name,items in cases.items() for case in items]
-    fonts=Path('/usr/share/fonts/truetype/dejavu')
-    title=ImageFont.truetype(str(fonts/'DejaVuSans-Bold.ttf'),22)
-    label=ImageFont.truetype(str(fonts/'DejaVuSans.ttf'),17)
-    small=ImageFont.truetype(str(fonts/'DejaVuSans.ttf'),15)
+    regular=findfont(FontProperties(family='DejaVu Sans'))
+    title=ImageFont.truetype(findfont(FontProperties(family='DejaVu Sans',weight='bold')),22)
+    label=ImageFont.truetype(regular,17)
+    small=ImageFont.truetype(regular,15)
     out=Image.new('RGB',(1040,72+205*len(rows)),(255,255,255))
     draw=ImageDraw.Draw(out)
     for x,heading in [(25,'Retrieval change'),(358,'Query sketch'),(586,'Relevant photo'),(805,'Competing photo')]:
