@@ -1,0 +1,92 @@
+{
+  "commit": "68d1349ce3cd7379ddec7407782a29e19d2af6f9",
+  "seed": 42,
+  "device": "Tesla T4",
+  "split": "sketchy_1",
+  "queries": 768,
+  "gallery": 17100,
+  "evaluator": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+  "predictive_columns": [
+    "word",
+    "independent",
+    "literal_donor",
+    "wrong_layout",
+    "scene_prior",
+    "scene_updated",
+    "scene_direct",
+    "scene_coverage"
+  ],
+  "predictive_means": {
+    "word": -5.0129236454765005,
+    "independent": -5.027449981619914,
+    "literal_donor": -4.959123320877552,
+    "wrong_layout": -5.013691271965702,
+    "scene_prior": -4.119692517754932,
+    "scene_updated": -4.1314081546540065,
+    "scene_direct": -4.038850600210329,
+    "scene_coverage": 0.024336970259052276
+  },
+  "word_minus": {
+    "independent": {
+      "mean": 0.014526336143414179,
+      "class_delta": {
+        "classes": 25,
+        "queries": 768,
+        "mean_across_classes": 0.014458465228110968,
+        "positive_classes": 25,
+        "bootstrap95": [
+          0.012522882422233726,
+          0.01655887187662705
+        ]
+      }
+    },
+    "literal_donor": {
+      "mean": -0.05380032459894816,
+      "class_delta": {
+        "classes": 25,
+        "queries": 768,
+        "mean_across_classes": -0.05379261535597252,
+        "positive_classes": 0,
+        "bootstrap95": [
+          -0.0577327516719301,
+          -0.04987902208184442
+        ]
+      }
+    },
+    "wrong_layout": {
+      "mean": 0.0007676264892021815,
+      "class_delta": {
+        "classes": 25,
+        "queries": 768,
+        "mean_across_classes": 0.0007884034532165471,
+        "positive_classes": 17,
+        "bootstrap95": [
+          0.00029695437374019075,
+          0.0012850955089724362
+        ]
+      }
+    }
+  },
+  "retrieval_percent": {
+    "word": [
+      27.53173822541915,
+      20.83203127598002
+    ],
+    "prior": [
+      27.482716904827004,
+      20.79557292866715
+    ],
+    "direct": [
+      26.87016717233443,
+      20.12760421663794
+    ],
+    "wrong_layout": [
+      27.56453279168151,
+      20.880208351688147
+    ],
+    "native_semantic": [
+      82.78831681891461,
+      82.4622396886601
+    ]
+  }
+}
