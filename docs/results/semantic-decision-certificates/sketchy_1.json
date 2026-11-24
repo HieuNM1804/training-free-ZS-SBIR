@@ -1,0 +1,148 @@
+{
+  "commit": "9b86016265c2af0f821fe8710ca7d7d8f150ed6c",
+  "seed": 42,
+  "gpu": "Tesla T4",
+  "evaluator": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+  "queries": 768,
+  "gallery": 17100,
+  "pairs": 2016,
+  "effects": {
+    "filter minus native": {
+      "points": [
+        -0.12107491881276171,
+        -0.15104166620100537
+      ],
+      "class_ap": {
+        "classes": 25,
+        "queries": 768,
+        "mean_across_classes": -0.1087024940503022,
+        "positive_classes": 0,
+        "bootstrap95": [
+          -0.28821137426864535,
+          -0.0011437336603800456
+        ]
+      }
+    },
+    "named minus swapped": {
+      "points": [
+        2.3486926989183607,
+        5.298177107518616
+      ],
+      "class_ap": {
+        "classes": 25,
+        "queries": 768,
+        "mean_across_classes": 2.2903087108477163,
+        "positive_classes": 25,
+        "bootstrap95": [
+          1.4985678666998234,
+          3.159813450710663
+        ]
+      }
+    },
+    "named minus free": {
+      "points": [
+        -41.23604190244805,
+        -65.02213551236007
+      ],
+      "class_ap": {
+        "classes": 25,
+        "queries": 768,
+        "mean_across_classes": -41.896380216477084,
+        "positive_classes": 0,
+        "bootstrap95": [
+          -46.276260505374225,
+          -37.36972491088024
+        ]
+      }
+    },
+    "named minus reverse": {
+      "points": [
+        2.1143095712128948,
+        6.118489596216629
+      ],
+      "class_ap": {
+        "classes": 25,
+        "queries": 768,
+        "mean_across_classes": 1.808604147533796,
+        "positive_classes": 19,
+        "bootstrap95": [
+          0.3353103417758844,
+          3.2297447361502964
+        ]
+      }
+    },
+    "identity_excess minus free": {
+      "points": [
+        -42.72558866359759,
+        -69.88020843467287
+      ],
+      "class_ap": {
+        "classes": 25,
+        "queries": 768,
+        "mean_across_classes": -43.216476914069084,
+        "positive_classes": 0,
+        "bootstrap95": [
+          -47.50963559580803,
+          -38.834769306015886
+        ]
+      }
+    }
+  },
+  "metrics": {
+    "native": [
+      80.56293346987027,
+      80.27213553383868
+    ],
+    "named": [
+      6.683808780023052,
+      9.717447912165273
+    ],
+    "swapped": [
+      4.335116081104692,
+      4.419270804646658
+    ],
+    "free": [
+      47.91985068247111,
+      74.73958342452534
+    ],
+    "identity_excess": [
+      5.194262018873511,
+      4.859374989852464
+    ],
+    "reverse": [
+      4.569499208810157,
+      3.598958315948645
+    ],
+    "filter": [
+      80.44185855105752,
+      80.12109386763768
+    ]
+  },
+  "balanced_percent": {
+    "native": 50.0,
+    "named": 51.267685715929936,
+    "swapped": 49.40021800792823,
+    "free": 52.02867777670844,
+    "identity_excess": 52.04998261090053,
+    "reverse": 56.31514162582866,
+    "filter": 50.04708100173433
+  },
+  "support_columns": [
+    "fraction_passing_all",
+    "fraction_passing_native_top200",
+    "mixed_true_bound",
+    "mixed_foil_bound",
+    "mixed_true_pass_rate",
+    "mixed_foil_pass_rate",
+    "mixed_pairs_per_query"
+  ],
+  "support": [
+    0.0014202607173719646,
+    0.0014192708331393078,
+    0.27025400748890305,
+    0.26573552213678203,
+    0.004774305555555556,
+    0.005063657407407407,
+    1.1432291666666667
+  ]
+}

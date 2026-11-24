@@ -1,0 +1,140 @@
+{
+  "commit": "18129c5232f4a4e30913ed3b6f14d95bc821d253",
+  "gpu": "Tesla T4",
+  "seed": 42,
+  "evaluator": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+  "queries": 768,
+  "gallery": 17100,
+  "metrics": {
+    "native": [
+      80.56293346987027,
+      80.27213553383868
+    ],
+    "unary": [
+      17.48915541502356,
+      18.23828126240793
+    ],
+    "located": [
+      18.04617623165541,
+      19.415364611874487
+    ],
+    "pooled": [
+      19.05154916760997,
+      20.90755210520001
+    ],
+    "sham": [
+      18.344507548924106,
+      19.751302063377807
+    ],
+    "filter": [
+      80.56293346987027,
+      80.27213553383868
+    ]
+  },
+  "effects": {
+    "located minus pooled": {
+      "points": [
+        -1.005372935954559,
+        -1.4921874933255215
+      ],
+      "class_ap": {
+        "classes": 25,
+        "queries": 768,
+        "mean_across_classes": -0.9815785034518835,
+        "positive_classes": 2,
+        "bootstrap95": [
+          -1.3838355101204354,
+          -0.6291109746478919
+        ]
+      }
+    },
+    "located minus sham": {
+      "points": [
+        -0.29833131726870005,
+        -0.33593745150331716
+      ],
+      "class_ap": {
+        "classes": 25,
+        "queries": 768,
+        "mean_across_classes": -0.2778795494199688,
+        "positive_classes": 7,
+        "bootstrap95": [
+          -0.4976161328690298,
+          -0.07120405124092151
+        ]
+      }
+    },
+    "located minus unary": {
+      "points": [
+        0.557020816631848,
+        1.1770833494665567
+      ],
+      "class_ap": {
+        "classes": 25,
+        "queries": 768,
+        "mean_across_classes": 0.5314660404250094,
+        "positive_classes": 20,
+        "bootstrap95": [
+          0.2455218418208261,
+          0.8471522723970026
+        ]
+      }
+    },
+    "filter minus native": {
+      "points": [
+        0.0,
+        0.0
+      ],
+      "class_ap": {
+        "classes": 25,
+        "queries": 768,
+        "mean_across_classes": 0.0,
+        "positive_classes": 0,
+        "bootstrap95": [
+          0.0,
+          0.0
+        ]
+      }
+    }
+  },
+  "balanced_percent": {
+    "native": 50.0,
+    "unary": 50.4655948256032,
+    "located": 49.49707183039794,
+    "pooled": 50.28803233625525,
+    "sham": 50.4655948256032,
+    "filter": 50.0
+  },
+  "support_columns": [
+    "fraction_passing_all",
+    "fraction_passing_native_top200",
+    "mixed_true_bound",
+    "mixed_foil_bound",
+    "mixed_true_pass_rate",
+    "mixed_foil_pass_rate",
+    "mixed_pairs_per_query"
+  ],
+  "support": [
+    0.0,
+    0.0,
+    0.0003436363831328722,
+    0.0004979127959106538,
+    0.0,
+    0.0,
+    1.1432291666666667
+  ],
+  "strength_columns": [
+    "fraction_stronger_exact",
+    "fraction_stronger_over_2e-6",
+    "all_bounds_equal_for_query",
+    "mean_extra_bound",
+    "maximum_word_detection"
+  ],
+  "strength": [
+    0.010355826363943757,
+    0.009758467112793786,
+    0.23828125,
+    1.3466049702830521e-06,
+    0.0006437677068997042
+  ]
+}
