@@ -1,0 +1,279 @@
+{
+  "commit": "7538d22e911647d20f8a37603e7ffc5c32334132",
+  "split": "sketchy_1",
+  "seed": 42,
+  "queries": 1536,
+  "gallery": 17100,
+  "checkpoint": "/content/sbir/assets/ViT-B-32.pt",
+  "device": "Tesla T4",
+  "torch": "2.14.1+cu130",
+  "estimator_sha": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+  "rotations": [
+    {
+      "relative_covariance_error": 3.5841799640482093e-08,
+      "orthogonality_error": 2.8092411508140458e-08
+    },
+    {
+      "relative_covariance_error": 3.4405891398241214e-08,
+      "orthogonality_error": 1.2303646323985618e-08
+    },
+    {
+      "relative_covariance_error": 3.577336206529757e-08,
+      "orthogonality_error": 2.3452082387187545e-08
+    }
+  ],
+  "entropy": {
+    "native": {
+      "gallery_entropy": 4.615614414215088,
+      "view_entropy": 6.727670192718506,
+      "max_gallery_entropy_change": 0.0,
+      "max_view_entropy_change": 0.0
+    },
+    "shared_0": {
+      "gallery_entropy": 7.68858528137207,
+      "view_entropy": 8.249631881713867,
+      "max_gallery_entropy_change": 8.104375839233398,
+      "max_view_entropy_change": 6.936846733093262
+    },
+    "shared_1": {
+      "gallery_entropy": 7.718338489532471,
+      "view_entropy": 8.187308311462402,
+      "max_gallery_entropy_change": 7.7373480796813965,
+      "max_view_entropy_change": 6.705140113830566
+    },
+    "shared_2": {
+      "gallery_entropy": 7.726282596588135,
+      "view_entropy": 8.05823040008545,
+      "max_gallery_entropy_change": 8.23448371887207,
+      "max_view_entropy_change": 6.583711624145508
+    },
+    "separate": {
+      "gallery_entropy": 7.68858528137207,
+      "view_entropy": 8.187308311462402,
+      "max_gallery_entropy_change": 8.104375839233398,
+      "max_view_entropy_change": 6.705140113830566
+    },
+    "entropy_matched": {
+      "gallery_entropy": 4.615614891052246,
+      "view_entropy": 6.727670192718506,
+      "max_gallery_entropy_change": 2.3603439331054688e-05,
+      "max_view_entropy_change": 1.621246337890625e-05
+    }
+  },
+  "metrics": {
+    "native_direct": [
+      76.14049060090716,
+      79.54752617527751
+    ],
+    "native_diffused": [
+      82.35930274434699,
+      81.65950532735829
+    ],
+    "visual_cosine": [
+      31.157935991601942,
+      42.776692765376836
+    ],
+    "shared_0_direct": [
+      25.939571990481152,
+      35.82552080903649
+    ],
+    "shared_0_diffused": [
+      44.9031276981259,
+      45.62044279555266
+    ],
+    "shared_1_direct": [
+      23.21010281533139,
+      30.917968797681777
+    ],
+    "shared_1_diffused": [
+      38.03362705172428,
+      30.585937578386318
+    ],
+    "shared_2_direct": [
+      24.783422010902235,
+      36.98177089875874
+    ],
+    "shared_2_diffused": [
+      43.103541602734666,
+      44.26888029265683
+    ],
+    "separate_direct": [
+      5.677779694087803,
+      4.1132812468276825
+    ],
+    "separate_diffused": [
+      9.118908873036464,
+      4.78320313935304
+    ],
+    "entropy_matched_direct": [
+      16.87122399756239,
+      21.483723943189638
+    ],
+    "entropy_matched_diffused": [
+      41.93072509660851,
+      40.71875008545855
+    ]
+  },
+  "native_minus_control": {
+    "shared_0_direct": {
+      "points": [
+        50.200918610426015,
+        43.722005366241014
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": 50.450313069612314,
+        "positive_classes": 25,
+        "bootstrap95": [
+          44.07496081929649,
+          56.45463708041608
+        ]
+      }
+    },
+    "shared_0_diffused": {
+      "points": [
+        37.456175046221084,
+        36.039062531805634
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": 38.30205484659636,
+        "positive_classes": 23,
+        "bootstrap95": [
+          28.450532595504956,
+          48.13058806628784
+        ]
+      }
+    },
+    "shared_1_direct": {
+      "points": [
+        52.93038778557578,
+        48.629557377595724
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": 52.31077668045148,
+        "positive_classes": 25,
+        "bootstrap95": [
+          45.351360824330115,
+          58.88682618151101
+        ]
+      }
+    },
+    "shared_1_diffused": {
+      "points": [
+        44.3256756926227,
+        51.07356774897198
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": 43.79655083296133,
+        "positive_classes": 23,
+        "bootstrap95": [
+          33.74526995631699,
+          53.05423211720038
+        ]
+      }
+    },
+    "shared_2_direct": {
+      "points": [
+        51.35706859000493,
+        42.56575527651876
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": 51.58818004908035,
+        "positive_classes": 25,
+        "bootstrap95": [
+          46.54310363444858,
+          56.580941056393804
+        ]
+      }
+    },
+    "shared_2_diffused": {
+      "points": [
+        39.25576114161231,
+        37.390625034701465
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": 40.2348639876337,
+        "positive_classes": 25,
+        "bootstrap95": [
+          31.620930855364257,
+          48.78757773273508
+        ]
+      }
+    },
+    "separate_direct": {
+      "points": [
+        70.46271090681937,
+        75.43424492844981
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": 70.29254814511275,
+        "positive_classes": 25,
+        "bootstrap95": [
+          64.83025718026141,
+          75.58651058973258
+        ]
+      }
+    },
+    "separate_diffused": {
+      "points": [
+        73.24039387131052,
+        76.87630218800525
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": 73.49906091422451,
+        "positive_classes": 25,
+        "bootstrap95": [
+          66.15177914473529,
+          79.70589156218767
+        ]
+      }
+    },
+    "entropy_matched_direct": {
+      "points": [
+        59.26926660334478,
+        58.06380223208786
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": 59.247984249441515,
+        "positive_classes": 25,
+        "bootstrap95": [
+          54.809517919651825,
+          63.82495492432998
+        ]
+      }
+    },
+    "entropy_matched_diffused": {
+      "points": [
+        40.42857764773847,
+        40.94075524189975
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 1536,
+        "mean_across_classes": 41.343350090893146,
+        "positive_classes": 24,
+        "bootstrap95": [
+          32.762767701898184,
+          49.59333553045622
+        ]
+      }
+    }
+  }
+}
