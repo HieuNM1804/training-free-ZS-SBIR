@@ -176,7 +176,11 @@ def run(*, update_fn=get_updates, family='gcwe-conditioned-donor-test', start=0,
                             delta = GLOBAL_WEIGHT*(log_score(geometry_graph.score(CONFIG,val))-direct)
                             scores[name] = base + delta
                             if ablate_term == name:
-                                scores['without_semantic'] = REGIONAL_WEIGHT*regional + delta
+                                if family=='three-component-factorial':
+                                scores.update(semantic_only=GLOBAL_WEIGHT*lex, regional_only=REGIONAL_WEIGHT*regional,
+                                              geometry_only=delta, raw_clip=poses[:,0]@gallery.T,
+                                              word_only=raw, two_view_clip=F.normalize(poses.mean(1))@gallery.T)
+                            scores['without_semantic'] = REGIONAL_WEIGHT*regional + delta
                                 scores['without_regional'] = GLOBAL_WEIGHT*lex + delta
                             if controls and name=='original':
                                 scores['without_global_term'] = REGIONAL_WEIGHT*regional + delta
