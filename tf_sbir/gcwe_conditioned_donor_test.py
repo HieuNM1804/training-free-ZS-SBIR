@@ -75,7 +75,8 @@ def paired_replay(rows, locked, names):
 
 @torch.inference_mode()
 def run(*, update_fn=get_updates, family='gcwe-conditioned-donor-test', start=0, count=768,
-        controls=True, update_factory=None, comparisons=None, dataset="sketchy", ablate_term=None):
+        controls=True, update_factory=None, comparisons=None, dataset="sketchy", ablate_term=None,
+        internal_factory=None):
     import random
     import numpy as np
     random.seed(42)
@@ -121,6 +122,11 @@ def run(*, update_fn=get_updates, family='gcwe-conditioned-donor-test', start=0,
         paths = [str(pp[i]) for i in pi.tolist()]
         stamp = digest({'gallery': paths, 'model': CHECKPOINT, 'source': 'regional-64/RGB16'})
         heads, compact_bank = index(w, split, gallery, tgt, scale, stamp[:16])
+        internal = None
+        if internal_factory is not None:
+            from .geometry_word_leave_one_out import COUNTS
+            assert count is None and (len(qi),len(pi),len(gallery_labels.unique())) == COUNTS[split]
+            internal = internal_factory(gallery,tgt,src,scale,graph,heads,compact_bank)
         bank = make_word_bank(gallery, tgt, scale, 256)
         geom_bank = make_word_bank(geom_gallery, gtgt, gscale, 160)
         # Reuse the full-run patch caches with their original path-order hash.
@@ -163,11 +169,12 @@ def run(*, update_fn=get_updates, family='gcwe-conditioned-donor-test', start=0,
                             shared = log_score((alpha.mean(3,keepdim=True)*reader.l).sum(2).mean(1))
                         gwords = ((gscale*(gq[ids].cuda() @ gsrc.T)).softmax(1)
                                   +(gscale*(flip[ids].float().cuda() @ gsrc.T)).softmax(1))/2
-                        direct = log_score(geometry_graph.score(CONFIG, gwords @ geom_bank.T))
+                        geometry_raw = gwords @ geom_bank.T
+                        direct = log_score(geometry_graph.score(CONFIG, geometry_raw))
                         update = update_fn(sp[batch].cuda(),flat[batch].cuda(),gp[compact[batch].cuda()],
                                              dist,gscale,gwords,geom_bank,near[batch],folds,priors,random_order)
                         base = GLOBAL_WEIGHT*lex + REGIONAL_WEIGHT*regional
-                        scores = {'semantic_regional':base}
+                        scores = {} if internal is not None else {'semantic_regional':base}
                         if controls:
                             scores.update(cosine_two_views=F.normalize(poses.mean(1)) @ geom_gallery.T,
                                           semantic_direct=raw, semantic_diffused=lex, regional_only=regional,
@@ -180,8 +187,12 @@ def run(*, update_fn=get_updates, family='gcwe-conditioned-donor-test', start=0,
                                     scores.update(semantic_only=GLOBAL_WEIGHT*lex, regional_only=REGIONAL_WEIGHT*regional,
                                                   geometry_only=delta, raw_clip=poses[:,0]@gallery.T,
                                                   word_only=raw, two_view_clip=F.normalize(poses.mean(1))@gallery.T)
-                                scores['without_semantic'] = REGIONAL_WEIGHT*regional + delta
-                                scores['without_regional'] = GLOBAL_WEIGHT*lex + delta
+                                if internal is not None:
+                                    scores.update(internal(poses,crops,bank,raw,reader,regional,
+                                                           lex,delta,geometry_raw,val))
+                                else:
+                                    scores['without_semantic'] = REGIONAL_WEIGHT*regional + delta
+                                    scores['without_regional'] = GLOBAL_WEIGHT*lex + delta
                             if controls and name=='original':
                                 scores['without_global_term'] = REGIONAL_WEIGHT*regional + delta
                                 scores['shared_regional_attention'] = GLOBAL_WEIGHT*lex + REGIONAL_WEIGHT*shared + delta
@@ -195,14 +206,17 @@ def run(*, update_fn=get_updates, family='gcwe-conditioned-donor-test', start=0,
                     all_rows.setdefault(name,[]).append(values)
                 print(split,offset+len(selected),'/',len(ix),flush=True)
         rows = {k:torch.cat(v)[:,:2] for k,v in all_rows.items()}
-        gap = (100*(rows['original']-ref['rows']['full'][ix,:2]).double().abs().mean(0))
-        if gap.max()>.04:raise ValueError(f'Reconstruction changed by {gap}')
+        gap = None
+        if internal is None:
+            gap = (100*(rows['original']-ref['rows']['full'][ix,:2]).double().abs().mean(0))
+            if gap.max()>.04:raise ValueError(f'Reconstruction changed by {gap}')
         replay_audit = None
         if ablate_term is not None:
             locked = torch.load(w/'results/gcwe-displacement-full'/(split+'.pt'), weights_only=True)
             assert torch.equal(locked['qi'], qi[ix]) and torch.equal(locked['pi'], pi)
             assert torch.equal(locked['labels'], labels[ix])
-            replay_audit = paired_replay(rows, locked, (ablate_term,'semantic_regional','original'))
+            names = (ablate_term,) if internal is not None else (ablate_term,'semantic_regional','original')
+            replay_audit = paired_replay(rows, locked, names)
         contrasts = [('original','semantic_regional'),('matched','original'),('matched','semantic_regional'),
                      ('matched','random_pairs'),('between_pairs','semantic_regional'),
                      ('original','shared_regional_attention'),('original','without_global_term'),
@@ -212,8 +226,10 @@ def run(*, update_fn=get_updates, family='gcwe-conditioned-donor-test', start=0,
                          ('expected','inclusive'),('all_donors','expected')]
         if comparisons is not None:
             contrasts = comparisons
-        summary = {'commit':revision(),'recipe':recipe,'device':torch.cuda.get_device_name(),'torch':str(torch.__version__),'evaluator_sha':KD_FUNCTION_SHA,'sample_rows':len(ix),'gallery':len(pi),'seed':42,'replay_mae_points':gap.tolist(),
+        summary = {'commit':revision(),'recipe':recipe,'device':torch.cuda.get_device_name(),'torch':str(torch.__version__),'evaluator_sha':KD_FUNCTION_SHA,'sample_rows':len(ix),'gallery':len(pi),'seed':42,
                    'metrics':{k:(100*v.double().mean(0)).tolist() for k,v in rows.items()},'contrasts':{}}
+        if gap is not None:
+            summary['replay_mae_points'] = gap.tolist()
         if replay_audit is not None:
             summary['paired_replay'] = replay_audit
         for a,b in contrasts:

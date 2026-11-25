@@ -53,18 +53,21 @@ def comparisons(selected, simpler, native):
                    ("native",0.,0.,1.,mix),("native",0.,0.,1.,0.)})
 
 
+def gallery_word_prior(p,target,scale):
+    em=p.new_empty((len(p),len(target)))
+    for start in range(0,len(p),256):
+        sl=slice(start,start+256)
+        em[sl]=((p[sl]@target.T)*scale).softmax(1)
+    return fit_prior(em)[0]["mle"]
+
+
 def index(w,split,p,target,scale,info):
     folder=w/"cache"/FAMILY
     file=folder/(split+"-index-"+info+".pt")
     if file.is_file():
         x=torch.load(file,weights_only=True,mmap=True)
         return x["heads"].cuda(),x["weights"].cuda()
-    em=p.new_empty((len(p),len(target)))
-    for start in range(0,len(p),256):
-        sl=slice(start,start+256)
-        em[sl]=((p[sl]@target.T)*scale).softmax(1)
-    prior=fit_prior(em)[0]["mle"]
-    del em
+    prior=gallery_word_prior(p,target,scale)
     heads,weights,_=compile_index(p,target,scale,prior,64,"visual_rgb")
     save_tensor({"heads":heads.cpu(),"weights":weights.cpu()},file)
     return heads,weights

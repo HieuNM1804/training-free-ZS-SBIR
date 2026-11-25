@@ -68,27 +68,63 @@ def concentration_controls(coupling, geometry):
             'individual_matches':sum(individual)/2, 'consensus_energy':shared,'difference_energy':partition}
 
 
-def score_update(measure,query,blank,patches,dist,scale,words,bank,nominees,fold,priors,unused):
+GEOMETRY_ABLATIONS = ('without_blank_reference', 'without_donor_pseudocount',
+                      'without_uniform_donor_correction', 'hard_best_donor', 'without_gallery_crossfit')
+
+
+def score_update(measure,query,blank,patches,dist,scale,words,bank,nominees,fold,priors,unused,
+                 *, ablate_internal=False):
     geometry=offset_geometry(query.device)
     def verify(tokens):
         z=scale*(tokens[:,None]@patches.transpose(-1,-2)).float()
         c=(z.softmax(-1)+z.softmax(-2))/98
         result=measure(c,geometry)
-        result['original']=distance_agreement(c,dist,dist)
+        if not ablate_internal:
+            result['original']=distance_agreement(c,dist,dist)
         return result
     real,null=verify(query),verify(blank)
     evidence=bank[nominees]
     outputs={}
     for t in range(2):
         eligible=fold[nominees]!=bool(t)
-        normal=eligible.float()[:,None].bmm(evidence).squeeze(1)+priors[1-t]
+        support=eligible.float()[:,None].bmm(evidence).squeeze(1)
+        reference=priors[1-t]
+        normal=support+reference
+        targets=fold==bool(t)
         for name in real:
-            mass=rank_density(real[name]-null[name],eligible,8)
-            obs=mass[:,None].bmm(evidence).squeeze(1)+priors[1-t]
+            signal=real[name]-null[name]
+            mass=rank_density(signal,eligible,8)
+            observed=mass[:,None].bmm(evidence).squeeze(1)
+            obs=observed+reference
             score=reweight(words,obs/normal.clamp_min(1e-30))@bank.T
             if name not in outputs:outputs[name]=torch.empty_like(score)
-            targets=fold==bool(t)
             outputs[name][:,targets]=score[:,targets]
+            if ablate_internal and name=='same_partition':
+                blank_free=rank_density(real[name],eligible,8)
+                maxima=signal.masked_fill(~eligible,-torch.inf).amax(1,keepdim=True)
+                ties=(signal==maxima) & eligible
+                hard=ties.float()*(eligible.sum(1,keepdim=True)/ties.sum(1,keepdim=True).clamp_min(1))
+                ratios={
+                    'without_blank_reference':
+                        (blank_free[:,None].bmm(evidence).squeeze(1)+reference)/normal.clamp_min(1e-30),
+                    'without_donor_pseudocount':
+                        torch.where(support>0,observed/support,torch.ones_like(support)),
+                    'without_uniform_donor_correction': obs,
+                    'hard_best_donor':
+                        (hard[:,None].bmm(evidence).squeeze(1)+reference)/normal.clamp_min(1e-30),
+                }
+                for control,ratio in ratios.items():
+                    if control not in outputs:outputs[control]=torch.empty_like(score)
+                    candidate=reweight(words,ratio.clamp_min(1e-30))@bank.T
+                    outputs[control][:,targets]=candidate[:,targets]
+    if ablate_internal:
+        eligible=torch.ones_like(nominees,dtype=torch.bool)
+        signal=real['same_partition']-null['same_partition']
+        mass=rank_density(signal,eligible,8)
+        reference=bank.mean(0)
+        numerator=mass[:,None].bmm(evidence).squeeze(1)+reference
+        denominator=evidence.sum(1)+reference
+        outputs['without_gallery_crossfit']=reweight(words,numerator/denominator.clamp_min(1e-30))@bank.T
     return outputs
 
 

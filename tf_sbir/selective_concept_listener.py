@@ -4,9 +4,11 @@ import torch
 import torch.nn.functional as F
 
 
-def compile_index(p,target,scale,prior,k,transform):
+def compile_index(p,target,scale,prior,k,transform,*,weight_prior=True,graph=None):
     word=prior.topk(k).indices
     logprior=prior[word].clamp_min(1e-30).log()
+    if not weight_prior:
+        logprior=torch.zeros_like(logprior)
     response=scale*(p@target[word].T)+logprior
     if "visual" in transform:
         init=response.softmax(1)
@@ -18,7 +20,8 @@ def compile_index(p,target,scale,prior,k,transform):
         from types import SimpleNamespace
         from .cross_diffusion_map import Config,Index
         cfg=Config(neighbors=16,bandwidth=.36,iterations=2,mode="rgb")
-        graph=Index(SimpleNamespace(p=p),rgb_only=True)
+        if graph is None:
+            graph=Index(SimpleNamespace(p=p),rgb_only=True)
         b=graph.score(cfg,b.T.contiguous()).T.contiguous()
         b=b/b.sum(1,keepdim=True)
     m=b.mean(0)
