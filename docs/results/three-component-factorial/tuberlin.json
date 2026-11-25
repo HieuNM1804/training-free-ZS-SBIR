@@ -1,0 +1,262 @@
+{
+  "commit": "82476bc66da79591a0a6d67128e82ca13dc71b03",
+  "recipe": "a298f26c87d63b18778eebb1311acfe79412aab7e1e9e7fb2328bb7774150ad8",
+  "device": "Tesla T4",
+  "torch": "2.14.1+cu130",
+  "evaluator_sha": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+  "sample_rows": 2130,
+  "gallery": 27262,
+  "seed": 42,
+  "replay_mae_points": [
+    0.0030651797448665325,
+    0.0056338072382788144
+  ],
+  "metrics": {
+    "semantic_regional": [
+      80.56939541290082,
+      81.46572772981905
+    ],
+    "same_partition": [
+      81.86979748557886,
+      82.98122069391776
+    ],
+    "semantic_only": [
+      80.11372658218576,
+      81.38638507426134
+    ],
+    "regional_only": [
+      69.98904131076347,
+      68.55539909279751
+    ],
+    "geometry_only": [
+      57.909371532268054,
+      60.740845296706816
+    ],
+    "raw_clip": [
+      29.066911134693964,
+      46.27277005210239
+    ],
+    "word_only": [
+      74.12657435653303,
+      78.2793429221066
+    ],
+    "two_view_clip": [
+      28.849415813284125,
+      45.92394376366001
+    ],
+    "without_semantic": [
+      75.71502861168953,
+      75.46009394843044
+    ],
+    "without_regional": [
+      81.58345306156632,
+      82.90563389650183
+    ],
+    "original": [
+      81.49500204147465,
+      82.18403758533613
+    ]
+  },
+  "contrasts": {
+    "same_partition minus raw_clip": {
+      "points": [
+        52.8028863508849,
+        36.70845064181537
+      ],
+      "class_delta": {
+        "classes": 30,
+        "queries": 2130,
+        "mean_across_classes": 52.63921007518435,
+        "positive_classes": 30,
+        "bootstrap95": [
+          46.6448227001975,
+          58.23004900280419
+        ]
+      }
+    },
+    "same_partition minus two_view_clip": {
+      "points": [
+        53.02038167229473,
+        37.05727693025775
+      ],
+      "class_delta": {
+        "classes": 30,
+        "queries": 2130,
+        "mean_across_classes": 52.85429905992489,
+        "positive_classes": 30,
+        "bootstrap95": [
+          46.84268154998011,
+          58.47543588473234
+        ]
+      }
+    },
+    "same_partition minus word_only": {
+      "points": [
+        7.74322312904583,
+        4.701877771811167
+      ],
+      "class_delta": {
+        "classes": 30,
+        "queries": 2130,
+        "mean_across_classes": 7.728720468263851,
+        "positive_classes": 28,
+        "bootstrap95": [
+          5.677755664551902,
+          9.984726711044537
+        ]
+      }
+    },
+    "same_partition minus semantic_only": {
+      "points": [
+        1.7560709033930946,
+        1.5948356196564129
+      ],
+      "class_delta": {
+        "classes": 30,
+        "queries": 2130,
+        "mean_across_classes": 1.75234533678962,
+        "positive_classes": 25,
+        "bootstrap95": [
+          0.31505806716574764,
+          3.301586592000343
+        ]
+      }
+    },
+    "same_partition minus regional_only": {
+      "points": [
+        11.88075617481539,
+        14.425821601120239
+      ],
+      "class_delta": {
+        "classes": 30,
+        "queries": 2130,
+        "mean_across_classes": 11.982532570160746,
+        "positive_classes": 28,
+        "bootstrap95": [
+          8.189720604470043,
+          16.425066328605283
+        ]
+      }
+    },
+    "same_partition minus geometry_only": {
+      "points": [
+        23.960425953310803,
+        22.24037539721095
+      ],
+      "class_delta": {
+        "classes": 30,
+        "queries": 2130,
+        "mean_across_classes": 24.01491386420648,
+        "positive_classes": 27,
+        "bootstrap95": [
+          16.76486125495853,
+          31.47326257739249
+        ]
+      }
+    },
+    "same_partition minus without_semantic": {
+      "points": [
+        6.154768873889331,
+        7.521126745487323
+      ],
+      "class_delta": {
+        "classes": 30,
+        "queries": 2130,
+        "mean_across_classes": 6.22569678035853,
+        "positive_classes": 25,
+        "bootstrap95": [
+          3.544415019109701,
+          9.144427074520943
+        ]
+      }
+    },
+    "same_partition minus without_regional": {
+      "points": [
+        0.28634442401254123,
+        0.07558679741593034
+      ],
+      "class_delta": {
+        "classes": 30,
+        "queries": 2130,
+        "mean_across_classes": 0.287009949712748,
+        "positive_classes": 18,
+        "bootstrap95": [
+          -0.6786060323563149,
+          1.2022940149205081
+        ]
+      }
+    },
+    "same_partition minus semantic_regional": {
+      "points": [
+        1.3004020726780448,
+        1.515492964098711
+      ],
+      "class_delta": {
+        "classes": 30,
+        "queries": 2130,
+        "mean_across_classes": 1.2987186310624348,
+        "positive_classes": 22,
+        "bootstrap95": [
+          0.5191290854389081,
+          2.1689204127829895
+        ]
+      }
+    }
+  },
+  "paired_replay": {
+    "same_partition": {
+      "mean_points": [
+        1.215673283512044e-05,
+        0.00046948312034069653
+      ],
+      "mean_absolute_points": [
+        0.0005669286255965211,
+        0.00046948312034069653
+      ],
+      "max_absolute_points": [
+        0.13849139213562012,
+        0.9999990463256836
+      ],
+      "queries_over_strict_tolerance": [
+        55,
+        1
+      ]
+    },
+    "semantic_regional": {
+      "mean_points": [
+        -5.5117943617099884e-05,
+        0.0
+      ],
+      "mean_absolute_points": [
+        0.0004469838535561808,
+        0.0
+      ],
+      "max_absolute_points": [
+        0.1385331153869629,
+        0.0
+      ],
+      "queries_over_strict_tolerance": [
+        35,
+        0
+      ]
+    },
+    "original": {
+      "mean_points": [
+        4.673547203272161e-05,
+        -0.00046948451951076166
+      ],
+      "mean_absolute_points": [
+        0.0003989482027404185,
+        0.00046948451951076166
+      ],
+      "max_absolute_points": [
+        0.13906359672546387,
+        1.0000020265579224
+      ],
+      "queries_over_strict_tolerance": [
+        44,
+        1
+      ]
+    }
+  }
+}

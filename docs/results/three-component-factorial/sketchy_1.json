@@ -1,0 +1,262 @@
+{
+  "commit": "82476bc66da79591a0a6d67128e82ca13dc71b03",
+  "recipe": "463d4e51c81dd5d4d44d585eb8632258bb28b65c567496cdc48caa2f4a258f60",
+  "device": "Tesla T4",
+  "torch": "2.14.1+cu130",
+  "evaluator_sha": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+  "sample_rows": 14179,
+  "gallery": 17100,
+  "seed": 42,
+  "replay_mae_points": [
+    6.210507412657632e-06,
+    7.052676820126128e-05
+  ],
+  "metrics": {
+    "semantic_regional": [
+      84.62728402169513,
+      84.08159965382443
+    ],
+    "same_partition": [
+      85.08578301102955,
+      84.60032452675287
+    ],
+    "semantic_only": [
+      82.69719257297892,
+      82.2710347426298
+    ],
+    "regional_only": [
+      80.99000745842639,
+      80.01255398335465
+    ],
+    "geometry_only": [
+      48.37910801624026,
+      53.25615360885722
+    ],
+    "raw_clip": [
+      30.289045177441885,
+      41.63262576974313
+    ],
+    "word_only": [
+      76.21679002831867,
+      80.01798447526288
+    ],
+    "two_view_clip": [
+      30.219693955353765,
+      41.52041756109814
+    ],
+    "without_semantic": [
+      82.42943819735224,
+      81.80710930794729
+    ],
+    "without_regional": [
+      82.99449072591527,
+      82.34600476816563
+    ],
+    "original": [
+      84.78259590137608,
+      84.24903035150217
+    ]
+  },
+  "contrasts": {
+    "same_partition minus raw_clip": {
+      "points": [
+        54.79673783358766,
+        42.967698757009735
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 14179,
+        "mean_across_classes": 54.94263327544708,
+        "positive_classes": 25,
+        "bootstrap95": [
+          49.35745054853135,
+          60.4159174521477
+        ]
+      }
+    },
+    "same_partition minus two_view_clip": {
+      "points": [
+        54.866089055675786,
+        43.079906965654715
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 14179,
+        "mean_across_classes": 55.01123802317033,
+        "positive_classes": 25,
+        "bootstrap95": [
+          49.37506370320208,
+          60.517086758622405
+        ]
+      }
+    },
+    "same_partition minus word_only": {
+      "points": [
+        8.868992982710875,
+        4.582340051489986
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 14179,
+        "mean_across_classes": 8.999286565570427,
+        "positive_classes": 25,
+        "bootstrap95": [
+          7.140286698527805,
+          11.079272056538514
+        ]
+      }
+    },
+    "same_partition minus semantic_only": {
+      "points": [
+        2.3885904380506355,
+        2.329289784123072
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 14179,
+        "mean_across_classes": 2.4639700530433215,
+        "positive_classes": 21,
+        "bootstrap95": [
+          1.531230576305486,
+          3.478927027676104
+        ]
+      }
+    },
+    "same_partition minus regional_only": {
+      "points": [
+        4.095775552603159,
+        4.587770543398218
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 14179,
+        "mean_across_classes": 4.143674451066615,
+        "positive_classes": 21,
+        "bootstrap95": [
+          2.5851530449066042,
+          5.904368330877968
+        ]
+      }
+    },
+    "same_partition minus geometry_only": {
+      "points": [
+        36.706674994789296,
+        31.344170917895646
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 14179,
+        "mean_across_classes": 36.30678530313718,
+        "positive_classes": 25,
+        "bootstrap95": [
+          31.32288892041925,
+          41.198413848609405
+        ]
+      }
+    },
+    "same_partition minus without_semantic": {
+      "points": [
+        2.656344813677314,
+        2.7932152188055874
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 14179,
+        "mean_across_classes": 2.61063180028455,
+        "positive_classes": 20,
+        "bootstrap95": [
+          1.4520211435820367,
+          3.871862899829611
+        ]
+      }
+    },
+    "same_partition minus without_regional": {
+      "points": [
+        2.091292285114281,
+        2.2543197585872385
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 14179,
+        "mean_across_classes": 2.0996457751882343,
+        "positive_classes": 20,
+        "bootstrap95": [
+          1.3865361399104474,
+          2.8096029021936673
+        ]
+      }
+    },
+    "same_partition minus semantic_regional": {
+      "points": [
+        0.458498989334416,
+        0.5187248729284446
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 14179,
+        "mean_across_classes": 0.4959491420218589,
+        "positive_classes": 16,
+        "bootstrap95": [
+          -0.04225525444758589,
+          1.0097813061334815
+        ]
+      }
+    }
+  },
+  "paired_replay": {
+    "same_partition": {
+      "mean_points": [
+        6.609047003160268e-08,
+        0.0
+      ],
+      "mean_absolute_points": [
+        3.887790619330712e-07,
+        0.0
+      ],
+      "max_absolute_points": [
+        0.0009238719940185547,
+        0.0
+      ],
+      "queries_over_strict_tolerance": [
+        0,
+        0
+      ]
+    },
+    "semantic_regional": {
+      "mean_points": [
+        2.1741150447684842e-08,
+        0.0
+      ],
+      "mean_absolute_points": [
+        1.2157966609868473e-07,
+        0.0
+      ],
+      "max_absolute_points": [
+        0.0003695487976074219,
+        0.0
+      ],
+      "queries_over_strict_tolerance": [
+        0,
+        0
+      ]
+    },
+    "original": {
+      "mean_points": [
+        5.2415220716774944e-08,
+        0.0
+      ],
+      "mean_absolute_points": [
+        1.7437584957254902e-07,
+        0.0
+      ],
+      "max_absolute_points": [
+        0.00038444995880126953,
+        0.0
+      ],
+      "queries_over_strict_tolerance": [
+        0,
+        0
+      ]
+    }
+  }
+}
