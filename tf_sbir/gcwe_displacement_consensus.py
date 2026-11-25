@@ -73,13 +73,13 @@ GEOMETRY_ABLATIONS = ('without_blank_reference', 'without_donor_pseudocount',
 
 
 def score_update(measure,query,blank,patches,dist,scale,words,bank,nominees,fold,priors,unused,
-                 *, ablate_internal=False):
+                 *, ablate_internal=False, include_original=True):
     geometry=offset_geometry(query.device)
     def verify(tokens):
         z=scale*(tokens[:,None]@patches.transpose(-1,-2)).float()
         c=(z.softmax(-1)+z.softmax(-2))/98
         result=measure(c,geometry)
-        if not ablate_internal:
+        if include_original and not ablate_internal:
             result['original']=distance_agreement(c,dist,dist)
         return result
     real,null=verify(query),verify(blank)
