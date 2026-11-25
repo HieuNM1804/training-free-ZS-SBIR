@@ -1,0 +1,358 @@
+{
+  "commit": "e8319da68617673bb82a30db24fcda2d19ee2e15",
+  "recipe": "e046f17891e28e0c02a233539be4028d1f3f1a40ee95b9204da6ef0376455ac5",
+  "device": "Tesla T4",
+  "torch": "2.14.1+cu130",
+  "evaluator_sha": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+  "sample_rows": 14179,
+  "gallery": 17100,
+  "seed": 42,
+  "metrics": {
+    "same_partition": [
+      85.08578302529595,
+      84.60032452675287
+    ],
+    "without_semantic_rgb_diffusion": [
+      82.41967878345342,
+      84.01107276589576
+    ],
+    "without_geometry_rgb_diffusion": [
+      84.07580584988615,
+      84.67875035369711
+    ],
+    "without_candidate_region_selection": [
+      84.76460199341756,
+      84.32188458607769
+    ],
+    "without_regional_gallery_calibration": [
+      84.98129695674935,
+      84.51830181613396
+    ],
+    "without_regional_rgb_diffusion": [
+      84.08474382244287,
+      84.51428182460685
+    ],
+    "without_regional_visual_prototypes": [
+      85.18066112421307,
+      84.55455261258649
+    ],
+    "without_regional_prior_weighting": [
+      85.18162559303039,
+      84.73249179988225
+    ],
+    "without_any_rgb_diffusion": [
+      80.82844096345163,
+      83.80062072738502
+    ],
+    "without_semantic_regional_flip": [
+      84.59827433102413,
+      84.12814736589594
+    ],
+    "only_larger_regions": [
+      85.0132962325444,
+      84.49439321725329
+    ],
+    "only_smaller_regions": [
+      83.32853511718584,
+      83.03667406391733
+    ],
+    "without_blank_reference": [
+      85.05799883318565,
+      84.57098536520998
+    ],
+    "without_donor_pseudocount": [
+      85.01992188011793,
+      84.54094093344973
+    ],
+    "without_uniform_donor_correction": [
+      81.7429019271554,
+      80.64644908249669
+    ],
+    "hard_best_donor": [
+      79.40777101697756,
+      77.77607739376319
+    ],
+    "without_gallery_crossfit": [
+      85.07969159488681,
+      84.56957482823016
+    ]
+  },
+  "contrasts": {
+    "same_partition minus without_semantic_rgb_diffusion": {
+      "points": [
+        2.6661042418425227,
+        0.5892517608571047
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 14179,
+        "mean_across_classes": 2.6905050607727525,
+        "positive_classes": 25,
+        "bootstrap95": [
+          1.9959726526831176,
+          3.5202393431414802
+        ]
+      }
+    },
+    "same_partition minus without_regional_rgb_diffusion": {
+      "points": [
+        1.0010392028530737,
+        0.08604270214600744
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 14179,
+        "mean_across_classes": 1.004517535101997,
+        "positive_classes": 24,
+        "bootstrap95": [
+          0.5695800792528464,
+          1.6132170253269111
+        ]
+      }
+    },
+    "same_partition minus without_regional_visual_prototypes": {
+      "points": [
+        -0.094878098917126,
+        0.04577191416637897
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 14179,
+        "mean_across_classes": -0.09835085608509464,
+        "positive_classes": 10,
+        "bootstrap95": [
+          -0.21797551186148778,
+          0.012986080839784952
+        ]
+      }
+    },
+    "same_partition minus without_regional_prior_weighting": {
+      "points": [
+        -0.09584256773443449,
+        -0.13216727312938797
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 14179,
+        "mean_across_classes": -0.10139797275451698,
+        "positive_classes": 14,
+        "bootstrap95": [
+          -0.24969496190781823,
+          0.03191222344771713
+        ]
+      }
+    },
+    "same_partition minus without_geometry_rgb_diffusion": {
+      "points": [
+        1.0099771754097995,
+        -0.07842582694424738
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 14179,
+        "mean_across_classes": 1.0166419518541707,
+        "positive_classes": 25,
+        "bootstrap95": [
+          0.7582901540757644,
+          1.3058161997772941
+        ]
+      }
+    },
+    "same_partition minus without_any_rgb_diffusion": {
+      "points": [
+        4.257342061844327,
+        0.7997037993678464
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 14179,
+        "mean_across_classes": 4.286260287828092,
+        "positive_classes": 25,
+        "bootstrap95": [
+          3.1353562535736907,
+          5.756513112169385
+        ]
+      }
+    },
+    "same_partition minus without_candidate_region_selection": {
+      "points": [
+        0.3211810318783994,
+        0.27843994067517985
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 14179,
+        "mean_across_classes": 0.3244979715984176,
+        "positive_classes": 20,
+        "bootstrap95": [
+          0.15736213710969538,
+          0.48693480386991617
+        ]
+      }
+    },
+    "same_partition minus without_regional_gallery_calibration": {
+      "points": [
+        0.10448606854660805,
+        0.0820227106189104
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 14179,
+        "mean_across_classes": 0.10597843598524163,
+        "positive_classes": 20,
+        "bootstrap95": [
+          0.03881353639460426,
+          0.16770741258729713
+        ]
+      }
+    },
+    "same_partition minus without_semantic_regional_flip": {
+      "points": [
+        0.4875086942718239,
+        0.47217716085691364
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 14179,
+        "mean_across_classes": 0.48684417556782916,
+        "positive_classes": 19,
+        "bootstrap95": [
+          0.2722390839136984,
+          0.7085979758675314
+        ]
+      }
+    },
+    "same_partition minus only_larger_regions": {
+      "points": [
+        0.07248679275154622,
+        0.1059313094995743
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 14179,
+        "mean_across_classes": 0.07529683185629603,
+        "positive_classes": 16,
+        "bootstrap95": [
+          -0.010034680340525933,
+          0.15705177578109067
+        ]
+      }
+    },
+    "same_partition minus only_smaller_regions": {
+      "points": [
+        1.7572479081101113,
+        1.5636504628355374
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 14179,
+        "mean_across_classes": 1.7298980549212175,
+        "positive_classes": 23,
+        "bootstrap95": [
+          1.0437387637641575,
+          2.4423778196728856
+        ]
+      }
+    },
+    "same_partition minus without_blank_reference": {
+      "points": [
+        0.027784192110307714,
+        0.029339161542875407
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 14179,
+        "mean_across_classes": 0.03247112868434291,
+        "positive_classes": 14,
+        "bootstrap95": [
+          -0.35106190368964557,
+          0.4467918021074048
+        ]
+      }
+    },
+    "same_partition minus without_donor_pseudocount": {
+      "points": [
+        0.06586114517801596,
+        0.05938359330313626
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 14179,
+        "mean_across_classes": 0.06594266091802274,
+        "positive_classes": 13,
+        "bootstrap95": [
+          -0.010727582794915052,
+          0.1664853730254962
+        ]
+      }
+    },
+    "same_partition minus without_uniform_donor_correction": {
+      "points": [
+        3.3428810981405546,
+        3.9538754442561808
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 14179,
+        "mean_across_classes": 3.3816186196132336,
+        "positive_classes": 18,
+        "bootstrap95": [
+          1.4887177602533967,
+          5.3967350179237945
+        ]
+      }
+    },
+    "same_partition minus hard_best_donor": {
+      "points": [
+        5.678012008318377,
+        6.824247132989674
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 14179,
+        "mean_across_classes": 5.606163533747234,
+        "positive_classes": 22,
+        "bootstrap95": [
+          3.5808059863606565,
+          7.7942365915249585
+        ]
+      }
+    },
+    "same_partition minus without_gallery_crossfit": {
+      "points": [
+        0.006091430409140089,
+        0.030749698522708188
+      ],
+      "class_delta": {
+        "classes": 25,
+        "queries": 14179,
+        "mean_across_classes": 0.003120625708445743,
+        "positive_classes": 14,
+        "bootstrap95": [
+          -0.07638286679318762,
+          0.08030712465252131
+        ]
+      }
+    }
+  },
+  "paired_replay": {
+    "same_partition": {
+      "mean_points": [
+        8.035686845225872e-08,
+        0.0
+      ],
+      "mean_absolute_points": [
+        3.4366781683497477e-07,
+        0.0
+      ],
+      "max_absolute_points": [
+        0.0009238719940185547,
+        0.0
+      ],
+      "queries_over_strict_tolerance": [
+        0,
+        0
+      ]
+    }
+  }
+}
