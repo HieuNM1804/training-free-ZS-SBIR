@@ -25,9 +25,10 @@ from .standardized_context_audit import audit_inputs
 from .strong_pilot_scores import location
 
 
-def native_patches(paths, vision, folder, uniform=False):
+def native_patches(paths, vision, folder, uniform=False, *, reflected=False):
     stamp = hashlib.sha256(('ViT-B32-openai/full-grid/v1\n'+'\n'.join(map(str, paths))).encode()).hexdigest()
-    cache = folder/(stamp+('-mean-color' if uniform else '')+'.pt')
+    suffix = ('-mean-color' if uniform else '') + ('-reflected' if reflected else '')
+    cache = folder/(stamp+suffix+'.pt')
     if cache.is_file():
         return torch.load(cache, weights_only=True, mmap=True)
     batches = DataLoader(Images(paths, normal_transform(), 'rgb'), batch_size=192,
@@ -39,6 +40,8 @@ def native_patches(paths, vision, folder, uniform=False):
         pixels = batch.cuda(non_blocking=True).to(vision.conv1.weight.dtype)
         if uniform:
             pixels = pixels.float().mean((-1,-2),keepdim=True).to(pixels.dtype).expand_as(pixels).contiguous()
+        if reflected:
+            pixels = pixels.flip((-1,))
         tokens = vision.transformer(vision._embeds(pixels))
         patches = F.normalize((vision.ln_post(tokens[:,1:]) @ vision.proj).float(), dim=-1)
         features[start:start+len(batch)] = patches.half().cpu()
