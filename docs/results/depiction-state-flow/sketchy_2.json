@@ -1,0 +1,95 @@
+{
+  "commit": "cf566a2cbd13cc70220878fb72bf32609a00429c",
+  "selection": "caee449dcbc14ca96b66dfeda2a5687d08b0299b36d009559407e71dc0cfd05f",
+  "queries": 12694,
+  "gallery": 12552,
+  "classes": 21,
+  "device": "NVIDIA L4",
+  "cutoffs": [
+    200,
+    200
+  ],
+  "metrics": {
+    "semantic_dot": [
+      72.66466455087735,
+      71.07243596621495
+    ],
+    "flow": [
+      7.676981598167716,
+      5.903812822863361
+    ],
+    "native": [
+      36.269707375856676,
+      33.86580274751132
+    ],
+    "projected": [
+      40.33916580918645,
+      37.39865290147622
+    ],
+    "fixed_shift": [
+      50.3750579710008,
+      44.195801166916446
+    ]
+  },
+  "source_identity_audit": {
+    "flow": {
+      "centered_class_shift_cross_half_cos": 0.041285350918769836,
+      "mean_source_cos_change": -0.533650815486908
+    },
+    "fixed_shift": {
+      "centered_class_shift_cross_half_cos": 0.04038287699222565,
+      "mean_source_cos_change": 0.009735556319355965
+    },
+    "paired_sketches": 12694,
+    "distinct_photos": 2100
+  },
+  "per_query_sha256": "65b2fa07c34d52680b29e3b99ae6ea1d970b5a76228a43ac593c82f99390fbc6",
+  "semantic_reference_sha256": "5f97df27ccf7bdbcdbd88ecc24024d7011b9adc67bb024f9e01f818a790dd8d1",
+  "average_cos_between_distinct_queries_after_ranking": {
+    "projected": 0.7814991149247807,
+    "flow": 0.9963558508246714,
+    "fixed_shift": 0.8144448028322526
+  },
+  "flow_minus_control_class_macro_ap": {
+    "semantic_dot": {
+      "classes": 21,
+      "queries": 12694,
+      "mean_across_classes": -65.31200972057525,
+      "positive_classes": 0,
+      "bootstrap95": [
+        -73.29563478742327,
+        -56.521577735174276
+      ]
+    },
+    "native": {
+      "classes": 21,
+      "queries": 12694,
+      "mean_across_classes": -28.10451711359478,
+      "positive_classes": 2,
+      "bootstrap95": [
+        -37.65543480444522,
+        -19.5225689049278
+      ]
+    },
+    "projected": {
+      "classes": 21,
+      "queries": 12694,
+      "mean_across_classes": -32.20904715004421,
+      "positive_classes": 1,
+      "bootstrap95": [
+        -41.730951591900414,
+        -23.39875620142335
+      ]
+    },
+    "fixed_shift": {
+      "classes": 21,
+      "queries": 12694,
+      "mean_across_classes": -41.990295955113005,
+      "positive_classes": 0,
+      "bootstrap95": [
+        -51.90189376558576,
+        -32.56701980545407
+      ]
+    }
+  }
+}

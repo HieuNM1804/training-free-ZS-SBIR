@@ -1,0 +1,35 @@
+{
+  "config": {
+    "commit": "8daaddc56baf2b1ffff43184e46fbbcb3100322d",
+    "seed": 42,
+    "checkpoint": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+    "evaluator": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+    "source": "a drawing of an object.",
+    "target": "a photo of an object.",
+    "depths": [
+      1,
+      3,
+      6
+    ],
+    "substep_candidates": [
+      2,
+      4,
+      8,
+      16
+    ],
+    "solver": "spherical RK4, unit time per native sublayer, fixed native terminal-centered radius",
+    "numerics": "24 sketches and 24 gallery photos from Ext-1 without labels, seed 42. Each depth must pass. Choose the first substep count with target forward/reverse cycle median cosine >= .999, p01 >= .995 and p01 cosine against twice the resolution >= .995.",
+    "selection": "Equal-weight full unseen Sketchy mAP, break ties by mean precision and then shallower depth. Evaluate TU only after the freeze. Two split Sketchy scores are exploratory.",
+    "success": "At least +4 absolute mAP on each Sketchy split versus the paired Semantic Dot baseline, positive frozen transfer, and evidence for content-specific improvement over a shared shift.",
+    "controls": [
+      "raw two-view visual cosine",
+      "projected cosine",
+      "projected fixed generic prompt displacement",
+      "archived paired L4 Semantic Dot 601 reference"
+    ],
+    "independent_query": true,
+    "primary_external_dictionary": false,
+    "cache_manifest": "3991a0d1196cad1bdc8ac0a5fe759f246ec50fd9d9322b3c2c612eba12affcf8"
+  },
+  "sha256": "98c34d0914963f04fc28c904dfdd9cd76e7f4ced493024f292f64a040a764ca1"
+}

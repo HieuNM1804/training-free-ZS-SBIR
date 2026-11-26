@@ -1,0 +1,84 @@
+{
+  "commit": "cf566a2cbd13cc70220878fb72bf32609a00429c",
+  "selection": "caee449dcbc14ca96b66dfeda2a5687d08b0299b36d009559407e71dc0cfd05f",
+  "queries": 2130,
+  "gallery": 27262,
+  "classes": 30,
+  "device": "NVIDIA L4",
+  "cutoffs": [
+    0,
+    100
+  ],
+  "metrics": {
+    "semantic_dot": [
+      73.45634247939334,
+      73.98028175237243
+    ],
+    "flow": [
+      4.279987061496807,
+      4.41971830700135
+    ],
+    "native": [
+      28.849358947820818,
+      45.918309955022565
+    ],
+    "projected": [
+      30.87706257963002,
+      48.30610335826384
+    ],
+    "fixed_shift": [
+      31.883597342809004,
+      50.84272306972126
+    ]
+  },
+  "source_identity_audit": null,
+  "per_query_sha256": "1cbc87fd9cea76b200fc886aab214102180fd54a5f40ddb100bec621a4b2bd0f",
+  "semantic_reference_sha256": "bf00f18c75fe4b8096a8b04db2d0f500fcb1841b19e495e5ee50e1b2435c7d95",
+  "average_cos_between_distinct_queries_after_ranking": {
+    "projected": 0.7820917362069651,
+    "flow": 0.995027745366335,
+    "fixed_shift": 0.8135438338748106
+  },
+  "flow_minus_control_class_macro_ap": {
+    "semantic_dot": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": -69.02381458282471,
+      "positive_classes": 0,
+      "bootstrap95": [
+        -75.58530710220337,
+        -61.98999442736308
+      ]
+    },
+    "native": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": -24.661293189724287,
+      "positive_classes": 1,
+      "bootstrap95": [
+        -31.54730077209572,
+        -18.539658706213043
+      ]
+    },
+    "projected": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": -26.67249280884862,
+      "positive_classes": 1,
+      "bootstrap95": [
+        -33.523274858674654,
+        -20.576225094230228
+      ]
+    },
+    "fixed_shift": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": -27.65222840408484,
+      "positive_classes": 1,
+      "bootstrap95": [
+        -34.432645977338154,
+        -21.40760781211158
+      ]
+    }
+  }
+}
