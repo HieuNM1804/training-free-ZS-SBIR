@@ -1,0 +1,158 @@
+{
+  "protocol": "4052d82d6129f763365412b48c79d7439ed029c9858c051007cbfdd3679c2183",
+  "source_protocol": "60dda22b73c2612762f8548105cdf060b498611ced615df528380a7978465f1f",
+  "source_per_query_sha256": "b936b6b15e11bbb497191a5a9bc680f44e504c41ca16ab9f8c7b6f7e85e3490c",
+  "classes": 30,
+  "queries": 2130,
+  "gallery": 27262,
+  "cutoffs": [
+    0,
+    100
+  ],
+  "metrics": {
+    "centered_fixed_map": [
+      65.57947670417825,
+      69.43802828668778
+    ],
+    "undeleted": [
+      55.07731415401322,
+      61.74272311239245
+    ],
+    "permuted_estimator": [
+      16.081683107382865,
+      17.690610331111532
+    ],
+    "dot": [
+      73.45542713378866,
+      73.97934278202169
+    ],
+    "substitution": [
+      55.04542408620353,
+      61.708920285752825
+    ]
+  },
+  "primary_minus_control_macro_ap": {
+    "centered_fixed_map": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": -10.528318702392944,
+      "positive_classes": 2,
+      "bootstrap95": [
+        -13.351026119749681,
+        -8.041166998624215
+      ]
+    },
+    "undeleted": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": -0.03197830629401974,
+      "positive_classes": 0,
+      "bootstrap95": [
+        -0.045578025274776994,
+        -0.021130363103778412
+      ]
+    },
+    "permuted_estimator": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": 38.87558369053571,
+      "positive_classes": 30,
+      "bootstrap95": [
+        32.374878200075386,
+        45.68875219729491
+      ]
+    }
+  },
+  "matched_promotions": {
+    "centered_fixed_map": {
+      "queries_with_two_nonempty_newcomer_sets": 2130,
+      "pairs": 154790,
+      "concept_hits": 87972,
+      "control_hits": 99158,
+      "all_newcomers_concept": 178901,
+      "all_newcomers_control": 156540,
+      "purity_points": [
+        56.833128755087536,
+        64.05969377866788
+      ],
+      "paired_macro_purity_change": {
+        "classes": 30,
+        "queries": 2130,
+        "mean_across_classes": -8.45652005744832,
+        "positive_classes": 2,
+        "bootstrap95": [
+          -12.705270066371808,
+          -4.694047211694222
+        ]
+      }
+    },
+    "undeleted": {
+      "queries_with_two_nonempty_newcomer_sets": 2130,
+      "pairs": 178818,
+      "concept_hits": 99933,
+      "control_hits": 99984,
+      "all_newcomers_concept": 178901,
+      "all_newcomers_control": 178825,
+      "purity_points": [
+        55.885313559037684,
+        55.91383417776734
+      ],
+      "paired_macro_purity_change": {
+        "classes": 30,
+        "queries": 2130,
+        "mean_across_classes": -0.030589803152141114,
+        "positive_classes": 1,
+        "bootstrap95": [
+          -0.05695428415512045,
+          -0.010330373308843092
+        ]
+      }
+    },
+    "permuted_estimator": {
+      "queries_with_two_nonempty_newcomer_sets": 2130,
+      "pairs": 178242,
+      "concept_hits": 99352,
+      "control_hits": 23997,
+      "all_newcomers_concept": 178901,
+      "all_newcomers_control": 204317,
+      "purity_points": [
+        55.73994905802224,
+        13.463156831723163
+      ],
+      "paired_macro_purity_change": {
+        "classes": 30,
+        "queries": 2130,
+        "mean_across_classes": 46.024249412935404,
+        "positive_classes": 30,
+        "bootstrap95": [
+          37.73306986196606,
+          54.63801921657739
+        ]
+      }
+    }
+  },
+  "numerics": {
+    "exact_deleted_pair_checks": 4,
+    "max_error": 1.6424887190044646e-05,
+    "observed_self_substitution_max_error": 5.587935447692871e-08,
+    "spectral_unit": 0.1775691859641444,
+    "words": 601,
+    "gallery_readings": 27262
+  },
+  "estimator_shuffle": {
+    "block": 32,
+    "fixed_point_count": 857,
+    "mean_absolute_propensity_change": 0.0003849744680337608,
+    "permutation_sha256": "676b9509fa93fcb0fca1cc982bb765b36f76af64b3d0a412de21760e3c9fdb38"
+  },
+  "deletion_order": {
+    "observed_new_top_k_items": 365,
+    "bounded_new_top_k_items": 8679,
+    "queries_with_top_k_set_change": 354,
+    "observed_top1_id_changes": 8,
+    "bounded_top1_id_changes": 232,
+    "maximum_query_correction_span": 0.000206239172257483,
+    "analytic_span_upper_bound": 0.00020657353563173177
+  },
+  "per_query_sha256": "b7ea05c788b0ddbd11e5ab480c5c7767a4797106af91d6d8257cba206f6480aa"
+}

@@ -1,0 +1,19 @@
+{
+  "config": {
+    "commit": "65cf997e67834c9419e138fcfa1bb0ad74dbd9b7",
+    "source_commit": "499c7a1cc47b855d200baf1cec4e3b45b0358a58",
+    "source_protocol": "60dda22b73c2612762f8548105cdf060b498611ced615df528380a7978465f1f",
+    "seed": 42,
+    "gpu": "Tesla T4",
+    "torch": "2.14.1+cu130",
+    "arms": [
+      "centered_fixed_map",
+      "undeleted",
+      "permuted_estimator"
+    ],
+    "selection": "fixed, same three controls on each split",
+    "permuted_estimator": "shuffle source RGB heads within target concentration blocks of 32, retain natural reference",
+    "deletion_bound": "undeleted Kth threshold minus range of query-specific corrections with roundoff allowance"
+  },
+  "sha256": "4052d82d6129f763365412b48c79d7439ed029c9858c051007cbfdd3679c2183"
+}

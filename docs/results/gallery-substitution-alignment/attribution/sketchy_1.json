@@ -1,0 +1,158 @@
+{
+  "protocol": "4052d82d6129f763365412b48c79d7439ed029c9858c051007cbfdd3679c2183",
+  "source_protocol": "60dda22b73c2612762f8548105cdf060b498611ced615df528380a7978465f1f",
+  "source_per_query_sha256": "54dacaecf8b8121dd9ec7f8c64a00a4d764c021b06c230171be2dc433171ecc6",
+  "classes": 25,
+  "queries": 14179,
+  "gallery": 17100,
+  "cutoffs": [
+    0,
+    100
+  ],
+  "metrics": {
+    "centered_fixed_map": [
+      64.78507689676742,
+      71.03342987563884
+    ],
+    "undeleted": [
+      55.01198916592167,
+      64.32639835847044
+    ],
+    "permuted_estimator": [
+      17.75968813504418,
+      17.661823815659506
+    ],
+    "dot": [
+      75.3464649813881,
+      77.10141765922035
+    ],
+    "substitution": [
+      54.98195062276843,
+      64.28951281929125
+    ]
+  },
+  "primary_minus_control_macro_ap": {
+    "centered_fixed_map": {
+      "classes": 25,
+      "queries": 14179,
+      "mean_across_classes": -9.743018932205262,
+      "positive_classes": 2,
+      "bootstrap95": [
+        -13.22548404130999,
+        -6.439217063331101
+      ]
+    },
+    "undeleted": {
+      "classes": 25,
+      "queries": 14179,
+      "mean_across_classes": -0.03059190028248255,
+      "positive_classes": 0,
+      "bootstrap95": [
+        -0.03926712329999161,
+        -0.023018689182419016
+      ]
+    },
+    "permuted_estimator": {
+      "classes": 25,
+      "queries": 14179,
+      "mean_across_classes": 36.922736532878325,
+      "positive_classes": 25,
+      "bootstrap95": [
+        30.23456540231079,
+        43.73263949416062
+      ]
+    }
+  },
+  "matched_promotions": {
+    "centered_fixed_map": {
+      "queries_with_two_nonempty_newcomer_sets": 14172,
+      "pairs": 1112710,
+      "concept_hits": 687258,
+      "control_hits": 758575,
+      "all_newcomers_concept": 1252166,
+      "all_newcomers_control": 1117608,
+      "purity_points": [
+        61.764341113138194,
+        68.17364812035481
+      ],
+      "paired_macro_purity_change": {
+        "classes": 25,
+        "queries": 14172,
+        "mean_across_classes": -8.17038619753498,
+        "positive_classes": 2,
+        "bootstrap95": [
+          -12.869255134330027,
+          -4.191167598360582
+        ]
+      }
+    },
+    "undeleted": {
+      "queries_with_two_nonempty_newcomer_sets": 14179,
+      "pairs": 1251594,
+      "concept_hits": 762858,
+      "control_hits": 763264,
+      "all_newcomers_concept": 1252166,
+      "all_newcomers_control": 1251636,
+      "purity_points": [
+        60.95091539269124,
+        60.98335402694484
+      ],
+      "paired_macro_purity_change": {
+        "classes": 25,
+        "queries": 14179,
+        "mean_across_classes": -0.034061717922976624,
+        "positive_classes": 1,
+        "bootstrap95": [
+          -0.050784930317171156,
+          -0.02082051459802378
+        ]
+      }
+    },
+    "permuted_estimator": {
+      "queries_with_two_nonempty_newcomer_sets": 14179,
+      "pairs": 1249405,
+      "concept_hits": 760480,
+      "control_hits": 189564,
+      "all_newcomers_concept": 1252166,
+      "all_newcomers_control": 1383815,
+      "purity_points": [
+        60.86737286948588,
+        15.172342034808569
+      ],
+      "paired_macro_purity_change": {
+        "classes": 25,
+        "queries": 14179,
+        "mean_across_classes": 47.32146821129213,
+        "positive_classes": 25,
+        "bootstrap95": [
+          38.77377715949084,
+          55.92516365501291
+        ]
+      }
+    }
+  },
+  "numerics": {
+    "exact_deleted_pair_checks": 4,
+    "max_error": 1.0858580531696374e-05,
+    "observed_self_substitution_max_error": 2.4168823387071825e-08,
+    "spectral_unit": 0.15300147298553735,
+    "words": 601,
+    "gallery_readings": 17100
+  },
+  "estimator_shuffle": {
+    "block": 32,
+    "fixed_point_count": 548,
+    "mean_absolute_propensity_change": 0.0006129573448561132,
+    "permutation_sha256": "803f2ba28f3db87c828c9bc9086c3a8ca6481de79b975f6b5d85e69b181a83fa"
+  },
+  "deletion_order": {
+    "observed_new_top_k_items": 3175,
+    "bounded_new_top_k_items": 82206,
+    "queries_with_top_k_set_change": 3072,
+    "observed_top1_id_changes": 53,
+    "bounded_top1_id_changes": 1134,
+    "maximum_query_correction_span": 0.0003818241530098021,
+    "analytic_span_upper_bound": 0.0003822154847441929
+  },
+  "per_query_sha256": "665ace063d9dce378592d06d98d2fd7891699c18544874fec7d8623f8f998321"
+}

@@ -1,0 +1,37 @@
+{
+  "config": {
+    "commit": "499c7a1cc47b855d200baf1cec4e3b45b0358a58",
+    "clip_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+    "evaluator_sha256": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+    "vocabulary_sha256": "ee178c8cb1c29cd2dbbfcae8023001a49010257a88bca5508254c23ade5c9ed5",
+    "prompts": [
+      "a drawing of a {}.",
+      "a photo of the {}."
+    ],
+    "seed": 42,
+    "gpu": "Tesla T4",
+    "torch": "2.14.1+cu130",
+    "views": [
+      "original",
+      "horizontal_flip"
+    ],
+    "arms": [
+      "substitution",
+      "uncalibrated",
+      "fixed_map",
+      "fixed_substitution",
+      "shuffled_reference",
+      "hellinger"
+    ],
+    "baseline": "dot",
+    "gallery_reference": "two text heads applied to each same unlabeled RGB photo",
+    "selection": "fixed before scoring either Sketchy split or TU-Berlin",
+    "primary_controls": [
+      "fixed_substitution",
+      "uncalibrated",
+      "shuffled_reference"
+    ],
+    "baseline_newcomers": "compare new photos to the equal number of Dot photos they displaced"
+  },
+  "sha256": "60dda22b73c2612762f8548105cdf060b498611ced615df528380a7978465f1f"
+}
