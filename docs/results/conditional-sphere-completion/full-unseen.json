@@ -1,0 +1,156 @@
+{
+  "code": "5c769922f2edf3d71fc315641c175d3e7fcbac3d",
+  "source_capture": "paired_archive_bce9ab39de0b_renewed-goal-status.json",
+  "capture_sha256": "a6da24fc722074bc133a6b4b4032c7da72e7e95e736cafb15bbdf3ccab159524",
+  "capture_precision": "Three decimal places, percentage units",
+  "seed": 42,
+  "frames": 4,
+  "rank": 64,
+  "k": 64,
+  "metric_order": [
+    "mAP",
+    "precision"
+  ],
+  "cutoffs": {
+    "sketchy_1": [
+      "all",
+      100
+    ],
+    "sketchy_2": [
+      200,
+      200
+    ],
+    "tuberlin": [
+      "all",
+      100
+    ]
+  },
+  "metrics": {
+    "sketchy_1": {
+      "dot": [
+        75.346,
+        77.101
+      ],
+      "completion": [
+        79.648,
+        80.069
+      ],
+      "same_visible_donors": [
+        79.866,
+        80.156
+      ],
+      "mean_completed_logits": [
+        79.059,
+        79.767
+      ],
+      "full_selection": [
+        79.944,
+        79.867
+      ],
+      "random_selection": [
+        13.341,
+        27.654
+      ],
+      "full_donor_matched_k": [
+        80.149,
+        79.946
+      ],
+      "full_donor_best": [
+        80.519,
+        80.063
+      ],
+      "full_centroid_matched_k": [
+        79.826,
+        79.814
+      ],
+      "full_centroid_best": [
+        80.049,
+        79.894
+      ]
+    },
+    "sketchy_2": {
+      "dot": [
+        72.657,
+        71.075
+      ],
+      "completion": [
+        75.74,
+        73.61
+      ],
+      "same_visible_donors": [
+        75.798,
+        73.649
+      ],
+      "mean_completed_logits": [
+        75.732,
+        73.438
+      ],
+      "full_selection": [
+        75.69,
+        73.515
+      ],
+      "random_selection": [
+        35.138,
+        26.872
+      ],
+      "full_donor_matched_k": [
+        75.708,
+        73.599
+      ],
+      "full_donor_best": [
+        75.4,
+        73.699
+      ],
+      "full_centroid_matched_k": [
+        75.577,
+        73.536
+      ],
+      "full_centroid_best": [
+        75.529,
+        73.529
+      ]
+    },
+    "tuberlin": {
+      "dot": [
+        73.455,
+        73.979
+      ],
+      "completion": [
+        77.462,
+        76.472
+      ],
+      "same_visible_donors": [
+        77.672,
+        76.573
+      ],
+      "mean_completed_logits": [
+        77.084,
+        76.277
+      ],
+      "full_selection": [
+        77.93,
+        76.429
+      ],
+      "random_selection": [
+        13.877,
+        30.071
+      ],
+      "full_donor_matched_k": [
+        78.119,
+        76.501
+      ],
+      "full_donor_best": [
+        78.191,
+        76.64
+      ],
+      "full_centroid_matched_k": [
+        78.004,
+        76.508
+      ],
+      "full_centroid_best": [
+        78.052,
+        76.596
+      ]
+    }
+  }
+}
