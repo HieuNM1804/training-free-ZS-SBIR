@@ -1,0 +1,46 @@
+{
+  "source_run": "3e3d0b1d45463387f92624ced72c2e4c759c1a21",
+  "audit_commit": "0eeda4d138bcb6de73f8ceeca83b8ae8f6f65c80",
+  "protocol": "140576138af941cba50081253c789e6926693526f4bb30e7a3efafce23f6ec42",
+  "results": {
+    "sketchy_1": {
+      "baseline_wrong_top1": 4234,
+      "wrong_top1_impossible_to_repair": 2730,
+      "wrong_top1_repairable_in_oracle": 1504,
+      "wrong_top1_repaired_by_connected_views": 218,
+      "query_count": 14179,
+      "precision_cutoff": 100,
+      "precision": {
+        "dot": 77.10141758939277,
+        "oracle_upper_bound": 82.17434233725933,
+        "pointwise_maximum": 77.1689822977643
+      }
+    },
+    "sketchy_2": {
+      "baseline_wrong_top1": 4464,
+      "wrong_top1_impossible_to_repair": 2804,
+      "wrong_top1_repairable_in_oracle": 1660,
+      "wrong_top1_repaired_by_connected_views": 235,
+      "query_count": 12694,
+      "precision_cutoff": 200,
+      "precision": {
+        "dot": 71.07535055931936,
+        "oracle_upper_bound": 77.83295257602016,
+        "pointwise_maximum": 71.26016228139278
+      }
+    },
+    "tuberlin": {
+      "baseline_wrong_top1": 604,
+      "wrong_top1_impossible_to_repair": 380,
+      "wrong_top1_repairable_in_oracle": 224,
+      "wrong_top1_repaired_by_connected_views": 20,
+      "query_count": 2130,
+      "precision_cutoff": 100,
+      "precision": {
+        "dot": 73.97934272300469,
+        "oracle_upper_bound": 80.72159624413146,
+        "pointwise_maximum": 74.50281690140845
+      }
+    }
+  }
+}

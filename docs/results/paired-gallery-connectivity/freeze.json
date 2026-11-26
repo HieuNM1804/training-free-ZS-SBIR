@@ -1,0 +1,40 @@
+{
+  "config": {
+    "commit": "3e3d0b1d45463387f92624ced72c2e4c759c1a21",
+    "clip_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+    "evaluator_sha256": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+    "vocabulary_sha256": "ee178c8cb1c29cd2dbbfcae8023001a49010257a88bca5508254c23ade5c9ed5",
+    "prompts": [
+      "a drawing of a {}.",
+      "a photo of the {}."
+    ],
+    "seed": 42,
+    "gpu": "Tesla T4",
+    "torch": "2.14.1+cu130",
+    "triton": "3.8.0",
+    "neighbors": 16,
+    "graph": "reciprocal RGB cosine neighborhoods",
+    "views": [
+      "original",
+      "horizontal_flip"
+    ],
+    "selection": "fixed before running any split",
+    "diffusion": {
+      "alpha": 0.5,
+      "steps": 16
+    },
+    "fixture": {
+      "actual": [
+        0.4000000059604645,
+        0.4000000059604645,
+        0.4000000059604645
+      ],
+      "swapped": [
+        0.800000011920929,
+        0.800000011920929,
+        0.6000000238418579
+      ]
+    }
+  },
+  "sha256": "140576138af941cba50081253c789e6926693526f4bb30e7a3efafce23f6ec42"
+}
