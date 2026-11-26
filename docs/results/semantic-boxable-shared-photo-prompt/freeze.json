@@ -1,0 +1,55 @@
+{
+  "commit": "327996b5c8951a023539a2abdc41d29c5ac1a521",
+  "seed": 42,
+  "clip_sha": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+  "evaluator_sha": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+  "vocabulary_count": 601,
+  "vocabulary_lock_sha256": "ee178c8cb1c29cd2dbbfcae8023001a49010257a88bca5508254c23ade5c9ed5",
+  "reference_study": "semantic-boxable-single-prompt",
+  "reference_commit": "d99b6aa602d699a6a2a5f18c7666cfbb9ac5509a",
+  "reference_archive_sha256": "348ac52de78b5365e6df7710fe4c1f4c2209689f99090340a4d681d4c55aa39e",
+  "reference_arms": {
+    "two_each": "two_each",
+    "sketch_only": "sketch_only",
+    "both_single": "both_single"
+  },
+  "comparison_arm": "both_single",
+  "prompts": {
+    "two_each": [
+      [
+        "a drawing of a {}.",
+        "a sketch of the {}."
+      ],
+      [
+        "a photo of a {}.",
+        "a photo of the {}."
+      ]
+    ],
+    "sketch_only": [
+      [
+        "a sketch of the {}."
+      ],
+      [
+        "a photo of a {}.",
+        "a photo of the {}."
+      ]
+    ],
+    "both_single": [
+      [
+        "a sketch of the {}."
+      ],
+      [
+        "a photo of the {}."
+      ]
+    ],
+    "shared_photo": [
+      [
+        "a photo of the {}."
+      ],
+      [
+        "a photo of the {}."
+      ]
+    ]
+  },
+  "sha256": "5fde9520bd3bd044ac5b4ba5712d222a093e545d4b8477e57afedde1348ede67"
+}

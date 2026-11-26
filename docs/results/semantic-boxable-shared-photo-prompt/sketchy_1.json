@@ -1,0 +1,54 @@
+{
+  "split": "sketchy_1",
+  "queries": 14179,
+  "gallery": 17100,
+  "classes": 25,
+  "cutoffs": {
+    "mAP": 0,
+    "precision": 100
+  },
+  "metrics": {
+    "two_each": [
+      75.47721247848142,
+      77.09535234242885
+    ],
+    "sketch_only": [
+      74.47974428161952,
+      76.1809719288993
+    ],
+    "both_single": [
+      74.41875267487751,
+      76.61753305853343
+    ],
+    "shared_photo": [
+      72.1468111172516,
+      73.99407581362688
+    ]
+  },
+  "comparison_arm": "both_single",
+  "paired_delta": {
+    "shared_photo": {
+      "points": [
+        -2.2719415576259014,
+        -2.6234572449065463
+      ],
+      "macro_ap": {
+        "classes": 25,
+        "queries": 14179,
+        "mean_across_classes": -2.196824964310004,
+        "positive_classes": 6,
+        "bootstrap95": [
+          -4.115789303692923,
+          -0.28709319167821323
+        ]
+      }
+    }
+  },
+  "recipe": "1df64ddf07f86e77209656255fa9c7be0c135d1c37ee2f724253684c7f1f467d",
+  "commit": "327996b5c8951a023539a2abdc41d29c5ac1a521",
+  "device": "Tesla T4",
+  "torch": "2.14.1+cu130",
+  "seed": 42,
+  "freeze_sha256": "5fde9520bd3bd044ac5b4ba5712d222a093e545d4b8477e57afedde1348ede67",
+  "per_query_sha256": "be4be60616d80683d27858bb8597715f667b6a2c50239f08bd9469902359796e"
+}
