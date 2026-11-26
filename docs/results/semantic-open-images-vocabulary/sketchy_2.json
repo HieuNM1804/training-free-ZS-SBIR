@@ -1,0 +1,93 @@
+{
+  "split": "sketchy_2",
+  "recipe": "0bf3b403381496570aad4fa3508370381fa6175f662de73124c7c3d5bd9381e4",
+  "freeze_sha256": "ee178c8cb1c29cd2dbbfcae8023001a49010257a88bca5508254c23ade5c9ed5",
+  "commit": "2f808a89490f37e35c598f9cff5127a149f14ddf",
+  "device": "Tesla T4",
+  "torch": "2.14.1+cu130",
+  "seed": 42,
+  "clip_sha": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+  "evaluator_sha": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+  "queries": 12694,
+  "gallery": 12552,
+  "classes": 21,
+  "cutoffs": {
+    "mAP": 200,
+    "precision": 200
+  },
+  "vocabulary_sizes": {
+    "full": 20931,
+    "boxable": 601,
+    "random": 601
+  },
+  "metrics": {
+    "full": [
+      72.44750165813551,
+      71.3313378039727
+    ],
+    "boxable": [
+      72.57319196056629,
+      71.08251949067473
+    ],
+    "random": [
+      57.431563817814066,
+      54.91031207030834
+    ]
+  },
+  "paired_delta": {
+    "boxable_minus_full": {
+      "points": [
+        0.12569030243078752,
+        -0.24881831329795429
+      ],
+      "macro_ap_delta": {
+        "classes": 21,
+        "queries": 12694,
+        "mean_across_classes": 0.38707182599194745,
+        "positive_classes": 15,
+        "bootstrap95": [
+          -5.376559179620619,
+          5.276586310255568
+        ]
+      }
+    },
+    "random_minus_full": {
+      "points": [
+        -15.015937840321433,
+        -16.421025733664344
+      ],
+      "macro_ap_delta": {
+        "classes": 21,
+        "queries": 12694,
+        "mean_across_classes": -16.005706661183666,
+        "positive_classes": 4,
+        "bootstrap95": [
+          -24.607798887879465,
+          -8.05553231862987
+        ]
+      }
+    },
+    "boxable_minus_random": {
+      "points": [
+        15.14162814275222,
+        16.17220742036639
+      ],
+      "macro_ap_delta": {
+        "classes": 21,
+        "queries": 12694,
+        "mean_across_classes": 16.39277848717561,
+        "positive_classes": 17,
+        "bootstrap95": [
+          6.716389980254864,
+          26.18815333436318
+        ]
+      }
+    }
+  },
+  "full_control_mae_points": [
+    0.0003924626344646152,
+    0.0004726654434835177
+  ],
+  "per_query_sha256": "4bbfd3f7d9570eaa7ac662c46e0d81836fddd73aeae562818b0df3cdb8532c50",
+  "ranking_seconds": 29.01930190400003
+}
