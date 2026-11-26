@@ -1,0 +1,179 @@
+{
+  "protocol": "3673e92a72f3c0fd63695f900767f1bab92fec4c6b67fc0a46882ad43126e89d",
+  "queries": 2130,
+  "gallery": 27262,
+  "classes": 30,
+  "cutoffs": [
+    0,
+    100
+  ],
+  "metrics": {
+    "closure": [
+      53.09529122238445,
+      75.11971826249724
+    ],
+    "permuted_endpoints": [
+      53.2372329567511,
+      75.3117371158141
+    ],
+    "open_pair": [
+      58.93434920055276,
+      75.0276995019139
+    ],
+    "rgb_diffusion": [
+      74.9819728107948,
+      74.60422546878247
+    ],
+    "dot": [
+      73.45542713378866,
+      73.97934278202169
+    ]
+  },
+  "closure_minus_macro_ap": {
+    "permuted_endpoints": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": -0.14271030928717837,
+      "positive_classes": 9,
+      "bootstrap95": [
+        -0.2728185292915441,
+        -0.03472651598803212
+      ]
+    },
+    "open_pair": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": -5.835126349137031,
+      "positive_classes": 2,
+      "bootstrap95": [
+        -6.98223764170571,
+        -4.648406662330463
+      ]
+    },
+    "rgb_diffusion": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": -21.81052598839493,
+      "positive_classes": 0,
+      "bootstrap95": [
+        -25.736595300369384,
+        -17.997221542575534
+      ]
+    },
+    "dot": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": -20.269568384447624,
+      "positive_classes": 0,
+      "bootstrap95": [
+        -24.35570538754608,
+        -16.275820060639777
+      ]
+    }
+  },
+  "matched_promotions": {
+    "permuted_endpoints": {
+      "queries_with_two_nonempty_newcomer_sets": 2130,
+      "pairs": 117209,
+      "concept_hits": 84379,
+      "control_hits": 84704,
+      "all_newcomers_concept": 120520,
+      "all_newcomers_control": 118939,
+      "purity_points": [
+        71.99020553029204,
+        72.26748799153648
+      ],
+      "paired_macro_purity_change": {
+        "classes": 30,
+        "queries": 2130,
+        "mean_across_classes": -0.264163973345643,
+        "positive_classes": 8,
+        "bootstrap95": [
+          -0.5921526695688566,
+          0.0014794202674001534
+        ]
+      }
+    },
+    "open_pair": {
+      "queries_with_two_nonempty_newcomer_sets": 2130,
+      "pairs": 115743,
+      "concept_hits": 83252,
+      "control_hits": 83149,
+      "all_newcomers_concept": 120520,
+      "all_newcomers_control": 116749,
+      "purity_points": [
+        71.92832395911631,
+        71.83933369620625
+      ],
+      "paired_macro_purity_change": {
+        "classes": 30,
+        "queries": 2130,
+        "mean_across_classes": 0.013731262811592633,
+        "positive_classes": 17,
+        "bootstrap95": [
+          -0.25699436764951256,
+          0.2690069427323482
+        ]
+      }
+    },
+    "rgb_diffusion": {
+      "queries_with_two_nonempty_newcomer_sets": 2130,
+      "pairs": 42364,
+      "concept_hits": 30812,
+      "control_hits": 31154,
+      "all_newcomers_concept": 120520,
+      "all_newcomers_control": 42364,
+      "purity_points": [
+        72.73156453592674,
+        73.5388537437447
+      ],
+      "paired_macro_purity_change": {
+        "classes": 30,
+        "queries": 2130,
+        "mean_across_classes": -0.7576242326412881,
+        "positive_classes": 9,
+        "bootstrap95": [
+          -2.002523407091342,
+          0.4477732374238823
+        ]
+      }
+    }
+  },
+  "top1_repair": {
+    "dot_wrong": 604,
+    "wrong_outside_two_view_interval": 380,
+    "arms": {
+      "closure": {
+        "repaired": 91,
+        "damaged": 62,
+        "repaired_outside_two_view_interval": 39
+      },
+      "permuted_endpoints": {
+        "repaired": 104,
+        "damaged": 50,
+        "repaired_outside_two_view_interval": 40
+      },
+      "open_pair": {
+        "repaired": 79,
+        "damaged": 51,
+        "repaired_outside_two_view_interval": 33
+      },
+      "rgb_diffusion": {
+        "repaired": 40,
+        "damaged": 29,
+        "repaired_outside_two_view_interval": 10
+      }
+    }
+  },
+  "paths": {
+    "triangles": 205251,
+    "four_cycles": 489454,
+    "photos_without_either": 8916,
+    "reciprocal_edges": 76163
+  },
+  "scoring_seconds": {
+    "dot": 0.027909376382827762,
+    "closure_and_permutation": 1.4085546398162843
+  },
+  "per_query_sha256": "77afa6dd92d5bf1c762fd259b0bf40c7579155d382737a4a5dbb26819330711b"
+}

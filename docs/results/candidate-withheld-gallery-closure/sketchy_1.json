@@ -1,0 +1,179 @@
+{
+  "protocol": "3673e92a72f3c0fd63695f900767f1bab92fec4c6b67fc0a46882ad43126e89d",
+  "queries": 14179,
+  "gallery": 17100,
+  "classes": 25,
+  "cutoffs": [
+    0,
+    100
+  ],
+  "metrics": {
+    "closure": [
+      58.78563538762257,
+      78.37238178534392
+    ],
+    "permuted_endpoints": [
+      58.878455920193126,
+      78.46547716513767
+    ],
+    "open_pair": [
+      63.847051769449294,
+      78.43620856196976
+    ],
+    "rgb_diffusion": [
+      76.82723218170644,
+      77.86070957052902
+    ],
+    "dot": [
+      75.3464649813881,
+      77.10141765922035
+    ]
+  },
+  "closure_minus_macro_ap": {
+    "permuted_endpoints": {
+      "classes": 25,
+      "queries": 14179,
+      "mean_across_classes": -0.08911998137409649,
+      "positive_classes": 7,
+      "bootstrap95": [
+        -0.17787827765003328,
+        0.00020464940390504786
+      ]
+    },
+    "open_pair": {
+      "classes": 25,
+      "queries": 14179,
+      "mean_across_classes": -5.006951802070294,
+      "positive_classes": 0,
+      "bootstrap95": [
+        -5.722593190881858,
+        -4.289520048827526
+      ]
+    },
+    "rgb_diffusion": {
+      "classes": 25,
+      "queries": 14179,
+      "mean_across_classes": -17.775128072308465,
+      "positive_classes": 1,
+      "bootstrap95": [
+        -21.212470505613656,
+        -14.32022015821877
+      ]
+    },
+    "dot": {
+      "classes": 25,
+      "queries": 14179,
+      "mean_across_classes": -16.250349034064726,
+      "positive_classes": 2,
+      "bootstrap95": [
+        -19.925583490431052,
+        -12.526540284658527
+      ]
+    }
+  },
+  "matched_promotions": {
+    "permuted_endpoints": {
+      "queries_with_two_nonempty_newcomer_sets": 14179,
+      "pairs": 711052,
+      "concept_hits": 525432,
+      "control_hits": 526815,
+      "all_newcomers_concept": 735054,
+      "all_newcomers_control": 718886,
+      "purity_points": [
+        73.89501752333163,
+        74.08951806618926
+      ],
+      "paired_macro_purity_change": {
+        "classes": 25,
+        "queries": 14179,
+        "mean_across_classes": -0.15202685897571325,
+        "positive_classes": 4,
+        "bootstrap95": [
+          -0.4565396784120602,
+          0.18966275828091234
+        ]
+      }
+    },
+    "open_pair": {
+      "queries_with_two_nonempty_newcomer_sets": 14179,
+      "pairs": 698941,
+      "concept_hits": 517077,
+      "control_hits": 517542,
+      "all_newcomers_concept": 735054,
+      "all_newcomers_control": 704486,
+      "purity_points": [
+        73.98006412558428,
+        74.0465933462195
+      ],
+      "paired_macro_purity_change": {
+        "classes": 25,
+        "queries": 14179,
+        "mean_across_classes": -0.17255309356898377,
+        "positive_classes": 16,
+        "bootstrap95": [
+          -0.7581150062307636,
+          0.20838860432470352
+        ]
+      }
+    },
+    "rgb_diffusion": {
+      "queries_with_two_nonempty_newcomer_sets": 14179,
+      "pairs": 272735,
+      "concept_hits": 205125,
+      "control_hits": 207846,
+      "all_newcomers_concept": 735054,
+      "all_newcomers_control": 272735,
+      "purity_points": [
+        75.21036903954388,
+        76.20804077217812
+      ],
+      "paired_macro_purity_change": {
+        "classes": 25,
+        "queries": 14179,
+        "mean_across_classes": -0.9514330857505232,
+        "positive_classes": 7,
+        "bootstrap95": [
+          -2.053832957107633,
+          0.3334363486818941
+        ]
+      }
+    }
+  },
+  "top1_repair": {
+    "dot_wrong": 4234,
+    "wrong_outside_two_view_interval": 2730,
+    "arms": {
+      "closure": {
+        "repaired": 1141,
+        "damaged": 281,
+        "repaired_outside_two_view_interval": 363
+      },
+      "permuted_endpoints": {
+        "repaired": 1115,
+        "damaged": 278,
+        "repaired_outside_two_view_interval": 348
+      },
+      "open_pair": {
+        "repaired": 1105,
+        "damaged": 260,
+        "repaired_outside_two_view_interval": 343
+      },
+      "rgb_diffusion": {
+        "repaired": 624,
+        "damaged": 146,
+        "repaired_outside_two_view_interval": 112
+      }
+    }
+  },
+  "paths": {
+    "triangles": 164463,
+    "four_cycles": 397730,
+    "photos_without_either": 4176,
+    "reciprocal_edges": 53321
+  },
+  "scoring_seconds": {
+    "dot": 0.13344159984588627,
+    "closure_and_permutation": 2.240005268096923
+  },
+  "per_query_sha256": "9f5c7f044ecde16290ce99d622309677f5c2ec8c0934b432436b4ab79e1721fb"
+}

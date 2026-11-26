@@ -1,0 +1,44 @@
+{
+  "config": {
+    "commit": "6a4b4a8ecf8a5d3ba3b4681c11e3865da489e3fb",
+    "clip_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+    "evaluator_sha256": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+    "vocabulary_sha256": "ee178c8cb1c29cd2dbbfcae8023001a49010257a88bca5508254c23ade5c9ed5",
+    "prompts": [
+      "a drawing of a {}.",
+      "a photo of the {}."
+    ],
+    "seed": 42,
+    "gpu": "Tesla T4",
+    "torch": "2.14.1+cu130",
+    "triton": "3.8.0",
+    "neighbors": 16,
+    "graph": "reciprocal RGB cosine neighborhoods",
+    "path": "the shortest two nontrivial simple-path lengths after withholding the candidate",
+    "views": [
+      "original",
+      "horizontal_flip"
+    ],
+    "diffusion": {
+      "alpha": 0.5,
+      "steps": 16
+    },
+    "selection": "fixed before running any split",
+    "primary_test": "class-macro matched newcomer precision versus permuted endpoints and open pair",
+    "fixture": {
+      "closure": [
+        0.800000011920929,
+        0.20000000298023224,
+        0.800000011920929,
+        0.15000000596046448
+      ],
+      "open_pair": [
+        0.800000011920929,
+        0.800000011920929,
+        0.800000011920929,
+        0.800000011920929
+      ]
+    }
+  },
+  "sha256": "3673e92a72f3c0fd63695f900767f1bab92fec4c6b67fc0a46882ad43126e89d"
+}
