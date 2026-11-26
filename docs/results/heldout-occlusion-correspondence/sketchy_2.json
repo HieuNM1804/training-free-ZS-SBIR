@@ -1,0 +1,234 @@
+{
+  "protocol": "a8eaaf5f2f94a81a8f1bafc3461368fd5f57e51f7cc74d1cb7df548c31f73eb9",
+  "queries": 12694,
+  "gallery": 12552,
+  "classes": 21,
+  "cutoffs": [
+    200,
+    200
+  ],
+  "metrics": {
+    "heldout": [
+      68.85641231950301,
+      67.18394531299361
+    ],
+    "uniform_correspondence": [
+      68.88815032771863,
+      67.21900124624472
+    ],
+    "fixed_layout": [
+      68.90932031745294,
+      67.23739576332444
+    ],
+    "pooled_double": [
+      69.93248005304368,
+      68.23247214710292
+    ],
+    "additive_double": [
+      68.32869199442243,
+      66.53891613812448
+    ],
+    "dot": [
+      72.65743724291252,
+      71.07535073415826
+    ]
+  },
+  "heldout_minus_macro_ap": {
+    "uniform_correspondence": {
+      "classes": 21,
+      "queries": 12694,
+      "mean_across_classes": -0.03369354237140657,
+      "positive_classes": 7,
+      "bootstrap95": [
+        -0.11564344182927933,
+        0.0521492326435157
+      ]
+    },
+    "fixed_layout": {
+      "classes": 21,
+      "queries": 12694,
+      "mean_across_classes": -0.05762052346448754,
+      "positive_classes": 6,
+      "bootstrap95": [
+        -0.21206582794082876,
+        0.11156540960492271
+      ]
+    },
+    "pooled_double": {
+      "classes": 21,
+      "queries": 12694,
+      "mean_across_classes": -1.1271820876183292,
+      "positive_classes": 7,
+      "bootstrap95": [
+        -2.4196089227666358,
+        -0.04017395229551973
+      ]
+    },
+    "additive_double": {
+      "classes": 21,
+      "queries": 12694,
+      "mean_across_classes": 0.5640774562770785,
+      "positive_classes": 16,
+      "bootstrap95": [
+        0.04804235352897787,
+        1.068736189595993
+      ]
+    },
+    "dot": {
+      "classes": 21,
+      "queries": 12694,
+      "mean_across_classes": -3.838936526548813,
+      "positive_classes": 6,
+      "bootstrap95": [
+        -6.246459486230109,
+        -1.6477164018341675
+      ]
+    }
+  },
+  "matched_promotions": {
+    "uniform_correspondence": {
+      "queries_with_two_nonempty_newcomer_sets": 12694,
+      "pairs": 862490,
+      "concept_hits": 427450,
+      "control_hits": 427967,
+      "all_newcomers_concept": 868999,
+      "all_newcomers_control": 865597,
+      "purity_points": [
+        49.559994898491574,
+        49.61993762246519
+      ],
+      "paired_macro_purity_change": {
+        "classes": 21,
+        "queries": 12694,
+        "mean_across_classes": -0.07187164550644405,
+        "positive_classes": 5,
+        "bootstrap95": [
+          -0.1644980100047982,
+          0.028082242168845327
+        ]
+      }
+    },
+    "fixed_layout": {
+      "queries_with_two_nonempty_newcomer_sets": 12694,
+      "pairs": 859043,
+      "concept_hits": 425509,
+      "control_hits": 427247,
+      "all_newcomers_concept": 868999,
+      "all_newcomers_control": 878145,
+      "purity_points": [
+        49.53291045966267,
+        49.735228620686044
+      ],
+      "paired_macro_purity_change": {
+        "classes": 21,
+        "queries": 12694,
+        "mean_across_classes": -0.15032651223798535,
+        "positive_classes": 3,
+        "bootstrap95": [
+          -0.3312663511100003,
+          0.06387499170854667
+        ]
+      }
+    },
+    "pooled_double": {
+      "queries_with_two_nonempty_newcomer_sets": 12694,
+      "pairs": 757027,
+      "concept_hits": 373831,
+      "control_hits": 380069,
+      "all_newcomers_concept": 868999,
+      "all_newcomers_control": 793606,
+      "purity_points": [
+        49.38146195578229,
+        50.20547483775348
+      ],
+      "paired_macro_purity_change": {
+        "classes": 21,
+        "queries": 12694,
+        "mean_across_classes": -0.6843367281539786,
+        "positive_classes": 10,
+        "bootstrap95": [
+          -2.476535569939773,
+          0.8332547768572328
+        ]
+      }
+    },
+    "additive_double": {
+      "queries_with_two_nonempty_newcomer_sets": 12694,
+      "pairs": 815688,
+      "concept_hits": 399594,
+      "control_hits": 391738,
+      "all_newcomers_concept": 868999,
+      "all_newcomers_control": 874635,
+      "purity_points": [
+        48.98858387030335,
+        48.025470523043126
+      ],
+      "paired_macro_purity_change": {
+        "classes": 21,
+        "queries": 12694,
+        "mean_across_classes": 0.6931643411430409,
+        "positive_classes": 14,
+        "bootstrap95": [
+          0.028517995778923194,
+          1.3557662242709045
+        ]
+      }
+    }
+  },
+  "adjacent_null_scores_in_dot_prefix": {
+    "mixed_pairs": 97991,
+    "strict_changes": 19313,
+    "correct_changes": 9728,
+    "macro_change_on_strict_disagreement": {
+      "classes": 21,
+      "queries": 4312,
+      "mean_across_classes": -0.9581701496863537,
+      "positive_classes": 8,
+      "bootstrap95": [
+        -11.412174608556018,
+        10.291693078518986
+      ]
+    }
+  },
+  "source_identity_within_class": {
+    "heldout": {
+      "verified_queries": 12694,
+      "mrr_percent": 1.835517593585366,
+      "recall1_percent": 0.16543248778950684,
+      "two_choice_accuracy_nearest_null_score": 51.689774696707104
+    },
+    "uniform_correspondence": {
+      "verified_queries": 12694,
+      "mrr_percent": 1.793354745308182,
+      "recall1_percent": 0.14967701276193476,
+      "two_choice_accuracy_nearest_null_score": 49.566724436741765
+    },
+    "fixed_layout": {
+      "verified_queries": 12694,
+      "mrr_percent": 2.023755818620182,
+      "recall1_percent": 0.20482117535843705,
+      "two_choice_accuracy_nearest_null_score": 58.28737986450292
+    },
+    "pooled_double": {
+      "verified_queries": 12694,
+      "mrr_percent": 1.700119129107167,
+      "recall1_percent": 0.14179927524814873,
+      "two_choice_accuracy_nearest_null_score": 48.47171892232551
+    },
+    "additive_double": {
+      "verified_queries": 12694,
+      "mrr_percent": 1.9158596911621302,
+      "recall1_percent": 0.25996533795493937,
+      "two_choice_accuracy_nearest_null_score": 50.04726642508272
+    },
+    "dot": {
+      "verified_queries": 12694,
+      "mrr_percent": 2.018414503895014,
+      "recall1_percent": 0.37813140066172996,
+      "two_choice_accuracy_nearest_null_score": 53.28501654324877
+    }
+  },
+  "scoring_seconds_all_arms": 9.475891312995373,
+  "max_error_on_double_reference": 6.762883186794966e-07,
+  "per_query_sha256": "948c7160e17d8d79bddcb960e737bbca4d5a4db1db8e8993086eadea6a95a2f2"
+}
