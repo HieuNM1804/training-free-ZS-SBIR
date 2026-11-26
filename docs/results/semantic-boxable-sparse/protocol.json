@@ -1,0 +1,147 @@
+{
+  "config": {
+    "commit": "1be22b3bcce1e9297bdb9c7a6293755e4219eef4",
+    "clip_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+    "evaluator_sha256": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+    "vocabulary_sha256": "ee178c8cb1c29cd2dbbfcae8023001a49010257a88bca5508254c23ade5c9ed5",
+    "prompts": [
+      "a drawing of a {}.",
+      "a photo of the {}."
+    ],
+    "seed": 42,
+    "gpu": "Tesla T4",
+    "torch": "2.14.1+cu130",
+    "arms": [
+      [
+        "dot",
+        601
+      ],
+      [
+        "cosine",
+        601
+      ],
+      [
+        "dot",
+        1
+      ],
+      [
+        "cosine",
+        1
+      ],
+      [
+        "text",
+        1
+      ],
+      [
+        "dot",
+        2
+      ],
+      [
+        "cosine",
+        2
+      ],
+      [
+        "text",
+        2
+      ],
+      [
+        "dot",
+        4
+      ],
+      [
+        "cosine",
+        4
+      ],
+      [
+        "text",
+        4
+      ],
+      [
+        "dot",
+        8
+      ],
+      [
+        "cosine",
+        8
+      ],
+      [
+        "text",
+        8
+      ],
+      [
+        "dot",
+        16
+      ],
+      [
+        "cosine",
+        16
+      ],
+      [
+        "text",
+        16
+      ],
+      [
+        "dot",
+        32
+      ],
+      [
+        "cosine",
+        32
+      ],
+      [
+        "text",
+        32
+      ],
+      [
+        "dot",
+        64
+      ],
+      [
+        "cosine",
+        64
+      ],
+      [
+        "text",
+        64
+      ],
+      [
+        "dot",
+        128
+      ],
+      [
+        "cosine",
+        128
+      ],
+      [
+        "text",
+        128
+      ],
+      [
+        "dot",
+        256
+      ],
+      [
+        "cosine",
+        256
+      ],
+      [
+        "text",
+        256
+      ],
+      [
+        "dot",
+        512
+      ],
+      [
+        "cosine",
+        512
+      ],
+      [
+        "text",
+        512
+      ]
+    ],
+    "selection": "Per scorer, maximize mean full unseen Sketchy mAP, then mean precision"
+  },
+  "sha256": "51afe287597a558bf977d66f7d5f9ac5c80fbf21989baa8cf369a88d9c9bee68"
+}
