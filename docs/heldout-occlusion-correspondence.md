@@ -44,8 +44,20 @@ SpLIP học prompt và dùng tác vụ jigsaw có giám sát. FreeDom dịch ả
 
 ## Cách nhận ra tín hiệu thuộc về sự tương ứng
 
-Gọi $u_\pi=A_\pi/\sum A$ và $v_\pi=B_\pi/\sum B$. Từ định nghĩa trên suy ra $K/K_0=24\sum_\pi u_\pi v_\pi$. Tỷ số này là mức ủng hộ một phép gán dùng chung so với hai phép gán độc lập trong thí nghiệm lấy mẫu tên. Nếu một bậc can thiệp cho posterior đều trên 24 phép gán, tỷ số bằng 1 bất kể đáp ứng của bậc kia. Nhân ma trận tương hợp của từng bậc với một hằng số dương riêng cho từng hàng hoặc từng cột cũng không đổi tỷ số: mọi song ánh sử dụng mỗi hàng và mỗi cột đúng một lần. Các thuộc tính này cho phép kiểm tra đúng phần của phương pháp có khả năng mang thông tin mới.
+Gọi $u_\pi=A_\pi/\sum A$ và $v_\pi=B_\pi/\sum B$. Từ định nghĩa trên suy ra $K/K_0=24\sum_\pi u_\pi v_\pi$. Tỷ số này là mức ủng hộ một phép gán dùng chung so với hai phép gán độc lập trong thí nghiệm lấy mẫu tên. Nếu một bậc can thiệp cho posterior đều trên 24 phép gán, tỷ số bằng 1 bất kể đáp ứng của bậc kia. Nhân ma trận tương hợp của từng bậc với một hằng số dương riêng cho từng hàng hoặc từng cột cũng không đổi tỷ số vì mọi song ánh sử dụng mỗi hàng và mỗi cột đúng một lần. Các thuộc tính này cho phép kiểm tra đúng phần của phương pháp có khả năng mang thông tin mới.
 
 Trong top-K của Dot, ghép các ảnh kề nhau theo $K_0$ trước khi xem nhãn. Trong những cặp có một ảnh đúng lớp, đo tỷ lệ ảnh đúng nhận log tỷ số cao hơn. Báo cả trung bình theo ảnh lẫn trung bình theo lớp, với mỗi truy vấn có trọng số ngang nhau trong lớp. Lặp phép đo sau khi loại hoán vị đồng nhất và chuẩn hóa lại trên 23 khả năng còn lại để xem kết luận có phụ thuộc hoàn toàn vào cùng bố cục ảnh hay không. Ngoài số đo tổng hợp, lưu ví dụ đầu tiên theo thứ tự dữ liệu ở hai trường hợp top-1 được sửa hoặc bị đổi thành sai.
 
 Liang et al. đã đo việc CLIP đọc kém trên ảnh có mask trong segmentation. Ở đây token bị bỏ hoàn toàn và ngữ cảnh trung tâm luôn còn lại, nhưng mô hình vẫn có thể mất bằng chứng khi thiếu một vùng. Vì vậy mọi đối chứng định danh dùng cùng các lần đọc đã che. Việc dùng mask trên hai ảnh cũng có tiền lệ trong giải thích mô hình tương đồng, nơi người ta dự báo thuộc tính giải thích một điểm khớp có sẵn. Phép thử hiện tại dùng bậc can thiệp chưa sử dụng để trực tiếp dự báo một quan sát trong truy hồi. [Liang et al., CVPR 2023](https://openaccess.thecvf.com/content/CVPR2023/html/Liang_Open-Vocabulary_Semantic_Segmentation_With_Mask-Adapted_CLIP_CVPR_2023_paper.html) · [Why Do These Match?, ECCV 2020](https://www.ecva.net/papers/eccv_2020/papers_ECCV/papers/123560630.pdf)
+
+## Tìm top-K có cận trên theo từng ảnh
+
+Toán tử trên có một cách tìm top-K mà vẫn giữ nguyên tiêu chí xếp hạng. Ký hiệu $q_{ew},p_{ew}$ là xác suất từ $w$ ở can thiệp kép $e$. Sắp sáu xác suất của mỗi từ độc lập theo thứ tự tăng, ký hiệu bằng chỉ số $(r)$. Đặt
+
+$$
+U(X,Y)=\frac16\sum_w\sum_{r=1}^6 q_{(r)w}p_{(r)w}.
+$$
+
+Khi đó $K(X,Y)^{1/6}\le U(X,Y)$. Thật vậy, trung bình có trọng số của $B_\pi$ không vượt giá trị lớn nhất. Với từng $\pi$, trung bình nhân sáu $c_{e,\pi(e)}$ không vượt trung bình cộng của chúng. Khi thay song ánh chung bằng một song ánh được chọn độc lập **cho từng từ**, bất đẳng thức sắp xếp cho giá trị trung bình cộng lớn nhất đúng bằng $U$. Mỗi ảnh vì thế có một vector 3.606 chiều để tính cận bằng một tích vô hướng. Phép sắp riêng từng từ chỉ dùng để sàng lọc. Mọi ứng viên giữ lại vẫn được chấm theo xác suất có một phép gán chung.
+
+Xử lý ảnh theo cận giảm dần, mỗi lượt $K_{\rm out}$ ảnh, trong đó $K_{\rm out}$ là số kết quả người dùng yêu cầu. Khi cận của ảnh kế tiếp nhỏ hơn điểm thấp nhất trong top-$K_{\rm out}$ đã chấm, mọi ảnh còn lại cũng không thể lọt vào. Chặn sai số dương cho cận FP32 và xử lý hết ứng viên bằng ngưỡng giúp kiểm tra việc phá hòa. Nếu cận lỏng hoặc gallery nhỏ, chi phí lập chỉ mục và truy cập rời rạc có thể lớn hơn quét trực tiếp. Kiểm tra top-K, thứ tự, tỷ lệ phải chấm, bộ nhớ phụ và độ trễ trên 64 truy vấn xác định theo seed ở mỗi split, sau khi đã mã hóa ảnh.
