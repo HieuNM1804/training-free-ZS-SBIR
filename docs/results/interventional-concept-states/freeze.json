@@ -1,0 +1,45 @@
+{
+  "config": {
+    "commit": "3f8d49a5aa0241adecadfe7efc34a0d8a4108e81",
+    "evaluator_sha256": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+    "clip_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+    "vocabulary_sha256": "ee178c8cb1c29cd2dbbfcae8023001a49010257a88bca5508254c23ade5c9ed5",
+    "prompts": [
+      "a drawing of a {}.",
+      "a photo of the {}."
+    ],
+    "seed": 42,
+    "gpu": "Tesla T4",
+    "torch": "2.14.1+cu130",
+    "arms": [
+      "decisions",
+      "size_only",
+      "donor_partition",
+      "additional_contexts",
+      "query_partition",
+      "photo_partition"
+    ],
+    "grouping": "tie-preserving Bayes decisions for all six binary single-deletion experiments",
+    "test": "unseen shared-deletion contexts, cardinality-matched chance, partitions from a similar native photo",
+    "selection": "primary comparison fixed before scoring Sketchy or TU; no tuning",
+    "fixture": {
+      "same_opportunity": [
+        0.15931428968906403,
+        0.15931428968906403
+      ],
+      "quotient_scores": [
+        0.8848000168800354,
+        0.03840000182390213
+      ],
+      "after_domain_specific_name_split": [
+        0.8848000168800354,
+        0.03840000182390213
+      ],
+      "literal": [
+        0.019199999049305916,
+        0.019199999049305916
+      ]
+    }
+  },
+  "sha256": "3fcf7d778f14e13c287a9531cdd9862ae7d7a658c0706a98deeb2820742897a9"
+}

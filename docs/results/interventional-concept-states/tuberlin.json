@@ -1,0 +1,325 @@
+{
+  "protocol": "3fcf7d778f14e13c287a9531cdd9862ae7d7a658c0706a98deeb2820742897a9",
+  "queries": 2130,
+  "gallery": 27262,
+  "classes": 30,
+  "cutoffs": [
+    0,
+    100
+  ],
+  "metrics": {
+    "dot": [
+      73.45542713378866,
+      73.97934278202169
+    ],
+    "decisions": [
+      66.07875544604072,
+      66.87981225095444
+    ],
+    "size_only": [
+      57.43102235793892,
+      64.17981223548662
+    ],
+    "donor_partition": [
+      65.68652705726664,
+      66.62629110336373
+    ],
+    "additional_contexts": [
+      73.38730804123719,
+      73.91032869652123
+    ],
+    "query_partition": [
+      50.056543463935085,
+      53.64647895403801
+    ],
+    "photo_partition": [
+      28.43903357434161,
+      21.438028109150594
+    ]
+  },
+  "primary_minus_macro_ap": {
+    "dot": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": -7.41148862428409,
+      "positive_classes": 0,
+      "bootstrap95": [
+        -9.507772088715933,
+        -5.594138221830058
+      ]
+    },
+    "size_only": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": 8.763922124740757,
+      "positive_classes": 28,
+      "bootstrap95": [
+        6.65928698609572,
+        11.044970258579097
+      ]
+    },
+    "donor_partition": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": 0.3938551487434389,
+      "positive_classes": 30,
+      "bootstrap95": [
+        0.2947018441916,
+        0.518966237864446
+      ]
+    },
+    "additional_contexts": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": -7.342809612835049,
+      "positive_classes": 0,
+      "bootstrap95": [
+        -9.411386556987141,
+        -5.54810671033615
+      ]
+    },
+    "query_partition": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": 15.942700351804627,
+      "positive_classes": 30,
+      "bootstrap95": [
+        13.504374861837519,
+        18.583941299148275
+      ]
+    },
+    "photo_partition": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": 37.64080722637231,
+      "positive_classes": 30,
+      "bootstrap95": [
+        33.06138813853558,
+        42.30576631839309
+      ]
+    }
+  },
+  "matched_promotions": {
+    "size_only": {
+      "queries_with_two_nonempty_newcomer_sets": 1611,
+      "pairs": 47940,
+      "concept_hits": 9584,
+      "control_hits": 8119,
+      "all_newcomers_concept": 55229,
+      "all_newcomers_control": 75482,
+      "purity_points": [
+        19.99165623696287,
+        16.9357530246141
+      ],
+      "paired_macro_purity_change": {
+        "classes": 30,
+        "queries": 1611,
+        "mean_across_classes": -8.198181435898118,
+        "positive_classes": 10,
+        "bootstrap95": [
+          -13.295262734401149,
+          -3.3123887225089645
+        ]
+      }
+    },
+    "donor_partition": {
+      "queries_with_two_nonempty_newcomer_sets": 1566,
+      "pairs": 54397,
+      "concept_hits": 10820,
+      "control_hits": 10667,
+      "all_newcomers_concept": 55229,
+      "all_newcomers_control": 57019,
+      "purity_points": [
+        19.89080280162509,
+        19.60953729065941
+      ],
+      "paired_macro_purity_change": {
+        "classes": 30,
+        "queries": 1566,
+        "mean_across_classes": 0.6946845545737558,
+        "positive_classes": 16,
+        "bootstrap95": [
+          -0.09564754750400431,
+          1.6086814355410353
+        ]
+      }
+    },
+    "additional_contexts": {
+      "queries_with_two_nonempty_newcomer_sets": 515,
+      "pairs": 2007,
+      "concept_hits": 423,
+      "control_hits": 745,
+      "all_newcomers_concept": 55229,
+      "all_newcomers_control": 2007,
+      "purity_points": [
+        21.076233183856502,
+        37.120079720976584
+      ],
+      "paired_macro_purity_change": {
+        "classes": 30,
+        "queries": 515,
+        "mean_across_classes": -22.108786961480863,
+        "positive_classes": 3,
+        "bootstrap95": [
+          -30.35565191344475,
+          -14.76730523516058
+        ]
+      }
+    },
+    "query_partition": {
+      "queries_with_two_nonempty_newcomer_sets": 1625,
+      "pairs": 52514,
+      "concept_hits": 10300,
+      "control_hits": 7890,
+      "all_newcomers_concept": 55229,
+      "all_newcomers_control": 100498,
+      "purity_points": [
+        19.613817267776213,
+        15.024564877937312
+      ],
+      "paired_macro_purity_change": {
+        "classes": 30,
+        "queries": 1625,
+        "mean_across_classes": 11.432477481125447,
+        "positive_classes": 27,
+        "bootstrap95": [
+          8.227317416951083,
+          14.91640361174922
+        ]
+      }
+    },
+    "photo_partition": {
+      "queries_with_two_nonempty_newcomer_sets": 1639,
+      "pairs": 55216,
+      "concept_hits": 11223,
+      "control_hits": 1503,
+      "all_newcomers_concept": 55229,
+      "all_newcomers_control": 177484,
+      "purity_points": [
+        20.32563025210084,
+        2.722037090698348
+      ],
+      "paired_macro_purity_change": {
+        "classes": 30,
+        "queries": 1639,
+        "mean_across_classes": 42.67853517053312,
+        "positive_classes": 30,
+        "bootstrap95": [
+          35.57409280692103,
+          49.77154185317862
+        ]
+      }
+    }
+  },
+  "top1_repairs_and_damage": [
+    38,
+    252
+  ],
+  "prediction_on_withheld_contexts": {
+    "sketch": {
+      "sample_images": 512,
+      "images_with_comparator": 512,
+      "alias_pairs": 29207,
+      "alias_pairs_with_control": 26546,
+      "mean_text_cosine_gap": 0.016099105726969338,
+      "held_context_agreement_percent": [
+        77.98946482834828,
+        61.55792460885506
+      ],
+      "difference_by_class": {
+        "classes": 30,
+        "queries": 512,
+        "mean_across_classes": 17.758439723452913,
+        "positive_classes": 30,
+        "bootstrap95": [
+          16.343042626565936,
+          19.196374035558637
+        ]
+      }
+    },
+    "photo": {
+      "sample_images": 512,
+      "images_with_comparator": 512,
+      "alias_pairs": 24217,
+      "alias_pairs_with_control": 22140,
+      "mean_text_cosine_gap": 0.01357791884966336,
+      "held_context_agreement_percent": [
+        79.89122252333634,
+        61.37872628726287
+      ],
+      "difference_by_class": {
+        "classes": 30,
+        "queries": 512,
+        "mean_across_classes": 20.4317935324035,
+        "positive_classes": 30,
+        "bootstrap95": [
+          19.140949002131492,
+          21.791883079671006
+        ]
+      }
+    }
+  },
+  "examples": {
+    "repair": {
+      "query": "wrist-watch/19877.png",
+      "dot": {
+        "photo": "hammer/n03481172_18981.JPEG",
+        "correct_class": false,
+        "literal": 0.10778193175792694,
+        "extra": 0.006152627989649773,
+        "largest_distinct_name_pair": [
+          "drill (tool)",
+          "tool"
+        ],
+        "mass": 0.005386758595705032
+      },
+      "decisions": {
+        "photo": "wrist-watch/n04607869_18056.JPEG",
+        "correct_class": true,
+        "literal": 0.0011562489671632648,
+        "extra": 0.2836128771305084,
+        "largest_distinct_name_pair": [
+          "syringe",
+          "watch"
+        ],
+        "mass": 0.1526947021484375
+      }
+    },
+    "damage": {
+      "query": "helicopter/8326.png",
+      "dot": {
+        "photo": "helicopter/n03512147_14373.JPEG",
+        "correct_class": true,
+        "literal": 0.026109939441084862,
+        "extra": 0.001996664796024561,
+        "largest_distinct_name_pair": [
+          "frying pan",
+          "ladle"
+        ],
+        "mass": 0.00012914890248794109
+      },
+      "decisions": {
+        "photo": "wrist-watch/n04607869_5214.JPEG",
+        "correct_class": false,
+        "literal": 0.008529823273420334,
+        "extra": 0.057646721601486206,
+        "largest_distinct_name_pair": [
+          "frying pan",
+          "watch"
+        ],
+        "mass": 0.019739670678973198
+      }
+    }
+  },
+  "gallery_control_movable": 26984,
+  "scoring_seconds": {
+    "decisions": 16.453930370000307,
+    "size_only": 7.095399996615015e-05,
+    "donor_partition": 12.094868641001085,
+    "additional_contexts": 11.147760343999835,
+    "query_partition": 0.03643246199862915,
+    "photo_partition": 0.15489675299977534
+  },
+  "max_error_vs_explicit_states": 4.933911326165941e-07,
+  "per_query_sha256": "63e04335ea2cd795314a827fc96307b29b3dcb89e94207e8258a38bee8ed687a"
+}
