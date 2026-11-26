@@ -18,6 +18,7 @@ from .encoding import load_frozen_clip
 from .gallery_convex_support import SEED
 from .gallery_convex_support_audit import prefix
 from .heldout_occlusion_correspondence import Correspondences, overlap
+from .heldout_occlusion_study import QUERY_BATCH
 from .part_occlusion_observations import FAMILY, directory, public_words, read_cache, seed_job
 from .semantic_boxable import DEFAULT_PROMPTS
 from .semantic_boxable_prompt_search import SKETCHY, Split, posteriors
@@ -81,14 +82,16 @@ def pair_summary(records, labels):
 
 
 def trace(i, split, sq, sp, q, p, maps, paths):
-    whole = q[i:i+1] @ p
+    start = (i // QUERY_BATCH) * QUERY_BATCH
+    whole = (q[start:start+QUERY_BATCH] @ p)[i-start:i-start+1]
     primary = []
     for photos in sp.split(768):
         obs = measurements(overlap(sq[i:i+1, :4], photos[:, :4]),
                            overlap(sq[i:i+1, 4:], photos[:, 4:]), maps)
         primary.append(obs["heldout_log_agreement"][0])
     complete = torch.cat(primary)
-    selected = torch.stack((whole[0].argmax(), complete.argmax()))
+    k = 200 if split.name == "sketchy_2" else len(sp)
+    selected = torch.stack((whole[0].topk(k).indices[0], complete.topk(k).indices[0]))
     details = candidate_table(sq[i:i+1], sp[selected][None], maps)
     qp, pp = paths
     result = {"query": str(Path(qp[split.query_ids[i]]).relative_to(Path(qp[split.query_ids[i]]).parent.parent))}
@@ -118,9 +121,13 @@ def audit(root, split, banks, text, maps, paths, signature):
     truth, gallery = split.sketch_labels.cuda(), split.photo_labels.cuda()
     counts = {name: [] for name in ("log_bayes_factor", "log_factor_excluding_identity")}
     averages = {}
+    # The official topk's tie behavior depends on the numerical GEMM path. Replay
+    # the primary batch size before gathering the smaller per-query audit tensors.
+    all_prefixes = torch.cat([prefix(q[start:start+QUERY_BATCH] @ p, *report["cutoffs"])
+                              for start in range(0, len(q), QUERY_BATCH)])
     for begin in range(0, len(q), 24):
         sl = slice(begin, min(begin + 24, len(q)))
-        ids = prefix(q[sl] @ p, *report["cutoffs"])
+        ids = all_prefixes[sl]
         hits = gallery[ids] == truth[sl, None]
         if not torch.allclose(hits.float().mean(1).cpu(), native["dot"][sl, 1].float(), atol=2e-6, rtol=0):
             raise ValueError("Dot precision mismatch")
