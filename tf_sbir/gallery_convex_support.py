@@ -35,7 +35,7 @@ from .semantic_boxable_single_prompt import DOCS, VOCABULARY_STUDY, encode_promp
 from .semantic_boxable_sparse import image_inputs
 
 
-FAMILY = "gallery-convex-support"
+FAMILY = "gallery-convex-support-centered"
 SEED = 42
 NEIGHBORS = 16
 ANGLE_TOLERANCE = 1e-6
@@ -47,13 +47,25 @@ ARMS = ("dot", "concept_hull", "shuffled_directions", "pooled_hull", "rgb_diffus
 
 def tangent_coordinates(photos, neighbors):
     coordinates = []
+    uncentered_coordinates = []
+    positive_grams = []
     for start in range(0, len(photos), 512):
         anchor = photos[start:start + 512, None]
         nearby = photos[neighbors[start:start + 512]]
         tangent = nearby - (nearby * anchor).sum(-1, keepdim=True) * anchor
-        eigval, eigvec = torch.linalg.eigh(tangent @ tangent.transpose(1, 2))
-        coordinates.append(eigvec[..., -2:] * eigval[:, None, -2:].clamp_min(0).sqrt())
-    return torch.cat(coordinates)
+        # Estimate the plane from variations among neighbors. Measure their
+        # positions relative to the candidate, which is the point under test.
+        centered = tangent - tangent.mean(dim=1, keepdim=True)
+        _, eigenvectors = torch.linalg.eigh(centered @ centered.transpose(1, 2))
+        axes = F.normalize(centered.transpose(1, 2) @ eigenvectors[..., -2:], dim=1)
+        coordinates.append(tangent @ axes)
+
+        # Audit the first study's chart to track the effect of the correction.
+        gram = tangent @ tangent.transpose(1, 2)
+        eigval, eigvec = torch.linalg.eigh(gram)
+        uncentered_coordinates.append(eigvec[..., -2:] * eigval[:, None, -2:].clamp_min(0).sqrt())
+        positive_grams.append((gram > 0).all(dim=2).all(dim=1))
+    return torch.cat(coordinates), torch.cat(uncentered_coordinates), torch.cat(positive_grams)
 
 
 def direction_masks(coordinates):
@@ -224,8 +236,14 @@ def evaluate(root, split, text, kd, pool, signature):
     photos = F.normalize(split.photo.float(), dim=1)
     index, similarity = nearest_gallery(photos, NEIGHBORS)
     index = index.to(torch.int32).contiguous()
-    xy = tangent_coordinates(photos, index)
+    xy, xy_uncentered, positive_grams = tangent_coordinates(photos, index)
     directions = direction_masks(xy)
+    unit_scores = p.new_ones((1, p.size(1)))
+    feasible = {
+        "centered": int((support_floor(unit_scores, index, directions) == 1).sum()),
+        "uncentered": int((support_floor(unit_scores, index, direction_masks(xy_uncentered)) == 1).sum()),
+        "positive_displacement_gram": int(positive_grams.sum()),
+    }
     concept_floor = support_floor(p, index, directions)
     verify_floor(p, index, xy, concept_floor)
     concept_bank = p.maximum(concept_floor)
@@ -233,7 +251,7 @@ def evaluate(root, split, text, kd, pool, signature):
     diffused = diffuse_bank(p, index.long(), similarity)
     torch.cuda.synchronize()
     index_seconds = time.perf_counter() - started
-    print(split.name, f"indexed in {index_seconds:.2f} s", flush=True)
+    print(split.name, f"indexed in {index_seconds:.2f} s", feasible, flush=True)
 
     labels, truth = split.photo_labels.cuda(), split.sketch_labels.cuda()
     replay = PrefixReplay(kd, split.photo_labels, split.name)
@@ -278,6 +296,7 @@ def evaluate(root, split, text, kd, pool, signature):
             for name, value in rows.items()
         },
         "threshold_disagreement": audit_summary(audit), "baseline_drift_points": baseline_error,
+        "geometry_feasibility": feasible,
         "index_seconds_including_oracle": index_seconds, "batch_scoring_seconds_all_arms": score_seconds,
         "per_query_sha256": checksum(artifact),
     }
@@ -310,8 +329,11 @@ def run():
         "vocabulary_sha256": vocab_sha, "prompts": list(DEFAULT_PROMPTS), "seed": SEED,
         "gpu": torch.cuda.get_device_name(), "torch": str(torch.__version__), "triton": triton.__version__,
         "neighbors": NEIGHBORS, "tangent_dimensions": 2, "angle_tolerance": ANGLE_TOLERANCE,
+        "chart": "centered PCA of neighbor tangent displacements, project the original displacements",
         "shuffle_block": 4, "arms": list(ARMS), "diffusion_alpha": DIFFUSION_ALPHA,
-        "diffusion_steps": DIFFUSION_STEPS, "selection": "fixed before reading any split metrics",
+        "diffusion_steps": DIFFUSION_STEPS,
+        "selection": "correct chart after gallery-only Sketchy feasibility analysis of the first run, "
+                     "fixed before scoring this revision on every split",
         "equal_dot_fixture": toy,
     }
     signature = save_lock(root / "freeze.json", spec)
