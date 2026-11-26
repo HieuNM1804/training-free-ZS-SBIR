@@ -1,0 +1,30 @@
+{
+  "config": {
+    "commit": "1f1a635d419d2a408c18858def27ed528eb4ea64",
+    "clip_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+    "evaluator_sha256": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+    "vocabulary_sha256": "ee178c8cb1c29cd2dbbfcae8023001a49010257a88bca5508254c23ade5c9ed5",
+    "prompts": [
+      "a drawing of a {}.",
+      "a photo of the {}."
+    ],
+    "seed": 42,
+    "gpu": "Tesla T4",
+    "torch": "2.14.1+cu130",
+    "neighbors": 16,
+    "angle_tolerance": 1e-06,
+    "gallery_block": 1024,
+    "gemm_batch": 768,
+    "control_reference_sha256": "ad2d9e472c4ee1dc1574ecc16d240712dc66a7b2c3d0d8db9e7262ed38413a52",
+    "selection": "All settings fixed from the mechanism before evaluating this branch",
+    "toy_fixture": {
+      "dot": 0.009999999776482582,
+      "pooled": 0.44999998807907104,
+      "independent_alternating": 0.8899999856948853,
+      "joint_one_word": 0.44999998807907104,
+      "joint_two_sectors": 0.009999999776482582,
+      "joint_alternating": 0.44999998807907104
+    }
+  },
+  "sha256": "2c4a74ac5fe5f2dd30682a151c4bd94bab71b67d7671cf719b652adf68a756c0"
+}
