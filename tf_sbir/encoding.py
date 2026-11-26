@@ -31,7 +31,7 @@ def save_tensor(tensor, output):
 
 
 @torch.inference_mode()
-def encode_clip(model, paths, view, batch_size, workers, device):
+def encode_clip(model, paths, view, batch_size, workers, device, *, reflected=False):
     configure_image_worker(None)
     dataset = Images(paths, normal_transform(), view)
     if os.name == "nt" and workers:
@@ -41,10 +41,14 @@ def encode_clip(model, paths, view, batch_size, workers, device):
                              pin_memory=device.type == "cuda", worker_init_fn=configure_image_worker)
     output = []
     dtype = model.visual.conv1.weight.dtype
-    for batch in tqdm(batches, desc=f"CLIP {view}", total=(len(paths) + batch_size - 1) // batch_size):
+    description = f"CLIP {view}" + (" reflected" if reflected else "")
+    for batch in tqdm(batches, desc=description, total=(len(paths) + batch_size - 1) // batch_size):
         if view == "contours":
             batch = batch.flatten(0, 1)
-        embeddings = F.normalize(model.encode_image(batch.to(device=device, dtype=dtype, non_blocking=True)).float(), dim=-1)
+        pixels = batch.to(device=device, dtype=dtype, non_blocking=True)
+        if reflected:
+            pixels = pixels.flip((-1,))
+        embeddings = F.normalize(model.encode_image(pixels).float(), dim=-1)
         if view == "contours":
             embeddings = embeddings.reshape(-1, 2, embeddings.shape[-1])
         output.append(embeddings.cpu())
