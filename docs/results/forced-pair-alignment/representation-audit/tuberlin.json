@@ -1,0 +1,163 @@
+{
+  "protocol": "b8e31bbacaf6a6659f31ae24aafcc63e48a17fadd395629912b8fb00eb7ceb0f",
+  "source_protocol": "3c08dc56526b98879a784fc96dd4405d1af8071d86f283f6f59985da2a6a9c54",
+  "source_summary_sha256": "1825d4951c8d5e83331610d7bc292a5c8b7ac3154a35859015b2e43c6417c723",
+  "source_per_query_sha256": "adab6ae69b1070aa0ba21b8df4d8b20cda004eb4fc751f3d41d29e69a54f9c8f",
+  "queries": 2130,
+  "gallery": 27262,
+  "classes": 30,
+  "cutoffs": [
+    0,
+    100
+  ],
+  "metrics": {
+    "posterior_cosine": [
+      70.78462876930413,
+      70.96384983675931
+    ],
+    "centered_posterior_cosine": [
+      72.10274382540301,
+      71.39953056866294
+    ],
+    "anchor_dot": [
+      66.75431151190082,
+      73.95962447181624
+    ],
+    "fixed_map_posterior_radii": [
+      62.449183014348286,
+      70.36197189530226
+    ],
+    "dot": [
+      73.45542713378866,
+      73.97934278202169
+    ],
+    "fixed_map": [
+      69.94835674028161,
+      71.38309870160103
+    ],
+    "profile": [
+      66.44621124390531,
+      70.77136166734805
+    ]
+  },
+  "left_minus_right_macro_ap": {
+    "posterior_cosine_minus_dot": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": -2.6593991592581876,
+      "positive_classes": 7,
+      "bootstrap95": [
+        -5.4123329284222566,
+        -0.19475580180463045
+      ]
+    },
+    "centered_posterior_cosine_minus_posterior_cosine": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": 1.327945856826513,
+      "positive_classes": 26,
+      "bootstrap95": [
+        0.5911960795007567,
+        2.172212771323393
+      ]
+    },
+    "anchor_dot_minus_dot": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": -6.758997484309864,
+      "positive_classes": 6,
+      "bootstrap95": [
+        -10.572584362560328,
+        -2.65325471633613
+      ]
+    },
+    "fixed_map_minus_centered_posterior_cosine": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": -2.1550457748318355,
+      "positive_classes": 9,
+      "bootstrap95": [
+        -5.109213152908099,
+        1.2292888700817932
+      ]
+    },
+    "fixed_map_posterior_radii_minus_dot": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": -11.13914738708575,
+      "positive_classes": 5,
+      "bootstrap95": [
+        -16.70052039319472,
+        -5.591607211029069
+      ]
+    },
+    "fixed_map_posterior_radii_minus_posterior_cosine": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": -8.479748227827562,
+      "positive_classes": 8,
+      "bootstrap95": [
+        -15.779454278001156,
+        -0.9083738209606281
+      ]
+    },
+    "fixed_map_posterior_radii_minus_anchor_dot": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": -4.380149902775884,
+      "positive_classes": 6,
+      "bootstrap95": [
+        -6.835422041161274,
+        -2.080699276358134
+      ]
+    },
+    "fixed_map_posterior_radii_minus_fixed_map": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": -7.652648309822238,
+      "positive_classes": 11,
+      "bootstrap95": [
+        -12.95324025381179,
+        -2.747143283702567
+      ]
+    },
+    "fixed_map_minus_anchor_dot": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": 3.2724984070463545,
+      "positive_classes": 19,
+      "bootstrap95": [
+        0.06845199910790802,
+        6.6235207289379705
+      ]
+    },
+    "profile_minus_fixed_map": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": -3.5323753680679055,
+      "positive_classes": 5,
+      "bootstrap95": [
+        -5.05990911642799,
+        -2.120513101962639
+      ]
+    }
+  },
+  "centered_dot_max_error_from_constant_shift": 9.298324584960938e-06,
+  "profile_vs_fixed_adjacent_pairs": {
+    "different_relevance": 10770,
+    "strict_reversals": 2693,
+    "reversal_correct": 1355,
+    "reversal_incorrect": 1338,
+    "macro_accuracy_delta_on_disagreements": {
+      "classes": 29,
+      "queries": 646,
+      "mean_across_classes": 14.443307970498829,
+      "positive_classes": 16,
+      "bootstrap95": [
+        -6.757347265594392,
+        34.95657079917718
+      ]
+    }
+  },
+  "per_query_sha256": "8b28b36353fbe8f1e961d415561429b62f70326c1240492a2a281b518f5e91c2"
+}

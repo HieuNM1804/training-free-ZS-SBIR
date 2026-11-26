@@ -1,0 +1,620 @@
+{
+  "protocol": "3c08dc56526b98879a784fc96dd4405d1af8071d86f283f6f59985da2a6a9c54",
+  "primary_commit": "9f55c1ebabbd14a9c3687fba731bc9e7c2b32bb7",
+  "audit_commit": "fe0dda0ce5933629bf9515be20b4fb94afb51cc7",
+  "seed": 42,
+  "nodes": [
+    32,
+    64
+  ],
+  "gpu": "Tesla T4",
+  "comparison": "production fp32 versus unit-renormalized fp64 coordinates in identical singular basis",
+  "results": {
+    "sketchy_1": {
+      "queries": 64,
+      "gallery": 17100,
+      "primary_protocol": "3c08dc56526b98879a784fc96dd4405d1af8071d86f283f6f59985da2a6a9c54",
+      "sample_query_ids": [
+        1634,
+        3024,
+        13161,
+        1041,
+        2605,
+        12274,
+        9658,
+        6399,
+        5052,
+        2512,
+        10223,
+        13617,
+        519,
+        13459,
+        1800,
+        12427,
+        10224,
+        11338,
+        3030,
+        6725,
+        973,
+        43,
+        5531,
+        4398,
+        1558,
+        8192,
+        12706,
+        4924,
+        9380,
+        3198,
+        13274,
+        6163,
+        8705,
+        4994,
+        4047,
+        10719,
+        10036,
+        1845,
+        5797,
+        2329,
+        13686,
+        4589,
+        9696,
+        7354,
+        1936,
+        11702,
+        501,
+        5265,
+        8914,
+        11526,
+        9529,
+        10912,
+        12887,
+        5756,
+        6890,
+        9794,
+        1591,
+        565,
+        1548,
+        5207,
+        10579,
+        9175,
+        5642,
+        13619
+      ],
+      "precision_cutoff": 100,
+      "full_matrix_max_abs_error_32_vs_64": 3.960212308096178e-05,
+      "full_matrix_mean_abs_error_32_vs_64": 2.491657329330181e-05,
+      "top1_agreement": 64,
+      "membership_overlap_mean_fraction": 1.0,
+      "membership_overlap_min_fraction": 1.0,
+      "identical_membership_count": 64,
+      "production_replay_top1_hit_agreement_count": 64,
+      "production_replay_max_precision_change": 2.8610229518832853e-08,
+      "svd_close_pairs": [
+        {
+          "query_id": 1634,
+          "ranks_at_32_nodes": [
+            18,
+            19
+          ],
+          "gallery_ids": [
+            1791,
+            1833
+          ],
+          "direct_svd_gap": 2.0609575063446073e-05,
+          "production_gap": 2.0682811737060547e-05,
+          "refined_gap": 2.0673482285210598e-05,
+          "production_agrees_with_svd_order": true,
+          "refined_agrees_with_svd_order": true,
+          "max_abs_error_vs_svd_32": 3.104807957043931e-05,
+          "max_abs_error_vs_svd_64": 7.888662350435949e-06
+        },
+        {
+          "query_id": 3024,
+          "ranks_at_32_nodes": [
+            29,
+            30
+          ],
+          "gallery_ids": [
+            13746,
+            5315
+          ],
+          "direct_svd_gap": 2.5165337262933463e-06,
+          "production_gap": 3.919005393981934e-06,
+          "refined_gap": 2.6773560653781114e-06,
+          "production_agrees_with_svd_order": true,
+          "refined_agrees_with_svd_order": true,
+          "max_abs_error_vs_svd_32": 2.9897596984795882e-05,
+          "max_abs_error_vs_svd_64": 9.564682351526077e-06
+        },
+        {
+          "query_id": 13161,
+          "ranks_at_32_nodes": [
+            20,
+            21
+          ],
+          "gallery_ids": [
+            16363,
+            16179
+          ],
+          "direct_svd_gap": 1.8634972555275908e-05,
+          "production_gap": 1.8909573554992676e-05,
+          "refined_gap": 1.853003637992956e-05,
+          "production_agrees_with_svd_order": true,
+          "refined_agrees_with_svd_order": true,
+          "max_abs_error_vs_svd_32": 3.198682894733906e-05,
+          "max_abs_error_vs_svd_64": 8.321565264632347e-06
+        },
+        {
+          "query_id": 1041,
+          "ranks_at_32_nodes": [
+            10,
+            11
+          ],
+          "gallery_ids": [
+            702,
+            820
+          ],
+          "direct_svd_gap": 6.707247948156692e-07,
+          "production_gap": 5.811452865600586e-07,
+          "refined_gap": 6.749116676918465e-07,
+          "production_agrees_with_svd_order": true,
+          "refined_agrees_with_svd_order": true,
+          "max_abs_error_vs_svd_32": 3.258526058402822e-05,
+          "max_abs_error_vs_svd_64": 8.189331272667744e-06
+        }
+      ],
+      "barycenter_uniformity": {
+        "queries": {
+          "count": 14179,
+          "exactly_uniform_posteriors": 0,
+          "exactly_zero_centered_barycenters": 0,
+          "barycenter_radius_divided_by_rms_anchor_norm": {
+            "min": 0.10350995349077025,
+            "p01": 0.1655472058487529,
+            "median": 0.5572839440830367,
+            "counts_at_or_below": {
+              "1e-06": 0,
+              "0.001": 0,
+              "0.01": 0
+            }
+          },
+          "total_variation_from_uniform": {
+            "min": 0.3676280756922036,
+            "counts_at_or_below": {
+              "1e-06": 0,
+              "0.001": 0,
+              "0.01": 0
+            }
+          }
+        },
+        "gallery": {
+          "count": 17100,
+          "exactly_uniform_posteriors": 0,
+          "exactly_zero_centered_barycenters": 0,
+          "barycenter_radius_divided_by_rms_anchor_norm": {
+            "min": 0.10866538268249173,
+            "p01": 0.17436108157494515,
+            "median": 0.6673550633509356,
+            "counts_at_or_below": {
+              "1e-06": 0,
+              "0.001": 0,
+              "0.01": 0
+            }
+          },
+          "total_variation_from_uniform": {
+            "min": 0.38050095052437544,
+            "counts_at_or_below": {
+              "1e-06": 0,
+              "0.001": 0,
+              "0.01": 0
+            }
+          }
+        }
+      }
+    },
+    "sketchy_2": {
+      "queries": 64,
+      "gallery": 12552,
+      "primary_protocol": "3c08dc56526b98879a784fc96dd4405d1af8071d86f283f6f59985da2a6a9c54",
+      "sample_query_ids": [
+        17265,
+        21343,
+        18125,
+        16007,
+        20159,
+        20218,
+        5593,
+        19699,
+        5231,
+        10161,
+        23445,
+        20239,
+        24230,
+        19682,
+        14544,
+        5548,
+        22354,
+        17660,
+        10556,
+        23721,
+        22240,
+        17662,
+        15354,
+        24594,
+        18812,
+        19659,
+        5058,
+        14887,
+        23706,
+        23334,
+        17117,
+        14348,
+        18948,
+        6744,
+        16786,
+        20155,
+        5458,
+        10547,
+        16057,
+        22860,
+        20917,
+        7631,
+        10622,
+        24041,
+        7706,
+        5585,
+        24401,
+        24586,
+        17750,
+        16030,
+        10395,
+        21643,
+        23331,
+        15944,
+        5139,
+        16053,
+        19548,
+        24019,
+        20047,
+        17486,
+        23123,
+        6732,
+        19053,
+        24467
+      ],
+      "precision_cutoff": 200,
+      "full_matrix_max_abs_error_32_vs_64": 3.8570614436572725e-05,
+      "full_matrix_mean_abs_error_32_vs_64": 2.464738998213739e-05,
+      "top1_agreement": 64,
+      "membership_overlap_mean_fraction": 1.0,
+      "membership_overlap_min_fraction": 1.0,
+      "identical_membership_count": 64,
+      "production_replay_top1_hit_agreement_count": 64,
+      "production_replay_max_precision_change": 2.8610229518832853e-08,
+      "svd_close_pairs": [
+        {
+          "query_id": 17265,
+          "ranks_at_32_nodes": [
+            29,
+            30
+          ],
+          "gallery_ids": [
+            20340,
+            18159
+          ],
+          "direct_svd_gap": 3.1766184491743843e-06,
+          "production_gap": 6.48200511932373e-07,
+          "refined_gap": 3.340249999803091e-06,
+          "production_agrees_with_svd_order": true,
+          "refined_agrees_with_svd_order": true,
+          "max_abs_error_vs_svd_32": 3.484071386239407e-05,
+          "max_abs_error_vs_svd_64": 8.183530523814264e-06
+        },
+        {
+          "query_id": 21343,
+          "ranks_at_32_nodes": [
+            15,
+            16
+          ],
+          "gallery_ids": [
+            24833,
+            26724
+          ],
+          "direct_svd_gap": 4.093073538413705e-05,
+          "production_gap": 4.1171908378601074e-05,
+          "refined_gap": 4.064692697394734e-05,
+          "production_agrees_with_svd_order": true,
+          "refined_agrees_with_svd_order": true,
+          "max_abs_error_vs_svd_32": 3.272197080050887e-05,
+          "max_abs_error_vs_svd_64": 8.48423237870266e-06
+        },
+        {
+          "query_id": 18125,
+          "ranks_at_32_nodes": [
+            20,
+            21
+          ],
+          "gallery_ids": [
+            21035,
+            21296
+          ],
+          "direct_svd_gap": 7.056502582258872e-07,
+          "production_gap": 8.381903171539307e-07,
+          "refined_gap": 7.098270629196657e-07,
+          "production_agrees_with_svd_order": true,
+          "refined_agrees_with_svd_order": true,
+          "max_abs_error_vs_svd_32": 3.278117653238155e-05,
+          "max_abs_error_vs_svd_64": 8.498132220702281e-06
+        },
+        {
+          "query_id": 16007,
+          "ranks_at_32_nodes": [
+            30,
+            31
+          ],
+          "gallery_ids": [
+            18341,
+            18677
+          ],
+          "direct_svd_gap": 9.700137969304023e-06,
+          "production_gap": 7.554888725280762e-06,
+          "refined_gap": 9.419877431041113e-06,
+          "production_agrees_with_svd_order": true,
+          "refined_agrees_with_svd_order": true,
+          "max_abs_error_vs_svd_32": 3.392498682686096e-05,
+          "max_abs_error_vs_svd_64": 8.395181699788479e-06
+        }
+      ],
+      "barycenter_uniformity": {
+        "queries": {
+          "count": 12694,
+          "exactly_uniform_posteriors": 0,
+          "exactly_zero_centered_barycenters": 0,
+          "barycenter_radius_divided_by_rms_anchor_norm": {
+            "min": 0.09588033573129462,
+            "p01": 0.16438184671066197,
+            "median": 0.5459431279836076,
+            "counts_at_or_below": {
+              "1e-06": 0,
+              "0.001": 0,
+              "0.01": 0
+            }
+          },
+          "total_variation_from_uniform": {
+            "min": 0.3479438206163544,
+            "counts_at_or_below": {
+              "1e-06": 0,
+              "0.001": 0,
+              "0.01": 0
+            }
+          }
+        },
+        "gallery": {
+          "count": 12552,
+          "exactly_uniform_posteriors": 0,
+          "exactly_zero_centered_barycenters": 0,
+          "barycenter_radius_divided_by_rms_anchor_norm": {
+            "min": 0.10866538268249173,
+            "p01": 0.20242661990330857,
+            "median": 0.7562379232088224,
+            "counts_at_or_below": {
+              "1e-06": 0,
+              "0.001": 0,
+              "0.01": 0
+            }
+          },
+          "total_variation_from_uniform": {
+            "min": 0.38050095052437544,
+            "counts_at_or_below": {
+              "1e-06": 0,
+              "0.001": 0,
+              "0.01": 0
+            }
+          }
+        }
+      }
+    },
+    "tuberlin": {
+      "queries": 64,
+      "gallery": 27262,
+      "primary_protocol": "3c08dc56526b98879a784fc96dd4405d1af8071d86f283f6f59985da2a6a9c54",
+      "sample_query_ids": [
+        1902,
+        1904,
+        1742,
+        1363,
+        1624,
+        215,
+        1930,
+        1613,
+        1310,
+        443,
+        1428,
+        1222,
+        710,
+        1376,
+        1513,
+        1882,
+        323,
+        1564,
+        1641,
+        200,
+        769,
+        1868,
+        571,
+        740,
+        1949,
+        1393,
+        247,
+        1026,
+        1479,
+        1221,
+        102,
+        1599,
+        579,
+        1030,
+        1831,
+        1429,
+        2099,
+        1188,
+        318,
+        1149,
+        1646,
+        2073,
+        1339,
+        430,
+        1891,
+        878,
+        493,
+        1159,
+        1845,
+        564,
+        1120,
+        312,
+        1822,
+        1955,
+        1108,
+        2079,
+        28,
+        1550,
+        516,
+        780,
+        1286,
+        1028,
+        994,
+        196
+      ],
+      "precision_cutoff": 100,
+      "full_matrix_max_abs_error_32_vs_64": 3.89600882395591e-05,
+      "full_matrix_mean_abs_error_32_vs_64": 2.5331762290376043e-05,
+      "top1_agreement": 64,
+      "membership_overlap_mean_fraction": 1.0,
+      "membership_overlap_min_fraction": 1.0,
+      "identical_membership_count": 64,
+      "production_replay_top1_hit_agreement_count": 64,
+      "production_replay_max_precision_change": 2.622604367008563e-08,
+      "svd_close_pairs": [
+        {
+          "query_id": 1902,
+          "ranks_at_32_nodes": [
+            26,
+            27
+          ],
+          "gallery_ids": [
+            23657,
+            23918
+          ],
+          "direct_svd_gap": 5.7166625495597145e-06,
+          "production_gap": 4.909932613372803e-06,
+          "refined_gap": 5.898504236573343e-06,
+          "production_agrees_with_svd_order": true,
+          "refined_agrees_with_svd_order": true,
+          "max_abs_error_vs_svd_32": 3.2939388344033205e-05,
+          "max_abs_error_vs_svd_64": 7.967066459085848e-06
+        },
+        {
+          "query_id": 1904,
+          "ranks_at_32_nodes": [
+            31,
+            32
+          ],
+          "gallery_ids": [
+            24296,
+            6420
+          ],
+          "direct_svd_gap": -3.661613590111301e-08,
+          "production_gap": 2.1606683731079102e-07,
+          "refined_gap": -3.387854019543113e-08,
+          "production_agrees_with_svd_order": false,
+          "refined_agrees_with_svd_order": true,
+          "max_abs_error_vs_svd_32": 3.1440923383030395e-05,
+          "max_abs_error_vs_svd_64": 8.062944396231009e-06
+        },
+        {
+          "query_id": 1742,
+          "ranks_at_32_nodes": [
+            27,
+            28
+          ],
+          "gallery_ids": [
+            21137,
+            21292
+          ],
+          "direct_svd_gap": 2.338878786645182e-06,
+          "production_gap": 4.552304744720459e-06,
+          "refined_gap": 2.597463979139847e-06,
+          "production_agrees_with_svd_order": true,
+          "refined_agrees_with_svd_order": true,
+          "max_abs_error_vs_svd_32": 3.394096735220842e-05,
+          "max_abs_error_vs_svd_64": 8.33994093395185e-06
+        },
+        {
+          "query_id": 1363,
+          "ranks_at_32_nodes": [
+            8,
+            9
+          ],
+          "gallery_ids": [
+            14904,
+            14981
+          ],
+          "direct_svd_gap": 2.2600087135060676e-06,
+          "production_gap": 2.16066837310791e-06,
+          "refined_gap": 2.1840757530727783e-06,
+          "production_agrees_with_svd_order": true,
+          "refined_agrees_with_svd_order": true,
+          "max_abs_error_vs_svd_32": 3.2649003525619946e-05,
+          "max_abs_error_vs_svd_64": 8.606024177584826e-06
+        }
+      ],
+      "barycenter_uniformity": {
+        "queries": {
+          "count": 2130,
+          "exactly_uniform_posteriors": 0,
+          "exactly_zero_centered_barycenters": 0,
+          "barycenter_radius_divided_by_rms_anchor_norm": {
+            "min": 0.13442576776903167,
+            "p01": 0.18676533109173396,
+            "median": 0.6130793834159616,
+            "counts_at_or_below": {
+              "1e-06": 0,
+              "0.001": 0,
+              "0.01": 0
+            }
+          },
+          "total_variation_from_uniform": {
+            "min": 0.4637721896304112,
+            "counts_at_or_below": {
+              "1e-06": 0,
+              "0.001": 0,
+              "0.01": 0
+            }
+          }
+        },
+        "gallery": {
+          "count": 27262,
+          "exactly_uniform_posteriors": 0,
+          "exactly_zero_centered_barycenters": 0,
+          "barycenter_radius_divided_by_rms_anchor_norm": {
+            "min": 0.10683606937296031,
+            "p01": 0.18602646890087904,
+            "median": 0.6216213391355182,
+            "counts_at_or_below": {
+              "1e-06": 0,
+              "0.001": 0,
+              "0.01": 0
+            }
+          },
+          "total_variation_from_uniform": {
+            "min": 0.45834262964858624,
+            "counts_at_or_below": {
+              "1e-06": 0,
+              "0.001": 0,
+              "0.01": 0
+            }
+          }
+        }
+      }
+    }
+  }
+}

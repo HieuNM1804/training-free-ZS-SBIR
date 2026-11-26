@@ -1,0 +1,31 @@
+{
+  "config": {
+    "commit": "9f55c1ebabbd14a9c3687fba731bc9e7c2b32bb7",
+    "clip_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+    "evaluator_sha256": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+    "vocabulary_sha256": "ee178c8cb1c29cd2dbbfcae8023001a49010257a88bca5508254c23ade5c9ed5",
+    "prompts": [
+      "a drawing of a {}.",
+      "a photo of the {}."
+    ],
+    "seed": 42,
+    "gpu": "Tesla T4",
+    "torch": "2.14.1+cu130",
+    "views": [
+      "original",
+      "horizontal_flip"
+    ],
+    "arms": [
+      "profile",
+      "fixed_map",
+      "bilinear",
+      "separable",
+      "shuffled_spectrum"
+    ],
+    "baseline": "dot",
+    "selection": "fixed before scoring either Sketchy split or TU-Berlin",
+    "primary": "profile versus separable, fixed map and shuffled spectrum, matched Dot newcomers",
+    "pairs": "within Dot precision prefix, adjacent by separable score, strict reversals only"
+  },
+  "sha256": "3c08dc56526b98879a784fc96dd4405d1af8071d86f283f6f59985da2a6a9c54"
+}
