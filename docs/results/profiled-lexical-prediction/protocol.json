@@ -1,0 +1,53 @@
+{
+  "config": {
+    "commit": "def5f32",
+    "components": [
+      32,
+      64,
+      128,
+      256,
+      512,
+      1024
+    ],
+    "scales": [
+      8,
+      16,
+      32,
+      64,
+      128,
+      256
+    ],
+    "laws": [
+      "reports",
+      "mixture"
+    ],
+    "seed": 42,
+    "prompts": [
+      "a drawing of a {}.",
+      "a photo of the {}."
+    ],
+    "checkpoint": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+    "evaluator": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+    "manifest": "3991a0d1196cad1bdc8ac0a5fe759f246ec50fd9d9322b3c2c612eba12affcf8",
+    "fixture": {
+      "same_mixture": [
+        0.5,
+        0.25,
+        0.25
+      ],
+      "profile_A": [
+        0.5,
+        0.25,
+        0.25
+      ],
+      "profile_B": [
+        0.3333333432674408,
+        0.3333333432674408,
+        0.3333333432674408
+      ]
+    },
+    "selection": "Select each estimator on the mean full unseen Sketchy mAP, precision breaks ties. TU only after lock.",
+    "hypothesis": "Under partial observation different visual populations can supply the strongest explanation for different words. Conditional minimax regret yields a unique normalized forecast."
+  },
+  "sha256": "057b8c11676f63ccaf31d3d6a2923f8c1f6df4dce1ada076f4e267dc6180bf1a"
+}

@@ -1,0 +1,191 @@
+{
+  "commit": "2484ee3",
+  "selection": "939a304caf4b176c84ac02359b90678c26f026dd10b81b663d514bef0639d548",
+  "queries": 14179,
+  "gallery": 17100,
+  "classes": 25,
+  "cutoffs": [
+    0,
+    100
+  ],
+  "metrics": {
+    "dot": [
+      75.34548766158036,
+      77.09873763341106
+    ],
+    "regret": [
+      78.23163077130917,
+      77.62888780615
+    ],
+    "source_only": [
+      78.23442519268083,
+      77.52979759986563
+    ],
+    "target_only": [
+      78.78030811665906,
+      78.13040413229373
+    ],
+    "matched_bayes": [
+      78.79265707454641,
+      78.06742367479758
+    ],
+    "no_source_population": [
+      80.13323326977076,
+      79.45080756516072
+    ],
+    "no_target_population": [
+      75.18392517688231,
+      76.99682632850954
+    ],
+    "bayes": [
+      78.79265707454641,
+      78.06742367479758
+    ]
+  },
+  "diagnostics": {
+    "regret": [
+      {
+        "source_mean_log_z": 0.17657355964183807,
+        "target_mean_log_z": 0.19651439785957336
+      },
+      {
+        "source_mean_log_z": 0.17766357958316803,
+        "target_mean_log_z": 0.19947215914726257
+      }
+    ],
+    "source_only": [
+      {
+        "source_mean_log_z": 0.17657355964183807,
+        "target_mean_log_z": -5.473730197991244e-07
+      },
+      {
+        "source_mean_log_z": 0.17766357958316803,
+        "target_mean_log_z": -5.981171398161678e-07
+      }
+    ],
+    "target_only": [
+      {
+        "source_mean_log_z": 3.9126175011006126e-07,
+        "target_mean_log_z": 0.19651439785957336
+      },
+      {
+        "source_mean_log_z": 3.9613385638403997e-07,
+        "target_mean_log_z": 0.19947215914726257
+      }
+    ],
+    "matched_bayes": [
+      {
+        "source_mean_log_z": 3.9126175011006126e-07,
+        "target_mean_log_z": -5.473730197991244e-07
+      },
+      {
+        "source_mean_log_z": 3.9613385638403997e-07,
+        "target_mean_log_z": -5.981171398161678e-07
+      }
+    ],
+    "bayes": [
+      {
+        "source_mean_log_z": 3.9126175011006126e-07,
+        "target_mean_log_z": -5.473730197991244e-07
+      },
+      {
+        "source_mean_log_z": 3.9613385638403997e-07,
+        "target_mean_log_z": -5.981171398161678e-07
+      }
+    ],
+    "paired_source_queries": 14179,
+    "true_photo_name_disagreement_nats": {
+      "dot": 2.8391448068123797,
+      "regret": 2.0227489517529413,
+      "source_only": 1.9717546740520682,
+      "target_only": 2.019632676851851,
+      "matched_bayes": 1.969229253449959,
+      "no_source_population": 2.743334281781058,
+      "no_target_population": 2.002281401645034,
+      "bayes": 1.969229253449959
+    }
+  },
+  "primary_minus_control_class_macro_ap": {
+    "dot": {
+      "classes": 25,
+      "queries": 14179,
+      "mean_across_classes": 2.812403061389923,
+      "positive_classes": 22,
+      "bootstrap95": [
+        1.5244729434847832,
+        4.076401475012302
+      ]
+    },
+    "regret": {
+      "classes": 25,
+      "queries": 14179,
+      "mean_across_classes": 0.0,
+      "positive_classes": 0,
+      "bootstrap95": [
+        0.0,
+        0.0
+      ]
+    },
+    "source_only": {
+      "classes": 25,
+      "queries": 14179,
+      "mean_across_classes": 0.0030125890951603652,
+      "positive_classes": 5,
+      "bootstrap95": [
+        -0.09225770247355104,
+        0.12431750850868412
+      ]
+    },
+    "target_only": {
+      "classes": 25,
+      "queries": 14179,
+      "mean_across_classes": -0.5868008029460907,
+      "positive_classes": 10,
+      "bootstrap95": [
+        -1.3229099981142207,
+        -0.04016255450341864
+      ]
+    },
+    "matched_bayes": {
+      "classes": 25,
+      "queries": 14179,
+      "mean_across_classes": -0.5942091397941113,
+      "positive_classes": 8,
+      "bootstrap95": [
+        -1.2223493622764945,
+        -0.11937273342534924
+      ]
+    },
+    "no_source_population": {
+      "classes": 25,
+      "queries": 14179,
+      "mean_across_classes": -2.153071402311325,
+      "positive_classes": 18,
+      "bootstrap95": [
+        -6.576451192706823,
+        1.3777753899395453
+      ]
+    },
+    "no_target_population": {
+      "classes": 25,
+      "queries": 14179,
+      "mean_across_classes": 3.1480841022729873,
+      "positive_classes": 25,
+      "bootstrap95": [
+        2.0575117038339377,
+        4.441390796974301
+      ]
+    },
+    "bayes": {
+      "classes": 25,
+      "queries": 14179,
+      "mean_across_classes": -0.5942091397941113,
+      "positive_classes": 8,
+      "bootstrap95": [
+        -1.2223493622764945,
+        -0.11937273342534924
+      ]
+    }
+  },
+  "per_query_sha256": "f4cc10d42e3b00c64cedc414f33f3edde1ce61feb116cbb1648fe43a70f1ef91"
+}

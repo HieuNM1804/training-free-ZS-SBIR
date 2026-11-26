@@ -1,0 +1,215 @@
+{
+  "commit": "def5f32",
+  "selection": "29c3c8847e9bf8ec729cd22103c359e34e4216cb4c81ef8c9fc5067b9ded84ce",
+  "queries": 12694,
+  "gallery": 12552,
+  "classes": 21,
+  "cutoffs": [
+    200,
+    200
+  ],
+  "metrics": {
+    "dot": [
+      72.66466664012427,
+      71.07243596621495
+    ],
+    "mixture_tuned": [
+      73.70089372032022,
+      72.16074529884709
+    ],
+    "profile": [
+      74.85540331173975,
+      73.24940930160999
+    ],
+    "profile_tuned": [
+      74.85540331173975,
+      73.24940930160999
+    ],
+    "reports_tuned": [
+      74.85540331173975,
+      73.24940930160999
+    ],
+    "bayes": [
+      74.79480628483041,
+      73.18453614004848
+    ],
+    "unnormalized": [
+      70.90199204988684,
+      70.57472067313277
+    ],
+    "map": [
+      74.37608548145397,
+      72.34031846482681
+    ],
+    "empirical_bayes": [
+      74.89814872709145,
+      73.30534123507161
+    ],
+    "half_profile": [
+      74.86939192614197,
+      73.25610539820752
+    ],
+    "unnormalized_tuned": [
+      74.11331245194027,
+      72.7280607003157
+    ],
+    "bayes_tuned": [
+      75.5700081277852,
+      73.31830016329265
+    ]
+  },
+  "diagnostics": {
+    "folds": [
+      {
+        "mean_minimax_regret": 0.16192485392093658,
+        "max_regret": 1.6856192350387573,
+        "states": 64,
+        "em_gain_last_8": 1.1920928955078125e-06
+      },
+      {
+        "mean_minimax_regret": 0.16155260801315308,
+        "max_regret": 1.5515847206115723,
+        "states": 64,
+        "em_gain_last_8": 1.3113021850585938e-06
+      }
+    ],
+    "paired_source_queries": 12694,
+    "paired_name_cross_entropy": {
+      "dot": 6.219373637696777,
+      "mixture_tuned": 29.084735111113474,
+      "profile": 5.28085654006946,
+      "profile_tuned": 5.28085654006946,
+      "reports_tuned": 5.28085654006946,
+      "bayes": 5.127266915298192,
+      "unnormalized": 5.280856551078054,
+      "map": 5.486011821878169,
+      "empirical_bayes": 5.153606107029715,
+      "half_profile": 5.236402406808437,
+      "unnormalized_tuned": 5.567326576193806,
+      "bayes_tuned": 5.168959774272976
+    }
+  },
+  "primary_minus_control_class_macro_ap": {
+    "dot": {
+      "classes": 21,
+      "queries": 12694,
+      "mean_across_classes": 2.3344257871309915,
+      "positive_classes": 17,
+      "bootstrap95": [
+        0.4366471933467048,
+        4.294738189024584
+      ]
+    },
+    "mixture_tuned": {
+      "classes": 21,
+      "queries": 12694,
+      "mean_across_classes": 1.4409799932369165,
+      "positive_classes": 13,
+      "bootstrap95": [
+        -2.5430361359291487,
+        6.1881364476867
+      ]
+    },
+    "profile": {
+      "classes": 21,
+      "queries": 12694,
+      "mean_across_classes": 0.0,
+      "positive_classes": 0,
+      "bootstrap95": [
+        0.0,
+        0.0
+      ]
+    },
+    "profile_tuned": {
+      "classes": 21,
+      "queries": 12694,
+      "mean_across_classes": 0.0,
+      "positive_classes": 0,
+      "bootstrap95": [
+        0.0,
+        0.0
+      ]
+    },
+    "reports_tuned": {
+      "classes": 21,
+      "queries": 12694,
+      "mean_across_classes": 0.0,
+      "positive_classes": 0,
+      "bootstrap95": [
+        0.0,
+        0.0
+      ]
+    },
+    "bayes": {
+      "classes": 21,
+      "queries": 12694,
+      "mean_across_classes": 0.06253147435684998,
+      "positive_classes": 6,
+      "bootstrap95": [
+        -0.4433575703762471,
+        0.6231661385191337
+      ]
+    },
+    "unnormalized": {
+      "classes": 21,
+      "queries": 12694,
+      "mean_across_classes": 4.123197798927625,
+      "positive_classes": 19,
+      "bootstrap95": [
+        1.9958745395853406,
+        6.402214389436301
+      ]
+    },
+    "map": {
+      "classes": 21,
+      "queries": 12694,
+      "mean_across_classes": 0.5456968029694897,
+      "positive_classes": 14,
+      "bootstrap95": [
+        -2.121680304128677,
+        3.200256671800854
+      ]
+    },
+    "empirical_bayes": {
+      "classes": 21,
+      "queries": 12694,
+      "mean_across_classes": -0.03370354936591217,
+      "positive_classes": 4,
+      "bootstrap95": [
+        -0.4589226794806087,
+        0.46150985655286114
+      ]
+    },
+    "half_profile": {
+      "classes": 21,
+      "queries": 12694,
+      "mean_across_classes": -0.016303747315846738,
+      "positive_classes": 7,
+      "bootstrap95": [
+        -0.11637073864805557,
+        0.08677619704366882
+      ]
+    },
+    "unnormalized_tuned": {
+      "classes": 21,
+      "queries": 12694,
+      "mean_across_classes": 0.8659213114352453,
+      "positive_classes": 13,
+      "bootstrap95": [
+        -0.9815768412003915,
+        2.998108144618925
+      ]
+    },
+    "bayes_tuned": {
+      "classes": 21,
+      "queries": 12694,
+      "mean_across_classes": -0.8050305130669758,
+      "positive_classes": 11,
+      "bootstrap95": [
+        -2.5944428586279087,
+        0.3892911623232065
+      ]
+    }
+  },
+  "per_query_sha256": "ee39876002b59405cc2c0cf75efe22de703ee822da313f285975d43ac4552af3"
+}

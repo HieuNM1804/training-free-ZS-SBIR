@@ -1,0 +1,55 @@
+{
+  "config": {
+    "commit": "2484ee3",
+    "seed": 42,
+    "sizes": [
+      64,
+      128,
+      256,
+      512
+    ],
+    "odds": [
+      1,
+      2,
+      8,
+      32
+    ],
+    "source_temperatures": [
+      32,
+      64,
+      100,
+      160
+    ],
+    "target_temperatures": [
+      16,
+      32,
+      64
+    ],
+    "laws": [
+      "reports",
+      "mixture"
+    ],
+    "evaluator": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+    "prompts": [
+      "a drawing of a {}.",
+      "a photo of the {}."
+    ],
+    "checkpoint": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+    "manifest": "3991a0d1196cad1bdc8ac0a5fe759f246ec50fd9d9322b3c2c612eba12affcf8",
+    "exact_small_example": {
+      "max_error": 1.1920928955078125e-07,
+      "base_prior": [
+        0.20000000298023224,
+        0.30000001192092896,
+        0.5
+      ],
+      "conditional_normalizers": [
+        1.591658115386963,
+        1.8434172868728638
+      ]
+    },
+    "parameter_selection": "Equal-weight mean mAP on both complete unseen Sketchy splits with precision tie-break. Lock before TU.",
+    "hypothesis": "The ratio of two possible latent subject odds can move by at most Gamma. Predict the name with minimal worst conditional log-loss regret after observing the image in its own domain."
+  },
+  "sha256": "881bf4fe3492d2ae82189a1a2370cd94633ba8999ac599ca893838918a54b94e"
+}
