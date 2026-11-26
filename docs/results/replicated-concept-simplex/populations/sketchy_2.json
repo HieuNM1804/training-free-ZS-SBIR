@@ -1,0 +1,544 @@
+{
+  "commit": "673c3fa",
+  "selection": "3ef0e89cabfc6f26ce123a8d9b5c3a84cb1dfe5595c4e3f50924e37d20513d25",
+  "queries": 12694,
+  "gallery": 12552,
+  "classes": 21,
+  "cutoffs": [
+    200,
+    200
+  ],
+  "metrics": {
+    "dot": [
+      72.66466664012427,
+      71.07243596621495
+    ],
+    "raw_tuned": [
+      73.83426636434626,
+      72.04084627812179
+    ],
+    "frequency_tuned": [
+      72.10977188615185,
+      70.98794719968792
+    ],
+    "donor_tuned": [
+      75.40112992445098,
+      73.69926750826633
+    ],
+    "replicated_tuned": [
+      72.73720051185789,
+      71.96683485248163
+    ],
+    "single_reader_tuned": [
+      72.61510503816424,
+      71.83326780653718
+    ],
+    "replicated": [
+      72.73720051185789,
+      71.96683485248163
+    ],
+    "frequency": [
+      65.85690166723225,
+      65.01874914765534
+    ],
+    "single_reader": [
+      72.61510503816424,
+      71.83326780653718
+    ],
+    "random": [
+      38.20244926786936,
+      37.93729320997544
+    ],
+    "raw": [
+      73.20856994947668,
+      72.4571847294714
+    ],
+    "target_only": [
+      73.15858106660197,
+      72.32668991523441
+    ],
+    "source_only": [
+      72.85498738395923,
+      72.13872718006725
+    ],
+    "target_fit": [
+      72.75212248600198,
+      71.9396566678888
+    ],
+    "flat_prior": [
+      66.9128598959671,
+      66.06444009284489
+    ],
+    "native_target_readout": [
+      71.67887425856297,
+      71.2008430741593
+    ],
+    "all_601": [
+      67.44236008482979,
+      66.3773830513961
+    ],
+    "donor_matched_k": [
+      74.64662864258783,
+      73.4308729527249
+    ]
+  },
+  "mechanism": {
+    "anchor_words": [
+      "rhinoceros",
+      "helicopter",
+      "raccoon",
+      "giraffe",
+      "scissors",
+      "canary",
+      "dolphin",
+      "bat (animal)",
+      "pear",
+      "wheelchair",
+      "window",
+      "skyscraper",
+      "chainsaw",
+      "tree house",
+      "mouse",
+      "goose",
+      "cattle",
+      "tree",
+      "sword",
+      "palm tree",
+      "sparrow",
+      "door",
+      "hippopotamus",
+      "kitchen & dining room table",
+      "wheel",
+      "bull",
+      "christmas tree",
+      "paper cutter",
+      "house",
+      "elephant",
+      "hamster",
+      "window blind"
+    ],
+    "fit": {
+      "kl_uniform_to_reconstructed": 0.0013263631436320161,
+      "prior": [
+        0.07334813475608826,
+        0.07461857795715332,
+        0.057573482394218445,
+        0.0763457864522934,
+        0.0674017071723938,
+        0.04793739318847656,
+        0.06528118252754211,
+        0.037418678402900696,
+        0.03609022870659828,
+        0.013378320261836052,
+        0.03664502501487732,
+        0.011047645471990108,
+        0.025508247315883636,
+        0.025272369384765625,
+        0.01268431544303894,
+        0.05210881307721138,
+        0.01280213426798582,
+        0.04255807772278786,
+        0.023611368611454964,
+        0.0075828987173736095,
+        0.010659611783921719,
+        0.028614087030291557,
+        0.014857972040772438,
+        0.023013439029455185,
+        0.03803686797618866,
+        0.007740252185612917,
+        0.009291338734328747,
+        0.0168052539229393,
+        0.016193225979804993,
+        0.006348105613142252,
+        0.010729314759373665,
+        0.01849614642560482
+      ],
+      "effective_components": 21.452749252319336
+    },
+    "proxy_to_sketch": {
+      "anchor_purity_avg": 0.8941119909286499,
+      "above_80pct_purity": 27,
+      "distinct_dominant_classes": 21,
+      "query_top1_fixed": 571,
+      "query_top1_damaged": 681,
+      "log_reporting_rate_corr": 0.7325550317764282,
+      "rows": [
+        {
+          "purity": 0.8925042152404785,
+          "class": 10,
+          "sketch_measured": 0.3612755835056305,
+          "predicted": 1.037354826927185
+        },
+        {
+          "purity": 0.9918872714042664,
+          "class": 6,
+          "sketch_measured": 0.4035082459449768,
+          "predicted": 0.966210663318634
+        },
+        {
+          "purity": 0.9881011843681335,
+          "class": 9,
+          "sketch_measured": 0.021765416488051414,
+          "predicted": 0.9018042683601379
+        },
+        {
+          "purity": 0.9833624362945557,
+          "class": 5,
+          "sketch_measured": 0.27726030349731445,
+          "predicted": 0.937940776348114
+        },
+        {
+          "purity": 0.9871153235435486,
+          "class": 12,
+          "sketch_measured": 0.14949771761894226,
+          "predicted": 0.7836697697639465
+        },
+        {
+          "purity": 0.9556546807289124,
+          "class": 15,
+          "sketch_measured": 0.2320403903722763,
+          "predicted": 0.6947952508926392
+        },
+        {
+          "purity": 0.9684460759162903,
+          "class": 3,
+          "sketch_measured": 0.17713060975074768,
+          "predicted": 0.7419153451919556
+        },
+        {
+          "purity": 0.9668422937393188,
+          "class": 0,
+          "sketch_measured": 0.16694623231887817,
+          "predicted": 0.8662493824958801
+        },
+        {
+          "purity": 0.9738730192184448,
+          "class": 8,
+          "sketch_measured": 0.4225293695926666,
+          "predicted": 0.6018338203430176
+        },
+        {
+          "purity": 0.9837867021560669,
+          "class": 18,
+          "sketch_measured": 0.39880049228668213,
+          "predicted": 0.7769215106964111
+        },
+        {
+          "purity": 0.8526979684829712,
+          "class": 20,
+          "sketch_measured": 0.29547005891799927,
+          "predicted": 1.313077449798584
+        },
+        {
+          "purity": 0.9869269132614136,
+          "class": 14,
+          "sketch_measured": 0.27792468667030334,
+          "predicted": 0.7014750838279724
+        },
+        {
+          "purity": 0.9638616442680359,
+          "class": 11,
+          "sketch_measured": 0.005836800672113895,
+          "predicted": 0.46974727511405945
+        },
+        {
+          "purity": 0.9367417693138123,
+          "class": 1,
+          "sketch_measured": 0.009387818165123463,
+          "predicted": 0.37399566173553467
+        },
+        {
+          "purity": 0.9565516114234924,
+          "class": 7,
+          "sketch_measured": 0.15742036700248718,
+          "predicted": 0.876107394695282
+        },
+        {
+          "purity": 0.8937000036239624,
+          "class": 13,
+          "sketch_measured": 0.17355920374393463,
+          "predicted": 0.23810641467571259
+        },
+        {
+          "purity": 0.9497189521789551,
+          "class": 2,
+          "sketch_measured": 0.40655091404914856,
+          "predicted": 0.8050704002380371
+        },
+        {
+          "purity": 0.9608368277549744,
+          "class": 17,
+          "sketch_measured": 0.1053004115819931,
+          "predicted": 0.5412523150444031
+        },
+        {
+          "purity": 0.9407516121864319,
+          "class": 16,
+          "sketch_measured": 0.13280300796031952,
+          "predicted": 0.2510143220424652
+        },
+        {
+          "purity": 0.9868388772010803,
+          "class": 17,
+          "sketch_measured": 0.24084721505641937,
+          "predicted": 1.112867832183838
+        },
+        {
+          "purity": 0.9115475416183472,
+          "class": 15,
+          "sketch_measured": 0.09614447504281998,
+          "predicted": 0.6681808233261108
+        },
+        {
+          "purity": 0.8649564981460571,
+          "class": 4,
+          "sketch_measured": 0.16032764315605164,
+          "predicted": 0.505416989326477
+        },
+        {
+          "purity": 0.5521063208580017,
+          "class": 2,
+          "sketch_measured": 0.0064170327968895435,
+          "predicted": 0.4421738088130951
+        },
+        {
+          "purity": 0.7735631465911865,
+          "class": 4,
+          "sketch_measured": 0.00019926672393921763,
+          "predicted": 0.15599365532398224
+        },
+        {
+          "purity": 0.9038191437721252,
+          "class": 19,
+          "sketch_measured": 0.002275696722790599,
+          "predicted": 0.022885426878929138
+        },
+        {
+          "purity": 0.8900129199028015,
+          "class": 2,
+          "sketch_measured": 0.12732669711112976,
+          "predicted": 0.9246276021003723
+        },
+        {
+          "purity": 0.9291189312934875,
+          "class": 17,
+          "sketch_measured": 0.060131367295980453,
+          "predicted": 0.2874028980731964
+        },
+        {
+          "purity": 0.6242855787277222,
+          "class": 11,
+          "sketch_measured": 0.0006837568944320083,
+          "predicted": 0.0801500678062439
+        },
+        {
+          "purity": 0.8108452558517456,
+          "class": 1,
+          "sketch_measured": 0.35801082849502563,
+          "predicted": 0.9366409778594971
+        },
+        {
+          "purity": 0.5996968150138855,
+          "class": 2,
+          "sketch_measured": 0.009732821024954319,
+          "predicted": 0.399219274520874
+        },
+        {
+          "purity": 0.9776687026023865,
+          "class": 7,
+          "sketch_measured": 0.09976264834403992,
+          "predicted": 0.5652253031730652
+        },
+        {
+          "purity": 0.6537635326385498,
+          "class": 20,
+          "sketch_measured": 0.02649717405438423,
+          "predicted": 0.34183329343795776
+        }
+      ]
+    }
+  },
+  "primary_minus_control_class_macro_ap": {
+    "dot": {
+      "classes": 21,
+      "queries": 12694,
+      "mean_across_classes": 0.06431172575269427,
+      "positive_classes": 10,
+      "bootstrap95": [
+        -3.7815946610200974,
+        3.888161018065044
+      ]
+    },
+    "raw_tuned": {
+      "classes": 21,
+      "queries": 12694,
+      "mean_across_classes": -1.0966930474553789,
+      "positive_classes": 8,
+      "bootstrap95": [
+        -5.7836130110990425,
+        3.929581347888424
+      ]
+    },
+    "frequency_tuned": {
+      "classes": 21,
+      "queries": 12694,
+      "mean_across_classes": 0.3164478128864652,
+      "positive_classes": 11,
+      "bootstrap95": [
+        -4.1794208154437085,
+        4.204061032902627
+      ]
+    },
+    "donor_tuned": {
+      "classes": 21,
+      "queries": 12694,
+      "mean_across_classes": -2.8905397603909173,
+      "positive_classes": 9,
+      "bootstrap95": [
+        -6.711481652763628,
+        0.5845396888752771
+      ]
+    },
+    "replicated_tuned": {
+      "classes": 21,
+      "queries": 12694,
+      "mean_across_classes": 0.0,
+      "positive_classes": 0,
+      "bootstrap95": [
+        0.0,
+        0.0
+      ]
+    },
+    "single_reader_tuned": {
+      "classes": 21,
+      "queries": 12694,
+      "mean_across_classes": 0.12249561320502489,
+      "positive_classes": 10,
+      "bootstrap95": [
+        -0.1991266187191719,
+        0.4950965355106052
+      ]
+    },
+    "replicated": {
+      "classes": 21,
+      "queries": 12694,
+      "mean_across_classes": 0.0,
+      "positive_classes": 0,
+      "bootstrap95": [
+        0.0,
+        0.0
+      ]
+    },
+    "frequency": {
+      "classes": 21,
+      "queries": 12694,
+      "mean_across_classes": 6.447156284536634,
+      "positive_classes": 13,
+      "bootstrap95": [
+        -0.5851724274811289,
+        16.11172627579598
+      ]
+    },
+    "single_reader": {
+      "classes": 21,
+      "queries": 12694,
+      "mean_across_classes": 0.12249561320502489,
+      "positive_classes": 10,
+      "bootstrap95": [
+        -0.1991266187191719,
+        0.4950965355106052
+      ]
+    },
+    "random": {
+      "classes": 21,
+      "queries": 12694,
+      "mean_across_classes": 34.5367701848348,
+      "positive_classes": 20,
+      "bootstrap95": [
+        20.294713014648075,
+        47.843800621940964
+      ]
+    },
+    "raw": {
+      "classes": 21,
+      "queries": 12694,
+      "mean_across_classes": -0.6368058288381213,
+      "positive_classes": 6,
+      "bootstrap95": [
+        -5.39718716101987,
+        5.857326857798865
+      ]
+    },
+    "target_only": {
+      "classes": 21,
+      "queries": 12694,
+      "mean_across_classes": -0.585463863043558,
+      "positive_classes": 6,
+      "bootstrap95": [
+        -5.272758934079182,
+        5.838943246184357
+      ]
+    },
+    "source_only": {
+      "classes": 21,
+      "queries": 12694,
+      "mean_across_classes": -0.09783193025560606,
+      "positive_classes": 7,
+      "bootstrap95": [
+        -1.1780610719207851,
+        1.4236917728114689
+      ]
+    },
+    "target_fit": {
+      "classes": 21,
+      "queries": 12694,
+      "mean_across_classes": -0.005526497073116757,
+      "positive_classes": 10,
+      "bootstrap95": [
+        -0.285046085098847,
+        0.3187079062862765
+      ]
+    },
+    "flat_prior": {
+      "classes": 21,
+      "queries": 12694,
+      "mean_across_classes": 5.543597041141419,
+      "positive_classes": 13,
+      "bootstrap95": [
+        1.3797901608759449,
+        10.238523352465458
+      ]
+    },
+    "native_target_readout": {
+      "classes": 21,
+      "queries": 12694,
+      "mean_across_classes": 1.0345761062621714,
+      "positive_classes": 17,
+      "bootstrap95": [
+        0.3972071055655501,
+        1.8280553628413359
+      ]
+    },
+    "all_601": {
+      "classes": 21,
+      "queries": 12694,
+      "mean_across_classes": 5.041852932600748,
+      "positive_classes": 12,
+      "bootstrap95": [
+        -0.7583945878559635,
+        11.749891956256969
+      ]
+    },
+    "donor_matched_k": {
+      "classes": 21,
+      "queries": 12694,
+      "mean_across_classes": -2.0630080010298464,
+      "positive_classes": 7,
+      "bootstrap95": [
+        -5.244483072708715,
+        1.413785369778495
+      ]
+    }
+  },
+  "per_query_sha256": "539c5aca80e74abf16f470aa334e08b1cc455143cf71d13df2833e6ed4206219"
+}

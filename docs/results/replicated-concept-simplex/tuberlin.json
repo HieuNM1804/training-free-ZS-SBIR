@@ -1,0 +1,327 @@
+{
+  "commit": "f1c4987",
+  "selection": "5ea3dd0d9c3ef29dc28340cb6e58111ebef554522ba3ed8ef796db5dc1648944",
+  "device": "NVIDIA L4",
+  "queries": 2130,
+  "gallery": 27262,
+  "classes": 30,
+  "cutoffs": [
+    0,
+    100
+  ],
+  "metrics": {
+    "dot": [
+      73.45634247939334,
+      73.98028175237243
+    ],
+    "replicated": [
+      74.08129848442543,
+      74.6563379383458
+    ],
+    "restrict_query_to_anchor_words": [
+      77.77575900899508,
+      77.71502338262371
+    ],
+    "replace_visual_assignment_by_word_mixture": [
+      73.28132220095749,
+      74.05680756622426
+    ],
+    "replicated_tuned": [
+      74.08129848442543,
+      74.6563379383458
+    ],
+    "unreplicated": [
+      73.07863185406299,
+      73.88262902460816
+    ],
+    "unreplicated_tuned": [
+      74.89011142416004,
+      76.0286384824436
+    ],
+    "within_fold": [
+      74.08129862291048,
+      74.6563379383458
+    ],
+    "within_fold_tuned": [
+      74.08129862291048,
+      74.6563379383458
+    ],
+    "photo_only": [
+      73.07863305809256,
+      73.88262902460816
+    ],
+    "photo_only_tuned": [
+      74.70060328557265,
+      74.98920197384388
+    ],
+    "frequency": [
+      64.2498360829594,
+      63.72206571962282
+    ],
+    "frequency_tuned": [
+      75.83984041232354,
+      76.84600936782331
+    ],
+    "random": [
+      59.060649736981155,
+      59.38591540699274
+    ],
+    "random_tuned": [
+      74.72066747575579,
+      75.30704223415312
+    ],
+    "rgb_neighbor_mean": [
+      78.19562577430439,
+      76.65258216527356
+    ]
+  },
+  "delta_class_macro_ap": {
+    "dot": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": 0.7459816137949625,
+      "positive_classes": 15,
+      "bootstrap95": [
+        -3.2222967350482943,
+        5.221704353491464
+      ]
+    },
+    "replicated": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": 0.0,
+      "positive_classes": 0,
+      "bootstrap95": [
+        0.0,
+        0.0
+      ]
+    },
+    "restrict_query_to_anchor_words": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": -3.624437117576599,
+      "positive_classes": 7,
+      "bootstrap95": [
+        -6.823555977145831,
+        -0.09774744172891073
+      ]
+    },
+    "replace_visual_assignment_by_word_mixture": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": 0.8284560347596804,
+      "positive_classes": 14,
+      "bootstrap95": [
+        -1.1457388311251997,
+        3.268985308855772
+      ]
+    },
+    "replicated_tuned": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": 0.0,
+      "positive_classes": 0,
+      "bootstrap95": [
+        0.0,
+        0.0
+      ]
+    },
+    "unreplicated": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": 1.0323474410300453,
+      "positive_classes": 11,
+      "bootstrap95": [
+        -1.4517493689642287,
+        5.262383860445891
+      ]
+    },
+    "unreplicated_tuned": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": -0.7230111348132292,
+      "positive_classes": 14,
+      "bootstrap95": [
+        -3.280517980090032,
+        1.9859157707790531
+      ]
+    },
+    "within_fold": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": -1.424646433415925e-07,
+      "positive_classes": 14,
+      "bootstrap95": [
+        -9.826836508993371e-07,
+        5.361310810962175e-07
+      ]
+    },
+    "within_fold_tuned": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": -1.424646433415925e-07,
+      "positive_classes": 14,
+      "bootstrap95": [
+        -9.826836508993371e-07,
+        5.361310810962175e-07
+      ]
+    },
+    "photo_only": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": 1.0323462299071253,
+      "positive_classes": 11,
+      "bootstrap95": [
+        -1.4517506233517392,
+        5.26238292746401
+      ]
+    },
+    "photo_only_tuned": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": -0.5562429835398992,
+      "positive_classes": 18,
+      "bootstrap95": [
+        -3.763095943331719,
+        2.6927031123141436
+      ]
+    },
+    "frequency": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": 9.983214649558068,
+      "positive_classes": 23,
+      "bootstrap95": [
+        1.7889459909001988,
+        19.355340252108864
+      ]
+    },
+    "frequency_tuned": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": -1.674434238175551,
+      "positive_classes": 15,
+      "bootstrap95": [
+        -5.104813834093512,
+        1.7589661712571922
+      ]
+    },
+    "random": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": 15.251083627343178,
+      "positive_classes": 22,
+      "bootstrap95": [
+        5.511630049099526,
+        26.04246938926478
+      ]
+    },
+    "random_tuned": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": -0.5737193276484808,
+      "positive_classes": 19,
+      "bootstrap95": [
+        -3.6966015764077502,
+        2.379252118741472
+      ]
+    },
+    "rgb_neighbor_mean": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": -4.044542534897725,
+      "positive_classes": 7,
+      "bootstrap95": [
+        -7.755807715033492,
+        0.11351851755132146
+      ]
+    }
+  },
+  "build_seconds_after_measurements": {
+    "replicated": 0.3371625849999873,
+    "unreplicated": 0.3575546300003225,
+    "unreplicated_tuned": 0.37793684200005373,
+    "within_fold": 0.17549265700017713,
+    "photo_only": 0.37566704600021694,
+    "photo_only_tuned": 0.43214273000012327,
+    "frequency": 0.3650917039999513,
+    "frequency_tuned": 0.37252908299979026,
+    "random": 0.35438932599981854,
+    "random_tuned": 0.3722588530004032
+  },
+  "heldout_visual_reference": {
+    "replicated": {
+      "explained_vs_mean": 0.917273998260498,
+      "nonanchor_mse": 0.025268081575632095,
+      "effective_anchors": 36
+    },
+    "unreplicated": {
+      "explained_vs_mean": 0.917811930179596,
+      "nonanchor_mse": 0.0253834817558527,
+      "effective_anchors": 36
+    },
+    "within_fold": {
+      "explained_vs_mean": 0.9176645278930664,
+      "nonanchor_mse": 0.02534293197095394,
+      "effective_anchors": 36
+    },
+    "photo_only": {
+      "explained_vs_mean": 0.9194347858428955,
+      "nonanchor_mse": 0.02498614229261875,
+      "effective_anchors": 36
+    },
+    "frequency": {
+      "explained_vs_mean": 0.8938149213790894,
+      "nonanchor_mse": 0.031900737434625626,
+      "effective_anchors": 36
+    },
+    "random": {
+      "explained_vs_mean": 0.7226940989494324,
+      "nonanchor_mse": 0.03774919733405113,
+      "effective_anchors": 36
+    }
+  },
+  "anchors": [
+    "palm tree",
+    "vehicle",
+    "watch",
+    "helicopter",
+    "balloon",
+    "panda",
+    "toilet",
+    "baseball bat",
+    "pear",
+    "motorcycle",
+    "house",
+    "mobile phone",
+    "insect",
+    "bus",
+    "wine glass",
+    "lamp",
+    "television",
+    "glasses",
+    "truck",
+    "boat",
+    "mug",
+    "horse",
+    "ambulance",
+    "skull",
+    "butterfly",
+    "computer monitor",
+    "aircraft",
+    "building",
+    "sofa bed",
+    "hammer",
+    "wine",
+    "seahorse",
+    "organ (musical instrument)",
+    "infant bed",
+    "sports uniform",
+    "sunglasses"
+  ],
+  "historical_dot_drift_points": [
+    0.000915345604681761,
+    0.0009389703507451941
+  ],
+  "per_query_sha256": "f2318fdf16c7d3a980d0fdd7bdabcefcc027d2c8fbfc6c9758cd264f023f2ceb"
+}

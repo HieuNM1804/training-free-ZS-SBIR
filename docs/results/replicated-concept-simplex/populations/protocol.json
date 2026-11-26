@@ -1,0 +1,57 @@
+{
+  "config": {
+    "commit": "673c3fa",
+    "seed": 42,
+    "counts": [
+      8,
+      16,
+      32,
+      64,
+      128,
+      256
+    ],
+    "sizes": [
+      12,
+      16,
+      24,
+      32,
+      48,
+      64,
+      96,
+      128
+    ],
+    "probe_images": 1024,
+    "prompts": [
+      "a drawing of a {}.",
+      "a photo of the {}."
+    ],
+    "checkpoint": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+    "evaluator": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+    "toy": {
+      "raw": [
+        [
+          0.3333333134651184,
+          0.6666666269302368
+        ]
+      ],
+      "corrected": [
+        [
+          0.6666666865348816,
+          0.3333333432674408
+        ]
+      ]
+    },
+    "input_manifest": "3991a0d1196cad1bdc8ac0a5fe759f246ec50fd9d9322b3c2c612eba12affcf8",
+    "lexical_bank": "6ab78d9ccf21027ba7ce4a4e96a19d8afd092ef178fb12ce5e8c38633c0107be",
+    "selection": "Maximize equal-weight full Sketchy mAP, then mean precision. TU only after freeze.",
+    "hypothesis": "One conditional mean loses multiple visual modes and outside-simplex nouns need not encode a known subject. Recover latent mixture masses from both probe populations, then invert anchor reporting rates.",
+    "arms": [
+      "replicated",
+      "frequency",
+      "single_reader",
+      "raw",
+      "donor"
+    ]
+  },
+  "sha256": "f477ed086120423170d49249c0424939a8a093197a37856f6e659c5445274ec9"
+}

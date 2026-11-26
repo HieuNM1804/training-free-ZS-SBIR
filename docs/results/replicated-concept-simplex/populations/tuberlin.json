@@ -1,0 +1,544 @@
+{
+  "commit": "673c3fa",
+  "selection": "3ef0e89cabfc6f26ce123a8d9b5c3a84cb1dfe5595c4e3f50924e37d20513d25",
+  "queries": 2130,
+  "gallery": 27262,
+  "classes": 30,
+  "cutoffs": [
+    0,
+    100
+  ],
+  "metrics": {
+    "dot": [
+      73.45634247939334,
+      73.98028175237243
+    ],
+    "raw_tuned": [
+      79.11358608844571,
+      77.24929575856443
+    ],
+    "frequency_tuned": [
+      76.31183800114835,
+      74.28075120884907
+    ],
+    "donor_tuned": [
+      78.19562615820168,
+      76.65258216527356
+    ],
+    "replicated_tuned": [
+      79.578351135029,
+      77.5488262417171
+    ],
+    "single_reader_tuned": [
+      79.57835429264975,
+      77.5488262417171
+    ],
+    "replicated": [
+      79.578351135029,
+      77.5488262417171
+    ],
+    "frequency": [
+      61.729294628149745,
+      59.46572765742949
+    ],
+    "single_reader": [
+      79.57835429264975,
+      77.5488262417171
+    ],
+    "random": [
+      37.7001251450613,
+      35.61173718134072
+    ],
+    "raw": [
+      78.82742108781538,
+      77.10751180882465
+    ],
+    "target_only": [
+      79.39536126245233,
+      77.34694831877808
+    ],
+    "source_only": [
+      79.44868375665285,
+      77.66854468803031
+    ],
+    "target_fit": [
+      79.15647090552594,
+      76.64929573043761
+    ],
+    "flat_prior": [
+      80.1502481908122,
+      76.66150244530027
+    ],
+    "native_target_readout": [
+      79.26724097537348,
+      77.5253521773457
+    ],
+    "all_601": [
+      73.95108633436385,
+      72.69201885008127
+    ],
+    "donor_matched_k": [
+      77.81414926810706,
+      76.56103292007892
+    ]
+  },
+  "mechanism": {
+    "anchor_words": [
+      "palm tree",
+      "helicopter",
+      "watch",
+      "motorcycle",
+      "balloon",
+      "panda",
+      "pear",
+      "mobile phone",
+      "toilet",
+      "bus",
+      "wine glass",
+      "baseball bat",
+      "house",
+      "lamp",
+      "glasses",
+      "truck",
+      "horse",
+      "insect",
+      "television",
+      "mug",
+      "boat",
+      "vehicle",
+      "butterfly",
+      "ambulance",
+      "computer monitor",
+      "skull",
+      "aircraft",
+      "sofa bed",
+      "tower",
+      "hammer",
+      "wine",
+      "seahorse"
+    ],
+    "fit": {
+      "kl_uniform_to_reconstructed": 0.006706960295229462,
+      "prior": [
+        0.06292311102151871,
+        0.05279480293393135,
+        0.03740344196557999,
+        0.03604217246174812,
+        0.06148234009742737,
+        0.014515150338411331,
+        0.04574216902256012,
+        0.025209195911884308,
+        0.0428461879491806,
+        0.009371062740683556,
+        0.03474588319659233,
+        0.03146802634000778,
+        0.04915548488497734,
+        0.050245657563209534,
+        0.03724801540374756,
+        0.04004787281155586,
+        0.010860062204301357,
+        0.041027020663022995,
+        0.028531726449728012,
+        0.028625519946217537,
+        0.03368322551250458,
+        0.08887771517038345,
+        0.004079175181686878,
+        0.02251567132771015,
+        0.00574510870501399,
+        0.0026026214472949505,
+        0.009325487539172173,
+        0.0189627967774868,
+        0.043974343687295914,
+        0.01917550340294838,
+        0.005669239442795515,
+        0.0051042065024375916
+      ],
+      "effective_components": 22.69913101196289
+    },
+    "proxy_to_sketch": {
+      "anchor_purity_avg": 0.8872668743133545,
+      "above_80pct_purity": 27,
+      "distinct_dominant_classes": 29,
+      "query_top1_fixed": 72,
+      "query_top1_damaged": 62,
+      "log_reporting_rate_corr": 0.2970643937587738,
+      "rows": [
+        {
+          "purity": 0.9918033480644226,
+          "class": 21,
+          "sketch_measured": 0.5941185355186462,
+          "predicted": 0.9027122259140015
+        },
+        {
+          "purity": 0.9812138080596924,
+          "class": 0,
+          "sketch_measured": 0.4103457033634186,
+          "predicted": 1.0157510042190552
+        },
+        {
+          "purity": 0.9748509526252747,
+          "class": 1,
+          "sketch_measured": 0.22695834934711456,
+          "predicted": 0.844710648059845
+        },
+        {
+          "purity": 0.9840776324272156,
+          "class": 15,
+          "sketch_measured": 0.3191840946674347,
+          "predicted": 0.8006994128227234
+        },
+        {
+          "purity": 0.9834121465682983,
+          "class": 17,
+          "sketch_measured": 0.39511576294898987,
+          "predicted": 0.6028442978858948
+        },
+        {
+          "purity": 0.9245109558105469,
+          "class": 11,
+          "sketch_measured": 0.03960111737251282,
+          "predicted": 0.8305071592330933
+        },
+        {
+          "purity": 0.9562457203865051,
+          "class": 4,
+          "sketch_measured": 0.4517340064048767,
+          "predicted": 0.49161508679389954
+        },
+        {
+          "purity": 0.9703971147537231,
+          "class": 22,
+          "sketch_measured": 0.3347838819026947,
+          "predicted": 0.6228297352790833
+        },
+        {
+          "purity": 0.9665727615356445,
+          "class": 10,
+          "sketch_measured": 0.3740626275539398,
+          "predicted": 0.45439234375953674
+        },
+        {
+          "purity": 0.9091007113456726,
+          "class": 28,
+          "sketch_measured": 0.4653201699256897,
+          "predicted": 0.9788950681686401
+        },
+        {
+          "purity": 0.9729194641113281,
+          "class": 14,
+          "sketch_measured": 0.8639291524887085,
+          "predicted": 0.5807636976242065
+        },
+        {
+          "purity": 0.9597355723381042,
+          "class": 9,
+          "sketch_measured": 0.007100952789187431,
+          "predicted": 0.6387442350387573
+        },
+        {
+          "purity": 0.9271132946014404,
+          "class": 8,
+          "sketch_measured": 0.6737350225448608,
+          "predicted": 0.6895001530647278
+        },
+        {
+          "purity": 0.9671202898025513,
+          "class": 27,
+          "sketch_measured": 0.4296795725822449,
+          "predicted": 0.45595866441726685
+        },
+        {
+          "purity": 0.954699695110321,
+          "class": 16,
+          "sketch_measured": 0.5588107109069824,
+          "predicted": 0.5592037439346313
+        },
+        {
+          "purity": 0.8608189821243286,
+          "class": 20,
+          "sketch_measured": 0.3954695463180542,
+          "predicted": 0.7263052463531494
+        },
+        {
+          "purity": 0.961627721786499,
+          "class": 23,
+          "sketch_measured": 0.5006438493728638,
+          "predicted": 0.5260826349258423
+        },
+        {
+          "purity": 0.9489337801933289,
+          "class": 3,
+          "sketch_measured": 0.12368650734424591,
+          "predicted": 0.28005626797676086
+        },
+        {
+          "purity": 0.9627789855003357,
+          "class": 29,
+          "sketch_measured": 0.4594193696975708,
+          "predicted": 0.5147314667701721
+        },
+        {
+          "purity": 0.48772913217544556,
+          "class": 13,
+          "sketch_measured": 0.3661329746246338,
+          "predicted": 0.45356422662734985
+        },
+        {
+          "purity": 0.9524433016777039,
+          "class": 24,
+          "sketch_measured": 0.5399736762046814,
+          "predicted": 0.49412107467651367
+        },
+        {
+          "purity": 0.6527804732322693,
+          "class": 25,
+          "sketch_measured": 0.1628590077161789,
+          "predicted": 0.48647624254226685
+        },
+        {
+          "purity": 0.915810227394104,
+          "class": 12,
+          "sketch_measured": 0.17679685354232788,
+          "predicted": 0.49995777010917664
+        },
+        {
+          "purity": 0.9036710262298584,
+          "class": 20,
+          "sketch_measured": 0.01626061461865902,
+          "predicted": 0.43728217482566833
+        },
+        {
+          "purity": 0.95188969373703,
+          "class": 29,
+          "sketch_measured": 0.24518384039402008,
+          "predicted": 2.1961417198181152
+        },
+        {
+          "purity": 0.9680993556976318,
+          "class": 19,
+          "sketch_measured": 0.36445921659469604,
+          "predicted": 0.3922347128391266
+        },
+        {
+          "purity": 0.6914626359939575,
+          "class": 7,
+          "sketch_measured": 0.314438134431839,
+          "predicted": 0.42459791898727417
+        },
+        {
+          "purity": 0.8678249716758728,
+          "class": 5,
+          "sketch_measured": 0.13022539019584656,
+          "predicted": 0.09328361600637436
+        },
+        {
+          "purity": 0.8494229912757874,
+          "class": 26,
+          "sketch_measured": 0.025971388444304466,
+          "predicted": 0.07018660753965378
+        },
+        {
+          "purity": 0.4025815427303314,
+          "class": 6,
+          "sketch_measured": 0.16461551189422607,
+          "predicted": 0.15652722120285034
+        },
+        {
+          "purity": 0.9465381503105164,
+          "class": 14,
+          "sketch_measured": 0.021617554128170013,
+          "predicted": 1.680110216140747
+        },
+        {
+          "purity": 0.6443539261817932,
+          "class": 2,
+          "sketch_measured": 0.023718951269984245,
+          "predicted": 0.0570039302110672
+        }
+      ]
+    }
+  },
+  "primary_minus_control_class_macro_ap": {
+    "dot": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": 6.232675130292773,
+      "positive_classes": 21,
+      "bootstrap95": [
+        2.5202887159834306,
+        10.333235310359546
+      ]
+    },
+    "raw_tuned": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": 0.5032890943189462,
+      "positive_classes": 12,
+      "bootstrap95": [
+        -2.092336434591562,
+        3.5200784688380855
+      ]
+    },
+    "frequency_tuned": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": 3.354195300117135,
+      "positive_classes": 19,
+      "bootstrap95": [
+        0.9661889041246225,
+        5.896956155868247
+      ]
+    },
+    "donor_tuned": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": 1.4421503310402235,
+      "positive_classes": 11,
+      "bootstrap95": [
+        -1.513021380752325,
+        4.976671099588274
+      ]
+    },
+    "replicated_tuned": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": 0.0,
+      "positive_classes": 0,
+      "bootstrap95": [
+        0.0,
+        0.0
+      ]
+    },
+    "single_reader_tuned": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": -3.204520172395142e-06,
+      "positive_classes": 15,
+      "bootstrap95": [
+        -8.122386769614334e-06,
+        1.8386080789263998e-07
+      ]
+    },
+    "replicated": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": 0.0,
+      "positive_classes": 0,
+      "bootstrap95": [
+        0.0,
+        0.0
+      ]
+    },
+    "frequency": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": 17.553132652491332,
+      "positive_classes": 15,
+      "bootstrap95": [
+        6.211286540242533,
+        29.91225117733702
+      ]
+    },
+    "single_reader": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": -3.204520172395142e-06,
+      "positive_classes": 15,
+      "bootstrap95": [
+        -8.122386769614334e-06,
+        1.8386080789263998e-07
+      ]
+    },
+    "random": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": 41.85480068127314,
+      "positive_classes": 28,
+      "bootstrap95": [
+        32.5493277751406,
+        51.41105633666118
+      ]
+    },
+    "raw": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": 0.7981634540328135,
+      "positive_classes": 14,
+      "bootstrap95": [
+        -2.2024436191356895,
+        4.343603394347785
+      ]
+    },
+    "target_only": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": 0.21897112379471462,
+      "positive_classes": 11,
+      "bootstrap95": [
+        -2.1969083095217745,
+        3.1353112637996645
+      ]
+    },
+    "source_only": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": 0.13166377730667592,
+      "positive_classes": 16,
+      "bootstrap95": [
+        -0.6331902126828208,
+        0.9819135102163998
+      ]
+    },
+    "target_fit": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": 0.42074234630757323,
+      "positive_classes": 22,
+      "bootstrap95": [
+        -0.25133154234072813,
+        1.0737654405574235
+      ]
+    },
+    "flat_prior": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": -0.5139829854170481,
+      "positive_classes": 17,
+      "bootstrap95": [
+        -3.965110461215178,
+        2.6875262101987993
+      ]
+    },
+    "native_target_readout": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": 0.31446574851870535,
+      "positive_classes": 19,
+      "bootstrap95": [
+        -0.840194786110272,
+        1.4406742801765602
+      ]
+    },
+    "all_601": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": 5.728862761209409,
+      "positive_classes": 21,
+      "bootstrap95": [
+        1.9395501091020801,
+        9.782172358299915
+      ]
+    },
+    "donor_matched_k": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": 1.8278995600839456,
+      "positive_classes": 12,
+      "bootstrap95": [
+        -1.3000486210982005,
+        5.483244426300128
+      ]
+    }
+  },
+  "per_query_sha256": "7d6415df8162cfce750d5b1d29ec0b32f767abef602e109cea105c28e2edc681"
+}

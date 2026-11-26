@@ -1,0 +1,327 @@
+{
+  "commit": "f1c4987",
+  "selection": "5ea3dd0d9c3ef29dc28340cb6e58111ebef554522ba3ed8ef796db5dc1648944",
+  "device": "NVIDIA L4",
+  "queries": 14179,
+  "gallery": 17100,
+  "classes": 25,
+  "cutoffs": [
+    0,
+    100
+  ],
+  "metrics": {
+    "dot": [
+      75.34548766158036,
+      77.09873763341106
+    ],
+    "replicated": [
+      75.87790253256689,
+      74.79892799612239
+    ],
+    "restrict_query_to_anchor_words": [
+      77.61057131259743,
+      76.4568023170935
+    ],
+    "replace_visual_assignment_by_word_mixture": [
+      73.78159772681686,
+      74.32174347433018
+    ],
+    "replicated_tuned": [
+      75.87790253256689,
+      74.79892799612239
+    ],
+    "unreplicated": [
+      75.64406351944517,
+      74.54221031452978
+    ],
+    "unreplicated_tuned": [
+      77.22579714048622,
+      76.67014599760746
+    ],
+    "within_fold": [
+      75.87790272168206,
+      74.79892799612239
+    ],
+    "within_fold_tuned": [
+      75.87790272168206,
+      74.79892799612239
+    ],
+    "photo_only": [
+      75.64406349096492,
+      74.54221031452978
+    ],
+    "photo_only_tuned": [
+      76.33705752778182,
+      75.89886454818439
+    ],
+    "frequency": [
+      71.01271938195899,
+      69.35249313092596
+    ],
+    "frequency_tuned": [
+      77.92398681528763,
+      78.13921997938296
+    ],
+    "random": [
+      66.21581895086554,
+      64.73143382522227
+    ],
+    "random_tuned": [
+      77.37499081603045,
+      77.4345863684334
+    ],
+    "rgb_neighbor_mean": [
+      80.51869063254232,
+      80.0628394848631
+    ]
+  },
+  "delta_class_macro_ap": {
+    "dot": {
+      "classes": 25,
+      "queries": 14179,
+      "mean_across_classes": 0.8600491571426392,
+      "positive_classes": 9,
+      "bootstrap95": [
+        -4.099279611587525,
+        6.91894718146324
+      ]
+    },
+    "replicated": {
+      "classes": 25,
+      "queries": 14179,
+      "mean_across_classes": 0.0,
+      "positive_classes": 0,
+      "bootstrap95": [
+        0.0,
+        0.0
+      ]
+    },
+    "restrict_query_to_anchor_words": {
+      "classes": 25,
+      "queries": 14179,
+      "mean_across_classes": -1.3741470527648927,
+      "positive_classes": 6,
+      "bootstrap95": [
+        -7.456060511350632,
+        5.984719368934631
+      ]
+    },
+    "replace_visual_assignment_by_word_mixture": {
+      "classes": 25,
+      "queries": 14179,
+      "mean_across_classes": 2.0849311184883117,
+      "positive_classes": 12,
+      "bootstrap95": [
+        -1.0466979766488074,
+        6.848304758667945
+      ]
+    },
+    "replicated_tuned": {
+      "classes": 25,
+      "queries": 14179,
+      "mean_across_classes": 0.0,
+      "positive_classes": 0,
+      "bootstrap95": [
+        0.0,
+        0.0
+      ]
+    },
+    "unreplicated": {
+      "classes": 25,
+      "queries": 14179,
+      "mean_across_classes": 0.35490894872695206,
+      "positive_classes": 20,
+      "bootstrap95": [
+        -2.616998712938279,
+        2.633972137778997
+      ]
+    },
+    "unreplicated_tuned": {
+      "classes": 25,
+      "queries": 14179,
+      "mean_across_classes": -1.1273571479320526,
+      "positive_classes": 9,
+      "bootstrap95": [
+        -3.3559733391404154,
+        1.1104101430773716
+      ]
+    },
+    "within_fold": {
+      "classes": 25,
+      "queries": 14179,
+      "mean_across_classes": -2.1835972717099138e-07,
+      "positive_classes": 11,
+      "bootstrap95": [
+        -6.701149836132459e-07,
+        1.939482988788652e-07
+      ]
+    },
+    "within_fold_tuned": {
+      "classes": 25,
+      "queries": 14179,
+      "mean_across_classes": -2.1835972717099138e-07,
+      "positive_classes": 11,
+      "bootstrap95": [
+        -6.701149836132459e-07,
+        1.939482988788652e-07
+      ]
+    },
+    "photo_only": {
+      "classes": 25,
+      "queries": 14179,
+      "mean_across_classes": 0.3549088856205344,
+      "positive_classes": 20,
+      "bootstrap95": [
+        -2.6169987560398877,
+        2.6339720951393244
+      ]
+    },
+    "photo_only_tuned": {
+      "classes": 25,
+      "queries": 14179,
+      "mean_across_classes": -0.2306865058839321,
+      "positive_classes": 15,
+      "bootstrap95": [
+        -3.38407103355974,
+        2.7038662073016155
+      ]
+    },
+    "frequency": {
+      "classes": 25,
+      "queries": 14179,
+      "mean_across_classes": 5.161500161290169,
+      "positive_classes": 17,
+      "bootstrap95": [
+        -2.3479602502733465,
+        13.985282168626785
+      ]
+    },
+    "frequency_tuned": {
+      "classes": 25,
+      "queries": 14179,
+      "mean_across_classes": -1.8321157813072204,
+      "positive_classes": 7,
+      "bootstrap95": [
+        -4.601904261797666,
+        1.021035304129123
+      ]
+    },
+    "random": {
+      "classes": 25,
+      "queries": 14179,
+      "mean_across_classes": 9.55666894376278,
+      "positive_classes": 18,
+      "bootstrap95": [
+        3.6709441488087178,
+        16.677348223805428
+      ]
+    },
+    "random_tuned": {
+      "classes": 25,
+      "queries": 14179,
+      "mean_across_classes": -1.279734013080597,
+      "positive_classes": 9,
+      "bootstrap95": [
+        -4.089773777604103,
+        1.7531434000134452
+      ]
+    },
+    "rgb_neighbor_mean": {
+      "classes": 25,
+      "queries": 14179,
+      "mean_across_classes": -4.43606997013092,
+      "positive_classes": 5,
+      "bootstrap95": [
+        -8.373714872717857,
+        -0.13631817483902142
+      ]
+    }
+  },
+  "build_seconds_after_measurements": {
+    "replicated": 0.3279870790001951,
+    "unreplicated": 0.15738585500002955,
+    "unreplicated_tuned": 0.37062502599974323,
+    "within_fold": 0.15290791899997203,
+    "photo_only": 0.15802233900012652,
+    "photo_only_tuned": 0.42998272199974963,
+    "frequency": 0.377050484999927,
+    "frequency_tuned": 0.6832405979998839,
+    "random": 0.2598798419999184,
+    "random_tuned": 0.3797606910002287
+  },
+  "heldout_visual_reference": {
+    "replicated": {
+      "explained_vs_mean": 0.9173985719680786,
+      "nonanchor_mse": 0.03120824135839939,
+      "effective_anchors": 36
+    },
+    "unreplicated": {
+      "explained_vs_mean": 0.9171791672706604,
+      "nonanchor_mse": 0.031827908009290695,
+      "effective_anchors": 36
+    },
+    "within_fold": {
+      "explained_vs_mean": 0.9154018759727478,
+      "nonanchor_mse": 0.03268684819340706,
+      "effective_anchors": 36
+    },
+    "photo_only": {
+      "explained_vs_mean": 0.9171791672706604,
+      "nonanchor_mse": 0.031827908009290695,
+      "effective_anchors": 36
+    },
+    "frequency": {
+      "explained_vs_mean": 0.8642395734786987,
+      "nonanchor_mse": 0.045909106731414795,
+      "effective_anchors": 36
+    },
+    "random": {
+      "explained_vs_mean": 0.7915207147598267,
+      "nonanchor_mse": 0.036851417273283005,
+      "effective_anchors": 36
+    }
+  },
+  "anchors": [
+    "squirrel",
+    "scissors",
+    "butterfly",
+    "tank",
+    "camel",
+    "pineapple",
+    "teddy bear",
+    "chicken",
+    "aircraft",
+    "harp",
+    "snail",
+    "parrot",
+    "deer",
+    "wine",
+    "wheelchair",
+    "horse",
+    "umbrella",
+    "swan",
+    "rifle",
+    "coffee cup",
+    "tree",
+    "sea turtle",
+    "palm tree",
+    "chime",
+    "sombrero",
+    "goose",
+    "shark",
+    "tableware",
+    "tower",
+    "christmas tree",
+    "drum",
+    "bottle",
+    "telephone",
+    "wine rack",
+    "oven",
+    "cello"
+  ],
+  "historical_dot_drift_points": [
+    -0.0009773198077311918,
+    -0.002680025809283393
+  ],
+  "per_query_sha256": "1ed96caadcf503aa83a7a58b8f748b5fb55ab3956248390b6d84341735458db9"
+}

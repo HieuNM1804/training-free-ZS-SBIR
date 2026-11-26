@@ -1,0 +1,70 @@
+{
+  "config": {
+    "commit": "f1c4987",
+    "seed": 42,
+    "checkpoint": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+    "prompts": [
+      "a drawing of a {}.",
+      "a photo of the {}."
+    ],
+    "evaluator": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+    "gallery_only": true,
+    "queries_independent": true,
+    "sizes": [
+      12,
+      24,
+      36,
+      48,
+      72,
+      96,
+      144,
+      216
+    ],
+    "precisions": [
+      16,
+      32,
+      64,
+      128
+    ],
+    "controls": [
+      "unreplicated",
+      "within_fold",
+      "photo_only",
+      "frequency",
+      "random"
+    ],
+    "donors": [
+      8,
+      16,
+      32,
+      64,
+      128,
+      256
+    ],
+    "reference": "Locked semantic Dot with all 601 public words and the native prompt per domain.",
+    "selection": "Equal weights on the two full unseen Sketchy mAPs, then mean precision. Freeze before TU.",
+    "realization": {
+      "aligned": [
+        0,
+        1
+      ],
+      "exchanged_axes": [
+        0,
+        2
+      ],
+      "within_reader_only": [
+        0,
+        1
+      ],
+      "mixture": [
+        0.0,
+        0.5,
+        0.5,
+        0.0
+      ]
+    },
+    "vocabulary_file": "6ab78d9ccf21027ba7ce4a4e96a19d8afd092ef178fb12ce5e8c38633c0107be",
+    "input_manifest": "3991a0d1196cad1bdc8ac0a5fe759f246ec50fd9d9322b3c2c612eba12affcf8"
+  },
+  "sha256": "5e8185404ec9c4aa5d76aa92b90e18e9668c892e5b8cff4175f7bad2316040c7"
+}
