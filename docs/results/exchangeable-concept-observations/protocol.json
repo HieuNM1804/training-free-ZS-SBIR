@@ -1,0 +1,62 @@
+{
+  "config": {
+    "commit": "7b42c89",
+    "checkpoint": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+    "seed": 42,
+    "prompts": [
+      "a drawing of a {}.",
+      "a photo of the {}."
+    ],
+    "evaluator": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+    "feature_manifest": "3991a0d1196cad1bdc8ac0a5fe759f246ec50fd9d9322b3c2c612eba12affcf8",
+    "observations": "Whole sketch and four corner windows, average native and reflected word posterior within view",
+    "gallery": "Each unmodified, native photo word posterior is its own Dirichlet base measure",
+    "scales": [
+      0.5,
+      0.75
+    ],
+    "alpha": [
+      0.125,
+      0.5,
+      2.0,
+      8.0,
+      32.0
+    ],
+    "controls": [
+      "two_extremes",
+      "one_draw",
+      "independent",
+      "average"
+    ],
+    "example": {
+      "equal_extreme_models": [
+        [
+          0.0,
+          0.037037041038274765
+        ],
+        [
+          0.0,
+          0.037037041038274765
+        ]
+      ],
+      "partial": [
+        0.02469136193394661,
+        0.006172840483486652
+      ],
+      "equal_average_observations": [
+        [
+          0.19780002534389496,
+          0.19780002534389496
+        ],
+        [
+          0.25,
+          0.25
+        ]
+      ],
+      "partitions_of_five": 52
+    },
+    "selection": "Select on equal-weight full unseen Sketchy mAP. Use mean precision as tie-break. Freeze before transfer.",
+    "stop": "Require at least four absolute mAP points on each Sketchy split and an advantage over controls for partial sharing. Otherwise stop this line."
+  },
+  "sha256": "db14e16df018d2e2bb5d81d9a5f860efdb824992a04e5b57faa5b6bf14042e20"
+}

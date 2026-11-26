@@ -1,0 +1,223 @@
+{
+  "commit": "7b42c89",
+  "selection": "ce9f8abfca3774a41f9aa77c3f5bcc18956d47cdeb310054b801d749d825ec6c",
+  "queries": 2130,
+  "gallery": 27262,
+  "classes": 30,
+  "cutoffs": [
+    0,
+    100
+  ],
+  "device": "NVIDIA L4",
+  "metrics": {
+    "partial": [
+      71.5290046358446,
+      73.02488272266349
+    ],
+    "two_extremes": [
+      68.18958353496075,
+      70.86666674768561
+    ],
+    "one_draw": [
+      65.63076885985517,
+      67.28591556210472
+    ],
+    "independent": [
+      71.99851013881815,
+      73.43708927686295
+    ],
+    "average": [
+      72.86086267426593,
+      74.63051654547102
+    ],
+    "dot": [
+      73.45634247939334,
+      73.98028175237243
+    ],
+    "partial_tuned": [
+      71.5290046358446,
+      73.02488272266349
+    ],
+    "two_extremes_tuned": [
+      68.18958353496075,
+      70.86666674768561
+    ],
+    "one_draw_tuned": [
+      65.63076885985517,
+      67.28591556210472
+    ],
+    "independent_tuned": [
+      71.99851013881815,
+      73.43708927686295
+    ],
+    "average_tuned": [
+      72.86086267426593,
+      74.63051654547102
+    ]
+  },
+  "partial_minus_control_class_macro_ap": {
+    "partial": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": 0.0,
+      "positive_classes": 0,
+      "bootstrap95": [
+        0.0,
+        0.0
+      ]
+    },
+    "two_extremes": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": 3.3528134149188795,
+      "positive_classes": 26,
+      "bootstrap95": [
+        1.6182140331187596,
+        5.887905009187137
+      ]
+    },
+    "one_draw": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": 5.909831519921621,
+      "positive_classes": 27,
+      "bootstrap95": [
+        3.4166496809820335,
+        9.195143577555815
+      ]
+    },
+    "independent": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": -0.468365549047788,
+      "positive_classes": 10,
+      "bootstrap95": [
+        -1.3267353473355372,
+        0.1345845660008488
+      ]
+    },
+    "average": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": -1.326059081281225,
+      "positive_classes": 8,
+      "bootstrap95": [
+        -2.484018823287139,
+        -0.33917844509085066
+      ]
+    },
+    "dot": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": -1.9335623774056634,
+      "positive_classes": 10,
+      "bootstrap95": [
+        -4.27320622585093,
+        0.2594266894413153
+      ]
+    },
+    "partial_tuned": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": 0.0,
+      "positive_classes": 0,
+      "bootstrap95": [
+        0.0,
+        0.0
+      ]
+    },
+    "two_extremes_tuned": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": 3.3528134149188795,
+      "positive_classes": 26,
+      "bootstrap95": [
+        1.6182140331187596,
+        5.887905009187137
+      ]
+    },
+    "one_draw_tuned": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": 5.909831519921621,
+      "positive_classes": 27,
+      "bootstrap95": [
+        3.4166496809820335,
+        9.195143577555815
+      ]
+    },
+    "independent_tuned": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": -0.468365549047788,
+      "positive_classes": 10,
+      "bootstrap95": [
+        -1.3267353473355372,
+        0.1345845660008488
+      ]
+    },
+    "average_tuned": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": -1.326059081281225,
+      "positive_classes": 8,
+      "bootstrap95": [
+        -2.484018823287139,
+        -0.33917844509085066
+      ]
+    }
+  },
+  "observed_delta_top1_counts": {
+    "partial": {
+      "fixed": 0,
+      "damaged": 0
+    },
+    "two_extremes": {
+      "fixed": 10,
+      "damaged": 2
+    },
+    "one_draw": {
+      "fixed": 91,
+      "damaged": 20
+    },
+    "independent": {
+      "fixed": 5,
+      "damaged": 6
+    },
+    "average": {
+      "fixed": 38,
+      "damaged": 51
+    },
+    "dot": {
+      "fixed": 89,
+      "damaged": 126
+    },
+    "partial_tuned": {
+      "fixed": 0,
+      "damaged": 0
+    },
+    "two_extremes_tuned": {
+      "fixed": 10,
+      "damaged": 2
+    },
+    "one_draw_tuned": {
+      "fixed": 91,
+      "damaged": 20
+    },
+    "independent_tuned": {
+      "fixed": 5,
+      "damaged": 6
+    },
+    "average_tuned": {
+      "fixed": 38,
+      "damaged": 51
+    }
+  },
+  "heldout_whole_description": {},
+  "baseline_drift_points": [
+    0.000915345604681761,
+    0.0009389703507451941
+  ],
+  "primary_near_zero_at_cutoff": 0,
+  "per_query_sha256": "bf00f18c75fe4b8096a8b04db2d0f500fcb1841b19e495e5ee50e1b2435c7d95"
+}
