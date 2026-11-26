@@ -144,7 +144,7 @@ def encode(root, rank, world, batch, workers):
                 print(f"GPU {rank} {dataset} {mode} rows {start}-{end} in {time.monotonic()-begun:.1f}s", flush=True)
 
 
-def load_split(root, name):
+def load_visual_split(root, name, scale=1.0):
     spec = json.loads((root / "manifest.json").read_bytes())
     dataset = "sketchy" if name in SKETCHY_SPLITS else "tuberlin"
     record = spec["datasets"][dataset]
@@ -163,9 +163,13 @@ def load_split(root, name):
         arrays[mode] = torch.cat([block["rgb"] for block in blocks])
         if mode == "sketch":
             arrays["mirror"] = torch.cat([block["mirror"] for block in blocks])
+    return Split.from_inputs((index["sketch"]["views"], index["photo"]["views"], arrays["sketch"],
+                              arrays["photo"], arrays["mirror"], None, None, scale, None), name)
+
+
+def load_split(root, name):
     lex = torch.load(root / "text.pt", weights_only=True)
-    split = Split.from_inputs((index["sketch"]["views"], index["photo"]["views"], arrays["sketch"],
-                              arrays["photo"], arrays["mirror"], None, None, lex["scale"], None), name)
+    split = load_visual_split(root, name, lex["scale"])
     return split, {k: v.cuda() for k, v in lex["text"].items()}, lex["words"]
 
 
