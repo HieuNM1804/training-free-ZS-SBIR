@@ -1,0 +1,48 @@
+{
+  "config": {
+    "commit": "862a451",
+    "seed": 42,
+    "sizes": [
+      12,
+      24,
+      36,
+      48,
+      72,
+      96,
+      144,
+      192
+    ],
+    "games": 16,
+    "listener_draws_per_cell": 8,
+    "coordinate_sweeps": 2,
+    "visual_lloyd_steps": 15,
+    "inputs": "3991a0d1196cad1bdc8ac0a5fe759f246ec50fd9d9322b3c2c612eba12affcf8",
+    "evaluator": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+    "backbone": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+    "prompts": [
+      "a drawing of a {}.",
+      "a photo of the {}."
+    ],
+    "toy": {
+      "separate": [
+        2,
+        5,
+        4
+      ],
+      "joint": [
+        1,
+        6,
+        3
+      ],
+      "log_likelihood": {
+        "before": -1.6597436666488647,
+        "after": -1.063127040863037,
+        "edits": 3
+      },
+      "global_optimum": -1.0130095481872559
+    },
+    "selection": "Full unseen Sketchy mean mAP, then mean precision. Same lock on TU.",
+    "hypothesis": "Labels that identify an image among alternatives form a code; changing a competitor label changes the utility of the current label. Anonymous reference tasks probe this without benchmark names."
+  },
+  "sha256": "d27be80c41d1581186ef460c1bb90c6baa184ab6c49ab3cad6db24d151cc8eac"
+}
