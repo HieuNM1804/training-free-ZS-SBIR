@@ -129,6 +129,27 @@ def numeric_steps(root, depth):
     return record["steps"]
 
 
+def eligibility(args):
+    """Record the descriptive replay decision before seeing any retrieval metrics."""
+    root = args.output
+    if list(root.glob("grid-*.json")) or (root/"freeze.json").exists():
+        raise ValueError("Numerical eligibility must be frozen before retrieval")
+    records = {d: read(root/f"numerics-{d}.json") for d in DEPTHS}
+    signature = read(root/"protocol.json")["sha256"]
+    if any(r["protocol"] != signature for r in records.values()):
+        raise ValueError("Numerical validation belongs to a different protocol")
+    eligible = [d for d, record in records.items() if record["steps"] is not None]
+    if not eligible:
+        raise ValueError("No numerically admissible map to score")
+    save_lock(root/"numerical-eligibility.json", {
+        "commit": args.revision, "original_protocol": signature, "eligible": eligible,
+        "all_depths_passed": len(eligible) == len(DEPTHS),
+        "numerics": {str(d): checksum(root/f"numerics-{d}.json") for d in DEPTHS},
+        "purpose": "Descriptive full-unseen replay of previously specified, numerically valid depths only. "
+                   "The original all-depth convergence hypothesis already failed. No retrieval metrics seen.",
+    })
+
+
 def scan(args):
     if args.split not in SKETCHY:
         raise ValueError("Development is restricted to the two Sketchy splits")
@@ -139,7 +160,7 @@ def scan(args):
     gallery = flow.projected(split.photo)
     replay = PrefixReplay(evaluator(args.evaluator), split.photo_labels, split.name)
     embeddings, means, seconds = {}, {}, {}
-    for depth in DEPTHS:
+    for depth in read(root/"numerical-eligibility.json")["config"]["eligible"]:
         since = time.perf_counter()
         vectors = embed(split, flow, depth, numeric_steps(root, depth))
         embeddings[str(depth)] = vectors.cpu()
@@ -157,6 +178,8 @@ def scan(args):
 def lock(args):
     root = args.output
     signature = read(root/"protocol.json")["sha256"]
+    decision = read(root/"numerical-eligibility.json")
+    eligible = decision["config"]["eligible"]
     grids, means = {}, {}
     for split in SKETCHY:
         names = [f"grid-{split}-{part}.json" for part in range(PARTS)]
@@ -166,14 +189,14 @@ def lock(args):
         grids.update({name: checksum(root/name) for name in names})
         weights = np.array([rec["queries"] for rec in records])
         means[split] = {str(d): np.average([rec["metrics"][str(d)] for rec in records], axis=0,
-                                           weights=weights).tolist() for d in DEPTHS}
+                                           weights=weights).tolist() for d in eligible}
     def criterion(d):
         result = np.mean([means[s][str(d)] for s in SKETCHY], axis=0)
         return result[0], result[1], -d
-    depth = max(DEPTHS, key=criterion)
+    depth = max(eligible, key=criterion)
     save_lock(root/"freeze.json", {"commit": args.revision, "protocol": signature, "grids": grids,
               "depth": depth, "steps": numeric_steps(root, depth), "selection_scores": means,
-              "numerics": {str(d): checksum(root/f"numerics-{d}.json") for d in DEPTHS}})
+              "eligibility": decision["sha256"], "numerics": {str(d): checksum(root/f"numerics-{d}.json") for d in DEPTHS}})
     print("Frozen depth", depth, means, flush=True)
 
 
@@ -221,6 +244,12 @@ def source_audit(split, cache, original, transformed, fixed, photos):
     return result
 
 
+def mean_other_cos(vectors):
+    vectors = unit(vectors.double())
+    n = len(vectors)
+    return ((vectors.sum(0).square().sum() - n) / (n * (n-1))).item()
+
+
 def official(args):
     root = args.output
     freeze = read(root/"freeze.json")
@@ -265,6 +294,8 @@ def official(args):
         "commit": args.revision, "selection": freeze["sha256"], "queries": len(original), "gallery": len(photos),
         "classes": len(split.sketch_labels.unique()), "device": torch.cuda.get_device_name(), "cutoffs": replay.cutoffs,
         "metrics": means, "source_identity_audit": audit, "per_query_sha256": checksum(artifact), "semantic_reference_sha256": ref_sha,
+        "average_cos_between_distinct_queries_after_ranking": {
+            "projected": mean_other_cos(projected), "flow": mean_other_cos(transformed), "fixed_shift": mean_other_cos(fixed)},
         "flow_minus_control_class_macro_ap": {k: class_interval(100*(rows["flow"][:,0]-v[:,0]), split.sketch_labels, seed=SEED)
                                              for k,v in rows.items() if k != "flow"},
     })
@@ -272,7 +303,7 @@ def official(args):
 
 if __name__ == "__main__":
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument("stage", choices=("protocol", "numeric", "scan", "lock", "official"))
+    p.add_argument("stage", choices=("protocol", "numeric", "eligibility", "scan", "lock", "official"))
     p.add_argument("--revision", required=True)
     p.add_argument("--cache", type=Path, default=DEFAULT_CACHE)
     p.add_argument("--output", type=Path, default=ROOT)

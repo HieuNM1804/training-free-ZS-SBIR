@@ -17,10 +17,11 @@ def run(revision, start_stage):
     logs = root / ("logs-" + FAMILY)
     logs.mkdir(exist_ok=True)
     command = [sys.executable, "-u", "-m", "tf_sbir.depiction_flow_study"]
-    stages = ("protocol", "numeric", "scan", "lock", "official")
+    stages = ("protocol", "numeric", "eligibility", "scan", "lock", "official")
     tasks = {
         "protocol": [[]],
         "numeric": [["--depth", str(d)] for d in (1, 3, 6)],
+        "eligibility": [[]],
         "scan": [["--split", s, "--part", str(p)] for s in ("sketchy_1", "sketchy_2") for p in (0, 1)],
         "lock": [[]],
         "official": [["--split", s] for s in ("sketchy_1", "sketchy_2", "tuberlin")],
@@ -50,6 +51,6 @@ def run(revision, start_stage):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("revision")
-    parser.add_argument("--start", default="protocol", choices=("protocol", "numeric", "scan", "lock", "official"))
+    parser.add_argument("--start", default="protocol", choices=("protocol", "numeric", "eligibility", "scan", "lock", "official"))
     args = parser.parse_args()
     run(args.revision, args.start)
