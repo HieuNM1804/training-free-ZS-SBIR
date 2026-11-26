@@ -1,0 +1,129 @@
+{
+  "protocol": "a3c89dd447e0d9fa422fd0b8b9c79f295ab8c403bbf0bd962ba1d6ae775cbc5a",
+  "queries": 2130,
+  "gallery": 27262,
+  "classes": 30,
+  "cutoffs": [
+    0,
+    100
+  ],
+  "metrics": {
+    "dot": [
+      73.45542713378866,
+      73.97934278202169
+    ],
+    "concept_hull": [
+      73.45523991646078,
+      73.97934278202169
+    ],
+    "shuffled_directions": [
+      73.45525355008321,
+      73.97934278202169
+    ],
+    "pooled_hull": [
+      73.45537705005894,
+      73.97934278202169
+    ],
+    "rgb_diffusion": [
+      76.74575145933514,
+      75.3291080259836
+    ]
+  },
+  "concept_hull_minus_control_macro_ap": {
+    "dot": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": -0.00019207665519345373,
+      "positive_classes": 4,
+      "bootstrap95": [
+        -0.0006269360637469659,
+        5.495305882678142e-05
+      ]
+    },
+    "shuffled_directions": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": -1.2862950652128185e-05,
+      "positive_classes": 16,
+      "bootstrap95": [
+        -0.0002745564949388305,
+        0.0002640894015452691
+      ]
+    },
+    "pooled_hull": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": -0.0001410730848354953,
+      "positive_classes": 8,
+      "bootstrap95": [
+        -0.0005143656362114208,
+        7.21605827233621e-05
+      ]
+    },
+    "rgb_diffusion": {
+      "classes": 30,
+      "queries": 2130,
+      "mean_across_classes": -3.3263070984255703,
+      "positive_classes": 1,
+      "bootstrap95": [
+        -4.6445674864530915,
+        -2.2641973785418528
+      ]
+    }
+  },
+  "top1_repairs_and_damage": {
+    "dot": [
+      0,
+      0
+    ],
+    "concept_hull": [
+      0,
+      0
+    ],
+    "shuffled_directions": [
+      0,
+      0
+    ],
+    "pooled_hull": [
+      0,
+      0
+    ],
+    "rgb_diffusion": [
+      45,
+      23
+    ]
+  },
+  "threshold_disagreement": {
+    "concept_vs_shuffled": {
+      "concept_only": [
+        0,
+        0
+      ],
+      "control_only": [
+        62,
+        78
+      ],
+      "concept_only_relevance": null,
+      "control_only_relevance": 0.7948717948717948
+    },
+    "concept_vs_pooled": {
+      "concept_only": [
+        0,
+        0
+      ],
+      "control_only": [
+        0,
+        0
+      ],
+      "concept_only_relevance": null,
+      "control_only_relevance": null
+    }
+  },
+  "baseline_drift_points": [
+    0.0,
+    0.0
+  ],
+  "index_seconds_including_oracle": 0.9917843799994444,
+  "batch_scoring_seconds_all_arms": 0.16717231100119534,
+  "per_query_sha256": "d451b95d9ce0dae46c4273521f1556840c61ec7936db3336ed400b839d4ff79a"
+}

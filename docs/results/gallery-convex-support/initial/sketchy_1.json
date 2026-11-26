@@ -1,0 +1,129 @@
+{
+  "protocol": "a3c89dd447e0d9fa422fd0b8b9c79f295ab8c403bbf0bd962ba1d6ae775cbc5a",
+  "queries": 14179,
+  "gallery": 17100,
+  "classes": 25,
+  "cutoffs": [
+    0,
+    100
+  ],
+  "metrics": {
+    "dot": [
+      75.3464649813881,
+      77.10141765922035
+    ],
+    "concept_hull": [
+      75.34694216731113,
+      77.10487347492143
+    ],
+    "shuffled_directions": [
+      75.35025139043496,
+      77.10917561294441
+    ],
+    "pooled_hull": [
+      75.34686796174323,
+      77.10332188317035
+    ],
+    "rgb_diffusion": [
+      78.43679783165494,
+      78.66993446116665
+    ]
+  },
+  "concept_hull_minus_control_macro_ap": {
+    "dot": {
+      "classes": 25,
+      "queries": 14179,
+      "mean_across_classes": 0.000525449490826002,
+      "positive_classes": 9,
+      "bootstrap95": [
+        -0.00036555060435154203,
+        0.0016156079504446438
+      ]
+    },
+    "shuffled_directions": {
+      "classes": 25,
+      "queries": 14179,
+      "mean_across_classes": -0.003408750440679883,
+      "positive_classes": 13,
+      "bootstrap95": [
+        -0.010207721531891496,
+        0.0030693665665574724
+      ]
+    },
+    "pooled_hull": {
+      "classes": 25,
+      "queries": 14179,
+      "mean_across_classes": 7.911191102606507e-05,
+      "positive_classes": 9,
+      "bootstrap95": [
+        -0.00031535487840557024,
+        0.0005527041381513212
+      ]
+    },
+    "rgb_diffusion": {
+      "classes": 25,
+      "queries": 14179,
+      "mean_across_classes": -3.164222053128535,
+      "positive_classes": 0,
+      "bootstrap95": [
+        -4.1923667589227005,
+        -2.287553917410523
+      ]
+    }
+  },
+  "top1_repairs_and_damage": {
+    "dot": [
+      0,
+      0
+    ],
+    "concept_hull": [
+      0,
+      0
+    ],
+    "shuffled_directions": [
+      25,
+      7
+    ],
+    "pooled_hull": [
+      0,
+      0
+    ],
+    "rgb_diffusion": [
+      824,
+      57
+    ]
+  },
+  "threshold_disagreement": {
+    "concept_vs_shuffled": {
+      "concept_only": [
+        84,
+        137
+      ],
+      "control_only": [
+        5579,
+        7331
+      ],
+      "concept_only_relevance": 0.6131386861313869,
+      "control_only_relevance": 0.7610148683672078
+    },
+    "concept_vs_pooled": {
+      "concept_only": [
+        447,
+        581
+      ],
+      "control_only": [
+        47,
+        55
+      ],
+      "concept_only_relevance": 0.7693631669535284,
+      "control_only_relevance": 0.8545454545454545
+    }
+  },
+  "baseline_drift_points": [
+    0.0,
+    0.0
+  ],
+  "index_seconds_including_oracle": 1.095907681999961,
+  "batch_scoring_seconds_all_arms": 0.7321746980051103,
+  "per_query_sha256": "68b6b3f7825954fa5e8ba2c86ea03d218f33eb01f825985a5e0e24db373f207b"
+}

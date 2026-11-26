@@ -1,0 +1,37 @@
+{
+  "config": {
+    "commit": "1e8a9217251ccd8d0a0e1c63f77e350f3cf33b4b",
+    "clip_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+    "evaluator_sha256": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+    "vocabulary_sha256": "ee178c8cb1c29cd2dbbfcae8023001a49010257a88bca5508254c23ade5c9ed5",
+    "prompts": [
+      "a drawing of a {}.",
+      "a photo of the {}."
+    ],
+    "seed": 42,
+    "gpu": "Tesla T4",
+    "torch": "2.14.1+cu130",
+    "triton": "3.8.0",
+    "neighbors": 16,
+    "tangent_dimensions": 2,
+    "angle_tolerance": 1e-06,
+    "chart": "centered PCA of neighbor tangent displacements, project the original displacements",
+    "shuffle_block": 4,
+    "arms": [
+      "dot",
+      "concept_hull",
+      "shuffled_directions",
+      "pooled_hull",
+      "rgb_diffusion"
+    ],
+    "diffusion_alpha": 0.5,
+    "diffusion_steps": 16,
+    "selection": "correct chart after gallery-only Sketchy feasibility analysis of the first run, fixed before scoring this revision on every split",
+    "equal_dot_fixture": {
+      "center_dot": 0.009999999776482582,
+      "one_concept": 0.44999998807907104,
+      "two_sectors": 0.009999999776482582
+    }
+  },
+  "sha256": "2e0a74a3351c50a82cb1962a1048df7dccaff30f744c6aaa02283b6eb1e1f6b8"
+}
