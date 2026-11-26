@@ -27,6 +27,8 @@ H_i(v)=\sup\left(\{0\}\,\cup\,\{t>0:0\in\operatorname{int}
 
 Theo định lý siêu phẳng tách, \(H_i(v)=\min_{\|a\|=1}\max_{j\in N_i:\ a^\top z_{ij}>0} v_j\), với giá trị cực đại của tập rỗng bằng 0. Vì vậy có thể đọc \(H_i\) là mức bằng chứng vẫn còn sau khi loại một nửa mặt phẳng theo bất kỳ hướng nào. Phép thử dùng nội điểm trong hai chiều để yêu cầu bằng chứng ở mọi hướng. Trong một chart cố định, lặp lại một nhân chứng tại cùng vị trí với cùng điểm giữ nguyên tập bao lồi. Việc thay gallery có thể thay chart và tập láng giềng.
 
+Với một tập mức nhân chứng hữu hạn, điểm 0 ở nội điểm khi và chỉ khi tồn tại một bán kính dương để toàn bộ đĩa quanh 0 nằm trong bao lồi. Vì vậy \(H_i\) là mức nội suy cao nhất còn đúng dưới một nhiễu vị trí đủ nhỏ của điểm cần chấm, giữ chart và nhân chứng cố định. Mức này bất biến dưới phép đổi cơ sở khả nghịch trong chart.
+
 Nếu tập mức trên của độ liên quan thật cho từ \(w\) lồi cục bộ trong chart và \(p_{jw}\ge t\) đủ để xác nhận láng giềng \(j\) ở trong tập mức \(t\), thì \(H_i(p_{\cdot w})\) là một mức được suy ra cho \(i\). Hai điều kiện là giả thuyết về dữ liệu. Chúng có thể hỏng khi chart gộp các nhánh của manifold hoặc nhiều phía đều chứa cùng một nhầm lẫn CLIP. Bao lồi của tập mức và phép bao tựa lõm có tiền lệ toán học. [Cuoghi và Salani, Electronic Journal of Differential Equations 2006, công thức (3.1)](https://ejde.math.txstate.edu/Volumes/2006/124/cuoghi.pdf)
 
 Điểm suy luận là
@@ -37,6 +39,8 @@ r_{iw}=\max\{p_{iw},H_i(p_{\cdot w})\},\qquad
 \]
 
 Với \(W\) cố định và mức \(t\) lấy đều trên \([0,1]\), \(r_{iW}\) là xác suất ảnh được chấp nhận trực tiếp hoặc có bằng chứng nội suy ở mức \(t\). Các tọa độ \(r_{iw}\) biểu diễn các sự kiện chấp nhận riêng, tổng của chúng có thể lớn hơn 1. Gallery có thể lưu \(r\) từ trước và chấm online bằng một tích ma trận cùng kích thước baseline. Trong hai chiều, mỗi chart có tối đa 32 nửa mặt phẳng tới hạn. Mã khóa chúng thành mặt nạ bit, xếp điểm nhân chứng giảm dần rồi lấy mức đầu tiên phủ đủ mọi nửa mặt phẳng.
+
+Khi \(q\) dồn hết xác suất vào một từ, kết quả trùng với việc áp dụng phép bao cho Dot. Tổng quát, đặt \(\varepsilon=1-\max_w q_w\) và \(R_i(v)=\max(v_i,H_i(v))\). Có thể đưa \(v_i\) vào mọi phép cực đại theo hướng, nên \(R_i\) đơn điệu, thuần nhất dương và giao hoán với cộng hằng số. Vì \(0\le p_{jw}\le 1\), cả \(\mathbb E_q[R_i(p_{\cdot W})]\) và \(R_i(\mathbb E_q[p_{\cdot W}])\) đều nằm trong đoạn \([(1-\varepsilon)R_i(p_{\cdot w_*}),(1-\varepsilon)R_i(p_{\cdot w_*})+\varepsilon]\) cho \(w_*=\arg\max_w q_w\). Do đó chênh điểm tuyệt đối tối đa là \(\varepsilon\). Điều này đặt giới hạn cho tác động của thứ tự suy luận trên truy vấn CLIP gần như chắc chắn về một từ. Thứ hạng vẫn có thể đổi nếu hai ảnh có điểm sát nhau.
 
 ## Điều khác biệt cần chứng minh
 
