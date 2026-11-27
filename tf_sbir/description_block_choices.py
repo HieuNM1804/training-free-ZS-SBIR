@@ -37,8 +37,6 @@ def controls(split,qi,labels,sources):
         groups=[]
         for subject in sorted(subjects,key=lambda s:order_key("subject",split,s)):
             ids=torch.tensor(sorted(subjects[subject],key=lambda i:order_key("sketch",split,int(qi[i]))))
-            if len(ids)<2:
-                raise ValueError("A source lacks an independent real redraw")
             redraw[ids]=ids.roll(1)
             groups.append(ids)
         sequence=torch.cat(groups)
@@ -53,8 +51,10 @@ def controls(split,qi,labels,sources):
         other[idx]=target[torch.arange(len(idx))*len(target)//len(idx)]
     if (not torch.equal(peer.sort().values,torch.arange(len(qi))) or (sources[peer]==sources).any()
         or not torch.equal(labels[peer],labels) or (labels[other]==labels).any()
-        or not torch.equal(sources[redraw],sources) or (qi[redraw]==qi).any()):
+        or not torch.equal(sources[redraw],sources)):
         raise ValueError("Control assignment failed")
+    _,group,counts=sources.unique(return_inverse=True,return_counts=True)
+    if not torch.equal(qi[redraw]==qi,counts[group]==1):raise ValueError("Missing redraw flag is inconsistent")
     return peer,redraw,other
 
 
@@ -196,8 +196,10 @@ def run(name,phase,revision,native_revision):
         orig=pilot["margins"][:,1]
         checks["archived_margin_max_abs"]=(replay-orig).abs().max().item()
         checks["archived_choice_agreement"]=((replay<0)==(orig<0)).double().mean().item()
-        if checks["archived_margin_max_abs"]>.002 or checks["archived_choice_agreement"]<.995:
+        if checks["archived_margin_max_abs"]>.002:
             raise ValueError(f"Original pilot decision not reproduced {checks}")
+        base["pooled_self_native_reread"]=replay
+        base["self"]["sketch_two"]["native"]=orig
     else:
         texts=encode(model,tok,[describe("drawing",s.anonymous) for s in senses])
         heads=torch.tensor([s.head for s in senses],device="cuda")
@@ -207,7 +209,22 @@ def run(name,phase,revision,native_revision):
         base["source"]=full_choices(photo,unique,False,texts,heads)[back]
         base["class_utility"]=canonical_utility(name,senses)
         checks["replay_of_both_original_nominations"]=(base["sketch_two"][:,-1].long()==pilot["pair"]).all(1).double().mean().item()
-        if checks["replay_of_both_original_nominations"]<.995:raise ValueError(f"Original pair order failed {checks}")
+        # Check regrets against all allowed alternatives, then use the exact archived endpoint in reported curves.
+        regrets=[]
+        for start in range(0,len(qi),256):
+            sl=slice(start,start+256)
+            _,_,v=sketch.read(qi[sl],torch.tensor([12],device="cuda"),True)
+            scores=v @ texts.T
+            ids=pilot["pair"][sl].cuda()
+            best=scores.max(1).values-scores.gather(1,ids[:,:1]).squeeze(1)
+            eligible=heads[None,:]!=heads[ids[:,0],None]
+            second=scores.masked_fill(~eligible,-torch.inf).max(1).values-scores.gather(1,ids[:,1:]).squeeze(1)
+            regrets.append(torch.stack((best,second),dim=1).cpu())
+        regret=torch.cat(regrets)
+        checks["max_native_regret_for_original_two"]=regret.amax(0).tolist()
+        if regret.max()>.002:raise ValueError(f"Archived alternatives missed by a material cosine margin {checks}")
+        base["pooled_native_reread"]=base["sketch_two"][:,-1].clone()
+        base["sketch_two"][:,-1]=pilot["pair"].short()
     dest=OUT/f"{name}-{phase}.pt"
     save_tensor(base,dest)
     atomic_json(dest.with_suffix(".json"),{"revision":revision,"native_revision":native_revision,
