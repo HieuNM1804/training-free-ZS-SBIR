@@ -1,0 +1,235 @@
+{
+  "revision": "b2da81af4f5d2834cc1dc36c58f73af62d034d67",
+  "base_revision": "2b1355a3c4296e116de57c07c300e1604a1d8779",
+  "seed": 42,
+  "device": "NVIDIA L4",
+  "type": "post-hoc descriptive diagnostic on Sketchy only",
+  "shared_classes": [
+    "scissors",
+    "tree",
+    "wheelchair",
+    "windmill"
+  ],
+  "full_ext2_gallery": {
+    "shared": {
+      "queries": 2231,
+      "gallery": 12552,
+      "metrics": {
+        "dot": [
+          74.3825863801771,
+          72.76938611775944
+        ],
+        "donor64": [
+          78.2814398890504,
+          75.19341103022093
+        ],
+        "query_projection": [
+          77.78163287514785,
+          74.36060068092769
+        ],
+        "dot_plus_residual": [
+          75.0887752131566,
+          73.3971313658579
+        ],
+        "fixed_ext1_query_edit": [
+          61.2758351004829,
+          60.50358596426931
+        ]
+      },
+      "classes": [
+        "scissors",
+        "tree",
+        "wheelchair",
+        "windmill"
+      ]
+    },
+    "other": {
+      "queries": 10463,
+      "gallery": 12552,
+      "metrics": {
+        "dot": [
+          72.2983539585611,
+          70.71059941951748
+        ],
+        "donor64": [
+          75.15981112174052,
+          73.25575844670722
+        ],
+        "query_projection": [
+          74.91409929984513,
+          73.31549288123037
+        ],
+        "dot_plus_residual": [
+          72.78526420522103,
+          71.19334803333037
+        ],
+        "fixed_ext1_query_edit": [
+          59.52567099574887,
+          55.084536175158014
+        ]
+      },
+      "classes": [
+        "bat",
+        "cabin",
+        "cow",
+        "dolphin",
+        "door",
+        "giraffe",
+        "helicopter",
+        "mouse",
+        "pear",
+        "raccoon",
+        "rhinoceros",
+        "saw",
+        "seagull",
+        "skyscraper",
+        "songbird",
+        "sword",
+        "window"
+      ]
+    }
+  },
+  "matched_candidates": {
+    "queries": 2231,
+    "photos": 2205,
+    "cutoffs": [
+      200,
+      200
+    ],
+    "query_posterior_max_abs_difference": 0.0,
+    "photo_posterior_max_abs_difference": 2.220446049250313e-16,
+    "donors_per_photo": 64,
+    "shared_donor_count_mean": 59.740589569160996,
+    "shared_donor_count_median": 64.0,
+    "context_changes": {
+      "b": {
+        "top1_photo_changed_fraction": 0.1797400268937696,
+        "top1_class_changed_fraction": 0.06364858807709547
+      },
+      "f": {
+        "top1_photo_changed_fraction": 0.4894666069027342,
+        "top1_class_changed_fraction": 0.06230389959659346
+      }
+    },
+    "metrics": {
+      "sketchy_1/b": [
+        90.1146694993394,
+        89.31420895916793
+      ],
+      "sketchy_1/f": [
+        89.47252950613131,
+        88.53922012378513
+      ],
+      "sketchy_2/p": [
+        86.87636153611756,
+        86.34177504503096
+      ],
+      "sketchy_2/b": [
+        89.28302114602748,
+        88.73711349238053
+      ],
+      "sketchy_2/f": [
+        88.87135859057875,
+        88.09995515691972
+      ]
+    }
+  },
+  "added_distractors_for_shared_queries": {
+    "dot": {
+      "added_photos": 10347,
+      "mean_added_in_top200": 41.947557149260426,
+      "fraction_of_queries_with_added_top1": 0.2061855670103093,
+      "most_frequent_one_percent_count": 104,
+      "fraction_of_added_top200_slots_from_most_frequent_one_percent": 0.2056739862157397
+    },
+    "donor64": {
+      "added_photos": 10347,
+      "mean_added_in_top200": 38.54235768713581,
+      "fraction_of_queries_with_added_top1": 0.1667413715822501,
+      "most_frequent_one_percent_count": 104,
+      "fraction_of_added_top200_slots_from_most_frequent_one_percent": 0.16241801181560217
+    },
+    "query_projection": {
+      "added_photos": 10347,
+      "mean_added_in_top200": 39.875392200806814,
+      "fraction_of_queries_with_added_top1": 0.16943074854325416,
+      "most_frequent_one_percent_count": 104,
+      "fraction_of_added_top200_slots_from_most_frequent_one_percent": 0.1773791056855736
+    },
+    "fixed_ext1_query_edit": {
+      "added_photos": 10347,
+      "mean_added_in_top200": 70.36799641416405,
+      "fraction_of_queries_with_added_top1": 0.7333034513671,
+      "most_frequent_one_percent_count": 104,
+      "fraction_of_added_top200_slots_from_most_frequent_one_percent": 0.20783357007726558
+    }
+  },
+  "source_leverage": {
+    "quantiles": [
+      0.5,
+      0.9,
+      0.99
+    ],
+    "shared_photo_leverage": [
+      0.011597449998393461,
+      0.09096834098320856,
+      0.43510664121585013
+    ],
+    "added_photo_leverage": [
+      0.62729499614173,
+      3.5676413940089193,
+      23.899062412497706
+    ],
+    "best_added_photo_mean_within_its_class_percentile": {
+      "dot": 0.33525334025476977,
+      "donor64": 0.33066190641345,
+      "query_projection": 0.471356551666638,
+      "fixed_ext1_query_edit": 0.9549168997058386
+    },
+    "paired_fraction_higher_with_fixed_edit_than_dot": 0.9323173464813985,
+    "paired_fraction_equal": 0.027341999103541015
+  },
+  "positive_control_other_17_classes": {
+    "dot": {
+      "queries": 10463,
+      "correct_top1_queries": 6873,
+      "best_positive_mean_percentile_within_its_class": 0.6748360055641366,
+      "correct_top1_mean_percentile_within_its_class": 0.7875369425087054,
+      "fraction_of_correct_top1_in_own_class_top_leverage_decile": 0.5360104757747708,
+      "distinct_wrong_added_top1_photos_for_four_shared_classes": 96,
+      "number_that_are_correct_top1_for_some_other_query": 55,
+      "fraction_of_shared_query_wrong_added_top1_occurrences_that_are_correct_top1_elsewhere": 0.6195652173913043
+    },
+    "donor64": {
+      "queries": 10463,
+      "correct_top1_queries": 7781,
+      "best_positive_mean_percentile_within_its_class": 0.6332376314200292,
+      "correct_top1_mean_percentile_within_its_class": 0.7200169422903424,
+      "fraction_of_correct_top1_in_own_class_top_leverage_decile": 0.4435162575504434,
+      "distinct_wrong_added_top1_photos_for_four_shared_classes": 119,
+      "number_that_are_correct_top1_for_some_other_query": 64,
+      "fraction_of_shared_query_wrong_added_top1_occurrences_that_are_correct_top1_elsewhere": 0.739247311827957
+    },
+    "query_projection": {
+      "queries": 10463,
+      "correct_top1_queries": 7679,
+      "best_positive_mean_percentile_within_its_class": 0.5967804965809989,
+      "correct_top1_mean_percentile_within_its_class": 0.6700347463262333,
+      "fraction_of_correct_top1_in_own_class_top_leverage_decile": 0.30134132048443807,
+      "distinct_wrong_added_top1_photos_for_four_shared_classes": 74,
+      "number_that_are_correct_top1_for_some_other_query": 49,
+      "fraction_of_shared_query_wrong_added_top1_occurrences_that_are_correct_top1_elsewhere": 0.9074074074074073
+    },
+    "fixed_ext1_query_edit": {
+      "queries": 10463,
+      "correct_top1_queries": 4849,
+      "best_positive_mean_percentile_within_its_class": 0.6934515695131351,
+      "correct_top1_mean_percentile_within_its_class": 0.7772375432602671,
+      "fraction_of_correct_top1_in_own_class_top_leverage_decile": 0.5964116312641782,
+      "distinct_wrong_added_top1_photos_for_four_shared_classes": 60,
+      "number_that_are_correct_top1_for_some_other_query": 40,
+      "fraction_of_shared_query_wrong_added_top1_occurrences_that_are_correct_top1_elsewhere": 0.9437652811735942
+    }
+  },
+  "fixed_shared_index_max_abs_difference": 1.2219392164780629e-14
+}

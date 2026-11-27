@@ -1,0 +1,327 @@
+{
+  "revision": "2b1355a3c4296e116de57c07c300e1604a1d8779",
+  "seed": 42,
+  "splits": {
+    "sketchy_1": {
+      "queries": 14179,
+      "classes": 25,
+      "metrics": {
+        "dot": [
+          75.3454876734559,
+          77.09873763341106
+        ],
+        "donor64": [
+          80.14847304299185,
+          79.9416038537768
+        ],
+        "query_projection": [
+          79.6094946920298,
+          79.81895763924636
+        ],
+        "dot_plus_residual": [
+          75.03488292343931,
+          77.57754430677436
+        ]
+      },
+      "residual_fraction_centered_squared_change": 0.37965561189927216,
+      "median_query_residual_fraction": 0.2993155854035365,
+      "paired": {
+        "donor64_minus_query_projection": {
+          "mean_AP_points": 0.5389783509620549,
+          "macro_AP_points": 0.5395499774326797,
+          "class_bootstrap95_macro": [
+            0.15905420704903037,
+            1.0561979365137577
+          ]
+        },
+        "query_projection_minus_dot": {
+          "mean_AP_points": 4.264007018573892,
+          "macro_AP_points": 4.378761954064911,
+          "class_bootstrap95_macro": [
+            3.028858170257842,
+            6.1223046739540194
+          ]
+        },
+        "dot_plus_residual_minus_dot": {
+          "mean_AP_points": -0.31060475001658244,
+          "macro_AP_points": -0.3331438206511813,
+          "class_bootstrap95_macro": [
+            -1.2144563033295133,
+            0.4187628199424991
+          ]
+        }
+      },
+      "index": {
+        "split": "sketchy_1",
+        "revision": "2b1355a3c4296e116de57c07c300e1604a1d8779",
+        "seed": 42,
+        "gallery": 17100,
+        "k": 64,
+        "word_fingerprint": "f3c1c3aa57dd788568b068877c8a495856d456014a0cfa080cb6081668226e24",
+        "geometry": {
+          "rank": 601,
+          "basis_columns": 601,
+          "singular_max": 131.6771118443058,
+          "singular_min_kept": 0.0054153853181648,
+          "relative_orthogonality_error": 2.6435812399989983e-14,
+          "affine_replay_max_abs": 4.261456638954275e-14
+        },
+        "seconds": 1.9567517779996706,
+        "device": "NVIDIA L4",
+        "sha256": "7de7cfadc7fb5823d9e666fb736628c699d3e6fae573c7b9e5c1b310f3faf406"
+      },
+      "shards": [
+        {
+          "split": "sketchy_1",
+          "part": 0,
+          "revision": "2b1355a3c4296e116de57c07c300e1604a1d8779",
+          "prepare_revision": "2b1355a3c4296e116de57c07c300e1604a1d8779",
+          "seed": 42,
+          "queries": 7090,
+          "gallery": 17100,
+          "energy_check": 1.8328700777794316e-14,
+          "edited_query_replay_max_abs": 1.8318679906315083e-15,
+          "sha256": "a10dd9168ce4747d40e2096ac890730cd6fd9692f23502120b140ecbecdb1585",
+          "device": "NVIDIA L4",
+          "seconds": 33.81361858799937
+        },
+        {
+          "split": "sketchy_1",
+          "part": 1,
+          "revision": "2b1355a3c4296e116de57c07c300e1604a1d8779",
+          "prepare_revision": "2b1355a3c4296e116de57c07c300e1604a1d8779",
+          "seed": 42,
+          "queries": 7089,
+          "gallery": 17100,
+          "energy_check": 1.8425417067150534e-14,
+          "edited_query_replay_max_abs": 1.8041124150158794e-15,
+          "sha256": "ce30111b510cecb3275e679650d659f4c91494a17ecec882f09b116b1acd77ea",
+          "device": "NVIDIA L4",
+          "seconds": 33.343276457000684
+        }
+      ]
+    },
+    "sketchy_2": {
+      "queries": 12694,
+      "classes": 21,
+      "metrics": {
+        "dot": [
+          72.6646626502757,
+          71.07243596621495
+        ],
+        "donor64": [
+          75.70844463204999,
+          73.5963053912337
+        ],
+        "query_projection": [
+          75.41807498965925,
+          73.49917300578723
+        ],
+        "dot_plus_residual": [
+          73.19011161806995,
+          71.58066807546594
+        ],
+        "fixed_ext1_query_edit": [
+          59.83326640441924,
+          56.03694676910062
+        ]
+      },
+      "residual_fraction_centered_squared_change": 0.3064420061100567,
+      "median_query_residual_fraction": 0.25317680558481603,
+      "paired": {
+        "donor64_minus_query_projection": {
+          "mean_AP_points": 0.2903696423907397,
+          "macro_AP_points": 0.33362336122944675,
+          "class_bootstrap95_macro": [
+            -0.4704865771929158,
+            1.575487436146778
+          ]
+        },
+        "query_projection_minus_dot": {
+          "mean_AP_points": 2.753412339383537,
+          "macro_AP_points": 2.985751713822132,
+          "class_bootstrap95_macro": [
+            1.326848290421903,
+            4.681749568385564
+          ]
+        },
+        "dot_plus_residual_minus_dot": {
+          "mean_AP_points": 0.525448967794249,
+          "macro_AP_points": 0.5618746155436495,
+          "class_bootstrap95_macro": [
+            0.09656082167183348,
+            1.1744248180803778
+          ]
+        },
+        "fixed_ext1_query_edit_minus_dot": {
+          "mean_AP_points": -12.831396245856466,
+          "macro_AP_points": -13.050870502065235,
+          "class_bootstrap95_macro": [
+            -19.911861118693555,
+            -6.66952468835452
+          ]
+        }
+      },
+      "index": {
+        "split": "sketchy_2",
+        "revision": "2b1355a3c4296e116de57c07c300e1604a1d8779",
+        "seed": 42,
+        "gallery": 12552,
+        "k": 64,
+        "word_fingerprint": "f3c1c3aa57dd788568b068877c8a495856d456014a0cfa080cb6081668226e24",
+        "geometry": {
+          "rank": 601,
+          "basis_columns": 601,
+          "singular_max": 113.24231889301515,
+          "singular_min_kept": 0.0040175470164376505,
+          "relative_orthogonality_error": 3.152760094731927e-14,
+          "affine_replay_max_abs": 4.19900659381911e-14
+        },
+        "seconds": 1.751984414000617,
+        "device": "NVIDIA L4",
+        "sha256": "c59491312b03be815ce733675ec6dc52b489e5a1b9aa24d883e5a88269ad5034"
+      },
+      "shards": [
+        {
+          "split": "sketchy_2",
+          "part": 0,
+          "revision": "2b1355a3c4296e116de57c07c300e1604a1d8779",
+          "prepare_revision": "2b1355a3c4296e116de57c07c300e1604a1d8779",
+          "seed": 42,
+          "queries": 6347,
+          "gallery": 12552,
+          "energy_check": 2.5359252779238163e-14,
+          "edited_query_replay_max_abs": 5.091413401991929e-15,
+          "sha256": "83ef60eddf28c65784562bd55146521640f9afa21913d9deb72754a67bc24495",
+          "device": "NVIDIA L4",
+          "seconds": 42.338338000001386
+        },
+        {
+          "split": "sketchy_2",
+          "part": 1,
+          "revision": "2b1355a3c4296e116de57c07c300e1604a1d8779",
+          "prepare_revision": "2b1355a3c4296e116de57c07c300e1604a1d8779",
+          "seed": 42,
+          "queries": 6347,
+          "gallery": 12552,
+          "energy_check": 2.674746406344668e-14,
+          "edited_query_replay_max_abs": 8.180522231837628e-15,
+          "sha256": "65c75a43ca0a8e99e89a32c71a746ea3bc185762fb5abb25acabf54032c9c215",
+          "device": "NVIDIA L4",
+          "seconds": 42.589449479000905
+        }
+      ]
+    },
+    "tuberlin": {
+      "queries": 2130,
+      "classes": 30,
+      "metrics": {
+        "dot": [
+          73.45634453016127,
+          73.98028175237243
+        ],
+        "donor64": [
+          78.12083075843978,
+          76.50234741609141
+        ],
+        "query_projection": [
+          77.65797228454022,
+          76.52065737671415
+        ],
+        "dot_plus_residual": [
+          72.97379769249316,
+          74.44600943869479
+        ],
+        "fixed_ext1_query_edit": [
+          44.62266345384876,
+          40.74647912633181
+        ]
+      },
+      "residual_fraction_centered_squared_change": 0.4047910299450098,
+      "median_query_residual_fraction": 0.3428184876538462,
+      "paired": {
+        "donor64_minus_query_projection": {
+          "mean_AP_points": 0.46285847389956875,
+          "macro_AP_points": 0.46868153067216994,
+          "class_bootstrap95_macro": [
+            0.1328670935927048,
+            0.8409701756938981
+          ]
+        },
+        "query_projection_minus_dot": {
+          "mean_AP_points": 4.201627754378942,
+          "macro_AP_points": 4.246581273774306,
+          "class_bootstrap95_macro": [
+            2.7434391193612973,
+            6.021138515582287
+          ]
+        },
+        "dot_plus_residual_minus_dot": {
+          "mean_AP_points": -0.48254683766811385,
+          "macro_AP_points": -0.4866764488452603,
+          "class_bootstrap95_macro": [
+            -1.3551974347814741,
+            0.30529199633137527
+          ]
+        },
+        "fixed_ext1_query_edit_minus_dot": {
+          "mean_AP_points": -28.833681076312516,
+          "macro_AP_points": -28.76954264600673,
+          "class_bootstrap95_macro": [
+            -34.97937960966263,
+            -22.47325226918578
+          ]
+        }
+      },
+      "index": {
+        "split": "tuberlin",
+        "revision": "2b1355a3c4296e116de57c07c300e1604a1d8779",
+        "seed": 42,
+        "gallery": 27262,
+        "k": 64,
+        "word_fingerprint": "f3c1c3aa57dd788568b068877c8a495856d456014a0cfa080cb6081668226e24",
+        "geometry": {
+          "rank": 601,
+          "basis_columns": 601,
+          "singular_max": 166.17007939548478,
+          "singular_min_kept": 0.006123358141083744,
+          "relative_orthogonality_error": 3.508765360606027e-14,
+          "affine_replay_max_abs": 2.23714276270659e-14
+        },
+        "seconds": 2.2454392770014238,
+        "device": "NVIDIA L4",
+        "sha256": "aaf47405c7b0ea54e2c1b5524c6e1a0a122bb17fa60bd291b8cdf2db7607c9a0"
+      },
+      "shards": [
+        {
+          "split": "tuberlin",
+          "part": 0,
+          "revision": "2b1355a3c4296e116de57c07c300e1604a1d8779",
+          "prepare_revision": "2b1355a3c4296e116de57c07c300e1604a1d8779",
+          "seed": 42,
+          "queries": 1065,
+          "gallery": 27262,
+          "energy_check": 3.274050887984394e-14,
+          "edited_query_replay_max_abs": 9.103828801926284e-15,
+          "sha256": "aedfadc96ca78efc6d097a456127d8ea616c88dbad2a54663b7ca60f70672282",
+          "device": "NVIDIA L4",
+          "seconds": 8.258460846000162
+        },
+        {
+          "split": "tuberlin",
+          "part": 1,
+          "revision": "2b1355a3c4296e116de57c07c300e1604a1d8779",
+          "prepare_revision": "2b1355a3c4296e116de57c07c300e1604a1d8779",
+          "seed": 42,
+          "queries": 1065,
+          "gallery": 27262,
+          "energy_check": 4.714632743465411e-14,
+          "edited_query_replay_max_abs": 9.43689570931383e-15,
+          "sha256": "e13c7e0f48f2167fe112738ead8dc8dc58c40982eb4fbbd4b6a8249e8d8ae1ad",
+          "device": "NVIDIA L4",
+          "seconds": 8.294290222998825
+        }
+      ]
+    }
+  }
+}
