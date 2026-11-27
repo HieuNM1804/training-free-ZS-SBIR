@@ -1,0 +1,269 @@
+{
+  "revision": "1899abf6de7e8f723ce0b39a2b05bd9db29b0474",
+  "seed": 42,
+  "reads": {
+    "native": {
+      "native_wrong": {
+        "queries": 835,
+        "sources": 835,
+        "classes": 30,
+        "results": {
+          "exchange": {
+            "class_mean": 0.8845521984062719,
+            "interval": [
+              0.8265166300630095,
+              0.9269778412343143
+            ]
+          },
+          "foil_direct": {
+            "class_mean": 0.9484807570419636,
+            "interval": [
+              0.8949696975600359,
+              0.9850986117382322
+            ]
+          },
+          "unrelated": {
+            "class_mean": 0.6267697048524049,
+            "interval": [
+              0.5526498164917982,
+              0.6959302378121593
+            ]
+          },
+          "exchange_minus_unrelated": {
+            "class_mean": 0.2577824935538668,
+            "interval": [
+              0.2132535334562232,
+              0.3026074339409612
+            ]
+          },
+          "both_direct": {
+            "class_mean": 0.0,
+            "interval": [
+              0.0,
+              0.0
+            ]
+          }
+        }
+      },
+      "native_right": {
+        "queries": 1168,
+        "sources": 1168,
+        "classes": 27,
+        "results": {
+          "exchange": {
+            "class_mean": 0.9814946748526905,
+            "interval": [
+              0.9692696517702162,
+              0.9919774170264628
+            ]
+          },
+          "foil_direct": {
+            "class_mean": 0.907627069540474,
+            "interval": [
+              0.8513409794520205,
+              0.9538007244342176
+            ]
+          },
+          "unrelated": {
+            "class_mean": 0.9230301235536694,
+            "interval": [
+              0.8868113124320184,
+              0.9544472281038169
+            ]
+          },
+          "exchange_minus_unrelated": {
+            "class_mean": 0.058464551299020937,
+            "interval": [
+              0.03486797752187982,
+              0.08603820097282651
+            ]
+          },
+          "both_direct": {
+            "class_mean": 0.907627069540474,
+            "interval": [
+              0.8513409794520205,
+              0.9538007244342176
+            ]
+          }
+        }
+      },
+      "all": {
+        "queries": 2130,
+        "sources": 2130,
+        "classes": 30,
+        "results": {
+          "exchange": {
+            "class_mean": 0.8940306122448978,
+            "interval": [
+              0.8047516581632653,
+              0.9602043792517005
+            ]
+          },
+          "foil_direct": {
+            "class_mean": 0.8651164965986394,
+            "interval": [
+              0.7699368835034013,
+              0.9431718962585035
+            ]
+          },
+          "unrelated": {
+            "class_mean": 0.7695945547862002,
+            "interval": [
+              0.6811467763947096,
+              0.8429461813464226
+            ]
+          },
+          "exchange_minus_unrelated": {
+            "class_mean": 0.12443605745869767,
+            "interval": [
+              0.09585407318619404,
+              0.15557762514045784
+            ]
+          },
+          "both_direct": {
+            "class_mean": 0.48200765306122434,
+            "interval": [
+              0.37945522959183664,
+              0.5846279974489794
+            ]
+          }
+        }
+      }
+    },
+    "semantic": {
+      "native_wrong": {
+        "queries": 835,
+        "sources": 835,
+        "classes": 30,
+        "results": {
+          "exchange": {
+            "class_mean": 0.9285128118145384,
+            "interval": [
+              0.8898607240917584,
+              0.9617141250994035
+            ]
+          },
+          "foil_direct": {
+            "class_mean": 0.9631957048656122,
+            "interval": [
+              0.9454059526722883,
+              0.9777343212336674
+            ]
+          },
+          "unrelated": {
+            "class_mean": 0.7493837218670367,
+            "interval": [
+              0.6695812259177778,
+              0.8246093207520061
+            ]
+          },
+          "exchange_minus_unrelated": {
+            "class_mean": 0.1791290899475016,
+            "interval": [
+              0.12635132608481,
+              0.23638613929229224
+            ]
+          },
+          "both_direct": {
+            "class_mean": 0.7269402943607617,
+            "interval": [
+              0.6467927574899,
+              0.8026030834302412
+            ]
+          }
+        }
+      },
+      "native_right": {
+        "queries": 1168,
+        "sources": 1168,
+        "classes": 27,
+        "results": {
+          "exchange": {
+            "class_mean": 0.9625848782626575,
+            "interval": [
+              0.9292438496857731,
+              0.9897572536320154
+            ]
+          },
+          "foil_direct": {
+            "class_mean": 0.9589684358017581,
+            "interval": [
+              0.9337589960201936,
+              0.978799414301989
+            ]
+          },
+          "unrelated": {
+            "class_mean": 0.9312682076355253,
+            "interval": [
+              0.8815682436676294,
+              0.9743703492982757
+            ]
+          },
+          "exchange_minus_unrelated": {
+            "class_mean": 0.031316670627132205,
+            "interval": [
+              0.009968346530755002,
+              0.06050604368966108
+            ]
+          },
+          "both_direct": {
+            "class_mean": 0.8981505920799365,
+            "interval": [
+              0.8419057215235454,
+              0.9469941374285193
+            ]
+          }
+        }
+      },
+      "all": {
+        "queries": 2130,
+        "sources": 2130,
+        "classes": 30,
+        "results": {
+          "exchange": {
+            "class_mean": 0.8872559523809522,
+            "interval": [
+              0.7968380527210883,
+              0.9574449404761902
+            ]
+          },
+          "foil_direct": {
+            "class_mean": 0.9019838435374148,
+            "interval": [
+              0.8125161777210884,
+              0.9682832482993197
+            ]
+          },
+          "unrelated": {
+            "class_mean": 0.8075515518707482,
+            "interval": [
+              0.7182082261866798,
+              0.8842722945707301
+            ]
+          },
+          "exchange_minus_unrelated": {
+            "class_mean": 0.07970440051020397,
+            "interval": [
+              0.05198562659438766,
+              0.11092849654928928
+            ]
+          },
+          "both_direct": {
+            "class_mean": 0.7830722789115646,
+            "interval": [
+              0.6954381377551018,
+              0.8603834396258503
+            ]
+          }
+        }
+      }
+    }
+  },
+  "queries": 2130,
+  "gallery": 27262,
+  "classes": 30,
+  "native_wrong": 835,
+  "source_policy": "unpaired, equal query weight within class",
+  "device": "NVIDIA L4",
+  "sha256": "3979da643c2435a8ee2ac11ef6de30b6333ed587b32f818312b1930dbf138f7d"
+}
