@@ -1,0 +1,98 @@
+{
+  "revision": "204133339cb13401b49de75e1ffefbea8198ad86",
+  "audit_revision": "752775c30fea83a4a8c9205c48518e0a8e295251",
+  "baseline_json_sha256": "62a7d2ae9344a1fbef6c453853bdaebe458fa972a61ae7f3a7ab7c3f2fb18088",
+  "classes": 21,
+  "queries": 12694,
+  "gallery": 12552,
+  "collision": {
+    "rows": [
+      "winner",
+      "remaining_words",
+      "all_words",
+      "visual"
+    ],
+    "columns": [
+      "both_correct",
+      "both_exchanged",
+      "difference"
+    ],
+    "seed": 42,
+    "mean_class_pair_percent": [
+      [
+        0.0,
+        2.8960649626951733e-16,
+        -2.8960649626951733e-16
+      ],
+      [
+        36.73037918183366,
+        6.126598230925127,
+        30.603780950908533
+      ],
+      [
+        11.645367324023367,
+        2.0848847323244724,
+        9.560482591698895
+      ],
+      [
+        20.48464673407169,
+        3.5866267341775804,
+        16.898019999894107
+      ]
+    ],
+    "class_pairs": 51,
+    "eligible_classes": 21,
+    "class_pair_word_panels": 105,
+    "sketches": 6534,
+    "words": 70,
+    "photo_pairs": 21162,
+    "assignments": 298061248,
+    "cap_per_word_class": 64
+  },
+  "inversion": {
+    "drawing": {
+      "rank": 512,
+      "dimension": 512,
+      "smallest_singular_value": 0.0003047492582041328,
+      "condition_number": 10074.055017109564,
+      "original": {
+        "stored_precision": {
+          "median_relative_error": 0.0003895609133073241,
+          "max_relative_error": 0.0015061405587799429
+        },
+        "reference64": {
+          "median_relative_error": 7.299109267213298e-13,
+          "max_relative_error": 2.613238585086811e-12
+        }
+      },
+      "mirror": {
+        "stored_precision": {
+          "median_relative_error": 0.00039446054636228816,
+          "max_relative_error": 0.0014329429947743941
+        },
+        "reference64": {
+          "median_relative_error": 1.1012328259271611e-13,
+          "max_relative_error": 3.44887384177573e-13
+        }
+      }
+    },
+    "photo": {
+      "rank": 512,
+      "dimension": 512,
+      "smallest_singular_value": 0.000366273716212817,
+      "condition_number": 7663.3772031806075,
+      "rgb": {
+        "stored_precision": {
+          "median_relative_error": 0.0002680229284199212,
+          "max_relative_error": 0.0010101410263248108
+        },
+        "reference64": {
+          "median_relative_error": 4.926444697743935e-13,
+          "max_relative_error": 1.7167753851813405e-12
+        }
+      }
+    }
+  },
+  "panels_sha256": "fca6a38088dec30a9063c159ddaffb1e75009003f7a4e9ba08ffc9081eef44d5",
+  "device": "NVIDIA L4"
+}

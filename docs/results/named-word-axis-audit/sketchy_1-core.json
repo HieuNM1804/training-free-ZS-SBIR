@@ -1,0 +1,105 @@
+{
+  "split": "sketchy_1",
+  "panel": "core",
+  "revision": "752775c30fea83a4a8c9205c48518e0a8e295251",
+  "seed": 42,
+  "checkpoint": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+  "prompts": [
+    "a drawing of a {}.",
+    "a photo of the {}."
+  ],
+  "gallery": 17100,
+  "queries": 14179,
+  "scale": 100.0,
+  "device": "NVIDIA L4",
+  "metrics": {
+    "LL": [
+      46.86069595929958,
+      56.48910368344951
+    ],
+    "NL": [
+      67.3939740693433,
+      71.37061866179347
+    ],
+    "LN": [
+      70.33914882508165,
+      75.8606390232934
+    ],
+    "NN": [
+      75.3454857580277,
+      77.09866710664286
+    ],
+    "both_photo": [
+      72.14967708642422,
+      73.99894216588743
+    ],
+    "both_drawing": [
+      75.2777061166686,
+      75.97877151330891
+    ],
+    "visual": [
+      30.21971538869944,
+      41.51928913211068
+    ]
+  },
+  "checks": {
+    "common_permutation_max_score_error": 3.3306690738754696e-16,
+    "same_winner": {
+      "columns": [
+        "winner",
+        "remaining_words",
+        "all_words",
+        "visual"
+      ],
+      "eligible_queries": 9341,
+      "all_queries": 14179,
+      "classes": 25,
+      "eligible_pairs": 33321977,
+      "mean_query_AUC_percent": [
+        81.92477864062319,
+        59.55941286078136,
+        83.4140808631357,
+        73.59260927459758
+      ],
+      "class_balanced_AUC_percent": {
+        "mean": [
+          79.21922146306557,
+          61.77539509000326,
+          81.35011245085776,
+          73.11287814587939
+        ],
+        "class_bootstrap95": [
+          [
+            71.5818191977556,
+            52.586654898020484,
+            74.08042958523001,
+            68.36466852292062
+          ],
+          [
+            85.9559605020086,
+            70.49277249037556,
+            87.64802534154438,
+            77.81140850631171
+          ]
+        ]
+      },
+      "class_balanced_remaining_minus_winner": {
+        "mean": -17.443826373062333,
+        "class_bootstrap95": [
+          -30.970697246348312,
+          -3.9989809811093213
+        ]
+      },
+      "class_balanced_all_minus_winner": {
+        "mean": 2.13089098779219,
+        "class_bootstrap95": [
+          1.200549234828158,
+          3.1985828911845045
+        ]
+      }
+    }
+  },
+  "tensor_sha256": "60d547e8a33854891547944f1c1e0b9bcc525d1cfd209ddd4c96907cf663ce3e",
+  "text_sha256": "67c344912383a6588a2fb814c0a53c233e1bda1b077ffbbed2120a4c79ac7cbd",
+  "evaluator_sha256": "0cb312222707de889bc5893bd25c27f488953dd0a85aee4e433cd1d878ba2704"
+}
