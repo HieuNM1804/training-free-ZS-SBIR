@@ -1,0 +1,4235 @@
+{
+  "revision": "2325dfaa3c547e08c8cca6b38af6cc65aafc5923",
+  "annotation_revision": "4a5ec4d33dddfe21ad55dbb4b866106f620a7529",
+  "seed": 42,
+  "checkpoint": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+  "classes": 16,
+  "subjects": 160,
+  "device": "NVIDIA L4",
+  "summary": {
+    "shared": {
+      "sketch": {
+        "eligible_classes": [
+          "deer",
+          "pineapple",
+          "wheelchair",
+          "parrot",
+          "camel",
+          "rifle",
+          "skyscraper",
+          "songbird",
+          "scissors",
+          "saw",
+          "door",
+          "bat"
+        ],
+        "metrics": {
+          "auc": {
+            "alone": {
+              "classes": 12,
+              "mean_percent": 77.2123015873016,
+              "class_bootstrap95": [
+                65.68452380952381,
+                88.47222222222223
+              ]
+            },
+            "context_before": {
+              "classes": 12,
+              "mean_percent": 73.29365079365078,
+              "class_bootstrap95": [
+                54.65252976190476,
+                88.29365079365078
+              ]
+            },
+            "context_after": {
+              "classes": 12,
+              "mean_percent": 83.80952380952382,
+              "class_bootstrap95": [
+                69.375,
+                94.65277777777779
+              ]
+            },
+            "neutral_before": {
+              "classes": 12,
+              "mean_percent": 80.61011904761905,
+              "class_bootstrap95": [
+                70.1733630952381,
+                90.17857142857143
+              ]
+            },
+            "neutral_after": {
+              "classes": 12,
+              "mean_percent": 85.33730158730158,
+              "class_bootstrap95": [
+                75.625,
+                94.07762896825396
+              ]
+            },
+            "context_minus_alone": {
+              "classes": 12,
+              "mean_percent": 1.3392857142857142,
+              "class_bootstrap95": [
+                -11.979166666666668,
+                12.639384920634914
+              ]
+            },
+            "neutral_minus_alone": {
+              "classes": 12,
+              "mean_percent": 5.761408730158731,
+              "class_bootstrap95": [
+                -3.5122767857142865,
+                15.622519841269842
+              ]
+            },
+            "context_minus_neutral": {
+              "classes": 12,
+              "mean_percent": -4.422123015873017,
+              "class_bootstrap95": [
+                -11.071428571428573,
+                1.4335317460317456
+              ]
+            }
+          },
+          "balanced_sentence_accuracy": {
+            "alone": {
+              "classes": 12,
+              "mean_percent": 59.90079365079365,
+              "class_bootstrap95": [
+                50.81249999999999,
+                69.86111111111111
+              ]
+            },
+            "context_before": {
+              "classes": 12,
+              "mean_percent": 64.84126984126985,
+              "class_bootstrap95": [
+                51.48685515873016,
+                77.5
+              ]
+            },
+            "context_after": {
+              "classes": 12,
+              "mean_percent": 68.66071428571429,
+              "class_bootstrap95": [
+                58.779017857142854,
+                78.91914682539681
+              ]
+            },
+            "neutral_before": {
+              "classes": 12,
+              "mean_percent": 59.13690476190476,
+              "class_bootstrap95": [
+                48.51190476190476,
+                70.80357142857142
+              ]
+            },
+            "neutral_after": {
+              "classes": 12,
+              "mean_percent": 69.49404761904762,
+              "class_bootstrap95": [
+                60.53571428571429,
+                79.16666666666666
+              ]
+            },
+            "context_minus_alone": {
+              "classes": 12,
+              "mean_percent": 6.850198412698415,
+              "class_bootstrap95": [
+                -6.771453373015872,
+                20.34747023809523
+              ]
+            },
+            "neutral_minus_alone": {
+              "classes": 12,
+              "mean_percent": 4.41468253968254,
+              "class_bootstrap95": [
+                -4.166666666666666,
+                12.05357142857143
+              ]
+            },
+            "context_minus_neutral": {
+              "classes": 12,
+              "mean_percent": 2.435515873015874,
+              "class_bootstrap95": [
+                -5.416666666666668,
+                10.595362103174603
+              ]
+            }
+          },
+          "both_correct": {
+            "alone": {
+              "classes": 12,
+              "mean_percent": 23.96825396825397,
+              "class_bootstrap95": [
+                8.333333333333332,
+                42.023809523809526
+              ]
+            },
+            "context_before": {
+              "classes": 12,
+              "mean_percent": 35.23809523809524,
+              "class_bootstrap95": [
+                14.583333333333334,
+                56.666666666666664
+              ]
+            },
+            "context_after": {
+              "classes": 12,
+              "mean_percent": 38.432539682539684,
+              "class_bootstrap95": [
+                18.75,
+                58.611111111111114
+              ]
+            },
+            "neutral_before": {
+              "classes": 12,
+              "mean_percent": 22.44047619047619,
+              "class_bootstrap95": [
+                5.357142857142857,
+                42.91666666666667
+              ]
+            },
+            "neutral_after": {
+              "classes": 12,
+              "mean_percent": 39.82142857142857,
+              "class_bootstrap95": [
+                21.904761904761905,
+                58.98809523809524
+              ]
+            },
+            "context_minus_alone": {
+              "classes": 12,
+              "mean_percent": 12.867063492063494,
+              "class_bootstrap95": [
+                -10.0,
+                36.45882936507935
+              ]
+            },
+            "neutral_minus_alone": {
+              "classes": 12,
+              "mean_percent": 7.162698412698414,
+              "class_bootstrap95": [
+                -5.059523809523808,
+                19.246031746031743
+              ]
+            },
+            "context_minus_neutral": {
+              "classes": 12,
+              "mean_percent": 5.704365079365078,
+              "class_bootstrap95": [
+                -10.279513888888891,
+                22.509920634920633
+              ]
+            }
+          }
+        }
+      },
+      "sketch_two_views": {
+        "eligible_classes": [
+          "deer",
+          "pineapple",
+          "wheelchair",
+          "parrot",
+          "camel",
+          "rifle",
+          "skyscraper",
+          "songbird",
+          "scissors",
+          "saw",
+          "door",
+          "bat"
+        ],
+        "metrics": {
+          "auc": {
+            "alone": {
+              "classes": 12,
+              "mean_percent": 76.61706349206348,
+              "class_bootstrap95": [
+                65.22817460317462,
+                88.00595238095238
+              ]
+            },
+            "context_before": {
+              "classes": 12,
+              "mean_percent": 71.31448412698413,
+              "class_bootstrap95": [
+                51.45746527777777,
+                87.87202380952381
+              ]
+            },
+            "context_after": {
+              "classes": 12,
+              "mean_percent": 84.50396825396825,
+              "class_bootstrap95": [
+                67.76636904761905,
+                95.41666666666667
+              ]
+            },
+            "neutral_before": {
+              "classes": 12,
+              "mean_percent": 79.45932539682539,
+              "class_bootstrap95": [
+                69.09709821428572,
+                89.23611111111111
+              ]
+            },
+            "neutral_after": {
+              "classes": 12,
+              "mean_percent": 85.2281746031746,
+              "class_bootstrap95": [
+                75.3670634920635,
+                94.30555555555556
+              ]
+            },
+            "context_minus_alone": {
+              "classes": 12,
+              "mean_percent": 1.2921626984126966,
+              "class_bootstrap95": [
+                -12.996465773809524,
+                13.150049603174594
+              ]
+            },
+            "neutral_minus_alone": {
+              "classes": 12,
+              "mean_percent": 5.726686507936509,
+              "class_bootstrap95": [
+                -3.214285714285714,
+                14.668464781746021
+              ]
+            },
+            "context_minus_neutral": {
+              "classes": 12,
+              "mean_percent": -4.434523809523813,
+              "class_bootstrap95": [
+                -13.612599206349211,
+                3.7599206349206336
+              ]
+            }
+          },
+          "balanced_sentence_accuracy": {
+            "alone": {
+              "classes": 12,
+              "mean_percent": 61.38888888888888,
+              "class_bootstrap95": [
+                52.5,
+                71.38888888888889
+              ]
+            },
+            "context_before": {
+              "classes": 12,
+              "mean_percent": 67.6190476190476,
+              "class_bootstrap95": [
+                53.59126984126984,
+                80.51587301587301
+              ]
+            },
+            "context_after": {
+              "classes": 12,
+              "mean_percent": 66.57738095238095,
+              "class_bootstrap95": [
+                56.507936507936506,
+                77.48015873015873
+              ]
+            },
+            "neutral_before": {
+              "classes": 12,
+              "mean_percent": 60.56547619047619,
+              "class_bootstrap95": [
+                49.107142857142854,
+                73.06547619047619
+              ]
+            },
+            "neutral_after": {
+              "classes": 12,
+              "mean_percent": 65.53571428571429,
+              "class_bootstrap95": [
+                55.952380952380956,
+                76.48809523809524
+              ]
+            },
+            "context_minus_alone": {
+              "classes": 12,
+              "mean_percent": 5.709325396825396,
+              "class_bootstrap95": [
+                -8.819444444444445,
+                20.709325396825395
+              ]
+            },
+            "neutral_minus_alone": {
+              "classes": 12,
+              "mean_percent": 1.6617063492063489,
+              "class_bootstrap95": [
+                -5.972222222222221,
+                8.675967261904757
+              ]
+            },
+            "context_minus_neutral": {
+              "classes": 12,
+              "mean_percent": 4.0476190476190474,
+              "class_bootstrap95": [
+                -5.763888888888888,
+                15.525793650793652
+              ]
+            }
+          },
+          "both_correct": {
+            "alone": {
+              "classes": 12,
+              "mean_percent": 24.444444444444443,
+              "class_bootstrap95": [
+                7.777777777777778,
+                43.888888888888886
+              ]
+            },
+            "context_before": {
+              "classes": 12,
+              "mean_percent": 41.349206349206355,
+              "class_bootstrap95": [
+                20.198412698412696,
+                62.79761904761906
+              ]
+            },
+            "context_after": {
+              "classes": 12,
+              "mean_percent": 34.26587301587302,
+              "class_bootstrap95": [
+                14.166666666666666,
+                55.655753968253954
+              ]
+            },
+            "neutral_before": {
+              "classes": 12,
+              "mean_percent": 25.297619047619047,
+              "class_bootstrap95": [
+                6.547619047619048,
+                47.91666666666667
+              ]
+            },
+            "neutral_after": {
+              "classes": 12,
+              "mean_percent": 31.90476190476191,
+              "class_bootstrap95": [
+                11.904761904761905,
+                53.333333333333336
+              ]
+            },
+            "context_minus_alone": {
+              "classes": 12,
+              "mean_percent": 13.363095238095237,
+              "class_bootstrap95": [
+                -12.956349206349206,
+                41.52777777777778
+              ]
+            },
+            "neutral_minus_alone": {
+              "classes": 12,
+              "mean_percent": 4.156746031746032,
+              "class_bootstrap95": [
+                -7.638888888888888,
+                16.71651785714285
+              ]
+            },
+            "context_minus_neutral": {
+              "classes": 12,
+              "mean_percent": 9.206349206349207,
+              "class_bootstrap95": [
+                -10.972222222222221,
+                32.400793650793645
+              ]
+            }
+          }
+        }
+      },
+      "photo": {
+        "eligible_classes": [
+          "deer",
+          "pineapple",
+          "wheelchair",
+          "parrot",
+          "camel",
+          "rifle",
+          "skyscraper",
+          "songbird",
+          "scissors",
+          "saw",
+          "door",
+          "bat"
+        ],
+        "metrics": {
+          "auc": {
+            "alone": {
+              "classes": 12,
+              "mean_percent": 69.18650793650794,
+              "class_bootstrap95": [
+                51.5265376984127,
+                85.34722222222223
+              ]
+            },
+            "context_before": {
+              "classes": 12,
+              "mean_percent": 57.28670634920635,
+              "class_bootstrap95": [
+                36.388888888888886,
+                77.11309523809523
+              ]
+            },
+            "context_after": {
+              "classes": 12,
+              "mean_percent": 64.24603174603175,
+              "class_bootstrap95": [
+                44.6624503968254,
+                82.7876984126984
+              ]
+            },
+            "neutral_before": {
+              "classes": 12,
+              "mean_percent": 69.2609126984127,
+              "class_bootstrap95": [
+                51.82924107142857,
+                84.40711805555551
+              ]
+            },
+            "neutral_after": {
+              "classes": 12,
+              "mean_percent": 68.6111111111111,
+              "class_bootstrap95": [
+                51.38888888888889,
+                84.44444444444444
+              ]
+            },
+            "context_minus_alone": {
+              "classes": 12,
+              "mean_percent": -8.420138888888888,
+              "class_bootstrap95": [
+                -17.70876736111111,
+                -1.3020833333333324
+              ]
+            },
+            "neutral_minus_alone": {
+              "classes": 12,
+              "mean_percent": -0.25049603174603086,
+              "class_bootstrap95": [
+                -12.708705357142854,
+                11.34672619047619
+              ]
+            },
+            "context_minus_neutral": {
+              "classes": 12,
+              "mean_percent": -8.169642857142856,
+              "class_bootstrap95": [
+                -15.730034722222221,
+                -0.9226190476190462
+              ]
+            }
+          },
+          "balanced_sentence_accuracy": {
+            "alone": {
+              "classes": 12,
+              "mean_percent": 58.7797619047619,
+              "class_bootstrap95": [
+                48.01587301587303,
+                69.75198412698413
+              ]
+            },
+            "context_before": {
+              "classes": 12,
+              "mean_percent": 56.73611111111111,
+              "class_bootstrap95": [
+                41.87499999999999,
+                70.34722222222221
+              ]
+            },
+            "context_after": {
+              "classes": 12,
+              "mean_percent": 64.02777777777779,
+              "class_bootstrap95": [
+                53.81944444444444,
+                75.41666666666667
+              ]
+            },
+            "neutral_before": {
+              "classes": 12,
+              "mean_percent": 61.30952380952381,
+              "class_bootstrap95": [
+                52.976190476190474,
+                70.43898809523807
+              ]
+            },
+            "neutral_after": {
+              "classes": 12,
+              "mean_percent": 56.76587301587301,
+              "class_bootstrap95": [
+                41.76587301587302,
+                71.38888888888889
+              ]
+            },
+            "context_minus_alone": {
+              "classes": 12,
+              "mean_percent": 1.6021825396825384,
+              "class_bootstrap95": [
+                -8.403521825396824,
+                10.9375
+              ]
+            },
+            "neutral_minus_alone": {
+              "classes": 12,
+              "mean_percent": 0.2579365079365082,
+              "class_bootstrap95": [
+                -2.609126984126984,
+                3.541666666666666
+              ]
+            },
+            "context_minus_neutral": {
+              "classes": 12,
+              "mean_percent": 1.3442460317460303,
+              "class_bootstrap95": [
+                -8.125,
+                9.623759920634908
+              ]
+            }
+          },
+          "both_correct": {
+            "alone": {
+              "classes": 12,
+              "mean_percent": 27.04365079365079,
+              "class_bootstrap95": [
+                11.865079365079366,
+                44.30555555555556
+              ]
+            },
+            "context_before": {
+              "classes": 12,
+              "mean_percent": 30.555555555555554,
+              "class_bootstrap95": [
+                15.138888888888888,
+                48.05555555555556
+              ]
+            },
+            "context_after": {
+              "classes": 12,
+              "mean_percent": 32.63888888888889,
+              "class_bootstrap95": [
+                13.88888888888889,
+                53.61111111111111
+              ]
+            },
+            "neutral_before": {
+              "classes": 12,
+              "mean_percent": 22.61904761904762,
+              "class_bootstrap95": [
+                5.9523809523809526,
+                40.877976190476126
+              ]
+            },
+            "neutral_after": {
+              "classes": 12,
+              "mean_percent": 26.52777777777778,
+              "class_bootstrap95": [
+                7.083333333333333,
+                49.30555555555555
+              ]
+            },
+            "context_minus_alone": {
+              "classes": 12,
+              "mean_percent": 4.553571428571428,
+              "class_bootstrap95": [
+                -7.589533730158729,
+                18.541666666666668
+              ]
+            },
+            "neutral_minus_alone": {
+              "classes": 12,
+              "mean_percent": -2.470238095238095,
+              "class_bootstrap95": [
+                -8.055555555555555,
+                2.4305555555555567
+              ]
+            },
+            "context_minus_neutral": {
+              "classes": 12,
+              "mean_percent": 7.023809523809523,
+              "class_bootstrap95": [
+                -5.615079365079364,
+                20.912698412698408
+              ]
+            }
+          }
+        }
+      }
+    },
+    "own": {
+      "sketch": {
+        "eligible_classes": [
+          "deer",
+          "pineapple",
+          "wheelchair",
+          "parrot",
+          "camel",
+          "wine_bottle",
+          "rifle",
+          "skyscraper",
+          "songbird",
+          "scissors",
+          "rhinoceros",
+          "dolphin",
+          "saw",
+          "door",
+          "bat"
+        ],
+        "metrics": {
+          "auc": {
+            "alone": {
+              "classes": 15,
+              "mean_percent": 78.10185185185185,
+              "class_bootstrap95": [
+                69.89275793650795,
+                86.1468253968254
+              ]
+            },
+            "context_before": {
+              "classes": 15,
+              "mean_percent": 77.7526455026455,
+              "class_bootstrap95": [
+                67.46286375661376,
+                86.96349206349207
+              ]
+            },
+            "context_after": {
+              "classes": 15,
+              "mean_percent": 82.11772486772486,
+              "class_bootstrap95": [
+                74.68898809523807,
+                89.22261904761903
+              ]
+            },
+            "neutral_before": {
+              "classes": 15,
+              "mean_percent": 81.51058201058201,
+              "class_bootstrap95": [
+                73.27757936507938,
+                89.51898148148148
+              ]
+            },
+            "neutral_after": {
+              "classes": 15,
+              "mean_percent": 83.9589947089947,
+              "class_bootstrap95": [
+                75.95611772486774,
+                91.02536375661376
+              ]
+            },
+            "context_minus_alone": {
+              "classes": 15,
+              "mean_percent": 1.8333333333333344,
+              "class_bootstrap95": [
+                -6.444444444444445,
+                10.182738095238095
+              ]
+            },
+            "neutral_minus_alone": {
+              "classes": 15,
+              "mean_percent": 4.632936507936507,
+              "class_bootstrap95": [
+                -3.121130952380953,
+                12.289732142857144
+              ]
+            },
+            "context_minus_neutral": {
+              "classes": 15,
+              "mean_percent": -2.7996031746031727,
+              "class_bootstrap95": [
+                -9.250198412698408,
+                3.325595238095235
+              ]
+            }
+          },
+          "balanced_sentence_accuracy": {
+            "alone": {
+              "classes": 15,
+              "mean_percent": 63.63492063492065,
+              "class_bootstrap95": [
+                56.11904761904761,
+                71.97242063492062
+              ]
+            },
+            "context_before": {
+              "classes": 15,
+              "mean_percent": 66.86904761904763,
+              "class_bootstrap95": [
+                58.05555555555556,
+                76.31349206349208
+              ]
+            },
+            "context_after": {
+              "classes": 15,
+              "mean_percent": 64.5,
+              "class_bootstrap95": [
+                56.833333333333336,
+                73.05555555555556
+              ]
+            },
+            "neutral_before": {
+              "classes": 15,
+              "mean_percent": 60.58333333333334,
+              "class_bootstrap95": [
+                52.361111111111114,
+                70.16666666666666
+              ]
+            },
+            "neutral_after": {
+              "classes": 15,
+              "mean_percent": 68.33333333333333,
+              "class_bootstrap95": [
+                60.02708333333333,
+                77.19444444444444
+              ]
+            },
+            "context_minus_alone": {
+              "classes": 15,
+              "mean_percent": 2.049603174603174,
+              "class_bootstrap95": [
+                -8.916666666666666,
+                13.319692460317455
+              ]
+            },
+            "neutral_minus_alone": {
+              "classes": 15,
+              "mean_percent": 0.823412698412698,
+              "class_bootstrap95": [
+                -5.89310515873016,
+                7.380952380952381
+              ]
+            },
+            "context_minus_neutral": {
+              "classes": 15,
+              "mean_percent": 1.2261904761904763,
+              "class_bootstrap95": [
+                -7.430704365079366,
+                9.263888888888888
+              ]
+            }
+          },
+          "both_correct": {
+            "alone": {
+              "classes": 15,
+              "mean_percent": 30.908730158730158,
+              "class_bootstrap95": [
+                16.392460317460316,
+                46.84960317460317
+              ]
+            },
+            "context_before": {
+              "classes": 15,
+              "mean_percent": 36.214285714285715,
+              "class_bootstrap95": [
+                19.32400793650794,
+                54.38095238095237
+              ]
+            },
+            "context_after": {
+              "classes": 15,
+              "mean_percent": 30.44444444444444,
+              "class_bootstrap95": [
+                15.11111111111111,
+                47.333333333333336
+              ]
+            },
+            "neutral_before": {
+              "classes": 15,
+              "mean_percent": 25.33333333333333,
+              "class_bootstrap95": [
+                10.0,
+                43.388888888888886
+              ]
+            },
+            "neutral_after": {
+              "classes": 15,
+              "mean_percent": 40.527777777777786,
+              "class_bootstrap95": [
+                25.11111111111111,
+                56.94444444444444
+              ]
+            },
+            "context_minus_alone": {
+              "classes": 15,
+              "mean_percent": 2.4206349206349222,
+              "class_bootstrap95": [
+                -19.25416666666667,
+                24.527777777777782
+              ]
+            },
+            "neutral_minus_alone": {
+              "classes": 15,
+              "mean_percent": 2.021825396825397,
+              "class_bootstrap95": [
+                -8.327430555555553,
+                12.871428571428567
+              ]
+            },
+            "context_minus_neutral": {
+              "classes": 15,
+              "mean_percent": 0.39880952380952445,
+              "class_bootstrap95": [
+                -17.23655753968254,
+                16.873412698412693
+              ]
+            }
+          }
+        }
+      },
+      "photo": {
+        "eligible_classes": [
+          "deer",
+          "pineapple",
+          "wheelchair",
+          "parrot",
+          "bell",
+          "camel",
+          "rifle",
+          "skyscraper",
+          "songbird",
+          "scissors",
+          "rhinoceros",
+          "saw",
+          "door",
+          "bat"
+        ],
+        "metrics": {
+          "auc": {
+            "alone": {
+              "classes": 14,
+              "mean_percent": 56.88492063492063,
+              "class_bootstrap95": [
+                41.632157029478456,
+                71.2798327664399
+              ]
+            },
+            "context_before": {
+              "classes": 14,
+              "mean_percent": 56.860827664399096,
+              "class_bootstrap95": [
+                37.3469387755102,
+                75.36922477324262
+              ]
+            },
+            "context_after": {
+              "classes": 14,
+              "mean_percent": 55.4875283446712,
+              "class_bootstrap95": [
+                38.9030612244898,
+                71.12528344671203
+              ]
+            },
+            "neutral_before": {
+              "classes": 14,
+              "mean_percent": 63.26105442176871,
+              "class_bootstrap95": [
+                49.28071853741497,
+                76.8157950680272
+              ]
+            },
+            "neutral_after": {
+              "classes": 14,
+              "mean_percent": 63.75850340136054,
+              "class_bootstrap95": [
+                50.96938775510205,
+                76.9047619047619
+              ]
+            },
+            "context_minus_alone": {
+              "classes": 14,
+              "mean_percent": -0.7107426303854858,
+              "class_bootstrap95": [
+                -6.940334467120181,
+                5.873387896825392
+              ]
+            },
+            "neutral_minus_alone": {
+              "classes": 14,
+              "mean_percent": 6.624858276643993,
+              "class_bootstrap95": [
+                -2.0558744331065744,
+                16.84339569160997
+              ]
+            },
+            "context_minus_neutral": {
+              "classes": 14,
+              "mean_percent": -7.3356009070294785,
+              "class_bootstrap95": [
+                -17.73568594104308,
+                2.862847222222223
+              ]
+            }
+          },
+          "balanced_sentence_accuracy": {
+            "alone": {
+              "classes": 14,
+              "mean_percent": 53.29081632653061,
+              "class_bootstrap95": [
+                41.59863945578232,
+                64.31972789115645
+              ]
+            },
+            "context_before": {
+              "classes": 14,
+              "mean_percent": 57.13435374149659,
+              "class_bootstrap95": [
+                46.028486394557824,
+                67.02380952380952
+              ]
+            },
+            "context_after": {
+              "classes": 14,
+              "mean_percent": 60.39965986394557,
+              "class_bootstrap95": [
+                49.88945578231292,
+                71.70089285714283
+              ]
+            },
+            "neutral_before": {
+              "classes": 14,
+              "mean_percent": 59.778911564625844,
+              "class_bootstrap95": [
+                51.95578231292518,
+                68.62244897959184
+              ]
+            },
+            "neutral_after": {
+              "classes": 14,
+              "mean_percent": 54.74489795918367,
+              "class_bootstrap95": [
+                44.31972789115646,
+                65.39158163265306
+              ]
+            },
+            "context_minus_alone": {
+              "classes": 14,
+              "mean_percent": 5.4761904761904745,
+              "class_bootstrap95": [
+                -4.026466836734696,
+                15.922937925170064
+              ]
+            },
+            "neutral_minus_alone": {
+              "classes": 14,
+              "mean_percent": 3.9710884353741505,
+              "class_bootstrap95": [
+                -2.6447704081632626,
+                14.166666666666666
+              ]
+            },
+            "context_minus_neutral": {
+              "classes": 14,
+              "mean_percent": 1.505102040816324,
+              "class_bootstrap95": [
+                -4.9958545918367365,
+                8.48267431972788
+              ]
+            }
+          },
+          "both_correct": {
+            "alone": {
+              "classes": 14,
+              "mean_percent": 21.33219954648526,
+              "class_bootstrap95": [
+                9.370323129251702,
+                36.49659863945578
+              ]
+            },
+            "context_before": {
+              "classes": 14,
+              "mean_percent": 28.968253968253965,
+              "class_bootstrap95": [
+                17.53968253968254,
+                40.27876984126983
+              ]
+            },
+            "context_after": {
+              "classes": 14,
+              "mean_percent": 29.529478458049883,
+              "class_bootstrap95": [
+                13.76984126984127,
+                47.585034013605444
+              ]
+            },
+            "neutral_before": {
+              "classes": 14,
+              "mean_percent": 21.598639455782315,
+              "class_bootstrap95": [
+                7.482993197278912,
+                37.92517006802721
+              ]
+            },
+            "neutral_after": {
+              "classes": 14,
+              "mean_percent": 19.37074829931973,
+              "class_bootstrap95": [
+                6.156462585034014,
+                36.12244897959184
+              ]
+            },
+            "context_minus_alone": {
+              "classes": 14,
+              "mean_percent": 7.916666666666665,
+              "class_bootstrap95": [
+                -1.9472789115646256,
+                19.787414965986393
+              ]
+            },
+            "neutral_minus_alone": {
+              "classes": 14,
+              "mean_percent": -0.8475056689342394,
+              "class_bootstrap95": [
+                -6.230229591836734,
+                4.875637755102036
+              ]
+            },
+            "context_minus_neutral": {
+              "classes": 14,
+              "mean_percent": 8.764172335600906,
+              "class_bootstrap95": [
+                -2.508715986394562,
+                21.25864512471655
+              ]
+            }
+          }
+        }
+      }
+    },
+    "retrieval": {
+      "sketch": {
+        "eligible_classes": [
+          "camel",
+          "rifle",
+          "skyscraper",
+          "songbird",
+          "scissors",
+          "saw",
+          "door",
+          "bat"
+        ],
+        "metrics": {
+          "nominated_text": {
+            "alone": {
+              "classes": 8,
+              "mean_percent": 48.8764880952381,
+              "class_bootstrap95": [
+                44.86607142857143,
+                52.44791666666667
+              ]
+            },
+            "context_before": {
+              "classes": 8,
+              "mean_percent": 51.13715277777777,
+              "class_bootstrap95": [
+                50.130208333333336,
+                52.58680555555556
+              ]
+            },
+            "context_after": {
+              "classes": 8,
+              "mean_percent": 50.93253968253968,
+              "class_bootstrap95": [
+                49.50892857142858,
+                52.6686507936508
+              ]
+            },
+            "neutral_before": {
+              "classes": 8,
+              "mean_percent": 51.2375992063492,
+              "class_bootstrap95": [
+                50.074404761904766,
+                52.79513888888888
+              ]
+            },
+            "neutral_after": {
+              "classes": 8,
+              "mean_percent": 49.10590277777778,
+              "class_bootstrap95": [
+                45.3125,
+                51.927083333333336
+              ]
+            },
+            "context_minus_alone": {
+              "classes": 8,
+              "mean_percent": 2.158358134920635,
+              "class_bootstrap95": [
+                -0.631200396825396,
+                6.106770833333335
+              ]
+            },
+            "neutral_minus_alone": {
+              "classes": 8,
+              "mean_percent": 1.2952628968253943,
+              "class_bootstrap95": [
+                -0.4557291666666713,
+                3.2552083333333344
+              ]
+            },
+            "context_minus_neutral": {
+              "classes": 8,
+              "mean_percent": 0.8630952380952406,
+              "class_bootstrap95": [
+                -0.46874999999999695,
+                3.1026785714285743
+              ]
+            }
+          },
+          "known_state_text": {
+            "alone": {
+              "classes": 8,
+              "mean_percent": 55.08556547619048,
+              "class_bootstrap95": [
+                51.11979166666667,
+                58.36681547619048
+              ]
+            },
+            "context_before": {
+              "classes": 8,
+              "mean_percent": 51.50173611111111,
+              "class_bootstrap95": [
+                50.390625,
+                53.00347222222223
+              ]
+            },
+            "context_after": {
+              "classes": 8,
+              "mean_percent": 51.68402777777777,
+              "class_bootstrap95": [
+                49.53125000000001,
+                53.95833333333333
+              ]
+            },
+            "neutral_before": {
+              "classes": 8,
+              "mean_percent": 53.25024801587301,
+              "class_bootstrap95": [
+                50.68080357142857,
+                55.69444444444444
+              ]
+            },
+            "neutral_after": {
+              "classes": 8,
+              "mean_percent": 51.16319444444445,
+              "class_bootstrap95": [
+                48.020833333333336,
+                54.30555555555555
+              ]
+            },
+            "context_minus_alone": {
+              "classes": 8,
+              "mean_percent": -3.492683531746031,
+              "class_bootstrap95": [
+                -7.129836309523811,
+                0.8767671130952387
+              ]
+            },
+            "neutral_minus_alone": {
+              "classes": 8,
+              "mean_percent": -2.878844246031749,
+              "class_bootstrap95": [
+                -5.228174603174608,
+                -0.49428013392857983
+              ]
+            },
+            "context_minus_neutral": {
+              "classes": 8,
+              "mean_percent": -0.6138392857142821,
+              "class_bootstrap95": [
+                -3.3743489583333277,
+                2.109375000000001
+              ]
+            }
+          }
+        }
+      },
+      "sketch_two_views": {
+        "eligible_classes": [
+          "camel",
+          "rifle",
+          "skyscraper",
+          "songbird",
+          "scissors",
+          "saw",
+          "door",
+          "bat"
+        ],
+        "metrics": {
+          "nominated_text": {
+            "alone": {
+              "classes": 8,
+              "mean_percent": 50.05208333333333,
+              "class_bootstrap95": [
+                45.885416666666664,
+                53.69791666666668
+              ]
+            },
+            "context_before": {
+              "classes": 8,
+              "mean_percent": 50.92881944444445,
+              "class_bootstrap95": [
+                50.10416666666666,
+                52.317708333333336
+              ]
+            },
+            "context_after": {
+              "classes": 8,
+              "mean_percent": 51.00694444444444,
+              "class_bootstrap95": [
+                49.583333333333336,
+                52.743055555555564
+              ]
+            },
+            "neutral_before": {
+              "classes": 8,
+              "mean_percent": 51.46825396825396,
+              "class_bootstrap95": [
+                50.148809523809526,
+                53.19444444444444
+              ]
+            },
+            "neutral_after": {
+              "classes": 8,
+              "mean_percent": 48.97569444444444,
+              "class_bootstrap95": [
+                45.15625,
+                51.92708333333332
+              ]
+            },
+            "context_minus_alone": {
+              "classes": 8,
+              "mean_percent": 0.9157986111111127,
+              "class_bootstrap95": [
+                -2.34375,
+                5.342881944444447
+              ]
+            },
+            "neutral_minus_alone": {
+              "classes": 8,
+              "mean_percent": 0.1698908730158724,
+              "class_bootstrap95": [
+                -1.7534722222222214,
+                2.2619047619047636
+              ]
+            },
+            "context_minus_neutral": {
+              "classes": 8,
+              "mean_percent": 0.7459077380952404,
+              "class_bootstrap95": [
+                -0.7126581101190483,
+                3.063616071428574
+              ]
+            }
+          },
+          "known_state_text": {
+            "alone": {
+              "classes": 8,
+              "mean_percent": 55.08556547619048,
+              "class_bootstrap95": [
+                51.11979166666667,
+                58.36681547619048
+              ]
+            },
+            "context_before": {
+              "classes": 8,
+              "mean_percent": 51.50173611111111,
+              "class_bootstrap95": [
+                50.390625,
+                53.00347222222223
+              ]
+            },
+            "context_after": {
+              "classes": 8,
+              "mean_percent": 51.68402777777777,
+              "class_bootstrap95": [
+                49.53125000000001,
+                53.95833333333333
+              ]
+            },
+            "neutral_before": {
+              "classes": 8,
+              "mean_percent": 53.25024801587301,
+              "class_bootstrap95": [
+                50.68080357142857,
+                55.69444444444444
+              ]
+            },
+            "neutral_after": {
+              "classes": 8,
+              "mean_percent": 51.16319444444445,
+              "class_bootstrap95": [
+                48.020833333333336,
+                54.30555555555555
+              ]
+            },
+            "context_minus_alone": {
+              "classes": 8,
+              "mean_percent": -3.492683531746031,
+              "class_bootstrap95": [
+                -7.129836309523811,
+                0.8767671130952387
+              ]
+            },
+            "neutral_minus_alone": {
+              "classes": 8,
+              "mean_percent": -2.878844246031749,
+              "class_bootstrap95": [
+                -5.228174603174608,
+                -0.49428013392857983
+              ]
+            },
+            "context_minus_neutral": {
+              "classes": 8,
+              "mean_percent": -0.6138392857142821,
+              "class_bootstrap95": [
+                -3.3743489583333277,
+                2.109375000000001
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "class_rows": [
+    {
+      "class": "deer",
+      "split": "sketchy_1",
+      "subjects": 10,
+      "prompt_control": {
+        "context": "A deer is a hoofed animal with a long face.",
+        "neutral": "Here is an image that shows an object in view.",
+        "context_tokens": 12,
+        "neutral_tokens": 11
+      },
+      "sketch_definite": 8,
+      "photo_definite": 8,
+      "joint_states": [
+        5,
+        1
+      ],
+      "conflicting": 1,
+      "shared": {
+        "sketch": {
+          "alone": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "context_before": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 1.0,
+            "both_correct": 1.0
+          },
+          "context_after": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 1.0,
+            "both_correct": 1.0
+          },
+          "neutral_before": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_after": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 1.0,
+            "both_correct": 1.0
+          }
+        },
+        "sketch_two_views": {
+          "alone": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "context_before": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 1.0,
+            "both_correct": 1.0
+          },
+          "context_after": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 1.0,
+            "both_correct": 1.0
+          },
+          "neutral_before": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_after": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 1.0,
+            "both_correct": 1.0
+          }
+        },
+        "photo": {
+          "alone": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "context_before": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "context_after": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 1.0,
+            "both_correct": 1.0
+          },
+          "neutral_before": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_after": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          }
+        }
+      },
+      "own": {
+        "sketch": {
+          "alone": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "context_before": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 1.0,
+            "both_correct": 1.0
+          },
+          "context_after": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 1.0,
+            "both_correct": 1.0
+          },
+          "neutral_before": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_after": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 1.0,
+            "both_correct": 1.0
+          }
+        },
+        "photo": {
+          "alone": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "context_before": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.6666666666666666,
+            "both_correct": 0.3333333333333333
+          },
+          "context_after": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 1.0,
+            "both_correct": 1.0
+          },
+          "neutral_before": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_after": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          }
+        }
+      },
+      "retrieval": {
+        "sketch": {
+          "alone": null,
+          "context_before": null,
+          "context_after": null,
+          "neutral_before": null,
+          "neutral_after": null
+        },
+        "sketch_two_views": {
+          "alone": null,
+          "context_before": null,
+          "context_after": null,
+          "neutral_before": null,
+          "neutral_after": null
+        }
+      },
+      "cosine_with_isolated_text_contrast": {
+        "alone": 1.0,
+        "context_before": 0.6221922875750767,
+        "context_after": 0.8668299864311673,
+        "neutral_before": 0.8438451596214026,
+        "neutral_after": 0.8963732728853839
+      }
+    },
+    {
+      "class": "pineapple",
+      "split": "sketchy_1",
+      "subjects": 10,
+      "prompt_control": {
+        "context": "A pineapple is a tropical fruit with a leafy crown.",
+        "neutral": "Here is an image that shows an object in view.",
+        "context_tokens": 11,
+        "neutral_tokens": 11
+      },
+      "sketch_definite": 8,
+      "photo_definite": 3,
+      "joint_states": [
+        1,
+        1
+      ],
+      "conflicting": 1,
+      "shared": {
+        "sketch": {
+          "alone": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "context_before": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "context_after": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 1.0,
+            "both_correct": 1.0
+          },
+          "neutral_before": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_after": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          }
+        },
+        "sketch_two_views": {
+          "alone": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "context_before": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 1.0,
+            "both_correct": 1.0
+          },
+          "context_after": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 1.0,
+            "both_correct": 1.0
+          },
+          "neutral_before": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_after": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          }
+        },
+        "photo": {
+          "alone": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "context_before": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 1.0,
+            "both_correct": 1.0
+          },
+          "context_after": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_before": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_after": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          }
+        }
+      },
+      "own": {
+        "sketch": {
+          "alone": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "context_before": {
+            "auc": 0.8,
+            "balanced_sentence_accuracy": 0.6333333333333333,
+            "both_correct": 0.39999999999999997
+          },
+          "context_after": {
+            "auc": 0.6666666666666666,
+            "balanced_sentence_accuracy": 0.7333333333333334,
+            "both_correct": 0.5333333333333333
+          },
+          "neutral_before": {
+            "auc": 0.6666666666666666,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_after": {
+            "auc": 0.8666666666666667,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          }
+        },
+        "photo": {
+          "alone": {
+            "auc": 0.5,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "context_before": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.75,
+            "both_correct": 0.5
+          },
+          "context_after": {
+            "auc": 0.5,
+            "balanced_sentence_accuracy": 0.25,
+            "both_correct": 0.0
+          },
+          "neutral_before": {
+            "auc": 0.5,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_after": {
+            "auc": 0.5,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          }
+        }
+      },
+      "retrieval": {
+        "sketch": {
+          "alone": null,
+          "context_before": null,
+          "context_after": null,
+          "neutral_before": null,
+          "neutral_after": null
+        },
+        "sketch_two_views": {
+          "alone": null,
+          "context_before": null,
+          "context_after": null,
+          "neutral_before": null,
+          "neutral_after": null
+        }
+      },
+      "cosine_with_isolated_text_contrast": {
+        "alone": 1.0000000000000002,
+        "context_before": 0.5569007604672962,
+        "context_after": 0.8121807582033715,
+        "neutral_before": 0.7665599893551435,
+        "neutral_after": 0.7610694740375643
+      }
+    },
+    {
+      "class": "wheelchair",
+      "split": "sketchy_1",
+      "subjects": 10,
+      "prompt_control": {
+        "context": "A wheelchair has a seat on wheels.",
+        "neutral": "An object appears in an image.",
+        "context_tokens": 8,
+        "neutral_tokens": 7
+      },
+      "sketch_definite": 10,
+      "photo_definite": 8,
+      "joint_states": [
+        6,
+        1
+      ],
+      "conflicting": 1,
+      "shared": {
+        "sketch": {
+          "alone": {
+            "auc": 0.5,
+            "balanced_sentence_accuracy": 0.6666666666666666,
+            "both_correct": 0.3333333333333333
+          },
+          "context_before": {
+            "auc": 0.3333333333333333,
+            "balanced_sentence_accuracy": 0.16666666666666666,
+            "both_correct": 0.0
+          },
+          "context_after": {
+            "auc": 0.16666666666666666,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_before": {
+            "auc": 0.5,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_after": {
+            "auc": 0.5,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          }
+        },
+        "sketch_two_views": {
+          "alone": {
+            "auc": 0.5,
+            "balanced_sentence_accuracy": 0.6666666666666666,
+            "both_correct": 0.3333333333333333
+          },
+          "context_before": {
+            "auc": 0.16666666666666666,
+            "balanced_sentence_accuracy": 0.16666666666666666,
+            "both_correct": 0.0
+          },
+          "context_after": {
+            "auc": 0.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_before": {
+            "auc": 0.5,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_after": {
+            "auc": 0.5,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          }
+        },
+        "photo": {
+          "alone": {
+            "auc": 0.16666666666666666,
+            "balanced_sentence_accuracy": 0.16666666666666666,
+            "both_correct": 0.0
+          },
+          "context_before": {
+            "auc": 0.0,
+            "balanced_sentence_accuracy": 0.25,
+            "both_correct": 0.0
+          },
+          "context_after": {
+            "auc": 0.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_before": {
+            "auc": 0.5,
+            "balanced_sentence_accuracy": 0.5833333333333334,
+            "both_correct": 0.16666666666666666
+          },
+          "neutral_after": {
+            "auc": 0.0,
+            "balanced_sentence_accuracy": 0.0,
+            "both_correct": 0.0
+          }
+        }
+      },
+      "own": {
+        "sketch": {
+          "alone": {
+            "auc": 0.7619047619047619,
+            "balanced_sentence_accuracy": 0.6428571428571428,
+            "both_correct": 0.2857142857142857
+          },
+          "context_before": {
+            "auc": 0.7142857142857143,
+            "balanced_sentence_accuracy": 0.47619047619047616,
+            "both_correct": 0.19047619047619047
+          },
+          "context_after": {
+            "auc": 0.6190476190476191,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_before": {
+            "auc": 0.8571428571428571,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_after": {
+            "auc": 0.8095238095238095,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          }
+        },
+        "photo": {
+          "alone": {
+            "auc": 0.2857142857142857,
+            "balanced_sentence_accuracy": 0.21428571428571427,
+            "both_correct": 0.0
+          },
+          "context_before": {
+            "auc": 0.0,
+            "balanced_sentence_accuracy": 0.2857142857142857,
+            "both_correct": 0.0
+          },
+          "context_after": {
+            "auc": 0.14285714285714285,
+            "balanced_sentence_accuracy": 0.5714285714285714,
+            "both_correct": 0.14285714285714285
+          },
+          "neutral_before": {
+            "auc": 0.42857142857142855,
+            "balanced_sentence_accuracy": 0.5714285714285714,
+            "both_correct": 0.14285714285714285
+          },
+          "neutral_after": {
+            "auc": 0.14285714285714285,
+            "balanced_sentence_accuracy": 0.07142857142857142,
+            "both_correct": 0.0
+          }
+        }
+      },
+      "retrieval": {
+        "sketch": {
+          "alone": null,
+          "context_before": null,
+          "context_after": null,
+          "neutral_before": null,
+          "neutral_after": null
+        },
+        "sketch_two_views": {
+          "alone": null,
+          "context_before": null,
+          "context_after": null,
+          "neutral_before": null,
+          "neutral_after": null
+        }
+      },
+      "cosine_with_isolated_text_contrast": {
+        "alone": 0.9999999999999999,
+        "context_before": 0.6720129463863734,
+        "context_after": 0.8612715129162878,
+        "neutral_before": 0.639729437703298,
+        "neutral_after": 0.7199516904364577
+      }
+    },
+    {
+      "class": "parrot",
+      "split": "sketchy_1",
+      "subjects": 10,
+      "prompt_control": {
+        "context": "The parrot has a curved beak and a feathered body.",
+        "neutral": "Here is an image that shows an object in view.",
+        "context_tokens": 12,
+        "neutral_tokens": 11
+      },
+      "sketch_definite": 10,
+      "photo_definite": 8,
+      "joint_states": [
+        1,
+        2
+      ],
+      "conflicting": 5,
+      "shared": {
+        "sketch": {
+          "alone": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.75,
+            "both_correct": 0.5
+          },
+          "context_before": {
+            "auc": 0.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "context_after": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_before": {
+            "auc": 0.5,
+            "balanced_sentence_accuracy": 0.25,
+            "both_correct": 0.0
+          },
+          "neutral_after": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.75,
+            "both_correct": 0.5
+          }
+        },
+        "sketch_two_views": {
+          "alone": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.75,
+            "both_correct": 0.5
+          },
+          "context_before": {
+            "auc": 0.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "context_after": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_before": {
+            "auc": 0.5,
+            "balanced_sentence_accuracy": 0.25,
+            "both_correct": 0.0
+          },
+          "neutral_after": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.75,
+            "both_correct": 0.5
+          }
+        },
+        "photo": {
+          "alone": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.75,
+            "both_correct": 0.5
+          },
+          "context_before": {
+            "auc": 0.0,
+            "balanced_sentence_accuracy": 0.0,
+            "both_correct": 0.0
+          },
+          "context_after": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.75,
+            "both_correct": 0.5
+          },
+          "neutral_before": {
+            "auc": 0.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_after": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 1.0,
+            "both_correct": 1.0
+          }
+        }
+      },
+      "own": {
+        "sketch": {
+          "alone": {
+            "auc": 0.8125,
+            "balanced_sentence_accuracy": 0.6875,
+            "both_correct": 0.4375
+          },
+          "context_before": {
+            "auc": 0.3125,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "context_after": {
+            "auc": 0.8125,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_before": {
+            "auc": 0.5,
+            "balanced_sentence_accuracy": 0.375,
+            "both_correct": 0.125
+          },
+          "neutral_after": {
+            "auc": 0.8125,
+            "balanced_sentence_accuracy": 0.6875,
+            "both_correct": 0.4375
+          }
+        },
+        "photo": {
+          "alone": {
+            "auc": 0.42857142857142855,
+            "balanced_sentence_accuracy": 0.6428571428571428,
+            "both_correct": 0.2857142857142857
+          },
+          "context_before": {
+            "auc": 0.0,
+            "balanced_sentence_accuracy": 0.07142857142857142,
+            "both_correct": 0.0
+          },
+          "context_after": {
+            "auc": 0.5714285714285714,
+            "balanced_sentence_accuracy": 0.6428571428571428,
+            "both_correct": 0.2857142857142857
+          },
+          "neutral_before": {
+            "auc": 0.0,
+            "balanced_sentence_accuracy": 0.35714285714285715,
+            "both_correct": 0.0
+          },
+          "neutral_after": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.7142857142857143,
+            "both_correct": 0.42857142857142855
+          }
+        }
+      },
+      "retrieval": {
+        "sketch": {
+          "alone": null,
+          "context_before": null,
+          "context_after": null,
+          "neutral_before": null,
+          "neutral_after": null
+        },
+        "sketch_two_views": {
+          "alone": null,
+          "context_before": null,
+          "context_after": null,
+          "neutral_before": null,
+          "neutral_after": null
+        }
+      },
+      "cosine_with_isolated_text_contrast": {
+        "alone": 1.0000000000000002,
+        "context_before": 0.0044459634412925865,
+        "context_after": 0.5924163305135871,
+        "neutral_before": 0.4484847861210206,
+        "neutral_after": 0.6802308440924993
+      }
+    },
+    {
+      "class": "bell",
+      "split": "sketchy_1",
+      "subjects": 10,
+      "prompt_control": {
+        "context": "A bell is a hollow object with a flared opening.",
+        "neutral": "Here is an image that shows an object in view.",
+        "context_tokens": 12,
+        "neutral_tokens": 11
+      },
+      "sketch_definite": 9,
+      "photo_definite": 8,
+      "joint_states": [
+        0,
+        6
+      ],
+      "conflicting": 2,
+      "shared": {
+        "sketch": {
+          "alone": null,
+          "context_before": null,
+          "context_after": null,
+          "neutral_before": null,
+          "neutral_after": null
+        },
+        "sketch_two_views": {
+          "alone": null,
+          "context_before": null,
+          "context_after": null,
+          "neutral_before": null,
+          "neutral_after": null
+        },
+        "photo": {
+          "alone": null,
+          "context_before": null,
+          "context_after": null,
+          "neutral_before": null,
+          "neutral_after": null
+        }
+      },
+      "own": {
+        "sketch": {
+          "alone": null,
+          "context_before": null,
+          "context_after": null,
+          "neutral_before": null,
+          "neutral_after": null
+        },
+        "photo": {
+          "alone": {
+            "auc": 0.6666666666666666,
+            "balanced_sentence_accuracy": 0.5833333333333334,
+            "both_correct": 0.16666666666666666
+          },
+          "context_before": {
+            "auc": 0.75,
+            "balanced_sentence_accuracy": 0.6666666666666666,
+            "both_correct": 0.3333333333333333
+          },
+          "context_after": {
+            "auc": 0.75,
+            "balanced_sentence_accuracy": 0.75,
+            "both_correct": 0.5
+          },
+          "neutral_before": {
+            "auc": 0.5833333333333334,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_after": {
+            "auc": 0.5833333333333334,
+            "balanced_sentence_accuracy": 0.5833333333333334,
+            "both_correct": 0.16666666666666666
+          }
+        }
+      },
+      "retrieval": {
+        "sketch": {
+          "alone": null,
+          "context_before": null,
+          "context_after": null,
+          "neutral_before": null,
+          "neutral_after": null
+        },
+        "sketch_two_views": {
+          "alone": null,
+          "context_before": null,
+          "context_after": null,
+          "neutral_before": null,
+          "neutral_after": null
+        }
+      },
+      "cosine_with_isolated_text_contrast": {
+        "alone": 1.0,
+        "context_before": 0.784661659439905,
+        "context_after": 0.8571982745894208,
+        "neutral_before": 0.661450672895435,
+        "neutral_after": 0.8060398001132131
+      }
+    },
+    {
+      "class": "camel",
+      "split": "sketchy_1",
+      "subjects": 10,
+      "prompt_control": {
+        "context": "The camel has a long neck and a long muzzle.",
+        "neutral": "Here is an image that shows an object in view.",
+        "context_tokens": 12,
+        "neutral_tokens": 11
+      },
+      "sketch_definite": 8,
+      "photo_definite": 7,
+      "joint_states": [
+        4,
+        2
+      ],
+      "conflicting": 0,
+      "shared": {
+        "sketch": {
+          "alone": {
+            "auc": 0.625,
+            "balanced_sentence_accuracy": 0.75,
+            "both_correct": 0.5
+          },
+          "context_before": {
+            "auc": 0.625,
+            "balanced_sentence_accuracy": 0.625,
+            "both_correct": 0.25
+          },
+          "context_after": {
+            "auc": 0.625,
+            "balanced_sentence_accuracy": 0.625,
+            "both_correct": 0.25
+          },
+          "neutral_before": {
+            "auc": 0.625,
+            "balanced_sentence_accuracy": 0.75,
+            "both_correct": 0.5
+          },
+          "neutral_after": {
+            "auc": 0.625,
+            "balanced_sentence_accuracy": 0.75,
+            "both_correct": 0.5
+          }
+        },
+        "sketch_two_views": {
+          "alone": {
+            "auc": 0.625,
+            "balanced_sentence_accuracy": 0.75,
+            "both_correct": 0.5
+          },
+          "context_before": {
+            "auc": 0.625,
+            "balanced_sentence_accuracy": 0.625,
+            "both_correct": 0.25
+          },
+          "context_after": {
+            "auc": 0.875,
+            "balanced_sentence_accuracy": 0.625,
+            "both_correct": 0.25
+          },
+          "neutral_before": {
+            "auc": 0.625,
+            "balanced_sentence_accuracy": 0.75,
+            "both_correct": 0.5
+          },
+          "neutral_after": {
+            "auc": 0.625,
+            "balanced_sentence_accuracy": 0.75,
+            "both_correct": 0.5
+          }
+        },
+        "photo": {
+          "alone": {
+            "auc": 0.375,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "context_before": {
+            "auc": 0.375,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "context_after": {
+            "auc": 0.25,
+            "balanced_sentence_accuracy": 0.375,
+            "both_correct": 0.0
+          },
+          "neutral_before": {
+            "auc": 0.5,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_after": {
+            "auc": 0.5,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          }
+        }
+      },
+      "own": {
+        "sketch": {
+          "alone": {
+            "auc": 0.5833333333333334,
+            "balanced_sentence_accuracy": 0.6666666666666667,
+            "both_correct": 0.4166666666666667
+          },
+          "context_before": {
+            "auc": 0.5833333333333334,
+            "balanced_sentence_accuracy": 0.5833333333333334,
+            "both_correct": 0.16666666666666666
+          },
+          "context_after": {
+            "auc": 0.5833333333333334,
+            "balanced_sentence_accuracy": 0.5833333333333334,
+            "both_correct": 0.16666666666666666
+          },
+          "neutral_before": {
+            "auc": 0.5833333333333334,
+            "balanced_sentence_accuracy": 0.6666666666666667,
+            "both_correct": 0.4166666666666667
+          },
+          "neutral_after": {
+            "auc": 0.5833333333333334,
+            "balanced_sentence_accuracy": 0.6666666666666667,
+            "both_correct": 0.4166666666666667
+          }
+        },
+        "photo": {
+          "alone": {
+            "auc": 0.4,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "context_before": {
+            "auc": 0.3,
+            "balanced_sentence_accuracy": 0.4,
+            "both_correct": 0.0
+          },
+          "context_after": {
+            "auc": 0.2,
+            "balanced_sentence_accuracy": 0.3,
+            "both_correct": 0.0
+          },
+          "neutral_before": {
+            "auc": 0.4,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_after": {
+            "auc": 0.4,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          }
+        }
+      },
+      "retrieval": {
+        "sketch": {
+          "alone": {
+            "nominated_text": 0.375,
+            "known_state_text": 0.4375
+          },
+          "context_before": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.5
+          },
+          "context_after": {
+            "nominated_text": 0.5416666666666667,
+            "known_state_text": 0.5625
+          },
+          "neutral_before": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.5
+          },
+          "neutral_after": {
+            "nominated_text": 0.375,
+            "known_state_text": 0.4375
+          }
+        },
+        "sketch_two_views": {
+          "alone": {
+            "nominated_text": 0.375,
+            "known_state_text": 0.4375
+          },
+          "context_before": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.5
+          },
+          "context_after": {
+            "nominated_text": 0.5416666666666667,
+            "known_state_text": 0.5625
+          },
+          "neutral_before": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.5
+          },
+          "neutral_after": {
+            "nominated_text": 0.375,
+            "known_state_text": 0.4375
+          }
+        }
+      },
+      "cosine_with_isolated_text_contrast": {
+        "alone": 1.0000000000000002,
+        "context_before": 0.7571575208859822,
+        "context_after": 0.8123946219794371,
+        "neutral_before": 0.6849238576848207,
+        "neutral_after": 0.7405137615681292
+      }
+    },
+    {
+      "class": "wine_bottle",
+      "split": "sketchy_1",
+      "subjects": 10,
+      "prompt_control": {
+        "context": "The wine bottle has a neck above a wider body.",
+        "neutral": "Here is an image that shows an object in view.",
+        "context_tokens": 11,
+        "neutral_tokens": 11
+      },
+      "sketch_definite": 10,
+      "photo_definite": 9,
+      "joint_states": [
+        3,
+        0
+      ],
+      "conflicting": 6,
+      "shared": {
+        "sketch": {
+          "alone": null,
+          "context_before": null,
+          "context_after": null,
+          "neutral_before": null,
+          "neutral_after": null
+        },
+        "sketch_two_views": {
+          "alone": null,
+          "context_before": null,
+          "context_after": null,
+          "neutral_before": null,
+          "neutral_after": null
+        },
+        "photo": {
+          "alone": null,
+          "context_before": null,
+          "context_after": null,
+          "neutral_before": null,
+          "neutral_after": null
+        }
+      },
+      "own": {
+        "sketch": {
+          "alone": {
+            "auc": 0.9047619047619048,
+            "balanced_sentence_accuracy": 0.7857142857142857,
+            "both_correct": 0.5714285714285714
+          },
+          "context_before": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "context_after": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_before": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_after": {
+            "auc": 0.9523809523809523,
+            "balanced_sentence_accuracy": 0.8333333333333333,
+            "both_correct": 0.6666666666666666
+          }
+        },
+        "photo": {
+          "alone": null,
+          "context_before": null,
+          "context_after": null,
+          "neutral_before": null,
+          "neutral_after": null
+        }
+      },
+      "retrieval": {
+        "sketch": {
+          "alone": null,
+          "context_before": null,
+          "context_after": null,
+          "neutral_before": null,
+          "neutral_after": null
+        },
+        "sketch_two_views": {
+          "alone": null,
+          "context_before": null,
+          "context_after": null,
+          "neutral_before": null,
+          "neutral_after": null
+        }
+      },
+      "cosine_with_isolated_text_contrast": {
+        "alone": 1.0000000000000002,
+        "context_before": 0.617847057881331,
+        "context_after": 0.767584279764131,
+        "neutral_before": 0.7321150607477616,
+        "neutral_after": 0.7830606890866549
+      }
+    },
+    {
+      "class": "rifle",
+      "split": "sketchy_1",
+      "subjects": 10,
+      "prompt_control": {
+        "context": "The rifle has a long narrow silhouette.",
+        "neutral": "An object appears in an image.",
+        "context_tokens": 8,
+        "neutral_tokens": 7
+      },
+      "sketch_definite": 9,
+      "photo_definite": 9,
+      "joint_states": [
+        5,
+        3
+      ],
+      "conflicting": 1,
+      "shared": {
+        "sketch": {
+          "alone": {
+            "auc": 0.4666666666666667,
+            "balanced_sentence_accuracy": 0.3,
+            "both_correct": 0.0
+          },
+          "context_before": {
+            "auc": 0.8666666666666667,
+            "balanced_sentence_accuracy": 0.9,
+            "both_correct": 0.8
+          },
+          "context_after": {
+            "auc": 0.8,
+            "balanced_sentence_accuracy": 0.5666666666666667,
+            "both_correct": 0.26666666666666666
+          },
+          "neutral_before": {
+            "auc": 0.8666666666666667,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_after": {
+            "auc": 0.9333333333333333,
+            "balanced_sentence_accuracy": 0.6,
+            "both_correct": 0.2
+          }
+        },
+        "sketch_two_views": {
+          "alone": {
+            "auc": 0.4666666666666667,
+            "balanced_sentence_accuracy": 0.4,
+            "both_correct": 0.0
+          },
+          "context_before": {
+            "auc": 0.7333333333333333,
+            "balanced_sentence_accuracy": 0.7333333333333334,
+            "both_correct": 0.5333333333333333
+          },
+          "context_after": {
+            "auc": 0.8,
+            "balanced_sentence_accuracy": 0.5666666666666667,
+            "both_correct": 0.26666666666666666
+          },
+          "neutral_before": {
+            "auc": 0.8,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_after": {
+            "auc": 0.8666666666666667,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          }
+        },
+        "photo": {
+          "alone": {
+            "auc": 0.7333333333333333,
+            "balanced_sentence_accuracy": 0.5333333333333333,
+            "both_correct": 0.26666666666666666
+          },
+          "context_before": {
+            "auc": 0.6,
+            "balanced_sentence_accuracy": 0.5333333333333333,
+            "both_correct": 0.26666666666666666
+          },
+          "context_after": {
+            "auc": 0.6,
+            "balanced_sentence_accuracy": 0.5333333333333333,
+            "both_correct": 0.26666666666666666
+          },
+          "neutral_before": {
+            "auc": 0.6,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_after": {
+            "auc": 0.6666666666666666,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          }
+        }
+      },
+      "own": {
+        "sketch": {
+          "alone": {
+            "auc": 0.6,
+            "balanced_sentence_accuracy": 0.425,
+            "both_correct": 0.15
+          },
+          "context_before": {
+            "auc": 0.85,
+            "balanced_sentence_accuracy": 0.9,
+            "both_correct": 0.8
+          },
+          "context_after": {
+            "auc": 0.75,
+            "balanced_sentence_accuracy": 0.525,
+            "both_correct": 0.2
+          },
+          "neutral_before": {
+            "auc": 0.8,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_after": {
+            "auc": 0.8,
+            "balanced_sentence_accuracy": 0.6,
+            "both_correct": 0.2
+          }
+        },
+        "photo": {
+          "alone": {
+            "auc": 0.7222222222222222,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.2222222222222222
+          },
+          "context_before": {
+            "auc": 0.6111111111111112,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.2222222222222222
+          },
+          "context_after": {
+            "auc": 0.6111111111111112,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.2222222222222222
+          },
+          "neutral_before": {
+            "auc": 0.6666666666666666,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_after": {
+            "auc": 0.6666666666666666,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          }
+        }
+      },
+      "retrieval": {
+        "sketch": {
+          "alone": {
+            "nominated_text": 0.45833333333333337,
+            "known_state_text": 0.6
+          },
+          "context_before": {
+            "nominated_text": 0.525,
+            "known_state_text": 0.5333333333333334
+          },
+          "context_after": {
+            "nominated_text": 0.48333333333333334,
+            "known_state_text": 0.4666666666666667
+          },
+          "neutral_before": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.5666666666666667
+          },
+          "neutral_after": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.4666666666666667
+          }
+        },
+        "sketch_two_views": {
+          "alone": {
+            "nominated_text": 0.4833333333333333,
+            "known_state_text": 0.6
+          },
+          "context_before": {
+            "nominated_text": 0.5083333333333333,
+            "known_state_text": 0.5333333333333334
+          },
+          "context_after": {
+            "nominated_text": 0.48333333333333334,
+            "known_state_text": 0.4666666666666667
+          },
+          "neutral_before": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.5666666666666667
+          },
+          "neutral_after": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.4666666666666667
+          }
+        }
+      },
+      "cosine_with_isolated_text_contrast": {
+        "alone": 1.0,
+        "context_before": 0.6074071354684079,
+        "context_after": 0.6594432023176812,
+        "neutral_before": 0.6744032026498159,
+        "neutral_after": 0.7526335082553125
+      }
+    },
+    {
+      "class": "skyscraper",
+      "split": "sketchy_2",
+      "subjects": 10,
+      "prompt_control": {
+        "context": "The skyscraper is a tall building with many floors.",
+        "neutral": "Here is an image that shows an object in view.",
+        "context_tokens": 12,
+        "neutral_tokens": 11
+      },
+      "sketch_definite": 10,
+      "photo_definite": 9,
+      "joint_states": [
+        2,
+        7
+      ],
+      "conflicting": 0,
+      "shared": {
+        "sketch": {
+          "alone": {
+            "auc": 0.8571428571428571,
+            "balanced_sentence_accuracy": 0.5714285714285714,
+            "both_correct": 0.14285714285714285
+          },
+          "context_before": {
+            "auc": 0.9285714285714286,
+            "balanced_sentence_accuracy": 0.7142857142857143,
+            "both_correct": 0.42857142857142855
+          },
+          "context_after": {
+            "auc": 0.8571428571428571,
+            "balanced_sentence_accuracy": 0.7142857142857143,
+            "both_correct": 0.42857142857142855
+          },
+          "neutral_before": {
+            "auc": 0.7857142857142857,
+            "balanced_sentence_accuracy": 0.5714285714285714,
+            "both_correct": 0.14285714285714285
+          },
+          "neutral_after": {
+            "auc": 0.8571428571428571,
+            "balanced_sentence_accuracy": 0.7142857142857143,
+            "both_correct": 0.42857142857142855
+          }
+        },
+        "sketch_two_views": {
+          "alone": {
+            "auc": 0.7857142857142857,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "context_before": {
+            "auc": 0.9285714285714286,
+            "balanced_sentence_accuracy": 0.7142857142857143,
+            "both_correct": 0.42857142857142855
+          },
+          "context_after": {
+            "auc": 0.8571428571428571,
+            "balanced_sentence_accuracy": 0.7142857142857143,
+            "both_correct": 0.42857142857142855
+          },
+          "neutral_before": {
+            "auc": 0.7142857142857143,
+            "balanced_sentence_accuracy": 0.6428571428571428,
+            "both_correct": 0.2857142857142857
+          },
+          "neutral_after": {
+            "auc": 0.7857142857142857,
+            "balanced_sentence_accuracy": 0.7142857142857143,
+            "both_correct": 0.42857142857142855
+          }
+        },
+        "photo": {
+          "alone": {
+            "auc": 0.7857142857142857,
+            "balanced_sentence_accuracy": 0.6785714285714286,
+            "both_correct": 0.42857142857142855
+          },
+          "context_before": {
+            "auc": 0.9285714285714286,
+            "balanced_sentence_accuracy": 0.75,
+            "both_correct": 0.5
+          },
+          "context_after": {
+            "auc": 0.6428571428571429,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_before": {
+            "auc": 0.8571428571428571,
+            "balanced_sentence_accuracy": 0.8571428571428572,
+            "both_correct": 0.7142857142857143
+          },
+          "neutral_after": {
+            "auc": 0.5,
+            "balanced_sentence_accuracy": 0.42857142857142855,
+            "both_correct": 0.0
+          }
+        }
+      },
+      "own": {
+        "sketch": {
+          "alone": {
+            "auc": 0.875,
+            "balanced_sentence_accuracy": 0.5625,
+            "both_correct": 0.125
+          },
+          "context_before": {
+            "auc": 0.875,
+            "balanced_sentence_accuracy": 0.6875,
+            "both_correct": 0.375
+          },
+          "context_after": {
+            "auc": 0.875,
+            "balanced_sentence_accuracy": 0.75,
+            "both_correct": 0.5
+          },
+          "neutral_before": {
+            "auc": 0.75,
+            "balanced_sentence_accuracy": 0.5625,
+            "both_correct": 0.125
+          },
+          "neutral_after": {
+            "auc": 0.875,
+            "balanced_sentence_accuracy": 0.6875,
+            "both_correct": 0.375
+          }
+        },
+        "photo": {
+          "alone": {
+            "auc": 0.7857142857142857,
+            "balanced_sentence_accuracy": 0.6785714285714286,
+            "both_correct": 0.42857142857142855
+          },
+          "context_before": {
+            "auc": 0.9285714285714286,
+            "balanced_sentence_accuracy": 0.75,
+            "both_correct": 0.5
+          },
+          "context_after": {
+            "auc": 0.6428571428571429,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_before": {
+            "auc": 0.8571428571428571,
+            "balanced_sentence_accuracy": 0.8571428571428572,
+            "both_correct": 0.7142857142857143
+          },
+          "neutral_after": {
+            "auc": 0.5,
+            "balanced_sentence_accuracy": 0.42857142857142855,
+            "both_correct": 0.0
+          }
+        }
+      },
+      "retrieval": {
+        "sketch": {
+          "alone": {
+            "nominated_text": 0.5059523809523809,
+            "known_state_text": 0.5714285714285714
+          },
+          "context_before": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.5
+          },
+          "context_after": {
+            "nominated_text": 0.49404761904761907,
+            "known_state_text": 0.5
+          },
+          "neutral_before": {
+            "nominated_text": 0.5059523809523809,
+            "known_state_text": 0.5357142857142857
+          },
+          "neutral_after": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.5
+          }
+        },
+        "sketch_two_views": {
+          "alone": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.5714285714285714
+          },
+          "context_before": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.5
+          },
+          "context_after": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.5
+          },
+          "neutral_before": {
+            "nominated_text": 0.5119047619047619,
+            "known_state_text": 0.5357142857142857
+          },
+          "neutral_after": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.5
+          }
+        }
+      },
+      "cosine_with_isolated_text_contrast": {
+        "alone": 1.0000000000000002,
+        "context_before": 0.6572580469627332,
+        "context_after": 0.837305663958554,
+        "neutral_before": 0.7825765926973789,
+        "neutral_after": 0.8237504984071138
+      }
+    },
+    {
+      "class": "songbird",
+      "split": "sketchy_2",
+      "subjects": 10,
+      "prompt_control": {
+        "context": "The songbird has a short beak and a feathered body.",
+        "neutral": "Here is an image that shows an object in view.",
+        "context_tokens": 13,
+        "neutral_tokens": 11
+      },
+      "sketch_definite": 9,
+      "photo_definite": 6,
+      "joint_states": [
+        4,
+        2
+      ],
+      "conflicting": 0,
+      "shared": {
+        "sketch": {
+          "alone": {
+            "auc": 0.75,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "context_before": {
+            "auc": 0.75,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "context_after": {
+            "auc": 0.875,
+            "balanced_sentence_accuracy": 0.75,
+            "both_correct": 0.5
+          },
+          "neutral_before": {
+            "auc": 0.75,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_after": {
+            "auc": 0.875,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          }
+        },
+        "sketch_two_views": {
+          "alone": {
+            "auc": 0.75,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "context_before": {
+            "auc": 0.875,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "context_after": {
+            "auc": 0.875,
+            "balanced_sentence_accuracy": 0.75,
+            "both_correct": 0.5
+          },
+          "neutral_before": {
+            "auc": 0.75,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_after": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          }
+        },
+        "photo": {
+          "alone": {
+            "auc": 0.125,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "context_before": {
+            "auc": 0.25,
+            "balanced_sentence_accuracy": 0.625,
+            "both_correct": 0.25
+          },
+          "context_after": {
+            "auc": 0.125,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_before": {
+            "auc": 0.5,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_after": {
+            "auc": 0.5,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          }
+        }
+      },
+      "own": {
+        "sketch": {
+          "alone": {
+            "auc": 0.6111111111111112,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "context_before": {
+            "auc": 0.7777777777777778,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "context_after": {
+            "auc": 0.9444444444444444,
+            "balanced_sentence_accuracy": 0.8333333333333333,
+            "both_correct": 0.6666666666666666
+          },
+          "neutral_before": {
+            "auc": 0.7777777777777778,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_after": {
+            "auc": 0.9444444444444444,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          }
+        },
+        "photo": {
+          "alone": {
+            "auc": 0.125,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "context_before": {
+            "auc": 0.25,
+            "balanced_sentence_accuracy": 0.625,
+            "both_correct": 0.25
+          },
+          "context_after": {
+            "auc": 0.125,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_before": {
+            "auc": 0.5,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_after": {
+            "auc": 0.5,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          }
+        }
+      },
+      "retrieval": {
+        "sketch": {
+          "alone": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.5
+          },
+          "context_before": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.5
+          },
+          "context_after": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.5
+          },
+          "neutral_before": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.5
+          },
+          "neutral_after": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.5
+          }
+        },
+        "sketch_two_views": {
+          "alone": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.5
+          },
+          "context_before": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.5
+          },
+          "context_after": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.5
+          },
+          "neutral_before": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.5
+          },
+          "neutral_after": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.5
+          }
+        }
+      },
+      "cosine_with_isolated_text_contrast": {
+        "alone": 1.0000000000000002,
+        "context_before": 0.6210676324816773,
+        "context_after": 0.6944592587511622,
+        "neutral_before": 0.7813212981887352,
+        "neutral_after": 0.7598757874330636
+      }
+    },
+    {
+      "class": "scissors",
+      "split": "sketchy_2",
+      "subjects": 10,
+      "prompt_control": {
+        "context": "The scissors have two handles joined at a pivot.",
+        "neutral": "The object is visible in this particular image.",
+        "context_tokens": 10,
+        "neutral_tokens": 9
+      },
+      "sketch_definite": 10,
+      "photo_definite": 8,
+      "joint_states": [
+        4,
+        4
+      ],
+      "conflicting": 0,
+      "shared": {
+        "sketch": {
+          "alone": {
+            "auc": 0.5,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "context_before": {
+            "auc": 0.625,
+            "balanced_sentence_accuracy": 0.625,
+            "both_correct": 0.25
+          },
+          "context_after": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_before": {
+            "auc": 0.8125,
+            "balanced_sentence_accuracy": 0.625,
+            "both_correct": 0.25
+          },
+          "neutral_after": {
+            "auc": 0.75,
+            "balanced_sentence_accuracy": 0.625,
+            "both_correct": 0.25
+          }
+        },
+        "sketch_two_views": {
+          "alone": {
+            "auc": 0.5,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "context_before": {
+            "auc": 0.5625,
+            "balanced_sentence_accuracy": 0.625,
+            "both_correct": 0.25
+          },
+          "context_after": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_before": {
+            "auc": 0.8125,
+            "balanced_sentence_accuracy": 0.625,
+            "both_correct": 0.25
+          },
+          "neutral_after": {
+            "auc": 0.75,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          }
+        },
+        "photo": {
+          "alone": {
+            "auc": 0.75,
+            "balanced_sentence_accuracy": 0.625,
+            "both_correct": 0.25
+          },
+          "context_before": {
+            "auc": 0.6875,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.25
+          },
+          "context_after": {
+            "auc": 0.625,
+            "balanced_sentence_accuracy": 0.625,
+            "both_correct": 0.25
+          },
+          "neutral_before": {
+            "auc": 0.6875,
+            "balanced_sentence_accuracy": 0.75,
+            "both_correct": 0.5
+          },
+          "neutral_after": {
+            "auc": 0.5,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.25
+          }
+        }
+      },
+      "own": {
+        "sketch": {
+          "alone": {
+            "auc": 0.5,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "context_before": {
+            "auc": 0.6666666666666666,
+            "balanced_sentence_accuracy": 0.6666666666666666,
+            "both_correct": 0.3333333333333333
+          },
+          "context_after": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_before": {
+            "auc": 0.875,
+            "balanced_sentence_accuracy": 0.6666666666666666,
+            "both_correct": 0.3333333333333333
+          },
+          "neutral_after": {
+            "auc": 0.75,
+            "balanced_sentence_accuracy": 0.6666666666666666,
+            "both_correct": 0.3333333333333333
+          }
+        },
+        "photo": {
+          "alone": {
+            "auc": 0.75,
+            "balanced_sentence_accuracy": 0.625,
+            "both_correct": 0.25
+          },
+          "context_before": {
+            "auc": 0.6875,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.25
+          },
+          "context_after": {
+            "auc": 0.625,
+            "balanced_sentence_accuracy": 0.625,
+            "both_correct": 0.25
+          },
+          "neutral_before": {
+            "auc": 0.6875,
+            "balanced_sentence_accuracy": 0.75,
+            "both_correct": 0.5
+          },
+          "neutral_after": {
+            "auc": 0.5,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.25
+          }
+        }
+      },
+      "retrieval": {
+        "sketch": {
+          "alone": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.53125
+          },
+          "context_before": {
+            "nominated_text": 0.5104166666666667,
+            "known_state_text": 0.53125
+          },
+          "context_after": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.5
+          },
+          "neutral_before": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.46875
+          },
+          "neutral_after": {
+            "nominated_text": 0.5104166666666667,
+            "known_state_text": 0.5
+          }
+        },
+        "sketch_two_views": {
+          "alone": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.53125
+          },
+          "context_before": {
+            "nominated_text": 0.5104166666666667,
+            "known_state_text": 0.53125
+          },
+          "context_after": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.5
+          },
+          "neutral_before": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.46875
+          },
+          "neutral_after": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.5
+          }
+        }
+      },
+      "cosine_with_isolated_text_contrast": {
+        "alone": 1.0000000000000004,
+        "context_before": 0.6886801983368733,
+        "context_after": 0.7340026840492184,
+        "neutral_before": 0.5748966573004559,
+        "neutral_after": 0.7025487551872882
+      }
+    },
+    {
+      "class": "rhinoceros",
+      "split": "sketchy_2",
+      "subjects": 10,
+      "prompt_control": {
+        "context": "The rhinoceros has a heavy body and thick skin.",
+        "neutral": "Here is an image that shows an object in view.",
+        "context_tokens": 12,
+        "neutral_tokens": 11
+      },
+      "sketch_definite": 5,
+      "photo_definite": 3,
+      "joint_states": [
+        0,
+        1
+      ],
+      "conflicting": 1,
+      "shared": {
+        "sketch": {
+          "alone": null,
+          "context_before": null,
+          "context_after": null,
+          "neutral_before": null,
+          "neutral_after": null
+        },
+        "sketch_two_views": {
+          "alone": null,
+          "context_before": null,
+          "context_after": null,
+          "neutral_before": null,
+          "neutral_after": null
+        },
+        "photo": {
+          "alone": null,
+          "context_before": null,
+          "context_after": null,
+          "neutral_before": null,
+          "neutral_after": null
+        }
+      },
+      "own": {
+        "sketch": {
+          "alone": {
+            "auc": 0.75,
+            "balanced_sentence_accuracy": 0.875,
+            "both_correct": 0.75
+          },
+          "context_before": {
+            "auc": 0.75,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "context_after": {
+            "auc": 0.75,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_before": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.875,
+            "both_correct": 0.75
+          },
+          "neutral_after": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.875,
+            "both_correct": 0.75
+          }
+        },
+        "photo": {
+          "alone": {
+            "auc": 0.0,
+            "balanced_sentence_accuracy": 0.0,
+            "both_correct": 0.0
+          },
+          "context_before": {
+            "auc": 0.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "context_after": {
+            "auc": 0.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_before": {
+            "auc": 0.5,
+            "balanced_sentence_accuracy": 0.75,
+            "both_correct": 0.5
+          },
+          "neutral_after": {
+            "auc": 0.5,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          }
+        }
+      },
+      "retrieval": {
+        "sketch": {
+          "alone": null,
+          "context_before": null,
+          "context_after": null,
+          "neutral_before": null,
+          "neutral_after": null
+        },
+        "sketch_two_views": {
+          "alone": null,
+          "context_before": null,
+          "context_after": null,
+          "neutral_before": null,
+          "neutral_after": null
+        }
+      },
+      "cosine_with_isolated_text_contrast": {
+        "alone": 1.0000000000000002,
+        "context_before": 0.3309414837172796,
+        "context_after": 0.629250623585387,
+        "neutral_before": 0.7324920244384299,
+        "neutral_after": 0.7792840064372701
+      }
+    },
+    {
+      "class": "dolphin",
+      "split": "sketchy_2",
+      "subjects": 10,
+      "prompt_control": {
+        "context": "The dolphin has a streamlined body and fins.",
+        "neutral": "The object is visible in this particular image.",
+        "context_tokens": 10,
+        "neutral_tokens": 9
+      },
+      "sketch_definite": 7,
+      "photo_definite": 2,
+      "joint_states": [
+        0,
+        2
+      ],
+      "conflicting": 0,
+      "shared": {
+        "sketch": {
+          "alone": null,
+          "context_before": null,
+          "context_after": null,
+          "neutral_before": null,
+          "neutral_after": null
+        },
+        "sketch_two_views": {
+          "alone": null,
+          "context_before": null,
+          "context_after": null,
+          "neutral_before": null,
+          "neutral_after": null
+        },
+        "photo": {
+          "alone": null,
+          "context_before": null,
+          "context_after": null,
+          "neutral_before": null,
+          "neutral_after": null
+        }
+      },
+      "own": {
+        "sketch": {
+          "alone": {
+            "auc": 0.6666666666666666,
+            "balanced_sentence_accuracy": 0.75,
+            "both_correct": 0.5
+          },
+          "context_before": {
+            "auc": 0.8333333333333334,
+            "balanced_sentence_accuracy": 0.8333333333333333,
+            "both_correct": 0.6666666666666666
+          },
+          "context_after": {
+            "auc": 0.75,
+            "balanced_sentence_accuracy": 0.625,
+            "both_correct": 0.25
+          },
+          "neutral_before": {
+            "auc": 0.6666666666666666,
+            "balanced_sentence_accuracy": 0.5416666666666666,
+            "both_correct": 0.25
+          },
+          "neutral_after": {
+            "auc": 0.5,
+            "balanced_sentence_accuracy": 0.41666666666666663,
+            "both_correct": 0.16666666666666666
+          }
+        },
+        "photo": {
+          "alone": null,
+          "context_before": null,
+          "context_after": null,
+          "neutral_before": null,
+          "neutral_after": null
+        }
+      },
+      "retrieval": {
+        "sketch": {
+          "alone": null,
+          "context_before": null,
+          "context_after": null,
+          "neutral_before": null,
+          "neutral_after": null
+        },
+        "sketch_two_views": {
+          "alone": null,
+          "context_before": null,
+          "context_after": null,
+          "neutral_before": null,
+          "neutral_after": null
+        }
+      },
+      "cosine_with_isolated_text_contrast": {
+        "alone": 1.0000000000000002,
+        "context_before": 0.6808633626804019,
+        "context_after": 0.6953083778245914,
+        "neutral_before": 0.844860367875537,
+        "neutral_after": 0.8744971530122655
+      }
+    },
+    {
+      "class": "saw",
+      "split": "sketchy_2",
+      "subjects": 10,
+      "prompt_control": {
+        "context": "The saw is a hand tool with a handle.",
+        "neutral": "The object is visible in this particular image.",
+        "context_tokens": 10,
+        "neutral_tokens": 9
+      },
+      "sketch_definite": 7,
+      "photo_definite": 7,
+      "joint_states": [
+        2,
+        5
+      ],
+      "conflicting": 0,
+      "shared": {
+        "sketch": {
+          "alone": {
+            "auc": 0.9,
+            "balanced_sentence_accuracy": 0.65,
+            "both_correct": 0.4
+          },
+          "context_before": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.75,
+            "both_correct": 0.5
+          },
+          "context_after": {
+            "auc": 0.9,
+            "balanced_sentence_accuracy": 0.75,
+            "both_correct": 0.5
+          },
+          "neutral_before": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.9,
+            "both_correct": 0.8
+          },
+          "neutral_after": {
+            "auc": 0.7,
+            "balanced_sentence_accuracy": 0.65,
+            "both_correct": 0.4
+          }
+        },
+        "sketch_two_views": {
+          "alone": {
+            "auc": 0.9,
+            "balanced_sentence_accuracy": 0.8,
+            "both_correct": 0.6
+          },
+          "context_before": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.75,
+            "both_correct": 0.5
+          },
+          "context_after": {
+            "auc": 0.9,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_before": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 1.0,
+            "both_correct": 1.0
+          },
+          "neutral_after": {
+            "auc": 0.7,
+            "balanced_sentence_accuracy": 0.65,
+            "both_correct": 0.4
+          }
+        },
+        "photo": {
+          "alone": {
+            "auc": 0.7,
+            "balanced_sentence_accuracy": 0.55,
+            "both_correct": 0.3
+          },
+          "context_before": {
+            "auc": 0.7,
+            "balanced_sentence_accuracy": 0.65,
+            "both_correct": 0.4
+          },
+          "context_after": {
+            "auc": 0.8,
+            "balanced_sentence_accuracy": 0.65,
+            "both_correct": 0.4
+          },
+          "neutral_before": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_after": {
+            "auc": 0.9,
+            "balanced_sentence_accuracy": 0.8,
+            "both_correct": 0.6
+          }
+        }
+      },
+      "own": {
+        "sketch": {
+          "alone": {
+            "auc": 0.9,
+            "balanced_sentence_accuracy": 0.65,
+            "both_correct": 0.4
+          },
+          "context_before": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.75,
+            "both_correct": 0.5
+          },
+          "context_after": {
+            "auc": 0.9,
+            "balanced_sentence_accuracy": 0.75,
+            "both_correct": 0.5
+          },
+          "neutral_before": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.9,
+            "both_correct": 0.8
+          },
+          "neutral_after": {
+            "auc": 0.7,
+            "balanced_sentence_accuracy": 0.65,
+            "both_correct": 0.4
+          }
+        },
+        "photo": {
+          "alone": {
+            "auc": 0.7,
+            "balanced_sentence_accuracy": 0.55,
+            "both_correct": 0.3
+          },
+          "context_before": {
+            "auc": 0.7,
+            "balanced_sentence_accuracy": 0.65,
+            "both_correct": 0.4
+          },
+          "context_after": {
+            "auc": 0.8,
+            "balanced_sentence_accuracy": 0.65,
+            "both_correct": 0.4
+          },
+          "neutral_before": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_after": {
+            "auc": 0.9,
+            "balanced_sentence_accuracy": 0.8,
+            "both_correct": 0.6
+          }
+        }
+      },
+      "retrieval": {
+        "sketch": {
+          "alone": {
+            "nominated_text": 0.48750000000000004,
+            "known_state_text": 0.6000000000000001
+          },
+          "context_before": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.5
+          },
+          "context_after": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.55
+          },
+          "neutral_before": {
+            "nominated_text": 0.5375,
+            "known_state_text": 0.55
+          },
+          "neutral_after": {
+            "nominated_text": 0.48750000000000004,
+            "known_state_text": 0.55
+          }
+        },
+        "sketch_two_views": {
+          "alone": {
+            "nominated_text": 0.5625,
+            "known_state_text": 0.6000000000000001
+          },
+          "context_before": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.5
+          },
+          "context_after": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.55
+          },
+          "neutral_before": {
+            "nominated_text": 0.55,
+            "known_state_text": 0.55
+          },
+          "neutral_after": {
+            "nominated_text": 0.48750000000000004,
+            "known_state_text": 0.55
+          }
+        }
+      },
+      "cosine_with_isolated_text_contrast": {
+        "alone": 1.0,
+        "context_before": 0.6148163255926148,
+        "context_after": 0.777100846964604,
+        "neutral_before": 0.7662917191786898,
+        "neutral_after": 0.8502954687443555
+      }
+    },
+    {
+      "class": "door",
+      "split": "sketchy_2",
+      "subjects": 10,
+      "prompt_control": {
+        "context": "The door is set in an opening in a wall.",
+        "neutral": "Here is an image that shows an object in view.",
+        "context_tokens": 11,
+        "neutral_tokens": 11
+      },
+      "sketch_definite": 10,
+      "photo_definite": 9,
+      "joint_states": [
+        3,
+        6
+      ],
+      "conflicting": 0,
+      "shared": {
+        "sketch": {
+          "alone": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 1.0,
+            "both_correct": 1.0
+          },
+          "context_before": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 1.0,
+            "both_correct": 1.0
+          },
+          "context_after": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.8333333333333333,
+            "both_correct": 0.6666666666666666
+          },
+          "neutral_before": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 1.0,
+            "both_correct": 1.0
+          },
+          "neutral_after": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 1.0,
+            "both_correct": 1.0
+          }
+        },
+        "sketch_two_views": {
+          "alone": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 1.0,
+            "both_correct": 1.0
+          },
+          "context_before": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 1.0,
+            "both_correct": 1.0
+          },
+          "context_after": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.8333333333333333,
+            "both_correct": 0.6666666666666666
+          },
+          "neutral_before": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 1.0,
+            "both_correct": 1.0
+          },
+          "neutral_after": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 1.0,
+            "both_correct": 1.0
+          }
+        },
+        "photo": {
+          "alone": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 1.0,
+            "both_correct": 1.0
+          },
+          "context_before": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.8333333333333333,
+            "both_correct": 0.6666666666666666
+          },
+          "context_after": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 1.0,
+            "both_correct": 1.0
+          },
+          "neutral_before": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.9166666666666667,
+            "both_correct": 0.8333333333333334
+          },
+          "neutral_after": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 1.0,
+            "both_correct": 1.0
+          }
+        }
+      },
+      "own": {
+        "sketch": {
+          "alone": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 1.0,
+            "both_correct": 1.0
+          },
+          "context_before": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 1.0,
+            "both_correct": 1.0
+          },
+          "context_after": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.875,
+            "both_correct": 0.75
+          },
+          "neutral_before": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 1.0,
+            "both_correct": 1.0
+          },
+          "neutral_after": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 1.0,
+            "both_correct": 1.0
+          }
+        },
+        "photo": {
+          "alone": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 1.0,
+            "both_correct": 1.0
+          },
+          "context_before": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.8333333333333333,
+            "both_correct": 0.6666666666666666
+          },
+          "context_after": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 1.0,
+            "both_correct": 1.0
+          },
+          "neutral_before": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.9166666666666667,
+            "both_correct": 0.8333333333333334
+          },
+          "neutral_after": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 1.0,
+            "both_correct": 1.0
+          }
+        }
+      },
+      "retrieval": {
+        "sketch": {
+          "alone": {
+            "nominated_text": 0.5833333333333334,
+            "known_state_text": 0.5833333333333334
+          },
+          "context_before": {
+            "nominated_text": 0.5555555555555556,
+            "known_state_text": 0.5555555555555556
+          },
+          "context_after": {
+            "nominated_text": 0.5555555555555555,
+            "known_state_text": 0.5555555555555555
+          },
+          "neutral_before": {
+            "nominated_text": 0.5555555555555555,
+            "known_state_text": 0.5555555555555555
+          },
+          "neutral_after": {
+            "nominated_text": 0.5555555555555555,
+            "known_state_text": 0.5555555555555555
+          }
+        },
+        "sketch_two_views": {
+          "alone": {
+            "nominated_text": 0.5833333333333334,
+            "known_state_text": 0.5833333333333334
+          },
+          "context_before": {
+            "nominated_text": 0.5555555555555556,
+            "known_state_text": 0.5555555555555556
+          },
+          "context_after": {
+            "nominated_text": 0.5555555555555555,
+            "known_state_text": 0.5555555555555555
+          },
+          "neutral_before": {
+            "nominated_text": 0.5555555555555555,
+            "known_state_text": 0.5555555555555555
+          },
+          "neutral_after": {
+            "nominated_text": 0.5555555555555555,
+            "known_state_text": 0.5555555555555555
+          }
+        }
+      },
+      "cosine_with_isolated_text_contrast": {
+        "alone": 1.0,
+        "context_before": 0.8351842969257177,
+        "context_after": 0.8838690259704298,
+        "neutral_before": 0.7317348884520207,
+        "neutral_after": 0.7095593677376616
+      }
+    },
+    {
+      "class": "bat",
+      "split": "sketchy_2",
+      "subjects": 10,
+      "prompt_control": {
+        "context": "The bat is a small mammal with membranous wings.",
+        "neutral": "Here is an image that shows an object in view.",
+        "context_tokens": 12,
+        "neutral_tokens": 11
+      },
+      "sketch_definite": 7,
+      "photo_definite": 8,
+      "joint_states": [
+        2,
+        3
+      ],
+      "conflicting": 2,
+      "shared": {
+        "sketch": {
+          "alone": {
+            "auc": 0.6666666666666666,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "context_before": {
+            "auc": 0.6666666666666666,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "context_after": {
+            "auc": 0.8333333333333334,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_before": {
+            "auc": 0.8333333333333334,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_after": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.75,
+            "both_correct": 0.5
+          }
+        },
+        "sketch_two_views": {
+          "alone": {
+            "auc": 0.6666666666666666,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "context_before": {
+            "auc": 0.6666666666666666,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "context_after": {
+            "auc": 0.8333333333333334,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_before": {
+            "auc": 0.8333333333333334,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_after": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          }
+        },
+        "photo": {
+          "alone": {
+            "auc": 0.6666666666666666,
+            "balanced_sentence_accuracy": 0.75,
+            "both_correct": 0.5
+          },
+          "context_before": {
+            "auc": 0.3333333333333333,
+            "balanced_sentence_accuracy": 0.6666666666666666,
+            "both_correct": 0.3333333333333333
+          },
+          "context_after": {
+            "auc": 0.6666666666666666,
+            "balanced_sentence_accuracy": 0.75,
+            "both_correct": 0.5
+          },
+          "neutral_before": {
+            "auc": 0.6666666666666666,
+            "balanced_sentence_accuracy": 0.75,
+            "both_correct": 0.5
+          },
+          "neutral_after": {
+            "auc": 0.6666666666666666,
+            "balanced_sentence_accuracy": 0.5833333333333333,
+            "both_correct": 0.3333333333333333
+          }
+        }
+      },
+      "own": {
+        "sketch": {
+          "alone": {
+            "auc": 0.75,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "context_before": {
+            "auc": 0.5,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "context_after": {
+            "auc": 0.6666666666666666,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_before": {
+            "auc": 0.75,
+            "balanced_sentence_accuracy": 0.5,
+            "both_correct": 0.0
+          },
+          "neutral_after": {
+            "auc": 1.0,
+            "balanced_sentence_accuracy": 0.6666666666666666,
+            "both_correct": 0.3333333333333333
+          }
+        },
+        "photo": {
+          "alone": {
+            "auc": 0.6,
+            "balanced_sentence_accuracy": 0.6666666666666666,
+            "both_correct": 0.3333333333333333
+          },
+          "context_before": {
+            "auc": 0.7333333333333333,
+            "balanced_sentence_accuracy": 0.8,
+            "both_correct": 0.6
+          },
+          "context_after": {
+            "auc": 0.8,
+            "balanced_sentence_accuracy": 0.6666666666666666,
+            "both_correct": 0.3333333333333333
+          },
+          "neutral_before": {
+            "auc": 0.7333333333333333,
+            "balanced_sentence_accuracy": 0.6666666666666666,
+            "both_correct": 0.3333333333333333
+          },
+          "neutral_after": {
+            "auc": 0.7333333333333333,
+            "balanced_sentence_accuracy": 0.5666666666666667,
+            "both_correct": 0.26666666666666666
+          }
+        }
+      },
+      "retrieval": {
+        "sketch": {
+          "alone": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.5833333333333333
+          },
+          "context_before": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.5
+          },
+          "context_after": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.5
+          },
+          "neutral_before": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.5833333333333333
+          },
+          "neutral_after": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.5833333333333333
+          }
+        },
+        "sketch_two_views": {
+          "alone": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.5833333333333333
+          },
+          "context_before": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.5
+          },
+          "context_after": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.5
+          },
+          "neutral_before": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.5833333333333333
+          },
+          "neutral_after": {
+            "nominated_text": 0.5,
+            "known_state_text": 0.5833333333333333
+          }
+        }
+      },
+      "cosine_with_isolated_text_contrast": {
+        "alone": 0.9999999999999999,
+        "context_before": 0.60319466197087,
+        "context_after": 0.7290027724975389,
+        "neutral_before": 0.7413437238091696,
+        "neutral_after": 0.7989286732377032
+      }
+    }
+  ],
+  "semantics": {
+    "A": 1,
+    "B": -1,
+    "unclear": 0
+  },
+  "conditions": [
+    "alone",
+    "context_before",
+    "context_after",
+    "neutral_before",
+    "neutral_after"
+  ],
+  "raw_sha256": "50941232aab39c6433cff1bb371e1e248216f47c457b4c0dd82c5122d06a5422",
+  "map_sha256": "ce432d6d5841f37e52383b6f75e8350187ce4873ea7a092e4023948ca0913528",
+  "subjects_sha256": "b2a571bf0439cfd6b07258499706ac8414faff70497c6980747e11d56476cf75",
+  "label_sha256": {
+    "photo": "7de49b73f3ef90491ad80d35408d81365c04c659217c60fd654e4b7a6a5abace",
+    "sketch": "e9cf258802300239c84982fa0d72a6ab5402f16dc1d33cfd1a5c0404b94b4daa"
+  }
+}

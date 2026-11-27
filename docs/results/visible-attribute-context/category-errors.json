@@ -1,0 +1,510 @@
+{
+  "revision": "e8bf2b2557d45ba6d8b04c65369fe175b52c8b58",
+  "evaluator": "original KD-SBIR",
+  "source_sha256": "50941232aab39c6433cff1bb371e1e248216f47c457b4c0dd82c5122d06a5422",
+  "sha256": "5b83954e246f76326878cb1c1635f228a0041bd831f9c063ea68e3ed224f4b0e",
+  "groups": {
+    "primary": {
+      "sketches": 76,
+      "classes": 12,
+      "semantic_correct": 58,
+      "semantic_wrong": 18,
+      "arms": {
+        "single": {
+          "observed_all_gallery_mAP_P_percent": [
+            41.83179027842064,
+            41.67105266334195
+          ],
+          "selected_all_gallery_mAP_P_percent": [
+            47.24076456929508,
+            46.73684241593276
+          ],
+          "pair": {
+            "observed": {
+              "accuracy_percent": 69.73684210526315,
+              "repairs_relative_to_semantic": 11.0,
+              "damage_relative_to_semantic": 16.0
+            },
+            "selected": {
+              "accuracy_percent": 72.36842105263158,
+              "repairs_relative_to_semantic": 13.0,
+              "damage_relative_to_semantic": 16.0
+            },
+            "within_class_shuffle": {
+              "accuracy_percent": 68.04511278195488,
+              "repairs_relative_to_semantic": 11.666666666666668,
+              "damage_relative_to_semantic": 17.952380952380953
+            }
+          },
+          "observed_state_macro": {
+            "classes": 12,
+            "mean_percent": 70.72089947089948,
+            "class_bootstrap95": [
+              52.77777777777778,
+              87.34126984126985
+            ]
+          },
+          "observed_minus_shuffle_macro": {
+            "classes": 12,
+            "mean_percent": 1.1117409926933735,
+            "class_bootstrap95": [
+              -2.128999748047367,
+              4.569790879314688
+            ]
+          },
+          "observed_minus_shuffle_micro_points": 1.6917293233082706
+        },
+        "contrast": {
+          "observed_all_gallery_mAP_P_percent": [
+            18.04000292904675,
+            15.37500006440831
+          ],
+          "selected_all_gallery_mAP_P_percent": [
+            22.394914876081444,
+            20.203947560175468
+          ],
+          "pair": {
+            "observed": {
+              "accuracy_percent": 44.73684210526316,
+              "repairs_relative_to_semantic": 8.0,
+              "damage_relative_to_semantic": 32.0
+            },
+            "selected": {
+              "accuracy_percent": 46.05263157894737,
+              "repairs_relative_to_semantic": 12.0,
+              "damage_relative_to_semantic": 35.0
+            },
+            "within_class_shuffle": {
+              "accuracy_percent": 49.937343358395985,
+              "repairs_relative_to_semantic": 9.82857142857143,
+              "damage_relative_to_semantic": 29.876190476190473
+            }
+          },
+          "observed_state_macro": {
+            "classes": 12,
+            "mean_percent": 46.650132275132265,
+            "class_bootstrap95": [
+              31.4879298941799,
+              61.21089616402116
+            ]
+          },
+          "observed_minus_shuffle_macro": {
+            "classes": 12,
+            "mean_percent": -3.195074326026706,
+            "class_bootstrap95": [
+              -13.843222474174855,
+              7.79320987654321
+            ]
+          },
+          "observed_minus_shuffle_micro_points": -5.200501253132832
+        }
+      },
+      "semantic_subset_AP_P_mixed_cutoffs": [
+        78.78477022934118,
+        77.85526324480185
+      ]
+    },
+    "both": {
+      "sketches": 88,
+      "classes": 16,
+      "semantic_correct": 67,
+      "semantic_wrong": 21,
+      "arms": {
+        "single": {
+          "observed_all_gallery_mAP_P_percent": [
+            39.0489270021631,
+            39.70454548570243
+          ],
+          "selected_all_gallery_mAP_P_percent": [
+            43.67522345009176,
+            44.102272994562306
+          ],
+          "pair": {
+            "observed": {
+              "accuracy_percent": 65.9090909090909,
+              "repairs_relative_to_semantic": 12.0,
+              "damage_relative_to_semantic": 21.0
+            },
+            "selected": {
+              "accuracy_percent": 68.18181818181817,
+              "repairs_relative_to_semantic": 15.0,
+              "damage_relative_to_semantic": 22.0
+            },
+            "within_class_shuffle": {
+              "accuracy_percent": 64.44805194805194,
+              "repairs_relative_to_semantic": 12.666666666666666,
+              "damage_relative_to_semantic": 22.952380952380953
+            }
+          },
+          "observed_state_macro": {
+            "classes": 16,
+            "mean_percent": 59.29067460317461,
+            "class_bootstrap95": [
+              41.40835813492063,
+              76.26984126984127
+            ]
+          },
+          "observed_minus_shuffle_macro": {
+            "classes": 16,
+            "mean_percent": 0.8338057445200301,
+            "class_bootstrap95": [
+              -1.5967498110355254,
+              3.520053854875274
+            ]
+          },
+          "observed_minus_shuffle_micro_points": 1.461038961038961
+        },
+        "contrast": {
+          "observed_all_gallery_mAP_P_percent": [
+            17.911853275092486,
+            16.357954508963633
+          ],
+          "selected_all_gallery_mAP_P_percent": [
+            21.704738841138102,
+            20.52840916439891
+          ],
+          "pair": {
+            "observed": {
+              "accuracy_percent": 46.590909090909086,
+              "repairs_relative_to_semantic": 10.0,
+              "damage_relative_to_semantic": 36.0
+            },
+            "selected": {
+              "accuracy_percent": 47.72727272727273,
+              "repairs_relative_to_semantic": 15.0,
+              "damage_relative_to_semantic": 40.0
+            },
+            "within_class_shuffle": {
+              "accuracy_percent": 51.08225108225108,
+              "repairs_relative_to_semantic": 11.82857142857143,
+              "damage_relative_to_semantic": 33.87619047619047
+            }
+          },
+          "observed_state_macro": {
+            "classes": 16,
+            "mean_percent": 49.570932539682545,
+            "class_bootstrap95": [
+              34.272879464285715,
+              63.952380952380935
+            ]
+          },
+          "observed_minus_shuffle_macro": {
+            "classes": 16,
+            "mean_percent": -2.39630574452003,
+            "class_bootstrap95": [
+              -10.416666666666666,
+              5.994897959183674
+            ]
+          },
+          "observed_minus_shuffle_micro_points": -4.491341991341991
+        }
+      },
+      "semantic_subset_AP_P_mixed_cutoffs": [
+        76.39260642992501,
+        77.4772727787918
+      ]
+    },
+    "known": {
+      "sketches": 137,
+      "classes": 16,
+      "semantic_correct": 99,
+      "semantic_wrong": 38,
+      "arms": {
+        "single": {
+          "observed_all_gallery_mAP_P_percent": [
+            37.66733961737286,
+            39.372262958246864
+          ],
+          "selected_all_gallery_mAP_P_percent": [
+            42.30016431478906,
+            44.58759166028378
+          ],
+          "pair": {
+            "observed": {
+              "accuracy_percent": 67.88321167883211,
+              "repairs_relative_to_semantic": 23.0,
+              "damage_relative_to_semantic": 29.0
+            },
+            "selected": {
+              "accuracy_percent": 67.15328467153284,
+              "repairs_relative_to_semantic": 26.0,
+              "damage_relative_to_semantic": 33.0
+            },
+            "within_class_shuffle": {
+              "accuracy_percent": 67.64511644073687,
+              "repairs_relative_to_semantic": 24.516666666666666,
+              "damage_relative_to_semantic": 30.84285714285714
+            }
+          },
+          "observed_state_macro": {
+            "classes": 16,
+            "mean_percent": 66.85019841269842,
+            "class_bootstrap95": [
+              53.4171626984127,
+              79.70238095238096
+            ]
+          },
+          "observed_minus_shuffle_macro": {
+            "classes": 16,
+            "mean_percent": 0.5722021447467875,
+            "class_bootstrap95": [
+              -1.7997130102040817,
+              2.892118557492441
+            ]
+          },
+          "observed_minus_shuffle_micro_points": 0.2380952380952382
+        },
+        "contrast": {
+          "observed_all_gallery_mAP_P_percent": [
+            15.457784294755788,
+            13.90145984716224
+          ],
+          "selected_all_gallery_mAP_P_percent": [
+            20.116551486897645,
+            19.41970806351326
+          ],
+          "pair": {
+            "observed": {
+              "accuracy_percent": 51.09489051094891,
+              "repairs_relative_to_semantic": 19.0,
+              "damage_relative_to_semantic": 48.0
+            },
+            "selected": {
+              "accuracy_percent": 48.9051094890511,
+              "repairs_relative_to_semantic": 24.0,
+              "damage_relative_to_semantic": 56.0
+            },
+            "within_class_shuffle": {
+              "accuracy_percent": 53.142161974278764,
+              "repairs_relative_to_semantic": 19.615873015873017,
+              "damage_relative_to_semantic": 45.81111111111111
+            }
+          },
+          "observed_state_macro": {
+            "classes": 16,
+            "mean_percent": 52.22222222222223,
+            "class_bootstrap95": [
+              41.84027777777778,
+              62.4133804563492
+            ]
+          },
+          "observed_minus_shuffle_macro": {
+            "classes": 16,
+            "mean_percent": -0.9646518329554035,
+            "class_bootstrap95": [
+              -8.385952262849585,
+              6.966759377362056
+            ]
+          },
+          "observed_minus_shuffle_micro_points": -2.0472714633298574
+        }
+      },
+      "semantic_subset_AP_P_mixed_cutoffs": [
+        76.02036357687338,
+        78.02919716825777
+      ]
+    }
+  },
+  "primary_by_split": {
+    "sketchy_1": {
+      "sketches": 32,
+      "classes": 6,
+      "semantic_correct": 28,
+      "semantic_wrong": 4,
+      "arms": {
+        "single": {
+          "observed_all_gallery_mAP_P_percent": [
+            30.46434292336926,
+            35.5625000083819
+          ],
+          "selected_all_gallery_mAP_P_percent": [
+            35.78016655519605,
+            42.34375046216883
+          ],
+          "pair": {
+            "observed": {
+              "accuracy_percent": 81.25,
+              "repairs_relative_to_semantic": 3.0,
+              "damage_relative_to_semantic": 5.0
+            },
+            "selected": {
+              "accuracy_percent": 84.375,
+              "repairs_relative_to_semantic": 4.0,
+              "damage_relative_to_semantic": 5.0
+            },
+            "within_class_shuffle": {
+              "accuracy_percent": 82.29166666666666,
+              "repairs_relative_to_semantic": 3.3333333333333335,
+              "damage_relative_to_semantic": 5.0
+            }
+          },
+          "observed_state_macro": {
+            "classes": 6,
+            "mean_percent": 80.55555555555557,
+            "class_bootstrap95": [
+              52.77777777777778,
+              100.0
+            ]
+          },
+          "observed_minus_shuffle_macro": {
+            "classes": 6,
+            "mean_percent": -1.8518518518518516,
+            "class_bootstrap95": [
+              -5.555555555555555,
+              0.0
+            ]
+          },
+          "observed_minus_shuffle_micro_points": -1.0416666666666665
+        },
+        "contrast": {
+          "observed_all_gallery_mAP_P_percent": [
+            17.143239331198856,
+            16.90625000046566
+          ],
+          "selected_all_gallery_mAP_P_percent": [
+            19.82000924181193,
+            19.9062499741558
+          ],
+          "pair": {
+            "observed": {
+              "accuracy_percent": 37.5,
+              "repairs_relative_to_semantic": 1.0,
+              "damage_relative_to_semantic": 17.0
+            },
+            "selected": {
+              "accuracy_percent": 28.125,
+              "repairs_relative_to_semantic": 3.0,
+              "damage_relative_to_semantic": 22.0
+            },
+            "within_class_shuffle": {
+              "accuracy_percent": 45.68452380952381,
+              "repairs_relative_to_semantic": 2.5,
+              "damage_relative_to_semantic": 15.880952380952383
+            }
+          },
+          "observed_state_macro": {
+            "classes": 6,
+            "mean_percent": 40.37698412698412,
+            "class_bootstrap95": [
+              19.444444444444446,
+              59.92063492063492
+            ]
+          },
+          "observed_minus_shuffle_macro": {
+            "classes": 6,
+            "mean_percent": -5.309901738473165,
+            "class_bootstrap95": [
+              -17.59259259259259,
+              7.407407407407408
+            ]
+          },
+          "observed_minus_shuffle_micro_points": -8.184523809523808
+        }
+      },
+      "semantic_subset_AP_P_percent": [
+        93.53190651163459,
+        92.50000000465661
+      ]
+    },
+    "sketchy_2": {
+      "sketches": 44,
+      "classes": 6,
+      "semantic_correct": 30,
+      "semantic_wrong": 14,
+      "arms": {
+        "single": {
+          "observed_all_gallery_mAP_P_percent": [
+            50.099024718458004,
+            46.1136364124038
+          ],
+          "selected_all_gallery_mAP_P_percent": [
+            55.57574494318529,
+            49.93181838230653
+          ],
+          "pair": {
+            "observed": {
+              "accuracy_percent": 61.36363636363637,
+              "repairs_relative_to_semantic": 8.0,
+              "damage_relative_to_semantic": 11.0
+            },
+            "selected": {
+              "accuracy_percent": 63.63636363636363,
+              "repairs_relative_to_semantic": 9.0,
+              "damage_relative_to_semantic": 11.0
+            },
+            "within_class_shuffle": {
+              "accuracy_percent": 57.68398268398269,
+              "repairs_relative_to_semantic": 8.333333333333334,
+              "damage_relative_to_semantic": 12.952380952380953
+            }
+          },
+          "observed_state_macro": {
+            "classes": 6,
+            "mean_percent": 60.886243386243386,
+            "class_bootstrap95": [
+              39.351851851851855,
+              81.16402116402116
+            ]
+          },
+          "observed_minus_shuffle_macro": {
+            "classes": 6,
+            "mean_percent": 4.075333837238599,
+            "class_bootstrap95": [
+              0.6172839506172838,
+              9.567901234567898
+            ]
+          },
+          "observed_minus_shuffle_micro_points": 3.6796536796536787
+        },
+        "contrast": {
+          "observed_all_gallery_mAP_P_percent": [
+            18.69219463657249,
+            14.261363747275688
+          ],
+          "selected_all_gallery_mAP_P_percent": [
+            24.267573519186538,
+            20.420454895462502
+          ],
+          "pair": {
+            "observed": {
+              "accuracy_percent": 50.0,
+              "repairs_relative_to_semantic": 7.0,
+              "damage_relative_to_semantic": 15.0
+            },
+            "selected": {
+              "accuracy_percent": 59.09090909090909,
+              "repairs_relative_to_semantic": 9.0,
+              "damage_relative_to_semantic": 13.0
+            },
+            "within_class_shuffle": {
+              "accuracy_percent": 53.03030303030303,
+              "repairs_relative_to_semantic": 7.328571428571427,
+              "damage_relative_to_semantic": 13.995238095238093
+            }
+          },
+          "observed_state_macro": {
+            "classes": 6,
+            "mean_percent": 52.92328042328043,
+            "class_bootstrap95": [
+              31.626984126984127,
+              72.61904761904762
+            ]
+          },
+          "observed_minus_shuffle_macro": {
+            "classes": 6,
+            "mean_percent": -1.080246913580247,
+            "class_bootstrap95": [
+              -18.209876543209877,
+              16.049382716049383
+            ]
+          },
+          "observed_minus_shuffle_micro_points": -3.03030303030303
+        }
+      },
+      "semantic_subset_AP_P_percent": [
+        68.05958020585504,
+        67.20454560127109
+      ]
+    }
+  }
+}
