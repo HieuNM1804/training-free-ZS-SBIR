@@ -27,6 +27,21 @@ def remove_axis(x, axis):
     return x - (x @ axis)[...,None] * axis
 
 
+def incremental_domain_check(centroid, photo_axis, domain_axis, y):
+    errors = [[],[]]
+    for i in range(len(y)):
+        keep = torch.arange(len(y),device=y.device)!=i
+        ymean = y[keep].mean(0)
+        for j,items in enumerate(((centroid,photo_axis),(centroid,photo_axis,domain_axis))):
+            means = [t[keep].mean(0) for t in items]
+            x = torch.stack([(t[keep]-m).flatten() for t,m in zip(items,means,strict=True)],dim=-1)
+            beta = torch.linalg.solve(x.T@x,x.T@(y[keep]-ymean).flatten())
+            prediction = ymean + sum(b*(t[i]-m) for t,m,b in zip(items,means,beta,strict=True))
+            errors[j].append((y[i]-prediction).square().sum())
+    base,combined=(torch.stack(e).sum() for e in errors)
+    return (1-combined/base).item()
+
+
 def leave_class_out(centroid, slopes, observed):
     """Vector intercept and scalar feature coefficients, refit excluding each test class."""
     c = len(centroid)
@@ -108,6 +123,7 @@ def summarize(centroids, banks, truth, axis, selected):
     cy=[v[h,0]-v[h,0].mean(0) for h in (0,1,2)]
     return {"classes":int(selected.sum()),"photo_minus_drawing_gain_fraction":float(gain[0]),
             "photo_mean_axis_gain":float(gain[1]),"random_axis_gain_median":float(random.median()),
+            "additional_fraction_over_centroid_and_photo_mean_axis":incremental_domain_check(b,v[0,1],v[0,0],y),
             "random_axis_gain95":float(random.quantile(.95)),
             "random_at_least_as_large":int((random>=gain[0]).sum()),"random_axes":len(random),
             "gain_in_extension_halves":parts,"mean_direction_cos_to_actual_shift":float(F.cosine_similarity(cy[0],ca).mean()),
@@ -146,10 +162,20 @@ def run(args):
     pred=q @ F.normalize(means,dim=1).T
     correct=(pred.argmax(1)==ql)
     photo_mean_accuracy=100*correct.double().mean().item()
+    tq,tp=q@axis,p@axis
+    limits=torch.stack([tp[is_extension & (gl==c)].quantile(torch.tensor([.01,.99],device=p.device,dtype=p.dtype))
+                        for c in gl.unique()])
+    absolute=torch.stack([torch.stack([tp[is_extension & (gl==c)].min(),tp[is_extension & (gl==c)].max()])
+                          for c in gl.unique()])
+    support={"query_below_gallery_class_p01_fraction":(tq<limits[ql,0]).double().mean().item(),
+             "query_above_gallery_class_p99_fraction":(tq>limits[ql,1]).double().mean().item(),
+             "query_outside_observed_gallery_class_range_fraction":
+                 ((tq<absolute[ql,0]) | (tq>absolute[ql,1])).double().mean().item(),
+             "all_sketch_median":tq.median().item(),"all_extension_median":tp[is_extension].median().item()}
     result={"revision":args.revision,"seed":SEED,"split":args.split,"prompt_axis":PROMPTS,"labels_only_in_diagnosis":True,
             "source_photos":len(ids),"extension_photos":int(is_extension.sum()),"extension_per_class":dict(zip(names,sizes)),
             "class_names":names,"shared_classes":sorted(shared),"all":full,"excluding_shared_classes":disjoint,
-            "native_top1_against_labeled_photo_centroids_percent":photo_mean_accuracy,
+            "native_top1_against_labeled_photo_centroids_percent":photo_mean_accuracy,"empirical_support":support,
             "passes":full["photo_minus_drawing_gain_fraction"]>max(0.,full["random_axis_gain95"]) and
                      min(full["gain_in_extension_halves"])>0 and disjoint["photo_minus_drawing_gain_fraction"]>0}
     atomic_json(args.output/f"gallery-response-{args.split}.json",result)
