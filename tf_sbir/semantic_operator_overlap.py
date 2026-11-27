@@ -20,7 +20,7 @@ from .replicated_simplex_study import evaluator
 from .semantic_boxable import DEFAULT_PROMPTS
 from .semantic_boxable_prompt_search import mean_percent
 from .semantic_disputed_word_risk import query_posteriors
-from .semantic_operator_audit import DST, K, word_fingerprint
+from .semantic_operator_audit import DST, K, design, word_fingerprint
 
 
 SPLITS = ("sketchy_1", "sketchy_2")
@@ -59,6 +59,27 @@ def full_gallery_groups(split, query_positions, base_revision):
             metrics[condition] = mean_percent(rows[mask])
         result[name] = {"queries": int(mask.sum()), "gallery": len(split.gallery_ids), "metrics": metrics,
                         "classes": sorted(set(class_names(split.name, split.sketch_labels[mask])))}
+    return result
+
+
+def added_candidate_counts(query, banks, shared_positions, shared_labels, all_labels):
+    """Count entries from the 17 other classes in rankings of the four shared classes."""
+    is_added = torch.ones(len(all_labels), device=query.device, dtype=torch.bool)
+    is_added[shared_positions] = False
+    if torch.isin(all_labels[is_added.cpu()], shared_labels.unique()).any():
+        raise ValueError("A candidate counted as an added distractor can be relevant")
+    top_group = int(np.ceil(is_added.sum().item() / 100))
+    result = {}
+    for name, bank in banks.items():
+        gallery = bank.float().T.contiguous()
+        ranks = torch.cat([(part @ gallery).topk(200, dim=1).indices for part in query.split(64)])
+        new_at_rank = is_added[ranks]
+        counts = ranks[new_at_rank].bincount(minlength=len(all_labels))
+        result[name] = {"added_photos": int(is_added.sum()), "mean_added_in_top200": new_at_rank.sum(1).double().mean().item(),
+                        "fraction_of_queries_with_added_top1": new_at_rank[:, 0].double().mean().item(),
+                        "most_frequent_one_percent_count": top_group,
+                        "fraction_of_added_top200_slots_from_most_frequent_one_percent":
+                        (counts.topk(top_group).values.double().sum() / counts.sum()).item()}
     return result
 
 
@@ -113,13 +134,22 @@ def run(revision):
         one, two = heads[(left.name, key)], heads[(right.name, key)]
         changed[key] = {"top1_photo_changed_fraction": (one != two).double().mean().item(),
                         "top1_class_changed_fraction": (sample.photo_labels[one] != sample.photo_labels[two]).double().mean().item()}
+    bank = indices[1]["p"].cuda()
+    fixed = design(bank) @ indices[0]["a"].cuda()
+    fixed_error = (fixed[photo_rows[1]] - matched[(left.name, "f")]).abs().max().item()
+    if fixed_error > 1e-7:
+        raise ValueError("Source calibration changed on the common candidates")
+    additions = added_candidate_counts(queries[1], {"dot": bank, "donor64": indices[1]["b"].cuda(),
+                                       "query_projection": indices[1]["f"].cuda(), "fixed_ext1_query_edit": fixed},
+                                       photo_rows[1], sample.sketch_labels, right.photo_labels)
     out = {"revision": revision, "base_revision": base_revision, "seed": SEED, "device": torch.cuda.get_device_name(),
            "type": "post-hoc descriptive diagnostic on Sketchy only", "shared_classes": shared_classes,
            "full_ext2_gallery": full_gallery_groups(right, query_rows[1], base_revision),
            "matched_candidates": {"queries": len(queries[1]), "photos": len(photo_rows[1]), "cutoffs": [200, 200],
             "query_posterior_max_abs_difference": q_error, "photo_posterior_max_abs_difference": p_error,
             "donors_per_photo": K, "shared_donor_count_mean": overlap.mean().item(),
-            "shared_donor_count_median": overlap.median().item(), "context_changes": changed, "metrics": metrics}}
+            "shared_donor_count_median": overlap.median().item(), "context_changes": changed, "metrics": metrics},
+           "added_distractors_for_shared_queries": additions,"fixed_shared_index_max_abs_difference": fixed_error}
     atomic_json(DST / "sketchy-overlap.json", out)
     print(json.dumps(out), flush=True)
 
