@@ -1,0 +1,43 @@
+{
+  "revision": "c31d81a8a08f2a91726dad0a62373df18e28d1d4",
+  "seed": 42,
+  "device": "NVIDIA L4",
+  "queries": 2231,
+  "shared_photos": 2205,
+  "ext2_photos": 12552,
+  "number_of_fixed_added_top1_events": 1636,
+  "all_conditions": {
+    "native_visual": {
+      "top1_correct_fraction": 0.5365307037203049,
+      "top1_added_fraction": 0.008516360376512775,
+      "best_added_mean_within_class_leverage_percentile": 0.25275310542330764,
+      "on_fixed_added_events_top1_correct_fraction": 0.5605134474327629,
+      "on_fixed_added_events_exact_same_photo_fraction": 0.0
+    },
+    "dot": {
+      "top1_correct_fraction": 0.6086956521739131,
+      "top1_added_fraction": 0.2061855670103093,
+      "best_added_mean_within_class_leverage_percentile": 0.33525334025476977,
+      "on_fixed_added_events_top1_correct_fraction": 0.5275061124694377,
+      "on_fixed_added_events_exact_same_photo_fraction": 0.01589242053789731
+    },
+    "fixed_ext1_query_edit": {
+      "top1_correct_fraction": 0.25280143433437924,
+      "top1_added_fraction": 0.7333034513671,
+      "best_added_mean_within_class_leverage_percentile": 0.9549168997058386,
+      "on_fixed_added_events_top1_correct_fraction": 0.0,
+      "on_fixed_added_events_exact_same_photo_fraction": 1.0
+    }
+  },
+  "native_mAP200_P200": {
+    "shared_gallery": [
+      55.5002762316148,
+      55.165396668626386
+    ],
+    "full_ext2_gallery": [
+      50.1069362480686,
+      45.7182878035182
+    ]
+  },
+  "overlap_revision": "b2da81af4f5d2834cc1dc36c58f73af62d034d67"
+}
