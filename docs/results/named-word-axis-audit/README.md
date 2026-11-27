@@ -1,6 +1,6 @@
 # Vì sao truy hồi qua từ có tác dụng, và lỗi nào còn đáng giải quyết?
 
-Trên cả ba giao thức, Semantic Dot chủ yếu cần hệ trục gắn với các từ cụ thể khi áp dụng softmax. Từ đứng đầu đôi khi che lấp bằng chứng giúp phân biệt hai sketch, nhưng giải quyết hoàn hảo các ảnh mang riêng từ đó chỉ cho phép tăng **0,19 / 3,73 / 1,47 điểm mAP**. Hướng muốn đạt thêm 4–5 điểm cần sửa được cả các thứ hạng giữa những ảnh mang từ khác nhau.
+Trên cả ba giao thức, Semantic Dot phụ thuộc mạnh vào hệ trục gắn với các từ cụ thể khi áp dụng softmax. Từ đứng đầu đôi khi che lấp bằng chứng giúp phân biệt hai sketch, nhưng giải quyết hoàn hảo các ảnh mang riêng từ đó chỉ cho phép tăng **0,19 / 3,73 / 1,47 điểm mAP**. Hướng muốn đạt thêm 4–5 điểm cần tác động cả đến những ảnh có từ đứng đầu khác sketch. Phép đo vẫn để mở khả năng cải thiện bằng cách phân biệt các ảnh bên trong những nhóm từ khác.
 
 ## Đối chứng trên toàn bộ unseen
 
