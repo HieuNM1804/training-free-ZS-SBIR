@@ -88,12 +88,18 @@ def run(name, revision, native_revision, choice_revision):
     senses = [Sense(**s) for s in catalog["senses"]]
     public, head = torch.tensor([s.head for s in senses], device="cuda").unique(return_inverse=True)
     n = len(public)
-    if (len(senses), n) != (1135, 512) or len(utility) != len(senses):
+    all_ids = {i for s in senses for i in s.public_ids}
+    if (len(senses), len(all_ids)) != (1135, catalog["usable_public_names"]) or len(all_ids) != 512:
         raise ValueError("Wrong dictionary")
+    if len(utility) != len(senses) or any(s.head not in s.public_ids for s in senses):
+        raise ValueError("Invalid sense membership or KD utility")
     model = load_frozen_clip(manifest["checkpoint"], torch.device("cuda"))
     texts = encode(model, open_clip.get_tokenizer("ViT-B-32"), [describe("drawing", s.anonymous) for s in senses])
     del model
-    by_head = torch.stack([utility[head == i].amax(0) for i in range(n)])
+    # The historical nominator assigns a shared synset to its first public ID.
+    # The oracle can use every sense of a nominated noun, including shared synsets.
+    by_head = torch.stack([utility[[j for j, s in enumerate(senses) if i in s.public_ids]].amax(0)
+                           for i in public.tolist()])
     uniform = uniform_curve(by_head, labels)
     all_bank = utility.amax(0)[labels.cuda()].mean(0).cpu()
     reference = 100 * base.mean(0)
@@ -137,7 +143,8 @@ def run(name, revision, native_revision, choice_revision):
                  "baseline": base, "rows": rows, "public_ids": public.cpu(), "best_within_head": by_head.cpu()}, dest)
     atomic_json(dest.with_suffix(".json"), {
         "revision": revision, "native_revision": native_revision, "choice_revision": choice_revision, "seed": SEED,
-        "split": name, "queries": len(qi), "gallery": len(data["gallery_ids"]), "senses": len(senses), "nouns": n,
+        "split": name, "queries": len(qi), "gallery": len(data["gallery_ids"]), "senses": len(senses),
+        "public_names": len(all_ids), "nominatable_heads": n, "alias_only_ids": sorted(all_ids - set(public.tolist())),
         "columns": ["actual_first", "best_actual_two", "oracle_first_head", "oracle_first_two_heads"],
         "baseline": reference.tolist(), "all_bank": (100 * all_bank).tolist(), "reports": reports,
         "expected_uniform_curve": (100 * uniform).tolist(),
