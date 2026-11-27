@@ -1,0 +1,693 @@
+{
+  "revision": "fe6c5826a26690734f988e18f19b99afef537423",
+  "split": "sketchy_1",
+  "classes": 25,
+  "queries": 14179,
+  "gallery": 17100,
+  "results": {
+    "native": {
+      "queries": 14179,
+      "ties": 0,
+      "wrong": 9004,
+      "right": 5175,
+      "comparisons": {
+        "leader_wrong": {
+          "native": {
+            "own": {
+              "queries": 9004,
+              "percent_preferring_positive": 0.0,
+              "class_equal_percent": 0.0,
+              "class_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "other_drawing_same_source_mean": {
+              "queries": 9003,
+              "percent_preferring_positive": 11.44063090081084,
+              "class_equal_percent": 19.09441137037712,
+              "class_bootstrap95": [
+                11.306233764079476,
+                28.79754344280583
+              ]
+            },
+            "other_source_drawings_same_class_mean": {
+              "queries": 9004,
+              "percent_preferring_positive": 11.372723234118169,
+              "class_equal_percent": 21.297157390764543,
+              "class_bootstrap95": [
+                10.255346450096454,
+                34.322822860836474
+              ]
+            },
+            "original_source_photo": {
+              "queries": 9004,
+              "percent_preferring_positive": 93.25855175477565,
+              "class_equal_percent": 93.24322753908699,
+              "class_bootstrap95": [
+                89.43967787718505,
+                96.42082755381688
+              ]
+            },
+            "unrelated_sketch_preference": {
+              "queries": 9004,
+              "percent_preferring_positive": 0.7774322523322967,
+              "class_equal_percent": 1.2503854326050974,
+              "class_bootstrap95": [
+                0.2562815818275028,
+                2.616209064087496
+              ]
+            },
+            "unrelated_photo_preference": {
+              "queries": 9004,
+              "percent_preferring_positive": 31.952465570857395,
+              "class_equal_percent": 31.83676700314862,
+              "class_bootstrap95": [
+                21.946781551496468,
+                42.980625688551335
+              ]
+            },
+            "own_minus_unrelated_sketch_preference": {
+              "queries": 9004,
+              "percent_preferring_positive": 83.8738338516215,
+              "class_equal_percent": 83.31114102394893,
+              "class_bootstrap95": [
+                78.98670030164735,
+                87.36906510913902
+              ]
+            },
+            "own_minus_unrelated_photo_preference": {
+              "queries": 9004,
+              "percent_preferring_positive": 12.972012438916035,
+              "class_equal_percent": 16.046491595147863,
+              "class_bootstrap95": [
+                10.902296996487971,
+                21.597064761144527
+              ]
+            }
+          },
+          "semantic": {
+            "own": {
+              "queries": 9004,
+              "percent_preferring_positive": 83.35184362505552,
+              "class_equal_percent": 83.59952167180381,
+              "class_bootstrap95": [
+                80.02715441932607,
+                87.1291061174867
+              ]
+            },
+            "other_drawing_same_source_mean": {
+              "queries": 9003,
+              "percent_preferring_positive": 92.72464733977563,
+              "class_equal_percent": 93.562379684203,
+              "class_bootstrap95": [
+                90.34716741844,
+                96.42161208183771
+              ]
+            },
+            "other_source_drawings_same_class_mean": {
+              "queries": 9004,
+              "percent_preferring_positive": 97.34562416703687,
+              "class_equal_percent": 98.0523729098126,
+              "class_bootstrap95": [
+                96.32107224402667,
+                99.45882796527552
+              ]
+            },
+            "original_source_photo": {
+              "queries": 9004,
+              "percent_preferring_positive": 96.7014660151044,
+              "class_equal_percent": 97.42553150093737,
+              "class_bootstrap95": [
+                95.14986148592423,
+                99.09600884707592
+              ]
+            },
+            "unrelated_sketch_preference": {
+              "queries": 9004,
+              "percent_preferring_positive": 34.24033762772101,
+              "class_equal_percent": 35.02009567340791,
+              "class_bootstrap95": [
+                22.787411865792343,
+                47.4141084593241
+              ]
+            },
+            "unrelated_photo_preference": {
+              "queries": 9004,
+              "percent_preferring_positive": 51.21057307863172,
+              "class_equal_percent": 49.3170665675776,
+              "class_bootstrap95": [
+                35.29599648252476,
+                63.23251999144175
+              ]
+            },
+            "own_minus_unrelated_sketch_preference": {
+              "queries": 9004,
+              "percent_preferring_positive": 83.66281652598845,
+              "class_equal_percent": 83.58155581471861,
+              "class_bootstrap95": [
+                79.54099410250866,
+                87.55602577485548
+              ]
+            },
+            "own_minus_unrelated_photo_preference": {
+              "queries": 9004,
+              "percent_preferring_positive": 80.81963571745891,
+              "class_equal_percent": 81.37533349078443,
+              "class_bootstrap95": [
+                76.80569589576119,
+                85.81959131601805
+              ]
+            }
+          }
+        },
+        "leader_right": {
+          "native": {
+            "own": {
+              "queries": 5175,
+              "percent_preferring_positive": 100.0,
+              "class_equal_percent": 100.0,
+              "class_bootstrap95": [
+                100.0,
+                100.0
+              ]
+            },
+            "other_drawing_same_source_mean": {
+              "queries": 5175,
+              "percent_preferring_positive": 72.57971014492753,
+              "class_equal_percent": 46.83455489541535,
+              "class_bootstrap95": [
+                32.91353057964223,
+                60.972639785939954
+              ]
+            },
+            "other_source_drawings_same_class_mean": {
+              "queries": 5175,
+              "percent_preferring_positive": 63.47826086956522,
+              "class_equal_percent": 35.37498132427266,
+              "class_bootstrap95": [
+                20.75792394729139,
+                51.03318304548825
+              ]
+            },
+            "original_source_photo": {
+              "queries": 5175,
+              "percent_preferring_positive": 96.15458937198068,
+              "class_equal_percent": 97.22418116449703,
+              "class_bootstrap95": [
+                95.62821221000573,
+                98.67414072124325
+              ]
+            },
+            "unrelated_sketch_preference": {
+              "queries": 5175,
+              "percent_preferring_positive": 22.04830917874396,
+              "class_equal_percent": 9.864661071212954,
+              "class_bootstrap95": [
+                2.105859384140484,
+                20.300739317982757
+              ]
+            },
+            "unrelated_photo_preference": {
+              "queries": 5175,
+              "percent_preferring_positive": 33.21739130434783,
+              "class_equal_percent": 24.625224679638873,
+              "class_bootstrap95": [
+                14.177233673291239,
+                36.49580709538061
+              ]
+            },
+            "own_minus_unrelated_sketch_preference": {
+              "queries": 5175,
+              "percent_preferring_positive": 97.64251207729468,
+              "class_equal_percent": 98.29545650815957,
+              "class_bootstrap95": [
+                96.80020396986437,
+                99.5144807468167
+              ]
+            },
+            "own_minus_unrelated_photo_preference": {
+              "queries": 5175,
+              "percent_preferring_positive": 95.49758454106279,
+              "class_equal_percent": 94.62679626387094,
+              "class_bootstrap95": [
+                91.53614017305597,
+                97.23025401270372
+              ]
+            }
+          },
+          "semantic": {
+            "own": {
+              "queries": 5175,
+              "percent_preferring_positive": 99.34299516908213,
+              "class_equal_percent": 95.44330988301263,
+              "class_bootstrap95": [
+                86.97524156931011,
+                99.8334761185622
+              ]
+            },
+            "other_drawing_same_source_mean": {
+              "queries": 5175,
+              "percent_preferring_positive": 99.71014492753622,
+              "class_equal_percent": 99.71811741449028,
+              "class_bootstrap95": [
+                99.42077109766045,
+                99.9269952542547
+              ]
+            },
+            "other_source_drawings_same_class_mean": {
+              "queries": 5175,
+              "percent_preferring_positive": 99.98067632850241,
+              "class_equal_percent": 95.83333333333334,
+              "class_bootstrap95": [
+                87.5,
+                100.0
+              ]
+            },
+            "original_source_photo": {
+              "queries": 5175,
+              "percent_preferring_positive": 99.40096618357488,
+              "class_equal_percent": 99.06538757964927,
+              "class_bootstrap95": [
+                97.72997602206424,
+                99.89275647328743
+              ]
+            },
+            "unrelated_sketch_preference": {
+              "queries": 5175,
+              "percent_preferring_positive": 34.89855072463768,
+              "class_equal_percent": 25.290486169987613,
+              "class_bootstrap95": [
+                13.132098396372808,
+                38.65816498491625
+              ]
+            },
+            "unrelated_photo_preference": {
+              "queries": 5175,
+              "percent_preferring_positive": 42.72463768115942,
+              "class_equal_percent": 44.89078359093621,
+              "class_bootstrap95": [
+                30.704738605508915,
+                59.18907682094642
+              ]
+            },
+            "own_minus_unrelated_sketch_preference": {
+              "queries": 5175,
+              "percent_preferring_positive": 99.28502415458938,
+              "class_equal_percent": 95.42218441013046,
+              "class_bootstrap95": [
+                86.94890699956024,
+                99.8250254367742
+              ]
+            },
+            "own_minus_unrelated_photo_preference": {
+              "queries": 5175,
+              "percent_preferring_positive": 99.20772946859903,
+              "class_equal_percent": 95.32419058296995,
+              "class_bootstrap95": [
+                86.83169562290679,
+                99.78612473934857
+              ]
+            }
+          }
+        }
+      }
+    },
+    "semantic": {
+      "queries": 14179,
+      "ties": 0,
+      "wrong": 4232,
+      "right": 9947,
+      "comparisons": {
+        "leader_wrong": {
+          "native": {
+            "own": {
+              "queries": 4232,
+              "percent_preferring_positive": 40.68998109640832,
+              "class_equal_percent": 41.65673575658924,
+              "class_bootstrap95": [
+                34.4610016559018,
+                48.95560608095002
+              ]
+            },
+            "other_drawing_same_source_mean": {
+              "queries": 4232,
+              "percent_preferring_positive": 52.41020793950851,
+              "class_equal_percent": 57.23797152353723,
+              "class_bootstrap95": [
+                50.9759900269968,
+                63.43942200777878
+              ]
+            },
+            "other_source_drawings_same_class_mean": {
+              "queries": 4232,
+              "percent_preferring_positive": 54.300567107750474,
+              "class_equal_percent": 62.45652438147044,
+              "class_bootstrap95": [
+                55.60403958408443,
+                68.95346985625797
+              ]
+            },
+            "original_source_photo": {
+              "queries": 4232,
+              "percent_preferring_positive": 89.1304347826087,
+              "class_equal_percent": 86.95077888404197,
+              "class_bootstrap95": [
+                83.8026461836035,
+                90.1211296577222
+              ]
+            },
+            "unrelated_sketch_preference": {
+              "queries": 4232,
+              "percent_preferring_positive": 34.45179584120983,
+              "class_equal_percent": 38.53458398051582,
+              "class_bootstrap95": [
+                31.172026017127408,
+                45.88354019374437
+              ]
+            },
+            "unrelated_photo_preference": {
+              "queries": 4232,
+              "percent_preferring_positive": 42.58034026465028,
+              "class_equal_percent": 44.452863350906014,
+              "class_bootstrap95": [
+                36.822919447833236,
+                52.011857030513355
+              ]
+            },
+            "own_minus_unrelated_sketch_preference": {
+              "queries": 4232,
+              "percent_preferring_positive": 54.63137996219282,
+              "class_equal_percent": 51.43689002580846,
+              "class_bootstrap95": [
+                45.99938699929291,
+                57.282382089593156
+              ]
+            },
+            "own_minus_unrelated_photo_preference": {
+              "queries": 4232,
+              "percent_preferring_positive": 42.58034026465028,
+              "class_equal_percent": 43.85671225926863,
+              "class_bootstrap95": [
+                37.00681514893011,
+                51.072129482543836
+              ]
+            }
+          },
+          "semantic": {
+            "own": {
+              "queries": 4232,
+              "percent_preferring_positive": 0.0,
+              "class_equal_percent": 0.0,
+              "class_bootstrap95": [
+                0.0,
+                0.0
+              ]
+            },
+            "other_drawing_same_source_mean": {
+              "queries": 4232,
+              "percent_preferring_positive": 63.232514177693766,
+              "class_equal_percent": 73.70341586220935,
+              "class_bootstrap95": [
+                65.96926370757986,
+                80.76123274423355
+              ]
+            },
+            "other_source_drawings_same_class_mean": {
+              "queries": 4232,
+              "percent_preferring_positive": 75.99243856332704,
+              "class_equal_percent": 86.94635160528077,
+              "class_bootstrap95": [
+                78.71259357521527,
+                93.83333369518971
+              ]
+            },
+            "original_source_photo": {
+              "queries": 4232,
+              "percent_preferring_positive": 88.5633270321361,
+              "class_equal_percent": 92.1275643312211,
+              "class_bootstrap95": [
+                88.24699382094266,
+                95.44476565160052
+              ]
+            },
+            "unrelated_sketch_preference": {
+              "queries": 4232,
+              "percent_preferring_positive": 51.29962192816635,
+              "class_equal_percent": 46.0390212261988,
+              "class_bootstrap95": [
+                38.29275096149125,
+                53.98133691082777
+              ]
+            },
+            "unrelated_photo_preference": {
+              "queries": 4232,
+              "percent_preferring_positive": 67.08412098298678,
+              "class_equal_percent": 62.04538567082123,
+              "class_bootstrap95": [
+                54.8025767707762,
+                69.5770326757164
+              ]
+            },
+            "own_minus_unrelated_sketch_preference": {
+              "queries": 4232,
+              "percent_preferring_positive": 0.7325141776937618,
+              "class_equal_percent": 0.9783129259429554,
+              "class_bootstrap95": [
+                0.4641547799596937,
+                1.5859266292580787
+              ]
+            },
+            "own_minus_unrelated_photo_preference": {
+              "queries": 4232,
+              "percent_preferring_positive": 0.44896030245746693,
+              "class_equal_percent": 0.5562926175715464,
+              "class_bootstrap95": [
+                0.25520183566733023,
+                0.9069977717976695
+              ]
+            }
+          }
+        },
+        "leader_right": {
+          "native": {
+            "own": {
+              "queries": 9947,
+              "percent_preferring_positive": 63.29546596963909,
+              "class_equal_percent": 64.26057526340114,
+              "class_bootstrap95": [
+                52.37811407128796,
+                75.30921158734114
+              ]
+            },
+            "other_drawing_same_source_mean": {
+              "queries": 9946,
+              "percent_preferring_positive": 63.975467524633025,
+              "class_equal_percent": 62.89085010150469,
+              "class_bootstrap95": [
+                50.046726390865146,
+                75.01907948510384
+              ]
+            },
+            "other_source_drawings_same_class_mean": {
+              "queries": 9947,
+              "percent_preferring_positive": 64.10978184377198,
+              "class_equal_percent": 63.01038156435812,
+              "class_bootstrap95": [
+                49.85896968809826,
+                75.57944312879673
+              ]
+            },
+            "original_source_photo": {
+              "queries": 9947,
+              "percent_preferring_positive": 71.84075600683623,
+              "class_equal_percent": 75.09365786757964,
+              "class_bootstrap95": [
+                65.9494274349198,
+                83.4583489515136
+              ]
+            },
+            "unrelated_sketch_preference": {
+              "queries": 9947,
+              "percent_preferring_positive": 48.25575550417211,
+              "class_equal_percent": 47.350610509089805,
+              "class_bootstrap95": [
+                33.96465488014969,
+                60.59435779944627
+              ]
+            },
+            "unrelated_photo_preference": {
+              "queries": 9947,
+              "percent_preferring_positive": 42.41479843168794,
+              "class_equal_percent": 44.54749146901781,
+              "class_bootstrap95": [
+                30.531883740653658,
+                58.82409957240517
+              ]
+            },
+            "own_minus_unrelated_sketch_preference": {
+              "queries": 9947,
+              "percent_preferring_positive": 81.01940283502563,
+              "class_equal_percent": 81.28012856421842,
+              "class_bootstrap95": [
+                75.17262942375235,
+                86.75198308718407
+              ]
+            },
+            "own_minus_unrelated_photo_preference": {
+              "queries": 9947,
+              "percent_preferring_positive": 77.49070071378304,
+              "class_equal_percent": 77.47989770297056,
+              "class_bootstrap95": [
+                67.99702570112738,
+                85.72371488392302
+              ]
+            }
+          },
+          "semantic": {
+            "own": {
+              "queries": 9947,
+              "percent_preferring_positive": 100.0,
+              "class_equal_percent": 100.0,
+              "class_bootstrap95": [
+                100.0,
+                100.0
+              ]
+            },
+            "other_drawing_same_source_mean": {
+              "queries": 9946,
+              "percent_preferring_positive": 95.2443193243515,
+              "class_equal_percent": 91.70365450508227,
+              "class_bootstrap95": [
+                86.13706714544142,
+                95.93927215468325
+              ]
+            },
+            "other_source_drawings_same_class_mean": {
+              "queries": 9947,
+              "percent_preferring_positive": 97.36604001206393,
+              "class_equal_percent": 94.22497613128013,
+              "class_bootstrap95": [
+                88.26457643330207,
+                98.24808037957737
+              ]
+            },
+            "original_source_photo": {
+              "queries": 9947,
+              "percent_preferring_positive": 90.97215240776113,
+              "class_equal_percent": 90.163192012852,
+              "class_bootstrap95": [
+                86.13734193833402,
+                93.72494844151218
+              ]
+            },
+            "unrelated_sketch_preference": {
+              "queries": 9947,
+              "percent_preferring_positive": 13.913742837036292,
+              "class_equal_percent": 19.29450238013592,
+              "class_bootstrap95": [
+                9.651080512975204,
+                30.431538839166766
+              ]
+            },
+            "unrelated_photo_preference": {
+              "queries": 9947,
+              "percent_preferring_positive": 12.013672464059514,
+              "class_equal_percent": 19.230823147830872,
+              "class_bootstrap95": [
+                9.483608841112181,
+                30.9532945122725
+              ]
+            },
+            "own_minus_unrelated_sketch_preference": {
+              "queries": 9947,
+              "percent_preferring_positive": 99.83914748165276,
+              "class_equal_percent": 99.17842149279241,
+              "class_bootstrap95": [
+                97.9053201584618,
+                99.92642854978905
+              ]
+            },
+            "own_minus_unrelated_photo_preference": {
+              "queries": 9947,
+              "percent_preferring_positive": 99.77882778727253,
+              "class_equal_percent": 99.01809785399283,
+              "class_bootstrap95": [
+                97.78493495333858,
+                99.90779072845467
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "examples": {
+    "native": {
+      "sibling_recovers_native_error": {
+        "source": "photo/teddy_bear/n04399382_10349.jpg",
+        "correct": "photo/teddy_bear/n04399382_2019.jpg",
+        "rival": "photo/scissors/ext_331.jpg",
+        "query": "sketch/teddy_bear/n04399382_10349-4.png",
+        "other_drawings": [
+          "sketch/teddy_bear/n04399382_10349-1.png",
+          "sketch/teddy_bear/n04399382_10349-2.png",
+          "sketch/teddy_bear/n04399382_10349-3.png",
+          "sketch/teddy_bear/n04399382_10349-5.png",
+          "sketch/teddy_bear/n04399382_10349-6.png"
+        ],
+        "query_margin": -0.031176090240478516,
+        "sibling_mean_margin": 0.04801151156425476
+      },
+      "sibling_repeats_native_error": {
+        "source": "photo/tank/n04389033_7763.jpg",
+        "correct": "photo/tank/ext_101.jpg",
+        "rival": "photo/scissors/ext_515.jpg",
+        "query": "sketch/tank/n04389033_7763-2.png",
+        "other_drawings": [
+          "sketch/tank/n04389033_7763-1.png",
+          "sketch/tank/n04389033_7763-3.png",
+          "sketch/tank/n04389033_7763-4.png",
+          "sketch/tank/n04389033_7763-5.png",
+          "sketch/tank/n04389033_7763-6.png",
+          "sketch/tank/n04389033_7763-7.png"
+        ],
+        "query_margin": -0.07073754072189331,
+        "sibling_mean_margin": -0.1402897834777832
+      }
+    },
+    "semantic": {
+      "sibling_recovers_native_error": {
+        "source": "photo/scissors/n04148054_15674.jpg",
+        "correct": "photo/scissors/n04148054_73011.jpg",
+        "rival": "photo/squirrel/ext_295.jpg",
+        "query": "sketch/scissors/n04148054_15674-5.png",
+        "other_drawings": [
+          "sketch/scissors/n04148054_15674-1.png",
+          "sketch/scissors/n04148054_15674-2.png",
+          "sketch/scissors/n04148054_15674-3.png",
+          "sketch/scissors/n04148054_15674-4.png",
+          "sketch/scissors/n04148054_15674-6.png"
+        ],
+        "query_margin": -0.02545483410358429,
+        "sibling_mean_margin": 0.035106923431158066
+      },
+      "sibling_repeats_native_error": {
+        "source": "photo/windmill/n04587559_11467.jpg",
+        "correct": "photo/windmill/ext_110.jpg",
+        "rival": "photo/rifle/ext_305.jpg",
+        "query": "sketch/windmill/n04587559_11467-2.png",
+        "other_drawings": [
+          "sketch/windmill/n04587559_11467-1.png",
+          "sketch/windmill/n04587559_11467-3.png",
+          "sketch/windmill/n04587559_11467-4.png",
+          "sketch/windmill/n04587559_11467-5.png"
+        ],
+        "query_margin": -0.02342359721660614,
+        "sibling_mean_margin": -0.028127891942858696
+      }
+    }
+  },
+  "per_query_sha256": "f2670b7d4ee9d733912db8b8afc50c94ed9caef7a6ab8d39381ec14cef9144d0",
+  "design": "Post-hoc original-source-excluded class leaders. Reference sketches, source associations and labels are diagnostic only. No ranking uses other sketches."
+}

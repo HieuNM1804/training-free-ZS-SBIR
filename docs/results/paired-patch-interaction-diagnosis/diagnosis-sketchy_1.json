@@ -1,0 +1,203 @@
+{
+  "evaluation_commit": "04adccef55294ec1572874ff9018a907929f2824",
+  "feature_commit": "04adccef55294ec1572874ff9018a907929f2824",
+  "seed": 42,
+  "split": "sketchy_1",
+  "classes": [
+    "cup",
+    "swan",
+    "harp",
+    "squirrel",
+    "snail",
+    "ray",
+    "pineapple",
+    "volcano",
+    "rifle",
+    "scissors",
+    "parrot",
+    "windmill",
+    "teddy_bear",
+    "tree",
+    "wine_bottle",
+    "deer",
+    "chicken",
+    "airplane",
+    "wheelchair",
+    "tank",
+    "umbrella",
+    "butterfly",
+    "camel",
+    "horse",
+    "bell"
+  ],
+  "shared_classes": [
+    "scissors",
+    "tree",
+    "wheelchair",
+    "windmill"
+  ],
+  "subjects": 800,
+  "drawings": 1600,
+  "class_pairs": 300,
+  "classes_outside_overlap": 21,
+  "accuracy_percent": {
+    "full_linear_readout": {
+      "between": 98.34554036458334,
+      "within": 70.66935483870968,
+      "photo_between": 99.66080729166667,
+      "redraw_within": 75.04838709677419,
+      "between_by_panel_orientation": [
+        98.34554036458334,
+        98.34554036458334
+      ],
+      "between_without_shared_classes": 98.6074683779762
+    },
+    "interaction": {
+      "between": 56.212565104166664,
+      "within": 53.20362903225806,
+      "photo_between": 87.41243489583333,
+      "redraw_within": 72.71370967741936,
+      "between_by_panel_orientation": [
+        55.713541666666664,
+        56.71158854166667
+      ],
+      "between_without_shared_classes": 55.411551339285715
+    },
+    "additive": {
+      "between": 89.41585286458333,
+      "within": 66.55040322580645,
+      "photo_between": 98.421875,
+      "redraw_within": 75.06451612903226,
+      "between_by_panel_orientation": [
+        90.33935546875,
+        88.49235026041667
+      ],
+      "between_without_shared_classes": 89.80829148065477
+    },
+    "native_clip": {
+      "between": 98.5576171875,
+      "within": 71.83467741935485,
+      "photo_between": 99.66210937500001,
+      "redraw_within": 75.7258064516129,
+      "between_by_panel_orientation": [
+        98.5576171875,
+        98.5576171875
+      ],
+      "between_without_shared_classes": 98.78999255952382
+    },
+    "semantic_dot": {
+      "between": 99.05224609375,
+      "within": 56.79435483870968,
+      "photo_between": 99.82877604166667,
+      "redraw_within": 62.74193548387097,
+      "between_by_panel_orientation": [
+        99.05224609375,
+        99.05224609375
+      ],
+      "between_without_shared_classes": 99.25316220238096
+    }
+  },
+  "interaction_minus_control": {
+    "additive": {
+      "between": {
+        "difference_points": -33.203287760416664,
+        "bootstrap95": [
+          -40.55431749261738,
+          -25.592530414588783
+        ],
+        "units_positive": 5,
+        "units": 300
+      },
+      "within": {
+        "difference_points": -13.346773847937584,
+        "bootstrap95": [
+          -16.471874427422883,
+          -10.266027914173902
+        ],
+        "units_positive": 1,
+        "units": 25
+      }
+    },
+    "full_linear_readout": {
+      "between": {
+        "difference_points": -42.132975260416664,
+        "bootstrap95": [
+          -48.42057545577041,
+          -35.96453973415757
+        ],
+        "units_positive": 0,
+        "units": 300
+      },
+      "within": {
+        "difference_points": -17.46572533249855,
+        "bootstrap95": [
+          -20.419354321807624,
+          -14.665322122722865
+        ],
+        "units_positive": 0,
+        "units": 25
+      }
+    },
+    "native_clip": {
+      "between": {
+        "difference_points": -42.345052083333336,
+        "bootstrap95": [
+          -48.57528797928886,
+          -36.23726888595958
+        ],
+        "units_positive": 0,
+        "units": 300
+      },
+      "within": {
+        "difference_points": -18.63104782998562,
+        "bootstrap95": [
+          -21.727973391860722,
+          -15.772177153080701
+        ],
+        "units_positive": 0,
+        "units": 25
+      }
+    },
+    "semantic_dot": {
+      "between": {
+        "difference_points": -42.839680989583336,
+        "bootstrap95": [
+          -49.14631718336934,
+          -36.616063158074745
+        ],
+        "units_positive": 0,
+        "units": 300
+      },
+      "within": {
+        "difference_points": -3.590725656598806,
+        "bootstrap95": [
+          -8.19964686371386,
+          0.49803428933955657
+        ],
+        "units_positive": 10,
+        "units": 25
+      }
+    }
+  },
+  "changes_vs_semantic": {
+    "gained_fraction": 0.004918619791666667,
+    "lost_fraction": 0.4333154296875,
+    "net_points": -42.839680989583336,
+    "note": "Fractions of all category assignments; redraws and reference panels repeat the same subjects."
+  },
+  "full_semantic_ap_redraw_variation": {
+    "queries": 14179,
+    "sources": 2500,
+    "sources_with_repeat": 2499,
+    "mean_abs_same_source_ap_difference_points": 17.149165519188657,
+    "within_source_fraction_over_20_points": 0.25994190994190963,
+    "mean_abs_different_source_same_class_ap_difference_points": 21.755130164398107,
+    "different_source_fraction_over_20_points": 0.3289328613166723,
+    "weighting": "Equal source weight; all pairs of redraws; another seed-42 source of the same class is the control."
+  },
+  "passes_preregistered_probe_split": false,
+  "shard_sha256": {
+    "0": "149fdd4b6c142eba20c7e690d55a48e2f6ebfccba2685e3ceb681a916a8c316d",
+    "1": "337e944788488de43363e63bff141d27d3871190ddb16a62da7d8e7181266578"
+  }
+}

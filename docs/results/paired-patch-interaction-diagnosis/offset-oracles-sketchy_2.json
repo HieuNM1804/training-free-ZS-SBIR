@@ -1,0 +1,44 @@
+{
+  "revision": "9b51c2c3f0fe6b6bb1cfc49c00db63cc83471f95",
+  "seed": 42,
+  "queries": 12694,
+  "gallery": 12552,
+  "classes": 21,
+  "source_ids": 2100,
+  "cutoffs": [
+    200,
+    200
+  ],
+  "metrics": {
+    "native": [
+      36.26969063699516,
+      33.86580274751132
+    ],
+    "unlabeled_gallery_mean_subtracted": [
+      36.59963837041347,
+      34.36087914429986
+    ],
+    "unrelated_source_sketch_mean_subtracted": [
+      69.47861139126836,
+      65.87368057032234
+    ],
+    "unrelated_class_offset_added": [
+      56.85290842563118,
+      50.10709783394105
+    ],
+    "true_class_offset_added": [
+      96.45546480909996,
+      92.79990560457766
+    ],
+    "true_class_photo_mean_alone": [
+      97.8581693959608,
+      94.85961865896087
+    ],
+    "original_source_photo_alone": [
+      91.0416311064827,
+      85.42508288617952
+    ]
+  },
+  "per_query_sha256": "0978373f8aa9e9ad81fad9e2475c7bf7f8034e4b7dfff349629d90ed0bf90095",
+  "design": "Original gallery and official KD evaluator. Report oracle rows only as diagnostics. Reference class means use disjoint original photo identities. The unrelated source mean additionally excludes the query category. True-class rows use the target label. The source photo is also present in the gallery, as it is for every row. The input-source-photo row measures an optimistic readout with privileged data."
+}
