@@ -82,19 +82,23 @@ def percentile(values):
     return (lo + hi).double() / (2 * len(values))
 
 
-def added_candidate_counts(query, banks, shared_positions, shared_labels, all_labels, leverage):
+def class_percentiles(leverage, labels):
+    labels = labels.to(leverage.device)
+    result = torch.empty_like(leverage)
+    for label in labels.unique():
+        take = labels == label
+        result[take] = percentile(leverage[take])
+    return result
+
+
+def added_candidate_counts(query, banks, shared_positions, shared_labels, all_labels, leverage, per_class):
     """Count entries from the 17 other classes in rankings of the four shared classes."""
     is_added = torch.ones(len(all_labels), device=query.device, dtype=torch.bool)
     is_added[shared_positions] = False
     if torch.isin(all_labels[is_added.cpu()], shared_labels.unique()).any():
         raise ValueError("A candidate counted as an added distractor can be relevant")
-    per_class = torch.zeros_like(leverage)
-    labels = all_labels.to(leverage.device)
-    for label in labels[is_added].unique():
-        take = labels == label
-        per_class[take] = percentile(leverage[take])
     top_group = int(np.ceil(is_added.sum().item() / 100))
-    hardest = {}
+    hardest, wrong_heads = {}, {}
     result = {}
     for name, bank in banks.items():
         gallery = bank.float().T.contiguous()
@@ -106,6 +110,7 @@ def added_candidate_counts(query, banks, shared_positions, shared_labels, all_la
         ranks = torch.cat(ranked_blocks)
         hardest[name] = torch.cat(best_added)
         new_at_rank = is_added[ranks]
+        wrong_heads[name] = ranks[new_at_rank[:, 0], 0]
         counts = ranks[new_at_rank].bincount(minlength=len(all_labels))
         result[name] = {"added_photos": int(is_added.sum()), "mean_added_in_top200": new_at_rank.sum(1).double().mean().item(),
                         "fraction_of_queries_with_added_top1": new_at_rank[:, 0].double().mean().item(),
@@ -122,7 +127,40 @@ def added_candidate_counts(query, banks, shared_positions, shared_labels, all_la
     fixed = per_class[hardest["fixed_ext1_query_edit"]]
     report["paired_fraction_higher_with_fixed_edit_than_dot"] = (fixed > base).double().mean().item()
     report["paired_fraction_equal"] = (fixed == base).double().mean().item()
-    return result, report
+    return result, report, wrong_heads
+
+
+def positive_controls(split, text, shared_rows, banks, per_class, wrong_heads):
+    other = torch.ones(len(split.query_ids), dtype=torch.bool)
+    other[shared_rows] = False
+    ids = torch.where(other)[0]
+    query = torch.cat([query_posteriors(split.sketch[sl], split.mirror[sl], text[DEFAULT_PROMPTS[0]], split.scale)
+                       for sl in ids.split(384)])
+    truth = split.sketch_labels[ids].cuda()
+    classes = split.photo_labels.cuda()
+    results = {}
+    for name, bank in banks.items():
+        gallery = bank.float().T.contiguous()
+        highest, best_positive = [], []
+        for q, labels in zip(query.split(64), truth.split(64), strict=True):
+            scores = q @ gallery
+            highest.append(scores.argmax(1))
+            best_positive.append(scores.masked_fill(classes[None, :] != labels[:, None], -torch.inf).argmax(1))
+        top = torch.cat(highest)
+        correct = top[classes[top] == truth]
+        positive_percentiles = per_class[torch.cat(best_positive)]
+        wrong = wrong_heads[name]
+        also_correct = torch.isin(wrong.unique(), correct.unique())
+        results[name] = {"queries": len(query), "correct_top1_queries": len(correct),
+                         "best_positive_mean_percentile_within_its_class": positive_percentiles.mean().item(),
+                         "correct_top1_mean_percentile_within_its_class": per_class[correct].mean().item(),
+                         "fraction_of_correct_top1_in_own_class_top_leverage_decile":
+                         (per_class[correct] >= 0.90).double().mean().item(),
+                         "distinct_wrong_added_top1_photos_for_four_shared_classes": len(wrong.unique()),
+                         "number_that_are_correct_top1_for_some_other_query": int(also_correct.sum()),
+                         "fraction_of_shared_query_wrong_added_top1_occurrences_that_are_correct_top1_elsewhere":
+                         torch.isin(wrong, correct.unique()).double().mean().item()}
+    return results
 
 
 @torch.inference_mode()
@@ -184,8 +222,10 @@ def run(revision):
     banks = {"dot": bank, "donor64": indices[1]["b"].cuda(),
              "query_projection": indices[1]["f"].cuda(), "fixed_ext1_query_edit": fixed}
     leverage = source_leverage(indices[0]["p"].cuda(), bank)
-    additions, extrapolation = added_candidate_counts(queries[1], banks, photo_rows[1], sample.sketch_labels,
-                                                       right.photo_labels, leverage)
+    per_class = class_percentiles(leverage, right.photo_labels)
+    additions, extrapolation, wrong = added_candidate_counts(queries[1], banks, photo_rows[1], sample.sketch_labels,
+                                                              right.photo_labels, leverage, per_class)
+    positives = positive_controls(right, target[1], query_rows[1], banks, per_class, wrong)
     out = {"revision": revision, "base_revision": base_revision, "seed": SEED, "device": torch.cuda.get_device_name(),
            "type": "post-hoc descriptive diagnostic on Sketchy only", "shared_classes": shared_classes,
            "full_ext2_gallery": full_gallery_groups(right, query_rows[1], base_revision),
@@ -194,7 +234,7 @@ def run(revision):
             "donors_per_photo": K, "shared_donor_count_mean": overlap.mean().item(),
             "shared_donor_count_median": overlap.median().item(), "context_changes": changed, "metrics": metrics},
            "added_distractors_for_shared_queries": additions, "source_leverage": extrapolation,
-           "fixed_shared_index_max_abs_difference": fixed_error}
+           "positive_control_other_17_classes": positives, "fixed_shared_index_max_abs_difference": fixed_error}
     atomic_json(DST / "sketchy-overlap.json", out)
     print(json.dumps(out), flush=True)
 
