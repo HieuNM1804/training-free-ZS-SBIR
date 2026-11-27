@@ -62,17 +62,49 @@ def full_gallery_groups(split, query_positions, base_revision):
     return result
 
 
-def added_candidate_counts(query, banks, shared_positions, shared_labels, all_labels):
+def source_leverage(source, target):
+    # Squared norm after whitening the affine word coordinates by the source design.
+    x = design(source)
+    _, r = torch.linalg.qr(x, mode="reduced")
+    def measure(rows):
+        coordinates = torch.linalg.solve_triangular(r.T, rows.T.contiguous(), upper=False)
+        return coordinates.square().sum(0)
+    leverage = measure(x)
+    if abs(leverage.sum().item() - x.shape[1]) > 1e-6 or leverage.max() > 1.0000001:
+        raise ValueError("Source leverage does not match its projection matrix")
+    return measure(design(target))
+
+
+def percentile(values):
+    reference = values.sort().values
+    lo = torch.searchsorted(reference, values)
+    hi = torch.searchsorted(reference, values, right=True)
+    return (lo + hi).double() / (2 * len(values))
+
+
+def added_candidate_counts(query, banks, shared_positions, shared_labels, all_labels, leverage):
     """Count entries from the 17 other classes in rankings of the four shared classes."""
     is_added = torch.ones(len(all_labels), device=query.device, dtype=torch.bool)
     is_added[shared_positions] = False
     if torch.isin(all_labels[is_added.cpu()], shared_labels.unique()).any():
         raise ValueError("A candidate counted as an added distractor can be relevant")
+    per_class = torch.zeros_like(leverage)
+    labels = all_labels.to(leverage.device)
+    for label in labels[is_added].unique():
+        take = labels == label
+        per_class[take] = percentile(leverage[take])
     top_group = int(np.ceil(is_added.sum().item() / 100))
+    hardest = {}
     result = {}
     for name, bank in banks.items():
         gallery = bank.float().T.contiguous()
-        ranks = torch.cat([(part @ gallery).topk(200, dim=1).indices for part in query.split(64)])
+        ranked_blocks, best_added = [], []
+        for part in query.split(64):
+            scores = part @ gallery
+            ranked_blocks.append(scores.topk(200, dim=1).indices)
+            best_added.append(scores.masked_fill(~is_added[None, :], -torch.inf).argmax(1))
+        ranks = torch.cat(ranked_blocks)
+        hardest[name] = torch.cat(best_added)
         new_at_rank = is_added[ranks]
         counts = ranks[new_at_rank].bincount(minlength=len(all_labels))
         result[name] = {"added_photos": int(is_added.sum()), "mean_added_in_top200": new_at_rank.sum(1).double().mean().item(),
@@ -80,7 +112,17 @@ def added_candidate_counts(query, banks, shared_positions, shared_labels, all_la
                         "most_frequent_one_percent_count": top_group,
                         "fraction_of_added_top200_slots_from_most_frequent_one_percent":
                         (counts.topk(top_group).values.double().sum() / counts.sum()).item()}
-    return result
+    levels = [0.50, 0.90, 0.99]
+    quantiles = torch.tensor(levels, device=leverage.device, dtype=leverage.dtype)
+    report = {"quantiles": levels, "shared_photo_leverage": torch.quantile(leverage[~is_added], quantiles).tolist(),
+              "added_photo_leverage": torch.quantile(leverage[is_added], quantiles).tolist(),
+              "best_added_photo_mean_within_its_class_percentile":
+              {k: per_class[v].mean().item() for k, v in hardest.items()}}
+    base = per_class[hardest["dot"]]
+    fixed = per_class[hardest["fixed_ext1_query_edit"]]
+    report["paired_fraction_higher_with_fixed_edit_than_dot"] = (fixed > base).double().mean().item()
+    report["paired_fraction_equal"] = (fixed == base).double().mean().item()
+    return result, report
 
 
 @torch.inference_mode()
@@ -139,9 +181,11 @@ def run(revision):
     fixed_error = (fixed[photo_rows[1]] - matched[(left.name, "f")]).abs().max().item()
     if fixed_error > 1e-7:
         raise ValueError("Source calibration changed on the common candidates")
-    additions = added_candidate_counts(queries[1], {"dot": bank, "donor64": indices[1]["b"].cuda(),
-                                       "query_projection": indices[1]["f"].cuda(), "fixed_ext1_query_edit": fixed},
-                                       photo_rows[1], sample.sketch_labels, right.photo_labels)
+    banks = {"dot": bank, "donor64": indices[1]["b"].cuda(),
+             "query_projection": indices[1]["f"].cuda(), "fixed_ext1_query_edit": fixed}
+    leverage = source_leverage(indices[0]["p"].cuda(), bank)
+    additions, extrapolation = added_candidate_counts(queries[1], banks, photo_rows[1], sample.sketch_labels,
+                                                       right.photo_labels, leverage)
     out = {"revision": revision, "base_revision": base_revision, "seed": SEED, "device": torch.cuda.get_device_name(),
            "type": "post-hoc descriptive diagnostic on Sketchy only", "shared_classes": shared_classes,
            "full_ext2_gallery": full_gallery_groups(right, query_rows[1], base_revision),
@@ -149,7 +193,8 @@ def run(revision):
             "query_posterior_max_abs_difference": q_error, "photo_posterior_max_abs_difference": p_error,
             "donors_per_photo": K, "shared_donor_count_mean": overlap.mean().item(),
             "shared_donor_count_median": overlap.median().item(), "context_changes": changed, "metrics": metrics},
-           "added_distractors_for_shared_queries": additions,"fixed_shared_index_max_abs_difference": fixed_error}
+           "added_distractors_for_shared_queries": additions, "source_leverage": extrapolation,
+           "fixed_shared_index_max_abs_difference": fixed_error}
     atomic_json(DST / "sketchy-overlap.json", out)
     print(json.dumps(out), flush=True)
 
