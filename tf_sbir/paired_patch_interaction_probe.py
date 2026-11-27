@@ -161,6 +161,8 @@ if __name__ == "__main__":
     torch.manual_seed(SEED)
     torch.cuda.manual_seed_all(SEED)
     torch.backends.cudnn.benchmark=False
+    # Match single-image and batched patch convolution when validating token swaps.
+    torch.backends.cudnn.allow_tf32=False
     torch.use_deterministic_algorithms(True)
     torch.set_float32_matmul_precision("highest")
     measure(args)
