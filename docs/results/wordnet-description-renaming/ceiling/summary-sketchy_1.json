@@ -1,0 +1,571 @@
+{
+  "split": "sketchy_1",
+  "revision": "50904116bfa71ad76e6ae6c65f5fec5a235d713d",
+  "pilot_revision": "6fa17be0cdb20611110879dec3dafc1b31f0f798",
+  "seed": 42,
+  "queries": 14179,
+  "gallery": 17100,
+  "n_words": 601,
+  "n_senses": 1135,
+  "different_canonical_sentences": 1123,
+  "different_observed_glosses": 1237,
+  "bank_ceiling_AP_P": {
+    "all_names": [
+      88.28423717637536,
+      95.87954027089945
+    ],
+    "canonical_glosses": [
+      86.17854328995926,
+      98.18894189481415
+    ],
+    "all_observed_glosses": [
+      86.39150137364574,
+      98.22653266226541
+    ]
+  },
+  "query_selected_two_oracle_replay": [
+    54.48275979080073,
+    64.19162143553068
+  ],
+  "replay_mean_absolute_error_points": [
+    1.1196061921511478e-05,
+    0.0
+  ],
+  "replay_max_absolute_error_points": [
+    0.04850625991821289,
+    0.0
+  ],
+  "winning_descriptions_by_class": {
+    "all_names": {
+      "cup": {
+        "AP_sentence": "a photo of the coffee cup.",
+        "AP_P_ceiling": [
+          96.33207321166992,
+          100.0
+        ]
+      },
+      "swan": {
+        "AP_sentence": "a photo of the goose.",
+        "AP_P_ceiling": [
+          89.99282121658325,
+          100.0
+        ]
+      },
+      "harp": {
+        "AP_sentence": "a photo of the harp.",
+        "AP_P_ceiling": [
+          87.00385689735413,
+          100.0
+        ]
+      },
+      "squirrel": {
+        "AP_sentence": "a photo of the squirrel.",
+        "AP_P_ceiling": [
+          98.9323377609253,
+          100.0
+        ]
+      },
+      "snail": {
+        "AP_sentence": "a photo of the snail.",
+        "AP_P_ceiling": [
+          97.56101965904236,
+          100.0
+        ]
+      },
+      "ray": {
+        "AP_sentence": "a photo of the sea turtle.",
+        "AP_P_ceiling": [
+          91.0210907459259,
+          100.0
+        ]
+      },
+      "pineapple": {
+        "AP_sentence": "a photo of the pineapple.",
+        "AP_P_ceiling": [
+          95.15677094459534,
+          100.0
+        ]
+      },
+      "volcano": {
+        "AP_sentence": "a photo of the oven.",
+        "AP_P_ceiling": [
+          27.638152241706848,
+          46.00000083446503
+        ]
+      },
+      "rifle": {
+        "AP_sentence": "a photo of the rifle.",
+        "AP_P_ceiling": [
+          90.80936312675476,
+          100.0
+        ]
+      },
+      "scissors": {
+        "AP_sentence": "a photo of the scissors.",
+        "AP_P_ceiling": [
+          97.08172082901001,
+          100.0
+        ]
+      },
+      "parrot": {
+        "AP_sentence": "a photo of the parrot.",
+        "AP_P_ceiling": [
+          97.20799326896667,
+          100.0
+        ]
+      },
+      "windmill": {
+        "AP_sentence": "a photo of the lighthouse.",
+        "AP_P_ceiling": [
+          39.704540371894836,
+          61.000001430511475
+        ]
+      },
+      "teddy_bear": {
+        "AP_sentence": "a photo of the teddy bear.",
+        "AP_P_ceiling": [
+          98.57277274131775,
+          100.0
+        ]
+      },
+      "tree": {
+        "AP_sentence": "a photo of the tree.",
+        "AP_P_ceiling": [
+          92.33362674713135,
+          100.0
+        ]
+      },
+      "wine_bottle": {
+        "AP_sentence": "a photo of the wine.",
+        "AP_P_ceiling": [
+          95.3986644744873,
+          100.0
+        ]
+      },
+      "deer": {
+        "AP_sentence": "a photo of the deer.",
+        "AP_P_ceiling": [
+          97.47666716575623,
+          100.0
+        ]
+      },
+      "chicken": {
+        "AP_sentence": "a photo of the chicken.",
+        "AP_P_ceiling": [
+          98.75043630599976,
+          100.0
+        ]
+      },
+      "airplane": {
+        "AP_sentence": "a photo of the aircraft.",
+        "AP_P_ceiling": [
+          96.93920016288757,
+          100.0
+        ]
+      },
+      "wheelchair": {
+        "AP_sentence": "a photo of the wheelchair.",
+        "AP_P_ceiling": [
+          96.10506296157837,
+          99.00000095367432
+        ]
+      },
+      "tank": {
+        "AP_sentence": "a photo of the tank.",
+        "AP_P_ceiling": [
+          89.08966779708862,
+          100.0
+        ]
+      },
+      "umbrella": {
+        "AP_sentence": "a photo of the umbrella.",
+        "AP_P_ceiling": [
+          87.01697587966919,
+          100.0
+        ]
+      },
+      "butterfly": {
+        "AP_sentence": "a photo of the butterfly.",
+        "AP_P_ceiling": [
+          99.09066557884216,
+          100.0
+        ]
+      },
+      "camel": {
+        "AP_sentence": "a photo of the camel.",
+        "AP_P_ceiling": [
+          97.72517681121826,
+          100.0
+        ]
+      },
+      "horse": {
+        "AP_sentence": "a photo of the horse.",
+        "AP_P_ceiling": [
+          83.78818035125732,
+          93.99999976158142
+        ]
+      },
+      "bell": {
+        "AP_sentence": "a photo of the lantern.",
+        "AP_P_ceiling": [
+          58.45065116882324,
+          93.99999976158142
+        ]
+      }
+    },
+    "canonical_glosses": {
+      "cup": {
+        "AP_sentence": "a photo of the object. a cup from which coffee is drunk.",
+        "AP_P_ceiling": [
+          97.57545590400696,
+          100.0
+        ]
+      },
+      "swan": {
+        "AP_sentence": "a photo of the object. female swan.",
+        "AP_P_ceiling": [
+          97.97438979148865,
+          100.0
+        ]
+      },
+      "harp": {
+        "AP_sentence": "a photo of the object. a large stringed instrument; seated player holds it upright while playing.",
+        "AP_P_ceiling": [
+          95.18261551856995,
+          100.0
+        ]
+      },
+      "squirrel": {
+        "AP_sentence": "a photo of the object. a kind of arboreal rodent having a long bushy tail.",
+        "AP_P_ceiling": [
+          93.91504526138306,
+          99.00000095367432
+        ]
+      },
+      "snail": {
+        "AP_sentence": "a photo of the object. freshwater or marine or terrestrial gastropod mollusk usually having an external enclosing spiral shell.",
+        "AP_P_ceiling": [
+          91.91301465034485,
+          100.0
+        ]
+      },
+      "ray": {
+        "AP_sentence": "a photo of the object. any of numerous elongate mostly marine carnivorous fishes with heterocercal caudal fins and tough skin covered with small toothlike scales.",
+        "AP_P_ceiling": [
+          90.68853855133057,
+          100.0
+        ]
+      },
+      "pineapple": {
+        "AP_sentence": "a photo of the object. sweet juicy gritty-textured fruit available in many varieties.",
+        "AP_P_ceiling": [
+          94.60505247116089,
+          98.00000190734863
+        ]
+      },
+      "volcano": {
+        "AP_sentence": "a photo of the object. a large cloud of rubble and dust shaped like a object and rising into the sky after an explosion (especially of a nuclear bomb).",
+        "AP_P_ceiling": [
+          72.59743809700012,
+          97.00000286102295
+        ]
+      },
+      "rifle": {
+        "AP_sentence": "a photo of the object. a shoulder firearm with a long barrel and a rifled bore.",
+        "AP_P_ceiling": [
+          94.21981573104858,
+          100.0
+        ]
+      },
+      "scissors": {
+        "AP_sentence": "a photo of the object. a hand tool with a thin flexible blade used to mix or spread soft substances.",
+        "AP_P_ceiling": [
+          86.54749393463135,
+          100.0
+        ]
+      },
+      "parrot": {
+        "AP_sentence": "a photo of the object. usually brightly colored zygodactyl tropical birds with short hooked beaks and the ability to mimic sounds.",
+        "AP_P_ceiling": [
+          86.50714755058289,
+          98.00000190734863
+        ]
+      },
+      "windmill": {
+        "AP_sentence": "a photo of the object. a mill that is powered by men or animals walking on a circular belt or climbing steps.",
+        "AP_P_ceiling": [
+          67.82546043395996,
+          88.99999856948853
+        ]
+      },
+      "teddy_bear": {
+        "AP_sentence": "a photo of the object. plaything consisting of a child's toy bear (usually plush and stuffed with soft materials).",
+        "AP_P_ceiling": [
+          97.8855848312378,
+          100.0
+        ]
+      },
+      "tree": {
+        "AP_sentence": "a photo of the object. a tall perennial woody plant having a main trunk and branches forming a distinct elevated crown; includes both gymnosperms and angiosperms.",
+        "AP_P_ceiling": [
+          81.22664093971252,
+          98.00000190734863
+        ]
+      },
+      "wine_bottle": {
+        "AP_sentence": "a photo of the object. pinkish table wine from red grapes whose skins were removed after fermentation began.",
+        "AP_P_ceiling": [
+          82.2248101234436,
+          97.00000286102295
+        ]
+      },
+      "deer": {
+        "AP_sentence": "a photo of the object. distinguished from Bovidae by the male's having solid deciduous antlers.",
+        "AP_P_ceiling": [
+          92.24963188171387,
+          100.0
+        ]
+      },
+      "chicken": {
+        "AP_sentence": "a photo of the object. a domestic fowl bred for flesh or eggs; believed to have been developed from the red jungle fowl.",
+        "AP_P_ceiling": [
+          96.5637743473053,
+          100.0
+        ]
+      },
+      "airplane": {
+        "AP_sentence": "a photo of the object. an aircraft without wings that obtains its lift from the rotation of overhead blades.",
+        "AP_P_ceiling": [
+          86.79065108299255,
+          95.99999785423279
+        ]
+      },
+      "wheelchair": {
+        "AP_sentence": "a photo of the object. a movable chair mounted on large wheels; for invalids or those who cannot walk; frequently propelled by the occupant.",
+        "AP_P_ceiling": [
+          92.47757196426392,
+          99.00000095367432
+        ]
+      },
+      "tank": {
+        "AP_sentence": "a photo of the object. an enclosed armored military vehicle; has a cannon and moves on caterpillar treads.",
+        "AP_P_ceiling": [
+          99.67304468154907,
+          100.0
+        ]
+      },
+      "umbrella": {
+        "AP_sentence": "a photo of the object. a lightweight handheld collapsible canopy.",
+        "AP_P_ceiling": [
+          56.97634220123291,
+          93.00000071525574
+        ]
+      },
+      "butterfly": {
+        "AP_sentence": "a photo of the object. social insect living in organized colonies; characteristically the males and fertile queen have wings during breeding season; wingless sterile females are the workers.",
+        "AP_P_ceiling": [
+          84.07101631164551,
+          94.9999988079071
+        ]
+      },
+      "camel": {
+        "AP_sentence": "a photo of the object. domesticated llama with long silky fleece; believed to be a domesticated variety of the guanaco.",
+        "AP_P_ceiling": [
+          76.76736116409302,
+          99.00000095367432
+        ]
+      },
+      "horse": {
+        "AP_sentence": "a photo of the object. any of several fleet black-and-white striped African equines.",
+        "AP_P_ceiling": [
+          76.3216495513916,
+          98.00000190734863
+        ]
+      },
+      "bell": {
+        "AP_sentence": "a photo of the object. the act of tapping a telephone or telegraph line to get information.",
+        "AP_P_ceiling": [
+          59.09692049026489,
+          99.00000095367432
+        ]
+      }
+    },
+    "all_observed_glosses": {
+      "cup": {
+        "AP_sentence": "a photo of the object. a cup from which coffee is drunk.",
+        "AP_P_ceiling": [
+          97.57545590400696,
+          100.0
+        ]
+      },
+      "swan": {
+        "AP_sentence": "a photo of the object. female swan.",
+        "AP_P_ceiling": [
+          97.97438979148865,
+          100.0
+        ]
+      },
+      "harp": {
+        "AP_sentence": "a photo of the object. a large stringed instrument; seated player holds it upright while playing.",
+        "AP_P_ceiling": [
+          95.18261551856995,
+          100.0
+        ]
+      },
+      "squirrel": {
+        "AP_sentence": "a photo of the object. a kind of arboreal rodent having a long bushy tail.",
+        "AP_P_ceiling": [
+          93.91504526138306,
+          99.00000095367432
+        ]
+      },
+      "snail": {
+        "AP_sentence": "a photo of the object. freshwater or marine or terrestrial gastropod mollusk usually having an external enclosing spiral shell.",
+        "AP_P_ceiling": [
+          91.91301465034485,
+          100.0
+        ]
+      },
+      "ray": {
+        "AP_sentence": "a photo of the object. any of numerous elongate mostly marine carnivorous fishes with heterocercal caudal fins and tough skin covered with small toothlike scales.",
+        "AP_P_ceiling": [
+          90.68853855133057,
+          100.0
+        ]
+      },
+      "pineapple": {
+        "AP_sentence": "a photo of the object. sweet juicy gritty-textured fruit available in many varieties.",
+        "AP_P_ceiling": [
+          94.60505247116089,
+          98.00000190734863
+        ]
+      },
+      "volcano": {
+        "AP_sentence": "a photo of the object. a large cloud of rubble and dust shaped like a object and rising into the sky after an explosion (especially of a nuclear object).",
+        "AP_P_ceiling": [
+          75.0170648097992,
+          97.00000286102295
+        ]
+      },
+      "rifle": {
+        "AP_sentence": "a photo of the object. a shoulder firearm with a long barrel and a rifled bore.",
+        "AP_P_ceiling": [
+          94.21981573104858,
+          100.0
+        ]
+      },
+      "scissors": {
+        "AP_sentence": "a photo of the object. a hand tool with a thin flexible blade used to mix or spread soft substances.",
+        "AP_P_ceiling": [
+          86.54749393463135,
+          100.0
+        ]
+      },
+      "parrot": {
+        "AP_sentence": "a photo of the object. usually brightly colored zygodactyl tropical birds with short hooked beaks and the ability to mimic sounds.",
+        "AP_P_ceiling": [
+          86.50714755058289,
+          98.00000190734863
+        ]
+      },
+      "windmill": {
+        "AP_sentence": "a photo of the object. a mill that is powered by men or animals walking on a circular belt or climbing steps.",
+        "AP_P_ceiling": [
+          67.82546043395996,
+          88.99999856948853
+        ]
+      },
+      "teddy_bear": {
+        "AP_sentence": "a photo of the object. plaything consisting of a child's toy bear (usually plush and stuffed with soft materials).",
+        "AP_P_ceiling": [
+          97.8855848312378,
+          100.0
+        ]
+      },
+      "tree": {
+        "AP_sentence": "a photo of the object. a tall perennial woody plant having a main trunk and branches forming a distinct elevated object; includes both gymnosperms and angiosperms.",
+        "AP_P_ceiling": [
+          84.6038281917572,
+          99.00000095367432
+        ]
+      },
+      "wine_bottle": {
+        "AP_sentence": "a photo of the object. pinkish table wine from red grapes whose skins were removed after fermentation began.",
+        "AP_P_ceiling": [
+          82.2248101234436,
+          97.00000286102295
+        ]
+      },
+      "deer": {
+        "AP_sentence": "a photo of the object. distinguished from Bovidae by the male's having solid deciduous antlers.",
+        "AP_P_ceiling": [
+          92.24963188171387,
+          100.0
+        ]
+      },
+      "chicken": {
+        "AP_sentence": "a photo of the object. a domestic fowl bred for flesh or eggs; believed to have been developed from the red jungle fowl.",
+        "AP_P_ceiling": [
+          96.5637743473053,
+          100.0
+        ]
+      },
+      "airplane": {
+        "AP_sentence": "a photo of the object. an aircraft without wings that obtains its lift from the rotation of overhead blades.",
+        "AP_P_ceiling": [
+          86.79065108299255,
+          95.99999785423279
+        ]
+      },
+      "wheelchair": {
+        "AP_sentence": "a photo of the object. a movable chair mounted on large wheels; for invalids or those who cannot walk; frequently propelled by the occupant.",
+        "AP_P_ceiling": [
+          92.47757196426392,
+          99.00000095367432
+        ]
+      },
+      "tank": {
+        "AP_sentence": "a photo of the object. an enclosed armored military vehicle; has a cannon and moves on caterpillar treads.",
+        "AP_P_ceiling": [
+          99.67304468154907,
+          100.0
+        ]
+      },
+      "umbrella": {
+        "AP_sentence": "a photo of the object. a lightweight handheld collapsible canopy.",
+        "AP_P_ceiling": [
+          56.97634220123291,
+          93.00000071525574
+        ]
+      },
+      "butterfly": {
+        "AP_sentence": "a photo of the object. social insect living in organized colonies; characteristically the males and fertile queen have wings during breeding season; wingless sterile females are the workers.",
+        "AP_P_ceiling": [
+          84.07101631164551,
+          94.9999988079071
+        ]
+      },
+      "camel": {
+        "AP_sentence": "a photo of the object. domesticated llama with long silky fleece; believed to be a domesticated variety of the guanaco.",
+        "AP_P_ceiling": [
+          76.76736116409302,
+          99.00000095367432
+        ]
+      },
+      "horse": {
+        "AP_sentence": "a photo of the object. any of several fleet black-and-white striped African equines.",
+        "AP_P_ceiling": [
+          76.3216495513916,
+          98.00000190734863
+        ]
+      },
+      "bell": {
+        "AP_sentence": "a photo of the object. the act of tapping a telephone or telegraph line to get information.",
+        "AP_P_ceiling": [
+          59.09692049026489,
+          99.00000095367432
+        ]
+      }
+    }
+  }
+}

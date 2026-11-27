@@ -1,0 +1,326 @@
+{
+  "split": "sketchy_1",
+  "revision": "6fa17be0cdb20611110879dec3dafc1b31f0f798",
+  "seed": 42,
+  "queries": 14179,
+  "gallery": 17100,
+  "classes": 25,
+  "senses": 1135,
+  "public_names": 512,
+  "inventory_signature": "1fb2ed7479ae8e2f194a8e8946f45bf53e6745e0ce078ad659cad8dfca5934c8",
+  "wordnet_sha256": "cbda5ea6eef7f36a97a43d4a75f85e07fccbb4f23657d27b4ccbc93e2646ab59",
+  "raw_metrics": {
+    "semantic": [
+      75.3454857580277,
+      77.09866710664286
+    ],
+    "direct_name_to_rgb": [
+      57.6088645709536,
+      64.54065880172732
+    ],
+    "name": [
+      48.71195538899019,
+      56.001833607276176
+    ],
+    "definition": [
+      47.98922514289006,
+      55.643627748904336
+    ],
+    "attached": [
+      48.23105207706999,
+      55.65279627212143
+    ],
+    "certified": [
+      47.6253535296702,
+      55.158262078190056
+    ]
+  },
+  "best_of_two_by_metric_oracle": [
+    54.482774824615774,
+    64.19162143553068
+  ],
+  "certified_queries": 3841,
+  "usable_queries": 14179,
+  "certified_vs_definition_changed": 715,
+  "additive_certified": 2275,
+  "certified_under_both": 1215,
+  "query_win_loss_tie_AP_vs_definition": [
+    292,
+    423,
+    13464
+  ],
+  "official_effects": {
+    "name": {
+      "mean_query_points": [
+        -1.086601859319991,
+        -0.8435715290861167
+      ],
+      "class_balanced": {
+        "mean": [
+          -1.0787717394400789,
+          -0.8283450073422816
+        ],
+        "class_bootstrap95": [
+          [
+            -2.350653715831044,
+            -2.628849700476099
+          ],
+          [
+            0.22039908057126664,
+            1.0071655506396773
+          ]
+        ]
+      }
+    },
+    "definition": {
+      "mean_query_points": [
+        -0.36387161321985856,
+        -0.4853656707142765
+      ],
+      "class_balanced": {
+        "mean": [
+          -0.35369116212409785,
+          -0.4708189668582077
+        ],
+        "class_bootstrap95": [
+          [
+            -0.6381471706703008,
+            -0.8806722772386829
+          ],
+          [
+            -0.09581040817748286,
+            -0.10442268422585382
+          ]
+        ]
+      }
+    },
+    "attached": {
+      "mean_query_points": [
+        -0.6056985473997906,
+        -0.4945341939313748
+      ],
+      "class_balanced": {
+        "mean": [
+          -0.6624865397018567,
+          -0.5765661999499325
+        ],
+        "class_bootstrap95": [
+          [
+            -1.5881745181638274,
+            -1.7365746455494826
+          ],
+          [
+            0.32615106221981904,
+            0.6887540679747267
+          ]
+        ]
+      }
+    },
+    "semantic": {
+      "mean_query_points": [
+        -27.720132228357503,
+        -21.940405028452805
+      ],
+      "class_balanced": {
+        "mean": [
+          -27.373421742445824,
+          -21.72522266615221
+        ],
+        "class_bootstrap95": [
+          [
+            -34.13935037088038,
+            -28.252017569553164
+          ],
+          [
+            -20.5882318176273,
+            -15.443603107941966
+          ]
+        ]
+      }
+    }
+  },
+  "official_metrics_on_certified": {
+    "semantic": [
+      70.11183230373675,
+      72.63499095534533
+    ],
+    "direct_name_to_rgb": [
+      51.10925303830769,
+      57.79484518786926
+    ],
+    "name": [
+      42.096463237753085,
+      49.013798368138914
+    ],
+    "definition": [
+      42.49101725870788,
+      50.12496720860787
+    ],
+    "attached": [
+      41.14779007728523,
+      48.33324634293285
+    ],
+    "certified": [
+      41.14779007728523,
+      48.33324634293285
+    ]
+  },
+  "matched_pairs": {
+    "all": {
+      "queries": 14179,
+      "arms": {
+        "name": {
+          "pair_accuracy": 57.86021581211651,
+          "repairs": 1869,
+          "damage": 3612,
+          "ties": 0
+        },
+        "definition": {
+          "pair_accuracy": 59.05211933140559,
+          "repairs": 1966,
+          "damage": 3540,
+          "ties": 0
+        },
+        "attached": {
+          "pair_accuracy": 58.54432611608718,
+          "repairs": 1935,
+          "damage": 3581,
+          "ties": 0
+        },
+        "certified": {
+          "pair_accuracy": 58.88990760984555,
+          "repairs": 1994,
+          "damage": 3591,
+          "ties": 0
+        }
+      },
+      "certified_minus_definition": {
+        "mean_query_points": -0.16221172156005362,
+        "class_balanced": {
+          "mean": -0.10995816601527832,
+          "class_bootstrap95": [
+            -0.7589851088810677,
+            0.38561404743737165
+          ]
+        }
+      }
+    },
+    "certified": {
+      "queries": 3841,
+      "arms": {
+        "name": {
+          "pair_accuracy": 55.7406925279875,
+          "repairs": 622,
+          "damage": 958,
+          "ties": 0
+        },
+        "definition": {
+          "pair_accuracy": 58.05779744858109,
+          "repairs": 657,
+          "damage": 904,
+          "ties": 0
+        },
+        "attached": {
+          "pair_accuracy": 57.45899505337152,
+          "repairs": 685,
+          "damage": 955,
+          "ties": 0
+        },
+        "certified": {
+          "pair_accuracy": 57.45899505337152,
+          "repairs": 685,
+          "damage": 955,
+          "ties": 0
+        }
+      },
+      "certified_minus_definition": {
+        "mean_query_points": -0.5988023952095809,
+        "class_balanced": {
+          "mean": -0.1895800450425034,
+          "class_bootstrap95": [
+            -2.083145358871779,
+            1.3289454588810665
+          ]
+        }
+      }
+    },
+    "target_errors": {
+      "queries": 1955,
+      "arms": {
+        "name": {
+          "pair_accuracy": 38.36317135549872,
+          "repairs": 750,
+          "damage": 0,
+          "ties": 0
+        },
+        "definition": {
+          "pair_accuracy": 41.074168797953966,
+          "repairs": 803,
+          "damage": 0,
+          "ties": 0
+        },
+        "attached": {
+          "pair_accuracy": 40.10230179028133,
+          "repairs": 784,
+          "damage": 0,
+          "ties": 0
+        },
+        "certified": {
+          "pair_accuracy": 41.63682864450128,
+          "repairs": 814,
+          "damage": 0,
+          "ties": 0
+        }
+      },
+      "certified_minus_definition": {
+        "mean_query_points": 0.5626598465473146,
+        "class_balanced": {
+          "mean": 0.6834669696598997,
+          "class_bootstrap95": [
+            0.08550395768477398,
+            1.4176947410798153
+          ]
+        }
+      }
+    },
+    "original_correct": {
+      "queries": 9947,
+      "arms": {
+        "name": {
+          "pair_accuracy": 63.68754398311049,
+          "repairs": 0,
+          "damage": 3612,
+          "ties": 0
+        },
+        "definition": {
+          "pair_accuracy": 64.41138031567307,
+          "repairs": 0,
+          "damage": 3540,
+          "ties": 0
+        },
+        "attached": {
+          "pair_accuracy": 63.999195737408265,
+          "repairs": 0,
+          "damage": 3581,
+          "ties": 0
+        },
+        "certified": {
+          "pair_accuracy": 63.89866291344124,
+          "repairs": 0,
+          "damage": 3591,
+          "ties": 0
+        }
+      },
+      "certified_minus_definition": {
+        "mean_query_points": -0.5127174022318287,
+        "class_balanced": {
+          "mean": -0.46838433095086995,
+          "class_bootstrap95": [
+            -1.3052696862036643,
+            0.1732216533553189
+          ]
+        }
+      }
+    }
+  }
+}
