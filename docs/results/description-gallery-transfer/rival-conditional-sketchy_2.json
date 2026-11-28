@@ -1,0 +1,229 @@
+{
+  "split": "sketchy_2",
+  "classes": [
+    "bat",
+    "cabin",
+    "cow",
+    "dolphin",
+    "door",
+    "giraffe",
+    "helicopter",
+    "mouse",
+    "pear",
+    "raccoon",
+    "rhinoceros",
+    "saw",
+    "scissors",
+    "seagull",
+    "skyscraper",
+    "songbird",
+    "sword",
+    "tree",
+    "wheelchair",
+    "windmill",
+    "window"
+  ],
+  "pools": {
+    "all_classes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "disjoint_classes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      13,
+      14,
+      15,
+      16,
+      20
+    ]
+  },
+  "rival_revision": "5c96f61b46ff2ebe228a03e990ecddf585b6ba89",
+  "query_count": 12694,
+  "photo_count": 10452,
+  "max_absolute_marginal_error": 5.551115123125783e-16,
+  "summary": {
+    "all_classes": {
+      "RGB_at_fixed_name": {
+        "covered_focal_classes": 21,
+        "positive_gap_classes": 16,
+        "mean_overlap_percent": 15.64410879465094,
+        "min_max_overlap_percent": [
+          1.383730158730175,
+          65.04305139305141
+        ],
+        "equal_focal_percent": [
+          48.50948403164001,
+          41.064145208607236,
+          7.445338823032759
+        ],
+        "equal_focal_interval95": [
+          [
+            38.413988805706616,
+            29.993604410129134,
+            3.8553827068793476
+          ],
+          [
+            59.41160178543343,
+            53.63565688184572,
+            11.429731502036827
+          ]
+        ],
+        "overlap_weighted_percent": [
+          52.15669827626187,
+          49.13431317506126,
+          3.022385101200606
+        ],
+        "matching_conditioner_prob_percent_same_different": [
+          31.32190536377331,
+          15.699554141409177
+        ]
+      },
+      "name_at_fixed_RGB": {
+        "covered_focal_classes": 21,
+        "positive_gap_classes": 17,
+        "mean_overlap_percent": 24.257890778619654,
+        "min_max_overlap_percent": [
+          0.08347245409015025,
+          96.01449275362319
+        ],
+        "equal_focal_percent": [
+          38.82736664198041,
+          22.23372621715507,
+          16.59364042482534
+        ],
+        "equal_focal_interval95": [
+          [
+            32.73588358407002,
+            13.863679960372663,
+            10.045601409945702
+          ],
+          [
+            45.39382631657469,
+            31.65200915493441,
+            23.807505865755235
+          ]
+        ],
+        "overlap_weighted_percent": [
+          38.829995356255104,
+          28.6778831452106,
+          10.152112211044498
+        ],
+        "matching_conditioner_prob_percent_same_different": [
+          41.24888136033831,
+          32.24454021193295
+        ]
+      }
+    },
+    "disjoint_classes": {
+      "RGB_at_fixed_name": {
+        "covered_focal_classes": 17,
+        "positive_gap_classes": 16,
+        "mean_overlap_percent": 18.842155915671952,
+        "min_max_overlap_percent": [
+          3.1785714285714293,
+          70.2271534021534
+        ],
+        "equal_focal_percent": [
+          47.64906639137976,
+          37.751564882210246,
+          9.897501509169505
+        ],
+        "equal_focal_interval95": [
+          [
+            39.05978947042879,
+            28.58376820785707,
+            4.736779622127116
+          ],
+          [
+            55.728214374496275,
+            47.371607104507405,
+            15.813527612725107
+          ]
+        ],
+        "overlap_weighted_percent": [
+          40.54932289199678,
+          36.564835742723744,
+          3.9844871492730256
+        ],
+        "matching_conditioner_prob_percent_same_different": [
+          31.498869604878255,
+          16.215286422706736
+        ]
+      },
+      "name_at_fixed_RGB": {
+        "covered_focal_classes": 17,
+        "positive_gap_classes": 14,
+        "mean_overlap_percent": 22.52360501962975,
+        "min_max_overlap_percent": [
+          0.11904761904761905,
+          66.15396825396826
+        ],
+        "equal_focal_percent": [
+          33.42818593903593,
+          20.65983814425273,
+          12.768347794783196
+        ],
+        "equal_focal_interval95": [
+          [
+            24.477767669817425,
+            11.351777324039938,
+            6.772591034040504
+          ],
+          [
+            42.97545065537024,
+            31.8955219281132,
+            19.008486887841265
+          ]
+        ],
+        "overlap_weighted_percent": [
+          29.2201739451185,
+          19.52999454902565,
+          9.690179396092857
+        ],
+        "matching_conditioner_prob_percent_same_different": [
+          44.56646940955996,
+          31.057672967429706
+        ]
+      }
+    }
+  },
+  "probability_columns": [
+    "same",
+    "different",
+    "same_minus_different"
+  ],
+  "revision": "ab19ed7802f7c13e2c4e821e61beb0dfad13d74d",
+  "sha256": "844d2f6c9ce568f6216565eeee1b96ee77e7ab74e2599a5bcc8a13837b49ccd9",
+  "seed": 42,
+  "device": "NVIDIA L4"
+}

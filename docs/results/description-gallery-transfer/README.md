@@ -47,6 +47,10 @@ Kiểm tra hậu nghiệm xác nhận hai split dùng lại **đúng 2.231 sketc
 
 Việc lựa chọn tên lớp cho VLM và sử dụng đại diện lớp đã có tiền lệ. Giá trị của phép đo ở đây là tách bước nhận dạng của sketch khỏi bước truy hồi ảnh, đồng thời giữ độc lập các vật thể giữa hai phía. Độ mơ hồ của bản vẽ cũng đã được nghiên cứu trực tiếp. Nhánh này chưa cung cấp contribution phương pháp hoặc phép kiểm tra chuyển bộ. [Learning to Name Classes, CVPR 2023](https://openaccess.thecvf.com/content/CVPR2023/papers/Parisot_Learning_To_Name_Classes_for_Vision_and_Language_Models_CVPR_2023_paper.pdf) · [Prototypical Networks, NeurIPS 2017](https://proceedings.neurips.cc/paper/2017/hash/cb8da6767461f2812ae4290eac7cbc42-Abstract.html) · [Modeling the Visual Ambiguity of Human Sketches, CVPR 2026](https://openaccess.thecvf.com/content/CVPR2026/papers/Zhou_Modeling_the_Visual_Ambiguity_of_Human_Sketches_CVPR_2026_paper.pdf)
 
+Xét các trường hợp CLIP phải chọn một đáp án sai cho cả hai lớp, kết quả cho thấy sketch và ảnh khác vật thể cùng lớp thường nhầm sang cùng đối thủ. Hai cách đọc bằng từ và bằng ảnh đều còn một phần tín hiệu sau khi cố định đáp án top-1 của cách kia. [Phân tích các đáp án sai](WRONG-ALTERNATIVES.md)
+
+Trên toàn bộ gallery, ngay cả một phép sửa có nhãn được hạ hạng hoàn hảo một lớp sai cũng không tái tạo được AP thực đo của 64-NN ở 62,08% sketch Ext-1 và 25,82% Ext-2. [Kiểm chứng mức tăng mAP và ví dụ từng query](ONE-RIVAL-CEILING.md)
+
 ## Tái lập
 
 SHA-256 của evaluator KD-SBIR là `9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139`. Chạy trực tiếp hàm KD cho các câu được chọn và phát lại bảng hạng chênh tối đa 0,0181 điểm mAP trong toàn bộ thử nghiệm chia gallery, tối đa 0,0078 trên hai phép chia chính. Precision trùng khớp. Các ô dùng trọng tâm được tính trực tiếp bằng hàm KD. Mỗi gói sau chứa ID, các tensor theo truy vấn hoặc vật thể và JSON có commit, thiết bị, seed cùng hash cho từng tensor.

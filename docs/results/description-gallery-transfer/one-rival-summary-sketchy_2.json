@@ -1,0 +1,234 @@
+{
+  "split": "sketchy_2",
+  "queries": 12694,
+  "subjects": 2100,
+  "gallery": 12552,
+  "KD_sha256": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+  "results": {
+    "semantic": {
+      "mean_percent": [
+        72.661812259235,
+        71.07676872797222
+      ],
+      "delta": {
+        "query_points": [
+          0.0,
+          0.0
+        ],
+        "subject_class_points": [
+          0.0,
+          0.0
+        ],
+        "interval95": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      "fraction_gain_at_least_four": {
+        "query_points": 0.0,
+        "subject_class_points": 0.0,
+        "interval95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "neighbors_64": {
+      "mean_percent": [
+        75.70722072372558,
+        73.59673866854808
+      ],
+      "delta": {
+        "query_points": [
+          3.0454084644905843,
+          2.51996994057586
+        ],
+        "subject_class_points": [
+          3.3191027787075096,
+          2.6080609998935596
+        ],
+        "interval95": [
+          [
+            1.4055219267470185,
+            1.6110666120537778
+          ],
+          [
+            5.816764632741816,
+            3.6879699424442096
+          ]
+        ]
+      },
+      "fraction_gain_at_least_four": {
+        "query_points": 23.625334803844336,
+        "subject_class_points": 24.22356254856255,
+        "interval95": [
+          17.267482960161527,
+          32.35671086849658
+        ]
+      }
+    },
+    "opposite_fold_rival": {
+      "mean_percent": [
+        77.10594695610745,
+        73.80219021102914
+      ],
+      "delta": {
+        "query_points": [
+          4.444134696872445,
+          2.7254214830569214
+        ],
+        "subject_class_points": [
+          4.723778518776558,
+          2.8816841594338034
+        ],
+        "interval95": [
+          [
+            2.129501436008064,
+            0.9017284753108104
+          ],
+          [
+            7.991542479278367,
+            5.410876497116105
+          ]
+        ]
+      },
+      "fraction_gain_at_least_four": {
+        "query_points": 15.322199464313849,
+        "subject_class_points": 16.19760874046588,
+        "interval95": [
+          9.094234436198722,
+          24.200018724661575
+        ]
+      }
+    },
+    "first_wrong_rival": {
+      "mean_percent": [
+        81.91155620127736,
+        76.77934471322205
+      ],
+      "delta": {
+        "query_points": [
+          9.249743942042356,
+          5.702575985249822
+        ],
+        "subject_class_points": [
+          9.308541645806725,
+          5.616663946057045
+        ],
+        "interval95": [
+          [
+            6.50315481651352,
+            3.4148790944105953
+          ],
+          [
+            12.39883345439668,
+            8.191785557171158
+          ]
+        ]
+      },
+      "fraction_gain_at_least_four": {
+        "query_points": 29.919647077359386,
+        "subject_class_points": 30.052891420748562,
+        "interval95": [
+          21.88089857563072,
+          38.88158747337318
+        ]
+      }
+    },
+    "best_one_rival": {
+      "mean_percent": [
+        83.9421945677905,
+        78.51717361619241
+      ],
+      "delta": {
+        "query_points": [
+          11.28038230855549,
+          7.44040488822018
+        ],
+        "subject_class_points": [
+          11.328162068054375,
+          7.292186867935091
+        ],
+        "interval95": [
+          [
+            8.299963630237785,
+            5.031701305985296
+          ],
+          [
+            14.623333519843658,
+            9.884390563454627
+          ]
+        ]
+      },
+      "fraction_gain_at_least_four": {
+        "query_points": 38.00220576650386,
+        "subject_class_points": 38.000195968053106,
+        "interval95": [
+          28.63554673501102,
+          48.34244174476317
+        ]
+      }
+    },
+    "same_rival_fully_demoted": {
+      "mean_percent": [
+        83.04611633195582,
+        81.63667887099156
+      ],
+      "delta": {
+        "query_points": [
+          10.384304072720804,
+          10.559910143019342
+        ],
+        "subject_class_points": [
+          10.44082796232481,
+          10.554094439234753
+        ],
+        "interval95": [
+          [
+            7.643247958384028,
+            7.73158807944364
+          ],
+          [
+            13.527249594046726,
+            13.650922764110446
+          ]
+        ]
+      },
+      "fraction_gain_at_least_four": {
+        "query_points": 35.60737356231291,
+        "subject_class_points": 35.54505045219331,
+        "interval95": [
+          26.594307726004153,
+          45.748197526679675
+        ]
+      }
+    }
+  },
+  "finite_exhaustion": {
+    "initial_sequences": 540,
+    "legal_edits": 3360,
+    "maximum_error": 1.1102230246251565e-16
+  },
+  "best_ap_exceeds_full_demotion_queries": 3622,
+  "max_ap_gain_of_partial_over_full": 87.97452598810196,
+  "same_choice_as_best_percent": [
+    17.260122892705215,
+    48.353552859618716
+  ],
+  "witness_max_error": 1.7630341597740795e-07,
+  "full_original_KD_max_error": 0.0,
+  "archived_endpoint_max_error": {
+    "semantic": 0.0,
+    "neighbors_64": 0.0
+  },
+  "revision": "e38c24ad191ff9f3f971903ebdaebca82036a976",
+  "sha256": "e5216e6fc16905e8eb117a2dfd10d3459e1d5d49f271bfdf7aaea90a06db5264",
+  "seed": 42,
+  "device": "NVIDIA L4"
+}
