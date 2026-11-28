@@ -1,0 +1,7 @@
+# Does the noun assignment carry information beyond benchmark-category composition?
+
+The first decomposition found a larger between-group contribution for real nouns than for groups with the same sizes assigned at random. Photographs from one benchmark category often receive related nouns. That alone could account for the finding. This diagnostic holds every cell of the gallery category-by-noun contingency table fixed.
+
+Within each true gallery category independently, reshuffle the observed noun assignments among the photographs. Use eight seed-42 replicates, derived by SHA-256 from replicate, split and category. For all eight check the contingency table exactly. Keep the original and 64-neighbor rankings, evaluation queries, official gallery order and noun-size histogram fixed. Rank hybrids and attribution are as in the previous diagnosis. Average all eight replicates before taking the paired subject/class bootstrap. Report the mean and range across replicates and the contrast against the actual noun assignment. Replicates quantify randomization variability, and are never selected for performance.
+
+A difference supports association with the particular within-category assignment of photos to nouns. Near-equality would make the category composition of these groups a sufficient explanation of the earlier contrast at this level of resolution. The direction of any difference matters. The use of target labels makes this a retrospective control only. Results on two overlapping Sketchy splits do not establish generalization across datasets or domains.
