@@ -45,7 +45,12 @@ def analyze(split, names, shared, visual_revision):
             "positive_class_map": sum(effect[0] > 0 for effect in per_class.values()),
             "per_class_delta_map_precision": per_class,
         }
-    return {"held_gallery": len(data["gallery_ids"]), "input_sha256": checksum(path), "groups": rows}
+    report = {"held_gallery": len(data["gallery_ids"]), "input_sha256": checksum(path), "groups": rows}
+    shared_ids = {
+        "queries": set(data["query_ids"][shared_mask].tolist()),
+        "subjects": set(subjects[shared_mask].tolist()),
+    }
+    return report, shared_ids
 
 
 def main(revision, visual_revision, table_revision):
@@ -57,10 +62,16 @@ def main(revision, visual_revision, table_revision):
             raise ValueError("Class names do not belong to the reference study")
         names[split] = info["classes"]
     shared = set.intersection(*(set(values) for values in names.values()))
-    result = {s: analyze(s, names[s], shared, visual_revision) for s in SPLITS}
+    result, shared_ids = {}, {}
+    for split in SPLITS:
+        result[split], shared_ids[split] = analyze(split, names[split], shared, visual_revision)
+    exact_overlap = {
+        key: len(set.intersection(*(values[key] for values in shared_ids.values())))
+        for key in ("queries", "subjects")
+    }
     atomic_json(OUT / "cross-split-classes.json", {
         "revision": revision, "seed": SEED, "visual_revision": visual_revision,
-        "table_revision": table_revision, "common_classes": sorted(shared),
+        "table_revision": table_revision, "common_classes": sorted(shared), "same_global_ids": exact_overlap,
         "device": torch.cuda.get_device_name(),
         "analysis": "Post hoc subgrouping of queries only. Scoring gallery and original KD metrics held fixed.",
         "splits": result,
