@@ -108,7 +108,7 @@ def summarize(t,pred,total_classes):
 
 
 @torch.inference_mode()
-def run(split,part,revision,names_revision,native_revision):
+def run(split,part,revision,names_revision,native_revision,observer):
     meta,idx,source=inputs()
     qi,labels=idx["sketch"]["views"][split]
     gi,classes=idx["photo"]["views"][split]
@@ -116,17 +116,19 @@ def run(split,part,revision,names_revision,native_revision):
     all_rows=design(qi,labels,gi,classes,source,pics["name"][gi])
     positions=torch.arange(part,len(all_rows),2)
     t=all_rows[positions]
-    qids,qmap=t[:,3:5].unique(return_inverse=True)
+    observer_ids={"sketch":t[:,3:5],"source":source[t[:,3:5]],"duplicate":t[:,5:7]}[observer]
+    qids,qmap=observer_ids.unique(return_inverse=True)
     pids,pmap=t[:,5:7].unique(return_inverse=True)
     base=Path(meta["datasets"]["sketchy"]["root"])
-    q=thumbnails(idx["sketch"]["paths"],qids,base,8)
+    mode="sketch" if observer=="sketch" else "photo"
+    q=thumbnails(idx[mode]["paths"],qids,base,8)
     p=thumbnails(idx["photo"]["paths"],pids,base,8)
     enc=Encoder(meta["checkpoint"])
     enc.close()
     texts=encode(enc.model,open_clip.get_tokenizer("ViT-B-32"),list(PROMPTS))
     axis=(texts[0]-texts[1]).double()
     blank=read_raw(enc,torch.ones((1,3,BOARD,BOARD),device="cuda")).double()
-    qorig=queries(qids,native_revision)
+    qorig=queries(qids,native_revision) if observer=="sketch" else pics["native"][qids].cuda()
     porig=pics["native"][pids].cuda()
     native=((qorig[qmap[:,0]]-qorig[qmap[:,1]])*(porig[pmap[:,0]]-porig[pmap[:,1]])).sum(1).cpu()
     predictions={"native":native}
@@ -153,21 +155,24 @@ def run(split,part,revision,names_revision,native_revision):
         for k,parts in values.items():predictions[k+"_"+orientation]=torch.cat(parts)
     for k in ("joint","raw","additive"):
         predictions[k]=.5*(predictions[k+"_photo_left"]+predictions[k+"_sketch_left"])
-    record(OUT/f"{split}-{part}.pt",{"positions":positions,"trials":t,"predictions":predictions},revision,
-           {"trials":len(t),"part":part,"split":split,"prompts":list(PROMPTS),"native_revision":native_revision,
+    prefix="" if observer=="sketch" else observer+"-"
+    record(OUT/f"{prefix}{split}-{part}.pt",{"positions":positions,"trials":t,"observer_ids":observer_ids,"predictions":predictions},revision,
+           {"trials":len(t),"part":part,"split":split,"observer":observer,"prompts":list(PROMPTS),"native_revision":native_revision,
             "name_revision":names_revision,"maximum_additive_error_last_orientation":max_err})
 
 
-def collect(split,revision):
+def collect(split,revision,observer):
     _,idx,_=inputs()
-    packs=[verified(OUT/f"{split}-{i}.pt",revision) for i in range(2)]
+    prefix="" if observer=="sketch" else observer+"-"
+    packs=[verified(OUT/f"{prefix}{split}-{i}.pt",revision) for i in range(2)]
     pos=torch.cat([x["positions"] for x in packs]);order=pos.argsort()
     if not torch.equal(pos[order],torch.arange(len(pos))):raise ValueError("Incomplete assignment trials")
     trial=torch.cat([x["trials"] for x in packs])[order]
     prediction={k:torch.cat([x["predictions"][k] for x in packs])[order] for k in packs[0]["predictions"]}
     classes=len(idx["sketch"]["views"][split][1].unique())
-    record(OUT/f"summary-{split}.pt",{"trials":trial,"margins":prediction},revision,
-           {"split":split,"classes":classes,"results":summarize(trial,prediction,classes),"prompts":list(PROMPTS)})
+    observer_ids=trial[:,3:5] if observer=="sketch" else torch.cat([x["observer_ids"] for x in packs])[order]
+    record(OUT/f"{prefix}summary-{split}.pt",{"trials":trial,"observer_ids":observer_ids,"margins":prediction},revision,
+           {"split":split,"observer":observer,"classes":classes,"results":summarize(trial,prediction,classes),"prompts":list(PROMPTS)})
 
 
 if __name__=="__main__":
@@ -177,7 +182,8 @@ if __name__=="__main__":
     p.add_argument("--revision",required=True)
     p.add_argument("--names-revision",required=True)
     p.add_argument("--native-revision",required=True)
+    p.add_argument("--observer",choices=("sketch","source","duplicate"),default="sketch")
     a=p.parse_args()
     deterministic()
-    if a.part is None:collect(a.split,a.revision)
-    else:run(a.split,a.part,a.revision,a.names_revision,a.native_revision)
+    if a.part is None:collect(a.split,a.revision,a.observer)
+    else:run(a.split,a.part,a.revision,a.names_revision,a.native_revision,a.observer)
