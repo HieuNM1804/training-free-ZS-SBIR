@@ -1,0 +1,1435 @@
+{
+  "split": "sketchy_1",
+  "partition": "matched_random",
+  "queries": 14179,
+  "gallery": 17100,
+  "seed": 42,
+  "gallery_counts": [
+    2500,
+    14600
+  ],
+  "class_counts": [
+    [
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100
+    ],
+    [
+      600,
+      600,
+      600,
+      600,
+      599,
+      600,
+      600,
+      600,
+      600,
+      639,
+      600,
+      393,
+      600,
+      495,
+      600,
+      700,
+      600,
+      600,
+      278,
+      600,
+      600,
+      600,
+      600,
+      696,
+      600
+    ]
+  ],
+  "classes": [
+    "cup",
+    "swan",
+    "harp",
+    "squirrel",
+    "snail",
+    "ray",
+    "pineapple",
+    "volcano",
+    "rifle",
+    "scissors",
+    "parrot",
+    "windmill",
+    "teddy_bear",
+    "tree",
+    "wine_bottle",
+    "deer",
+    "chicken",
+    "airplane",
+    "wheelchair",
+    "tank",
+    "umbrella",
+    "butterfly",
+    "camel",
+    "horse",
+    "bell"
+  ],
+  "eligible_sentences": {
+    "names": 601,
+    "glosses": 1123,
+    "names_filtered": 581,
+    "glosses_filtered": 1080
+  },
+  "directions": {
+    "random_large_to_random_small": {
+      "percent": {
+        "semantic": [
+          75.87424470703533,
+          72.27632433706236
+        ],
+        "names_transfer": [
+          89.0770072845875,
+          84.9070451232541
+        ],
+        "names_test_oracle": [
+          89.17877798112728,
+          85.09549287236689
+        ],
+        "glosses_transfer": [
+          87.28121963969171,
+          81.43190635983417
+        ],
+        "glosses_test_oracle": [
+          87.36433802551271,
+          81.47126029649047
+        ],
+        "names_filtered_transfer": [
+          76.15340879331886,
+          72.41702532136009
+        ],
+        "names_filtered_test_oracle": [
+          76.33304426537069,
+          72.64792996045102
+        ],
+        "glosses_filtered_transfer": [
+          81.76854636405334,
+          75.73996776880048
+        ],
+        "glosses_filtered_test_oracle": [
+          82.2931547546279,
+          76.31574892066196
+        ],
+        "sketch_two_first": [
+          49.99386726572696,
+          47.334649759186526
+        ],
+        "source_first": [
+          65.77482006079532,
+          62.94858585790896
+        ]
+      },
+      "transfer_minus_semantic": {
+        "names_transfer": {
+          "query_points": [
+            13.202762577552155,
+            12.630720786191747
+          ],
+          "subject_class_points": [
+            13.26082074544587,
+            12.626819766435874
+          ],
+          "interval95": [
+            [
+              7.354974908883414,
+              6.616845165539272
+            ],
+            [
+              20.470766174794196,
+              19.67108658644974
+            ]
+          ]
+        },
+        "glosses_transfer": {
+          "query_points": [
+            11.406974932656372,
+            9.155582022771815
+          ],
+          "subject_class_points": [
+            11.724972962357187,
+            9.586820281420003
+          ],
+          "interval95": [
+            [
+              4.605727552213503,
+              2.025086175571111
+            ],
+            [
+              19.94641539288723,
+              18.160778967178477
+            ]
+          ]
+        },
+        "names_filtered_transfer": {
+          "query_points": [
+            0.27916408628351436,
+            0.14070098429773262
+          ],
+          "subject_class_points": [
+            0.5425134887472629,
+            0.34682039109254903
+          ],
+          "interval95": [
+            [
+              -8.948965504649426,
+              -8.340882316249496
+            ],
+            [
+              10.405244930271998,
+              9.728715799750912
+            ]
+          ]
+        },
+        "glosses_filtered_transfer": {
+          "query_points": [
+            5.894301657017994,
+            3.4636434317381295
+          ],
+          "subject_class_points": [
+            6.061187504746105,
+            3.7468204864599812
+          ],
+          "interval95": [
+            [
+              -3.149388753623101,
+              -5.594669136086754
+            ],
+            [
+              15.815252139165612,
+              13.822324991980778
+            ]
+          ]
+        }
+      },
+      "test_oracle_minus_transfer": {
+        "names": {
+          "query_points": [
+            0.10177069653979778,
+            0.18844774911279058
+          ],
+          "subject_class_points": [
+            0.10783886909484863,
+            0.20000004768371582
+          ],
+          "interval95": [
+            [
+              0.0,
+              -0.559999942779541
+            ],
+            [
+              0.2640726566314697,
+              1.0
+            ]
+          ]
+        },
+        "glosses": {
+          "query_points": [
+            0.08311838582100288,
+            0.03935393665630379
+          ],
+          "subject_class_points": [
+            0.08377194404602051,
+            0.039999961853027344
+          ],
+          "interval95": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.22080206871032715,
+              0.11999988555908203
+            ]
+          ]
+        },
+        "names_filtered": {
+          "query_points": [
+            0.1796354720518345,
+            0.2309046390909294
+          ],
+          "subject_class_points": [
+            0.18674421310424805,
+            0.23999977111816406
+          ],
+          "interval95": [
+            [
+              0.009380578994750977,
+              -0.5200002193450928
+            ],
+            [
+              0.4019539654254912,
+              1.0399997234344482
+            ]
+          ]
+        },
+        "glosses_filtered": {
+          "query_points": [
+            0.52460839057458,
+            0.5757811518614715
+          ],
+          "subject_class_points": [
+            0.5241239070892334,
+            0.5600000619888306
+          ],
+          "interval95": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              1.3886287212371826,
+              1.4000000953674316
+            ]
+          ]
+        }
+      },
+      "selected": {
+        "names": {
+          "reference_indices": [
+            121,
+            226,
+            242,
+            488,
+            469,
+            444,
+            389,
+            360,
+            423,
+            438,
+            371,
+            310,
+            525,
+            553,
+            589,
+            152,
+            108,
+            2,
+            583,
+            519,
+            562,
+            75,
+            81,
+            256,
+            303
+          ],
+          "test_indices": [
+            121,
+            174,
+            0,
+            488,
+            469,
+            444,
+            389,
+            360,
+            423,
+            438,
+            371,
+            310,
+            525,
+            553,
+            589,
+            152,
+            108,
+            2,
+            583,
+            519,
+            562,
+            75,
+            81,
+            256,
+            301
+          ],
+          "reference_winners": [
+            "a photo of the coffee cup.",
+            "a photo of the goose.",
+            "a photo of the harp.",
+            "a photo of the squirrel.",
+            "a photo of the snail.",
+            "a photo of the sea turtle.",
+            "a photo of the pineapple.",
+            "a photo of the oven.",
+            "a photo of the rifle.",
+            "a photo of the scissors.",
+            "a photo of the parrot.",
+            "a photo of the lighthouse.",
+            "a photo of the teddy bear.",
+            "a photo of the tree.",
+            "a photo of the wine.",
+            "a photo of the deer.",
+            "a photo of the chicken.",
+            "a photo of the aircraft.",
+            "a photo of the wheelchair.",
+            "a photo of the tank.",
+            "a photo of the umbrella.",
+            "a photo of the butterfly.",
+            "a photo of the camel.",
+            "a photo of the horse.",
+            "a photo of the lantern."
+          ],
+          "test_winners": [
+            "a photo of the coffee cup.",
+            "a photo of the duck.",
+            "a photo of the accordion.",
+            "a photo of the squirrel.",
+            "a photo of the snail.",
+            "a photo of the sea turtle.",
+            "a photo of the pineapple.",
+            "a photo of the oven.",
+            "a photo of the rifle.",
+            "a photo of the scissors.",
+            "a photo of the parrot.",
+            "a photo of the lighthouse.",
+            "a photo of the teddy bear.",
+            "a photo of the tree.",
+            "a photo of the wine.",
+            "a photo of the deer.",
+            "a photo of the chicken.",
+            "a photo of the aircraft.",
+            "a photo of the wheelchair.",
+            "a photo of the tank.",
+            "a photo of the umbrella.",
+            "a photo of the butterfly.",
+            "a photo of the camel.",
+            "a photo of the horse.",
+            "a photo of the lamp."
+          ],
+          "unchanged_id": 22
+        },
+        "glosses": {
+          "reference_indices": [
+            862,
+            1307,
+            827,
+            1519,
+            1487,
+            1453,
+            1303,
+            1263,
+            1400,
+            1506,
+            1290,
+            1627,
+            1577,
+            1629,
+            698,
+            922,
+            841,
+            1107,
+            1685,
+            1561,
+            1644,
+            614,
+            608,
+            1721,
+            1705
+          ],
+          "test_indices": [
+            862,
+            1307,
+            827,
+            1519,
+            1487,
+            1453,
+            1303,
+            1263,
+            1464,
+            917,
+            1290,
+            1627,
+            1577,
+            1629,
+            698,
+            922,
+            841,
+            1107,
+            1685,
+            1561,
+            1644,
+            614,
+            608,
+            1721,
+            1705
+          ],
+          "reference_winners": [
+            "a photo of the object. a cup from which coffee is drunk.",
+            "a photo of the object. female swan.",
+            "a photo of the object. a large stringed instrument; seated player holds it upright while playing.",
+            "a photo of the object. a kind of arboreal rodent having a long bushy tail.",
+            "a photo of the object. freshwater or marine or terrestrial gastropod mollusk usually having an external enclosing spiral shell.",
+            "a photo of the object. any of numerous elongate mostly marine carnivorous fishes with heterocercal caudal fins and tough skin covered with small toothlike scales.",
+            "a photo of the object. sweet juicy gritty-textured fruit available in many varieties.",
+            "a photo of the object. a large cloud of rubble and dust shaped like a object and rising into the sky after an explosion (especially of a nuclear bomb).",
+            "a photo of the object. a shoulder firearm with a long barrel and a rifled bore.",
+            "a photo of the object. a hand tool with a thin flexible blade used to mix or spread soft substances.",
+            "a photo of the object. usually brightly colored zygodactyl tropical birds with short hooked beaks and the ability to mimic sounds.",
+            "a photo of the object. a mill that is powered by men or animals walking on a circular belt or climbing steps.",
+            "a photo of the object. plaything consisting of a child's toy bear (usually plush and stuffed with soft materials).",
+            "a photo of the object. a tall perennial woody plant having a main trunk and branches forming a distinct elevated crown; includes both gymnosperms and angiosperms.",
+            "a photo of the object. pinkish table wine from red grapes whose skins were removed after fermentation began.",
+            "a photo of the object. distinguished from Bovidae by the male's having solid deciduous antlers.",
+            "a photo of the object. a domestic fowl bred for flesh or eggs; believed to have been developed from the red jungle fowl.",
+            "a photo of the object. an aircraft without wings that obtains its lift from the rotation of overhead blades.",
+            "a photo of the object. a movable chair mounted on large wheels; for invalids or those who cannot walk; frequently propelled by the occupant.",
+            "a photo of the object. an enclosed armored military vehicle; has a cannon and moves on caterpillar treads.",
+            "a photo of the object. a lightweight handheld collapsible canopy.",
+            "a photo of the object. social insect living in organized colonies; characteristically the males and fertile queen have wings during breeding season; wingless sterile females are the workers.",
+            "a photo of the object. domesticated llama with long silky fleece; believed to be a domesticated variety of the guanaco.",
+            "a photo of the object. any of several fleet black-and-white striped African equines.",
+            "a photo of the object. the act of tapping a telephone or telegraph line to get information."
+          ],
+          "test_winners": [
+            "a photo of the object. a cup from which coffee is drunk.",
+            "a photo of the object. female swan.",
+            "a photo of the object. a large stringed instrument; seated player holds it upright while playing.",
+            "a photo of the object. a kind of arboreal rodent having a long bushy tail.",
+            "a photo of the object. freshwater or marine or terrestrial gastropod mollusk usually having an external enclosing spiral shell.",
+            "a photo of the object. any of numerous elongate mostly marine carnivorous fishes with heterocercal caudal fins and tough skin covered with small toothlike scales.",
+            "a photo of the object. sweet juicy gritty-textured fruit available in many varieties.",
+            "a photo of the object. a large cloud of rubble and dust shaped like a object and rising into the sky after an explosion (especially of a nuclear bomb).",
+            "a photo of the object. firearm that is a double-barreled smoothbore shoulder weapon for firing shot at short ranges.",
+            "a photo of the object. a short knife with a pointed blade used for piercing or stabbing.",
+            "a photo of the object. usually brightly colored zygodactyl tropical birds with short hooked beaks and the ability to mimic sounds.",
+            "a photo of the object. a mill that is powered by men or animals walking on a circular belt or climbing steps.",
+            "a photo of the object. plaything consisting of a child's toy bear (usually plush and stuffed with soft materials).",
+            "a photo of the object. a tall perennial woody plant having a main trunk and branches forming a distinct elevated crown; includes both gymnosperms and angiosperms.",
+            "a photo of the object. pinkish table wine from red grapes whose skins were removed after fermentation began.",
+            "a photo of the object. distinguished from Bovidae by the male's having solid deciduous antlers.",
+            "a photo of the object. a domestic fowl bred for flesh or eggs; believed to have been developed from the red jungle fowl.",
+            "a photo of the object. an aircraft without wings that obtains its lift from the rotation of overhead blades.",
+            "a photo of the object. a movable chair mounted on large wheels; for invalids or those who cannot walk; frequently propelled by the occupant.",
+            "a photo of the object. an enclosed armored military vehicle; has a cannon and moves on caterpillar treads.",
+            "a photo of the object. a lightweight handheld collapsible canopy.",
+            "a photo of the object. social insect living in organized colonies; characteristically the males and fertile queen have wings during breeding season; wingless sterile females are the workers.",
+            "a photo of the object. domesticated llama with long silky fleece; believed to be a domesticated variety of the guanaco.",
+            "a photo of the object. any of several fleet black-and-white striped African equines.",
+            "a photo of the object. the act of tapping a telephone or telegraph line to get information."
+          ],
+          "unchanged_id": 23
+        },
+        "names_filtered": {
+          "reference_indices": [
+            121,
+            226,
+            0,
+            412,
+            597,
+            444,
+            579,
+            360,
+            457,
+            415,
+            49,
+            310,
+            32,
+            112,
+            589,
+            8,
+            560,
+            2,
+            492,
+            302,
+            504,
+            341,
+            4,
+            346,
+            303
+          ],
+          "test_indices": [
+            121,
+            174,
+            0,
+            412,
+            597,
+            444,
+            579,
+            360,
+            457,
+            415,
+            49,
+            310,
+            32,
+            112,
+            589,
+            8,
+            560,
+            2,
+            448,
+            534,
+            504,
+            341,
+            4,
+            346,
+            301
+          ],
+          "reference_winners": [
+            "a photo of the coffee cup.",
+            "a photo of the goose.",
+            "a photo of the accordion.",
+            "a photo of the raccoon.",
+            "a photo of the worm.",
+            "a photo of the sea turtle.",
+            "a photo of the watermelon.",
+            "a photo of the oven.",
+            "a photo of the shotgun.",
+            "a photo of the ratchet (device).",
+            "a photo of the bird.",
+            "a photo of the lighthouse.",
+            "a photo of the bear.",
+            "a photo of the christmas tree.",
+            "a photo of the wine.",
+            "a photo of the antelope.",
+            "a photo of the turkey.",
+            "a photo of the aircraft.",
+            "a photo of the stationary bicycle.",
+            "a photo of the land vehicle.",
+            "a photo of the sun hat.",
+            "a photo of the moths and butterflies.",
+            "a photo of the alpaca.",
+            "a photo of the mule.",
+            "a photo of the lantern."
+          ],
+          "test_winners": [
+            "a photo of the coffee cup.",
+            "a photo of the duck.",
+            "a photo of the accordion.",
+            "a photo of the raccoon.",
+            "a photo of the worm.",
+            "a photo of the sea turtle.",
+            "a photo of the watermelon.",
+            "a photo of the oven.",
+            "a photo of the shotgun.",
+            "a photo of the ratchet (device).",
+            "a photo of the bird.",
+            "a photo of the lighthouse.",
+            "a photo of the bear.",
+            "a photo of the christmas tree.",
+            "a photo of the wine.",
+            "a photo of the antelope.",
+            "a photo of the turkey.",
+            "a photo of the aircraft.",
+            "a photo of the segway.",
+            "a photo of the tiger.",
+            "a photo of the sun hat.",
+            "a photo of the moths and butterflies.",
+            "a photo of the alpaca.",
+            "a photo of the mule.",
+            "a photo of the lamp."
+          ],
+          "unchanged_id": 21
+        },
+        "glosses_filtered": {
+          "reference_indices": [
+            862,
+            1307,
+            827,
+            1176,
+            1139,
+            1453,
+            1303,
+            1263,
+            1464,
+            1506,
+            1710,
+            1627,
+            748,
+            907,
+            698,
+            615,
+            1639,
+            1107,
+            1096,
+            824,
+            1467,
+            614,
+            608,
+            1721,
+            1705
+          ],
+          "test_indices": [
+            862,
+            1307,
+            827,
+            1093,
+            1139,
+            1453,
+            1303,
+            1263,
+            1464,
+            917,
+            1504,
+            1627,
+            748,
+            907,
+            698,
+            615,
+            1639,
+            1107,
+            1096,
+            824,
+            1467,
+            614,
+            608,
+            1721,
+            1705
+          ],
+          "reference_winners": [
+            "a photo of the object. a cup from which coffee is drunk.",
+            "a photo of the object. female swan.",
+            "a photo of the object. a large stringed instrument; seated player holds it upright while playing.",
+            "a photo of the object. sluggish tailless Australian arboreal marsupial with grey furry ears and coat; feeds on eucalyptus leaves and bark.",
+            "a photo of the object. small air-breathing arthropod.",
+            "a photo of the object. any of numerous elongate mostly marine carnivorous fishes with heterocercal caudal fins and tough skin covered with small toothlike scales.",
+            "a photo of the object. sweet juicy gritty-textured fruit available in many varieties.",
+            "a photo of the object. a large cloud of rubble and dust shaped like a object and rising into the sky after an explosion (especially of a nuclear bomb).",
+            "a photo of the object. firearm that is a double-barreled smoothbore shoulder weapon for firing shot at short ranges.",
+            "a photo of the object. a hand tool with a thin flexible blade used to mix or spread soft substances.",
+            "a photo of the object. bird with strong claws and a stiff tail adapted for climbing and a hard chisel-like bill for boring into wood for insects.",
+            "a photo of the object. a mill that is powered by men or animals walking on a circular belt or climbing steps.",
+            "a photo of the object. large ferocious bear of Eurasia.",
+            "a photo of the object. the upper branches and leaves of a tree or other plant.",
+            "a photo of the object. pinkish table wine from red grapes whose skins were removed after fermentation began.",
+            "a photo of the object. graceful Old World ruminant with long legs and horns directed upward and backward; includes gazelles; springboks; impalas; addax; gerenuks; blackbucks; dik-diks.",
+            "a photo of the object. flesh of large domesticated fowl usually roasted.",
+            "a photo of the object. an aircraft without wings that obtains its lift from the rotation of overhead blades.",
+            "a photo of the object. wheeled vehicle that can be pushed by a person; may have one or two or four wheels.",
+            "a photo of the object. a large tracked vehicle that is propelled by two endless metal belts; frequently used for moving earth in construction and farm work.",
+            "a photo of the object. a brief period of precipitation.",
+            "a photo of the object. social insect living in organized colonies; characteristically the males and fertile queen have wings during breeding season; wingless sterile females are the workers.",
+            "a photo of the object. domesticated llama with long silky fleece; believed to be a domesticated variety of the guanaco.",
+            "a photo of the object. any of several fleet black-and-white striped African equines.",
+            "a photo of the object. the act of tapping a telephone or telegraph line to get information."
+          ],
+          "test_winners": [
+            "a photo of the object. a cup from which coffee is drunk.",
+            "a photo of the object. female swan.",
+            "a photo of the object. a large stringed instrument; seated player holds it upright while playing.",
+            "a photo of the object. short-tailed Old World burrowing rodent with large cheek pouches.",
+            "a photo of the object. small air-breathing arthropod.",
+            "a photo of the object. any of numerous elongate mostly marine carnivorous fishes with heterocercal caudal fins and tough skin covered with small toothlike scales.",
+            "a photo of the object. sweet juicy gritty-textured fruit available in many varieties.",
+            "a photo of the object. a large cloud of rubble and dust shaped like a object and rising into the sky after an explosion (especially of a nuclear bomb).",
+            "a photo of the object. firearm that is a double-barreled smoothbore shoulder weapon for firing shot at short ranges.",
+            "a photo of the object. a short knife with a pointed blade used for piercing or stabbing.",
+            "a photo of the object. any of several small dull-colored singing birds feeding on seeds or insects.",
+            "a photo of the object. a mill that is powered by men or animals walking on a circular belt or climbing steps.",
+            "a photo of the object. large ferocious bear of Eurasia.",
+            "a photo of the object. the upper branches and leaves of a tree or other plant.",
+            "a photo of the object. pinkish table wine from red grapes whose skins were removed after fermentation began.",
+            "a photo of the object. graceful Old World ruminant with long legs and horns directed upward and backward; includes gazelles; springboks; impalas; addax; gerenuks; blackbucks; dik-diks.",
+            "a photo of the object. flesh of large domesticated fowl usually roasted.",
+            "a photo of the object. an aircraft without wings that obtains its lift from the rotation of overhead blades.",
+            "a photo of the object. wheeled vehicle that can be pushed by a person; may have one or two or four wheels.",
+            "a photo of the object. a large tracked vehicle that is propelled by two endless metal belts; frequently used for moving earth in construction and farm work.",
+            "a photo of the object. a brief period of precipitation.",
+            "a photo of the object. social insect living in organized colonies; characteristically the males and fertile queen have wings during breeding season; wingless sterile females are the workers.",
+            "a photo of the object. domesticated llama with long silky fleece; believed to be a domesticated variety of the guanaco.",
+            "a photo of the object. any of several fleet black-and-white striped African equines.",
+            "a photo of the object. the act of tapping a telephone or telegraph line to get information."
+          ],
+          "unchanged_id": 22
+        }
+      }
+    },
+    "random_small_to_random_large": {
+      "percent": {
+        "semantic": [
+          75.29236859819248,
+          77.0855491176028
+        ],
+        "names_transfer": [
+          88.09515193332797,
+          94.88680464767907
+        ],
+        "names_test_oracle": [
+          88.15154469192294,
+          95.37795328675242
+        ],
+        "glosses_transfer": [
+          85.87862570990846,
+          97.49954229972033
+        ],
+        "glosses_test_oracle": [
+          85.97374012636881,
+          97.57825017303293
+        ],
+        "names_filtered_transfer": [
+          73.70965216852426,
+          88.05592781700884
+        ],
+        "names_filtered_test_oracle": [
+          73.89247342245275,
+          88.46681698798393
+        ],
+        "glosses_filtered_transfer": [
+          79.32645688104701,
+          93.00098774404383
+        ],
+        "glosses_filtered_test_oracle": [
+          79.53336196865851,
+          93.82897277116791
+        ],
+        "sketch_two_first": [
+          49.108605740056035,
+          56.21983194589074
+        ],
+        "source_first": [
+          64.74520231966461,
+          76.50257419949547
+        ]
+      },
+      "transfer_minus_semantic": {
+        "names_transfer": {
+          "query_points": [
+            12.802783335135478,
+            17.801255530076272
+          ],
+          "subject_class_points": [
+            12.876989702704437,
+            17.75777170478531
+          ],
+          "interval95": [
+            [
+              7.306141379232338,
+              12.083297496729191
+            ],
+            [
+              19.663726861864877,
+              24.542879178016662
+            ]
+          ]
+        },
+        "glosses_transfer": {
+          "query_points": [
+            10.58625711171598,
+            20.413993182117533
+          ],
+          "subject_class_points": [
+            10.87052331400204,
+            20.477772210232693
+          ],
+          "interval95": [
+            [
+              4.09313602094884,
+              14.324745104959618
+            ],
+            [
+              18.704781853066084,
+              27.64403832929257
+            ]
+          ]
+        },
+        "names_filtered_transfer": {
+          "query_points": [
+            -1.5827164296682164,
+            10.970378699406043
+          ],
+          "subject_class_points": [
+            -1.2800505356759988,
+            10.957771514050442
+          ],
+          "interval95": [
+            [
+              -10.270542476714885,
+              3.9230507380683517
+            ],
+            [
+              8.315476493467656,
+              19.08719575198048
+            ]
+          ]
+        },
+        "glosses_filtered_transfer": {
+          "query_points": [
+            4.034088282854518,
+            15.91543862644103
+          ],
+          "subject_class_points": [
+            4.170599083426481,
+            15.877771828762965
+          ],
+          "interval95": [
+            [
+              -5.00802037107814,
+              8.065753629247558
+            ],
+            [
+              13.85643512530031,
+              24.362363739371002
+            ]
+          ]
+        }
+      },
+      "test_oracle_minus_transfer": {
+        "names": {
+          "query_points": [
+            0.05639275859496734,
+            0.4911486390733494
+          ],
+          "subject_class_points": [
+            0.05975794792175292,
+            0.5199997425079346
+          ],
+          "interval95": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.14308810234069824,
+              1.479999303817749
+            ]
+          ]
+        },
+        "glosses": {
+          "query_points": [
+            0.09511441646034892,
+            0.07870787331260758
+          ],
+          "subject_class_points": [
+            0.09525752067565918,
+            0.07999992370605469
+          ],
+          "interval95": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.2513916492462158,
+              0.23999977111816406
+            ]
+          ]
+        },
+        "names_filtered": {
+          "query_points": [
+            0.1828212539284898,
+            0.41088917097509625
+          ],
+          "subject_class_points": [
+            0.18894743919372559,
+            0.4399998188018799
+          ],
+          "interval95": [
+            [
+              0.006457090377807617,
+              -0.40000009536743164
+            ],
+            [
+              0.44843053817749023,
+              1.5199995040893555
+            ]
+          ]
+        },
+        "glosses_filtered": {
+          "query_points": [
+            0.2069050876115137,
+            0.8279850271240983
+          ],
+          "subject_class_points": [
+            0.1905430555343628,
+            0.7999999523162842
+          ],
+          "interval95": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.5031155347824097,
+              1.9199998378753662
+            ]
+          ]
+        }
+      },
+      "selected": {
+        "names": {
+          "reference_indices": [
+            121,
+            174,
+            0,
+            488,
+            469,
+            444,
+            389,
+            360,
+            423,
+            438,
+            371,
+            310,
+            525,
+            553,
+            589,
+            152,
+            108,
+            2,
+            583,
+            519,
+            562,
+            75,
+            81,
+            256,
+            301
+          ],
+          "test_indices": [
+            121,
+            226,
+            242,
+            488,
+            469,
+            444,
+            389,
+            360,
+            423,
+            438,
+            371,
+            310,
+            525,
+            553,
+            589,
+            152,
+            108,
+            2,
+            583,
+            519,
+            562,
+            75,
+            81,
+            256,
+            303
+          ],
+          "reference_winners": [
+            "a photo of the coffee cup.",
+            "a photo of the duck.",
+            "a photo of the accordion.",
+            "a photo of the squirrel.",
+            "a photo of the snail.",
+            "a photo of the sea turtle.",
+            "a photo of the pineapple.",
+            "a photo of the oven.",
+            "a photo of the rifle.",
+            "a photo of the scissors.",
+            "a photo of the parrot.",
+            "a photo of the lighthouse.",
+            "a photo of the teddy bear.",
+            "a photo of the tree.",
+            "a photo of the wine.",
+            "a photo of the deer.",
+            "a photo of the chicken.",
+            "a photo of the aircraft.",
+            "a photo of the wheelchair.",
+            "a photo of the tank.",
+            "a photo of the umbrella.",
+            "a photo of the butterfly.",
+            "a photo of the camel.",
+            "a photo of the horse.",
+            "a photo of the lamp."
+          ],
+          "test_winners": [
+            "a photo of the coffee cup.",
+            "a photo of the goose.",
+            "a photo of the harp.",
+            "a photo of the squirrel.",
+            "a photo of the snail.",
+            "a photo of the sea turtle.",
+            "a photo of the pineapple.",
+            "a photo of the oven.",
+            "a photo of the rifle.",
+            "a photo of the scissors.",
+            "a photo of the parrot.",
+            "a photo of the lighthouse.",
+            "a photo of the teddy bear.",
+            "a photo of the tree.",
+            "a photo of the wine.",
+            "a photo of the deer.",
+            "a photo of the chicken.",
+            "a photo of the aircraft.",
+            "a photo of the wheelchair.",
+            "a photo of the tank.",
+            "a photo of the umbrella.",
+            "a photo of the butterfly.",
+            "a photo of the camel.",
+            "a photo of the horse.",
+            "a photo of the lantern."
+          ],
+          "unchanged_id": 22
+        },
+        "glosses": {
+          "reference_indices": [
+            862,
+            1307,
+            827,
+            1519,
+            1487,
+            1453,
+            1303,
+            1263,
+            1464,
+            917,
+            1290,
+            1627,
+            1577,
+            1629,
+            698,
+            922,
+            841,
+            1107,
+            1685,
+            1561,
+            1644,
+            614,
+            608,
+            1721,
+            1705
+          ],
+          "test_indices": [
+            862,
+            1307,
+            827,
+            1519,
+            1487,
+            1453,
+            1303,
+            1263,
+            1400,
+            1506,
+            1290,
+            1627,
+            1577,
+            1629,
+            698,
+            922,
+            841,
+            1107,
+            1685,
+            1561,
+            1644,
+            614,
+            608,
+            1721,
+            1705
+          ],
+          "reference_winners": [
+            "a photo of the object. a cup from which coffee is drunk.",
+            "a photo of the object. female swan.",
+            "a photo of the object. a large stringed instrument; seated player holds it upright while playing.",
+            "a photo of the object. a kind of arboreal rodent having a long bushy tail.",
+            "a photo of the object. freshwater or marine or terrestrial gastropod mollusk usually having an external enclosing spiral shell.",
+            "a photo of the object. any of numerous elongate mostly marine carnivorous fishes with heterocercal caudal fins and tough skin covered with small toothlike scales.",
+            "a photo of the object. sweet juicy gritty-textured fruit available in many varieties.",
+            "a photo of the object. a large cloud of rubble and dust shaped like a object and rising into the sky after an explosion (especially of a nuclear bomb).",
+            "a photo of the object. firearm that is a double-barreled smoothbore shoulder weapon for firing shot at short ranges.",
+            "a photo of the object. a short knife with a pointed blade used for piercing or stabbing.",
+            "a photo of the object. usually brightly colored zygodactyl tropical birds with short hooked beaks and the ability to mimic sounds.",
+            "a photo of the object. a mill that is powered by men or animals walking on a circular belt or climbing steps.",
+            "a photo of the object. plaything consisting of a child's toy bear (usually plush and stuffed with soft materials).",
+            "a photo of the object. a tall perennial woody plant having a main trunk and branches forming a distinct elevated crown; includes both gymnosperms and angiosperms.",
+            "a photo of the object. pinkish table wine from red grapes whose skins were removed after fermentation began.",
+            "a photo of the object. distinguished from Bovidae by the male's having solid deciduous antlers.",
+            "a photo of the object. a domestic fowl bred for flesh or eggs; believed to have been developed from the red jungle fowl.",
+            "a photo of the object. an aircraft without wings that obtains its lift from the rotation of overhead blades.",
+            "a photo of the object. a movable chair mounted on large wheels; for invalids or those who cannot walk; frequently propelled by the occupant.",
+            "a photo of the object. an enclosed armored military vehicle; has a cannon and moves on caterpillar treads.",
+            "a photo of the object. a lightweight handheld collapsible canopy.",
+            "a photo of the object. social insect living in organized colonies; characteristically the males and fertile queen have wings during breeding season; wingless sterile females are the workers.",
+            "a photo of the object. domesticated llama with long silky fleece; believed to be a domesticated variety of the guanaco.",
+            "a photo of the object. any of several fleet black-and-white striped African equines.",
+            "a photo of the object. the act of tapping a telephone or telegraph line to get information."
+          ],
+          "test_winners": [
+            "a photo of the object. a cup from which coffee is drunk.",
+            "a photo of the object. female swan.",
+            "a photo of the object. a large stringed instrument; seated player holds it upright while playing.",
+            "a photo of the object. a kind of arboreal rodent having a long bushy tail.",
+            "a photo of the object. freshwater or marine or terrestrial gastropod mollusk usually having an external enclosing spiral shell.",
+            "a photo of the object. any of numerous elongate mostly marine carnivorous fishes with heterocercal caudal fins and tough skin covered with small toothlike scales.",
+            "a photo of the object. sweet juicy gritty-textured fruit available in many varieties.",
+            "a photo of the object. a large cloud of rubble and dust shaped like a object and rising into the sky after an explosion (especially of a nuclear bomb).",
+            "a photo of the object. a shoulder firearm with a long barrel and a rifled bore.",
+            "a photo of the object. a hand tool with a thin flexible blade used to mix or spread soft substances.",
+            "a photo of the object. usually brightly colored zygodactyl tropical birds with short hooked beaks and the ability to mimic sounds.",
+            "a photo of the object. a mill that is powered by men or animals walking on a circular belt or climbing steps.",
+            "a photo of the object. plaything consisting of a child's toy bear (usually plush and stuffed with soft materials).",
+            "a photo of the object. a tall perennial woody plant having a main trunk and branches forming a distinct elevated crown; includes both gymnosperms and angiosperms.",
+            "a photo of the object. pinkish table wine from red grapes whose skins were removed after fermentation began.",
+            "a photo of the object. distinguished from Bovidae by the male's having solid deciduous antlers.",
+            "a photo of the object. a domestic fowl bred for flesh or eggs; believed to have been developed from the red jungle fowl.",
+            "a photo of the object. an aircraft without wings that obtains its lift from the rotation of overhead blades.",
+            "a photo of the object. a movable chair mounted on large wheels; for invalids or those who cannot walk; frequently propelled by the occupant.",
+            "a photo of the object. an enclosed armored military vehicle; has a cannon and moves on caterpillar treads.",
+            "a photo of the object. a lightweight handheld collapsible canopy.",
+            "a photo of the object. social insect living in organized colonies; characteristically the males and fertile queen have wings during breeding season; wingless sterile females are the workers.",
+            "a photo of the object. domesticated llama with long silky fleece; believed to be a domesticated variety of the guanaco.",
+            "a photo of the object. any of several fleet black-and-white striped African equines.",
+            "a photo of the object. the act of tapping a telephone or telegraph line to get information."
+          ],
+          "unchanged_id": 23
+        },
+        "names_filtered": {
+          "reference_indices": [
+            121,
+            174,
+            0,
+            412,
+            597,
+            444,
+            579,
+            360,
+            457,
+            415,
+            49,
+            310,
+            32,
+            112,
+            589,
+            8,
+            560,
+            2,
+            448,
+            534,
+            504,
+            341,
+            4,
+            346,
+            301
+          ],
+          "test_indices": [
+            121,
+            226,
+            0,
+            412,
+            597,
+            444,
+            579,
+            360,
+            457,
+            415,
+            49,
+            310,
+            32,
+            112,
+            589,
+            8,
+            560,
+            2,
+            492,
+            302,
+            504,
+            341,
+            4,
+            346,
+            303
+          ],
+          "reference_winners": [
+            "a photo of the coffee cup.",
+            "a photo of the duck.",
+            "a photo of the accordion.",
+            "a photo of the raccoon.",
+            "a photo of the worm.",
+            "a photo of the sea turtle.",
+            "a photo of the watermelon.",
+            "a photo of the oven.",
+            "a photo of the shotgun.",
+            "a photo of the ratchet (device).",
+            "a photo of the bird.",
+            "a photo of the lighthouse.",
+            "a photo of the bear.",
+            "a photo of the christmas tree.",
+            "a photo of the wine.",
+            "a photo of the antelope.",
+            "a photo of the turkey.",
+            "a photo of the aircraft.",
+            "a photo of the segway.",
+            "a photo of the tiger.",
+            "a photo of the sun hat.",
+            "a photo of the moths and butterflies.",
+            "a photo of the alpaca.",
+            "a photo of the mule.",
+            "a photo of the lamp."
+          ],
+          "test_winners": [
+            "a photo of the coffee cup.",
+            "a photo of the goose.",
+            "a photo of the accordion.",
+            "a photo of the raccoon.",
+            "a photo of the worm.",
+            "a photo of the sea turtle.",
+            "a photo of the watermelon.",
+            "a photo of the oven.",
+            "a photo of the shotgun.",
+            "a photo of the ratchet (device).",
+            "a photo of the bird.",
+            "a photo of the lighthouse.",
+            "a photo of the bear.",
+            "a photo of the christmas tree.",
+            "a photo of the wine.",
+            "a photo of the antelope.",
+            "a photo of the turkey.",
+            "a photo of the aircraft.",
+            "a photo of the stationary bicycle.",
+            "a photo of the land vehicle.",
+            "a photo of the sun hat.",
+            "a photo of the moths and butterflies.",
+            "a photo of the alpaca.",
+            "a photo of the mule.",
+            "a photo of the lantern."
+          ],
+          "unchanged_id": 21
+        },
+        "glosses_filtered": {
+          "reference_indices": [
+            862,
+            1307,
+            827,
+            1093,
+            1139,
+            1453,
+            1303,
+            1263,
+            1464,
+            917,
+            1504,
+            1627,
+            748,
+            907,
+            698,
+            615,
+            1639,
+            1107,
+            1096,
+            824,
+            1467,
+            614,
+            608,
+            1721,
+            1705
+          ],
+          "test_indices": [
+            862,
+            1307,
+            827,
+            1176,
+            1139,
+            1453,
+            1303,
+            1263,
+            1464,
+            1506,
+            1710,
+            1627,
+            748,
+            907,
+            698,
+            615,
+            1639,
+            1107,
+            1096,
+            824,
+            1467,
+            614,
+            608,
+            1721,
+            1705
+          ],
+          "reference_winners": [
+            "a photo of the object. a cup from which coffee is drunk.",
+            "a photo of the object. female swan.",
+            "a photo of the object. a large stringed instrument; seated player holds it upright while playing.",
+            "a photo of the object. short-tailed Old World burrowing rodent with large cheek pouches.",
+            "a photo of the object. small air-breathing arthropod.",
+            "a photo of the object. any of numerous elongate mostly marine carnivorous fishes with heterocercal caudal fins and tough skin covered with small toothlike scales.",
+            "a photo of the object. sweet juicy gritty-textured fruit available in many varieties.",
+            "a photo of the object. a large cloud of rubble and dust shaped like a object and rising into the sky after an explosion (especially of a nuclear bomb).",
+            "a photo of the object. firearm that is a double-barreled smoothbore shoulder weapon for firing shot at short ranges.",
+            "a photo of the object. a short knife with a pointed blade used for piercing or stabbing.",
+            "a photo of the object. any of several small dull-colored singing birds feeding on seeds or insects.",
+            "a photo of the object. a mill that is powered by men or animals walking on a circular belt or climbing steps.",
+            "a photo of the object. large ferocious bear of Eurasia.",
+            "a photo of the object. the upper branches and leaves of a tree or other plant.",
+            "a photo of the object. pinkish table wine from red grapes whose skins were removed after fermentation began.",
+            "a photo of the object. graceful Old World ruminant with long legs and horns directed upward and backward; includes gazelles; springboks; impalas; addax; gerenuks; blackbucks; dik-diks.",
+            "a photo of the object. flesh of large domesticated fowl usually roasted.",
+            "a photo of the object. an aircraft without wings that obtains its lift from the rotation of overhead blades.",
+            "a photo of the object. wheeled vehicle that can be pushed by a person; may have one or two or four wheels.",
+            "a photo of the object. a large tracked vehicle that is propelled by two endless metal belts; frequently used for moving earth in construction and farm work.",
+            "a photo of the object. a brief period of precipitation.",
+            "a photo of the object. social insect living in organized colonies; characteristically the males and fertile queen have wings during breeding season; wingless sterile females are the workers.",
+            "a photo of the object. domesticated llama with long silky fleece; believed to be a domesticated variety of the guanaco.",
+            "a photo of the object. any of several fleet black-and-white striped African equines.",
+            "a photo of the object. the act of tapping a telephone or telegraph line to get information."
+          ],
+          "test_winners": [
+            "a photo of the object. a cup from which coffee is drunk.",
+            "a photo of the object. female swan.",
+            "a photo of the object. a large stringed instrument; seated player holds it upright while playing.",
+            "a photo of the object. sluggish tailless Australian arboreal marsupial with grey furry ears and coat; feeds on eucalyptus leaves and bark.",
+            "a photo of the object. small air-breathing arthropod.",
+            "a photo of the object. any of numerous elongate mostly marine carnivorous fishes with heterocercal caudal fins and tough skin covered with small toothlike scales.",
+            "a photo of the object. sweet juicy gritty-textured fruit available in many varieties.",
+            "a photo of the object. a large cloud of rubble and dust shaped like a object and rising into the sky after an explosion (especially of a nuclear bomb).",
+            "a photo of the object. firearm that is a double-barreled smoothbore shoulder weapon for firing shot at short ranges.",
+            "a photo of the object. a hand tool with a thin flexible blade used to mix or spread soft substances.",
+            "a photo of the object. bird with strong claws and a stiff tail adapted for climbing and a hard chisel-like bill for boring into wood for insects.",
+            "a photo of the object. a mill that is powered by men or animals walking on a circular belt or climbing steps.",
+            "a photo of the object. large ferocious bear of Eurasia.",
+            "a photo of the object. the upper branches and leaves of a tree or other plant.",
+            "a photo of the object. pinkish table wine from red grapes whose skins were removed after fermentation began.",
+            "a photo of the object. graceful Old World ruminant with long legs and horns directed upward and backward; includes gazelles; springboks; impalas; addax; gerenuks; blackbucks; dik-diks.",
+            "a photo of the object. flesh of large domesticated fowl usually roasted.",
+            "a photo of the object. an aircraft without wings that obtains its lift from the rotation of overhead blades.",
+            "a photo of the object. wheeled vehicle that can be pushed by a person; may have one or two or four wheels.",
+            "a photo of the object. a large tracked vehicle that is propelled by two endless metal belts; frequently used for moving earth in construction and farm work.",
+            "a photo of the object. a brief period of precipitation.",
+            "a photo of the object. social insect living in organized colonies; characteristically the males and fertile queen have wings during breeding season; wingless sterile females are the workers.",
+            "a photo of the object. domesticated llama with long silky fleece; believed to be a domesticated variety of the guanaco.",
+            "a photo of the object. any of several fleet black-and-white striped African equines.",
+            "a photo of the object. the act of tapping a telephone or telegraph line to get information."
+          ],
+          "unchanged_id": 22
+        }
+      }
+    }
+  },
+  "direct_KD_winner_max_absolute_errors": [
+    [
+      0.00018030405044555664,
+      0.0
+    ],
+    [
+      1.055002212524414e-05,
+      0.0
+    ]
+  ],
+  "evaluator": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+  "name_revision": "737856911291eb876b820733bde426bdb5845946",
+  "native_revision": "d5a5347160914935c0e416d597cdd879815e2497",
+  "choice_revision": "d19cfc1a20b2f67320c906202f25808254bc765e",
+  "revision": "e26544fb95d6f886796816c2cb6e3e606a22de07",
+  "sha256": "a0f35fefe8dc82a38edcfa12ab3e74bb3c98f3619d6346a9c4d7cb3f28401d12",
+  "device": "NVIDIA L4"
+}

@@ -1,0 +1,1437 @@
+{
+  "split": "sketchy_1",
+  "queries": 14179,
+  "held_photos": 14600,
+  "families": {
+    "names": {
+      "arms": {
+        "zero": {
+          "binary_balanced_accuracy": {
+            "all": {
+              "class_points": 93.986218013468,
+              "interval95": [
+                92.03302966344997,
+                95.5739660669192
+              ]
+            },
+            "hard": {
+              "class_points": 87.19350432900433,
+              "interval95": [
+                81.93885656565656,
+                91.77345533910533
+              ]
+            }
+          },
+          "all_rival_coverage": {
+            "query_points": 100.0,
+            "subject_class_points": 100.0,
+            "interval95": [
+              100.0,
+              100.0
+            ]
+          },
+          "correct_all_rival_full_denominator": {
+            "query_points": 74.07433528457578,
+            "subject_class_points": 73.5656810966811,
+            "interval95": [
+              62.40352507215008,
+              82.90697189754688
+            ]
+          },
+          "percent_queries_with_three_cycle": {
+            "query_points": 0.0,
+            "subject_class_points": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ]
+          },
+          "retrieval_mean_percent": [
+            70.0247707262951,
+            72.81472606254569
+          ],
+          "retrieval_minus_baseline": {
+            "query_points": [
+              -4.928462176479074,
+              -4.016996988931687
+            ],
+            "subject_class_points": [
+              -5.102963203916301,
+              -4.486021461566816
+            ],
+            "interval95": [
+              [
+                -8.622705103302113,
+                -10.020039862957015
+              ],
+              [
+                -2.283060027196913,
+                -0.16345132354528463
+              ]
+            ]
+          },
+          "retrieval_minus_raw_sketch": {
+            "query_points": [
+              0.0,
+              0.0
+            ],
+            "subject_class_points": [
+              0.0,
+              0.0
+            ],
+            "interval95": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ]
+          }
+        },
+        "photo": {
+          "binary_balanced_accuracy": {
+            "all": {
+              "class_points": 94.49449974099974,
+              "interval95": [
+                93.25099229451105,
+                95.58766655422123
+              ]
+            },
+            "hard": {
+              "class_points": 88.95681096681096,
+              "interval95": [
+                85.83301448412699,
+                91.89895808080807
+              ]
+            }
+          },
+          "all_rival_coverage": {
+            "query_points": 90.37308695958812,
+            "subject_class_points": 90.41655799755799,
+            "interval95": [
+              86.40757427849928,
+              94.04393166278166
+            ]
+          },
+          "correct_all_rival_full_denominator": {
+            "query_points": 69.33493194160378,
+            "subject_class_points": 69.6350717060717,
+            "interval95": [
+              60.372424364524356,
+              78.24509119769118
+            ]
+          },
+          "percent_queries_with_three_cycle": {
+            "query_points": 100.0,
+            "subject_class_points": 100.0,
+            "interval95": [
+              100.0,
+              100.0
+            ]
+          }
+        },
+        "photo_projected": {
+          "binary_balanced_accuracy": {
+            "all": {
+              "class_points": 94.94818452380953,
+              "interval95": [
+                93.7394308629449,
+                95.98164701403921
+              ]
+            },
+            "hard": {
+              "class_points": 88.6415505050505,
+              "interval95": [
+                85.19114408369408,
+                91.8131914141414
+              ]
+            }
+          },
+          "all_rival_coverage": {
+            "query_points": 100.0,
+            "subject_class_points": 100.0,
+            "interval95": [
+              100.0,
+              100.0
+            ]
+          },
+          "correct_all_rival_full_denominator": {
+            "query_points": 71.22505113195571,
+            "subject_class_points": 71.546101010101,
+            "interval95": [
+              63.00830797258297,
+              79.39789310966809
+            ]
+          },
+          "percent_queries_with_three_cycle": {
+            "query_points": 0.0,
+            "subject_class_points": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ]
+          },
+          "retrieval_mean_percent": [
+            64.9760317793746,
+            68.65392486570792
+          ],
+          "retrieval_minus_baseline": {
+            "query_points": [
+              -9.97720112339959,
+              -8.17779818576945
+            ],
+            "subject_class_points": [
+              -9.575910689791503,
+              -7.913760840914591
+            ],
+            "interval95": [
+              [
+                -13.813054391067094,
+                -13.497544798935342
+              ],
+              [
+                -5.511669681400153,
+                -2.5403734601919563
+              ]
+            ]
+          },
+          "retrieval_minus_raw_sketch": {
+            "query_points": [
+              -5.048738946920516,
+              -4.160801196837763
+            ],
+            "subject_class_points": [
+              -4.472947485875201,
+              -3.4277393793477757
+            ],
+            "interval95": [
+              [
+                -9.012167923976364,
+                -9.242391911022798
+              ],
+              [
+                -0.1066735581188322,
+                2.6455023231228636
+              ]
+            ]
+          }
+        },
+        "sketch": {
+          "binary_balanced_accuracy": {
+            "all": {
+              "class_points": 97.41141045528545,
+              "interval95": [
+                96.79592641345924,
+                97.95673203492112
+              ]
+            },
+            "hard": {
+              "class_points": 93.06069769119769,
+              "interval95": [
+                90.89681338383838,
+                94.9730836940837
+              ]
+            }
+          },
+          "all_rival_coverage": {
+            "query_points": 95.36638691021933,
+            "subject_class_points": 95.2800414030414,
+            "interval95": [
+              93.69408870851372,
+              96.65231084748584
+            ]
+          },
+          "correct_all_rival_full_denominator": {
+            "query_points": 79.25805769095142,
+            "subject_class_points": 79.25789421689423,
+            "interval95": [
+              74.5553448773449,
+              83.40311004273504
+            ]
+          },
+          "percent_queries_with_three_cycle": {
+            "query_points": 100.0,
+            "subject_class_points": 100.0,
+            "interval95": [
+              100.0,
+              100.0
+            ]
+          }
+        },
+        "sketch_projected": {
+          "binary_balanced_accuracy": {
+            "all": {
+              "class_points": 97.26360790598291,
+              "interval95": [
+                96.59707930697775,
+                97.85487479187479
+              ]
+            },
+            "hard": {
+              "class_points": 92.36556854256854,
+              "interval95": [
+                89.75287070707071,
+                94.6812670995671
+              ]
+            }
+          },
+          "all_rival_coverage": {
+            "query_points": 100.0,
+            "subject_class_points": 100.0,
+            "interval95": [
+              100.0,
+              100.0
+            ]
+          },
+          "correct_all_rival_full_denominator": {
+            "query_points": 77.33972776641512,
+            "subject_class_points": 77.38247574647575,
+            "interval95": [
+              72.20780543623042,
+              82.15492624320125
+            ]
+          },
+          "percent_queries_with_three_cycle": {
+            "query_points": 0.0,
+            "subject_class_points": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ]
+          },
+          "retrieval_mean_percent": [
+            70.38182874446441,
+            74.42894430217724
+          ],
+          "retrieval_minus_baseline": {
+            "query_points": [
+              -4.571404158309763,
+              -2.4027787493001265
+            ],
+            "subject_class_points": [
+              -4.367501318148168,
+              -2.3675608706546174
+            ],
+            "interval95": [
+              [
+                -8.71831995979402,
+                -7.876338365043312
+              ],
+              [
+                0.41612653256821386,
+                2.9320006325506824
+              ]
+            ]
+          },
+          "retrieval_minus_raw_sketch": {
+            "query_points": [
+              0.3570580181693108,
+              1.6142182396315614
+            ],
+            "subject_class_points": [
+              0.7354618857681313,
+              2.118460590912199
+            ],
+            "interval95": [
+              [
+                -2.596068690970613,
+                -2.3818679104899267
+              ],
+              [
+                4.735102925905449,
+                7.70625071048443
+              ]
+            ]
+          }
+        }
+      },
+      "nonadditive_energy": {
+        "0": {
+          "photo": 0.1857548481516315,
+          "sketch": 0.15559200176353638
+        },
+        "1": {
+          "photo": 0.16678185107531038,
+          "sketch": 0.16329262046459386
+        }
+      }
+    },
+    "glosses": {
+      "arms": {
+        "zero": {
+          "binary_balanced_accuracy": {
+            "all": {
+              "class_points": 91.62466480278981,
+              "interval95": [
+                89.49154681111712,
+                93.54381850574194
+              ]
+            },
+            "hard": {
+              "class_points": 87.15649927849927,
+              "interval95": [
+                82.65583670634918,
+                91.12231643217892
+              ]
+            }
+          },
+          "all_rival_coverage": {
+            "query_points": 100.0,
+            "subject_class_points": 100.0,
+            "interval95": [
+              100.0,
+              100.0
+            ]
+          },
+          "correct_all_rival_full_denominator": {
+            "query_points": 69.17272022004373,
+            "subject_class_points": 68.85908225108224,
+            "interval95": [
+              58.337430663780665,
+              78.36569534632034
+            ]
+          },
+          "percent_queries_with_three_cycle": {
+            "query_points": 0.0,
+            "subject_class_points": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ]
+          },
+          "retrieval_mean_percent": [
+            61.31849647883539,
+            66.91050167096382
+          ],
+          "retrieval_minus_baseline": {
+            "query_points": [
+              -13.634736423938785,
+              -9.921221380513543
+            ],
+            "subject_class_points": [
+              -13.671904272476409,
+              -10.212815010249862
+            ],
+            "interval95": [
+              [
+                -19.913846703260713,
+                -17.336149181553466
+              ],
+              [
+                -8.233604579838232,
+                -4.369876866019138
+              ]
+            ]
+          },
+          "retrieval_minus_raw_sketch": {
+            "query_points": [
+              0.0,
+              0.0
+            ],
+            "subject_class_points": [
+              0.0,
+              0.0
+            ],
+            "interval95": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ]
+          }
+        },
+        "photo": {
+          "binary_balanced_accuracy": {
+            "all": {
+              "class_points": 93.20805483405482,
+              "interval95": [
+                91.98182544943482,
+                94.39762522922679
+              ]
+            },
+            "hard": {
+              "class_points": 88.53275829725828,
+              "interval95": [
+                85.75493964646466,
+                91.10553383838382
+              ]
+            }
+          },
+          "all_rival_coverage": {
+            "query_points": 86.28253050285633,
+            "subject_class_points": 86.18781096681097,
+            "interval95": [
+              82.50972918470418,
+              89.698990007215
+            ]
+          },
+          "correct_all_rival_full_denominator": {
+            "query_points": 63.812680725015866,
+            "subject_class_points": 64.12377056277057,
+            "interval95": [
+              55.61256911976913,
+              72.3001264069264
+            ]
+          },
+          "percent_queries_with_three_cycle": {
+            "query_points": 100.0,
+            "subject_class_points": 100.0,
+            "interval95": [
+              100.0,
+              100.0
+            ]
+          }
+        },
+        "photo_projected": {
+          "binary_balanced_accuracy": {
+            "all": {
+              "class_points": 93.75400413012913,
+              "interval95": [
+                92.65433444720787,
+                94.82465253704628
+              ]
+            },
+            "hard": {
+              "class_points": 88.16420995670997,
+              "interval95": [
+                85.51507112193362,
+                90.6651134018759
+              ]
+            }
+          },
+          "all_rival_coverage": {
+            "query_points": 100.0,
+            "subject_class_points": 100.0,
+            "interval95": [
+              100.0,
+              100.0
+            ]
+          },
+          "correct_all_rival_full_denominator": {
+            "query_points": 65.97785457366528,
+            "subject_class_points": 66.1602794982795,
+            "interval95": [
+              58.106431374181376,
+              73.95410036075035
+            ]
+          },
+          "percent_queries_with_three_cycle": {
+            "query_points": 0.0,
+            "subject_class_points": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ]
+          },
+          "retrieval_mean_percent": [
+            58.50195644044505,
+            63.852175949080305
+          ],
+          "retrieval_minus_baseline": {
+            "query_points": [
+              -16.45127646232913,
+              -12.979547102397076
+            ],
+            "subject_class_points": [
+              -16.044960483005745,
+              -12.777412959747156
+            ],
+            "interval95": [
+              [
+                -21.784317320685524,
+                -19.041538371499893
+              ],
+              [
+                -10.28633130644874,
+                -7.061953104438261
+              ]
+            ]
+          },
+          "retrieval_minus_raw_sketch": {
+            "query_points": [
+              -2.816540038390347,
+              -3.0583257218835316
+            ],
+            "subject_class_points": [
+              -2.373056210529332,
+              -2.564597949497291
+            ],
+            "interval95": [
+              [
+                -6.949745224129633,
+                -8.198476863089372
+              ],
+              [
+                2.29780871393615,
+                3.2400270847905492
+              ]
+            ]
+          }
+        },
+        "sketch": {
+          "binary_balanced_accuracy": {
+            "all": {
+              "class_points": 96.30854485329486,
+              "interval95": [
+                95.4502867251383,
+                97.13744667733886
+              ]
+            },
+            "hard": {
+              "class_points": 93.98942784992785,
+              "interval95": [
+                92.35551913780662,
+                95.50551746031746
+              ]
+            }
+          },
+          "all_rival_coverage": {
+            "query_points": 94.37195853022075,
+            "subject_class_points": 94.22680086580087,
+            "interval95": [
+              92.5361094155844,
+              95.76735670995672
+            ]
+          },
+          "correct_all_rival_full_denominator": {
+            "query_points": 74.87834120882995,
+            "subject_class_points": 75.03731313131314,
+            "interval95": [
+              70.25682741702741,
+              79.6784142135642
+            ]
+          },
+          "percent_queries_with_three_cycle": {
+            "query_points": 100.0,
+            "subject_class_points": 100.0,
+            "interval95": [
+              100.0,
+              100.0
+            ]
+          }
+        },
+        "sketch_projected": {
+          "binary_balanced_accuracy": {
+            "all": {
+              "class_points": 96.1197395983646,
+              "interval95": [
+                95.22489059042807,
+                96.98084149906806
+              ]
+            },
+            "hard": {
+              "class_points": 92.86969119769118,
+              "interval95": [
+                90.73075983044733,
+                94.77904193722947
+              ]
+            }
+          },
+          "all_rival_coverage": {
+            "query_points": 100.0,
+            "subject_class_points": 100.0,
+            "interval95": [
+              100.0,
+              100.0
+            ]
+          },
+          "correct_all_rival_full_denominator": {
+            "query_points": 72.86127371464842,
+            "subject_class_points": 72.94431168831169,
+            "interval95": [
+              66.94439844877346,
+              78.57034393939392
+            ]
+          },
+          "percent_queries_with_three_cycle": {
+            "query_points": 0.0,
+            "subject_class_points": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ]
+          },
+          "retrieval_mean_percent": [
+            64.19964170074734,
+            70.42972027533735
+          ],
+          "retrieval_minus_baseline": {
+            "query_points": [
+              -10.753591202026843,
+              -6.40200277614002
+            ],
+            "subject_class_points": [
+              -10.433225430203692,
+              -6.289870763611854
+            ],
+            "interval95": [
+              [
+                -15.914742113386268,
+                -11.445955363810425
+              ],
+              [
+                -4.603985310700069,
+                -1.1626678317065164
+              ]
+            ]
+          },
+          "retrieval_minus_raw_sketch": {
+            "query_points": [
+              2.8811452219119396,
+              3.519218604373523
+            ],
+            "subject_class_points": [
+              3.238678842272717,
+              3.922944246638007
+            ],
+            "interval95": [
+              [
+                -1.0025033650764326,
+                -1.180961416144847
+              ],
+              [
+                8.037168859705343,
+                9.610512239247921
+              ]
+            ]
+          }
+        }
+      },
+      "nonadditive_energy": {
+        "0": {
+          "photo": 0.19955734037795403,
+          "sketch": 0.11314345457592537
+        },
+        "1": {
+          "photo": 0.236632730423542,
+          "sketch": 0.11271063089965797
+        }
+      }
+    },
+    "names_filtered": {
+      "arms": {
+        "zero": {
+          "binary_balanced_accuracy": {
+            "all": {
+              "class_points": 91.12973454785954,
+              "interval95": [
+                89.28802548250361,
+                92.8485772719757
+              ]
+            },
+            "hard": {
+              "class_points": 84.51716233766234,
+              "interval95": [
+                79.7402425865801,
+                88.95617424242424
+              ]
+            }
+          },
+          "all_rival_coverage": {
+            "query_points": 100.0,
+            "subject_class_points": 100.0,
+            "interval95": [
+              100.0,
+              100.0
+            ]
+          },
+          "correct_all_rival_full_denominator": {
+            "query_points": 64.10889343395162,
+            "subject_class_points": 63.98309812409813,
+            "interval95": [
+              51.765678715728725,
+              75.3019406926407
+            ]
+          },
+          "percent_queries_with_three_cycle": {
+            "query_points": 0.0,
+            "subject_class_points": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ]
+          },
+          "retrieval_mean_percent": [
+            51.23215142087197,
+            58.07024446331893
+          ],
+          "retrieval_minus_baseline": {
+            "query_points": [
+              -23.721081481902207,
+              -18.761478588158443
+            ],
+            "subject_class_points": [
+              -23.416824148144116,
+              -18.72585820465686
+            ],
+            "interval95": [
+              [
+                -30.64892839111551,
+                -26.05192507333533
+              ],
+              [
+                -16.44759693602895,
+                -11.650454755741574
+              ]
+            ]
+          },
+          "retrieval_minus_raw_sketch": {
+            "query_points": [
+              0.0,
+              0.0
+            ],
+            "subject_class_points": [
+              0.0,
+              0.0
+            ],
+            "interval95": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ]
+          }
+        },
+        "photo": {
+          "binary_balanced_accuracy": {
+            "all": {
+              "class_points": 92.40524325211824,
+              "interval95": [
+                90.82160507501756,
+                93.87721886707043
+              ]
+            },
+            "hard": {
+              "class_points": 85.94342524142526,
+              "interval95": [
+                82.19906123321124,
+                89.52242047258298
+              ]
+            }
+          },
+          "all_rival_coverage": {
+            "query_points": 88.86381268072502,
+            "subject_class_points": 88.73445987345988,
+            "interval95": [
+              84.19474440836942,
+              92.78071496003996
+            ]
+          },
+          "correct_all_rival_full_denominator": {
+            "query_points": 60.66718386346005,
+            "subject_class_points": 60.9112675102675,
+            "interval95": [
+              50.83559885114886,
+              70.53879653679654
+            ]
+          },
+          "percent_queries_with_three_cycle": {
+            "query_points": 100.0,
+            "subject_class_points": 100.0,
+            "interval95": [
+              100.0,
+              100.0
+            ]
+          }
+        },
+        "photo_projected": {
+          "binary_balanced_accuracy": {
+            "all": {
+              "class_points": 92.57465328190328,
+              "interval95": [
+                91.05616857742953,
+                93.97710976962853
+              ]
+            },
+            "hard": {
+              "class_points": 85.73538433788434,
+              "interval95": [
+                81.9772388167388,
+                89.2795632936508
+              ]
+            }
+          },
+          "all_rival_coverage": {
+            "query_points": 100.0,
+            "subject_class_points": 100.0,
+            "interval95": [
+              100.0,
+              100.0
+            ]
+          },
+          "correct_all_rival_full_denominator": {
+            "query_points": 59.665702799915366,
+            "subject_class_points": 60.25039782439783,
+            "interval95": [
+              50.35166155788655,
+              69.95546028138529
+            ]
+          },
+          "percent_queries_with_three_cycle": {
+            "query_points": 0.0,
+            "subject_class_points": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ]
+          },
+          "retrieval_mean_percent": [
+            47.47562799395188,
+            53.77057599703403
+          ],
+          "retrieval_minus_baseline": {
+            "query_points": [
+              -27.4776049088223,
+              -23.061147054443342
+            ],
+            "subject_class_points": [
+              -26.82404793766333,
+              -22.49228997569053
+            ],
+            "interval95": [
+              [
+                -34.45145490801626,
+                -30.827821752699926
+              ],
+              [
+                -19.56031751406379,
+                -14.405568424403995
+              ]
+            ]
+          },
+          "retrieval_minus_raw_sketch": {
+            "query_points": [
+              -3.7565234269200913,
+              -4.299668466284902
+            ],
+            "subject_class_points": [
+              -3.4072237895192132,
+              -3.7664317710336674
+            ],
+            "interval95": [
+              [
+                -8.392495256719176,
+                -10.293383613143819
+              ],
+              [
+                1.4335575864533983,
+                2.920870961011745
+              ]
+            ]
+          }
+        },
+        "sketch": {
+          "binary_balanced_accuracy": {
+            "all": {
+              "class_points": 96.22035634273135,
+              "interval95": [
+                95.38950654339874,
+                96.99951972333221
+              ]
+            },
+            "hard": {
+              "class_points": 92.03300793650793,
+              "interval95": [
+                89.98338291847043,
+                94.0065856782107
+              ]
+            }
+          },
+          "all_rival_coverage": {
+            "query_points": 94.44248536568163,
+            "subject_class_points": 94.29648484848484,
+            "interval95": [
+              92.6444591991342,
+              95.81297665945165
+            ]
+          },
+          "correct_all_rival_full_denominator": {
+            "query_points": 72.77664151209535,
+            "subject_class_points": 72.84590287490286,
+            "interval95": [
+              67.33917211399711,
+              77.94418502886002
+            ]
+          },
+          "percent_queries_with_three_cycle": {
+            "query_points": 100.0,
+            "subject_class_points": 100.0,
+            "interval95": [
+              100.0,
+              100.0
+            ]
+          }
+        },
+        "sketch_projected": {
+          "binary_balanced_accuracy": {
+            "all": {
+              "class_points": 95.91776627539127,
+              "interval95": [
+                95.0282626127923,
+                96.75358843997437
+              ]
+            },
+            "hard": {
+              "class_points": 90.33682106782106,
+              "interval95": [
+                87.39786774891776,
+                92.95325066738816
+              ]
+            }
+          },
+          "all_rival_coverage": {
+            "query_points": 100.0,
+            "subject_class_points": 100.0,
+            "interval95": [
+              100.0,
+              100.0
+            ]
+          },
+          "correct_all_rival_full_denominator": {
+            "query_points": 69.1868255871359,
+            "subject_class_points": 69.28254068154068,
+            "interval95": [
+              62.87941515151514,
+              75.36188879453877
+            ]
+          },
+          "percent_queries_with_three_cycle": {
+            "query_points": 0.0,
+            "subject_class_points": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ]
+          },
+          "retrieval_mean_percent": [
+            53.69952561757958,
+            61.441991561320286
+          ],
+          "retrieval_minus_baseline": {
+            "query_points": [
+              -21.253707285194597,
+              -15.389731490157082
+            ],
+            "subject_class_points": [
+              -20.81978370478217,
+              -15.187842031268337
+            ],
+            "interval95": [
+              [
+                -28.745558141398252,
+                -22.572734515781754
+              ],
+              [
+                -12.753319270616487,
+                -7.691471545418699
+              ]
+            ]
+          },
+          "retrieval_minus_raw_sketch": {
+            "query_points": [
+              2.4673741967076075,
+              3.3717470980013613
+            ],
+            "subject_class_points": [
+              2.597040443361944,
+              3.538016173388523
+            ],
+            "interval95": [
+              [
+                -1.7345989537230877,
+                -2.215182089745062
+              ],
+              [
+                7.456789544410301,
+                9.920322901584472
+              ]
+            ]
+          }
+        }
+      },
+      "nonadditive_energy": {
+        "0": {
+          "photo": 0.16540516270807726,
+          "sketch": 0.10283174891442905
+        },
+        "1": {
+          "photo": 0.15009216773183542,
+          "sketch": 0.11791196479142448
+        }
+      }
+    },
+    "glosses_filtered": {
+      "arms": {
+        "zero": {
+          "binary_balanced_accuracy": {
+            "all": {
+              "class_points": 91.75718037518037,
+              "interval95": [
+                89.70466349732445,
+                93.64304377855939
+              ]
+            },
+            "hard": {
+              "class_points": 85.08012049062049,
+              "interval95": [
+                80.60769357864358,
+                89.27864137806638
+              ]
+            }
+          },
+          "all_rival_coverage": {
+            "query_points": 100.0,
+            "subject_class_points": 100.0,
+            "interval95": [
+              100.0,
+              100.0
+            ]
+          },
+          "correct_all_rival_full_denominator": {
+            "query_points": 66.50680583962198,
+            "subject_class_points": 66.30896681096682,
+            "interval95": [
+              55.844639754689766,
+              76.22783069985569
+            ]
+          },
+          "percent_queries_with_three_cycle": {
+            "query_points": 0.0,
+            "subject_class_points": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ]
+          },
+          "retrieval_mean_percent": [
+            54.319758951333974,
+            61.47528016954603
+          ],
+          "retrieval_minus_baseline": {
+            "query_points": [
+              -20.633473951440198,
+              -15.356442881931336
+            ],
+            "subject_class_points": [
+              -20.741483349795665,
+              -15.631365977013873
+            ],
+            "interval95": [
+              [
+                -28.375403449303953,
+                -24.047518764847254
+              ],
+              [
+                -13.444554663084677,
+                -8.183072497779262
+              ]
+            ]
+          },
+          "retrieval_minus_raw_sketch": {
+            "query_points": [
+              0.0,
+              0.0
+            ],
+            "subject_class_points": [
+              0.0,
+              0.0
+            ],
+            "interval95": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0
+              ]
+            ]
+          }
+        },
+        "photo": {
+          "binary_balanced_accuracy": {
+            "all": {
+              "class_points": 92.98171302308802,
+              "interval95": [
+                91.59197155107624,
+                94.35447617845118
+              ]
+            },
+            "hard": {
+              "class_points": 89.38876551226551,
+              "interval95": [
+                86.61250353535353,
+                91.88001931818181
+              ]
+            }
+          },
+          "all_rival_coverage": {
+            "query_points": 83.84230199590944,
+            "subject_class_points": 83.68414141414142,
+            "interval95": [
+              78.92606385281385,
+              88.07814011544014
+            ]
+          },
+          "correct_all_rival_full_denominator": {
+            "query_points": 62.00014105367092,
+            "subject_class_points": 62.13886291486291,
+            "interval95": [
+              52.840719336219344,
+              70.9725615079365
+            ]
+          },
+          "percent_queries_with_three_cycle": {
+            "query_points": 100.0,
+            "subject_class_points": 100.0,
+            "interval95": [
+              100.0,
+              100.0
+            ]
+          }
+        },
+        "photo_projected": {
+          "binary_balanced_accuracy": {
+            "all": {
+              "class_points": 93.61622232397232,
+              "interval95": [
+                92.33893980157573,
+                94.85987386895512
+              ]
+            },
+            "hard": {
+              "class_points": 88.96658730158731,
+              "interval95": [
+                86.60778414502165,
+                91.18741603535352
+              ]
+            }
+          },
+          "all_rival_coverage": {
+            "query_points": 100.0,
+            "subject_class_points": 100.0,
+            "interval95": [
+              100.0,
+              100.0
+            ]
+          },
+          "correct_all_rival_full_denominator": {
+            "query_points": 64.93405740884407,
+            "subject_class_points": 64.99947286047286,
+            "interval95": [
+              56.6084507936508,
+              73.03248771228769
+            ]
+          },
+          "percent_queries_with_three_cycle": {
+            "query_points": 0.0,
+            "subject_class_points": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ]
+          },
+          "retrieval_mean_percent": [
+            52.63172323981112,
+            59.87763578324808
+          ],
+          "retrieval_minus_baseline": {
+            "query_points": [
+              -22.321509662963056,
+              -16.954087268229294
+            ],
+            "subject_class_points": [
+              -22.20581053912105,
+              -16.989817410758434
+            ],
+            "interval95": [
+              [
+                -29.617737889847117,
+                -25.103939415013215
+              ],
+              [
+                -14.811256943532522,
+                -9.570262611515588
+              ]
+            ]
+          },
+          "retrieval_minus_raw_sketch": {
+            "query_points": [
+              -1.6880357115228581,
+              -1.5976443862979566
+            ],
+            "subject_class_points": [
+              -1.4643271893253844,
+              -1.3584514337445606
+            ],
+            "interval95": [
+              [
+                -5.844463009018108,
+                -6.996114060380274
+              ],
+              [
+                2.9471553539060236,
+                4.350324265246789
+              ]
+            ]
+          }
+        },
+        "sketch": {
+          "binary_balanced_accuracy": {
+            "all": {
+              "class_points": 95.7310560966811,
+              "interval95": [
+                94.70830802218615,
+                96.69773007530664
+              ]
+            },
+            "hard": {
+              "class_points": 91.82338888888889,
+              "interval95": [
+                89.86765003607503,
+                93.65386967893218
+              ]
+            }
+          },
+          "all_rival_coverage": {
+            "query_points": 93.99111361873193,
+            "subject_class_points": 93.90273737373738,
+            "interval95": [
+              92.0269075036075,
+              95.56407586580087
+            ]
+          },
+          "correct_all_rival_full_denominator": {
+            "query_points": 72.13484730940122,
+            "subject_class_points": 72.24754545454546,
+            "interval95": [
+              66.1919123015873,
+              77.8417211038961
+            ]
+          },
+          "percent_queries_with_three_cycle": {
+            "query_points": 100.0,
+            "subject_class_points": 100.0,
+            "interval95": [
+              100.0,
+              100.0
+            ]
+          }
+        },
+        "sketch_projected": {
+          "binary_balanced_accuracy": {
+            "all": {
+              "class_points": 95.4845502044252,
+              "interval95": [
+                94.41800609142015,
+                96.4903435718795
+              ]
+            },
+            "hard": {
+              "class_points": 90.95979292929292,
+              "interval95": [
+                88.82770892857143,
+                92.99521084054834
+              ]
+            }
+          },
+          "all_rival_coverage": {
+            "query_points": 100.0,
+            "subject_class_points": 100.0,
+            "interval95": [
+              100.0,
+              100.0
+            ]
+          },
+          "correct_all_rival_full_denominator": {
+            "query_points": 69.89209394174483,
+            "subject_class_points": 70.01933477633477,
+            "interval95": [
+              62.66686796536798,
+              76.53019985569986
+            ]
+          },
+          "percent_queries_with_three_cycle": {
+            "query_points": 0.0,
+            "subject_class_points": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ]
+          },
+          "retrieval_mean_percent": [
+            56.94631718795885,
+            64.63840879260563
+          ],
+          "retrieval_minus_baseline": {
+            "query_points": [
+              -18.006915714815328,
+              -12.193314258871748
+            ],
+            "subject_class_points": [
+              -17.83350532424033,
+              -12.155388763791619
+            ],
+            "interval95": [
+              [
+                -25.39506121683035,
+                -19.82171404843368
+              ],
+              [
+                -10.225943671889867,
+                -5.312795204660148
+              ]
+            ]
+          },
+          "retrieval_minus_raw_sketch": {
+            "query_points": [
+              2.626558236624872,
+              3.163128623059589
+            ],
+            "subject_class_points": [
+              2.907978025555338,
+              3.4759772132222535
+            ],
+            "interval95": [
+              [
+                -1.408207668352041,
+                -1.9185421646912337
+              ],
+              [
+                7.707418605659963,
+                9.439761148848874
+              ]
+            ]
+          }
+        }
+      },
+      "nonadditive_energy": {
+        "0": {
+          "photo": 0.2323595292318879,
+          "sketch": 0.14871313786058035
+        },
+        "1": {
+          "photo": 0.26559320898874844,
+          "sketch": 0.14305396975836376
+        }
+      }
+    }
+  },
+  "table_revision": "e26544fb95d6f886796816c2cb6e3e606a22de07",
+  "bias_revision": "a20e6ec2a07a4793a438876581ebafab647fdeb9",
+  "revision": "9de553d8165b3a630fcfc751116f86065f0cdffc",
+  "sha256": "96b001b9625b64f2ef5362b0e3f7de216c0bd63303184ef5da7952662379f826",
+  "seed": 42,
+  "device": "NVIDIA L4"
+}

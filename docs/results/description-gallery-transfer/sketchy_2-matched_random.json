@@ -1,0 +1,1295 @@
+{
+  "split": "sketchy_2",
+  "partition": "matched_random",
+  "queries": 12694,
+  "gallery": 12552,
+  "seed": 42,
+  "gallery_counts": [
+    2100,
+    10452
+  ],
+  "class_counts": [
+    [
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100
+    ],
+    [
+      443,
+      392,
+      600,
+      613,
+      600,
+      600,
+      750,
+      345,
+      385,
+      600,
+      663,
+      600,
+      639,
+      599,
+      161,
+      600,
+      276,
+      495,
+      278,
+      393,
+      420
+    ]
+  ],
+  "classes": [
+    "bat",
+    "cabin",
+    "cow",
+    "dolphin",
+    "door",
+    "giraffe",
+    "helicopter",
+    "mouse",
+    "pear",
+    "raccoon",
+    "rhinoceros",
+    "saw",
+    "scissors",
+    "seagull",
+    "skyscraper",
+    "songbird",
+    "sword",
+    "tree",
+    "wheelchair",
+    "windmill",
+    "window"
+  ],
+  "eligible_sentences": {
+    "names": 601,
+    "glosses": 1123,
+    "names_filtered": 586,
+    "glosses_filtered": 1088
+  },
+  "directions": {
+    "random_large_to_random_small": {
+      "percent": {
+        "semantic": [
+          71.2666103621309,
+          40.45553028165921
+        ],
+        "names_transfer": [
+          87.10944200150594,
+          44.66212393418987
+        ],
+        "names_test_oracle": [
+          92.52652557784222,
+          45.03218068480662
+        ],
+        "glosses_transfer": [
+          72.2588050696055,
+          38.31845774967238
+        ],
+        "glosses_test_oracle": [
+          87.12425269168888,
+          45.770600572878756
+        ],
+        "names_filtered_transfer": [
+          75.37669250401177,
+          40.082401426869104
+        ],
+        "names_filtered_test_oracle": [
+          85.91650857152725,
+          43.02729671739267
+        ],
+        "glosses_filtered_transfer": [
+          66.5445811536406,
+          35.601544062185425
+        ],
+        "glosses_filtered_test_oracle": [
+          82.8442606279676,
+          44.44970082505136
+        ],
+        "sketch_two_first": [
+          44.690101872854484,
+          27.894753466433787
+        ],
+        "source_first": [
+          65.01760504195153,
+          38.12431070174595
+        ]
+      },
+      "transfer_minus_semantic": {
+        "names_transfer": {
+          "query_points": [
+            15.842831639375031,
+            4.206593652530667
+          ],
+          "subject_class_points": [
+            15.554951814643816,
+            4.151587602989468
+          ],
+          "interval95": [
+            [
+              3.1459220856726344,
+              -1.926892407281815
+            ],
+            [
+              26.458246451980337,
+              9.230240305353563
+            ]
+          ]
+        },
+        "glosses_transfer": {
+          "query_points": [
+            0.9921947074745908,
+            -2.1370725319868273
+          ],
+          "subject_class_points": [
+            0.8150584533386138,
+            -2.2293646353375105
+          ],
+          "interval95": [
+            [
+              -14.539570945529551,
+              -9.627031373404696
+            ],
+            [
+              15.643619723279443,
+              4.714240643488658
+            ]
+          ]
+        },
+        "names_filtered_transfer": {
+          "query_points": [
+            4.110082141880861,
+            -0.3731288547900994
+          ],
+          "subject_class_points": [
+            3.5658365651008497,
+            -0.5626978728776663
+          ],
+          "interval95": [
+            [
+              -11.398825011338799,
+              -7.931813025305977
+            ],
+            [
+              17.607449383215947,
+              6.04866903119858
+            ]
+          ]
+        },
+        "glosses_filtered_transfer": {
+          "query_points": [
+            -4.722029208490305,
+            -4.853986219473786
+          ],
+          "subject_class_points": [
+            -4.811565092035576,
+            -4.919841027334168
+          ],
+          "interval95": [
+            [
+              -20.24192227771947,
+              -12.182841385243556
+            ],
+            [
+              10.722166519739192,
+              2.138717737247305
+            ]
+          ]
+        }
+      },
+      "test_oracle_minus_transfer": {
+        "names": {
+          "query_points": [
+            5.4170835763362755,
+            0.370056750616744
+          ],
+          "subject_class_points": [
+            4.915615716683013,
+            0.11904764743078323
+          ],
+          "interval95": [
+            [
+              0.0,
+              -6.642857127423797
+            ],
+            [
+              14.455085819853203,
+              7.0000000697161475
+            ]
+          ]
+        },
+        "glosses": {
+          "query_points": [
+            14.865447622083384,
+            7.452142823206377
+          ],
+          "subject_class_points": [
+            14.355209467577792,
+            7.285714393392914
+          ],
+          "interval95": [
+            [
+              2.3686803522564115,
+              1.0000000397364297
+            ],
+            [
+              28.269487188164405,
+              14.572024180309928
+            ]
+          ]
+        },
+        "names_filtered": {
+          "query_points": [
+            10.539816067515465,
+            2.9448952905235632
+          ],
+          "subject_class_points": [
+            10.167786847090438,
+            2.7619048243477233
+          ],
+          "interval95": [
+            [
+              0.5521152700696673,
+              -4.095238119008996
+            ],
+            [
+              23.52173969681774,
+              10.000000188925437
+            ]
+          ]
+        },
+        "glosses_filtered": {
+          "query_points": [
+            16.299679474327,
+            8.848156762865935
+          ],
+          "subject_class_points": [
+            15.73910202077102,
+            8.619047803360791
+          ],
+          "interval95": [
+            [
+              4.066207497602417,
+              2.4999999810409332
+            ],
+            [
+              29.347994670360567,
+              15.904761846399024
+            ]
+          ]
+        }
+      },
+      "selected": {
+        "names": {
+          "reference_indices": [
+            27,
+            554,
+            99,
+            163,
+            164,
+            216,
+            248,
+            56,
+            375,
+            412,
+            422,
+            103,
+            438,
+            226,
+            466,
+            84,
+            512,
+            553,
+            583,
+            582,
+            587
+          ],
+          "test_indices": [
+            27,
+            554,
+            99,
+            163,
+            164,
+            216,
+            248,
+            236,
+            375,
+            412,
+            422,
+            103,
+            438,
+            226,
+            466,
+            84,
+            489,
+            553,
+            583,
+            582,
+            587
+          ],
+          "reference_winners": [
+            "a photo of the bat (animal).",
+            "a photo of the tree house.",
+            "a photo of the cattle.",
+            "a photo of the dolphin.",
+            "a photo of the door.",
+            "a photo of the giraffe.",
+            "a photo of the helicopter.",
+            "a photo of the boot.",
+            "a photo of the pear.",
+            "a photo of the raccoon.",
+            "a photo of the rhinoceros.",
+            "a photo of the chainsaw.",
+            "a photo of the scissors.",
+            "a photo of the goose.",
+            "a photo of the skyscraper.",
+            "a photo of the canary.",
+            "a photo of the sword.",
+            "a photo of the tree.",
+            "a photo of the wheelchair.",
+            "a photo of the wheel.",
+            "a photo of the window."
+          ],
+          "test_winners": [
+            "a photo of the bat (animal).",
+            "a photo of the tree house.",
+            "a photo of the cattle.",
+            "a photo of the dolphin.",
+            "a photo of the door.",
+            "a photo of the giraffe.",
+            "a photo of the helicopter.",
+            "a photo of the hamster.",
+            "a photo of the pear.",
+            "a photo of the raccoon.",
+            "a photo of the rhinoceros.",
+            "a photo of the chainsaw.",
+            "a photo of the scissors.",
+            "a photo of the goose.",
+            "a photo of the skyscraper.",
+            "a photo of the canary.",
+            "a photo of the stairs.",
+            "a photo of the tree.",
+            "a photo of the wheelchair.",
+            "a photo of the wheel.",
+            "a photo of the window."
+          ],
+          "unchanged_id": 19
+        },
+        "glosses": {
+          "reference_indices": [
+            1362,
+            749,
+            825,
+            984,
+            946,
+            1059,
+            982,
+            802,
+            617,
+            1194,
+            976,
+            1091,
+            1049,
+            1547,
+            1484,
+            1504,
+            1552,
+            1629,
+            1685,
+            1627,
+            1691
+          ],
+          "test_indices": [
+            672,
+            749,
+            752,
+            1681,
+            946,
+            1059,
+            604,
+            1093,
+            1303,
+            1194,
+            1110,
+            1091,
+            637,
+            1547,
+            1484,
+            1504,
+            1552,
+            1629,
+            1685,
+            1627,
+            1691
+          ],
+          "reference_winners": [
+            "a photo of the object. a container in which plants are cultivated.",
+            "a photo of the object. a structure that has a roof and walls and stands more or less permanently in one place.",
+            "a photo of the object. domesticated bovine animals as a group regardless of sex or age; ; ; - Bible.",
+            "a photo of the object. an implement used to erase something.",
+            "a photo of the object. the entrance (the space in a wall) through which you enter or leave a room or building; the space that a object can close.",
+            "a photo of the object. tallest living quadruped; having a spotted coat and small horns and very long neck and legs; of savannahs of tropical Africa.",
+            "a photo of the object. the maximum operating capability of a system (especially an aircraft).",
+            "a photo of the object. a stone that forms the top of wall or building.",
+            "a photo of the object. fruit with red or yellow or green skin and sweet to tart crisp whitish flesh.",
+            "a photo of the object. reddish-brown Old World raccoon-like carnivore; in some classifications considered unrelated to the giant object.",
+            "a photo of the object. five-toed pachyderm.",
+            "a photo of the object. a power tool for drilling rocks.",
+            "a photo of the object. a decorative loop of braid or cord.",
+            "a photo of the object. stately heavy-bodied aquatic bird with very long neck and usually white plumage as adult.",
+            "a photo of the object. a very tall building with many stories.",
+            "a photo of the object. any of several small dull-colored singing birds feeding on seeds or insects.",
+            "a photo of the object. a cutting or thrusting weapon that has a long metal object and a hilt with a hand guard.",
+            "a photo of the object. a tall perennial woody plant having a main trunk and branches forming a distinct elevated crown; includes both gymnosperms and angiosperms.",
+            "a photo of the object. a movable chair mounted on large wheels; for invalids or those who cannot walk; frequently propelled by the occupant.",
+            "a photo of the object. a mill that is powered by men or animals walking on a circular belt or climbing steps.",
+            "a photo of the object. a framework of wood or metal that contains a glass windowpane and is built into a wall or roof to admit light or air."
+          ],
+          "test_winners": [
+            "a photo of the object. insect having biting mouthparts and front wings modified to form horny covers overlying the membranous rear wings.",
+            "a photo of the object. a structure that has a roof and walls and stands more or less permanently in one place.",
+            "a photo of the object. uncastrated adult male of domestic cattle.",
+            "a photo of the object. any of the larger cetacean mammals having a streamlined body and breathing through a blowhole on the head.",
+            "a photo of the object. the entrance (the space in a wall) through which you enter or leave a room or building; the space that a object can close.",
+            "a photo of the object. tallest living quadruped; having a spotted coat and small horns and very long neck and legs; of savannahs of tropical Africa.",
+            "a photo of the object. a vehicle that can fly.",
+            "a photo of the object. short-tailed Old World burrowing rodent with large cheek pouches.",
+            "a photo of the object. sweet juicy gritty-textured fruit available in many varieties.",
+            "a photo of the object. reddish-brown Old World raccoon-like carnivore; in some classifications considered unrelated to the giant object.",
+            "a photo of the object. massive thick-skinned herbivorous animal living in or around rivers of tropical Africa.",
+            "a photo of the object. a power tool for drilling rocks.",
+            "a photo of the object. trade name for an adhesive bandage to cover small cuts or blisters.",
+            "a photo of the object. stately heavy-bodied aquatic bird with very long neck and usually white plumage as adult.",
+            "a photo of the object. a very tall building with many stories.",
+            "a photo of the object. any of several small dull-colored singing birds feeding on seeds or insects.",
+            "a photo of the object. a cutting or thrusting weapon that has a long metal object and a hilt with a hand guard.",
+            "a photo of the object. a tall perennial woody plant having a main trunk and branches forming a distinct elevated crown; includes both gymnosperms and angiosperms.",
+            "a photo of the object. a movable chair mounted on large wheels; for invalids or those who cannot walk; frequently propelled by the occupant.",
+            "a photo of the object. a mill that is powered by men or animals walking on a circular belt or climbing steps.",
+            "a photo of the object. a framework of wood or metal that contains a glass windowpane and is built into a wall or roof to admit light or air."
+          ],
+          "unchanged_id": 13
+        },
+        "names_filtered": {
+          "reference_indices": [
+            27,
+            554,
+            99,
+            345,
+            574,
+            106,
+            319,
+            56,
+            374,
+            418,
+            252,
+            103,
+            355,
+            226,
+            354,
+            84,
+            150,
+            364,
+            492,
+            582,
+            588
+          ],
+          "test_indices": [
+            27,
+            554,
+            99,
+            327,
+            290,
+            106,
+            319,
+            236,
+            228,
+            418,
+            252,
+            103,
+            355,
+            226,
+            354,
+            84,
+            489,
+            112,
+            492,
+            582,
+            588
+          ],
+          "reference_winners": [
+            "a photo of the bat (animal).",
+            "a photo of the tree house.",
+            "a photo of the cattle.",
+            "a photo of the mug.",
+            "a photo of the wardrobe.",
+            "a photo of the cheetah.",
+            "a photo of the lynx.",
+            "a photo of the boot.",
+            "a photo of the peach.",
+            "a photo of the red panda.",
+            "a photo of the hippopotamus.",
+            "a photo of the chainsaw.",
+            "a photo of the office supplies.",
+            "a photo of the goose.",
+            "a photo of the office building.",
+            "a photo of the canary.",
+            "a photo of the dagger.",
+            "a photo of the palm tree.",
+            "a photo of the stationary bicycle.",
+            "a photo of the wheel.",
+            "a photo of the window blind."
+          ],
+          "test_winners": [
+            "a photo of the bat (animal).",
+            "a photo of the tree house.",
+            "a photo of the cattle.",
+            "a photo of the marine mammal.",
+            "a photo of the kitchen & dining room table.",
+            "a photo of the cheetah.",
+            "a photo of the lynx.",
+            "a photo of the hamster.",
+            "a photo of the grapefruit.",
+            "a photo of the red panda.",
+            "a photo of the hippopotamus.",
+            "a photo of the chainsaw.",
+            "a photo of the office supplies.",
+            "a photo of the goose.",
+            "a photo of the office building.",
+            "a photo of the canary.",
+            "a photo of the stairs.",
+            "a photo of the christmas tree.",
+            "a photo of the stationary bicycle.",
+            "a photo of the wheel.",
+            "a photo of the window blind."
+          ],
+          "unchanged_id": 15
+        },
+        "glosses_filtered": {
+          "reference_indices": [
+            1362,
+            749,
+            825,
+            984,
+            1666,
+            838,
+            982,
+            802,
+            617,
+            1194,
+            976,
+            1091,
+            1049,
+            1547,
+            1270,
+            1504,
+            1679,
+            733,
+            1096,
+            1627,
+            915
+          ],
+          "test_indices": [
+            672,
+            749,
+            752,
+            1681,
+            1666,
+            1721,
+            604,
+            1093,
+            1678,
+            1194,
+            1110,
+            1091,
+            637,
+            1547,
+            817,
+            1504,
+            795,
+            1284,
+            1096,
+            1627,
+            915
+          ],
+          "reference_winners": [
+            "a photo of the object. a container in which plants are cultivated.",
+            "a photo of the object. a structure that has a roof and walls and stands more or less permanently in one place.",
+            "a photo of the object. domesticated bovine animals as a group regardless of sex or age; ; ; - Bible.",
+            "a photo of the object. an implement used to erase something.",
+            "a photo of the object. a tall piece of furniture that provides storage space for clothes; has a door and rails or hooks for hanging clothes.",
+            "a photo of the object. long-legged spotted cat of Africa and southwestern Asia having nonretractile claws; the swiftest mammal; can be trained to run down game.",
+            "a photo of the object. the maximum operating capability of a system (especially an aircraft).",
+            "a photo of the object. a stone that forms the top of wall or building.",
+            "a photo of the object. fruit with red or yellow or green skin and sweet to tart crisp whitish flesh.",
+            "a photo of the object. reddish-brown Old World raccoon-like carnivore; in some classifications considered unrelated to the giant object.",
+            "a photo of the object. five-toed pachyderm.",
+            "a photo of the object. a power tool for drilling rocks.",
+            "a photo of the object. a decorative loop of braid or cord.",
+            "a photo of the object. stately heavy-bodied aquatic bird with very long neck and usually white plumage as adult.",
+            "a photo of the object. a building containing offices where work is done.",
+            "a photo of the object. any of several small dull-colored singing birds feeding on seeds or insects.",
+            "a photo of the object. any instrument or instrumentality used in fighting or hunting.",
+            "a photo of the object. evergreen shrubs or small trees.",
+            "a photo of the object. wheeled vehicle that can be pushed by a person; may have one or two or four wheels.",
+            "a photo of the object. a mill that is powered by men or animals walking on a circular belt or climbing steps.",
+            "a photo of the object. hanging cloth used as a blind (especially for a window)."
+          ],
+          "test_winners": [
+            "a photo of the object. insect having biting mouthparts and front wings modified to form horny covers overlying the membranous rear wings.",
+            "a photo of the object. a structure that has a roof and walls and stands more or less permanently in one place.",
+            "a photo of the object. uncastrated adult male of domestic cattle.",
+            "a photo of the object. any of the larger cetacean mammals having a streamlined body and breathing through a blowhole on the head.",
+            "a photo of the object. a tall piece of furniture that provides storage space for clothes; has a door and rails or hooks for hanging clothes.",
+            "a photo of the object. any of several fleet black-and-white striped African equines.",
+            "a photo of the object. a vehicle that can fly.",
+            "a photo of the object. short-tailed Old World burrowing rodent with large cheek pouches.",
+            "a photo of the object. large oblong or roundish melon with a hard green rind and sweet watery red or occasionally yellowish pulp.",
+            "a photo of the object. reddish-brown Old World raccoon-like carnivore; in some classifications considered unrelated to the giant object.",
+            "a photo of the object. massive thick-skinned herbivorous animal living in or around rivers of tropical Africa.",
+            "a photo of the object. a power tool for drilling rocks.",
+            "a photo of the object. trade name for an adhesive bandage to cover small cuts or blisters.",
+            "a photo of the object. stately heavy-bodied aquatic bird with very long neck and usually white plumage as adult.",
+            "a photo of the object. a large building formerly occupied by a ruler and fortified against attack.",
+            "a photo of the object. any of several small dull-colored singing birds feeding on seeds or insects.",
+            "a photo of the object. (Middle Ages) a cylindrical piece of armor plate to protect the arm.",
+            "a photo of the object. any plant of the family Palmae having an unbranched trunk crowned by large pinnate or palmate leaves.",
+            "a photo of the object. wheeled vehicle that can be pushed by a person; may have one or two or four wheels.",
+            "a photo of the object. a mill that is powered by men or animals walking on a circular belt or climbing steps.",
+            "a photo of the object. hanging cloth used as a blind (especially for a window)."
+          ],
+          "unchanged_id": 9
+        }
+      }
+    },
+    "random_small_to_random_large": {
+      "percent": {
+        "semantic": [
+          72.80178697639937,
+          70.1879630236233
+        ],
+        "names_transfer": [
+          94.24481383560492,
+          90.22534232565638
+        ],
+        "names_test_oracle": [
+          97.64631174719575,
+          88.90562426906044
+        ],
+        "glosses_transfer": [
+          93.38484224426816,
+          89.44595921869745
+        ],
+        "glosses_test_oracle": [
+          94.63260247704739,
+          74.9752250857248
+        ],
+        "names_filtered_transfer": [
+          89.00486702055129,
+          83.46155598614824
+        ],
+        "names_filtered_test_oracle": [
+          92.62007349294736,
+          76.86702335804786
+        ],
+        "glosses_filtered_transfer": [
+          87.40798614406202,
+          83.53241679587477
+        ],
+        "glosses_filtered_test_oracle": [
+          90.49743800129836,
+          68.72967509412705
+        ],
+        "sketch_two_first": [
+          48.88062163402696,
+          44.73932600973844
+        ],
+        "source_first": [
+          70.70840978799441,
+          66.3159372988526
+        ]
+      },
+      "transfer_minus_semantic": {
+        "names_transfer": {
+          "query_points": [
+            21.443026859205546,
+            20.03737930203309
+          ],
+          "subject_class_points": [
+            20.740246126370447,
+            19.148347613809573
+          ],
+          "interval95": [
+            [
+              8.839873053194445,
+              5.648681194670787
+            ],
+            [
+              30.90941597784832,
+              30.450113559036435
+            ]
+          ]
+        },
+        "glosses_transfer": {
+          "query_points": [
+            20.58305526786879,
+            19.25799619507415
+          ],
+          "subject_class_points": [
+            19.750461826043146,
+            18.291205551927497
+          ],
+          "interval95": [
+            [
+              10.956683993543583,
+              8.29939859198713
+            ],
+            [
+              29.179866195652203,
+              29.022655060538106
+            ]
+          ]
+        },
+        "names_filtered_transfer": {
+          "query_points": [
+            16.203080044151918,
+            13.27359296252494
+          ],
+          "subject_class_points": [
+            15.118345681431425,
+            11.981680686017796
+          ],
+          "interval95": [
+            [
+              2.509652073799005,
+              -2.172546031297588
+            ],
+            [
+              26.627921425378936,
+              24.890662637887676
+            ]
+          ]
+        },
+        "glosses_filtered_transfer": {
+          "query_points": [
+            14.606199167662655,
+            13.344453772251457
+          ],
+          "subject_class_points": [
+            13.91320227799213,
+            12.386443034089242
+          ],
+          "interval95": [
+            [
+              2.9163184789247474,
+              0.4345265404426384
+            ],
+            [
+              25.10263840437359,
+              24.74578451873925
+            ]
+          ]
+        }
+      },
+      "test_oracle_minus_transfer": {
+        "names": {
+          "query_points": [
+            3.4014979115908437,
+            -1.3197180565959599
+          ],
+          "subject_class_points": [
+            3.3985528917539685,
+            -0.8095238889966692
+          ],
+          "interval95": [
+            [
+              0.0,
+              -14.214285715882266
+            ],
+            [
+              10.195658675261907,
+              11.78571404889226
+            ]
+          ]
+        },
+        "glosses": {
+          "query_points": [
+            1.247760232779216,
+            -14.470734132972652
+          ],
+          "subject_class_points": [
+            1.2605230013529458,
+            -13.976190421020702
+          ],
+          "interval95": [
+            [
+              0.20249889720053904,
+              -28.31011860320965
+            ],
+            [
+              2.6819512957618348,
+              -0.4761911502906255
+            ]
+          ]
+        },
+        "names_filtered": {
+          "query_points": [
+            3.615206472396062,
+            -6.594532628100391
+          ],
+          "subject_class_points": [
+            3.6661087757065185,
+            -6.166666440133538
+          ],
+          "interval95": [
+            [
+              0.02269489424569266,
+              -20.666666176347505
+            ],
+            [
+              10.180341218199047,
+              6.690476577551592
+            ]
+          ]
+        },
+        "glosses_filtered": {
+          "query_points": [
+            3.0894518572363454,
+            -14.80274170174771
+          ],
+          "subject_class_points": [
+            3.0111336991900486,
+            -14.380952649350679
+          ],
+          "interval95": [
+            [
+              1.0245215538002195,
+              -29.119643592053933
+            ],
+            [
+              5.610529443337803,
+              -1.1666671115727651
+            ]
+          ]
+        }
+      },
+      "selected": {
+        "names": {
+          "reference_indices": [
+            27,
+            554,
+            99,
+            163,
+            164,
+            216,
+            248,
+            236,
+            375,
+            412,
+            422,
+            103,
+            438,
+            226,
+            466,
+            84,
+            489,
+            553,
+            583,
+            582,
+            587
+          ],
+          "test_indices": [
+            27,
+            554,
+            99,
+            163,
+            164,
+            216,
+            248,
+            56,
+            375,
+            412,
+            422,
+            103,
+            438,
+            226,
+            466,
+            84,
+            512,
+            553,
+            583,
+            582,
+            587
+          ],
+          "reference_winners": [
+            "a photo of the bat (animal).",
+            "a photo of the tree house.",
+            "a photo of the cattle.",
+            "a photo of the dolphin.",
+            "a photo of the door.",
+            "a photo of the giraffe.",
+            "a photo of the helicopter.",
+            "a photo of the hamster.",
+            "a photo of the pear.",
+            "a photo of the raccoon.",
+            "a photo of the rhinoceros.",
+            "a photo of the chainsaw.",
+            "a photo of the scissors.",
+            "a photo of the goose.",
+            "a photo of the skyscraper.",
+            "a photo of the canary.",
+            "a photo of the stairs.",
+            "a photo of the tree.",
+            "a photo of the wheelchair.",
+            "a photo of the wheel.",
+            "a photo of the window."
+          ],
+          "test_winners": [
+            "a photo of the bat (animal).",
+            "a photo of the tree house.",
+            "a photo of the cattle.",
+            "a photo of the dolphin.",
+            "a photo of the door.",
+            "a photo of the giraffe.",
+            "a photo of the helicopter.",
+            "a photo of the boot.",
+            "a photo of the pear.",
+            "a photo of the raccoon.",
+            "a photo of the rhinoceros.",
+            "a photo of the chainsaw.",
+            "a photo of the scissors.",
+            "a photo of the goose.",
+            "a photo of the skyscraper.",
+            "a photo of the canary.",
+            "a photo of the sword.",
+            "a photo of the tree.",
+            "a photo of the wheelchair.",
+            "a photo of the wheel.",
+            "a photo of the window."
+          ],
+          "unchanged_id": 19
+        },
+        "glosses": {
+          "reference_indices": [
+            672,
+            749,
+            752,
+            1681,
+            946,
+            1059,
+            604,
+            1093,
+            1303,
+            1194,
+            1110,
+            1091,
+            637,
+            1547,
+            1484,
+            1504,
+            1552,
+            1629,
+            1685,
+            1627,
+            1691
+          ],
+          "test_indices": [
+            1362,
+            749,
+            825,
+            984,
+            946,
+            1059,
+            982,
+            802,
+            617,
+            1194,
+            976,
+            1091,
+            1049,
+            1547,
+            1484,
+            1504,
+            1552,
+            1629,
+            1685,
+            1627,
+            1691
+          ],
+          "reference_winners": [
+            "a photo of the object. insect having biting mouthparts and front wings modified to form horny covers overlying the membranous rear wings.",
+            "a photo of the object. a structure that has a roof and walls and stands more or less permanently in one place.",
+            "a photo of the object. uncastrated adult male of domestic cattle.",
+            "a photo of the object. any of the larger cetacean mammals having a streamlined body and breathing through a blowhole on the head.",
+            "a photo of the object. the entrance (the space in a wall) through which you enter or leave a room or building; the space that a object can close.",
+            "a photo of the object. tallest living quadruped; having a spotted coat and small horns and very long neck and legs; of savannahs of tropical Africa.",
+            "a photo of the object. a vehicle that can fly.",
+            "a photo of the object. short-tailed Old World burrowing rodent with large cheek pouches.",
+            "a photo of the object. sweet juicy gritty-textured fruit available in many varieties.",
+            "a photo of the object. reddish-brown Old World raccoon-like carnivore; in some classifications considered unrelated to the giant object.",
+            "a photo of the object. massive thick-skinned herbivorous animal living in or around rivers of tropical Africa.",
+            "a photo of the object. a power tool for drilling rocks.",
+            "a photo of the object. trade name for an adhesive bandage to cover small cuts or blisters.",
+            "a photo of the object. stately heavy-bodied aquatic bird with very long neck and usually white plumage as adult.",
+            "a photo of the object. a very tall building with many stories.",
+            "a photo of the object. any of several small dull-colored singing birds feeding on seeds or insects.",
+            "a photo of the object. a cutting or thrusting weapon that has a long metal object and a hilt with a hand guard.",
+            "a photo of the object. a tall perennial woody plant having a main trunk and branches forming a distinct elevated crown; includes both gymnosperms and angiosperms.",
+            "a photo of the object. a movable chair mounted on large wheels; for invalids or those who cannot walk; frequently propelled by the occupant.",
+            "a photo of the object. a mill that is powered by men or animals walking on a circular belt or climbing steps.",
+            "a photo of the object. a framework of wood or metal that contains a glass windowpane and is built into a wall or roof to admit light or air."
+          ],
+          "test_winners": [
+            "a photo of the object. a container in which plants are cultivated.",
+            "a photo of the object. a structure that has a roof and walls and stands more or less permanently in one place.",
+            "a photo of the object. domesticated bovine animals as a group regardless of sex or age; ; ; - Bible.",
+            "a photo of the object. an implement used to erase something.",
+            "a photo of the object. the entrance (the space in a wall) through which you enter or leave a room or building; the space that a object can close.",
+            "a photo of the object. tallest living quadruped; having a spotted coat and small horns and very long neck and legs; of savannahs of tropical Africa.",
+            "a photo of the object. the maximum operating capability of a system (especially an aircraft).",
+            "a photo of the object. a stone that forms the top of wall or building.",
+            "a photo of the object. fruit with red or yellow or green skin and sweet to tart crisp whitish flesh.",
+            "a photo of the object. reddish-brown Old World raccoon-like carnivore; in some classifications considered unrelated to the giant object.",
+            "a photo of the object. five-toed pachyderm.",
+            "a photo of the object. a power tool for drilling rocks.",
+            "a photo of the object. a decorative loop of braid or cord.",
+            "a photo of the object. stately heavy-bodied aquatic bird with very long neck and usually white plumage as adult.",
+            "a photo of the object. a very tall building with many stories.",
+            "a photo of the object. any of several small dull-colored singing birds feeding on seeds or insects.",
+            "a photo of the object. a cutting or thrusting weapon that has a long metal object and a hilt with a hand guard.",
+            "a photo of the object. a tall perennial woody plant having a main trunk and branches forming a distinct elevated crown; includes both gymnosperms and angiosperms.",
+            "a photo of the object. a movable chair mounted on large wheels; for invalids or those who cannot walk; frequently propelled by the occupant.",
+            "a photo of the object. a mill that is powered by men or animals walking on a circular belt or climbing steps.",
+            "a photo of the object. a framework of wood or metal that contains a glass windowpane and is built into a wall or roof to admit light or air."
+          ],
+          "unchanged_id": 13
+        },
+        "names_filtered": {
+          "reference_indices": [
+            27,
+            554,
+            99,
+            327,
+            290,
+            106,
+            319,
+            236,
+            228,
+            418,
+            252,
+            103,
+            355,
+            226,
+            354,
+            84,
+            489,
+            112,
+            492,
+            582,
+            588
+          ],
+          "test_indices": [
+            27,
+            554,
+            99,
+            345,
+            574,
+            106,
+            319,
+            56,
+            374,
+            418,
+            252,
+            103,
+            355,
+            226,
+            354,
+            84,
+            150,
+            364,
+            492,
+            582,
+            588
+          ],
+          "reference_winners": [
+            "a photo of the bat (animal).",
+            "a photo of the tree house.",
+            "a photo of the cattle.",
+            "a photo of the marine mammal.",
+            "a photo of the kitchen & dining room table.",
+            "a photo of the cheetah.",
+            "a photo of the lynx.",
+            "a photo of the hamster.",
+            "a photo of the grapefruit.",
+            "a photo of the red panda.",
+            "a photo of the hippopotamus.",
+            "a photo of the chainsaw.",
+            "a photo of the office supplies.",
+            "a photo of the goose.",
+            "a photo of the office building.",
+            "a photo of the canary.",
+            "a photo of the stairs.",
+            "a photo of the christmas tree.",
+            "a photo of the stationary bicycle.",
+            "a photo of the wheel.",
+            "a photo of the window blind."
+          ],
+          "test_winners": [
+            "a photo of the bat (animal).",
+            "a photo of the tree house.",
+            "a photo of the cattle.",
+            "a photo of the mug.",
+            "a photo of the wardrobe.",
+            "a photo of the cheetah.",
+            "a photo of the lynx.",
+            "a photo of the boot.",
+            "a photo of the peach.",
+            "a photo of the red panda.",
+            "a photo of the hippopotamus.",
+            "a photo of the chainsaw.",
+            "a photo of the office supplies.",
+            "a photo of the goose.",
+            "a photo of the office building.",
+            "a photo of the canary.",
+            "a photo of the dagger.",
+            "a photo of the palm tree.",
+            "a photo of the stationary bicycle.",
+            "a photo of the wheel.",
+            "a photo of the window blind."
+          ],
+          "unchanged_id": 15
+        },
+        "glosses_filtered": {
+          "reference_indices": [
+            672,
+            749,
+            752,
+            1681,
+            1666,
+            1721,
+            604,
+            1093,
+            1678,
+            1194,
+            1110,
+            1091,
+            637,
+            1547,
+            817,
+            1504,
+            795,
+            1284,
+            1096,
+            1627,
+            915
+          ],
+          "test_indices": [
+            1362,
+            749,
+            825,
+            984,
+            1666,
+            838,
+            982,
+            802,
+            617,
+            1194,
+            976,
+            1091,
+            1049,
+            1547,
+            1270,
+            1504,
+            1679,
+            733,
+            1096,
+            1627,
+            915
+          ],
+          "reference_winners": [
+            "a photo of the object. insect having biting mouthparts and front wings modified to form horny covers overlying the membranous rear wings.",
+            "a photo of the object. a structure that has a roof and walls and stands more or less permanently in one place.",
+            "a photo of the object. uncastrated adult male of domestic cattle.",
+            "a photo of the object. any of the larger cetacean mammals having a streamlined body and breathing through a blowhole on the head.",
+            "a photo of the object. a tall piece of furniture that provides storage space for clothes; has a door and rails or hooks for hanging clothes.",
+            "a photo of the object. any of several fleet black-and-white striped African equines.",
+            "a photo of the object. a vehicle that can fly.",
+            "a photo of the object. short-tailed Old World burrowing rodent with large cheek pouches.",
+            "a photo of the object. large oblong or roundish melon with a hard green rind and sweet watery red or occasionally yellowish pulp.",
+            "a photo of the object. reddish-brown Old World raccoon-like carnivore; in some classifications considered unrelated to the giant object.",
+            "a photo of the object. massive thick-skinned herbivorous animal living in or around rivers of tropical Africa.",
+            "a photo of the object. a power tool for drilling rocks.",
+            "a photo of the object. trade name for an adhesive bandage to cover small cuts or blisters.",
+            "a photo of the object. stately heavy-bodied aquatic bird with very long neck and usually white plumage as adult.",
+            "a photo of the object. a large building formerly occupied by a ruler and fortified against attack.",
+            "a photo of the object. any of several small dull-colored singing birds feeding on seeds or insects.",
+            "a photo of the object. (Middle Ages) a cylindrical piece of armor plate to protect the arm.",
+            "a photo of the object. any plant of the family Palmae having an unbranched trunk crowned by large pinnate or palmate leaves.",
+            "a photo of the object. wheeled vehicle that can be pushed by a person; may have one or two or four wheels.",
+            "a photo of the object. a mill that is powered by men or animals walking on a circular belt or climbing steps.",
+            "a photo of the object. hanging cloth used as a blind (especially for a window)."
+          ],
+          "test_winners": [
+            "a photo of the object. a container in which plants are cultivated.",
+            "a photo of the object. a structure that has a roof and walls and stands more or less permanently in one place.",
+            "a photo of the object. domesticated bovine animals as a group regardless of sex or age; ; ; - Bible.",
+            "a photo of the object. an implement used to erase something.",
+            "a photo of the object. a tall piece of furniture that provides storage space for clothes; has a door and rails or hooks for hanging clothes.",
+            "a photo of the object. long-legged spotted cat of Africa and southwestern Asia having nonretractile claws; the swiftest mammal; can be trained to run down game.",
+            "a photo of the object. the maximum operating capability of a system (especially an aircraft).",
+            "a photo of the object. a stone that forms the top of wall or building.",
+            "a photo of the object. fruit with red or yellow or green skin and sweet to tart crisp whitish flesh.",
+            "a photo of the object. reddish-brown Old World raccoon-like carnivore; in some classifications considered unrelated to the giant object.",
+            "a photo of the object. five-toed pachyderm.",
+            "a photo of the object. a power tool for drilling rocks.",
+            "a photo of the object. a decorative loop of braid or cord.",
+            "a photo of the object. stately heavy-bodied aquatic bird with very long neck and usually white plumage as adult.",
+            "a photo of the object. a building containing offices where work is done.",
+            "a photo of the object. any of several small dull-colored singing birds feeding on seeds or insects.",
+            "a photo of the object. any instrument or instrumentality used in fighting or hunting.",
+            "a photo of the object. evergreen shrubs or small trees.",
+            "a photo of the object. wheeled vehicle that can be pushed by a person; may have one or two or four wheels.",
+            "a photo of the object. a mill that is powered by men or animals walking on a circular belt or climbing steps.",
+            "a photo of the object. hanging cloth used as a blind (especially for a window)."
+          ],
+          "unchanged_id": 9
+        }
+      }
+    }
+  },
+  "direct_KD_winner_max_absolute_errors": [
+    [
+      0.0,
+      0.0
+    ],
+    [
+      7.039308547973633e-05,
+      0.0
+    ]
+  ],
+  "evaluator": "9310e11f47f6fafb54c64060709df8a302165e54e2a8812c97bdb85193c15139",
+  "name_revision": "737856911291eb876b820733bde426bdb5845946",
+  "native_revision": "d5a5347160914935c0e416d597cdd879815e2497",
+  "choice_revision": "d19cfc1a20b2f67320c906202f25808254bc765e",
+  "revision": "e26544fb95d6f886796816c2cb6e3e606a22de07",
+  "sha256": "c648fed7d764ed3d257af30ba8925b8860e4915e45452a74d78e466104e9776a",
+  "device": "NVIDIA L4"
+}
