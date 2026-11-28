@@ -1,0 +1,360 @@
+{
+  "revision": "e434ea55323864824c0bcc8bffeea30715c348d9",
+  "fixed_revision": "d19cfc1a20b2f67320c906202f25808254bc765e",
+  "native_revision": "d5a5347160914935c0e416d597cdd879815e2497",
+  "split": "sketchy_2",
+  "queries": 12694,
+  "sources": 2100,
+  "seed": 42,
+  "identical_definitions": 0,
+  "reports": {
+    "different_source_right_class": {
+      "accuracy_and_differences": {
+        "native_cosine_margin": {
+          "query_points": 61.80872853316528,
+          "subject_class_points": 61.703729868015586,
+          "interval95": [
+            58.86316837593624,
+            64.84740523695883
+          ]
+        },
+        "aligned_text_minus_native_cosine_margin": {
+          "query_points": -8.184969276823697,
+          "subject_class_points": -8.114511414511416,
+          "interval95": [
+            -11.27548509030652,
+            -4.934815667137097
+          ]
+        },
+        "sketch/text/aligned": {
+          "query_points": 53.62375925634157,
+          "subject_class_points": 53.589218453504174,
+          "interval95": [
+            51.54118948181448,
+            55.76648905657835
+          ]
+        },
+        "sketch/text/sorted": {
+          "query_points": 47.20340318260596,
+          "subject_class_points": 47.24941288869861,
+          "interval95": [
+            45.09993045975189,
+            49.18509411554056
+          ]
+        },
+        "aligned_text_minus_sketch/text/sorted": {
+          "query_points": 6.420356073735622,
+          "subject_class_points": 6.339805564805564,
+          "interval95": [
+            3.6283329501186645,
+            9.389631549006548
+          ]
+        },
+        "sketch/text/independent_permutation": {
+          "query_points": 49.897589412320784,
+          "subject_class_points": 50.03481690267405,
+          "interval95": [
+            49.237205955420244,
+            50.84232714705929
+          ]
+        },
+        "aligned_text_minus_sketch/text/independent_permutation": {
+          "query_points": 3.726169844020797,
+          "subject_class_points": 3.554401550830121,
+          "interval95": [
+            1.5032971823150392,
+            5.800639922247063
+          ]
+        },
+        "source/text/aligned": {
+          "query_points": 67.12620135497085,
+          "subject_class_points": 67.01866863295433,
+          "interval95": [
+            63.60840758778258,
+            70.33727316334458
+          ]
+        },
+        "aligned_text_minus_source/text/aligned": {
+          "query_points": -13.502442098629274,
+          "subject_class_points": -13.42945017945018,
+          "interval95": [
+            -17.274840298590295,
+            -10.002528595742882
+          ]
+        },
+        "source/text/sorted": {
+          "query_points": 54.78178667086813,
+          "subject_class_points": 54.775217771646346,
+          "interval95": [
+            53.07555703555704,
+            56.74379467754468
+          ]
+        },
+        "aligned_text_minus_source/text/sorted": {
+          "query_points": -1.158027414526548,
+          "subject_class_points": -1.1859993181421746,
+          "interval95": [
+            -4.574955672634245,
+            1.6903248900570322
+          ]
+        },
+        "source/text/independent_permutation": {
+          "query_points": 50.26784307546872,
+          "subject_class_points": 50.331995121280826,
+          "interval95": [
+            49.28981530704745,
+            51.371339847322
+          ]
+        },
+        "aligned_text_minus_source/text/independent_permutation": {
+          "query_points": 3.3559161808728533,
+          "subject_class_points": 3.257223332223332,
+          "interval95": [
+            0.9874557948665088,
+            5.509025524739811
+          ]
+        },
+        "sketch/isotropic/aligned": {
+          "query_points": 50.44903103828581,
+          "subject_class_points": 50.384915745630046,
+          "interval95": [
+            49.39733218831433,
+            51.39048020101591
+          ]
+        },
+        "aligned_text_minus_sketch/isotropic/aligned": {
+          "query_points": 3.1747282180557743,
+          "subject_class_points": 3.2043027078741364,
+          "interval95": [
+            1.1505642307428021,
+            5.433408962069676
+          ]
+        },
+        "sketch/isotropic/sorted": {
+          "query_points": 48.34567512210493,
+          "subject_class_points": 48.2932116824974,
+          "interval95": [
+            47.06059679407894,
+            49.54442028540243
+          ]
+        },
+        "aligned_text_minus_sketch/isotropic/sorted": {
+          "query_points": 5.278084134236647,
+          "subject_class_points": 5.2960067710067715,
+          "interval95": [
+            3.032280285851714,
+            8.02448246858961
+          ]
+        },
+        "sketch/isotropic/independent_permutation": {
+          "query_points": 50.6774854261856,
+          "subject_class_points": 50.69721455792884,
+          "interval95": [
+            49.882597875008585,
+            51.55632971195471
+          ]
+        },
+        "aligned_text_minus_sketch/isotropic/independent_permutation": {
+          "query_points": 2.946273830155979,
+          "subject_class_points": 2.8920038955753244,
+          "interval95": [
+            0.7321152128294989,
+            5.096185246631676
+          ]
+        },
+        "source/isotropic/aligned": {
+          "query_points": 63.17157712305026,
+          "subject_class_points": 63.182709354137934,
+          "interval95": [
+            60.80274421015493,
+            65.60075457280814
+          ]
+        },
+        "aligned_text_minus_source/isotropic/aligned": {
+          "query_points": -9.547817866708682,
+          "subject_class_points": -9.593490900633759,
+          "interval95": [
+            -12.232723790759504,
+            -7.115367529296103
+          ]
+        },
+        "source/isotropic/sorted": {
+          "query_points": 53.82070269418623,
+          "subject_class_points": 53.61869876155592,
+          "interval95": [
+            52.68770171627314,
+            54.60192896389325
+          ]
+        },
+        "aligned_text_minus_source/isotropic/sorted": {
+          "query_points": -0.19694343784465101,
+          "subject_class_points": -0.029480308051736383,
+          "interval95": [
+            -1.9560883659990802,
+            2.052066111798255
+          ]
+        },
+        "source/isotropic/independent_permutation": {
+          "query_points": 49.732156924531274,
+          "subject_class_points": 49.682544439687284,
+          "interval95": [
+            48.80755481951909,
+            50.54894375796163
+          ]
+        },
+        "aligned_text_minus_source/isotropic/independent_permutation": {
+          "query_points": 3.891602331810304,
+          "subject_class_points": 3.9066740138168714,
+          "interval95": [
+            1.3603420851635137,
+            6.35535084294013
+          ]
+        },
+        "aligned_text_minus_chance": {
+          "query_points": 3.6237592563415784,
+          "subject_class_points": 3.5892184535041687,
+          "interval95": [
+            1.541189481814482,
+            5.766489056578342
+          ]
+        }
+      },
+      "rank_discrepancy_percentiles": [
+        4.144830871843735,
+        7.274892806098176,
+        11.52929966650786,
+        19.05669366364936
+      ],
+      "median_abs_matched_cosine_difference": 0.008634030818939209,
+      "median_abs_matched_text_difference": 0.004286225885152817,
+      "median_abs_matched_isotropic_difference": 0.0027358531951904297
+    },
+    "exact_source_within_class": {
+      "accuracy_and_differences": {
+        "native_cosine_margin": {
+          "query_points": 49.905467149834564,
+          "subject_class_points": 50.034854695568974,
+          "interval95": [
+            48.87289711941498,
+            51.24116792598936
+          ]
+        },
+        "aligned_text_minus_native_cosine_margin": {
+          "query_points": 0.5120529383960927,
+          "subject_class_points": 0.43262398976684674,
+          "interval95": [
+            -1.3808443045050185,
+            2.2114566518137933
+          ]
+        },
+        "sketch/text/aligned": {
+          "query_points": 50.41752008823066,
+          "subject_class_points": 50.46747868533582,
+          "interval95": [
+            49.6471678619,
+            51.34999413285127
+          ]
+        },
+        "sketch/text/sorted": {
+          "query_points": 48.73168426028045,
+          "subject_class_points": 48.76332860261432,
+          "interval95": [
+            47.83028057590559,
+            49.721140278372424
+          ]
+        },
+        "aligned_text_minus_sketch/text/sorted": {
+          "query_points": 1.6858358279502126,
+          "subject_class_points": 1.704150082721511,
+          "interval95": [
+            0.33085856934071234,
+            3.1302573319537603
+          ]
+        },
+        "sketch/text/independent_permutation": {
+          "query_points": 50.24420986292737,
+          "subject_class_points": 50.2727872656444,
+          "interval95": [
+            49.607741521045085,
+            50.94534236596737
+          ]
+        },
+        "aligned_text_minus_sketch/text/independent_permutation": {
+          "query_points": 0.17331022530329288,
+          "subject_class_points": 0.19469141969141976,
+          "interval95": [
+            -0.9325504290682861,
+            1.3404138321995456
+          ]
+        },
+        "sketch/isotropic/aligned": {
+          "query_points": 50.858673389002675,
+          "subject_class_points": 50.867922025064885,
+          "interval95": [
+            50.040052678802674,
+            51.62743246832532
+          ]
+        },
+        "aligned_text_minus_sketch/isotropic/aligned": {
+          "query_points": -0.44115330077201825,
+          "subject_class_points": -0.400443339729054,
+          "interval95": [
+            -1.3039020635449203,
+            0.5381547784226357
+          ]
+        },
+        "sketch/isotropic/sorted": {
+          "query_points": 49.87395619977942,
+          "subject_class_points": 49.87627597270454,
+          "interval95": [
+            49.01370533566961,
+            50.76801921623348
+          ]
+        },
+        "aligned_text_minus_sketch/isotropic/sorted": {
+          "query_points": 0.5435638884512368,
+          "subject_class_points": 0.591202712631284,
+          "interval95": [
+            -0.64294363705078,
+            1.8750021374128516
+          ]
+        },
+        "sketch/isotropic/independent_permutation": {
+          "query_points": 49.74791239955885,
+          "subject_class_points": 49.67890059675775,
+          "interval95": [
+            48.784187138919286,
+            50.57076655487369
+          ]
+        },
+        "aligned_text_minus_sketch/isotropic/independent_permutation": {
+          "query_points": 0.6696076886718134,
+          "subject_class_points": 0.7885780885780883,
+          "interval95": [
+            -0.4635621091871091,
+            2.1389250366036077
+          ]
+        },
+        "aligned_text_minus_chance": {
+          "query_points": 0.41752008823066017,
+          "subject_class_points": 0.46747868533582826,
+          "interval95": [
+            -0.3528321380999951,
+            1.3499941328512755
+          ]
+        }
+      },
+      "rank_discrepancy_percentiles": [
+        4.76417341591234,
+        11.67222486898523,
+        24.542162934730797,
+        67.69890424011433
+      ],
+      "median_abs_matched_cosine_difference": 0.013213396072387695,
+      "median_abs_matched_text_difference": 0.005841702222824097,
+      "median_abs_matched_isotropic_difference": 0.003229426220059395
+    }
+  },
+  "raw_sha256": "e23cbcb8d8d78de288245c2742e55b8f0b7bd96bccca0bb27a624c3b67b4f488",
+  "device": "NVIDIA L4"
+}
