@@ -46,7 +46,7 @@ class ObserverClass:
         self.counts = counts.cuda()
         self.weights = self.counts.double().reciprocal().repeat_interleave(self.counts)
         self.scores = values.cuda()
-        self.order = self.scores.argsort(1, descending=True, stable=True)
+        self.order = self.scores.argsort(dim=1, descending=True, stable=True)
         left, right = torch.triu_indices(values.shape[1], values.shape[1], offset=1)
         self.left = left.cuda()
         self.right = right.cuda()
