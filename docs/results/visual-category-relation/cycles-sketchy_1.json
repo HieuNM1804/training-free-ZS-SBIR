@@ -1,0 +1,147 @@
+{
+  "split": "sketchy_1",
+  "queries": 14179,
+  "gallery": 17100,
+  "reports": {
+    "native": {
+      "strict_errors": 8982,
+      "ties": 0,
+      "offset_families": {
+        "photo": {
+          "strict_errors": 8982,
+          "vertices": 481,
+          "distinct_edges": 1429,
+          "cyclic_edges": 123,
+          "largest_component": 8,
+          "minimum_failures_lower": 9,
+          "minimum_failures_upper": 11,
+          "lower_percent": 0.10020040080160321,
+          "upper_percent": 0.1224671565352928,
+          "cycle_sizes": {
+            "2": 9
+          },
+          "self_loop_queries": 0,
+          "stride": 1.2472135424613953
+        },
+        "noun": {
+          "strict_errors": 8982,
+          "vertices": 137,
+          "distinct_edges": 640,
+          "cyclic_edges": 1451,
+          "largest_component": 17,
+          "minimum_failures_lower": 396,
+          "minimum_failures_upper": 468,
+          "lower_percent": 4.408817635270541,
+          "upper_percent": 5.210420841683367,
+          "cycle_sizes": {
+            "1": 346,
+            "2": 49,
+            "4": 1
+          },
+          "self_loop_queries": 346,
+          "stride": 1.2472135424613953
+        },
+        "true_class": {
+          "strict_errors": 8982,
+          "vertices": 25,
+          "distinct_edges": 89,
+          "cyclic_edges": 755,
+          "largest_component": 8,
+          "minimum_failures_lower": 18,
+          "minimum_failures_upper": 23,
+          "lower_percent": 0.20040080160320642,
+          "upper_percent": 0.2560676909374304,
+          "cycle_sizes": {
+            "2": 18
+          },
+          "self_loop_queries": 0,
+          "stride": 1.2472135424613953
+        }
+      }
+    },
+    "semantic": {
+      "strict_errors": 4235,
+      "ties": 0,
+      "offset_families": {
+        "photo": {
+          "strict_errors": 4235,
+          "vertices": 991,
+          "distinct_edges": 2263,
+          "cyclic_edges": 858,
+          "largest_component": 130,
+          "minimum_failures_lower": 84,
+          "minimum_failures_upper": 173,
+          "lower_percent": 1.9834710743801653,
+          "upper_percent": 4.085005903187722,
+          "cycle_sizes": {
+            "2": 59,
+            "10": 1,
+            "3": 6,
+            "4": 10,
+            "7": 1,
+            "5": 5,
+            "8": 1,
+            "6": 1
+          },
+          "self_loop_queries": 0,
+          "stride": 1.7813895344734192
+        },
+        "noun": {
+          "strict_errors": 4235,
+          "vertices": 278,
+          "distinct_edges": 1716,
+          "cyclic_edges": 3078,
+          "largest_component": 140,
+          "minimum_failures_lower": 510,
+          "minimum_failures_upper": 801,
+          "lower_percent": 12.04250295159386,
+          "upper_percent": 18.913813459268006,
+          "cycle_sizes": {
+            "1": 228,
+            "2": 205,
+            "4": 19,
+            "5": 6,
+            "3": 18,
+            "6": 11,
+            "14": 1,
+            "13": 2,
+            "7": 8,
+            "11": 4,
+            "10": 4,
+            "8": 2,
+            "9": 1,
+            "21": 1
+          },
+          "self_loop_queries": 228,
+          "stride": 1.7813895344734192
+        },
+        "true_class": {
+          "strict_errors": 4235,
+          "vertices": 25,
+          "distinct_edges": 385,
+          "cyclic_edges": 4235,
+          "largest_component": 25,
+          "minimum_failures_lower": 643,
+          "minimum_failures_upper": 800,
+          "lower_percent": 15.182998819362457,
+          "upper_percent": 18.890200708382526,
+          "cycle_sizes": {
+            "2": 576,
+            "6": 6,
+            "5": 11,
+            "3": 32,
+            "4": 18
+          },
+          "self_loop_queries": 0,
+          "stride": 1.7813895344734192
+        }
+      }
+    }
+  },
+  "names_revision": "737856911291eb876b820733bde426bdb5845946",
+  "native_revision": "d5a5347160914935c0e416d597cdd879815e2497",
+  "revision": "022db06adc49b28b36497b68f06827250a206cad",
+  "sha256": "e5950bf08b59fbcb8bfaa56b824218f71c556b741c71c31ed8f3c748b22a572b",
+  "seed": 42,
+  "device": "NVIDIA L4"
+}

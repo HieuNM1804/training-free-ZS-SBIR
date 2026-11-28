@@ -1,0 +1,151 @@
+{
+  "split": "sketchy_2",
+  "queries": 12694,
+  "gallery": 12552,
+  "reports": {
+    "native": {
+      "strict_errors": 8018,
+      "ties": 0,
+      "offset_families": {
+        "photo": {
+          "strict_errors": 8018,
+          "vertices": 339,
+          "distinct_edges": 1178,
+          "cyclic_edges": 1063,
+          "largest_component": 18,
+          "minimum_failures_lower": 28,
+          "minimum_failures_upper": 51,
+          "lower_percent": 0.34921426789723126,
+          "upper_percent": 0.6360688450985283,
+          "cycle_sizes": {
+            "2": 27,
+            "4": 1
+          },
+          "self_loop_queries": 0,
+          "stride": 1.2194533348083496
+        },
+        "noun": {
+          "strict_errors": 8018,
+          "vertices": 100,
+          "distinct_edges": 540,
+          "cyclic_edges": 2752,
+          "largest_component": 28,
+          "minimum_failures_lower": 558,
+          "minimum_failures_upper": 683,
+          "lower_percent": 6.959341481666251,
+          "upper_percent": 8.518333749064604,
+          "cycle_sizes": {
+            "1": 487,
+            "2": 68,
+            "3": 1,
+            "7": 1,
+            "6": 1
+          },
+          "self_loop_queries": 487,
+          "stride": 1.2194533348083496
+        },
+        "true_class": {
+          "strict_errors": 8018,
+          "vertices": 21,
+          "distinct_edges": 92,
+          "cyclic_edges": 4064,
+          "largest_component": 12,
+          "minimum_failures_lower": 65,
+          "minimum_failures_upper": 75,
+          "lower_percent": 0.810675979047144,
+          "upper_percent": 0.9353953604390122,
+          "cycle_sizes": {
+            "2": 61,
+            "3": 4
+          },
+          "self_loop_queries": 0,
+          "stride": 1.2194533348083496
+        }
+      }
+    },
+    "semantic": {
+      "strict_errors": 4463,
+      "ties": 0,
+      "offset_families": {
+        "photo": {
+          "strict_errors": 4463,
+          "vertices": 778,
+          "distinct_edges": 1980,
+          "cyclic_edges": 1230,
+          "largest_component": 132,
+          "minimum_failures_lower": 157,
+          "minimum_failures_upper": 274,
+          "lower_percent": 3.517813130181492,
+          "upper_percent": 6.139368138023751,
+          "cycle_sizes": {
+            "2": 127,
+            "6": 3,
+            "4": 5,
+            "3": 13,
+            "5": 5,
+            "16": 1,
+            "10": 1,
+            "9": 1,
+            "11": 1
+          },
+          "self_loop_queries": 0,
+          "stride": 1.781389832496643
+        },
+        "noun": {
+          "strict_errors": 4463,
+          "vertices": 232,
+          "distinct_edges": 1387,
+          "cyclic_edges": 3809,
+          "largest_component": 125,
+          "minimum_failures_lower": 1017,
+          "minimum_failures_upper": 1398,
+          "lower_percent": 22.787362760475016,
+          "upper_percent": 31.324221375756217,
+          "cycle_sizes": {
+            "1": 621,
+            "2": 312,
+            "10": 5,
+            "4": 11,
+            "3": 26,
+            "6": 12,
+            "12": 2,
+            "5": 7,
+            "11": 4,
+            "8": 5,
+            "9": 6,
+            "7": 5,
+            "13": 1
+          },
+          "self_loop_queries": 621,
+          "stride": 1.781389832496643
+        },
+        "true_class": {
+          "strict_errors": 4463,
+          "vertices": 21,
+          "distinct_edges": 278,
+          "cyclic_edges": 4463,
+          "largest_component": 21,
+          "minimum_failures_lower": 797,
+          "minimum_failures_upper": 929,
+          "lower_percent": 17.857943087609232,
+          "upper_percent": 20.815594891328704,
+          "cycle_sizes": {
+            "2": 731,
+            "4": 18,
+            "6": 2,
+            "5": 28,
+            "3": 18
+          },
+          "self_loop_queries": 0,
+          "stride": 1.781389832496643
+        }
+      }
+    }
+  },
+  "names_revision": "737856911291eb876b820733bde426bdb5845946",
+  "native_revision": "d5a5347160914935c0e416d597cdd879815e2497",
+  "revision": "022db06adc49b28b36497b68f06827250a206cad",
+  "sha256": "60a57006fae6b2f72821945b08dc73d62c91bf366ebaae69b252791bba893ece",
+  "seed": 42,
+  "device": "NVIDIA L4"
+}
